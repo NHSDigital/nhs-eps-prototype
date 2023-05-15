@@ -1,0 +1,257 @@
+{% extends 'layout.html' %}
+
+<!-- some custom css for the home page only -->
+{% set containerClasses = 'app-width-container--full' %}
+{% set mainClasses = 'app-main-wrapper--no-padding app-homepage' %}
+
+{% block pageTitle %}
+  Home - NHS App
+{% endblock %}
+
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/nhsuk.css" rel="stylesheet">
+{% endblock %}
+
+<!-- App header -->
+{% block header %}
+<header class="nhsuk-header" role="banner">
+  <div class="nhsuk-width-container nhsuk-header__container">
+    <div class="nhsuk-header__logo">
+      <a class="nhsuk-header__link" href="/" aria-label="NHS homepage">
+        <svg class="nhsapp-logo nhsuk-logo--white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 16">
+          <path fill="#fff" d="M0 0h40v16H0z"></path>
+          <path fill="#005eb8" d="M3.9 1.5h4.4l2.6 9h.1l1.8-9h3.3l-2.8 13H9l-2.7-9h-.1l-1.8 9H1.1M17.3 1.5h3.6l-1 4.9h4L25 1.5h3.5l-2.7 13h-3.5l1.1-5.6h-4.1l-1.2 5.6h-3.4M37.7 4.4c-.7-.3-1.6-.6-2.9-.6-1.4 0-2.5.2-2.5 1.3 0 1.8 5.1 1.2 5.1 5.1 0 3.6-3.3 4.5-6.4 4.5-1.3 0-2.9-.3-4-.7l.8-2.7c.7.4 2.1.7 3.2.7s2.8-.2 2.8-1.5c0-2.1-5.1-1.3-5.1-5 0-3.4 2.9-4.4 5.8-4.4 1.6 0 3.1.2 4 .6"></path>
+        </svg>
+      </a>
+    </div>
+    
+<div class="nhsapp-account">
+  <a class="nhsapp-account-link" href="https://www.nhsapp.service.nhs.uk/login">
+    My account 
+    <svg class="nhsapp-account-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="26" width="26">
+      <path fill="#fff"  d="M16,18.2c-3.1,0-5.7-2.5-5.7-5.7s2.5-5.7,5.7-5.7c3.1,0,5.7,2.5,5.7,5.7 C21.7,15.7,19.1,18.2,16,18.2"></path>
+      <path fill="#fff" d="M16,0C7.2,0,0,7.2,0,16s7.2,16,16,16s16-7.2,16-16C32,7.2,24.8,0,16,0 M24.1,27.5V26 c0-3.5-2.5-6.3-5.7-6.3h-4.8C10.5,19.6,8,22.5,8,26v1.6C1.6,23.1,0,14.3,4.5,8S17.7,0,24,4.5S32,17.7,27.5,24 C26.6,25.4,25.4,26.6,24.1,27.5"></path>
+    </svg></a>
+</div>
+  </div>
+</header>
+{% endblock %}
+
+
+<!-- Homepage content -->
+{% block content %}
+
+<!-- Personalisation and user data -->
+<section class="nhsuk-hero nhsuk-hero--image nhsuk-hero--image-description">
+  <div class="nhsuk-hero__overlay">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+          <div class="nhsuk-hero-content">
+
+            <h1 class="nhsuk-u-margin-bottom-3 h1-app-long">Access your NHS services any time, day or night</h1>
+            <h1 class="nhsuk-u-margin-bottom-3 h1-app-short">We’re here for you</h1>
+            <div class="patient-data">
+		   <p>BETHAN RHYS-THOMPSON<br />
+		   NHS number: <strong><a class="nhs-number">123 456 7890</a></strong></p>
+		</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<div class="nhsuk-width-container nhsuk-u-margin-top-9">
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+<!-- NHS Services -->
+<section class="nhsuk-section">
+	<details class="nhsuk-details nhs-app-expander">
+	  <summary class="nhsuk-details__summary">
+		<span class="nhsuk-details__summary-text" style="width:100%;">
+		  Your health record
+		</span>
+            <span class="nhsuk-hero__arrow" aria-hidden="true"></span>
+	  </summary>
+	 
+	  <div class="nhsuk-details__text">
+		<h2 class="nhsuk-card__heading nhsuk-heading-s">
+		<a>Your GP health record</a>
+		</h2> 
+		<p class="nhsuk-card__description-s">
+		View your complete health record
+		</p>
+	  </div>
+		
+	 <div class="nhsuk-details__text app-section-odd">
+		<h2 class="nhsuk-card__heading nhsuk-heading-s">
+		<a>Test results</a>
+		</h2> 
+		<p class="nhsuk-card__description-s">
+		Check results of your health tests
+		</p>
+	  </div>
+
+	 <div class="nhsuk-details__text">
+		<h2 class="nhsuk-card__heading nhsuk-heading-s">
+		<a>COVID-19 vaccination record</a>
+		</h2> 
+		<p class="nhsuk-card__description-s">
+		Find your vaccine details
+		</p>
+	  </div>
+
+	 <div class="nhsuk-details__text app-section-odd">
+		<h2 class="nhsuk-card__heading nhsuk-heading-s">
+		<a>Organ donation</a>
+		</h2> 
+		<p class="nhsuk-card__description-s">
+		Decide about your organ donation
+		</p>
+	  </div>
+	</details>
+
+	
+	
+</section>
+
+
+<!-- NHS Services -->
+<section class="nhsuk-section">
+	<details class="nhsuk-details nhs-app-expander">
+	  <summary class="nhsuk-details__summary">
+		<span class="nhsuk-details__summary-text">
+		  Services for you
+		</span>
+            <span class="nhsuk-hero__arrow" aria-hidden="true"></span>
+	  </summary>
+
+
+	  <div class="nhsuk-details__text">
+		<h2 class="nhsuk-card__heading nhsuk-heading-s">
+		<a>Prescriptions</a>
+		</h2> 
+		<p class="nhsuk-card__description-s">
+		Order repeat prescriptions 
+		</p>
+	  </div>
+		
+	 <div class="nhsuk-details__text app-section-odd">
+		<h2 class="nhsuk-card__heading nhsuk-heading-s">
+		<a>Your pharmacy</a>
+		</h2> 
+		<p class="nhsuk-card__description-s">
+		Choose where prescriptions are sent
+		</p>
+	  </div>
+
+	  <div class="nhsuk-details__text">
+		<h2 class="nhsuk-card__heading nhsuk-heading-s">
+		<a>Appointments </a>
+		</h2> 
+		<p class="nhsuk-card__description-s">
+		Book and cancel appointments
+		</p>
+	  </div>
+		
+	 <div class="nhsuk-details__text app-section-odd">
+		<h2 class="nhsuk-card__heading nhsuk-heading-s">
+		<a>COVID Pass</a>
+		</h2> 
+		<p class="nhsuk-card__description-s">
+		Get your NHS COVID Pass for travel
+		</p>
+	  </div>
+
+	</details>
+</section>
+
+
+
+<!-- Help and advice -->
+<section class="nhsuk-section">
+	<details class="nhsuk-details nhs-app-expander">
+	  <summary class="nhsuk-details__summary">
+		<span class="nhsuk-details__summary-text">
+		 Help and advice
+		</span>
+            <span class="nhsuk-hero__arrow" aria-hidden="true"></span>
+	  </summary>
+
+	  <div class="nhsuk-details__text">
+		<h2 class="nhsuk-card__heading nhsuk-heading-s">
+		<a>NHS 111 online</a>
+		</h2> 
+		<p class="nhsuk-card__description-s">
+		Check symptoms and get urgent help
+		</p>
+	  </div>
+		
+	 <div class="nhsuk-details__text app-section-odd">
+		<h2 class="nhsuk-card__heading nhsuk-heading-s">
+		<a>Trusted health information</a>
+		</h2> 
+		<p class="nhsuk-card__description-s">
+		Search conditions and treatments
+		</p>
+	  </div>
+
+	  <div class="nhsuk-details__text">
+		<h2 class="nhsuk-card__heading nhsuk-heading-s">
+		<a>COVID-19 guidance</a>
+		</h2> 
+		<p class="nhsuk-card__description-s">
+		Learn more about COVID-19
+		</p>
+	  </div>
+		
+	 <div class="nhsuk-details__text app-section-odd">
+		<h2 class="nhsuk-card__heading nhsuk-heading-s">
+		<a>Help using the NHS App</a>
+		</h2> 
+		<p class="nhsuk-card__description-s">
+		Get support with using the app
+		</p>
+	  </div>
+
+
+	</details>
+</section>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+
+
+<!-- NHS.UK footer -->
+{% block footer %}
+<footer role="contentinfo">
+  <div class="nhsuk-footer" id="nhsuk-footer">
+    <div class="nhsuk-width-container">
+      <h2 class="nhsuk-u-visually-hidden">Support links</h2>
+      <ul class="nhsuk-footer__list nhsuk-footer__list--three-columns">
+        <li class="nhsuk-footer__list-item"><a href="" class="nhsuk-footer__list-item-link">NHS sites</a></li>
+      </ul>
+      <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
+    </div>
+  </div>
+</footer>
+{% endblock %}
+
+
+<!-- JavaScript hack to do nothing if search button or link href="" clicked -->
+{% block pageScripts %}
+<script>
+  $( document ).ready(function() {
+    $('a[href=""], button.nhsuk-search__submit').click(function(e) {
+      e.preventDefault();
+    });
+  });
+</script>
+{% endblock %}

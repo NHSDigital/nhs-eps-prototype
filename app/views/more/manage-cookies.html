@@ -1,0 +1,82 @@
+
+
+{% set PROTOTYPEURL = "more" %}
+{% set serviceName = "NHS App" %}
+{% set contentTitle = "Manage cookies" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% set moreActive = "active" %}
+{% block pageScripts %}
+{% endblock %}
+
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layouts/layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+<nav class="nhsuk-breadcrumb nhsuk-breadcrumb-desktop" aria-label="Breadcrumb">
+  <div class="nhsuk-width-container">
+    <ol class="nhsuk-breadcrumb__list">
+      <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/home">Home</a></li>
+    </ol>
+    <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" href="/home">Back to home</a></p>
+  </div>
+</nav>
+
+<nav class="nhsuk-breadcrumb nhsuk-breadcrumb-native" aria-label="Breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" href="/more/hub">Back</a></p>
+  </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-5">{{ contentTitle }}</h1>
+
+      <p>We've put some small files called cookies on your device to make the NHS App work.</p>
+      <p>We will not use any other cookies unless you choose to turn them on.</p>
+
+
+        <ul class="panel-link">
+          <li class="panel-link__item">
+              <a class="panel-link__link" href="https://www.nhs.uk/nhs-app/nhs-app-legal-and-cookies/nhs-app-cookies-policy/">
+              <h2 class="panel-link__heading nhsuk-heading-s">Cookies policy</h2>
+            </a>
+            </li>
+          </ul>
+
+      {% set checked %}
+        {% if data['cookies'] == "on" %}
+          Checked
+        {% else %}
+          nope
+        {% endif %}
+      {% endset %}
+
+      <form action="" method="post">
+        <div class="nhs-app-card">
+          <div class="nhs-app-card__inner" onclick="cookieToggle()">
+            <div>
+              <strong><label for="cookie">Allow optional analytic cookies</label></strong>
+              <span class="nhsuk-hint nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-1">
+                I accept the use of optional analytic cookies used to improve the performance of the NHS App
+              </span>
+              <input class="toggle" type="checkbox" id="cookie" name="cookie" value="on" {{ checked }}>
+              <input class="nhsuk-u-visually-hidden" type="submit" value="Submit">
+      			</div>
+          </div>
+        </div>
+      </form>
+
+
+
+    </div>
+  </div>
+{% endblock %}

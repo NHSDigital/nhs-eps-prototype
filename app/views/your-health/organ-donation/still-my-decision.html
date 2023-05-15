@@ -1,0 +1,307 @@
+
+{% set PROTOTYPEURL = "your-health/organ-donation" %}
+{% set serviceName = "NHS App" %}
+{% set contentTitle = "Your organ donation decision" %}
+{% set yourHealthActive = "active" %}
+{% block pageScripts %}
+{% endblock %}
+
+{% set ethnicity %}
+  {% if data['selectEthnicity'] == 'blackOther' %}
+    Black or Black British - Other
+  {% elif data['selectEthnicity'] == 'mixed' %}
+    Mixed - White and Black African
+  {% elif data['selectEthnicity'] == 'whiteBritish' %}
+    White British
+  {% elif data['selectEthnicity'] == 'asianIndian' %}
+    Asian or Asian British - Indian
+  {% elif data['selectEthnicity'] == 'chinese' %}
+    Chinese
+  {% elif data['selectEthnicity'] == 'blackCaribbean' %}
+    Black or Black British - Caribbean
+  {% elif data['selectEthnicity'] == 'whiteOther' %}
+    White - Other
+  {% elif data['selectEthnicity'] == 'other' %}
+    Other
+  {% elif data['selectEthnicity'] == 'whiteIrish' %}
+    White - Irish
+  {% elif data['selectEthnicity'] == 'asianOther' %}
+    Asian or Asian British - Other
+  {% elif data['selectEthnicity'] == 'asianBangladeshi' %}
+    Asian or Asian British - Bangladeshi
+  {% elif data['selectEthnicity'] == 'notStated' %}
+    Not stated
+  {% elif data['selectEthnicity'] == 'mixedWhiteAsian' %}
+    Mixed - White and Asian
+  {% elif data['selectEthnicity'] == 'blackAfrican' %}
+    Black or Black British - African
+  {% elif data['selectEthnicity'] == 'asianPakistani' %}
+    Asian or Asian British - Pakistani
+  {% elif data['selectEthnicity'] == 'whiteBlackCaribbean' %}
+    Mixed - White and Black Caribbean
+  {% elif data['selectEthnicity'] == 'mixedOther' %}
+    Mixed - Other
+  {% elif data['selectEthnicity'] == 'gypsy' %}
+    Gypsy or Irish Traveller
+  {% elif data['selectEthnicity'] == 'arab' %}
+    Arab
+  {% elif data['selectEthnicity'] == '' %}
+    You did not answer
+  {% else %}
+    You did not answer
+  {% endif %}
+{% endset %}
+
+{% set religion %}
+  {% if data['selectReligion'] == 'buddhist' %}
+    Buddhist
+  {% elif data['selectReligion'] == 'christianCatholic' %}
+    Christian - Catholic
+  {% elif data['selectReligion'] == 'christianOther' %}
+    Christian - other
+  {% elif data['selectReligion'] == 'christianProtestant' %}
+    Christian - Protestant
+  {% elif data['selectReligion'] == 'hindu' %}
+    Hindu
+  {% elif data['selectReligion'] == 'jewish' %}
+    Jewish
+  {% elif data['selectReligion'] == 'muslim' %}
+    Muslim
+  {% elif data['selectReligion'] == 'noReligion' %}
+    No religion
+  {% elif data['selectReligion'] == 'notStated' %}
+    Not stated
+  {% elif data['selectReligion'] == 'other' %}
+    Other
+  {% elif data['selectReligion'] == 'sikh' %}
+    Sikh
+  {% elif data['selectReligion'] == '' %}
+    You did not answer
+  {% else %}
+    You did not answer
+  {% endif %}
+{% endset %}
+
+
+{% set faith %}
+  {% if data['faithBeliefs'] == 'yes' %}
+    Yes - this is applicable to me
+  {% elif data['faithBeliefs'] == 'no' %}
+    No - this is not applicable to me
+  {% elif data['faithBeliefs'] == 'prefer' %}
+    Prefer not to say
+  {% else %}
+    Prefer not to say
+  {% endif %}
+{% endset %}
+
+
+
+
+{% set decisionDetails %}
+  {% if data['yourChoice'] == 'all' %}
+    I want to donate all my organs and tissue.
+  {% else %}
+    I want to donate some organs and tissue.
+  {% endif %}
+{% endset %}
+
+
+
+{% if (data['heart'] == "yes") or (data['lungs'] == "yes") or (data['kidney'] == "yes") or (data['liver'] == "yes")
+or (data['corneas'] == "yes") or (data['pancreas'] == "yes") or (data['tissue'] == "yes") or (data['smallBowel'] == "yes") %}
+  {% set organDonationChooseAnyYes = true %}
+{% endif %}
+
+
+{% if (data['heart'] == "no") or (data['lungs'] == "no") or (data['kidney'] == "no") or (data['liver'] == "no")
+or (data['corneas'] == "no") or (data['pancreas'] == "no") or (data['tissue'] == "no") or (data['smallBowel'] == "no") %}
+  {% set organDonationChooseAnyNos = true %}
+{% endif %}
+
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layouts/layout.html' %}
+
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  {{ contentTitle }} - {{ serviceName }}
+{% endblock %}
+
+
+
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+<nav class="nhsuk-breadcrumb nhsuk-breadcrumb-desktop" aria-label="Breadcrumb">
+  <div class="nhsuk-width-container">
+    <ol class="nhsuk-breadcrumb__list">
+      <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/home">Home</a></li>
+    </ol>
+    <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" href="/home">Back to home</a></p>
+  </div>
+</nav>
+
+<nav class="nhsuk-breadcrumb nhsuk-breadcrumb-native" aria-label="Breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" href="javascript: window.history.go(-1)">Back</a></p>
+  </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-5">{{ contentTitle }}</h1>
+
+      <h2 class="nhsuk-heading-m">About you</h2>
+      <h3 class="nhsuk-heading-s">Personal details</h3>
+
+
+
+            {{ summaryList({
+              classes: 'nhsuk-summary-list--no-border',
+              rows: [
+                {
+                  key: {
+                    text: "Name"
+                  },
+                  value: {
+                    text: "Mrs Betty Doyle"
+                  }
+                },
+                {
+                  key: {
+                    text: "Date of birth"
+                  },
+                  value: {
+                    text: "20 September 1982"
+                  }
+                },
+                {
+                  key: {
+                    text: "Gender"
+                  },
+                  value: {
+                    html: "Female"
+                  }
+                },
+                {
+                  key: {
+                    text: "NHS number"
+                  },
+                  value: {
+                    html: "123 456 7890"
+                  }
+                }
+              ]
+            }) }}
+
+
+            <p>Contact your GP surgery to amend your personal details.</p>
+
+            <hr>
+
+            <h3 class="nhsuk-heading-s">Contact details</h3>
+
+
+            <p>We will only contact you about your organ donation registration.</p>
+
+                  {{ summaryList({
+                    rows: [
+                      {
+                        key: {
+                          text: "Postal address"
+                        },
+                        value: {
+                          html: '<p>58 Grange Road, Richmond Hill, Bradford, West Yorkshire, BT71 5LL</p><p>Contact your GP surgery to amend your postal address.</p>'
+                        }
+                      }
+                    ]
+                  }) }}
+
+
+
+
+                        <h2 class="nhsuk-heading-m">Your decision</h2>
+
+
+                        <div class="nhs-app-decision">
+                          <div class="nhs-app-decision__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" id="register-icon-green" data-name="Layer 1" viewBox="-20 -20 162.8 162.8" width="50" height="50" x="14118">
+                              <defs>
+                                <style>.hfcls-1{fill:#006b54}</style>
+                              </defs>
+                              <title>register-icon-green</title>
+                              <g id="hfGroup_3786" data-name="Group 3786">
+                                <path id="hfPath_448" data-name="Path 448" class="hfcls-1" d="M101.26 42.49L47.34 96.31 27 76l-3.93-4 10.17-10.13L47.34 76l43.75-43.77z" transform="translate(-.33 -.18)"/>
+                                <g id="hfGroup_3785" data-name="Group 3785">
+                                  <path id="hfPath_449" data-name="Path 449" class="hfcls-1" d="M61.73 5a56.6 56.6 0 1 1-56.6 56.6A56.6 56.6 0 0 1 61.73 5m0-4.8a61.4 61.4 0 1 0 61.4 61.4A61.46 61.46 0 0 0 61.73.18z" transform="translate(-.33 -.18)"/>
+                                </g>
+                              </g>
+                            </svg>
+                          </div>
+                          <div class="nhs-app-decision__text nhs-app-decision__text--yes">
+                            <h3>Yes I want to donate my organs</h3>
+                          </div>
+                        </div>
+
+
+                        <h3 class="nhsuk-heading-s">Decision details</h3>
+
+                        <p>I want to donate all my organs and tissue.</p>
+
+                        <hr>
+
+                        <h2 class="nhsuk-heading-m">Faith / beliefs details</h2>
+
+                        {{ summaryList({
+                          rows: [
+                            {
+                              key: {
+                                html: '<p><strong>I would like NHS staff to speak to my family and anyone else appropriate about how organ donation can go ahead in line with my faith / beliefs.</strong></p>'
+                              },
+                              value: {
+                                text: faith
+                              }
+                            }
+                          ]
+                        }) }}
+
+
+
+
+
+                        <form action="/{{ PROTOTYPEURL }}/decision-recorded" method="post">
+                        {{ checkboxes({
+                          "idPrefix": "organ",
+                          "name": "confirm",
+                          "fieldset": {
+                            "legend": {
+                              "text": "Confirmation",
+                              "classes": "nhsuk-fieldset__legend--m",
+                              "isPageHeading": true
+                            }
+                          },
+                          "items": [
+                            {
+                              "value": "infoGiven",
+                              "text": "I confirm that the information given in this form is true, complete and accurate"
+                            },
+                            {
+                              "value": "privacy",
+                              "html": 'I have read the <a href="https://www.organdonation.nhs.uk/app/app-privacy/"><span class="privacy-link">privacy statement</span></a> and give consent for the use of my information in accordance with the terms'
+                            }
+                          ]
+                        }) }}
+
+
+                          <input type="submit" class="nhsuk-button" value="Submit my decision">
+                          </input>
+                        </form>
+
+    </div>
+  </div>
+{% endblock %}

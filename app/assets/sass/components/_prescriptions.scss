@@ -1,0 +1,70 @@
+// ==========================================================================
+// COMPONENTS / #PRESCRIPTIONS-PANEL
+// ==========================================================================
+
+
+.prescriptions-panel {
+  border-top: 1px $color_nhsuk-grey-4 solid;
+  font-size: 1em;
+  list-style: none;
+  margin-bottom: 1em;
+  padding-left: 0;
+  @media (max-width: 48.0525em) {
+    margin: 0 -1em 1em;
+  }
+}
+
+  .prescriptions-panel__item {
+    border-top: 1px solid #d8dde0;
+    margin-bottom: .2em;
+    background-color: $color_nhsuk-white;
+    padding: 16px 40px 16px 16px;
+    display: block;
+  }
+
+    .prescriptions-panel__heading {
+      margin: 0;
+      padding-bottom: 6px;
+    }
+
+    .prescriptions-panel__content {
+      color: $color_nhsuk-black;
+      margin-bottom: 0;
+    }
+
+  .prescription-medicine-detail {
+    color: #425563;
+    font-weight: 600;
+    font-size: 16px;
+    @media (max-width: 48.0525em) {
+      font-size: 14px;
+    }
+  }
+
+  .prescription-medicine-instructions {
+    color: #425563;
+    font-size: 16px;
+    margin-bottom: 12px;
+    @media (max-width: 48.0525em) {
+      font-size: 14px;
+    }
+  }
+
+  .prescription-medicine-status {
+    color: #425563;
+    font-size: 16px;
+    @media (max-width: 48.0525em) {
+      font-size: 14px;
+    }
+  }
+
+  .prescription-description {
+      color: #425563;
+  }
+
+
+
+    .nhs-app-prescription-tag {
+      float: right;
+
+  }

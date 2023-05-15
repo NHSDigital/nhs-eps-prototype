@@ -1,0 +1,100 @@
+
+
+{% set PROTOTYPEURL = "prescriptions/nominated-pharmacy" %}
+{% set serviceName = "NHS App" %}
+{% set contentTitle = "Choose a type of pharmacy to search for" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% set prescriptionsActive = "active" %}
+{% block pageScripts %}
+{% endblock %}
+
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layouts/layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+<nav class="nhsuk-breadcrumb nhsuk-breadcrumb-desktop" aria-label="Breadcrumb">
+  <div class="nhsuk-width-container">
+    <ol class="nhsuk-breadcrumb__list">
+      <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/home">Home</a></li>
+    </ol>
+    <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" href="/home">Back to home</a></p>
+  </div>
+</nav>
+
+<nav class="nhsuk-breadcrumb nhsuk-breadcrumb-native" aria-label="Breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" href="javascript: window.history.go(-1)">Back</a></p>
+  </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+
+    <form action="/{{ PROTOTYPEURL }}/choose-type" method="post">
+
+    <div class="nhsuk-form-group">
+
+      <fieldset class="nhsuk-fieldset">
+        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+          <h1 class="nhsuk-fieldset__heading">
+            {{ contentTitle }}
+          </h1>
+        </legend>
+
+        <div class="nhsuk-radios">
+
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="example-1" name="chooseType" type="radio" value="highStreet">
+            <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+              High street pharmacies
+            </label>
+            <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-1-item-hint">
+              	You can collect your prescriptions in person at a high street pharmacy local to you. They may also deliver. You'll be able to nominate a high street pharmacy in the NHS App.
+            </div>
+          </div>
+
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="example-2" name="chooseType" type="radio" value="onlineOnly">
+            <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+              Online-only pharmacies
+            </label>
+            <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-1-item-hint">
+                These send your prescriptions to you in the post. It's not possible to nominate an online-only pharmacy in the NHS App. You'll need to register with the pharmacy directly instead.
+            </div>
+          </div>
+
+        </div>
+      </fieldset>
+
+    </div>
+
+            <input type="submit" class="nhsuk-button" value="Continue">
+            </input>
+          </form>
+
+
+                <p class="desktop-back-link">
+                  <a href="javascript: window.history.go(-1)">Back</a>
+                </p>
+
+
+
+    </div>
+  </div>
+
+
+
+{% endblock %}

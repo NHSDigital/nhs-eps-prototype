@@ -1,0 +1,134 @@
+
+
+
+
+{% set PROTOTYPEURL = "your-health/covid-status" %}
+{% set serviceName = "NHS App" %}
+{% set contentTitle = "Details" %}
+{% set yourHealthActive = "active" %}
+{% block pageScripts %}
+{% endblock %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layouts/layout-covid-status.html' %}
+
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  {{ contentTitle }} - {{ serviceName }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+
+            <div class="nhsuk-back-link">
+              <a class="nhsuk-back-link__link" href="javascript: window.history.go(-1)">
+                <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+                </svg>
+                Go back</a>
+            </div>
+
+            <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-5">{{ contentTitle }}</h1>
+
+
+            {{ summaryList({
+              classes: 'nhsuk-summary-list--no-border nhs-app-summary-list-inline_covid-personal',
+              rows: [
+                {
+                  key: {
+                    text: "Name:"
+                  },
+                  value: {
+                    text: "Mrs Betty Doyle"
+                  }
+                },
+                {
+                  key: {
+                    text: "Date of birth:"
+                  },
+                  value: {
+                    text: "20 September 1982"
+                  }
+                }
+              ]
+            }) }}
+
+            <div class="white-bg">
+              <p class="covid-qr-expire">Vaccinated against COVID-19</p>
+
+
+      <div class="nhsuk-u-margin-bottom-0 nhsuk-u-padding-bottom-0 covid-qr-image">
+      <img src="/images/covid-qr-with-chevrons.png" alt="Image of a QR code" width="300" height="240">
+    </div>
+
+
+
+          <strong><p class="covid-qr-expire covid-expire-date nhsuk-u-margin-bottom-0">2D barcode expires</p></strong>
+          <p class="covid-qr-expire">3 October 2021</p>
+
+          <strong><p class="covid-brand nhsuk-u-margin-bottom-0">COVID-19 Vaccine Pfizer-BioNTech</p></strong>
+
+          <table class="nhsuk-table-covid">
+
+            <tbody class="nhsuk-table__body">
+              <tr role="row" class="nhsuk-table__row">
+                <td class="nhsuk-table__cell"><strong>Dose</strong></td>
+                <td class="nhsuk-table__cell ">1 of 2</td>
+              </tr>
+              <tr role="row" class="nhsuk-table__row">
+                <td class="nhsuk-table__cell"><strong>Manufacturer</strong></td>
+                <td class="nhsuk-table__cell ">Pfizer-BioNTech</td>
+              </tr>
+              <tr role="row" class="nhsuk-table__row">
+                <td class="nhsuk-table__cell"><strong>Disease targeted</strong></td>
+                <td class="nhsuk-table__cell ">COVID-19</td>
+              </tr>
+              <tr role="row" class="nhsuk-table__row">
+                <td class="nhsuk-table__cell"><strong>Vaccine</strong></td>
+                <td class="nhsuk-table__cell ">SARS CoV-2 mRNA Vaccine</td>
+              </tr>
+              <tr role="row" class="nhsuk-table__row">
+                <td class="nhsuk-table__cell"><strong>Vaccine product</strong></td>
+                <td class="nhsuk-table__cell ">COVID-19 Vaccine Pfizer</td>
+              </tr>
+              <tr role="row" class="nhsuk-table__row">
+                <td class="nhsuk-table__cell"><strong>Batch number</strong></td>
+                <td class="nhsuk-table__cell ">CBA54321</td>
+              </tr>
+              <tr role="row" class="nhsuk-table__row">
+                <td class="nhsuk-table__cell"><strong>Country of vaccination</strong></td>
+                <td class="nhsuk-table__cell ">GB</td>
+              </tr>
+              <tr role="row" class="nhsuk-table__row">
+                <td class="nhsuk-table__cell"><strong>Authority</strong></td>
+                <td class="nhsuk-table__cell ">NHS Digital</td>
+              </tr>
+            </tbody>
+          </table>
+
+
+  <div class=" covid-qr-image nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-4">
+  <img src="/images/dots.png" alt="Swipe dots" width="15%" height="15%">
+</div>
+
+
+
+</div>
+
+
+
+<p class="nhsuk-u-margin-top-6">This 2D barcode refreshes every time you log in. If you generate a PDF copy of your pass, the barcode will expire 30 days from date of issue. To get a new one, just log back in.</p>
+
+
+
+
+    </div>
+  </div>
+{% endblock %}

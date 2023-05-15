@@ -1,0 +1,117 @@
+{% set PROTOTYPEURL = "your-health/gp-record" %}
+{% set serviceName = "NHS App" %}
+{% set contentTitle = "Your GP health record" %}
+{% set yourHealthActive = "active" %}
+{% block pageScripts %}
+{% endblock %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layouts/layout.html' %}
+
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  {{ contentTitle }} - {{ serviceName }}
+{% endblock %}
+
+
+
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+<nav class="nhsuk-breadcrumb nhsuk-breadcrumb-desktop" aria-label="Breadcrumb">
+  <div class="nhsuk-width-container">
+    <ol class="nhsuk-breadcrumb__list">
+      <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/home">Home</a></li>
+    </ol>
+    <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" href="/home">Back to home</a></p>
+  </div>
+</nav>
+
+<nav class="nhsuk-breadcrumb nhsuk-breadcrumb-native" aria-label="Breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" href="javascript: window.history.go(-1)">Back</a></p>
+  </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-5">{{ contentTitle }}</h1>
+
+      <div class="nhsuk-inset-text nhsuk-u-margin-bottom-4 nhsuk-u-margin-top-4">
+        <span class="nhsuk-u-visually-hidden">Information: </span>
+        <p>Ask your GP surgery for access to your detailed coded record. You'll only need to do this once to view information like test results, immunisations and more. <a href="https://www.nhs.uk/nhs-services/online-services/nhs-app/nhs-app-help-and-support/health-records/">Find out more about requesting access.</a></p>
+      </div>
+
+      <h2>Mrs Betty Doyle</h2>
+
+      {{ summaryList({
+        classes: 'nhsuk-summary-list--no-border nhsuk-u-margin-bottom-3',
+          rows: [
+            {
+              key: {
+                text: "Date of birth:"
+              },
+              value: {
+                text: "20 January 1982"
+              }
+            },
+            {
+              key: {
+                text: "NHS Number:"
+              },
+              value: {
+                text: "123 456 7890"
+              }
+            },
+            {
+              key: {
+                text: "Address:"
+              },
+              value: {
+                html: "72 Guild Street, London, SE23 6FH"
+              }
+            }
+          ]
+        }) }}
+
+        <ul class="panel-link">
+
+          <li class="panel-link__item">
+            <a class="panel-link__link" href="/{{ PROTOTYPEURL }}/allergies">
+              <h2 class="panel-link__heading nhsuk-heading-xs">Allergies and adverse reactions</h2>
+              <div class="recordCountAllergies"><span>0</span></div>
+            </a>
+          </li>
+
+          <li class="panel-link__item">
+            <a class="panel-link__link" href="/{{ PROTOTYPEURL }}/medicines">
+              <h2 class="panel-link__heading nhsuk-heading-xs">Medicines</h2>
+              <div class="recordCountMedicines"><span>2</span></div>
+            </a>
+          </li>
+
+
+        </ul>
+
+        <p>This is a summary of your health record.</p>
+
+          <p>You may see medical abbreviations that you are not familiar with.</p>
+
+
+
+        <div class="nhsuk-action-link">
+          <a class="nhsuk-action-link__link" href="https://www.nhs.uk/using-the-nhs/nhs-services/the-nhs-app/abbreviations/">
+            <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+            </svg>
+            <span class="nhsuk-action-link__text">Help with abbreviations</span>
+          </a>
+        </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,51 @@
+<!--
+  This is the main layout where you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Extends the layout from /docs/views/template.html -->
+{% extends "template.html" %}
+
+<!-- Adds a custom class to the <main> wrapper -->
+<!-- nhsuk-main-wrapper--s reduces top and bottom padding of the page -->
+
+
+{% set mainClasses = 'nhs-app-thin-less-bottom' %}
+  {% set html_style = 'background-color: #d8dde0;' %}
+
+
+<!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+
+{% endblock %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  NHS App prototype
+{% endblock %}
+
+<!-- Edit the header -->
+<!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
+{% block header %}
+{% include "./parts/_native-header.html" %}
+{% include "./parts/_desktop-header.html" %}
+{% endblock %}
+
+<!-- Edit the footer -->
+<!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
+
+{% block footer %}
+{% include "./parts/_ers-footer.html" %}
+{% include "./parts/_native-footer.html" %}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% block scripts %}
+    <!-- Custom JavaScript files can be added to this file -->
+    {% include "includes/scripts.html" %}
+    <!-- For adding page specific JavsScript -->
+    {% block pageScripts %}{% endblock %}
+  {% endblock %}
+{% endblock %}

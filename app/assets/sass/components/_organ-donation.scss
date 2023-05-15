@@ -1,0 +1,136 @@
+// ==========================================================================
+// COMPONENTS / #ORGAN-DONATION
+// ==========================================================================
+
+
+.nhs-app-decision__icon {
+
+  float: left;
+}
+
+
+
+.nhs-app-decision__text--yes {
+
+  color: $color_nhsuk-green;
+  padding-left: 3em;
+  padding-top: 10px;
+  margin-bottom: 0;
+}
+
+
+
+.nhsuk-panel {
+      padding: 24px;
+
+}
+
+   .nhsuk-panel-group__item {
+
+
+     flex: 0 0 50%;
+     padding-right: 1px;
+     align-self: stretch;
+     background-color: #ffffff;
+     width: 100%;
+     margin: -1px; 
+
+}
+
+
+@media (max-width: 40.0525em) {
+.nhs-app-panel-group {
+    padding: 0 12px;
+}
+}
+
+
+@media (max-width: 48.0525em) {
+.nhsuk-panel-group {
+    margin-bottom: 24px;
+
+}
+}
+
+.nhsuk-panel-group {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+
+
+}
+
+
+
+.nhs-app-organ-donation--no {
+  color: $color_nhsuk-red;
+  text-decoration: none;
+
+  &:focus {
+
+    background-color: $color_nhsuk-white;
+    color: $color_nhsuk-red;
+  }
+
+  &:hover {
+
+    background-color: $color_nhsuk-white;
+    color: $color_nhsuk-red;
+  }
+
+  &:visited {
+    color: $color_nhsuk-red;
+  }
+
+  p {
+    font-weight: 600;
+    color: $color_nhsuk-red;
+  }
+}
+
+.nhs-app-organ-donation--yes {
+  color: $color_nhsuk-green;
+  text-decoration: none;
+
+  &:focus {
+
+    background-color: $color_nhsuk-white;
+    color: $color_nhsuk-green
+  }
+
+  &:hover {
+
+    background-color: $color_nhsuk-white;
+    color: $color_nhsuk-green
+  }
+
+  &:visited {
+    color: $color_nhsuk-green;
+  }
+
+
+  p {
+    font-weight: 600;
+    color: $color_nhsuk-green
+  }
+}
+
+
+.nhs-app-decision__text--no {
+
+  color: $color_nhsuk-red;
+
+}
+
+.nhs-app-decision__text--withdrawal {
+
+  color: $color_nhsuk-purple;
+  padding-left: 0 !important;
+
+}
+
+.privacy-link {
+
+  color: $color_nhsuk-blue;
+
+}

@@ -1,0 +1,16 @@
+// ==========================================================================
+// COMPONENTS / #Breadcrumbs
+// ==========================================================================
+
+
+.nhsuk-breadcrumb-desktop {
+  @media (max-width: 482px) {
+    display: none;
+  }
+}
+
+.nhsuk-breadcrumb-native {
+  @media (min-width: 482px) {
+    display: none;
+  }
+}

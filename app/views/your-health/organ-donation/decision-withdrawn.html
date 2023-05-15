@@ -1,0 +1,83 @@
+
+{% set PROTOTYPEURL = "your-health/organ-donation" %}
+{% set serviceName = "NHS App" %}
+{% set contentTitle = "Your organ donation decision" %}
+{% set yourHealthActive = "active" %}
+{% block pageScripts %}
+{% endblock %}
+
+
+
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layouts/layout.html' %}
+
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  {{ contentTitle }} - {{ serviceName }}
+{% endblock %}
+
+
+
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+<nav class="nhsuk-breadcrumb nhsuk-breadcrumb-desktop" aria-label="Breadcrumb">
+  <div class="nhsuk-width-container">
+    <ol class="nhsuk-breadcrumb__list">
+      <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/home">Home</a></li>
+    </ol>
+    <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" href="/home">Back to home</a></p>
+  </div>
+</nav>
+
+<nav class="nhsuk-breadcrumb nhsuk-breadcrumb-native" aria-label="Breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" href="javascript: window.history.go(-1)">Back</a></p>
+  </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-5">{{ contentTitle }}</h1>
+
+
+
+        <h3>Decision withdrawn</h3>
+          <p>You no longer have a decision recorded on the NHS Organ Donor Register.</p>
+          <p>If you die in circumstances where donation is possible, it will be considered that you have agreed to be an organ donor unless you are in an excluded group.	</p>
+
+          <p><a href="https://www.organdonation.nhs.uk/app/app-donation/#law">More information about these changes to the law</a></p>
+
+          <p>You can record a new decision at any time.</p>
+
+      <h2 class="nhsuk-heading-m">What to do next</h2>
+
+      <p>Let your family know that you have withdrawn your decision from the register. They will not know what you want unless you tell them.</p>
+
+
+
+
+
+
+
+                              <h2 class="nhsuk-heading-m">Other things you can do</h2>
+
+
+                              <ul class="panel-link">
+                                <li class="panel-link__item">
+                                  <a class="panel-link__link" href="https://www.blood.co.uk/">
+                                    <h2 class="panel-link__heading nhsuk-heading-s">Register to be a blood donor</h2>
+                                    <p class="panel-link__content">You could save lives by giving blood. It's simple. You can find your local centre and book an apointment via the app.</p>
+                                  </a>
+                                </li>
+                              </ul>
+
+
+    </div>
+  </div>
+{% endblock %}

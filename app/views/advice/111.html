@@ -1,0 +1,44 @@
+{% set PROTOTYPEURL = "app/symptoms/111" %}
+{% set serviceName = "NHS App" %}
+{% set symptomsActive = "active" %}
+{% set contentTitle = "Get medical help" %}
+{% set bodyClasses = "oneOneOneBody" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layouts/111-layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+
+    <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-5">{{ contentTitle }}</h1>
+
+    <p>111 online can help if you have a medical problem and you're not sure what to do.</p>
+
+    <form action="" method="post">
+      <button class="nhs111-button" type="submit">
+        Start
+      </button>
+    </form>
+
+    <hr class="oneOneOneHR">
+
+    <p>Always follow any medical advice you’ve already been given by your doctor. See our <a href="">terms</a>.</p>
+
+    </div>
+  
+  </div>
+{% endblock %}

@@ -1,0 +1,149 @@
+// ==========================================================================
+// STYLES / #NHS 111 Online
+// ==========================================================================
+
+
+// 111 page background
+.oneOneOneBody {
+    background-color: #ffffff;
+}
+
+// 111 button
+.nhs111-button {
+    @media (min-width: 641px) {
+      width: auto;
+    }
+    font-family: Frutiger W01,Arial,sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 32px;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #007f3b;
+    border: 0;
+    &:hover {
+        background-color: #00662f;
+      }
+    &:active {
+        top: 2px;
+      }
+    &:focus {
+        outline: 3px solid #ffb81c;
+      }
+    box-shadow: 0 2px 0 #003317;
+    cursor: pointer;
+    display: inline-block;
+    letter-spacing: .5px;
+    line-height: 1.25;
+    outline: 1px solid transparent;
+    outline-offset: -1px;
+    padding: 12px 24px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+    border-radius: 0;
+    color: #fff;
+  }
+  
+
+  // 111 HR
+  .oneOneOneHR {
+    background-color: #d8dde0;
+    border: 0;
+    height: 4px;
+    text-align: left;
+    width: 130px;
+}
+
+// 111 HR footer
+.oneOneOneHRFooter {
+    background-color: #d8dde0;
+    border: 0;
+    height: 4px;
+    text-align: left;
+    width: 130px;
+    background-color: #003087;
+}
+
+// 111 footer
+.oneOneOne-footer {
+    background-color: #005eb8;
+    border-top: 4px solid #003087;
+    color: #fff;
+}
+
+// 111 footer inner
+.oneOneOne-footer__inner {
+    @media (min-width: 925px){
+    padding-bottom: 128px;
+    padding-top: 48px;
+    }
+    @media (min-width: 48.0625em){
+    margin: 0 32px;
+    }
+    @media (min-width: 1024px){
+        margin: 0 auto;
+    }
+    margin: 0 16px;
+    max-width: 960px;
+    padding-bottom: 96px;
+    padding-top: 32px;
+}
+
+// 111 footer a
+.oneOneOne-footer-a{
+ color: #fff;
+ &:focus {
+    outline: 3px solid #ffb81c;
+    background-color: transparent;
+    box-shadow: 0 0px, 0 0px;
+    color:#fff;
+  }
+ &:hover {
+    color: #d4efff;
+    text-decoration: underline;
+  }
+&:active {
+    color: #d4efff;
+    text-decoration: underline;
+}
+&:visited {
+    color: #fff;
+  }
+}
+
+// 111 footer small p
+.small {
+    @media (min-width: 925px){
+    font-size: 16px;
+    line-height: 32px;
+    }
+    @media (min-width: 641px){
+    font-size: 16px;
+    line-height: 32px;
+    }
+    font-size: 16px;
+}
+
+// 111 footer CE mark
+.oneOneOne-ce-mark {
+    margin-right: 4px;
+    vertical-align: baseline;
+    fill: #fff;
+}
+
+// 111 footer UL
+.oneOneOne-link-list {
+    list-style: none;
+    padding-left: 0;
+    font-size: 16px;
+}
+
+// 111 footer measure
+.measure {
+    max-width: 40em;
+}

@@ -1,0 +1,130 @@
+{% set PROTOTYPEURL = "your-health/organ-donation" %}
+{% set serviceName = "NHS App" %}
+{% set contentTitle = "Your organ donation decision" %}
+{% set yourHealthActive = "active" %}
+{% block pageScripts %}
+{% endblock %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layouts/layout.html' %}
+
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  {{ contentTitle }} - {{ serviceName }}
+{% endblock %}
+
+
+
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+<nav class="nhsuk-breadcrumb nhsuk-breadcrumb-desktop" aria-label="Breadcrumb">
+  <div class="nhsuk-width-container">
+    <ol class="nhsuk-breadcrumb__list">
+      <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/home">Home</a></li>
+    </ol>
+    <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" href="/home">Back to home</a></p>
+  </div>
+</nav>
+
+<nav class="nhsuk-breadcrumb nhsuk-breadcrumb-native" aria-label="Breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" href="javascript: window.history.go(-1)">Back</a></p>
+  </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-5">{{ contentTitle }}</h1>
+
+
+                        <h2 class="nhsuk-heading-m">Your decision</h2>
+
+                        <div class="nhs-app-decision">
+                          <div class="nhs-app-decision__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" id="register-icon-green" data-name="Layer 1" viewBox="-20 -20 162.8 162.8" width="50" height="50" x="14118">
+                              <defs>
+                                <style>.hfcls-1{fill:#006b54}</style>
+                              </defs>
+                              <title>register-icon-green</title>
+                              <g id="hfGroup_3786" data-name="Group 3786">
+                                <path id="hfPath_448" data-name="Path 448" class="hfcls-1" d="M101.26 42.49L47.34 96.31 27 76l-3.93-4 10.17-10.13L47.34 76l43.75-43.77z" transform="translate(-.33 -.18)"/>
+                                <g id="hfGroup_3785" data-name="Group 3785">
+                                  <path id="hfPath_449" data-name="Path 449" class="hfcls-1" d="M61.73 5a56.6 56.6 0 1 1-56.6 56.6A56.6 56.6 0 0 1 61.73 5m0-4.8a61.4 61.4 0 1 0 61.4 61.4A61.46 61.46 0 0 0 61.73.18z" transform="translate(-.33 -.18)"/>
+                                </g>
+                              </g>
+                            </svg>
+                          </div>
+                            <h3 class="nhs-app-decision__text--yes">Yes I want to donate my organs</h3>
+                        </div>
+                        <br>
+
+
+
+
+                        <h3 class="nhsuk-heading-s">Decision details</h3>
+
+
+
+                        <p>I want to donate all my organs and tissue.</p>
+
+
+                        <p>I prefer not to say whether I want NHS staff to speak with my family (and anyone else appropriate) about how organ donation can go ahead in line with my faith and beliefs.</p>
+
+
+
+                        <h3 class="nhsuk-heading-s">Is this still your decision?</h3>
+
+
+                        <p>Keeping your registration up to date will help your family, should organ donation be possible.</p>
+
+                        <p><a href="/{{ PROTOTYPEURL }}/still-my-decision">This is still my decision</a></p>
+
+                        <p><a href="#">I want to change my decision</a></p>
+
+
+                        <h2 class="nhsuk-heading-m">Next steps</h2>
+
+                        <ul class="panel-link">
+                            <li class="panel-link__item">
+                              <a class="panel-link__link" href="https://www.organdonation.nhs.uk/tell-your-family-and-friends/">
+                                <h2 class="panel-link__heading nhsuk-heading-s">Tell your family and friends</h2>
+                                <p class="panel-link__content">Do your family and friends know what you want? Help them to support your decision by talking about it.</p>
+                              </a>
+                            </li>
+
+                            <li class="panel-link__item">
+                              <a class="panel-link__link" href="https://www.organdonation.nhs.uk/app/app-share/">
+                                <h2 class="panel-link__heading nhsuk-heading-s">Share that you are a donor</h2>
+                                <p class="panel-link__content">Help promote organ donation on social media by telling people you are a donor.</p>
+                              </a>
+                            </li>
+                        </ul>
+
+                        <h2 class="nhsuk-heading-m">Other things you can do</h2>
+
+
+                        <ul class="panel-link">
+
+                          <li class="panel-link__item">
+                            <a class="panel-link__link" href="/{{ PROTOTYPEURL }}/withdraw-decision">
+                              <h2 class="panel-link__heading nhsuk-heading-s">Withdraw my decision</h2>
+                              <p class="panel-link__content">You can withdraw your previous decision fron the Organ Donor Register at any time. If you do this, changes to the law around organ donation may affect you.</p>
+                            </a>
+                          </li>
+
+                          <li class="panel-link__item">
+                            <a class="panel-link__link" href="https://www.blood.co.uk/">
+                              <h2 class="panel-link__heading nhsuk-heading-s">Register to be a blood donor</h2>
+                              <p class="panel-link__content">You could save lives by giving blood. It's simple. You can find your local centre and book an apointment via the app.</p>
+                            </a>
+                          </li>
+                        </ul>
+
+    </div>
+  </div>
+{% endblock %}

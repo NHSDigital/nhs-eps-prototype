@@ -1,0 +1,115 @@
+{% set serviceName = "NHS App" %}
+{% set contentTitle = "Home" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% set homeActive = "active" %}
+{% block pageScripts %}
+{% endblock %}
+
+<!-- Archived home screen as of November 2022 -->
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layouts/layout.html' %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+
+    <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-2">{{ contentTitle }}</h1>
+    {{ summaryList({
+      classes: 'nhsuk-summary-list--no-border nhs-app-summary-list-inline',
+      rows: [
+        {
+          key: {
+            text: "Name:"
+          },
+          value: {
+            text: "Mrs Betty Doyle"
+          }
+        },
+        {
+          key: {
+            text: "Date of birth:"
+          },
+          value: {
+            text: "20 September 1982"
+          }
+        },
+        {
+          key: {
+            text: "NHS number:"
+          },
+          value: {
+            text: "123 456 7890"
+          }
+        }
+      ]
+    }) }}
+
+
+
+
+
+
+          <div class="nhs-app-panel-heading">
+            <h2 class="nhsuk-heading-m">Popular services</h2>
+          </div>
+
+        <ul class="panel-link">
+
+
+          <li class="panel-link__item">
+            <a class="panel-link__link" href="/your-health/covid-status/start-page">
+              <h2 class="panel-link__heading nhsuk-heading-s">Get your NHS COVID Pass</h2>
+              <p class="panel-link__content">View and share your COVID Pass for places in England that have chosen to use this service and for travel abroad</p>
+            </a>
+          </li>
+
+
+          <li class="panel-link__item">
+            <a class="panel-link__link" href="/messages/hub">
+              <h2 class="panel-link__heading nhsuk-heading-s">View your messages</h2>
+            </a>
+          </li>
+
+                  <li class="panel-link__item">
+                    <a class="panel-link__link" href="/linked-profiles/no-profiles">
+                      <h2 class="panel-link__heading nhsuk-heading-s">Linked profiles</h2>
+                    </a>
+                  </li>
+
+
+
+                  <li class="panel-link__item">
+                      <a class="panel-link__link" href="/your-health/gp-record/warning">
+                        <h2 class="panel-link__heading nhsuk-heading-s">View your GP health record</h2>
+                      </a>
+                  </li>
+
+
+                <li class="panel-link__item">
+                  {% if data['nominatedPharmacy'] %}
+                  <a class="panel-link__link" href="/prescriptions/check-nom">
+                  {% else %}
+                  <a class="panel-link__link" href="/prescriptions/not-nominated">
+                  {% endif %}
+                    <h2 class="panel-link__heading nhsuk-heading-s">Order a repeat prescription</h2>
+                  </a>
+                </li>
+            </ul>
+
+
+    </div>
+  </div>
+
+{% endblock %}

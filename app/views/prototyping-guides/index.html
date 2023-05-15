@@ -1,0 +1,125 @@
+{% set PROTOTYPEURL = "prototyping-guides" %}
+{% set serviceName = "NHS App" %}
+{% set contentTitle = "Prototyping guides" %}
+{% block pageScripts %}
+{% endblock %}
+
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  {{ contentTitle }} - {{ serviceName }}
+{% endblock %}
+
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <h1>
+        {{ contentTitle }}
+      </h1>
+
+      <h2>Getting the kit and running it</h2>
+
+
+      <ul class="panel-link">
+
+        <li class="panel-link__item">
+          <a class="panel-link__link" href="/{{ PROTOTYPEURL }}/getting-app-prototype-kit">
+            <h2 class="panel-link__heading nhsuk-heading-s">Getting the NHS App prototype kit</h2>
+            <p class="panel-link__content">How to get the NHS App prototype kit on your machine</p>
+          </a>
+        </li>
+
+        <li class="panel-link__item">
+          <a class="panel-link__link" href="/{{ PROTOTYPEURL }}/running-prototype">
+            <h2 class="panel-link__heading nhsuk-heading-s">How to run your prototype locally</h2>
+            <p class="panel-link__content">How to use the terminal to get your prototype running locally</p>
+          </a>
+        </li>
+
+              </ul>
+
+                <h2>Branching</h2>
+
+                <ul class="panel-link">
+
+                <li class="panel-link__item">
+                  <a class="panel-link__link" href="/{{ PROTOTYPEURL }}/branching">
+                    <h2 class="panel-link__heading nhsuk-heading-s">How to set up a branch</h2>
+                    <p class="panel-link__content">How to set up a branch and work from it</p>
+                  </a>
+                </li>
+
+                                <li class="panel-link__item">
+                                  <a class="panel-link__link" href="/{{ PROTOTYPEURL }}/merging">
+                                    <h2 class="panel-link__heading nhsuk-heading-s">Merging code into main that's been pushed from a branch</h2>
+                                    <p class="panel-link__content">How to get your branch merged into the main branch</p>
+                                  </a>
+                                </li>
+
+
+                                <li class="panel-link__item">
+                                  <a class="panel-link__link" href="/{{ PROTOTYPEURL }}/other-branch">
+                                    <h2 class="panel-link__heading nhsuk-heading-s">How to work from a branch someone else created</h2>
+                                    <p class="panel-link__content">How to fetch someone else's branch so you can see it</p>
+                                  </a>
+                                </li>
+
+                              </ul>
+
+
+                          <h2>Cloning the repo for usability sessions</h2>
+
+                          <ul class="panel-link">
+
+                                <li class="panel-link__item">
+                                  <a class="panel-link__link" href="/{{ PROTOTYPEURL }}/git-cloning">
+                                    <h2 class="panel-link__heading nhsuk-heading-s">Cloning the git repo</h2>
+                                    <p class="panel-link__content">Cloning the git repo for usability sessions that's separate from the main prototype</p>
+                                  </a>
+                                </li>
+
+                                <li class="panel-link__item">
+                                  <a class="panel-link__link" href="/{{ PROTOTYPEURL }}/publish-heroku">
+                                    <h2 class="panel-link__heading nhsuk-heading-s">Publishing your cloned repo to Heroku</h2>
+                                    <p class="panel-link__content">Getting a heroku link set up to give to users for testing</p>
+                                  </a>
+                                </li>
+
+                                <li class="panel-link__item">
+                                  <a class="panel-link__link" href="/{{ PROTOTYPEURL }}/updating-clone">
+                                    <h2 class="panel-link__heading nhsuk-heading-s">Pushing code to your cloned Heroku</h2>
+                                    <p class="panel-link__content">How to update your clone</p>
+                                  </a>
+                                </li>
+
+
+                            </ul>
+
+
+
+
+
+    </div>
+  </div>
+{% endblock %}

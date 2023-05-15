@@ -1,0 +1,79 @@
+<!--
+  This is the main layout where you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!-- Extends the layout from /docs/views/template.html -->
+{% extends "template.html" %}
+
+<!-- Adds a custom class to the <main> wrapper -->
+<!-- nhsuk-main-wrapper--s reduces top and bottom padding of the page -->
+
+
+  {% set mainClasses = 'nhs-app-111' %}
+  {% set html_style = 'background-color: #f0f4f5;' %}
+
+
+<!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+
+{% endblock %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  NHS App prototype
+{% endblock %}
+
+<!-- Edit the header -->
+<!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
+{% block header %}
+{% include "./parts/_native-header.html" %}
+{% include "./parts/_desktop-header.html" %}
+{% endblock %}
+
+<!-- Edit the footer -->
+<!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
+
+{% block footer %}
+<div class="oneOneOne-footer">
+  <div class="oneOneOne-footer__inner">
+    <div class="measure">
+      <p class="small">
+          <a class="oneOneOne-footer-a" href="">Other ways to contact 111 if you have a hearing problem or need help in other languages</a>
+      </p>
+      <hr class="oneOneOneHRFooter">
+      <p class="small">
+          This website only stores the cookies that are needed to make it work. Read more about how <a class="oneOneOne-footer-a" href="">we use cookies.</a>
+      </p>
+      <nav>
+          <ul class="oneOneOne-link-list">
+              <li><a class="oneOneOne-footer-a" href="" rel="noreferrer noopener">Privacy statement</a></li>
+              <li><a class="oneOneOne-footer-a" href="" rel="noreferrer noopener">Terms and conditions</a></li>
+              <li><a class="oneOneOne-footer-a" href="" rel="noreferrer noopener">Accessibility statement</a></li>
+          </ul>
+      </nav>
+      <hr class="oneOneOneHRFooter">
+      <p class="small">
+        <svg class="oneOneOne-ce-mark" width="20" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 24" aria-hidden="true">
+          <path d="M13.2 23.9c-.4.1-.8.1-1.2.1-6.6 0-12-5.4-12-12S5.4 0 12 0c.4 0 .8 0 1.2.1v3.6c-.4 0-.8-.1-1.2-.1-4.6 0-8.4 3.8-8.4 8.4s3.8 8.4 8.4 8.4c.4 0 .8 0 1.2-.1v3.6zM33.6 23.9c-.4 0-.8.1-1.2.1-6.6 0-12-5.4-12-12s5.4-12 12-12c.4 0 .8 0 1.2.1v3.6c-.4 0-.8-.1-1.2-.1-3.9 0-7.4 2.7-8.2 6.6h7v3.6h-7c.8 3.9 4.3 6.6 8.2 6.6.4 0 .8 0 1.2-.1v3.6z"></path>
+        </svg>
+        NHS 111 Online is a <a class="oneOneOne-footer-a" href="">Class 1 medical device (opens in a new tab or window)</a>.
+      </p>
+    </div>
+  </div>
+</div>
+{% include "./parts/_native-footer.html" %}
+{% include "./parts/_desktop-footer.html" %}
+
+{% endblock %}
+
+{% block bodyEnd %}
+  {% block scripts %}
+    <!-- Custom JavaScript files can be added to this file -->
+    {% include "includes/scripts.html" %}
+    <!-- For adding page specific JavsScript -->
+    {% block pageScripts %}{% endblock %}
+  {% endblock %}
+{% endblock %}

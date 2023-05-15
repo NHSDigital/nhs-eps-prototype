@@ -1,0 +1,79 @@
+{% set PROTOTYPEURL = "prototyping-guides" %}
+{% set serviceName = "NHS App" %}
+{% set contentTitle = "Merging code into main that's been pushed from a branch" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  {{ contentTitle }} - {{ serviceName }}
+{% endblock %}
+
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      {{ backLink({
+  "href": "/prototyping-guides/index",
+  "text": "Go back"
+}) }}
+
+      <h1>
+        {{ contentTitle }}
+      </h1>
+
+      <h2>1. Open GitHub and go to the page for your prototype</h2>
+
+
+      <h2>2. Click pull requests and open a new pull request</h2>
+
+
+
+      <h2>3. Select your branch as the one to be compared with the main branch</h2>
+
+
+
+      <h2>4. Choose a code reviewer</h2>
+
+      <p>Choose someone to review your code and approve it.</p>
+
+
+      <h2>5. Merge the pull request</h2>
+
+      <p>If the code reviewer finds no issues, merge your branch with the main branch.</p>
+
+
+      <h2>6. How to pull the latest merged changes if you're working on a new branch</h2>
+
+      <p>In your terminal make sure you're on your new branch and run:</p>
+      <pre class="app-pre"><code class="app-code">git merge main</code></pre>
+
+
+
+    </div>
+  </div>
+{% endblock %}

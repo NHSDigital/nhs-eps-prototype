@@ -1,0 +1,64 @@
+// ==========================================================================
+// COMPONENTS / #DESKTOP-HEADER
+// ==========================================================================
+
+.nhsuk-header__menu--only .nhsuk-header__menu-toggle {
+    @media(max-width: 481px) {
+      display: none;
+    }
+}
+
+
+.nhsuk-header__container-start {
+    @media(max-width: 481px) {
+      display: none;
+    }
+}
+
+.nhsuk-header--transactional-app {
+  @media(max-width: 481px) {
+    display: none;
+  }
+}
+
+
+
+.nhsuk-header__navigation {
+  @media(max-width: 990px) {
+    display: none;
+
+  }
+}
+@media(min-width: 990px) {
+
+  .nhsuk-header-menu-services {
+    display: none;
+  }
+}
+
+
+.nhsuk-header__navigation-link {
+  @media(max-width: 990px) {
+    font-size: 19px;
+}
+}
+
+.nhsuk-header__right-nav {
+  @media(max-width: 990px) {
+    display: none;
+
+  }
+    float: right;
+    margin-top: 8px;
+    a {
+      color: #ffffff;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    strong {
+      color: #ffffff;
+    }
+}

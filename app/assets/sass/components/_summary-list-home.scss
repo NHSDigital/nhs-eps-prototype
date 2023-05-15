@@ -1,0 +1,46 @@
+// ==========================================================================
+// COMPONENTS / #Summary list
+// ==========================================================================
+
+
+
+
+
+@media (min-width: 40.0625em) {
+.nhs-app-summary-list-inline .nhsuk-summary-list__key, .nhs-app-summary-list-inline .nhsuk-summary-list__value {
+    padding-top: 0;
+    padding-bottom: 4px;
+    max-width: 70%;
+}
+}
+
+
+@media (min-width: 40.0625em) {
+.nhs-app-summary-list-inline .nhsuk-summary-list__key {
+    width: 30%;
+    vertical-align: top;
+}
+}
+
+@media (max-width: 40.0525em) {
+.nhs-app-summary-list-inline .nhsuk-summary-list__row {
+    margin-bottom: 0;
+}
+}
+
+@media (max-width: 40.0525em) {
+.nhs-app-summary-list-inline .nhsuk-summary-list__key {
+    display: inline-block;
+    width: 40%;
+    vertical-align: top;
+}
+}
+
+@media (max-width: 40.0525em) {
+.nhs-app-summary-list-inline .nhsuk-summary-list__value {
+    display: inline-block;
+    margin-bottom: 4px;
+    vertical-align: baseline;
+    max-width: 60%;
+}
+}

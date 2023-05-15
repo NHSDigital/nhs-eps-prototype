@@ -1,0 +1,116 @@
+{% set PROTOTYPEURL = "your-health/gp-record" %}
+{% set serviceName = "NHS App" %}
+{% set contentTitle = "Your COVID-19 vaccine record" %}
+{% set yourHealthActive = "active" %}
+{% block pageScripts %}
+{% endblock %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layouts/layout-covid-record.html' %}
+
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  {{ contentTitle }} - {{ serviceName }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-5">{{ contentTitle }}</h1>
+
+
+
+      <div class="nhs-app-panel-heading">
+        <h2 class="nhsuk-heading-l">Your vaccinations</h2>
+      </div>
+
+          <ul class="covid-record-panel">
+            <li class="covid-record-panel__item">
+              <dl class="nhsuk-summary-list nhsuk-summary-list--no-border nhsuk-u-margin-bottom-0">
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Date
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    2 February 2021
+                  </dd>
+                </div>
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Name of vaccine
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    Pfizer BioNTech
+                  </dd>
+                </div>
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Batch number
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    CBA54321
+                  </dd>
+                </div>
+              </dl>
+            </li>
+          </ul>
+
+          <ul class="covid-record-panel nhsuk-u-margin-bottom-5">
+            <li>
+              <dl class="nhsuk-summary-list nhsuk-summary-list--no-border nhsuk-u-margin-bottom-0">
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Date
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    6 April 2021
+                  </dd>
+                </div>
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Name of vaccine
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    Pfizer BioNTech
+                  </dd>
+                </div>
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Batch number
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    CBA76042
+                  </dd>
+                </div>
+              </dl>
+            </li>
+            </ul>
+
+
+
+
+                            <a href="https://www.nhs.uk/contact-us/vaccine-record-help/"><p>
+                              If you have questions about your vaccine record, or to report an error, visit our help and support page</p>
+                            </a>
+
+                            <a href="https://coronavirus-yellowcard.mhra.gov.uk/">
+                            <p>Report suspected side effects to a vaccine on the Yellow Card reporting site at GOV.UK</p>
+                            </a>
+
+                            <a href="https://www.gov.uk/government/publications/covid-19-vaccination-what-to-expect-after-vaccination/what-to-expect-after-your-covid-19-vaccination">
+                            <p>Find out what to expect after your COVID-19 vaccination at GOV.UK</p>
+                            </a>
+
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

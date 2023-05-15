@@ -1,0 +1,92 @@
+{% set PROTOTYPEURL = "prototyping-guides" %}
+{% set serviceName = "NHS App" %}
+{% set contentTitle = "Pushing code to your cloned Heroku" %}
+{% set title = contentTitle + " - " + serviceName %}
+{% block pageScripts %}
+{% endblock %}
+
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!--
+  In /views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  {{ contentTitle }} - {{ serviceName }}
+{% endblock %}
+
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      {{ backLink({
+  "href": "/prototyping-guides/index",
+  "text": "Go back"
+}) }}
+
+      <h1>
+        {{ contentTitle }}
+      </h1>
+
+      <h2>1. Push your code from the main repo (<code>nhs-app-prototype</code>) so it's up to date</h2>
+
+      <p>Commit and push your code using the git tab in your text editor.</p>
+
+
+
+      <h2>2. Go to or open your cloned repo and pull the latest code</h2>
+
+      <p>If you named your clone <code>remote-lab</code> for example, open this folder in your text editor.</p>
+
+      <p>Fetch and then pull the new code from the main repo.</p>
+
+      <p>Do not use the git tab to push the changes! We'll use the terminal to do this to push only to Heroku.</p>
+
+
+      <h2>3. Make sure you're in the right folder</h2>
+
+      <p>If you named your clone <code>remote-lab</code> for example, use the terminal to navigate to that folder. To do this, run:</p>
+
+      <pre class="app-pre"><code class="app-code">cd remote-lab</code></pre>
+
+
+      <h2>4. Push the code to Heroku</h2>
+
+      <p>Run this command:</p>
+
+      <pre class="app-pre"><code class="app-code">git push heroku</code></pre>
+
+      <p>This might take a few minutes to build.</p>
+
+
+
+      <h2>5. Check it's working</h2>
+
+      <p>Run this command:</p>
+
+      <pre class="app-pre"><code class="app-code">heroku open</code></pre>
+
+
+
+
+    </div>
+  </div>
+{% endblock %}

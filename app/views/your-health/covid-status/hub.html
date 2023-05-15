@@ -1,0 +1,75 @@
+{% set PROTOTYPEURL = "your-health/covid-status" %}
+{% set serviceName = "NHS App" %}
+{% set contentTitle = "Get your NHS COVID Pass" %}
+{% set yourHealthActive = "active" %}
+
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layouts/layout-covid-status.html' %}
+
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  {{ contentTitle }} - {{ serviceName }}
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+
+      <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-5">{{ contentTitle }}</h1>
+
+
+      <p class="nhsuk-u-margin-bottom-5">Use this service to view and share proof of your COVID-19 status.</p>
+
+
+
+
+      <div class="nhsuk-card nhsuk-card--clickable">
+       <div class="nhsuk-card__content">
+        <h2 class="nhsuk-card__heading nhsuk-heading-m">
+          <a class="nhsuk-card__link" href="/{{ PROTOTYPEURL }}/domestic">Domestic</a>
+        </h2>
+        <p class="nhsuk-card__description">You may need to show your NHS COVID Pass at places that have chosen to use the service.</p>
+      </div>
+      </div>
+
+
+
+            <div class="nhsuk-card nhsuk-card--clickable">
+             <div class="nhsuk-card__content">
+              <h2 class="nhsuk-card__heading nhsuk-heading-m">
+                <a class="nhsuk-card__link" href="/{{ PROTOTYPEURL }}/travel">Travel</a>
+              </h2>
+              <p class="nhsuk-card__description">You may need to share your NHS COVID Pass when travelling abroad.</p>
+            </div>
+            </div>
+
+
+
+
+
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+// Loops through dom and finds all elements with nhsuk-card--clickable class
+document.querySelectorAll('.nhsuk-card--clickable').forEach((panel) => {
+  // Check if panel has a link within it
+  if (panel.querySelector('a') !== null) {
+    // Clicks the link within the heading to navigate to desired page
+    panel.addEventListener('click', () => {
+      panel.querySelector('a').click();
+    });
+  }
+});
+</script>
+{% endblock %}

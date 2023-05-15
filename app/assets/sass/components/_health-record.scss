@@ -1,0 +1,52 @@
+// ==========================================================================
+// COMPONENTS / #HEALTH-RECORD
+// ==========================================================================
+
+
+
+.recordCountAllergies {
+  color: #212b32;
+  position: absolute;
+  right: 40px;
+  bottom: 19.5px;
+}
+
+
+.recordCountMedicines {
+  color: #212b32;
+  position: absolute;
+  right: 40px;
+  bottom: -34.5px;
+}
+
+
+
+.recordCountAcute {
+  color: #212b32;
+  position: absolute;
+  right: 40px;
+  top: 205px;
+}
+
+
+.recordCountRepeatCurrent {
+  color: #212b32;
+  position: absolute;
+  right: 40px;
+  top: 259px;
+}
+
+
+.recordCountRepeatDiscontinued {
+  color: #212b32;
+  position: absolute;
+  right: 40px;
+  top: 313px;
+}
+
+
+
+
+.recordNoInfo {
+  background-color: #ffffff;
+}

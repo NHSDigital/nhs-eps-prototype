@@ -1,0 +1,105 @@
+// ==========================================================================
+// COMPONENTS / #MESSAGES
+// ==========================================================================
+
+
+    .gp-message-date {
+      color: $color_nhsuk-black;
+      float: right;
+      font-weight: 400;
+      margin-bottom: -12px;
+
+  }
+
+
+.gp-message-subject {
+  @include mq($until: tablet) {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 90%;
+  }
+}
+
+.nhs-app-chat__container {
+
+  background-color: $color_nhsuk-white;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid $color_nhsuk-grey-4;
+  margin-bottom: 4px;
+}
+
+
+.nhs-app-chat__thread {
+
+  list-style-type: none;
+  padding: 0;
+}
+
+.nhs-app-chat__item {
+  padding-right: 20%;
+  @include clearfix;
+}
+
+.nhs-app-chat__body {
+  margin-bottom: 0;
+}
+
+.nhs-app-chat__sender {
+
+  @include nhsuk-typography-responsive(16);
+  display: block;
+  margin-top: 0;
+  @include nhsuk-responsive-margin(1, 'bottom');
+  font-weight: 400;
+  color: $nhsuk-secondary-text-color;
+}
+
+.nhs-app-chat__date {
+
+  @include nhsuk-typography-responsive(16);
+  display: block;
+  margin-top: 0;
+  @include nhsuk-responsive-margin(1, 'bottom');
+  font-weight: 400;
+  color: $nhsuk-secondary-text-color;
+}
+
+.hr-less-margin {
+  margin-top: 2;
+  margin-bottom: 0;
+}
+
+.no-reply {
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+
+
+.nhs-app-chat__item--reply {
+  padding-right: 0;
+  padding-left: 20%;
+
+}
+
+
+.nhs-app-chat__sender--reply {
+    float: right;
+}
+
+
+
+.nhs-app-chat__container--reply {
+
+  float: right;
+  background-color: #eceeef;
+  border-color: #d2d7d8;
+}
+
+
+
+.nhs-app-chat__date--reply {
+  float: right;
+}

@@ -1,0 +1,84 @@
+{% set PROTOTYPEURL = "your-health/gp-record" %}
+{% set serviceName = "NHS App" %}
+{% set contentTitle = "Repeat medicines: current" %}
+{% set yourHealthActive = "active" %}
+{% block pageScripts %}
+{% endblock %}
+
+<!-- Extends the layout from /app/views/layouts/layout.html -->
+{% extends 'layouts/layout.html' %}
+
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  {{ contentTitle }} - {{ serviceName }}
+{% endblock %}
+
+
+
+
+<!-- Breadcrumb goes inside this block -->
+{% block beforeContent %}
+<nav class="nhsuk-breadcrumb nhsuk-breadcrumb-desktop" aria-label="Breadcrumb">
+  <div class="nhsuk-width-container">
+    <ol class="nhsuk-breadcrumb__list">
+      <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/home">Home</a></li>
+    </ol>
+    <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" href="/home">Back to home</a></p>
+  </div>
+</nav>
+
+<nav class="nhsuk-breadcrumb nhsuk-breadcrumb-native" aria-label="Breadcrumb">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" href="javascript: window.history.go(-1)">Back</a></p>
+  </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-5">{{ contentTitle }}</h1>
+
+      <div class="nhsuk-card nhsuk-card-dark-background nhsuk-u-margin-bottom-2">
+        <div class="nhsuk-card__content">
+          <h3 class="nhsuk-card__heading nhsuk-heading-xs nhsuk-u-margin-bottom-1">
+            21 July 2021
+          </h3>
+          <p class="nhsuk-card__description nhsuk-u-margin-bottom-1">Alogliptin 25mg tablets</p>
+          <p>One to be taken each day - 28 tablet</p>
+        </div>
+      </div>
+
+
+
+      <div class="nhsuk-card nhsuk-card-dark-background nhsuk-u-margin-bottom-4">
+        <div class="nhsuk-card__content">
+          <h3 class="nhsuk-card__heading nhsuk-heading-xs nhsuk-u-margin-bottom-1">
+            1 July 2021
+          </h3>
+          <p class="nhsuk-card__description nhsuk-u-margin-bottom-1">Metformin 500mg tablets</p>
+          <p>One to be taken 4 times a day with food - 112 tablet</p>
+        </div>
+      </div>
+
+
+
+        <p>You may see medical abbreviations that you are not familiar with.</p>
+
+
+
+      <div class="nhsuk-action-link">
+        <a class="nhsuk-action-link__link" href="https://www.nhs.uk/using-the-nhs/nhs-services/the-nhs-app/abbreviations/">
+          <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+          </svg>
+          <span class="nhsuk-action-link__text">Help with abbreviations</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}
