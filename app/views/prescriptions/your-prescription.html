@@ -2,7 +2,7 @@
 
 {% set PROTOTYPEURL = "prescriptions" %}
 {% set serviceName = "NHS App" %}
-{% set contentTitle = "Prescriptions" %}
+{% set contentTitle = "Your prescription" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% set prescriptionsActive = "active" %}
 
@@ -38,56 +38,42 @@
 
 {% block content %}
 
-
-
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds">
 
 
     <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-5">{{ contentTitle }}</h1>
 
-    {% if data['nominatedPharmacy'] %}
-    <form action="/{{ PROTOTYPEURL }}/check-nom" method="post">
-    {% else %}
-    <form action="/{{ PROTOTYPEURL }}/not-nominated" method="post">
-    {% endif %}
-      <button class="nhsuk-button" type="submit">
-        Order a repeat prescription
-      </button>
-    </form>
+    <p><strong>ID: </strong> 703522-B86044-FEFEFV<br>
+      <strong>Prescribed by:</strong> Dr. Jane Doe,<br>
+      Hyde Park Surgery, Leeds, LS6 19G.<br>
+      Telephone: 0113 234 3651</p>
 
+    <div class="nhs-app-panel-heading nhs-app-panel-heading--blue">
+      <h2 class="nhsuk-heading-l nhsuk-u-font-size-16">Repeat prescription</h2>
+    </div>
 
-    <ul class="panel-link">
+    <ul class="prescriptions-panel">
 
+      <li class="prescriptions-panel__item" style="padding-right: 16px;">
+        <p class="prescriptions-panel__content prescription-medicine-instructions nhsuk-u-margin-bottom-4" style="padding-right: 16px;">Present this barcode at your pharmacy to help your pharmacist find your prescription.</p>
 
-      <li class="panel-link__item">
-        <a class="panel-link__link" href="/{{ PROTOTYPEURL }}/your-orders">
-          <h2 class="panel-link__heading nhsuk-heading-s">View your orders</h2>
-          <p class="panel-link__content">See repeat prescriptions you have ordered</p>
-        </a>
+        <p class="prescriptions-panel__content prescription-medicine-instructions nhsuk-u-margin-bottom-4">
+          <img src="/images/barcode.png" class="app-img-guide" style="width: 100%;"/>
+        </p>
+
+        <p class="prescriptions-panel__content prescription-medicine-detail nhsuk-u-margin-bottom-1 ">This prescription is being sent to:</p>
+        <p class="prescriptions-panel__content prescription-medicine-instructions">Boots Pharmacy, Leeds Trinity,<br>Leeds, LS1 5EY. Telephone: 0113 243 3551</p>
+
       </li>
-
-      <li class="panel-link__item">
-        <a class="panel-link__link" href="/{{ PROTOTYPEURL }}/your-orders">
-          <h2 class="panel-link__heading nhsuk-heading-s">View your prescriptions</h2>
-          <p class="panel-link__content">view your approved prescriptions</p>
-        </a>
-      </li>
-
-      <li class="panel-link__item">
-        <a class="panel-link__link" href="/{{ PROTOTYPEURL }}/nominated-pharmacy/your-nominated-pharmacy">
-          <h2 class="panel-link__heading nhsuk-heading-s">Your nominated pharmacy</h2>
-          <p class="panel-link__content">{{ data["nominatedPharmacy"] or "Boots Pharmacy" }}</p>
-        </a>
-      </li>
-
 
     </ul>
 
+    <p class="desktop-back-link">
+      <a href="javascript: window.history.go(-1)">Back</a>
+    </p>
 
-    </div>
   </div>
-
-
+</div>
 
 {% endblock %}

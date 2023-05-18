@@ -403,4 +403,13 @@ h1.h1-app-short { display:block; }
 
 }
 
+// blue panel header modifier
 
+.nhs-app-panel-heading--blue {
+	background-color: $color_nhsuk-blue;
+
+	h2, h3 {
+		background-color: $color_nhsuk-blue;
+		color: white;
+	}
+}
