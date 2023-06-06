@@ -2,7 +2,7 @@
 
 {% set PROTOTYPEURL = "prescriptions" %}
 {% set serviceName = "NHS App" %}
-{% set contentTitle = "Order a repeat prescription" %}
+{% set contentTitle = "Request a repeat prescription" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% set prescriptionsActive = "active" %}
 {% block pageScripts %}
@@ -74,7 +74,7 @@ function characterCount(id, textMax) {
       "fieldset": {
         "legend": {
           "text": 'Medicine currently available to order',
-          "classes": "nhsuk-fieldset__legend--l",
+          "classes": "nhsuk-fieldset__legend--m",
           "isPageHeading": false
         }
       },
@@ -101,7 +101,7 @@ function characterCount(id, textMax) {
       "rows": "3",
       "label": {
         "text": "Add notes for your GP surgery (optional)",
-        "classes": "nhsuk-label--l"
+        "classes": "nhsuk-label--m"
       },
       "hint": {
         "html": "<p>You can add a note about your prescription here. Your note may not be seen or replied to, so if you have an important request for this prescription, contact your GP surgery.</p>"

@@ -2,7 +2,7 @@
 
 {% set PROTOTYPEURL = "prescriptions" %}
 {% set serviceName = "NHS App" %}
-{% set contentTitle = "Your prescription has been ordered" %}
+{% set contentTitle = "Your prescription has been requested" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% set prescriptionsActive = "active" %}
 {% block pageScripts %}
@@ -144,7 +144,7 @@
 
     <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-5">{{ contentTitle }}</h1>
 
-    <p>You have ordered:</p>
+    <p>You have requested:</p>
 
 
            {{ chosenMedication | safe }}
@@ -179,10 +179,19 @@
       <p>Telephone: {{ data["phoneNumber"] or "0113 242 1713" }}</p>
 
     {% else %}
-
-    <p>Your prescription request has been sent to your GP surgery.</p>
-
-    <p>Once they approve your prescription, you'll need to collect it from your GP surgery.</p>
+    <ol class="nhsuk-list nhsuk-list--number">
+      <li>Your request will be checked and approved by your GP surgery. This can take up to 2 days.</li>
+      <li>Once approved, your GP surgery will send your prescription to your nominated pharmacy.</li>
+      <li>Your nominated pharmacy will check and prepare your prescription. This can take up to 3 days.</li>
+    </ol>
+    <h3 class="nhsuk-heading-s">Your nominated pharmacy</h3>
+    <ul class="nhsuk-list">
+      <li>Boots Pharmacy</li>
+      <li>Leeds Trinity</li>
+      <li>Leeds,</li>
+      <li>LS1 5EY</li>
+      <li>Telephone: 0113 243 3551</li>
+    </ul>
 
     {% endif %}
 
@@ -192,7 +201,7 @@
 
 
                 <p>
-                  <a href="/{{ PROTOTYPEURL }}/your-orders">Go to your prescription orders</a>
+                  <a href="/{{ PROTOTYPEURL }}/your-orders">Go to your prescription requests</a>
                 </p>
 
 

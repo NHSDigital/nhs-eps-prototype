@@ -2,7 +2,7 @@
 
 {% set PROTOTYPEURL = "prescriptions" %}
 {% set serviceName = "NHS App" %}
-{% set contentTitle = "Your orders" %}
+{% set contentTitle = "Check the status of your prescription requests" %}
 {% set title = contentTitle + " - " + serviceName %}
 {% set prescriptionsActive = "active" %}
 {% block pageScripts %}
@@ -147,26 +147,13 @@
 
 
     <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-5">{{ contentTitle }}</h1>
-
-
-    {% if data['nominatedPharmacy'] %}
-    <p class="nhsuk-u-margin-bottom-2">Your nominated pharmacy is:</p>
-
-    <p class="nhsuk-u-margin-bottom-2">{{ data["nominatedPharmacy"] or "Boots" }}</p>
-
-    <p><a href="/{{ PROTOTYPEURL }}/nominated-pharmacy/change-pharmacy">Change<span class="nhsuk-u-visually-hidden">your nominated pharmacy</span></a></p>
-
-    {% else %}
-    <p class="nhsuk-u-margin-bottom-2">You do not have a nominated pharmacy.</p>
-
-    <p><a href="/{{ PROTOTYPEURL }}/nominated-pharmacy/card-no-nom">Change<span class="nhsuk-u-visually-hidden">how you get your prescriptions</span></a></p>
-
-    {% endif %}
-
-
+    <p class="nhsuk-body">Your medication requests will be reviewed by your GP surgery. Once approved, it will become a prescription.</p>
+    <button class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button" type="submit">
+      View your prescriptions
+    </button>
 
     <div class="nhs-app-panel-heading">
-      <h2 class="nhsuk-heading-l">Orders</h2>
+      <h2 class="nhsuk-heading-l">Requests</h2>
     </div>
 
     <ul class="prescriptions-panel">
