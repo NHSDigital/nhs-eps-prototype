@@ -52,7 +52,7 @@
     <form action="/{{ PROTOTYPEURL }}/not-nominated" method="post">
     {% endif %}
       <button class="nhsuk-button" type="submit">
-        Order a repeat prescription
+        Request a prescription
       </button>
     </form>
 
@@ -62,21 +62,21 @@
 
       <li class="panel-link__item">
         <a class="panel-link__link" href="/{{ PROTOTYPEURL }}/your-orders">
-          <h2 class="panel-link__heading nhsuk-heading-s">View your orders</h2>
-          <p class="panel-link__content">See repeat prescriptions you have ordered</p>
+          <h2 class="panel-link__heading nhsuk-heading-s">Check the status of your prescription requests</h2>
+          <p class="panel-link__content">Prescription requests will be approved, cancelled or expired</p>
         </a>
       </li>
 
       <li class="panel-link__item">
         <a class="panel-link__link" href="/{{ PROTOTYPEURL }}/your-prescriptions">
-          <h2 class="panel-link__heading nhsuk-heading-s">View your prescriptions</h2>
-          <p class="panel-link__content">view your approved prescriptions</p>
+          <h2 class="panel-link__heading nhsuk-heading-s">View your approved prescriptions</h2>
+          <p class="panel-link__content">See the prescriptions approved by your GP surgeery</p>
         </a>
       </li>
 
       <li class="panel-link__item">
         <a class="panel-link__link" href="/{{ PROTOTYPEURL }}/nominated-pharmacy/your-nominated-pharmacy">
-          <h2 class="panel-link__heading nhsuk-heading-s">Your nominated pharmacy</h2>
+          <h2 class="panel-link__heading nhsuk-heading-s">Check your nominated pharmacy</h2>
           <p class="panel-link__content">{{ data["nominatedPharmacy"] or "Boots Pharmacy" }}</p>
         </a>
       </li>
