@@ -1,0 +1,246 @@
+{% extends './_includes/layout-application.html' %}
+{% set primarynav = 'patient' %}
+{% set hideMobileNav = 'true' %}
+
+{% block pageTitle %}
+  Patient Details - {{ serviceName }}
+{% endblock %}
+
+{% block content %}
+
+<div class="main-body-wrapper">
+
+  <div class="nhsuk-back-link">
+    <a href="patient-details" class="nhsuk-back-link__link" id="historical-info-back-btn" role="button" tabindex="0">
+      <svg aria-hidden="true" class="nhsuk-icon nhsuk-icon__chevron-left" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+      </svg>
+      Back to patient information
+    </a>
+  </div>
+
+  <h1 class="nhsuk-heading-xl" id="historical-info-title">Historical information</h1>
+  <div class="nhsuk-card" id="historical-info-name-card">
+    <div class="nhsuk-card__content"><h3 class="nhsuk-card__heading" id="historical-info-name-title">Name history</h3>
+      <table class="nhsuk-table" style="table-layout: fixed;">
+        <thead class="nhsuk-table__head">
+          <tr class="nhsuk-table__row">
+            <th class="nhsuk-table__header" scope="col">Type</th>
+            <th class="nhsuk-table__header" scope="col">Name</th>
+            <th class="nhsuk-table__header" scope="col">From</th>
+            <th class="nhsuk-table__header" scope="col">To</th>
+            <th class="nhsuk-table__header" scope="col">Used by the system</th>
+          </tr>
+        </thead>
+        <tbody class="nhsuk-table__body">
+
+        {% if patient.maidenName !== "" %}
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">Maiden name</td>
+          <td class="nhsuk-table__cell">{{ patient.maidenName or "" }}</td>
+          <td class="nhsuk-table__cell">24-Apr-2024</td>
+          <td class="nhsuk-table__cell">24-Apr-2024</td>
+          <td class="nhsuk-table__cell data-field__note">From 24-Apr-2024 to 24-Apr-2024</td>
+        </tr>
+        {% endif %}
+
+        {% if patient.historicUsualName !== "" %}
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">Usual name</td>
+          <td class="nhsuk-table__cell">{{ patient.historicUsualName or "" }}</td>
+          <td class="nhsuk-table__cell">24-Apr-2024</td>
+          <td class="nhsuk-table__cell">24-Apr-2024</td>
+          <td class="nhsuk-table__cell data-field__note">From 24-Apr-2024 to 24-Apr-2024</td>
+        </tr>
+        {% endif %}
+
+        {% if patient.historicPreferredName !== "" %}
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">Preferred name</td>
+          <td class="nhsuk-table__cell">{{ patient.historicPreferredName or "" }}</td>
+          <td class="nhsuk-table__cell">24-Apr-2024</td>
+          <td class="nhsuk-table__cell">24-Apr-2024</td>
+          <td class="nhsuk-table__cell data-field__note">From 24-Apr-2024 to 24-Apr-2024</td>
+        </tr>
+        {% endif %}
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="nhsuk-card" id="historical-info-address-card">
+    <div class="nhsuk-card__content">
+      <h3 class="nhsuk-card__heading" id="historical-info-address-title">Address history</h3>
+      <table class="nhsuk-table" style="table-layout: fixed;">
+        <thead class="nhsuk-table__head">
+          <tr class="nhsuk-table__row">
+            <th class="nhsuk-table__header" scope="col">Type</th>
+            <th class="nhsuk-table__header" scope="col">Address</th>
+            <th class="nhsuk-table__header" scope="col">From</th>
+            <th class="nhsuk-table__header" scope="col">To</th>
+            <th class="nhsuk-table__header" scope="col">Used by the system</th>
+          </tr>
+        </thead>
+        <tbody class="nhsuk-table__body">
+
+        {% if patient.historicUsualAddress !== "" %}
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">Usual</td>
+          <td class="nhsuk-table__cell">{{ patient.historicUsualAddress or "43 THE LANE, RUGBY, WARWICKSHIRE, CV22 7LZ" }}</td>
+          <td class="nhsuk-table__cell">{{ patient.historicUsualAddressFrom or "20-Apr-2010" }}</td>
+          <td class="nhsuk-table__cell">{{ patient.historicUsualAddressTo or "20-Apr-2022" }}</td>
+          <td class="nhsuk-table__cell data-field__note">From {{ patient.historicUsualAddressFrom or "20-Apr-2010" }} to {{ patient.historicUsualAddressTo or "20-Apr-2022" }}</td>
+        </tr>
+        {% endif %}
+
+        {% if patient.historicCorrespondAddress !== "" %}
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">Correspondence</td>
+          <td class="nhsuk-table__cell">{{ patient.historicCorrespondAddress or "202 ACACIA AVENUE, RUGBY, WARWICKSHIRE, CV18 4BY" }}</td>
+          <td class="nhsuk-table__cell">{{ patient.historicCorrespondAddressFrom or "29-May-2008" }}</td>
+          <td class="nhsuk-table__cell">{{ patient.historicCorrespondAddressTo or "30-May-2010" }}</td>
+          <td class="nhsuk-table__cell data-field__note">From {{ patient.historicCorrespondAddressFrom or "29-May-2008" }} to {{ patient.historicCorrespondAddressTo or "30-May-2010" }}</td>
+        </tr>
+        {% endif %}
+
+        {% if patient.historicTempAddress !== "" %}
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">Temporary</td>
+          <td class="nhsuk-table__cell">{{ patient.historicTempAddress or "12 THE RISE, SPON END, COVENTRY, CV1 3HA" }}</td>
+          <td class="nhsuk-table__cell">{{ patient.historicTempAddressFrom or "15-Aug-2008" }}</td>
+          <td class="nhsuk-table__cell">{{ patient.historicTempAddressTo or "02-Nov-2008" }}</td>
+          <td class="nhsuk-table__cell data-field__note">From {{ patient.historicTempAddressFrom or "15-Aug-2008" }} to {{ patient.historicTempAddressTo or "02-Nov-2008" }}</td>
+        </tr>
+        {% endif %}
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="nhsuk-card" id="historical-info-contact-card">
+    <div class="nhsuk-card__content">
+      <h3 class="nhsuk-card__heading" id="historical-info-contact-title">Contact information history</h3>
+      <table class="nhsuk-table" style="table-layout: fixed;">
+        <thead class="nhsuk-table__head">
+          <tr class="nhsuk-table__row">
+            <th class="nhsuk-table__header" scope="col">Type</th>
+            <th class="nhsuk-table__header" scope="col">Value</th>
+            <th class="nhsuk-table__header" scope="col">From</th>
+            <th class="nhsuk-table__header" scope="col">To</th>
+            <th class="nhsuk-table__header" scope="col">Used by the system</th>
+          </tr>
+        </thead>
+        <tbody class="nhsuk-table__body">
+
+        {% if patient.historicEmail !== "" %}
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">Email</td>
+          <td class="nhsuk-table__cell">{{ patient.historicEmail or "srodriguez@hotmail.com" }} <i>(Main Home)</i></td>
+          <td class="nhsuk-table__cell">20-Apr-2010</td>
+          <td class="nhsuk-table__cell">20-Apr-2022</td>
+          <td class="nhsuk-table__cell data-field__note">From 20-Apr-2010 to 20-Apr-2022</td>
+        </tr>
+        {% endif %}
+
+        {% if patient.historicEmailWork !== "" %}
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">Email</td>
+          <td class="nhsuk-table__cell">{{ patient.historicEmailWork or "srodriguez@hotmail.com" }} <i>(Work)</i></td>
+          <td class="nhsuk-table__cell">20-Apr-2010</td>
+          <td class="nhsuk-table__cell">20-Apr-2022</td>
+          <td class="nhsuk-table__cell data-field__note">From 20-Apr-2010 to 20-Apr-2022</td>
+        </tr>
+        {% endif %}
+
+        {% if patient.historicTelMain !== "" %}
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">Telephone</td>
+          <td class="nhsuk-table__cell">{{ patient.historicTelMain | ukMobile or "02431498543" | ukMobile}} <i>(Main home)</i></td>
+          <td class="nhsuk-table__cell">20-Apr-2010</td>
+          <td class="nhsuk-table__cell">20-Apr-2022</td>
+          <td class="nhsuk-table__cell data-field__note">From 20-Apr-2010 to 20-Apr-2022</td>
+        </tr>
+        {% endif %}
+
+        {% if patient.historicTelTwo !== "" %}
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">Telephone</td>
+          <td class="nhsuk-table__cell">{{ patient.historicTelTwo | ukMobile or "02431498543" | ukMobile}} <i>(Home)</i></td>
+          <td class="nhsuk-table__cell">20-Apr-2010</td>
+          <td class="nhsuk-table__cell">20-Apr-2022</td>
+          <td class="nhsuk-table__cell data-field__note">From 20-Apr-2010 to 20-Apr-2022</td>
+        </tr>
+        {% endif %}
+
+        {% if patient.historicTelWork !== "" %}
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">Telephone</td>
+          <td class="nhsuk-table__cell">{{ patient.historicTelWork | ukMobile or "02431498543" | ukMobile}} <i>(Work)</i></td>
+          <td class="nhsuk-table__cell">20-Apr-2010</td>
+          <td class="nhsuk-table__cell">20-Apr-2022</td>
+          <td class="nhsuk-table__cell data-field__note">From 20-Apr-2010 to 20-Apr-2022</td>
+        </tr>
+        {% endif %}
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="nhsuk-card" id="historical-info-gp-card">
+    <div class="nhsuk-card__content"><h3 class="nhsuk-card__heading" id="historical-info-gp-title">GP history</h3>
+      <table class="nhsuk-table" style="table-layout: fixed;">
+        <thead class="nhsuk-table__head">
+          <tr class="nhsuk-table__row">
+            <th class="nhsuk-table__header" scope="col">Practice name</th>
+            <th class="nhsuk-table__header" scope="col">From</th>
+            <th class="nhsuk-table__header" scope="col">To</th>
+            <th class="nhsuk-table__header" scope="col">Reason for removal</th>
+            <th class="nhsuk-table__header" scope="col">Used by the system</th>
+            <th class="nhsuk-table__header" scope="col">View more</th>
+          </tr>
+        </thead>
+        <tbody class="nhsuk-table__body">
+        {% if patient.historicPracticeName !== "" %}
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">{{ patient.historicPracticeName or 'DR JOSEPH SURGERY (G85672)' }}</td>
+          <td class="nhsuk-table__cell">{{ patient.historicPracticeFrom or '24-Apr-2024' }}</td>
+          <td class="nhsuk-table__cell">{{ patient.historicPracticeTo or '24-Apr-2024' }}</td>
+          <td class="nhsuk-table__cell">{{ patient.reasonRemoval or 'Transferred to Ashfield' }}</td>
+          <td class="nhsuk-table__cell data-field__note">From {{ patient.historicPracticeFrom or '24-Apr-2024' }} to {{ patient.historicPracticeTo or '24-Apr-2024' }}</td>
+          <td class="nhsuk-table__cell">
+            <a role="button" tabindex="0" class="historic-practice-more-button">View more</a>
+          </td>
+        </tr>
+        <tr class="nhsuk-table__row nhsuk-table__row__no-border historic-practice-more">
+          <td class="nhsuk-table__cell"><b>GP address:</b></td>
+          <td class="nhsuk-table__cell" colspan="2">{{ patient.historicPracticeAddress or '2 LEYMOOR ROAD, WILLENHALL, COVENTRY, CV3 2ST' }}</td>
+          <td class="nhsuk-table__cell"><b>Commissioning organisation:</b></td>
+          <td class="nhsuk-table__cell" colspan="2">{{ patient.historicCommissionOrg or 'NHS COVENTRY AND RUGBY CCG' }}</td>
+        </tr>
+        <tr class="nhsuk-table__row nhsuk-table__row__no-border historic-practice-more">
+          <td class="nhsuk-table__cell" colspan="3"></td>
+          <td class="nhsuk-table__cell"><b>Address:</b></td>
+          <td class="nhsuk-table__cell" colspan="2">{{ patient.histCommissionOrgAddress or 'PARKSIDE HOUSE, QUINTON ROAD, COVENTRY, CV1 2NJ' }}</td>
+        </tr>
+        <tr class="nhsuk-table__row nhsuk-table__row__no-border historic-practice-more">
+          <td class="nhsuk-table__cell" colspan="3"></td>
+          <td class="nhsuk-table__cell"><b>High level health geography:</b></td>
+          <td class="nhsuk-table__cell" colspan="2">{{ patient.histHealthGeography or 'WEST MIDLANDS SOUTH SHA' }}</td>
+        </tr>
+        <tr class="nhsuk-table__row historic-practice-more">
+          <td class="nhsuk-table__cell" colspan="3"></td>
+          <td class="nhsuk-table__cell"><b>Address:</b></td>
+          <td class="nhsuk-table__cell" colspan="2">{{ patient.histHealthGeographyAddress or '1ST FLOOR, BLENHEIM HOUSE, DUNCOMBE STREET, BIRMINGHAM, B1 3UI' }}</td>
+        </tr>
+        {% endif %}
+
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

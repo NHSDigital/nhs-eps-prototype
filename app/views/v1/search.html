@@ -1,0 +1,132 @@
+{% extends './_includes/layout-application.html' %}
+{% set primarynav = 'patient' %}
+{% set hideNav = 'true' %}
+{% set hideJump = 'true' %}
+{% set containerClasses = 'patient-search-form-container' %}
+
+{% block pageTitle %}
+Find a patient by NHS number - {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+<div class="above-tab-space">
+  <section class="nhsuk-hero">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+          <div class="nhsuk-hero__wrapper"><h1 class="nhsuk-u-margin-bottom-3">Find a patient</h1></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="nhsuk-tab-set find-patient-tabset">
+  <div class="find-patient-tabset__container">
+    <button class="nhsuk-tab-set__tab nhsuk-tab-set__tab--active" id="nhs-number-search-tab" type="button">
+      <span class="nhsuk-u-visually-hidden">Search by </span>
+      By NHS Number
+    </button>
+    <button class="nhsuk-tab-set__tab" id="basic-search-tab" type="button">
+      <span class="nhsuk-u-visually-hidden">Search by </span>
+      By Basic Details
+    </button>
+    <button class="nhsuk-tab-set__tab" id="advanced-search-tab" type="button">
+      <span class="nhsuk-u-visually-hidden">Search by </span>
+      By Advanced Details
+    </button>
+  </div>
+</div>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="main-body-wrapper">
+
+<div class="patient-search-form row">
+  <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+    <div>
+      <form action="search-nhs" method="POST" novalidate="">
+        <div class="patient-search-form__field-group">
+          <h2 class="nhsuk-heading-m nhsuk-u-margin-bottom-1 no-outline" id="nhs-number-search-form-nhs-number--label" tabindex="-1">
+            <span class="nhsuk-u-visually-hidden">Search by </span>
+            NHS Number
+          </h2>
+          <div class="nhsuk-hint" id="nhs-number-hint">For example: 943 476 5919</div>
+          <div class="nhsuk-form-group">
+            <input autofocus aria-describedby="nhs-number-hint" aria-labelledby="nhs-number-search-form-nhs-number--label" autocomplete="off" class="nhsuk-input nhsuk-input--width-10" id="nhs-number-search-form-nhs-number" name="nhsNumber" type="tel" value="">
+          </div>
+        </div>
+
+        {% if data['devMode'] === 'true' %}
+        {# DEVMODE SCENARIOS #}
+        <br>
+        <details class="nhsuk-details dev-mode">
+          <summary class="nhsuk-details__summary">
+            <span class="nhsuk-details__summary-text">
+              Show Patient list
+            </span>
+          </summary>
+
+          <div class="nhsuk-details__text">
+            <ul class="govuk-list govuk-list--bullet">
+              {% for item in data.patients %}
+                {% set patientList = item | objectToArray %}
+                {% for patient in patientList %}
+                  <li>
+                    <a href="patient-overview?nhsNumber={{ patient.nhsNumber }}">
+                      {{ patient.firstName }} {{ patient.lastName }} | {{ patient.dob | calculateAge }}
+                    </a>
+                  </li>
+                  {% else %}
+                  <li>None found</li>
+                {% endfor %}
+              {% endfor %}
+            </ul>
+          </div>
+        </details>
+        <br>
+
+        {% endif %}
+
+        <button aria-disabled="false" class="nhsuk-button patient-search-form__button" id="nhs-number-submit" type="submit">Find a patient</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+    <div><h2 class="bulletins-header">Bulletins</h2>
+      <div class="bulletins-box">
+        <div class="bulletin-item" id="bulletin-item-0-20990101">
+          <p tabindex="0"><b>Welcome to the National Care Records Service (NCRS)</b>
+            <br>
+            NCRS has replaced the Summary Care Record application (SCRa). Users of SCRa are now being automatically redirected to NCRS.
+          </p>
+          <ul>
+            <li>
+              <a href="javascript:void(0)" rel="noopener noreferrer external" tabindex="0" target="_blank">Find out more about NCRS (opens in a new tab)</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" rel="noopener noreferrer external" tabindex="0" target="_blank">Get help with using NCRS (opens in a new tab)</a>
+            </li>
+          </ul>
+          <p></p></div>
+        <hr class="bulletin-separator">
+        <div class="bulletin-item" id="bulletin-item-1-20240104">
+          <p tabindex="0"><b>Design changes to the Patient tab</b>
+            <br>
+            We would like your feedback on some proposed design changes to the Patient tab. If checking detailed patient demographics is an important part of your role, please
+            <a href="javascript:void(0)" rel="noopener noreferrer external" tabindex="0" target="_blank">sign up to be part of the research (opens in a new tab)</a>
+            .
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+{% endblock %}

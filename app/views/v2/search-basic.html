@@ -1,0 +1,462 @@
+{% extends './_includes/layout-application.html' %}
+{% set primarynav = 'patient' %}
+{% set hideNav = 'true' %}
+{% set hideJump = 'true' %}
+{% set containerClasses = 'patient-search-form-container' %}
+{% set versionLimit = 4 %}
+
+{% block pageTitle %}
+Find a patient by using basic details - {{ serviceName }}
+{% endblock %}
+
+
+{% block customStyles %}
+<style>
+  .fieldset {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .field {
+    width: 40px;
+  }
+  .clear-link {
+    margin-top: 10px;
+    display: inline-block;
+  }
+  .date-display {
+    margin-top: 10px;
+    position: relative;
+    display: inline-block;
+  }
+  .nhsuk-inset-text {
+    max-width: 44em;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 4px;
+    border-left: 4px solid #005eb8;
+  }
+  .sidebar {
+    max-width: 250px;
+  }
+
+  @media (min-width: 40.0625em){
+    .data-panel:first-of-type {
+      margin-top: 0px;
+    }
+  }
+
+  @media (min-width: 40.0625em) {
+    .data-panel:last-of-type {
+      margin-bottom: 26px;
+    }
+  }
+
+  .switch-link {
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-left: 10px;
+  }
+
+  .valid-date::after {
+    content: url('data:image/svg+xml;utf8,<svg height="16" viewBox="0 0 256 256" width="16" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke-miterlimit="10" stroke-width="0" transform="matrix(2.81 0 0 2.81 1.406593 1.406593)"><path d="m45 90c-24.813 0-45-20.187-45-45s20.187-45 45-45 45 20.187 45 45-20.187 45-45 45z" fill="%23006747"/><path d="m35.86 69.67-18.36-18.36 9.16-9.16 9.2 9.19 27.48-27.47 9.16 9.16z" fill="%23fff"/></g></svg>');
+    position: absolute;
+    right: -25px;
+    top: 2px;
+    width: 18px;
+    height: 18px;
+  }
+
+</style>
+{% endblock %}
+
+{% block beforeContent %}
+
+<div class="above-tab-space">
+  <section class="nhsuk-hero">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+          <div class="nhsuk-hero__wrapper"><h1 class="nhsuk-u-margin-bottom-3">Find a patient</h1></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="nhsuk-tab-set find-patient-tabset">
+  <div class="find-patient-tabset__container">
+    <a href="search" class="nhsuk-tab-set__tab" id="nhs-number-search-tab" type="button">
+      <span class="nhsuk-u-visually-hidden">Search by </span>
+      By NHS Number
+    </a>
+    <a href="search-basic" class="nhsuk-tab-set__tab nhsuk-tab-set__tab--active" id="basic-search-tab" type="button">
+      <span class="nhsuk-u-visually-hidden">Search by </span>
+      By Basic Details
+    </a>
+    <a href="search-advanced" class="nhsuk-tab-set__tab" id="advanced-search-tab" type="button">
+      <span class="nhsuk-u-visually-hidden">Search by </span>
+      By Advanced Details
+    </a>
+    <a href="search-postcode" class="nhsuk-tab-set__tab" id="postcode-search-tab" type="button">
+      <span class="nhsuk-u-visually-hidden">Search by </span>
+      By Postcode
+    </a>
+  </div>
+</div>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="main-body-wrapper">
+
+  <main style="">
+    <div class="patient-search-form">
+      <form action="submit-search-basic" name="jumpForm" id="basic-search-form" method="POST" novalidate="">
+        <h2 class="nhsuk-heading-m nhsuk-u-margin-bottom-1 no-outline" id="basic-search-label" tabindex="-1">Search by Basic Details</h2>
+        <div class="nhsuk-hint">Enter all fields</div>
+
+        {% if data['version'] !== '4' %}
+        <div class="patient-search-form__field-group">
+          <div class="nhsuk-form-group">
+            <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend form-label" id="basic-search-form-gender--label" style="font-weight: 600;">Gender</legend>
+              <div class="nhsuk-form-group">
+                <div aria-labelledby="basic-search-form-gender--label" class="nhsuk-radios nhsuk-radios--inline" id="basic-search-form-gender">
+                  <div class="nhsuk-radios__item">
+                    <input aria-labelledby="basic-search-form-gender-1--label" class="nhsuk-radios__input" id="basic-search-form-gender-1" name="search-gender" type="radio" value="Female" tabindex="1" {% if refine === 'true' %} {% if data['search-gender'] === 'Female' %} checked {% endif %} {% endif %}>
+                    <label class="nhsuk-label nhsuk-radios__label" for="basic-search-form-gender-1" id="basic-search-form-gender-1--label">Female</label>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                    <input aria-labelledby="basic-search-form-gender-2--label" class="nhsuk-radios__input" id="basic-search-form-gender-2" name="search-gender" type="radio" value="Male" tabindex="2" {% if refine === 'true' %} {% if data['search-gender'] === 'Male' %} checked {% endif %} {% endif %}>
+                    <label class="nhsuk-label nhsuk-radios__label" for="basic-search-form-gender-2" id="basic-search-form-gender-2--label">Male</label>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+        {% endif %}
+
+        <div class="patient-search-form__field-group">
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label form-label" for="basic-search-form-surname" id="basic-search-form-surname--label" style="font-weight: 600;">Last Name</label>
+            <input {% if data['version'] === '4' %}autofocus{% endif %} aria-labelledby="basic-search-form-surname--label" class="nhsuk-input nhsuk-input--width-20" id="basic-search-form-surname" name="surname" type="text" {% if refine === 'true' %} value ="{{ data['surname'] }}" {% endif %} tabindex="3">
+          </div>
+        </div>
+
+        {% if data['version'] === '1' %}
+
+        <div class="patient-search-form__field-group">
+          <div class="nhsuk-form-group">
+            <fieldset class="nhsuk-fieldset new1-fieldset">
+              <legend class="nhsuk-fieldset__legend form-label" style="font-weight: 600;">Date of Birth</legend>
+              <div class="nhsuk-form-group">
+                <div class="nhsuk-hint nhsuk-u-margin-bottom-1" id="basic-search-form-dob-from--hint">For example, 31 3 1980</div>
+                <div aria-describedby="basic-search-form-dob-from--hint" class="nhsuk-date-input" id="basic-search-form-dob-from">
+                  <div class="nhsuk-date-input__item">
+                    <div class="nhsuk-form-group">
+                      <label class="nhsuk-label nhsuk-date-input__label" for="new1-day" id="basic-search-form-dob-from-day--label">Day</label>
+                      <input aria-labelledby="basic-search-form-dob-from-day--label" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="new1-day" inputmode="numeric" maxlength="2" name="date-of-birth-day" pattern="[0-9]*" type="text" maxlength="1" onkeyup="moveToNext(this)" tabindex="4" {% if refine === 'true' %} value="{{ data['date-of-birth-day'] }}"{% endif %}>
+                    </div>
+                  </div>
+                  <div class="nhsuk-date-input__item">
+                    <div class="nhsuk-form-group">
+                      <label class="nhsuk-label nhsuk-date-input__label" for="new1-month" id="basic-search-form-dob-from-month--label">Month</label>
+                      <input aria-labelledby="basic-search-form-dob-from-month--label" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="new1-month" inputmode="numeric" maxlength="2" name="date-of-birth-month" pattern="[0-9]*" type="text" onkeyup="moveToNext(this)" tabindex="5" {% if refine === 'true' %} value="{{ data['date-of-birth-month'] }}"{% endif %}>
+                    </div>
+                  </div>
+                  <div class="nhsuk-date-input__item">
+                    <div class="nhsuk-form-group">
+                      <label class="nhsuk-label nhsuk-date-input__label" for="new1-year" id="basic-search-form-dob-from-year--label">Year</label>
+                      <input aria-labelledby="basic-search-form-dob-from-year--label" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="new1-year" inputmode="numeric" maxlength="4" name="date-of-birth-year" pattern="[0-9]*" type="text" tabindex="6" {% if refine === 'true' %} value="{{ data['date-of-birth-year'] }}"{% endif %}>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+
+        {% elif data['version'] === '2' %}
+
+        <div class="patient-search-form__field-group">
+          <div class="nhsuk-form-group">
+
+            <fieldset class="nhsuk-fieldset new2-fieldset">
+              <legend class="nhsuk-fieldset__legend form-label" style="font-weight: 600;">Date of Birth</legend>
+              <div class="nhsuk-form-group">
+                <div class="nhsuk-hint nhsuk-u-margin-bottom-1" id="basic-search-form-dob-from--hint">TIP: try pasting in full dates into any box</div>
+                <div aria-describedby="basic-search-form-dob-from--hint" class="nhsuk-date-input" id="basic-search-form-dob-from">
+                  <div class="nhsuk-date-input__item">
+                    <div class="nhsuk-form-group">
+                      <label class="nhsuk-label nhsuk-date-input__label" for="new2-day" id="basic-search-form-dob-from-day--label">Day</label>
+                      <input aria-labelledby="basic-search-form-dob-from-day--label" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="new2-day" inputmode="numeric" maxlength="2" name="date-of-birth-day" pattern="[0-9]*" type="text" placeholder="DD" onkeyup="moveToNext(this)" tabindex="4" {% if refine === 'true' %} value="{{ data['date-of-birth-day'] }}"{% endif %}>
+                    </div>
+                  </div>
+                  <div class="nhsuk-date-input__item">
+                    <div class="nhsuk-form-group">
+                      <label class="nhsuk-label nhsuk-date-input__label" for="new2-month" id="basic-search-form-dob-from-month--label">Month</label>
+                      <input aria-labelledby="basic-search-form-dob-from-month--label" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="new2-month" inputmode="numeric" maxlength="2" name="date-of-birth-month" pattern="[0-9]*" type="text" placeholder="MM" onkeyup="moveToNext(this)" tabindex="5" {% if refine === 'true' %} value="{{ data['date-of-birth-month'] }}"{% endif %}>
+                    </div>
+                  </div>
+                  <div class="nhsuk-date-input__item">
+                    <div class="nhsuk-form-group">
+                      <label class="nhsuk-label nhsuk-date-input__label" for="new2-year" id="basic-search-form-dob-from-year--label">Year</label>
+                      <input aria-labelledby="basic-search-form-dob-from-year--label" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="new2-year" inputmode="numeric" maxlength="4" name="date-of-birth-year" pattern="[0-9]*" type="text" placeholder="YYYY" tabindex="6" {% if refine === 'true' %} value="{{ data['date-of-birth-year'] }}"{% endif %}>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+
+        {% elif data['version'] === '3' or data['version'] === '4' %}
+
+        <div class="patient-search-form__field-group">
+          <div class="nhsuk-form-group">
+            <div aria-describedby="basic-search-form-dob-from--hint" class="nhsuk-date-input" id="basic-search-form-dob-from">
+              <div class="nhsuk-date-input__item">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-date-input__label" for="new3-date" id="basic-search-form-dob-from-day--label" style="font-weight: 600;">Date of birth</label>
+                  <input aria-labelledby="basic-search-form-dob-from-day--label" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-20" id="new3-date" type="text" name="date-of-birth" tabindex="4" placeholder="DD/MM/YYYY" {% if refine === 'true' %} value="{{ data['date-of-birth'] }}"{% endif %}>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="nhsuk-inset-text">
+              <div id="formattedDate" class="date-display">Type or paste in any format</div>
+            </div>
+          </div>
+        </div>
+
+        {% endif %}
+
+        {% if data['version'] === '4' %}
+        <div class="patient-search-form__field-group">
+          <div class="nhsuk-form-group">
+            <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend form-label" id="basic-search-form-gender--label" style="font-weight: 600;">Gender</legend>
+              <div class="nhsuk-form-group">
+                <div aria-labelledby="basic-search-form-gender--label" class="nhsuk-radios nhsuk-radios--inline" id="basic-search-form-gender">
+                  <div class="nhsuk-radios__item">
+                    <input aria-labelledby="basic-search-form-gender-1--label" class="nhsuk-radios__input" id="basic-search-form-gender-1" name="search-gender" type="radio" value="Female" tabindex="5" {% if refine === 'true' %} {% if data['search-gender'] === 'Female' %} checked {% endif %} {% endif %}>
+                    <label class="nhsuk-label nhsuk-radios__label" for="basic-search-form-gender-1" id="basic-search-form-gender-1--label">Female</label>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                    <input aria-labelledby="basic-search-form-gender-2--label" class="nhsuk-radios__input" id="basic-search-form-gender-2" name="search-gender" type="radio" value="Male" tabindex="6" {% if refine === 'true' %} {% if data['search-gender'] === 'Male' %} checked {% endif %} {% endif %}>
+                    <label class="nhsuk-label nhsuk-radios__label" for="basic-search-form-gender-2" id="basic-search-form-gender-2--label">Male</label>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+        {% endif %}
+
+        <input type="hidden" name="last-search" value="basic" />
+
+        <div class="nhsuk-button-group">
+          <button aria-disabled="false" class="nhsuk-button patient-search-form__button" type="submit" style="margin-bottom: 16px;margin-top: 24px;" tabindex="7">Find a patient</button>
+          <a class="nhsuk-link" id="clear-form" href="#" tabindex="8">Clear form</a>
+        </div>
+
+
+      </form>
+    </div>
+  </main>
+
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+
+<script>
+  const placeholderText = 'Type or paste in any format';
+
+  {% if data['version'] === '1' %}
+
+  document.querySelector('.new1-fieldset').addEventListener('paste', function (e) {
+    e.preventDefault();
+    const pastedData = e.clipboardData.getData('text');
+    const dateParts = parseDate(pastedData);
+
+    if (dateParts) {
+      document.getElementById('new1-day').value = dateParts.day;
+      document.getElementById('new1-month').value = dateParts.month;
+      document.getElementById('new1-year').value = dateParts.year;
+    }
+  });
+
+  {% endif %}
+
+
+  {% if data['version'] === '2' %}
+  document.querySelector('.new2-fieldset').addEventListener('paste', function (e) {
+    e.preventDefault();
+    const pastedData = e.clipboardData.getData('text');
+    const dateParts = parseDate(pastedData);
+
+    if (dateParts) {
+      document.getElementById('new2-day').value = dateParts.day;
+      document.getElementById('new2-month').value = dateParts.month;
+      document.getElementById('new2-year').value = dateParts.year;
+    }
+  });
+  {% endif %}
+
+
+  {% if data['version'] === '3' or data['version'] === '4' %}
+  document.getElementById('new3-date').addEventListener('input', function (e) {
+    const formattedDate = formatDateString(e.target.value);
+    if (formattedDate) {
+      document.getElementById('formattedDate').textContent = formattedDate;
+      document.getElementById('formattedDate').classList.add('valid-date');
+    } else {
+      document.getElementById('formattedDate').textContent = placeholderText;
+      document.getElementById('formattedDate').classList.remove('valid-date');
+    }
+  });
+
+  document.getElementById('new3-date').addEventListener('paste', function (e) {
+    e.preventDefault();
+    const pastedData = e.clipboardData.getData('text');
+    const formattedDate = formatDateString(pastedData);
+
+    if (formattedDate) {
+      e.target.value = pastedData;
+      document.getElementById('formattedDate').textContent = formattedDate;
+      document.getElementById('formattedDate').classList.add('valid-date');
+    } else {
+      document.getElementById('formattedDate').textContent = placeholderText;
+      document.getElementById('formattedDate').classList.remove('valid-date');
+    }
+  });
+  {% endif %}
+
+
+  function parseDate(input) {
+    const regexes = [
+      /(\d{1,2})[\/\-,\.\s](\d{1,2})[\/\-,\.\s](\d{2,4})/i, // Formats like 04/04/2004, 04-04-2004, 04.04.2004, 04 04 2004
+      /(\d{1,2})[\/\-,\.\s](\d{1,2})[\/\-,\.\s](\d{2})/i,    // Formats like 04/04/04, 04-04-04, 04.04.04, 04 04 04
+      /(\d{1,2})(?:st|nd|rd|th)?\s+(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\s+(\d{2,4})/i, // 4th apr 04, 4 apr 2004
+      /(\d{1,2})(?:st|nd|rd|th)?\s+(january|february|march|april|may|june|july|august|september|october|november|december)\s+(\d{2,4})/i, // 4th april 04, 4 april 2004
+      /(\d{1,2})(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)(\d{2,4})/i, // Formats like 4apr04, 04apr2004
+      /(\d{1,2})(january|february|march|april|may|june|july|august|september|october|november|december)(\d{2,4})/i, // 4april04, 04april2004
+      /(\d{1,2})-(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)-(\d{4})/i, // Format like 04-Apr-2024
+      /(\d{1,2})-(january|february|march|april|may|june|july|august|september|october|november|december)-(\d{2,4})/i, // 4-april-04, 04-april-2004
+      /(\d{2})(\d{2})(\d{2,4})/ // Formats like 04042004, 040404
+    ];
+
+    for (let regex of regexes) {
+      const match = input.match(regex);
+      if (match) {
+        if (match.length === 2) { // Only year matched
+          const year = match[1];
+          return { year, isFullYear: true };
+        } else {
+          let [, day, month, year] = match;
+          if (isNaN(month)) {
+            const monthNamesFull = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+            const monthNamesAbbr = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+            const monthIndex = monthNamesFull.indexOf(month.toLowerCase()) + 1 || monthNamesAbbr.indexOf(month.toLowerCase()) + 1;
+            month = monthIndex.toString().padStart(2, '0');
+          } else {
+            month = month.padStart(2, '0');
+          }
+          if (year.length === 2) {
+            year = '20' + year;
+          }
+          day = day.padStart(2, '0');
+          return { day, month, year };
+        }
+      }
+    }
+    return null;
+  }
+
+  function formatDateString(input) {
+    const dateParts = parseDate(input);
+    if (dateParts) {
+      if (dateParts.isFullYear) {
+        return `All of the year ${dateParts.year}`;
+      } else {
+        const { day, month, year } = dateParts;
+        const monthNamesFull = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        const monthName = monthNamesFull[parseInt(month) - 1];
+        const daySuffix = getDaySuffix(day);
+        return `${parseInt(day)}${daySuffix} ${monthName} ${year}`;
+      }
+    }
+    return null;
+  }
+
+  function getDaySuffix(day) {
+    const d = parseInt(day);
+    if (d >= 11 && d <= 13) {
+      return 'th';
+    }
+    switch (d % 10) {
+      case 1: return 'st';
+      case 2: return 'nd';
+      case 3: return 'rd';
+      default: return 'th';
+    }
+  }
+
+  function moveToNext(object) {
+    console.log(object.value);
+    if (object.value.length === object.maxLength) {
+      object.value = object.value.slice(0, object.maxLength);
+      next = object.tabIndex + 2;
+      console.log(next);
+      document.jumpForm.elements[next].focus()
+      console.log('next');
+    }
+  }
+
+  document.getElementById('clear-form').addEventListener('click', function(e) {
+    e.preventDefault();
+    const form = document.getElementById('basic-search-form');
+    form.reset();
+
+    // Override fields with value attributes
+    form.querySelectorAll('input').forEach(input => {
+      input.value = '';
+    });
+
+    // Clear the result display
+    document.getElementById('dobRange').textContent = 'Enter or paste a date in any format';
+  });
+
+  document.getElementById('clear-form').addEventListener('click', function(e) {
+    e.preventDefault();
+    const form = document.getElementById('basic-search-form');
+    form.reset();
+
+    // Override fields with value attributes
+    form.querySelectorAll('input').forEach(input => {
+      input.value = '';
+    });
+    // Reset radio inputs
+    form.querySelectorAll('input[type="radio"]').forEach(radio => {
+      radio.checked = false;
+    });
+
+    // Clear the result display
+    document.getElementById('formattedDate').textContent = 'Type or paste in any format';
+    document.getElementById('formattedDate').classList.remove('valid-date');
+
+    {% if data['version'] === '4' %}
+    document.getElementById('basic-search-form-surname').focus();
+    {% endif %}
+
+  });
+
+</script>
+{% endblock %}

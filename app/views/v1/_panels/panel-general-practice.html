@@ -1,0 +1,87 @@
+<div class="data-panel__wrapper no-outline" tabindex="-1">
+  <div class="nhsuk-card data-panel" id="practice-panel">
+    <div class="nhsuk-card__content">
+      <h3 class="nhsuk-card__heading">
+        <span>General Practice</span>
+
+        {% if data.perms['editDemog'] !== 'no' %}
+        <a href="patient-details-history" class="data-panel__view-history-button" id="name-panel-view-history" role="button" tabindex="0">View history
+          <span class="nhsuk-u-visually-hidden">General Practice</span>
+        </a>
+        {% endif %}
+
+      </h3>
+      <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Practice Name</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.practiceName === 'Not Recorded' or patient.practiceName === undefined %}--none{% endif %}">
+              {{ patient.practiceName or 'ASHFIELD MEDICAL CENTRE (B86055)' }}
+            </span>
+            <br>
+
+            {% if patient.practiceNameFrom !== "" %}
+            <span class="data-field__note">From {{ patient.practiceNameFrom }}</span>
+            {% endif %}
+
+            {% if patient.practiceNameTo !== "" %}
+            <span class="data-field__note">to {{ patient.practiceNameTo }}</span>
+            {% endif %}
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Address</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.practiceAddress === 'Not Recorded' or patient.practiceAddress === undefined %}--none{% endif %} data-field__content--address">
+              {{ patient.practiceAddress or '15 AUSTHORPE ROAD, CROSSGATES, LEEDS, WEST YORKSHIRE, S15 8BA' }}
+            </span>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Telephone</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.practiceTel === 'Not Recorded' or patient.practiceTel === undefined %}--none{% endif %}">
+              {{ patient.practiceTel or '02076222877' }}
+            </span>
+          </dd>
+        </div>
+      </dl>
+      <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Commissioning Organisation</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.commissionOrg === 'Not Recorded' or patient.commissionOrg === undefined %}--none{% endif %}">
+              {{ patient.commissionOrg or 'EAST LEEDS PCT (5HK)' }}
+            </span>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Address</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.commissionOrgAddress === 'Not Recorded' or patient.commissionOrgAddress === undefined %}--none{% endif %} data-field__content--address">
+              {{ patient.commissionOrgAddress or 'OAKTREE HOUSE, 408 OAKWOOD LANE, LEEDS, WEST YORKSHIRE' }}
+            </span>
+          </dd>
+        </div>
+      </dl>
+      <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">High Level Health Geography</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.healthGeography === 'Not Recorded' or patient.healthGeography === undefined %}--none{% endif %}">
+              {{ patient.healthGeography or 'WEST YORKSHIRE STRATEGIC HA (Q12)' }}
+            </span>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Address</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.healthGeographyAddress === 'Not Recorded' or patient.healthGeographyAddress === undefined %}--none{% endif %} data-field__content--address">
+              {{ patient.healthGeographyAddress or 'BLENHEIM HOUSE, DUNCOMBE STREET, LEEDS, WEST YORKSHIRE' }}
+            </span>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,268 @@
+{% extends './_includes/layout-application.html' %}
+{% set primarynav = 'patient' %}
+{% set hideNav = 'true' %}
+{% set hideJump = 'true' %}
+{% set containerClasses = 'patient-search-form-container' %}
+
+{% block pageTitle %}
+Find a patient by NHS number - {{ serviceName }}
+{% endblock %}
+
+{% block customStyles %}
+<style>
+  a {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  @media (min-width: 40.0625em) {
+    .patient-search-form .nhsuk-input {
+      margin-bottom: 16px;
+    }
+  }
+
+  .patient-search-form .nhsuk-input {
+    margin-bottom: 8px;
+  }
+</style>
+{% endblock %}
+
+{% block beforeContent %}
+
+<div class="above-tab-space">
+  <section class="nhsuk-hero">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+          <div class="nhsuk-hero__wrapper"><h1 class="nhsuk-u-margin-bottom-3">Find a patient</h1></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="nhsuk-tab-set find-patient-tabset">
+  <div class="find-patient-tabset__container">
+    <a href="search" class="nhsuk-tab-set__tab" id="nhs-number-search-tab" type="button">
+      <span class="nhsuk-u-visually-hidden">Search by </span>
+      By NHS Number
+    </a>
+    <a href="search-basic" class="nhsuk-tab-set__tab" id="basic-search-tab" type="button">
+      <span class="nhsuk-u-visually-hidden">Search by </span>
+      By Basic Details
+    </a>
+    <a href="search-advanced" class="nhsuk-tab-set__tab nhsuk-tab-set__tab--active" id="advanced-search-tab" type="button">
+      <span class="nhsuk-u-visually-hidden">Search by </span>
+      By Advanced Details
+    </a>
+    <a href="search-postcode" class="nhsuk-tab-set__tab" id="postcode-search-tab" type="button">
+      <span class="nhsuk-u-visually-hidden">Search by </span>
+      By Postcode
+    </a>
+  </div>
+</div>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="main-body-wrapper">
+
+  <main style="">
+
+    <div class="patient-search-form">
+      <form id="advanced-search-form" novalidate="">
+        <h2 class="nhsuk-heading-m nhsuk-u-margin-bottom-1 no-outline" id="advanced-search-label" tabindex="-1">Search by Advanced Details</h2>
+        <div class="nhsuk-hint">Enter as many details as you know</div>
+        <div class="nhsuk-form-group">
+          <fieldset class="nhsuk-fieldset" id="gender-form-group">
+            <legend class="nhsuk-fieldset__legend form-label" id="advanced-search-form-gender--label" style="font-weight: 600;">Gender</legend>
+            <div class="nhsuk-form-group">
+              <div aria-labelledby="advanced-search-form-gender--label" class="nhsuk-radios nhsuk-radios--inline" id="advanced-search-form-gender">
+                <div class="nhsuk-radios__item">
+                  <input aria-labelledby="advanced-search-form-gender-1--label" class="nhsuk-radios__input" id="advanced-search-form-gender-1" name="gender" type="radio" value="2"><label class="nhsuk-label nhsuk-radios__label" for="advanced-search-form-gender-1" id="advanced-search-form-gender-1--label">Female</label>
+                </div>
+                <div class="nhsuk-radios__item">
+                  <input aria-labelledby="advanced-search-form-gender-2--label" class="nhsuk-radios__input" id="advanced-search-form-gender-2" name="gender" type="radio" value="1"><label class="nhsuk-label nhsuk-radios__label" for="advanced-search-form-gender-2" id="advanced-search-form-gender-2--label">Male</label>
+                </div>
+                <div class="nhsuk-radios__item">
+                  <input aria-labelledby="advanced-search-form-gender-3--label" class="nhsuk-radios__input" id="advanced-search-form-gender-3" name="gender" type="radio" value="X"><label class="nhsuk-label nhsuk-radios__label" for="advanced-search-form-gender-3" id="advanced-search-form-gender-3--label">Search all</label>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <div class="patient-search-form__field-group" id="name-form-group">
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label form-label" for="advanced-search-form-firstname" id="advanced-search-form-firstname--label" style="font-weight: 600;">First Name</label><input aria-labelledby="advanced-search-form-firstname--label" autocomplete="off" class="nhsuk-input nhsuk-input--width-20" id="advanced-search-form-firstname" name="firstname" type="text" value="">
+          </div>
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label form-label" for="advanced-search-form-surname" id="advanced-search-form-surname--label" style="font-weight: 600;">Last Name</label><input aria-labelledby="advanced-search-form-surname--label" autocomplete="off" class="nhsuk-input nhsuk-input--width-20" id="advanced-search-form-surname" name="surname" type="text" value="">
+          </div>
+          <div class="nhsuk-form-group">
+            <div class="nhsuk-checkboxes" id="advanced-search-form-algorithmic">
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="advanced-search-form-algorithmic-2" name="algorithmicSearch" type="checkbox" value="true"><label class="nhsuk-label nhsuk-checkboxes__label" for="advanced-search-form-algorithmic-2" id="advanced-search-form-algorithmic-2--label">Widen search to include similar names and misspellings</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="field-group" id="date-form-group-dob-from-dob-to">
+          <div class="nhsuk-form-group">
+            <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend form-label" id="advanced-search-form-dob-from--label" style="font-weight: 600;">Date of Birth from</legend>
+              <div class="patient-search-form__date-group">
+                <div class="nhsuk-form-group">
+                  <div class="nhsuk-hint nhsuk-u-margin-bottom-1" id="advanced-search-form-dob-from--hint">For example, 31 3 1980</div>
+                  <div aria-describedby="advanced-search-form-dob-from--hint" aria-labelledby="advanced-search-form-dob-from--label" class="nhsuk-date-input" id="advanced-search-form-dob-from" novalidate="">
+                    <div class="nhsuk-date-input__item">
+                      <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-date-input__label" for="advanced-search-form-dob-from-day" id="advanced-search-form-dob-from-day--label">Day</label><input aria-labelledby="advanced-search-form-dob-from-day--label" autocomplete="off" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="advanced-search-form-dob-from-day" inputmode="numeric" maxlength="2" name="dateFrom-day" pattern="[0-9]*" type="text" value="">
+                      </div>
+                    </div>
+                    <div class="nhsuk-date-input__item">
+                      <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-date-input__label" for="advanced-search-form-dob-from-month" id="advanced-search-form-dob-from-month--label">Month</label><input aria-labelledby="advanced-search-form-dob-from-month--label" autocomplete="off" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="advanced-search-form-dob-from-month" inputmode="numeric" maxlength="2" name="dateFrom-month" pattern="[0-9]*" type="text" value="">
+                      </div>
+                    </div>
+                    <div class="nhsuk-date-input__item">
+                      <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-date-input__label" for="advanced-search-form-dob-from-year" id="advanced-search-form-dob-from-year--label">Year</label><input aria-labelledby="advanced-search-form-dob-from-year--label" autocomplete="off" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="advanced-search-form-dob-from-year" inputmode="numeric" maxlength="4" name="dateFrom-year" pattern="[0-9]*" type="text" value="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a aria-label="Use today's date for the 'Date of Birth from' input" class="nhsuk-u-margin-bottom-4" id="set-to-today-dob-from" role="button" tabindex="0">Use today's date</a>
+            </fieldset>
+          </div>
+          <div class="nhsuk-form-group">
+            <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend form-label" id="advanced-search-form-dob-to--label" style="font-weight: 600;">Date of Birth to</legend>
+              <div class="patient-search-form__date-group">
+                <div class="nhsuk-form-group">
+                  <div class="nhsuk-hint nhsuk-u-margin-bottom-1" id="advanced-search-form-dob-to--hint">For example, 31 3 1980</div>
+                  <div aria-describedby="advanced-search-form-dob-to--hint" aria-labelledby="advanced-search-form-dob-to--label" class="nhsuk-date-input" id="advanced-search-form-dob-to">
+                    <div class="nhsuk-date-input__item">
+                      <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-date-input__label" for="advanced-search-form-dob-to-day" id="advanced-search-form-dob-to-day--label">Day</label><input aria-labelledby="advanced-search-form-dob-to-day--label" autocomplete="off" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="advanced-search-form-dob-to-day" inputmode="numeric" maxlength="2" name="dateTo-day" pattern="[0-9]*" type="text" value="">
+                      </div>
+                    </div>
+                    <div class="nhsuk-date-input__item">
+                      <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-date-input__label" for="advanced-search-form-dob-to-month" id="advanced-search-form-dob-to-month--label">Month</label><input aria-labelledby="advanced-search-form-dob-to-month--label" autocomplete="off" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="advanced-search-form-dob-to-month" inputmode="numeric" maxlength="2" name="dateTo-month" pattern="[0-9]*" type="text" value="">
+                      </div>
+                    </div>
+                    <div class="nhsuk-date-input__item">
+                      <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-date-input__label" for="advanced-search-form-dob-to-year" id="advanced-search-form-dob-to-year--label">Year</label><input aria-labelledby="advanced-search-form-dob-to-year--label" autocomplete="off" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="advanced-search-form-dob-to-year" inputmode="numeric" maxlength="4" name="dateTo-year" pattern="[0-9]*" type="text" value="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a aria-label="Use today's date for the 'Date of Birth to' input" class="nhsuk-u-margin-bottom-4" id="set-to-today-dob-to" role="button" tabindex="0">Use today's date</a>
+            </fieldset>
+          </div>
+        </div>
+        <div class="nhsuk-inset-text" style="margin: 0;">
+          <span class="nhsuk-u-visually-hidden">Information: </span>
+          <span class="nhsuk-label">Search Range: No dates entered</span>
+        </div>
+        <div class="field-group nhsuk-u-margin-top-4" id="date-form-group-dod-from-dod-to">
+          <div class="nhsuk-form-group">
+            <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend form-label" id="advanced-search-form-dod-from--label" style="font-weight: 600;">Date of Death from</legend>
+              <div class="patient-search-form__date-group">
+                <div class="nhsuk-form-group">
+                  <div class="nhsuk-hint nhsuk-u-margin-bottom-1" id="advanced-search-form-dod-from--hint">For example, 31 3 1980</div>
+                  <div aria-describedby="advanced-search-form-dod-from--hint" aria-labelledby="advanced-search-form-dod-from--label" class="nhsuk-date-input" id="advanced-search-form-dod-from" novalidate="">
+                    <div class="nhsuk-date-input__item">
+                      <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-date-input__label" for="advanced-search-form-dod-from-day" id="advanced-search-form-dod-from-day--label">Day</label><input aria-labelledby="advanced-search-form-dod-from-day--label" autocomplete="off" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="advanced-search-form-dod-from-day" inputmode="numeric" maxlength="2" name="dateFrom-day" pattern="[0-9]*" type="text" value="">
+                      </div>
+                    </div>
+                    <div class="nhsuk-date-input__item">
+                      <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-date-input__label" for="advanced-search-form-dod-from-month" id="advanced-search-form-dod-from-month--label">Month</label><input aria-labelledby="advanced-search-form-dod-from-month--label" autocomplete="off" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="advanced-search-form-dod-from-month" inputmode="numeric" maxlength="2" name="dateFrom-month" pattern="[0-9]*" type="text" value="">
+                      </div>
+                    </div>
+                    <div class="nhsuk-date-input__item">
+                      <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-date-input__label" for="advanced-search-form-dod-from-year" id="advanced-search-form-dod-from-year--label">Year</label><input aria-labelledby="advanced-search-form-dod-from-year--label" autocomplete="off" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="advanced-search-form-dod-from-year" inputmode="numeric" maxlength="4" name="dateFrom-year" pattern="[0-9]*" type="text" value="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a aria-label="Use today's date for the 'Date of Death from' input" class="nhsuk-u-margin-bottom-4" id="set-to-today-dod-from" role="button" tabindex="0">Use today's date</a>
+            </fieldset>
+          </div>
+          <div class="nhsuk-form-group">
+            <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend form-label" id="advanced-search-form-dod-to--label" style="font-weight: 600;">Date of Death to</legend>
+              <div class="patient-search-form__date-group">
+                <div class="nhsuk-form-group">
+                  <div class="nhsuk-hint nhsuk-u-margin-bottom-1" id="advanced-search-form-dod-to--hint">For example, 31 3 1980</div>
+                  <div aria-describedby="advanced-search-form-dod-to--hint" aria-labelledby="advanced-search-form-dod-to--label" class="nhsuk-date-input" id="advanced-search-form-dod-to">
+                    <div class="nhsuk-date-input__item">
+                      <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-date-input__label" for="advanced-search-form-dod-to-day" id="advanced-search-form-dod-to-day--label">Day</label><input aria-labelledby="advanced-search-form-dod-to-day--label" autocomplete="off" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="advanced-search-form-dod-to-day" inputmode="numeric" maxlength="2" name="dateTo-day" pattern="[0-9]*" type="text" value="">
+                      </div>
+                    </div>
+                    <div class="nhsuk-date-input__item">
+                      <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-date-input__label" for="advanced-search-form-dod-to-month" id="advanced-search-form-dod-to-month--label">Month</label><input aria-labelledby="advanced-search-form-dod-to-month--label" autocomplete="off" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="advanced-search-form-dod-to-month" inputmode="numeric" maxlength="2" name="dateTo-month" pattern="[0-9]*" type="text" value="">
+                      </div>
+                    </div>
+                    <div class="nhsuk-date-input__item">
+                      <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-date-input__label" for="advanced-search-form-dod-to-year" id="advanced-search-form-dod-to-year--label">Year</label><input aria-labelledby="advanced-search-form-dod-to-year--label" autocomplete="off" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="advanced-search-form-dod-to-year" inputmode="numeric" maxlength="4" name="dateTo-year" pattern="[0-9]*" type="text" value="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a aria-label="Use today's date for the 'Date of Death to' input" class="nhsuk-u-margin-bottom-4" id="set-to-today-dod-to" role="button" tabindex="0">Use today's date</a>
+            </fieldset>
+          </div>
+        </div>
+        <div class="nhsuk-inset-text" style="margin: 0;">
+          <span class="nhsuk-u-visually-hidden">Information: </span>
+          <span class="nhsuk-label">Search Range: No dates entered</span>
+        </div>
+        <div class="patient-search-form__field-group" id="postcode-form-group">
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="advanced-search-form-postcode" id="advanced-search-form-postcode--label">Postcode</label><input aria-labelledby="advanced-search-form-postcode--label" autocomplete="off" class="nhsuk-input nhsuk-input--width-10" id="advanced-search-form-postcode" name="postcode" type="text" value="">
+          </div>
+          <details class="nhsuk-details">
+            <summary class="nhsuk-details__summary" tabindex="0">
+              <span class="nhsuk-details__summary-text">Find an address or postcode</span>
+            </summary>
+            <div id="postcode-finder-errors"></div>
+            <div class="nhsuk-details__text">
+              <div class="nhsuk-form-group typeahead-search__form-group">
+                <label class="nhsuk-label" for="address-lookup-search-input" id="address-lookup-search-input--label">Enter part of an address or a postcode</label>
+                <div class="nhsuk-hint" id="address-lookup-search-input--hint">Start typing to search for and select an address. Enter as many details as you know.</div>
+                <div>
+                  <a aria-label="Clear Typeahead Input" class="typeahead-search__clear" id="address-lookup-search-input--clear" role="button" tabindex="0">Clear</a>
+                  <div class="typeahead-search-container">
+                    <div class="nhsuk-form-group nhsuk-u-margin-bottom-0">
+                      <input aria-describedby="address-lookup-search-input--hint" aria-labelledby="address-lookup-search-input--label" autocomplete="off" class="nhsuk-input nhsuk-input typeahead-search" debounce="300" id="address-lookup-search-input" name="address-lookup-search-input" showclearlink="1" type="text" value="">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button aria-disabled="false" class="nhsuk-button nhsuk-button--secondary" id="address-lookup-search-apply" type="button">Select</button>
+            </div>
+          </details>
+        </div>
+        <button aria-disabled="false" class="nhsuk-button patient-search-form__button" type="submit">Find a patient</button>
+      </form>
+    </div>
+
+  </main>
+
+</div>
+{% endblock %}

@@ -1,0 +1,334 @@
+{% extends './_includes/layout-application.html' %}
+{% set primarynav = 'patient' %}
+
+{% block pageTitle %}
+  Patient Details - {{ serviceName }}
+{% endblock %}
+
+{% block content %}
+
+<div class="main-body-wrapper">
+
+  {%  if data['layout'] === 'oneCol' %}
+  <div class="sidebar__wrapper">
+    {% include './_includes/includes-sidebar-patient.html' %}
+    <div class="sidebar__children">
+  {% endif %}
+
+      <form action="switch-layout" method="POST">
+        <div class="layout-selection-row">
+          <button class="layout-selection-row--right unstyle-button" id="column-layout-toggle" role="button" tabindex="0">◫ {% if data['layout'] === 'oneCol' %}Two {% else %}One {% endif %}column view</button>
+        </div>
+      </form>
+
+      <section class="data-section" tabindex="-1" title="Key demographic information">
+        <div id="key-demographic">
+
+          {% if data['layout'] === 'twoCol' %}
+
+            <div class="two-column-row">
+              <div class="two-column-col two-column-col--left two-column-col--mb-0">
+                {% include "./_panels/panel-name.html" %}
+                {% include "./_panels/panel-key-details.html" %}
+                {% include "./_panels/panel-scr-consent.html" %}
+              </div>
+              <div class="two-column-col two-column-col--right two-column-col--mb-0">
+                {% include "./_panels/panel-addresses.html" %}
+                {% include "./_panels/panel-contact-prefs.html" %}
+              </div>
+            </div>
+
+          {% else %}
+
+            <h2 class="nhsuk-u-margin-bottom-0 no-outline" id="key-demographic-heading" tabindex="-1">Key demographic information</h2>
+            {% include "./_panels/panel-name.html" %}
+            {% include "./_panels/panel-key-details.html" %}
+            {% include "./_panels/panel-scr-consent.html" %}
+            {% include "./_panels/panel-addresses.html" %}
+            {% include "./_panels/panel-contact-prefs.html" %}
+
+          {% endif %}
+
+        </div>
+      </section>
+
+      <section class="data-section" tabindex="-1" title="GP and care providers" {% if data['layout'] === 'twoCol' %}style="display: none;"{% endif %}>
+        <div id="gp-care-providers">
+
+          {% if data['layout'] === 'twoCol' %}
+
+            <div class="two-column-row">
+              <div class="two-column-col two-column-col--left two-column-col--mb-0">
+                {% include "./_panels/panel-general-practice.html" %}
+                {% include "./_panels/panel-nominated-pharmacy.html" %}
+                {% include "./_panels/panel-dispensing-doctor.html" %}
+              </div>
+              <div class="two-column-col two-column-col--right two-column-col--mb-0">
+                {% include "./_panels/panel-gps-registered.html" %}
+                {% include "./_panels/panel-nominated-medical-appliance.html" %}
+              </div>
+            </div>
+
+          {% else %}
+
+            <h2 class="nhsuk-u-margin-bottom-0 no-outline" id="gp-care-providers-heading" tabindex="-1">GP and care providers</h2>
+            {% include "./_panels/panel-general-practice.html" %}
+            {% include "./_panels/panel-gps-registered.html" %}
+            {% include "./_panels/panel-nominated-pharmacy.html" %}
+            {% include "./_panels/panel-dispensing-doctor.html" %}
+            {% include "./_panels/panel-nominated-medical-appliance.html" %}
+
+          {% endif %}
+
+
+        </div>
+      </section>
+
+      <section class="data-section" tabindex="-1" title="Contacts and next of kin" {% if data['layout'] === 'twoCol' %}style="display: none;"{% endif %}>
+        <div id="contacts-and-next-of-kin">
+
+          {% if data['layout'] === 'twoCol' %}
+
+            <div class="two-column-row">
+              <div class="two-column-col two-column-col--left two-column-col--mb-0">
+                {% if patient.nokName !== "Not Recorded" or patient.nokName !== "" %}
+                  {% include "./_panels/panel-next-of-kin.html" %}
+                {% endif %}
+
+                {% if patient.contact3Name !== "" %}
+                  {% include "./_panels/panel-contacts2.html" %}
+                {% endif %}
+
+                {% if patient.contact5Name !== "" %}
+                  {% include "./_panels/panel-contacts4.html" %}
+                {% endif %}
+
+              </div>
+              <div class="two-column-col two-column-col--right two-column-col--mb-0">
+                {% if patient.contact2Name !== "" %}
+                {% include "./_panels/panel-contacts.html" %}
+                {% endif %}
+
+                {% if patient.contact4Name !== "" %}
+                {% include "./_panels/panel-contacts3.html" %}
+                {% endif %}
+              </div>
+            </div>
+
+          {% else %}
+
+            <h2 class="nhsuk-u-margin-bottom-0 no-outline" id="contacts-and-next-of-kin-heading" tabindex="-1">Contacts and next of kin</h2>
+            {% if patient.nokName !== "Not Recorded" or patient.nokName !== "" %}
+              {% include "./_panels/panel-next-of-kin.html" %}
+              {% if patient.contact2Name !== "Not Recorded" or patient.contact2Name !== "" %}
+                {% include "./_panels/panel-contacts.html" %}
+              {% endif %}
+            {% else %}
+              {% include "./_panels/panel-contacts.html" %}
+            {% endif %}
+
+            {% if patient.contact3Name !== "" %}
+              {% include "./_panels/panel-contacts2.html" %}
+            {% endif %}
+
+            {% if patient.contact4Name !== "" %}
+              {% include "./_panels/panel-contacts3.html" %}
+            {% endif %}
+
+            {% if patient.contact5Name !== "" %}
+              {% include "./_panels/panel-contacts4.html" %}
+            {% endif %}
+
+          {% endif %}
+
+        </div>
+      </section>
+
+      {% if data.perms['ovm'] !== "no" %}
+      <section class="data-section" tabindex="-1" title="Chargeable status" {% if data['layout'] === 'twoCol' %}style="display: none;"{% endif %}>
+        <div id="charge-status-panel">
+
+          {% if data['layout'] === 'twoCol' %}
+
+            <div class="two-column-row">
+              <div class="two-column-col two-column-col--left">
+                {% include "./_panels/panel-home-office-status.html" %}
+              </div>
+              <div class="two-column-col two-column-col--right">
+                {% include "./_panels/panel-ovm-status.html" %}
+              </div>
+            </div>
+
+          {% else %}
+
+            <h2 class="nhsuk-u-margin-bottom-0 no-outline" id="charge-status-panel-heading" tabindex="-1">Chargeable status</h2>
+            {% include "./_panels/panel-home-office-status.html" %}
+            {% include "./_panels/panel-ovm-status.html" %}
+
+          {% endif %}
+
+        </div>
+      </section>
+      {% endif %}
+
+
+      {% if data['layout'] === 'twoCol' %}
+
+      <section class="data-section" tabindex="-1" title="Flags / Alerts" {% if data['layout'] === 'twoCol' %}style="display: none;"{% endif %}>
+        <div id="flags-data">
+
+          {# count number of available panels #}
+          {% set count = 0 %}
+          {% if patient.cpisFlag === "yes" %}{% set count = count + 1 %}{% endif %}
+          {% if patient.raFlag === "yes" %}{% set count = count + 1 %}{% endif %}
+          {% if patient.fgmFlag === "yes" %}{% set count = count + 1 %}{% endif %}
+          {% if data.perms['bna'] !== "no" %}{% set count = count + 1 %}{% endif %}
+
+          <div class="two-column-row">
+            <div class="two-column-col two-column-col--left">
+
+              {% if patient.dob | calculateAge < 18  %}
+              <div class="" tabindex="-1" title="Child protection information">
+                <div id="cpis-data">
+                  <h2 class="nhsuk-u-margin-bottom-0 no-outline" id="cpis-data-heading" tabindex="-1">Child protection information</h2>
+                  {% include "./_panels/panel-cpi.html" %}
+                </div>
+              </div>
+              {% endif %}
+
+              <div class="" tabindex="-1" title="Reasonable Adjustment Flag">
+                <div id="ra-details">
+                  <h2 class="nhsuk-u-margin-bottom-0 no-outline" id="ra-details-heading" tabindex="-1">Reasonable Adjustment Flag</h2>
+                  {% include "./_panels/panel-ra-details.html" %}
+                </div>
+              </div>
+
+              {% if count === 1 or count === 3 %}
+              {% if data.perms['bna'] !== "no" %}
+              <div class="" tabindex="-1" title="Birth Notification">
+                <div id="birth-notification-panel">
+                  <h2 class="nhsuk-u-margin-bottom-0 no-outline" id="birth-notification-panel-heading" tabindex="-1">Birth Notification</h2>
+                  {% include "./_panels/panel-birth-notifications.html" %}
+                </div>
+              </div>
+              {% endif %}
+              {% endif %}
+
+            </div>
+
+
+            <div class="two-column-col two-column-col--right">
+
+              {% if patient.fgmFlag === "yes" %}
+              <div class="" tabindex="-1" title="Female Genital Mutilation - Information Sharing (FGM-IS)">
+                <div id="female-genital-mutilation-panel">
+                  <h2 class="nhsuk-u-margin-bottom-0 no-outline" id="female-genital-mutilation-panel-heading" tabindex="-1">Female Genital Mutilation - Information Sharing (FGM-IS)</h2>
+                  {% include "./_panels/panel-fgm-details.html" %}
+                </div>
+              </div>
+              {% endif %}
+
+              {% if count === 2 or count === 4 %}
+                {% if data.perms['bna'] !== "no" %}
+                <div class="" tabindex="-1" title="Birth Notification">
+                  <div id="birth-notification-panel">
+                    <h2 class="nhsuk-u-margin-bottom-0 no-outline" id="birth-notification-panel-heading" tabindex="-1">Birth Notification</h2>
+                    {% include "./_panels/panel-birth-notifications.html" %}
+                  </div>
+                </div>
+                {% endif %}
+              {% endif %}
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {% else %}
+
+        {% if patient.dob | calculateAge < 18  %}
+        <section class="data-section" tabindex="-1" title="Child protection information">
+          <div id="cpis-data">
+            <h2 class="nhsuk-u-margin-bottom-0 no-outline" id="cpis-data-heading" tabindex="-1">Child protection information</h2>
+            {% include "./_panels/panel-cpi.html" %}
+          </div>
+        </section>
+        {% endif %}
+
+        {% if data.perms['bna'] !== "no" %}
+        <section class="data-section" tabindex="-1" title="Birth Notification">
+          <div id="birth-notification-panel">
+            <h2 class="nhsuk-u-margin-bottom-0 no-outline" id="birth-notification-panel-heading" tabindex="-1">Birth Notification</h2>
+            {% include "./_panels/panel-birth-notifications.html" %}
+          </div>
+        </section>
+        {% endif %}
+
+        {% if patient.gender === "female" and patient.fgmFlag === "yes" %}
+        <section class="data-section" tabindex="-1" title="Female Genital Mutilation - Information Sharing (FGM-IS)">
+          <div id="female-genital-mutilation-panel">
+            <h2 class="nhsuk-u-margin-bottom-0 no-outline" id="female-genital-mutilation-panel-heading" tabindex="-1">Female Genital Mutilation - Information Sharing (FGM-IS)</h2>
+            {% include "./_panels/panel-fgm-details.html" %}
+          </div>
+        </section>
+        {% endif %}
+
+        <section class="data-section" tabindex="-1" title="Reasonable Adjustment Flag">
+          <div id="ra-details">
+            <h2 class="nhsuk-u-margin-bottom-0 no-outline" id="ra-details-heading" tabindex="-1">Reasonable Adjustment Flag</h2>
+            {% include "./_panels/panel-ra-details.html" %}
+          </div>
+        </section>
+
+      {% endif %}
+
+
+  {%  if data['layout'] === 'oneCol' %}
+    </div>
+  </div>
+  {% endif %}
+
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Check if the target node exists and set up the observer only if it does
+    var targetNode = document.getElementById('subnav');
+    if (!targetNode) {
+      console.log('The target element #subnav does not exist.');
+      return;
+    }
+
+    // Observer Callback Function
+    var callback = function(mutationsList, observer) {
+      for (let mutation of mutationsList) {
+        if (mutation.type === 'childList' && mutation.addedNodes.length) {
+          mutation.addedNodes.forEach(node => {
+            // Check if the node is an element and matches the desired selector
+            if (node.nodeType === 1 && node.getAttribute('data-target') === '#{{ target | safe }}') {
+
+              node.click();  // Perform the click action
+              console.log('Automatic click performed on:', node);
+
+              // Optional: Disconnect the observer if no longer needed
+              observer.disconnect();
+              console.log('Observer disconnected after successful operation.');
+            } else {
+              console.log(`Node type: ${node.nodeType}, Content: ${node.outerHTML}`);
+            }
+          });
+        }
+      }
+    };
+
+    // Create and configure the observer
+    var observer = new MutationObserver(callback);
+    var config = { childList: true, subtree: true };
+
+    // Start the observation
+    observer.observe(targetNode, config);
+  });
+</script>
+{% endblock %}

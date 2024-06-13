@@ -1,0 +1,41 @@
+
+.nhsuk-button-group {
+  margin-bottom: 5px;
+  display: flex;
+  //flex-direction: row;
+  align-items: start;
+  @include mq($from: tablet) {
+    margin-right: -15px;
+    margin-bottom:15px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items:baseline
+  }
+}
+
+.nhsuk-button-group .nhsuk-link {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.1875;
+  display: inline-block;
+  max-width: 100%;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  text-align:center;
+  @include mq($from: tablet) {
+    text-align:left;
+    font-size: 1.1875rem;
+    line-height:1;
+    margin-right:15px
+  }
+}
+
+.nhsuk-button-group .nhsuk-button {
+  margin-bottom:17px;
+  @include mq($from: tablet) {
+    margin-right:15px
+  }
+}
+

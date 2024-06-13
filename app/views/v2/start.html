@@ -1,0 +1,54 @@
+{% extends 'layouts/layout.html' %}
+
+{% block pageTitle %}
+Prototype version 2 - {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+<section class="nhsuk-hero">
+
+  <div class="nhsuk-width-container nhsuk-hero--border">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+        <div class="nhsuk-hero__wrapper">
+          <h1 class="nhsuk-u-margin-bottom-3">NCRS prototype</h1>
+          <p class="nhsuk-body-l nhsuk-u-margin-bottom-0">Version 2</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <div class="section">
+      <h2 class='nhs-heading-l'>About this prototype</h2>
+      <p>This prototype is to test a new date input component that addresses some of the recent feedback around the inability to paste dates into the search pages.</p>
+    </div>
+
+    <a class="nhsuk-button" href="roles?action=none">Begin prototype</a><br>
+
+    <a class="" href="roles?action=none&devMode=true">Run prototype in DevMode</a>
+
+  </div>
+
+  <div class="nhsuk-grid-column-one-third">
+    <div class="nhsuk-card">
+      <div class="nhsuk-card__content">
+        <h2 class="nhsuk-heading-m">Deeper links</h2>
+        <p><a href="search-basic">Basic search</a></p>
+        <p><a href="search-basic">Advanced Search</a></p>
+        <p><a href="patient-overview">Patient overview</a></p>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

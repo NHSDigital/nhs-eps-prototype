@@ -1,0 +1,280 @@
+.data-field__content--none {
+  color: $color_nhsuk-grey-1;
+  font-size: 14px;
+  font-size: .875rem;
+  font-style: italic;
+  line-height: 1.71429;
+  @include mq($from: tablet) {
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}
+
+.nhsuk-card {
+  box-shadow: 0 4px 0 0 #7686924d
+}
+
+.nhsuk-card .role-details {
+  margin-bottom: 4px
+}
+
+.nhsuk-card .role-permissions {
+  margin-bottom: 0
+}
+
+.data-panel:first-of-type {
+  margin-top: 8px
+}
+
+@media(min-width: 40.0625em) {
+  .data-panel:first-of-type {
+    margin-top:16px
+  }
+}
+
+.data-panel:last-of-type {
+  margin-bottom: 48px
+}
+
+@media(min-width: 40.0625em) {
+  .data-panel:last-of-type {
+    margin-bottom:56px
+  }
+}
+
+.data-panel__subtitle {
+  color: #d5281b;
+  font-size: 16px;
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.5
+}
+
+@media(min-width: 40.0625em) {
+  .data-panel__subtitle {
+    font-size:19px;
+    font-size: 1.1875rem;
+    line-height: 1.47368
+  }
+}
+
+@media print {
+  .data-panel__subtitle {
+    font-size: 14pt;
+    line-height: 1.15
+  }
+}
+
+.data-panel__edit-button {
+  font-size: 16px;
+  font-size: 1rem;
+  height: -webkit-min-content;
+  height: min-content;
+  line-height: 1.5;
+  margin-left: 8px;
+  text-decoration: none
+}
+
+@media(min-width: 40.0625em) {
+  .data-panel__edit-button {
+    font-size:19px;
+    font-size: 1.1875rem;
+    line-height: 1.47368
+  }
+}
+
+@media print {
+  .data-panel__edit-button {
+    font-size: 14pt;
+    line-height: 1.15
+  }
+}
+
+@media(min-width: 40.0625em) {
+  .data-panel__edit-button {
+    margin-left:8px
+  }
+}
+
+.data-panel__wrapper {
+  outline: none
+}
+
+.data-panel__header {
+  align-items: baseline;
+  display: flex;
+  justify-content: flex-start
+}
+
+.data-panel .nhsuk-expander .nhsuk-details__summary,.data-panel .nhsuk-expander .nhsuk-details__text {
+  padding-left: 0;
+  padding-right: 0
+}
+
+.data-panel .nhsuk-expander {
+  border: 0
+}
+
+.data-section:focus {
+  outline: 0
+}
+
+.summary-list-form-row {
+  display: inline-table;
+  width: 100%
+}
+
+.summary-list-form-row>.nhsuk-summary-list__key {
+  width: 30%
+}
+
+.summary-list-form-row>.nhsuk-summary-list__value {
+  width: 60%
+}
+
+.summary-list-form-row>.nhsuk-summary-list__actions {
+  width: 10%
+}
+
+.nested-summary-list>.nhsuk-summary-list__row:last-of-type>.nhsuk-summary-list__actions,.nested-summary-list>.nhsuk-summary-list__row:last-of-type>.nhsuk-summary-list__value {
+  border-bottom: 0
+}
+
+.long-email-wrap {
+  word-break: break-all
+}
+
+.left-padding {
+  padding-left: 15px
+}
+
+.left-padding__line-spacing {
+  line-height: 50px
+}
+
+.align-right {
+  margin-left: auto;
+  margin-right: 0
+}
+
+.two-column-row {
+  display: flex;
+  margin-bottom: 56px
+}
+
+.two-column-col {
+  flex-basis: 50%;
+  max-width: 50%
+}
+
+.two-column-col--mb-0 * {
+  margin-bottom: 0!important
+}
+
+.two-column-col--left {
+  padding-right: 8px
+}
+
+.two-column-col--right {
+  padding-left: 8px
+}
+
+.data-field {
+  margin-bottom: 20px;
+  padding-right: 20px
+}
+
+.data-field__sub-group {
+  border-bottom: 1px solid #c8cfd3;
+  margin-bottom: 5px;
+  padding-bottom: 5px
+}
+
+.data-field__sub-group:last-child {
+  border-bottom: 0;
+  margin-bottom: 0;
+  padding-bottom: 0
+}
+
+.data-field__content {
+  color: #4c6272;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.5;
+  padding-bottom: 40px;
+  word-break: break-word
+}
+
+@media(min-width: 40.0625em) {
+  .data-field__content {
+    font-size:19px;
+    font-size: 1.1875rem;
+    line-height: 1.47368
+  }
+}
+
+@media print {
+  .data-field__content {
+    font-size: 14pt;
+    line-height: 1.15
+  }
+}
+
+.data-field__content--none {
+  color: #4c6272;
+  font-size: 14px;
+  font-size: .875rem;
+  font-style: italic;
+  line-height: 1.71429
+}
+
+@media(min-width: 40.0625em) {
+  .data-field__content--none {
+    font-size:16px;
+    font-size: 1rem;
+    line-height: 1.5
+  }
+}
+
+@media print {
+  .data-field__content--none {
+    font-size: 14pt;
+    line-height: 1.2
+  }
+}
+
+.data-field__note {
+  color: #4c6272;
+  font-size: 12px;
+  font-size: .75rem;
+  font-style: italic;
+  line-height: 1.66667
+}
+
+@media(min-width: 40.0625em) {
+  .data-field__note {
+    font-size:14px;
+    font-size: .875rem;
+    line-height: 1.71429
+  }
+}
+
+@media print {
+  .data-field__note {
+    font-size: 12pt;
+    line-height: 1.2
+  }
+}
+
+.tooltip-wrapper {
+  align-content: bottom;
+  padding-left: 3px
+}
+
+.warning-triangle-icon {
+  height: 20px;
+  margin-bottom: -4px;
+  margin-right: 3px;
+  width: 20px
+}

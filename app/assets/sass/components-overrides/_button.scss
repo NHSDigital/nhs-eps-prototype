@@ -1,0 +1,33 @@
+button {
+  border-radius: 5px;
+  background: transparent;
+  border: 0;
+  cursor: auto;
+  padding: 0;
+}
+
+.copy-button {
+  font-size: 12px;
+  font-size: .75rem;
+  line-height: 1.6667;
+  margin: 0 1rem;
+  padding-bottom: 0;
+  padding-top: 0;
+  @include mq($from: tablet) {
+    font-size: 14px;
+    font-size: .875rem;
+    line-height: 1.71429;
+  }
+}
+
+.button__red {
+  background-color: $color_nhsuk-red;
+  box-shadow: 0 4px 0 #911b12;
+  color: white;
+}
+
+.button__blue {
+  background-color: $color_nhsuk-blue;
+  box-shadow: 0 4px 0 #00376c;
+  color: white;
+}

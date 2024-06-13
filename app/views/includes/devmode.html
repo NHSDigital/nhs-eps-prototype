@@ -1,0 +1,17 @@
+<div class="proto-error">
+
+  <div class="">
+    <div class="proto-action-icon"></div>
+    <div class="proto-action-text">Version:</div>
+
+    {% for i in range(versionLimit) %}
+
+    <form style="display:inline-block;vertical-align:top;" action="switch" method="post">
+      <input type="hidden" name="version" value="{{ i+1 }}" />
+      <button href="" class="proto-error-text-small {% if i === data['version']-1 %}active{% endif %}">{{ i+1 }}</button>
+    </form>
+
+    {% endfor %}
+  </div>
+
+</div>

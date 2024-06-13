@@ -1,0 +1,145 @@
+{% extends './_includes/layout-application.html' %}
+{% set primarynav = 'clinical' %}
+{% set hideJump = 'true' %}
+{% set hideMobileNav = 'true' %}
+
+{% block pageTitle %}
+Patient Details - {{ serviceName }}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+
+  <div class="main-body-wrapper">
+    <div class="clinicals-page">
+      <div class="nhsuk-warning-callout">
+        <h2 class="nhsuk-warning-callout__label">
+          <span role="text"><span class="nhsuk-u-visually-hidden">Important: </span>No Record exists</span>
+        </h2>
+        <p>No Summary Care Record exists for this patient. This may be because the patient has opted out of having a Summary Care Record.</p>
+      </div>
+    </div>
+  </div>
+
+<!--  <div class="main-body-wrapper">-->
+<!--    <div class="sidebar__wrapper">-->
+<!--      {% include './_includes/includes-sidebar-clinical.html' %}-->
+<!--      <div class="sidebar__children">-->
+
+<!--        <section class="data-section" data-intersect-id="5670ed3b-f70b-4dd4-859e-4ba820b271f8" tabindex="-1" title="Key demographic information">-->
+<!--          <div id="key-summary-care">-->
+<!--            <h2 class="nhsuk-u-margin-bottom-0 no-outline" id="summary-care-heading" tabindex="-1">Summary Care Record</h2>-->
+<!--            <div class="data-panel__wrapper no-outline" data-intersect-id="998d587c-4bb6-4ee2-bd69-336023dc4e9c" tabindex="-1">-->
+
+<!--              <div class="nhsuk-card data-panel" id="allergies-panel">-->
+<!--                <div class="nhsuk-card__content">-->
+<!--                  <h3 class="nhsuk-card__heading">-->
+<!--                    <span>Allergies & sensitivities</span>-->
+<!--                  </h3>-->
+<!--                  <div class="nhsuk-table-responsive">-->
+<!--                    <table class="nhsuk-table">-->
+<!--                      <caption class="nhsuk-table__caption nhsuk-u-visually-hidden">Allergies, sensitivites and supporting information</caption>-->
+<!--                      <thead class="nhsuk-table__head">-->
+<!--                        <tr class="nhsuk-table__row">-->
+<!--                          <th class="nhsuk-table__header" scope="col">Date</th>-->
+<!--                          <th class="nhsuk-table__header" scope="col">Description</th>-->
+<!--                          <th class="nhsuk-table__header" scope="col">Certainty</th>-->
+<!--                          <th class="nhsuk-table__header" scope="col">Severity</th>-->
+<!--                          <th class="nhsuk-table__header" scope="col">Supporting information</th>-->
+<!--                        </tr>-->
+<!--                      </thead>-->
+<!--                      <tbody class="nhsuk-table__body">-->
+<!--                      <tr class="nhsuk-table__row">-->
+<!--                        <td class="nhsuk-table__cell">08-Jan-1995</td>-->
+<!--                        <td class="nhsuk-table__cell ">House dust mite allergy</td>-->
+<!--                        <td class="nhsuk-table__cell "></td>-->
+<!--                        <td class="nhsuk-table__cell "></td>-->
+<!--                        <td class="nhsuk-table__cell ">Allergic rhinitis</td>-->
+<!--                      </tr>-->
+<!--                      </tbody>-->
+<!--                    </table>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+
+<!--              <div class="data-panel__wrapper no-outline" data-intersect-id="f43871de-1a46-490a-8f45-9f3eb2b57f37" tabindex="-1">-->
+
+<!--                <div class="nhsuk-card data-panel" id="medications-panel">-->
+<!--                  <div class="nhsuk-card__content">-->
+<!--                    <h3 class="nhsuk-card__heading">-->
+<!--                      <span>Acute medications (issued in the last 12 months)</span>-->
+<!--                    </h3>-->
+<!--                    <div class="nhsuk-table-responsive">-->
+<!--                      <table class="nhsuk-table">-->
+<!--                        <caption class="nhsuk-table__caption nhsuk-u-visually-hidden">Acute medications issued in the last 12 months</caption>-->
+<!--                        <thead class="nhsuk-table__head">-->
+<!--                          <tr class="nhsuk-table__row">-->
+<!--                            <th class="nhsuk-table__header" scope="col">Type</th>-->
+<!--                            <th class="nhsuk-table__header" scope="col">Date</th>-->
+<!--                            <th class="nhsuk-table__header" scope="col">Medication item</th>-->
+<!--                            <th class="nhsuk-table__header" scope="col">Dosage instructions</th>-->
+<!--                            <th class="nhsuk-table__header" scope="col">Quantity</th>-->
+<!--                          </tr>-->
+<!--                        </thead>-->
+<!--                        <tbody class="nhsuk-table__body">-->
+<!--                        <tr class="nhsuk-table__row">-->
+<!--                          <td class="nhsuk-table__cell">Acute Medication</td>-->
+<!--                          <td class="nhsuk-table__cell ">26-May-2018</td>-->
+<!--                          <td class="nhsuk-table__cell ">Diclofenac 75mg tablets</td>-->
+<!--                          <td class="nhsuk-table__cell ">take three daily</td>-->
+<!--                          <td class="nhsuk-table__cell ">28 tablets</td>-->
+<!--                        </tr>-->
+<!--                        <tr class="nhsuk-table__row">-->
+<!--                          <td class="nhsuk-table__cell">Acute Medication</td>-->
+<!--                          <td class="nhsuk-table__cell ">01-Oct-2018</td>-->
+<!--                          <td class="nhsuk-table__cell ">Ranitidine 150mg tablets</td>-->
+<!--                          <td class="nhsuk-table__cell ">take once daily at bedtime</td>-->
+<!--                          <td class="nhsuk-table__cell ">28 tablets</td>-->
+<!--                        </tr>-->
+<!--                        </tbody>-->
+<!--                      </table>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+
+
+<!--                <div class="data-panel__wrapper no-outline" data-intersect-id="f43871de-1a46-490a-8f45-9f3eb2b57f37" tabindex="-1">-->
+
+<!--                  <div class="nhsuk-card data-panel" id="diagnoses-panel">-->
+<!--                    <div class="nhsuk-card__content">-->
+<!--                      <h3 class="nhsuk-card__heading">-->
+<!--                        <span>Diagnoses</span>-->
+<!--                      </h3>-->
+<!--                      <div class="nhsuk-table-responsive">-->
+<!--                        <table class="nhsuk-table">-->
+<!--                          <caption class="nhsuk-table__caption nhsuk-u-visually-hidden">Diagnoses</caption>-->
+<!--                          <thead class="nhsuk-table__head">-->
+<!--                            <tr class="nhsuk-table__row">-->
+<!--                              <th class="nhsuk-table__header" scope="col">Date</th>-->
+<!--                              <th class="nhsuk-table__header" scope="col">Description</th>-->
+<!--                              <th class="nhsuk-table__header" scope="col">Additional information</th>-->
+<!--                            </tr>-->
+<!--                          </thead>-->
+<!--                          <tbody class="nhsuk-table__body">-->
+<!--                          <tr class="nhsuk-table__row">-->
+<!--                            <td class="nhsuk-table__cell">05-Jan-201</td>-->
+<!--                            <td class="nhsuk-table__cell">Glaucoma</td>-->
+<!--                            <td class="nhsuk-table__cell"></td>-->
+<!--                          </tr>-->
+<!--                          </tbody>-->
+<!--                        </table>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </div>-->
+
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </section>-->
+
+
+<!--      </div>-->
+
+      {% endblock %}

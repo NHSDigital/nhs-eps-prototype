@@ -1,0 +1,45 @@
+
+.nhsuk-footer__list-item-link {
+  color: $color_nhsuk-grey-1;
+}
+.nhsuk-footer__list-item-link:visited {
+  color: $color_nhsuk-grey-1;
+}
+.nhsuk-footer__list-item-link:hover {
+  color: $color_nhsuk-grey-1;
+}
+
+.footer__confidential {
+  background-color: #212b32;
+  color: #fff;
+  font-size: 14px;
+  font-size: .875rem;
+  line-height: 1.71429;
+  padding: 8px 16px;
+  @include mq($from: tablet) {
+    font-size:16px;
+    font-size: 1rem;
+    line-height: 1.5;
+    padding-bottom: 8px;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 8px
+  }
+}
+
+@media print {
+  .footer__confidential {
+    font-size: 14pt;
+    line-height: 1.2
+  }
+}
+
+.gdpr-html {
+  padding: 16px;
+  @include mq($from: tablet) {
+    padding-bottom:24px;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 24px;
+  }
+}

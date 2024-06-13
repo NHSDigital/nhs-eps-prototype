@@ -1,0 +1,23 @@
+{% extends './_includes/layout-application.html' %}
+{% set primarynav = 'documents' %}
+{% set hideJump = 'true' %}
+{% set hideMobileNav = 'true' %}
+
+{% block pageTitle %}
+Patient Overview - {{ serviceName }}
+{% endblock %}
+
+{% block content %}
+
+<div class="main-body-wrapper">
+  <div class="nrl-page">
+    <div class="nhsuk-warning-callout">
+      <h2 class="nhsuk-warning-callout__label">
+        <span role="text"><span class="nhsuk-u-visually-hidden">Important: </span>No Entries</span>
+      </h2>
+      <p>There are no entries available for this patient.</p></div>
+  </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,176 @@
+{% extends "layouts/full-width-template.html" %}
+
+{% block pageTitle %}
+  {{ serviceName }}
+{% endblock %}
+
+
+{% block header %}
+  {% include "./includes-full-width-header.html" %}
+
+  {% if hideNav !== 'true' %}
+    {% include "./includes-patient-banner.html" %}
+    {% include "./includes-patient-chargeable-status.html" %}
+    {% include './includes-primary-nav.html' %}
+  {% endif %}
+
+{% endblock %}
+
+
+
+{% block bodyEnd %}
+<style>
+  .two-column-col--mb-0 * {
+    margin-bottom: 7px !important;
+  }
+</style>
+
+<div class="modal-overlay" id="modal_window" aria-hidden="true" role="dialog" aria-labelledby="modal_title">
+  <div class="modal-content" id="modal_holder" role="document">
+
+    <div id="modal-form">
+
+      <h2 class="nhsuk-modal__heading">Are you sure you want to leave?</h2>
+
+      <div class="two-column-row" style="margin-bottom: 0;">
+        <div class="two-column-col two-column-col--left two-column-col--mb-0" >
+          <p class="nhsuk-modal__description">We are continously improving NCRS and listening to feedback from our users. <br><br><strong>A new 2 column layout</strong> is now available in the patient tab greatly reducing the amount of scrolling and clicking required.</p>
+          <div class="nhsuk-form-group nhsuk-u-margin-top-6">
+
+            <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--s">
+                <h1 class="nhsuk-fieldset__heading">
+                  What would you like to do?
+                </h1>
+              </legend>
+
+              <div class="nhsuk-radios nhsuk-radios--inline nhsuk-radios--conditional">
+
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="decision-ncrs" name="decision" type="radio" value="ncrs">
+                  <label class="nhsuk-label nhsuk-radios__label" for="decision-ncrs">
+                    Try the new feature in NCRS
+                  </label>
+                </div>
+
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="decision-scra" name="decision" type="radio" value="scra" aria-controls="conditional-contact-1" aria-expanded="false">
+                  <label class="nhsuk-label nhsuk-radios__label" for="decision-scra">
+                    Use SCRa instead
+                  </label>
+                </div>
+
+                <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-1">
+
+                  <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="reason">
+                      Let us know why are you chosing to use SCRa?
+                    </label>
+                    <input class="nhsuk-input " id="reason" name="reason" type="text">
+                  </div>
+
+                </div>
+
+              </div>
+            </fieldset>
+
+          </div>
+
+          <a class="nhsuk-button" type="submit" href="javascript:submitsForm()">Continue</a>
+        </div>
+        <div class="two-column-col two-column-col--right two-column-col--mb-0">
+
+          <figure>
+            <img src="/images/2col.svg" class="nhsuk-image__img" alt="An illustative example of the new 2 column layout">
+            <figcaption>The new 2 column layout shows more information on the single screen</figcaption>
+          </figure>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div id="modal-thanks" style="display:none;">
+
+      <h2 class="nhsuk-heading-l">Thank you for your feedback</h2>
+
+      <div class="nhsuk-warning-callout">
+        <h3 class="nhsuk-warning-callout__label">Please note</h3>
+        <p>
+          From Monday 3 June 2024, SCRa will no longer be available.
+        </p>
+      </div>
+      <div class="nhsuk-button-group">
+        <button class="nhsuk-button nhsuk-button--disabled" id="return" type="submit" disabled href="javascript:submitsForm()">Continue to SCRa</button>
+        <a class="nhsuk-link" href="">Cancel</a>
+      </div>
+
+    </div>
+
+    <button class="btn-close" id="modal_close" >x</button>
+
+    </div>
+
+  </div> <!-- end .modal-content -->
+</div> <!-- end .modal-overlay -->
+
+
+
+  {% if data['devMode'] === 'true' %}
+    {% include "includes/devmode.html" %}
+  {% endif %}
+
+  {% block scripts %}
+    {% include "includes/scripts.html" %}
+
+    {% block pageScripts %}
+      <script>
+        function submitsForm() {
+
+          let radio1 = document.getElementById('decision-ncrs');
+          let radio2 = document.getElementById('decision-scra');
+
+          if (radio1.checked) {
+            document.getElementById('modal_close').click();
+          } else if (radio2.checked) {
+            // countdownTime = 6
+
+            const timer = setInterval(() => {
+              countdownTime--; // Decrease the countdown time
+              countdownButton.innerText = `Wait ${countdownTime} seconds`; // Update the button text
+
+              if (countdownTime <= 0) {
+                clearInterval(timer); // Stop the timer
+                countdownButton.disabled = false; // Enable the button
+                countdownButton.innerText = 'Continue to SCRa'; // Update the button text to indicate it can be clicked
+                countdownButton.classList.remove('nhsuk-button--disabled');
+
+              }
+            }, 1000);
+
+            document.getElementById('modal-form').style.display = 'none'
+            document.getElementById('modal-thanks').style.display = 'block'
+            // document.getElementById('modal_close').classList.add("nhsuk-button")
+            document.getElementById('modal_close').innerHTML = ""
+
+          } else {
+
+          }
+        }
+
+        const countdownButton = document.getElementById('return');
+
+        // Set the countdown time in seconds
+        let countdownTime = 5;
+
+        // Update the button text to show the countdown
+        countdownButton.innerText = `Wait ${countdownTime} seconds`;
+
+        // Start a timer that counts down every second
+
+      </script>
+
+
+{% endblock %}
+{% endblock %}
+{% endblock %}

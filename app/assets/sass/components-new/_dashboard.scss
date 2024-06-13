@@ -1,0 +1,249 @@
+.dashboard-tiles {
+  padding-bottom: 16px
+}
+
+@media(min-width: 40.0625em) {
+  .dashboard-tiles {
+    padding-bottom:24px
+  }
+}
+
+.dashboard-ribbon {
+  margin-left: 1px;
+  margin-right: 1px
+}
+
+.dashboard-card {
+  margin-bottom: 8px;
+  margin-top: 8px
+}
+
+@media(min-width: 40.0625em) {
+  .dashboard-card {
+    margin-bottom:8px;
+    margin-top: 8px
+  }
+}
+
+.dashboard-card .nhsuk-care-card__content {
+  min-height: 180px
+}
+
+.dashboard-card .nhsuk-care-card__content a:hover {
+  background-color: #ffeb3b;
+  box-shadow: 0 -2px #ffeb3b,0 4px #212b32;
+  color: #212b32;
+  outline: 4px solid #0000;
+  text-decoration: none
+}
+
+.nhsuk-ribbon-link {
+  align-items: center;
+  border: none;
+  border-bottom: 4px solid;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  font-size: 20px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  justify-content: flex-start;
+  line-height: 1.4;
+  outline: none!important;
+  padding: 8px;
+  width: 100%;
+  text-decoration: none;
+  text-align: center;
+  &:visited {
+    color: #212b32;
+    text-decoration: none;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  .nhsuk-ribbon-link {
+    font-size:24px;
+    font-size: 1.5rem;
+    line-height: 1.33333;
+    padding-bottom: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 8px
+  }
+}
+
+@media print {
+  .nhsuk-ribbon-link {
+    font-size: 18pt;
+    line-height: 1.15
+  }
+}
+
+.nhsuk-ribbon-link:active,.nhsuk-ribbon-link:focus,.nhsuk-ribbon-link:hover {
+  outline: none!important
+}
+
+.nhsuk-ribbon-link:hover {
+  text-decoration: underline
+}
+
+.nhsuk-ribbon-link:active {
+  border-bottom: 0 solid;
+  margin-top: 4px;
+  text-decoration: none
+}
+
+.nhsuk-ribbon-link::-moz-focus-inner {
+  border: 0
+}
+
+.nhsuk-ribbon-link__icon {
+  margin-left: 4px;
+  margin-right: 8px
+}
+
+@media (min-width: 40.0625em) {
+  .nhsuk-ribbon-link__icon {
+    margin-left:4px;
+    margin-right: 8px
+  }
+}
+
+.nhsuk-ribbon-link--cool {
+  background-color: #fff;
+  border-bottom-color: #005eb8;
+  color: #005eb8
+}
+
+.nhsuk-ribbon-link--cool>svg {
+  fill: #005eb8
+}
+
+.nhsuk-ribbon-link--cool:hover {
+  background-color: #f2f2f2;
+  color: #330072
+}
+
+.nhsuk-ribbon-link--cool:focus {
+  background-color: #ffeb3b;
+  border-bottom-color: #212b32;
+  color: #212b32
+}
+
+.nhsuk-ribbon-link--cool:focus>svg {
+  fill: #212b32
+}
+
+.nhsuk-ribbon-link--cool:active {
+  background-color: #004485;
+  border-left-color: #004485;
+  color: #fff
+}
+
+.nhsuk-ribbon-link--cool:active>svg {
+  fill: #fff;
+  margin-left: none
+}
+
+.nhsuk-ribbon-link--mild {
+  background-color: #ffb81c;
+  border-bottom-color: #e89f00;
+  color: #212b32
+}
+
+.nhsuk-ribbon-link--mild>svg {
+  fill: #212b32
+}
+
+.nhsuk-ribbon-link--mild:hover {
+  background-color: #005eb8;
+  border-bottom-color: #004b93;
+  color: #fff
+}
+
+.nhsuk-ribbon-link--mild:hover>svg {
+  fill: #fff
+}
+
+.nhsuk-ribbon-link--mild:focus {
+  background-color: #004b93;
+  border-bottom-color: #003d78;
+  color: #fff
+}
+
+.nhsuk-ribbon-link--mild:focus>svg {
+  fill: #fff
+}
+
+.nhsuk-ribbon-link--mild:active {
+  background-color: #004b93;
+  border-bottom-color: #003d78;
+  color: #fff
+}
+
+.nhsuk-ribbon-link--mild:active>svg {
+  fill: #fff
+}
+
+.nhsuk-ribbon-link--hot {
+  background-color: #d5281b;
+  border-bottom-color: #a82015;
+  color: #fff
+}
+
+.nhsuk-ribbon-link--hot>svg {
+  fill: #fff
+}
+
+.nhsuk-ribbon-link--hot:hover {
+  background-color: #be2418
+}
+
+.nhsuk-ribbon-link--hot:hover>svg {
+  fill: #fff
+}
+
+.nhsuk-ribbon-link--hot:focus {
+  background-color: #ffeb3b;
+  border-bottom-color: #212b32;
+  color: #212b32
+}
+
+.nhsuk-ribbon-link--hot:focus>svg {
+  fill: #212b32
+}
+
+.nhsuk-ribbon-link--hot:active {
+  background-color: #a82015;
+  border-bottom-color: #003d78;
+  color: #fff
+}
+
+.nhsuk-ribbon-link--hot:active>svg {
+  fill: #fff
+}
+
+.nhsuk-ribbon-link__bar {
+  display: flex;
+  justify-content: space-between
+}
+
+.nhsuk-ribbon-link__bar .nhsuk-ribbon-link {
+  margin-right: 8px
+}
+
+@media (min-width: 40.0625em) {
+  .nhsuk-ribbon-link__bar .nhsuk-ribbon-link {
+    margin-right:16px
+  }
+}
+
+.nhsuk-ribbon-link__bar .nhsuk-ribbon-link:last-of-type {
+  margin-right: 0
+}
+
+@media (min-width: 40.0625em) {
+  .nhsuk-ribbon-link__bar .nhsuk-ribbon-link:last-of-type {
+    margin-right:0
+  }
+}

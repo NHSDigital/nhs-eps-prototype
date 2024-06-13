@@ -2,51 +2,44 @@
 const express = require('express');
 const router = express.Router();
 
+// data switching middleware
+router.use((req, res, next) => {
+  const nhsNumber = req.query.nhsNumber;
+  if (nhsNumber) {
+    req.session.data.nhsNumber = nhsNumber;
+    let patientEntry = req.session.data.patients.find(p => p[nhsNumber]);
+    // and transform data
+    let patient = patientEntry ? patientEntry[nhsNumber] : null;
+    if (patient) {
+      req.session.data.patient = patient;
+      res.locals.patient = patient;
+    } else {
+      console.log("No patient found with that NHS number.");
+    }
+  } else {
+    res.locals.patient = req.session.data.patient;
+  }
+  next();
+});
+
+// data logging middleware
+router.use((req, res, next) => {
+  const log = {
+    method: req.method,
+    url: req.originalUrl,
+    data: req.session.data
+  };
+  // you can enable this in your .env file
+  if (process.env.LOGGING === "TRUE") {
+    console.log(JSON.stringify(log, null, 2));
+  }
+  next();
+})
+
 
 // Add your routes here - above the module.exports line
-
-//Prescriptions and nominated pharmacy
-
-
-router.post('/prescriptions/nominated-pharmacy/choose-type', function (req, res) {
-  let answer = req.body.chooseType;
-  if (answer === 'highStreet') {
-    res.redirect('/prescriptions/nominated-pharmacy/high-street')
-  } else {
-    res.redirect('/prescriptions/nominated-pharmacy/online-only')
-  }
-});
-
-
-
-router.post('/prescriptions/save', function (req, res) {
-
-  req.session.data.prescriptionConfirmed = "True";
-  res.redirect('/prescriptions/order-confirmed')
-
-});
+require("./views/v1/_routes.js")(router);
+require("./views/v2/_routes.js")(router);
+require("./views/live/_routes.js")(router);
 
 module.exports = router;
-
-
-//Messages
-
-
-router.post('/messages/send-a-message', function (req, res) {
-  let answer = req.body.urgentAdvice;
-  if (answer === 'yes') {
-    res.redirect('/messages/urgent')
-  } else {
-    res.redirect('/messages/select-who-to-message')
-  }
-});
-
-
-//Log out and clear data
-
-router.get('/more/hub/log-out', function (req, res) {
-
-  req.session.data = {}
-  res.redirect('/start')
-
-});

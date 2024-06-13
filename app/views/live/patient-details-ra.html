@@ -1,0 +1,144 @@
+{% extends './_includes/layout-application.html' %}
+{% set primarynav = 'patient' %}
+{% set hideMobileNav = 'true' %}
+
+{% block pageTitle %}
+  Patient Details - {{ serviceName }}
+{% endblock %}
+
+{% block content %}
+
+<div class="main-body-wrapper">
+  <div class="row">
+    <div class="col-sm-0 col-md-0 col-lg-0 col-xl-3"></div>
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6">
+      <div class="nhsuk-back-link">
+        <a class="nhsuk-back-link__link" id="ra-details-back-link" href="patient-details" tabindex="0">
+          <svg aria-hidden="true" class="nhsuk-icon nhsuk-icon__chevron-left" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+          </svg>
+          Back to patient information
+        </a>
+      </div>
+      <h1>Reasonable Adjustment Flag</h1>
+      <div class="explanatory-text">
+        <p><b>Please note:</b>
+          <br>
+          To edit an individual impairment or adjustment you must delete it and then add the amended version. It is not possible to add or delete underlying conditions in NCRS.
+        </p>
+      </div>
+      <div class="data-panel__wrapper no-outline" tabindex="-1">
+        <div class="nhsuk-card data-panel" id="ra-category-panel">
+          <div class="nhsuk-card__content">
+            <h3 class="nhsuk-card__heading">
+              <span>Reasonable Adjustments to consider</span>
+            </h3>
+            <p class="nhsuk-body">
+              {% if patient.reasonableAdjustment1 === "Not Recorded" or patient.reasonableAdjustment1 === undefined %}
+                No Reasonable Adjustments have been recorded for this patient. To obtain details of the Reasonable Adjustments, please consider speaking to the patient or their carer directly and/or reviewing their clinical record.</p>
+              {% else %}
+
+              <dl class="nhsuk-summary-list">
+                <div class="nhsuk-summary-list__row ra-data-row">
+                  <dt class="nhsuk-heading-xs ra-info-description-title">{{ patient.reasonableAdjustment1 or 'Requires distraction technique whilst undergoing care procedure' }}</dt>
+                  <dd class="ra-info-section">
+                    <p class="nhsuk-caption-m nhsuk-caption--bottom nhsuk-u-margin-bottom-0">Category: {{ patient.ra1Category or 'Adjustments for Individual Care Requirements' }}</p>
+                  </dd>
+                  <dd class="ra-info-section"><h5 class="ra-supporting-information-label">Supporting information</h5>
+                    <p class="nhsuk-caption-m nhsuk-caption--bottom">{{ patient.ra1SupportingInfo or 'Not Recorded' }}.</p></dd>
+                  <dd class="ra-info-section ra-info-section--delete">
+                    <a class="remove-ra-item-link" id="ra-information-panel-delete-adjustment-link-0" role="button" tabindex="0">Delete</a>
+                  </dd>
+                  <dd class="ra-info-section">
+                    <p class="ra-supporting-information-label">{{ patient.ra1Added or 'Added: 03-May-2023 13:21 by Mr Surname,Firstname at NHS ENGLAND - X26 (X26)' }}</p>
+                  </dd>
+                </div>
+
+                {% if patient.reasonableAdjustment2 !== "Not Recorded" or patient.reasonableAdjustment2 !== undefined %}
+                <div class="nhsuk-summary-list__row ra-data-row">
+                  <dt class="nhsuk-heading-xs ra-info-description-title">{{ patient.reasonableAdjustment2 or 'Requires distraction technique whilst undergoing care procedure' }}</dt>
+                  <dd class="ra-info-section">
+                    <p class="nhsuk-caption-m nhsuk-caption--bottom nhsuk-u-margin-bottom-0">Category: {{ patient.ra2Category or 'Adjustments for Individual Care Requirements' }}</p>
+                  </dd>
+                  <dd class="ra-info-section"><h5 class="ra-supporting-information-label">Supporting information</h5>
+                    <p class="nhsuk-caption-m nhsuk-caption--bottom">{{ patient.ra2SupportingInfo or 'Not Recorded' }}.</p></dd>
+                  <dd class="ra-info-section ra-info-section--delete">
+                    <a class="remove-ra-item-link" id="ra-information-panel-delete-adjustment-link-0" role="button" tabindex="0">Delete</a>
+                  </dd>
+                  <dd class="ra-info-section">
+                    <p class="ra-supporting-information-label">{{ patient.ra2Added or 'Added: 03-May-2023 13:21 by Mr Surname,Firstname at NHS ENGLAND - X26 (X26)' }}</p>
+                  </dd>
+                </div>
+                {% endif %}
+              </dl>
+
+            {% endif %}
+            <button aria-disabled="false" class="nhsuk-button button__blue" id="ra-information-panel-update-adjustment-button" type="submit">Add Reasonable Adjustment</button>
+          </div>
+        </div>
+      </div>
+      <div class="data-panel__wrapper no-outline" tabindex="-1">
+        <div class="nhsuk-card data-panel" id="ra-underlying-conditions-panel">
+          <div class="nhsuk-card__content">
+            <h3 class="nhsuk-card__heading">
+              <span>Underlying conditions</span>
+            </h3>
+            <p class="nhsuk-body">{{ patient.raUnderlyingConditions or 'No underlying conditions were recorded for this patient' }}</p></div>
+        </div>
+      </div>
+      <div class="data-panel__wrapper no-outline" tabindex="-1">
+        <div class="nhsuk-card data-panel" id="ra-impairments-panel">
+          <div class="nhsuk-card__content">
+            <h3 class="nhsuk-card__heading">
+              <span>Equality Act impairments to consider when making adjustments</span>
+            </h3>
+            <p>This patient has a physical or mental impairment with substantial and long-term adverse effects on their ability to perform normal daily activities.</p>
+
+            {% if patient.raImpairmnet1 === "Not Recorded" or patient.raImpairmnet1 === undefined %}
+              <p class="nhsuk-body">No specific impairment has been recorded for this patient yet.</p>
+            {% else %}
+              <div class="nhsuk-summary-list__row ra-data-row">
+                <dt class="nhsuk-heading-xs ra-info-description-title">{{ patient.raImpairmnet1 or 'Vision (partial sight)' }}</dt>
+                <dd class="ra-info-section"><h5 class="ra-supporting-information-label">Supporting information</h5>
+                  <p class="nhsuk-caption-m nhsuk-caption--bottom">{{ patient.raImpairmnet1Info or 'No supporting information added' }}.</p></dd>
+                <dd class="ra-info-section ra-info-section--delete">
+                  <a class="remove-ra-item-link" id="ra-information-panel-delete-adjustment-link-0" role="button" tabindex="0">Delete</a>
+                </dd>
+                <dd class="ra-info-section">
+                  <p class="ra-supporting-information-label">{{ patient.raImpairment1Added or 'Added: 03-May-2023 13:21 by Mr Surname,Firstname at NHS ENGLAND - X26 (X26)' }}</p>
+                </dd>
+              </div>
+            {% endif %}
+
+            <button aria-disabled="false" class="nhsuk-button button__blue" id="ra-information-panel-update-impairment-button" type="submit">Add impairments</button>
+          </div>
+        </div>
+      </div>
+      <div class="data-panel__wrapper no-outline" tabindex="-1">
+        <div class="nhsuk-card data-panel" id="ra-consents-panel">
+          <div class="nhsuk-card__content">
+            <h3 class="nhsuk-card__heading">
+              <span>Consent</span>
+            </h3>
+            <div id="added-ra-consents-list">
+              <h4 class="nhsuk-heading-xs ra-info-description-title">This Reasonable Adjustment Flag was created with consent from the patient</h4>
+              <h5 class="ra-supporting-information-label">Supporting information</h5>
+              <p class="nhsuk-caption-m nhsuk-caption--bottom">{{ patient.raImpairmnet1Info or 'No supporting information added' }}</p>
+              <p class="ra-supporting-information-label">{{ patient.raImpairment1Added or 'Added: 03-May-2023 13:21 by Mr Surname,Firstname at NHS ENGLAND - X26 (X26)' }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button aria-disabled="false" class="nhsuk-button button__red" id="ra-information-panel-delete-record-button" type="submit">Delete this Reasonable Adjustment record</button>
+      <div class="nhsuk-card">
+        <div class="nhsuk-card__content">
+          <p>This record was created on 16-Apr-2024 13:58 by Dr HealthCheck,GPSystem at NHS CONNECTING FOR HEALTH (X09)</p>
+          <p>Record last updated: 16-Apr-2024 13:59 by Dr HealthCheck,GPSystem at NHS CONNECTING FOR HEALTH (X09)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

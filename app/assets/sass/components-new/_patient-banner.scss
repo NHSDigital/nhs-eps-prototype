@@ -1,0 +1,228 @@
+.app-patient-banner {
+  background-color: $color_nhsuk-blue;
+  color: $color_nhsuk-white;
+  padding-top: nhsuk-spacing(2);
+  padding-bottom: nhsuk-spacing(2);
+
+  @include mq($until: large-desktop) {
+    font-size: 0.8rem;
+  }
+}
+
+.app-patient-banner__item {
+  span {
+    display: block;
+  }
+}
+
+.app-patient-banner__item__label {
+  font-weight: 200;
+}
+
+
+// Banner V2
+
+.banner-list {
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.app-patient-banner__list__item {
+  display: inline-block;
+  font-size: 80%;
+  padding-right: 1rem;
+}
+
+@media screen and (max-width: 641px) {
+  .banner-name {
+    margin-bottom: 0.5rem;
+  }
+  .banner-list-item {
+    display: block;
+  }
+}
+
+.app-patient-banner__firstname {
+  font-size: 120%;
+  font-weight: 600;
+}
+
+.app-patient-banner__lastname {
+  font-size: 120%;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.app-patient-banner__age{
+  font-weight: 200;
+  margin-left: nhsuk-spacing(4);
+}
+
+.app-patient-banner__gender {
+  font-weight: 200;
+}
+
+.copy-to-clipboard-btn {
+  margin-bottom: 0;
+  margin-left: 8px;
+  font-size: 80%;
+  padding: 0 8px;
+  vertical-align: text-bottom;
+}
+
+/* DECEASED PATIENT STYLES */
+
+.patient-banner-deceased {
+  background-color: #231f20;
+}
+
+
+////
+
+.patient-summary,.patient-summary--deceased,.patient-summary--yellow-alert {
+  padding: 8px 24px
+}
+
+@media(min-width: 40.0625em) {
+  .patient-summary,.patient-summary--deceased,.patient-summary--yellow-alert {
+    padding-bottom:16px;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 16px
+  }
+}
+
+.patient-summary {
+  background-color: #005eb8;
+  color: #fff;
+}
+
+.patient-summary--deceased {
+  background-color: #212b32;
+  color: #fff
+}
+
+.patient-summary--yellow-alert {
+  background-color: #ffeb3b;
+  border-top: 0;
+  color: #212b32
+}
+
+.patient-summary__block {
+  margin-right: 16px;
+}
+
+@media(min-width: 40.0625em) {
+  .patient-summary__block {
+    margin-right:24px
+  }
+}
+
+.patient-summary__info {
+  margin-bottom: 0;
+  .fixed::selection {
+    background: $nhsuk-focus-color !important;
+    color: #000000;
+  }
+}
+
+.nhsuk-input__prefix,.nhsuk-input__suffix {
+  align-items: center;
+  background-color: #d8dde0;
+  border: 2px solid #4c6272;
+  box-sizing: border-box;
+  cursor: default;
+  display: flex;
+  flex: 0 0 auto;
+  font-size: 16px;
+  font-size: 1rem;
+  font-weight: 400;
+  height: 40px;
+  justify-content: center;
+  line-height: 1.5;
+  min-width: 2.5rem;
+  padding: 4px;
+  text-align: center;
+  white-space: nowrap
+}
+
+@media(min-width: 40.0625em) {
+  .nhsuk-input__prefix,.nhsuk-input__suffix {
+    font-size:19px;
+    font-size: 1.1875rem;
+    line-height: 1.47368
+  }
+}
+
+@media print {
+  .nhsuk-input__prefix,.nhsuk-input__suffix {
+    font-size: 14pt;
+    line-height: 1.15
+  }
+}
+
+@media(max-width: 19.99em) {
+  .nhsuk-input__prefix,.nhsuk-input__suffix {
+    height:100%;
+    max-width: 5.625rem;
+    white-space: normal
+  }
+}
+
+@media(max-width: 40.0525em) {
+  .nhsuk-input__prefix,.nhsuk-input__suffix {
+    font-size:1.1875rem;
+    line-height: 1.6
+  }
+}
+
+@media(max-width: 19.99em) {
+  .nhsuk-input__prefix {
+    border-bottom:0
+  }
+}
+
+@media(min-width: 20em) {
+  .nhsuk-input__prefix {
+    border-right:0
+  }
+}
+
+@media(max-width: 19.99em) {
+  .nhsuk-input__suffix {
+    border-top:0
+  }
+}
+
+@media(min-width: 20em) {
+  .nhsuk-input__suffix {
+    border-left:0
+  }
+}
+
+.nhsuk-input__wrapper {
+  display: flex
+}
+
+@media(min-width: 20em) {
+  .nhsuk-input__wrapper {
+    flex-direction:row
+  }
+}
+
+@media(max-width: 19.99em) {
+  .nhsuk-input__wrapper {
+    align-items:stretch;
+    flex-direction: column
+  }
+}
+
+.nhsuk-input__wrapper input {
+  display: flex
+}
+
+@media(max-width: 19.99em) {
+  .nhsuk-input__wrapper input {
+    max-width:5.625rem
+  }
+}

@@ -1,0 +1,56 @@
+{% extends './_includes/layout-application.html' %}
+{% set primarynav = 'patient' %}
+{% set hideMobileNav = 'true' %}
+
+{% block pageTitle %}
+  Patient Details - {{ serviceName }}
+{% endblock %}
+
+{% block content %}
+
+<div class="main-body-wrapper">
+  <div class="patient-fgm-view">
+    <div class="row">
+      <div class="col-sm-0 col-md-0 col-lg-0 col-xl-3"></div>
+      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6">
+        <div class="nhsuk-back-link">
+          <a class="nhsuk-back-link__link" id="navigate-back" href="patient-details" tabindex="0">
+            <svg aria-hidden="true" class="nhsuk-icon nhsuk-icon__chevron-left" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+            </svg>
+            Back to patient information
+          </a>
+        </div>
+        <h1 class="nhsuk-heading-l">Female Genital Mutilation - Information Sharing (FGM-IS)</h1>
+        <div class="nhsuk-warning-callout">
+          <h2 class="nhsuk-warning-callout__label">
+            <span role="text"><span class="nhsuk-u-visually-hidden">Important: </span>This child has a family history of female genital mutilation</span>
+          </h2>
+          <p>While continuing to deliver care to this child as planned, please remember your wider safeguarding responsibilities. The family were informed this information would be shared. </p>
+          <p><b>Family history identified: 18-Apr-2024</b></p>
+          <p>Added: 18-Apr-2024 12:57</p></div>
+        <div class="data-panel__wrapper no-outline" tabindex="-1">
+          <div class="nhsuk-card data-panel">
+            <div class="nhsuk-card__content">
+              <h3 class="nhsuk-card__heading">
+                <span>FGM safeguarding responsibilities</span>
+              </h3>
+              <p>Family history is known to be relevant when safeguarding against FGM. Bear this in mind in relation to your wider safeguarding responsibilities. If you have any concerns about this patient you should:</p>
+              <ul>
+                <li>Follow your local safeguarding procedures</li>
+                <li>Speak with your manager or safeguarding lead</li>
+                <li>Consult the
+                  <a href="https://www.gov.uk/government/publications/safeguarding-women-and-girls-at-risk-of-fgm" rel="noopener noreferrer external" target="_blank">safeguarding women and girls at risk of FGM (opens in a new tab)</a>
+                  guidance on the GOV.UK website
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <button aria-disabled="false" class="nhsuk-button nhsuk-button button__red" id="patient-fgm-remove-form_confirm-preference" type="submit">Remove FGM Indicator</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

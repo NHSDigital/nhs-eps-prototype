@@ -1,0 +1,47 @@
+<div class="data-panel__wrapper no-outline" tabindex="-1">
+  <div class="nhsuk-card data-panel" id="medical-appliance-panel">
+    <div class="nhsuk-card__content">
+      <h3 class="nhsuk-card__heading">
+        <span>Nominated Medical Appliance</span>
+      </h3>
+      {% if patient.nomMedApplianceName === "" %}
+      <span class="data-panel__text-only-content" id="no-medical-appliance">No Nominated Medical Appliance Information recorded for this patient.</span>
+      {% else %}
+
+      <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Practice Name</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.nomMedApplianceName === 'Not Recorded' or patient.nomMedApplianceName === undefined %}--none{% endif %}">
+              {{ patient.nomMedApplianceName or 'COLOPLAST DIRECT LTD (FFD23)' }}
+            </span>
+            <br>
+
+            {% if patient.practiceNameFrom !== "" %}
+            <span class="data-field__note">From {{ patient.nomMedApplianceNameFrom }}</span>
+            {% endif %}
+
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Address</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.nomMedApplianceAddress === 'Not Recorded' or patient.nomMedApplianceAddress === undefined %}--none{% endif %} data-field__content--address">
+              {{ patient.nomMedApplianceAddress or 'MEDICAL APPLIANCE LTD, 4 OAK ROAD, BRADFORD, BD7 4QP' }}
+            </span>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Telephone</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.nomMedApplicianceTel === 'Not Recorded' or patient.nomMedApplicianceTel === undefined %}--none{% endif %}">
+              {{ patient.nomMedApplicianceTel | ukMobile or '01274453429' | ukMobile }}
+            </span>
+          </dd>
+        </div>
+      </dl>
+
+      {% endif %}
+    </div>
+  </div>
+</div>

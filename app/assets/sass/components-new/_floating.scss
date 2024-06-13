@@ -1,0 +1,52 @@
+/* Banner floater */
+.app-floating-name-dob {
+  display: none;
+  position: fixed;
+  top: 20px;
+  height: auto;
+  background: $color_nhsuk-blue;
+  color: white!important;
+  font-weight: 600;
+  text-decoration: none;
+  box-sizing: border-box;
+  padding: 12px 16px;
+  border: 2px solid transparent;
+  float: right;
+  text-align: center;
+  line-height: 12px;
+  right: 20px;
+  z-index: 1000;
+  box-shadow: 0 4px 0 0 #d8dde0;
+}
+
+/* RA FOOTER */
+.ra-footer-container {
+  background-color: $color_nhsuk-white;
+  display: inline-block;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  border-top: 3px solid $color_nhsuk-grey-4;
+  display: none;
+  min-height: 92px;
+}
+
+.ra-footer {
+  padding: 16px;
+}
+
+.ra-count-btn {
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
+@media screen and (min-width: 415px) {
+  .ra-count-btn {
+    width: 75%;
+    margin: 0 auto;
+    display: block;
+  }
+}

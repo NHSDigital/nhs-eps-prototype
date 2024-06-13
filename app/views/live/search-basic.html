@@ -1,0 +1,113 @@
+{% extends './_includes/layout-application.html' %}
+{% set primarynav = 'patient' %}
+{% set hideNav = 'true' %}
+{% set hideJump = 'true' %}
+{% set containerClasses = 'patient-search-form-container' %}
+
+{% block pageTitle %}
+Find a patient by NHS number - {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+<div class="above-tab-space">
+  <section class="nhsuk-hero">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+          <div class="nhsuk-hero__wrapper"><h1 class="nhsuk-u-margin-bottom-3">Find a patient</h1></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="nhsuk-tab-set find-patient-tabset">
+  <div class="find-patient-tabset__container">
+    <a href="search" class="nhsuk-tab-set__tab" id="nhs-number-search-tab" type="button">
+      <span class="nhsuk-u-visually-hidden">Search by </span>
+      By NHS Number
+    </a>
+    <a href="search-basic" class="nhsuk-tab-set__tab nhsuk-tab-set__tab--active" id="basic-search-tab" type="button">
+      <span class="nhsuk-u-visually-hidden">Search by </span>
+      By Basic Details
+    </a>
+    <a href="search-advanced" class="nhsuk-tab-set__tab" id="advanced-search-tab" type="button">
+      <span class="nhsuk-u-visually-hidden">Search by </span>
+      By Advanced Details
+    </a>
+    <a href="search-postcode" class="nhsuk-tab-set__tab" id="postcode-search-tab" type="button">
+      <span class="nhsuk-u-visually-hidden">Search by </span>
+      By Postcode
+    </a>
+  </div>
+</div>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="main-body-wrapper">
+
+  <main style="">
+    <div class="patient-search-form">
+      <form id="basic-search-form" novalidate="">
+        <h2 class="nhsuk-heading-m nhsuk-u-margin-bottom-1 no-outline" id="basic-search-label" tabindex="-1">Search by Basic Details</h2>
+        <div class="nhsuk-hint">Enter all fields</div>
+        <div class="patient-search-form__field-group">
+          <div class="nhsuk-form-group">
+            <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend form-label" id="basic-search-form-gender--label" style="font-weight: 600;">Gender</legend>
+              <div class="nhsuk-form-group">
+                <div aria-labelledby="basic-search-form-gender--label" class="nhsuk-radios nhsuk-radios--inline" id="basic-search-form-gender">
+                  <div class="nhsuk-radios__item">
+                    <input aria-labelledby="basic-search-form-gender-1--label" class="nhsuk-radios__input" id="basic-search-form-gender-1" name="gender" type="radio" value="2"><label class="nhsuk-label nhsuk-radios__label" for="basic-search-form-gender-1" id="basic-search-form-gender-1--label">Female</label>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                    <input aria-labelledby="basic-search-form-gender-2--label" class="nhsuk-radios__input" id="basic-search-form-gender-2" name="gender" type="radio" value="1"><label class="nhsuk-label nhsuk-radios__label" for="basic-search-form-gender-2" id="basic-search-form-gender-2--label">Male</label>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+        <div class="patient-search-form__field-group">
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label form-label" for="basic-search-form-surname" id="basic-search-form-surname--label" style="font-weight: 600;">Last Name</label><input aria-labelledby="basic-search-form-surname--label" autocomplete="off" class="nhsuk-input nhsuk-input--width-20" id="basic-search-form-surname" name="surname" type="text" value="">
+          </div>
+        </div>
+        <div class="patient-search-form__field-group">
+          <div class="nhsuk-form-group">
+            <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend form-label" style="font-weight: 600;">Date of Birth</legend>
+              <div class="nhsuk-form-group">
+                <div class="nhsuk-hint nhsuk-u-margin-bottom-1" id="basic-search-form-dob-from--hint">For example, 31 3 1980</div>
+                <div aria-describedby="basic-search-form-dob-from--hint" class="nhsuk-date-input" id="basic-search-form-dob-from">
+                  <div class="nhsuk-date-input__item">
+                    <div class="nhsuk-form-group">
+                      <label class="nhsuk-label nhsuk-date-input__label" for="basic-search-form-dob-from-day" id="basic-search-form-dob-from-day--label">Day</label><input aria-labelledby="basic-search-form-dob-from-day--label" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="basic-search-form-dob-from-day" inputmode="numeric" maxlength="2" name="dateFrom-day" pattern="[0-9]*" type="text" value="">
+                    </div>
+                  </div>
+                  <div class="nhsuk-date-input__item">
+                    <div class="nhsuk-form-group">
+                      <label class="nhsuk-label nhsuk-date-input__label" for="basic-search-form-dob-from-month" id="basic-search-form-dob-from-month--label">Month</label><input aria-labelledby="basic-search-form-dob-from-month--label" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="basic-search-form-dob-from-month" inputmode="numeric" maxlength="2" name="dateFrom-month" pattern="[0-9]*" type="text" value="">
+                    </div>
+                  </div>
+                  <div class="nhsuk-date-input__item">
+                    <div class="nhsuk-form-group">
+                      <label class="nhsuk-label nhsuk-date-input__label" for="basic-search-form-dob-from-year" id="basic-search-form-dob-from-year--label">Year</label><input aria-labelledby="basic-search-form-dob-from-year--label" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="basic-search-form-dob-from-year" inputmode="numeric" maxlength="4" name="dateFrom-year" pattern="[0-9]*" type="text" value="">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+        <button aria-disabled="false" class="nhsuk-button patient-search-form__button" type="submit" style="margin-bottom: 16px;margin-top: 24px;">Find a patient</button>
+      </form>
+    </div>
+  </main>
+
+</div>
+{% endblock %}

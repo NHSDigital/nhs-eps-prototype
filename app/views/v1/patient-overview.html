@@ -1,0 +1,123 @@
+{% extends './_includes/layout-application.html' %}
+{% set primarynav = 'overview' %}
+{% set hideJump = 'true' %}
+{% set hideMobileNav = 'true' %}
+
+{% block pageTitle %}
+Patient Overview - {{ serviceName }}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="main-body-wrapper">
+
+{% if patient.raFlag !== "" and patient.cpisFlag !== "" and patient.fgmFlag !== ""%}
+
+  <div class="dashboard-ribbons row">
+
+    {% if patient.fgmFlag === "yes" %}
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3" id="fgm-ribbon">
+      <a href="patient-details-fgm"  class="nhsuk-ribbon-link nhsuk-ribbon-link--mild dashboard-ribbon" type="button">
+        <svg aria-hidden="true" class="nhsuk-icon nhsuk-icon__arrow-right-circle nhsuk-ribbon-link__icon" height="34" viewBox="0 0 24 24" width="34" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0h24v24H0z" fill="none"></path>
+          <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+        </svg>
+        FGM-IS alert present
+      </a>
+    </div>
+    {% endif %}
+
+    {% if patient.raFlag === "yes" %}
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3" id="ra-ribbon">
+      <a href="patient-details-ra" class="nhsuk-ribbon-link nhsuk-ribbon-link--mild dashboard-ribbon" type="button">
+        <svg aria-hidden="true" class="nhsuk-icon nhsuk-icon__arrow-right-circle nhsuk-ribbon-link__icon" height="34" viewBox="0 0 24 24" width="34" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0h24v24H0z" fill="none"></path>
+          <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+        </svg>
+        Reasonable Adjustments present
+      </a>
+    </div>
+    {% endif %}
+
+    {% if patient.cpisFlag === "yes" %}
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3" id="cpis-ribbon">
+      <a href="patient-details-cpis" class="nhsuk-ribbon-link nhsuk-ribbon-link--mild dashboard-ribbon" type="button">
+        <svg aria-hidden="true" class="nhsuk-icon nhsuk-icon__arrow-right-circle nhsuk-ribbon-link__icon" height="34" viewBox="0 0 24 24" width="34" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0h24v24H0z" fill="none"></path>
+          <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+        </svg>
+        Child protection alert present
+      </a>
+    </div>
+    {% endif %}
+
+  </div>
+  {% endif %}
+
+  <div class="dashboard-tiles row nhsuk-card-group">
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+      <div class="nhsuk-card nhsuk-card--care nhsuk-card--care--non-urgent dashboard-card">
+        <div class="nhsuk-card--care__heading-container">
+          <h2 class="nhsuk-card--care__heading nhsuk-heading-s">
+            <span role="text"><span class="nhsuk-u-visually-hidden">Non-urgent advice: </span>Patient Details</span>
+          </h2>
+          <span class="nhsuk-card--care__arrow" aria-hidden="true"></span>
+        </div>
+        <div class="nhsuk-card__content">
+          <p><a href="patient-details">Demographics</a></p>
+<!--          <p><a href="patient-details">Contacts &amp; next of kin</a></p>-->
+
+          {% if patient.raFlag === "yes" %}
+            <p><a href="patient-details">Reasonable Adjustments</a></p>
+          {% endif %}
+
+          {% if patient.fgmFlag === "yes" %}
+            <p><a href="patient-details">Female Genital Multilation - Information Sharing</a></p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+      <div class="nhsuk-card nhsuk-card--care nhsuk-card--care--non-urgent dashboard-card">
+        <div class="nhsuk-card--care__heading-container">
+          <h2 class="nhsuk-card--care__heading nhsuk-heading-s">
+            <span role="text"><span class="nhsuk-u-visually-hidden">Non-urgent advice: </span>Clinical</span>
+          </h2>
+          <span class="nhsuk-card--care__arrow" aria-hidden="true"></span>
+        </div>
+
+          <div class="nhsuk-card__content">
+            {% if patient.scrFlag === 'yes' %}
+            <p><a href="patient-clinical">Summary Care Record</a></p>
+            <p><a href="covid-19-vaccination-information">COVID-19 Vaccinations</a></p>
+            {% else %}
+            <p>No summary Care Record exists for this patient.</p>
+            {% endif %}
+          </div>
+      </div>
+    </div>
+
+    {% if data.perms['documents'] !== 'no' %}
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+      <div class="nhsuk-card nhsuk-card--care nhsuk-card--care--non-urgent dashboard-card">
+        <div class="nhsuk-card--care__heading-container">
+          <h2 class="nhsuk-card--care__heading nhsuk-heading-s">
+            <span role="text"><span class="nhsuk-u-visually-hidden">Non-urgent advice: </span>Documents</span>
+          </h2>
+          <span class="nhsuk-card--care__arrow" aria-hidden="true"></span>
+        </div>
+        <div class="nhsuk-card__content">
+          <p>No entries available for this patient</p>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+
+</div>
+
+
+{% endblock %}

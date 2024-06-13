@@ -1,0 +1,86 @@
+{% extends './_includes/layout-application.html' %}
+{% set primarynav = 'patient' %}
+{% set hideMobileNav = 'true' %}
+
+{% block pageTitle %}
+  Patient Details - {{ serviceName }}
+{% endblock %}
+
+{% block content %}
+
+<div class="main-body-wrapper">
+  <div class="nhsuk-back-link">
+    <a href="patient-details" class="nhsuk-back-link__link" id="ho-status-back-btn" role="button" tabindex="0">
+      <svg aria-hidden="true" class="nhsuk-icon nhsuk-icon__chevron-left" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+      </svg>
+      Back to patient information
+    </a>
+  </div>
+  <h1 class="nhsuk-heading-xl" id="ho-status-title">Home Office status</h1>
+  <div class="nhsuk-inset-text" id="ho-status-inset-text">
+    <span class="nhsuk-u-visually-hidden">Information: </span>
+    <a role="button" tabindex="0">There is no current Overseas Visitor Management (OVM) record for this patient. You can view historical OVM records or create a new one.</a>
+  </div>
+  <div class="nhsuk-card">
+    <div class="nhsuk-card__content"><h3 class="nhsuk-card__heading">Current status</h3>
+      <p id="ho-status-current-status-paragraph">This is the current Home Office status for the patient. There may be other historic statuses held by the Home Office.</p>
+      <table class="nhsuk-table">
+        <thead class="nhsuk-table__head">
+          <tr class="nhsuk-table__row">
+            <th class="nhsuk-table__header chargeable-status-table" scope="col" width="115">Start date</th>
+            <th class="nhsuk-table__header chargeable-status-table" scope="col" width="115">End date</th>
+            <th class="nhsuk-table__header chargeable-status-table" scope="col">HO reference</th>
+            <th class="nhsuk-table__header chargeable-status-table" scope="col">BRP number</th>
+            <th class="nhsuk-table__header chargeable-status-table" scope="col">Nationality</th>
+            <th class="nhsuk-table__header chargeable-status-table" scope="col">Visa type</th>
+            <th class="nhsuk-table__header chargeable-status-table" scope="col">Immigration status</th>
+            <th class="nhsuk-table__header chargeable-status-table" scope="col">Healthcare status</th>
+          </tr>
+        </thead>
+        <tbody class="nhsuk-table__body nhsuk-card">
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell chargeable-status-table">10-Aug-2018</td>
+          <td class="nhsuk-table__cell chargeable-status-table">No expiry</td>
+          <td class="nhsuk-table__cell chargeable-status-table">DDD99/999999/D</td>
+          <td class="nhsuk-table__cell chargeable-status-table">DD9999999</td>
+          <td class="nhsuk-table__cell chargeable-status-table">Andorra</td>
+          <td class="nhsuk-table__cell chargeable-status-table">Not available</td>
+          <td class="nhsuk-table__cell chargeable-status-table">Not available</td>
+          <td class="nhsuk-table__cell chargeable-status-table">Not available</td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell chargeable-status-table">09-Aug-2018</td>
+          <td class="nhsuk-table__cell chargeable-status-table">No expiry</td>
+          <td class="nhsuk-table__cell chargeable-status-table">ABCD</td>
+          <td class="nhsuk-table__cell chargeable-status-table">2345</td>
+          <td class="nhsuk-table__cell chargeable-status-table">Australia</td>
+          <td class="nhsuk-table__cell chargeable-status-table">Not available</td>
+          <td class="nhsuk-table__cell chargeable-status-table">Not available</td>
+          <td class="nhsuk-table__cell chargeable-status-table">Not available</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <h2 class="no-outline" tabindex="-1">Historic status</h2>
+  <div class="nhsuk-card no-print" id="ovm-status-search-card">
+    <div class="nhsuk-card__content">
+      <div class="nhsuk-action-link">
+        <a class="nhsuk-action-link__link" id="ovm-status-search-historical-status" role="button" tabindex="0">
+          <svg aria-hidden="true" class="nhsuk-icon nhsuk-icon__arrow-right-circle" height="36" viewBox="0 0 24 24" width="36" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+          </svg>
+          <span class="nhsuk-action-link__text">Search historical status</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-to-top-button-wrapper--hidden" style="">
+    <button aria-hidden="true" class="nhsuk-button button__blue scroll-to-top-button scroll-to-top-button--hidden" id="top_button" tabindex="-1">Return to Top</button>
+  </div>
+</div>
+
+
+{% endblock %}

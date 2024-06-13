@@ -1,0 +1,43 @@
+.nhsuk-select--new {
+  position: relative;
+  color: black;
+  background-color: white;
+  border-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  cursor: pointer;
+  padding-right: 2em;
+}
+
+.nhsuk-select__wrapper-outer {
+  position: relative;
+}
+
+.nhsuk-select__wrapper {
+  //width: 13rem !important;
+  position: relative;
+  &:before,
+  &:after {
+    --size: 0.3rem;
+    position: absolute;
+    content: "";
+    right: 1em;
+    pointer-events: none;
+    z-index: 100;
+  }
+  &:before {
+    border-left: var(--size) solid transparent;
+    border-right: var(--size) solid transparent;
+    border-bottom: var(--size) solid black;
+    top: 14px;
+  }
+  &:after {
+    border-left: var(--size) solid transparent;
+    border-right: var(--size) solid transparent;
+    border-top: var(--size) solid black;
+    top: 23px;
+  }
+}
+

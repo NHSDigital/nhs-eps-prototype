@@ -1,0 +1,616 @@
+{% extends './_includes/layout-application.html' %}
+{% set primarynav = 'patient' %}
+{% set hideNav = 'true' %}
+{% set hideJump = 'true' %}
+{% set containerClasses = 'patient-search-form-container' %}
+
+{% block pageTitle %}
+Date input experiments - {{ serviceName }}
+{% endblock %}
+
+{% block customStyles %}
+<style>
+  .fieldset {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .field {
+    width: 40px;
+  }
+  .clear-link {
+    margin-top: 10px;
+    display: inline-block;
+  }
+  .date-display {
+    margin-top: 10px;
+  }
+  .nhsuk-inset-text {
+    max-width: 44em;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 4px;
+    border-left: 4px solid #005eb8;
+  }
+  .sidebar {
+    max-width: 250px;
+  }
+
+  @media (min-width: 40.0625em){
+    .data-panel:first-of-type {
+      margin-top: 0px;
+    }
+  }
+
+  @media (min-width: 40.0625em) {
+    .data-panel:last-of-type {
+      margin-bottom: 26px;
+    }
+  }
+
+  .switch-link {
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-left: 10px;
+  }
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="main-body-wrapper">
+  <div class="sidebar__wrapper">
+    <div class="sidebar">
+
+      <div class="sidebar__headera no-outline" id="sidebar-header" tabindex="-1">
+        <h2 class="sidebar__heading">Test dates</h2>
+      </div>
+      <div class="sidebar__content" id="sidebar-content2">
+        <div id="sidebar-content">
+
+          <ul class="nhsuk-list">
+            <li>04/04/2004</li>
+            <li>04/04/04</li>
+            <li>04-04-2004</li>
+            <li>04-04-04</li>
+            <li>04,04,2004</li>
+            <li>04,04,04</li>
+            <li>04 04 04</li>
+            <li>4 4 04</li>
+            <li>4 apr 04</li>
+            <li>04 apr 2004</li>
+            <li>4 apr 2004</li>
+            <li>4,apr,2004</li>
+            <li>4th apr 2004</li>
+            <li>4 april 04</li>
+            <li>4 april 2004</li>
+            <li>4th april 2004</li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    <div class="sidebar__children">
+
+      <div class="data-panel__wrapper no-outline" tabindex="-1">
+        <div class="nhsuk-card data-panel" id="address-panel">
+          <div class="nhsuk-card__content">
+            <h3 class="nhsuk-card__heading">AS-IS Pattern</h3>
+            <div class="patient-search-form__field-group">
+              <div class="nhsuk-form-group">
+                <fieldset class="nhsuk-fieldset">
+                  <legend class="nhsuk-fieldset__legend form-label" style="font-weight: 600;">Date of Birth</legend>
+                  <div class="nhsuk-form-group">
+                    <div class="nhsuk-hint nhsuk-u-margin-bottom-1" id="basic-search-form-dob-from--hint">For example, 31 3 1980</div>
+                    <div aria-describedby="basic-search-form-dob-from--hint" class="nhsuk-date-input" id="basic-search-form-dob-from">
+                      <div class="nhsuk-date-input__item">
+                        <div class="nhsuk-form-group">
+                          <label class="nhsuk-label nhsuk-date-input__label" for="basic-search-form-dob-from-day" id="basic-search-form-dob-from-day--label">Day</label>
+                          <input aria-labelledby="basic-search-form-dob-from-day--label" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="basic-search-form-dob-from-day" inputmode="numeric" maxlength="2" name="dateFrom-day" pattern="[0-9]*" type="text" value="">
+                        </div>
+                      </div>
+                      <div class="nhsuk-date-input__item">
+                        <div class="nhsuk-form-group">
+                          <label class="nhsuk-label nhsuk-date-input__label" for="basic-search-form-dob-from-month" id="basic-search-form-dob-from-month--label">Month</label>
+                          <input aria-labelledby="basic-search-form-dob-from-month--label" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="basic-search-form-dob-from-month" inputmode="numeric" maxlength="2" name="dateFrom-month" pattern="[0-9]*" type="text" value="">
+                        </div>
+                      </div>
+                      <div class="nhsuk-date-input__item">
+                        <div class="nhsuk-form-group">
+                          <label class="nhsuk-label nhsuk-date-input__label" for="basic-search-form-dob-from-year" id="basic-search-form-dob-from-year--label">Year</label>
+                          <input aria-labelledby="basic-search-form-dob-from-year--label" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="basic-search-form-dob-from-year" inputmode="numeric" maxlength="4" name="dateFrom-year" pattern="[0-9]*" type="text" value="">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1 -->
+
+      <div class="data-panel__wrapper no-outline" tabindex="-1">
+        <div class="nhsuk-card data-panel" id="address-panel-1">
+          <div class="nhsuk-card__content">
+            <h3 class="nhsuk-card__heading">Can paste all formats - no design changes</h3>
+            <div class="patient-search-form__field-group">
+              <div class="nhsuk-form-group">
+                <fieldset class="nhsuk-fieldset new1-fieldset">
+                  <legend class="nhsuk-fieldset__legend form-label" style="font-weight: 600;">Date of Birth</legend>
+                  <div class="nhsuk-form-group">
+                    <div class="nhsuk-hint nhsuk-u-margin-bottom-1" id="basic-search-form-dob-from--hint">For example, 31 3 1980</div>
+                    <div aria-describedby="basic-search-form-dob-from--hint" class="nhsuk-date-input" id="basic-search-form-dob-from">
+                      <div class="nhsuk-date-input__item">
+                        <div class="nhsuk-form-group">
+                          <label class="nhsuk-label nhsuk-date-input__label" for="new1-day" id="basic-search-form-dob-from-day--label">Day</label>
+                          <input aria-labelledby="basic-search-form-dob-from-day--label" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="new1-day" inputmode="numeric" maxlength="2" name="dateFrom-day" pattern="[0-9]*" type="text"  >
+                        </div>
+                      </div>
+                      <div class="nhsuk-date-input__item">
+                        <div class="nhsuk-form-group">
+                          <label class="nhsuk-label nhsuk-date-input__label" for="new1-month" id="basic-search-form-dob-from-month--label">Month</label>
+                          <input aria-labelledby="basic-search-form-dob-from-month--label" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="new1-month" inputmode="numeric" maxlength="2" name="dateFrom-month" pattern="[0-9]*" type="text" >
+                        </div>
+                      </div>
+                      <div class="nhsuk-date-input__item">
+                        <div class="nhsuk-form-group">
+                          <label class="nhsuk-label nhsuk-date-input__label" for="new1-year" id="basic-search-form-dob-from-year--label">Year</label>
+                          <input aria-labelledby="basic-search-form-dob-from-year--label" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="new1-year" inputmode="numeric" maxlength="4" name="dateFrom-year" pattern="[0-9]*" type="text" >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+                <a href="#" id="new1-clearNumericFields" class="nhsuk-u-margin-top-4 clear-link">Clear Fields</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 -->
+
+      <div class="data-panel__wrapper no-outline" tabindex="-1">
+        <div class="nhsuk-card data-panel" id="address-panel-2">
+          <div class="nhsuk-card__content">
+            <h3 class="nhsuk-card__heading">Can paste all formats - redesigned</h3>
+            <div class="patient-search-form__field-group">
+              <div class="nhsuk-form-group">
+
+                <fieldset class="nhsuk-fieldset new2-fieldset">
+                  <legend class="nhsuk-fieldset__legend form-label" style="font-weight: 600;">Date of Birth</legend>
+                  <div class="nhsuk-form-group">
+                    <div class="nhsuk-hint nhsuk-u-margin-bottom-1" id="basic-search-form-dob-from--hint">TIP: try pasting in full dates into any box</div>
+                    <div aria-describedby="basic-search-form-dob-from--hint" class="nhsuk-date-input" id="basic-search-form-dob-from">
+                      <div class="nhsuk-date-input__item">
+                        <div class="nhsuk-form-group">
+                          <label class="nhsuk-label nhsuk-date-input__label" for="new2-day" id="basic-search-form-dob-from-day--label">Day</label>
+                          <input aria-labelledby="basic-search-form-dob-from-day--label" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="new2-day" inputmode="numeric" maxlength="2" name="dateFrom-day" pattern="[0-9]*" type="text" placeholder="DD">
+                        </div>
+                      </div>
+                      <div class="nhsuk-date-input__item">
+                        <div class="nhsuk-form-group">
+                          <label class="nhsuk-label nhsuk-date-input__label" for="new2-month" id="basic-search-form-dob-from-month--label">Month</label>
+                          <input aria-labelledby="basic-search-form-dob-from-month--label" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="new2-month" inputmode="numeric" maxlength="2" name="dateFrom-month" pattern="[0-9]*" type="text" placeholder="MM">
+                        </div>
+                      </div>
+                      <div class="nhsuk-date-input__item">
+                        <div class="nhsuk-form-group">
+                          <label class="nhsuk-label nhsuk-date-input__label" for="new2-year" id="basic-search-form-dob-from-year--label">Year</label>
+                          <input aria-labelledby="basic-search-form-dob-from-year--label" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="new2-year" inputmode="numeric" maxlength="4" name="dateFrom-year" pattern="[0-9]*" type="text" placeholder="YYYY">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+                <a href="#" id="new2-clearNumericFields" class="nhsuk-u-margin-top-4 clear-link">Clear Fields</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 -->
+
+      <div class="data-panel__wrapper no-outline" tabindex="-1">
+        <div class="nhsuk-card data-panel" id="address-panel-3">
+          <div class="nhsuk-card__content">
+            <h3 class="nhsuk-card__heading">Can paste all formats - Single field</h3>
+            <div class="patient-search-form__field-group">
+              <div class="nhsuk-form-group">
+                <div aria-describedby="basic-search-form-dob-from--hint" class="nhsuk-date-input" id="basic-search-form-dob-from">
+                  <div class="nhsuk-date-input__item">
+                    <div class="nhsuk-form-group">
+                      <label class="nhsuk-label nhsuk-date-input__label" for="new3-date" id="basic-search-form-dob-from-day--label" style="font-weight: 600;">Date of birth</label>
+                      <input aria-labelledby="basic-search-form-dob-from-day--label" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-20" id="new3-date" type="text" value="">
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="nhsuk-inset-text">
+                  <div id="formattedDate" class="date-display">Type or paste in any format</div>
+                </div>
+
+                <a href="#" id="new3-clearDateField" class="nhsuk-u-margin-top-4 clear-link">Clear Field</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 -->
+
+      <div class="data-panel__wrapper no-outline" tabindex="-1">
+        <div class="nhsuk-card data-panel" id="address-panel-4">
+          <div class="nhsuk-card__content">
+            <h3 class="nhsuk-card__heading">Advanced search - Single field with switch to date range</h3>
+            <div class="patient-search-form__field-group">
+
+              <div class="nhsuk-form-group" id="form-group-single">
+                <div aria-describedby="basic-search-form-dob-from--hint" class="nhsuk-date-input" id="basic-search-form-dob-from">
+                  <div class="nhsuk-date-input__item">
+                    <div class="nhsuk-form-group">
+                      <label class="nhsuk-label nhsuk-date-input__label" for="new4-date" id="basic-search-form-dob-from-day--label" style="font-weight: 600;">Date of birth
+                        <span class="switch-link">(<a href="#" id="switch-to-range">Switch to a range</a>)</span></label>
+                      <input aria-labelledby="basic-search-form-dob-from-day--label" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-20" id="new4-date" type="text" value="">
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="nhsuk-inset-text">
+                  <div id="formattedDate-2a" class="date-display">Type or paste in any format</div>
+                </div>
+
+                <a href="#" id="new4-clearDateField" class="nhsuk-u-margin-top-4 clear-link">Clear Field</a>
+              </div>
+
+              <fieldset class="nhsuk-fieldset" id="form-group-range" style="display: none;">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                  <h3 class="nhsuk-fieldset__heading" style="font-size: 19px;">
+                    Date of birth range
+                    <span class="switch-link">(<a href="#" id="switch-range">Switch to a single date</a>)</span>
+                  </h3>
+                </legend>
+                <div class="nhsuk-form-group">
+                  <div class="nhsuk-date-input" id="basic-search-form-dob-range">
+                    <div class="nhsuk-date-input__item">
+                      <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-date-input__label" for="new5-from-date" id="basic-search-form-dob-from-day--label">Date from</label>
+                        <input aria-labelledby="basic-search-form-dob-from-day--label" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-20" id="new5-from-date" type="text" value="">
+                      </div>
+                    </div>
+
+                    <div class="nhsuk-date-input__item">
+                      <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-date-input__label" for="new5-to-date" id="basic-search-form-dob-to-day--label">Date to</label>
+                        <input aria-labelledby="basic-search-form-dob-to-day--label" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-20" id="new5-to-date" type="text" value="">
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="nhsuk-inset-text">
+                    <div id="formattedDate-2b" class="date-display">Type or paste in any format</div>
+                  </div>
+
+                  <!--                <a href="#" id="new3-clearDateField" class="nhsuk-u-margin-top-4 clear-link">Clear Field</a>-->
+                </div>
+              </fieldset>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 -->
+
+      <div class="data-panel__wrapper no-outline" tabindex="-1">
+        <div class="nhsuk-card data-panel" id="address-panel-5">
+          <div class="nhsuk-card__content">
+            <h3 class="nhsuk-card__heading">Advanced search - Single field with switch to age range</h3>
+            <div class="patient-search-form__field-group">
+
+              <div class="nhsuk-form-group" id="form-group-single-2">
+                <div aria-describedby="basic-search-form-dob-from--hint" class="nhsuk-date-input" id="basic-search-form-dob-from">
+                  <div class="nhsuk-date-input__item">
+                    <div class="nhsuk-form-group">
+                      <label class="nhsuk-label nhsuk-date-input__label" for="new5-date" id="basic-search-form-dob-from-day--label" style="font-weight: 600;">Date of birth
+                        <span class="switch-link">(<a href="#" id="switch-to-range-2">Switch to age range</a>)</span></label>
+                      <input aria-labelledby="basic-search-form-dob-from-day--label" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-20" id="new5-date" type="text" placeholder="DD/MM/YYYY">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="nhsuk-inset-text">
+                  <div id="formattedDate-3a" class="date-display">Type or paste in any format</div>
+                </div>
+
+                <a href="#" id="new5-clearDateField" class="nhsuk-u-margin-top-4 clear-link">Clear Field</a>
+              </div>
+
+              <fieldset class="nhsuk-fieldset" id="form-group-range-2" style="display: none;">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                  <h3 class="nhsuk-fieldset__heading" style="font-size: 19px;">
+                    Age range
+                    <span class="switch-link">(<a href="#" id="switch-range-2">Switch to a single date</a>)</span>
+                  </h3>
+                </legend>
+                <div class="nhsuk-form-group">
+                  <div class="nhsuk-date-input" id="basic-search-form-age-range">
+                    <div class="nhsuk-date-input__item">
+                      <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-date-input__label" for="new6-from-age" id="basic-search-form-age-from--label">Age from</label>
+                        <input aria-labelledby="basic-search-form-dob-from-day--label" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-5" id="new6-from-age" type="text" value="">
+                      </div>
+                    </div>
+
+                    <div class="nhsuk-date-input__item">
+                      <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-date-input__label" for="new6-to-age" id="basic-search-form-age-to--label">Age to</label>
+                        <input aria-labelledby="basic-search-form-dob-to-day--label" class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-5" id="new6-to-age" type="text" value="">
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="nhsuk-inset-text">
+                    <div id="formattedDate-3b" class="date-display">Fill in both fields</div>
+                  </div>
+
+                  <!--                <a href="#" id="new3-clearDateField" class="nhsuk-u-margin-top-4 clear-link">Clear Field</a>-->
+                </div>
+              </fieldset>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+
+<script>
+  const placeholderText = 'Type or paste in any format';
+
+  document.querySelector('.new1-fieldset').addEventListener('paste', function (e) {
+    e.preventDefault();
+    const pastedData = e.clipboardData.getData('text');
+    const dateParts = parseDate(pastedData);
+
+    if (dateParts) {
+      document.getElementById('new1-day').value = dateParts.day;
+      document.getElementById('new1-month').value = dateParts.month;
+      document.getElementById('new1-year').value = dateParts.year;
+    }
+  });
+  document.querySelector('.new2-fieldset').addEventListener('paste', function (e) {
+    e.preventDefault();
+    const pastedData = e.clipboardData.getData('text');
+    const dateParts = parseDate(pastedData);
+
+    if (dateParts) {
+      document.getElementById('new2-day').value = dateParts.day;
+      document.getElementById('new2-month').value = dateParts.month;
+      document.getElementById('new2-year').value = dateParts.year;
+    }
+  });
+
+
+  // 3
+
+  document.getElementById('new3-date').addEventListener('input', function (e) {
+    const formattedDate = formatDateString(e.target.value);
+    document.getElementById('formattedDate').textContent = formattedDate ? formattedDate : placeholderText;
+  });
+
+  document.getElementById('new3-date').addEventListener('paste', function (e) {
+    e.preventDefault();
+    const pastedData = e.clipboardData.getData('text');
+    const formattedDate = formatDateString(pastedData);
+    if (formattedDate) {
+      e.target.value = pastedData;
+      document.getElementById('formattedDate').textContent = formattedDate;
+    } else {
+      document.getElementById('formattedDate').textContent = placeholderText;
+    }
+  });
+
+  // 4
+
+  document.getElementById('new4-date').addEventListener('input', function (e) {
+    const formattedDate = formatDateString(e.target.value);
+    document.getElementById('formattedDate-2b').textContent = formattedDate ? formattedDate : placeholderText;
+  });
+
+  document.getElementById('new4-date').addEventListener('paste', function (e) {
+    e.preventDefault();
+    const pastedData = e.clipboardData.getData('text');
+    const formattedDate = formatDateString(pastedData);
+    if (formattedDate) {
+      e.target.value = pastedData;
+      document.getElementById('formattedDate-2a').textContent = formattedDate;
+    } else {
+      document.getElementById('formattedDate-2a').textContent = placeholderText;
+    }
+  });
+
+  // 5
+
+  document.getElementById('new5-date').addEventListener('input', function (e) {
+    const formattedDate = formatDateString(e.target.value);
+    document.getElementById('formattedDate-3a').textContent = formattedDate ? formattedDate : placeholderText;
+  });
+
+  document.getElementById('new5-date').addEventListener('paste', function (e) {
+    e.preventDefault();
+    const pastedData = e.clipboardData.getData('text');
+    const formattedDate = formatDateString(pastedData);
+    if (formattedDate) {
+      e.target.value = pastedData;
+      document.getElementById('formattedDate-3a').textContent = formattedDate;
+    } else {
+      document.getElementById('formattedDate-3a').textContent = placeholderText;
+    }
+  });
+
+  // clear buttons
+
+  document.getElementById('new1-clearNumericFields').addEventListener('click', function (e) {
+    e.preventDefault();
+    document.getElementById('new1-day').value = '';
+    document.getElementById('new1-month').value = '';
+    document.getElementById('new1-year').value = '';
+  });
+  document.getElementById('new2-clearNumericFields').addEventListener('click', function (e) {
+    e.preventDefault();
+    document.getElementById('new2-day').value = '';
+    document.getElementById('new2-month').value = '';
+    document.getElementById('new2-year').value = '';
+  });
+
+  document.getElementById('new3-clearDateField').addEventListener('click', function (e) {
+    e.preventDefault();
+    document.getElementById('new3-date').value = '';
+    document.getElementById('formattedDate').textContent = placeholderText;
+  });
+
+  document.getElementById('new4-clearDateField').addEventListener('click', function (e) {
+    e.preventDefault();
+    document.getElementById('new4-date').value = '';
+    document.getElementById('formattedDate-2a').textContent = placeholderText;
+  });
+
+  document.getElementById('new5-clearDateField').addEventListener('click', function (e) {
+    e.preventDefault();
+    document.getElementById('new5-date').value = '';
+    document.getElementById('formattedDate-3a').textContent = placeholderText;
+  });
+
+  function parseDate(input) {
+    const regexes = [
+      /(\d{1,2})[\/\-,\s](\d{1,2})[\/\-,\s](\d{2,4})/, // Formats like 04/04/2004, 04-04-2004, 04 04 2004
+      /(\d{1,2})[\/\-,\s](\d{1,2})[\/\-,\s](\d{2})/,    // Formats like 04/04/04, 04-04-04, 04 04 04
+      /(\d{1,2})([\/\-,\s])(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\2(\d{2,4})/, // 4 apr 04, 04 apr 2004, 4-apr-2004
+      /(\d{1,2})([\/\-,\s])(january|february|march|april|may|june|july|august|september|october|november|december)\2(\d{2,4})/, // 4 april 04, 4 april 2004
+      /(\d{1,2})(?:st|nd|rd|th)?\s+(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\s+(\d{2,4})/, // 4th apr 04, 4th apr 2004
+      /(\d{1,2})(?:st|nd|rd|th)?\s+(january|february|march|april|may|june|july|august|september|october|november|december)\s+(\d{2,4})/, // 4th april 04, 4th april 2004
+      /(\d{1,2})([\/\-,\s])(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\2(\d{2})/, // 4-apr-04, 4/apr/04, 4 apr 04
+      /(\d{1,2})([\/\-,\s])(january|february|march|april|may|june|july|august|september|october|november|december)\2(\d{2})/ // 4-april-04, 4/april/04, 4 april 04
+    ];
+
+    for (let regex of regexes) {
+      const match = input.match(regex);
+      if (match) {
+        let [, day, , month, year] = match;
+        if (isNaN(month)) {
+          const monthNamesFull = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+          const monthNamesAbbr = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+          const monthIndex = monthNamesFull.indexOf(month.toLowerCase()) + 1 || monthNamesAbbr.indexOf(month.toLowerCase()) + 1;
+          month = monthIndex.toString().padStart(2, '0');
+        } else {
+          month = month.padStart(2, '0');
+        }
+        year = year.length === 2 ? '20' + year : year;
+        day = day.padStart(2, '0');
+        return { day, month, year };
+      }
+    }
+    return null;
+  }
+
+  function formatDateString(input) {
+    const regexes = [
+      /(\d{1,2})[\/\-,\s](\d{1,2})[\/\-,\s](\d{2,4})/, // Formats like 04/04/2004, 04-04-2004, 04 04 2004
+      /(\d{1,2})[\/\-,\s](\d{1,2})[\/\-,\s](\d{2})/,    // Formats like 04/04/04, 04-04-04, 04 04 04
+      /(\d{1,2})([\/\-,\s])(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\2(\d{2,4})/, // 4 apr 04, 04 apr 2004, 4-apr-2004
+      /(\d{1,2})([\/\-,\s])(january|february|march|april|may|june|july|august|september|october|november|december)\2(\d{2,4})/, // 4 april 04, 4 april 2004
+      /(\d{1,2})(?:st|nd|rd|th)?\s+(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\s+(\d{2,4})/, // 4th apr 04, 4th apr 2004
+      /(\d{1,2})(?:st|nd|rd|th)?\s+(january|february|march|april|may|june|july|august|september|october|november|december)\s+(\d{2,4})/, // 4th april 04, 4th april 2004
+      /(\d{1,2})([\/\-,\s])(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\2(\d{2})/, // 4-apr-04, 4/apr/04, 4 apr 04
+      /(\d{1,2})([\/\-,\s])(january|february|march|april|may|june|july|august|september|october|november|december)\2(\d{2})/ // 4-april-04, 4/april/04, 4 april 04
+    ];
+
+    for (let regex of regexes) {
+      const match = input.match(regex);
+      if (match) {
+        let [, day, , month, year] = match;
+        if (isNaN(month)) {
+          const monthNamesFull = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+          const monthNamesAbbr = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+          const monthIndex = monthNamesFull.indexOf(month.toLowerCase()) + 1 || monthNamesAbbr.indexOf(month.toLowerCase()) + 1;
+          month = monthNamesFull[monthIndex - 1];
+        } else {
+          month = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"][parseInt(month) - 1];
+        }
+        year = year.length === 2 ? '20' + year : year;
+        month = month.charAt(0).toUpperCase() + month.slice(1);
+        day = parseInt(day).toString();
+        const daySuffix = getDaySuffix(day);
+        return `${day}${daySuffix} ${month} ${year}`;
+      }
+    }
+    return null;
+  }
+
+  function getDaySuffix(day) {
+    if (day >= 11 && day <= 13) {
+      return 'th';
+    }
+    switch (day % 10) {
+      case 1: return 'st';
+      case 2: return 'nd';
+      case 3: return 'rd';
+      default: return 'th';
+    }
+  }
+
+  function moveToNext(object) {
+    console.log(object.value);
+    if (object.value.length === object.maxLength) {
+      object.value = object.value.slice(0, object.maxLength);
+      next = object.tabIndex + 2;
+      document.jumpForm.elements[next].focus()
+      console.log('next');
+    }
+  }
+
+  document.getElementById('switch-range').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.getElementById('form-group-range').style.display = 'none';
+    document.getElementById('form-group-single').style.display = 'block';
+  });
+
+  document.getElementById('switch-to-range').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.getElementById('form-group-single').style.display = 'none';
+    document.getElementById('form-group-range').style.display = 'block';
+  });
+
+  document.getElementById('switch-range-2').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.getElementById('form-group-range-2').style.display = 'none';
+    document.getElementById('form-group-single-2').style.display = 'block';
+  });
+
+  document.getElementById('switch-to-range-2').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.getElementById('form-group-single-2').style.display = 'none';
+    document.getElementById('form-group-range-2').style.display = 'block';
+  });
+
+
+</script>
+
+{% endblock %}
