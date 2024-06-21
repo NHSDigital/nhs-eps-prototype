@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // Core dependencies
 const path = require('path');
 const fs = require('fs');

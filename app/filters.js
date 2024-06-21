@@ -1,3 +1,4 @@
+// eslint-disable-next-line func-names
 module.exports = function (env) { /* eslint-disable-line no-unused-vars */
   /**
    * Instantiate object used to store the methods registered as a
@@ -40,30 +41,41 @@ module.exports = function (env) { /* eslint-disable-line no-unused-vars */
 
   filters.ukMobile = (input) => {
     if (!input) {
-      return "01234 567890"; // Handle undefined or empty input
+      return '01234 567890'; // Handle undefined or empty input
     }
     // remove whitespace
-    input = input.replace(/\s/g,'')
+    // eslint-disable-next-line no-param-reassign
+    input = input.replace(/\s/g, '');
     // add the space back in
-    var number = input.substring(0, 5) + " " + input.substring(5)
+    const number = `${input.substring(0, 5)} ${input.substring(5)}`;
     return number;
-  }
+  };
 
   filters.calculateAge = (input) => {
     if (!input) {
-      return "33"; // Handle undefined or empty input
+      return '33'; // Handle undefined or empty input
     }
 
     // Parse the input date assuming format "D-MMM-YYYY"
     const parts = input.split('-');
     if (parts.length !== 3) {
-      return "Invalid date format";
+      return 'Invalid date format';
     }
 
     // Convert month from abbreviation to number (JavaScript months are 0-indexed)
     const months = {
-      JAN: 0, FEB: 1, MAR: 2, APR: 3, MAY: 4, JUN: 5,
-      JUL: 6, AUG: 7, SEP: 8, OCT: 9, NOV: 10, DEC: 11
+      JAN: 0,
+      FEB: 1,
+      MAR: 2,
+      APR: 3,
+      MAY: 4,
+      JUN: 5,
+      JUL: 6,
+      AUG: 7,
+      SEP: 8,
+      OCT: 9,
+      NOV: 10,
+      DEC: 11,
     };
     const day = parseInt(parts[0], 10);
     const month = months[parts[1].toUpperCase()];
@@ -77,35 +89,37 @@ module.exports = function (env) { /* eslint-disable-line no-unused-vars */
 
     // Adjust age if current month/day is before the birth month/day
     if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+      // eslint-disable-next-line no-plusplus
       age--;
     }
 
     return age;
-  }
+  };
 
   filters.formatNhsNumber = (input) => {
-
     // Check if 'number' is undefined or not a number
+    // eslint-disable-next-line no-restricted-globals
     if (input === undefined || isNaN(Number(input))) {
       return input; // Or handle however you see fit
     }
 
+    // eslint-disable-next-line no-param-reassign
     input = input.toString();
     // Ensure the string is exactly 10 digits long
     if (input.length === 10) {
       return `${input.slice(0, 3)} ${input.slice(3, 6)} ${input.slice(6)}`;
-    } else {
-      return input; // Return the original number if it's not 10 digits
     }
-  }
+    return input; // Return the original number if it's not 10 digits
+  };
 
   // Add a custom filter to convert object to array with keys and values
+  // eslint-disable-next-line arrow-body-style
   filters.objectToArray = (input) => {
-    return Object.keys(input).map(key => ({
+    return Object.keys(input).map((key) => ({
       id: key,
-      ...input[key]
+      ...input[key],
     }));
-  }
+  };
 
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app

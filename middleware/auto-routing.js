@@ -32,6 +32,7 @@ function renderPath(path, res, next) {
   });
 }
 
+// eslint-disable-next-line func-names
 exports.matchRoutes = function (req, res, next) {
   let { path } = req;
 

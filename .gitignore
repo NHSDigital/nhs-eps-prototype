@@ -68,3 +68,6 @@ Thumbs.db
 
 # Code coverage
 coverage
+
+.vscode
+.tool-versions
