@@ -14,6 +14,7 @@
 // External dependencies
 const basicAuth = require('basic-auth');
 
+// eslint-disable-next-line func-names
 module.exports = function (req, res, next) { /* eslint-disable-line consistent-return */
   // Set configuration variables
   const env = (process.env.NODE_ENV || 'development').toLowerCase();

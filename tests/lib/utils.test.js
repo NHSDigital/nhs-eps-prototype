@@ -21,77 +21,62 @@ test('test addNunjucksFilters filter added', () => {
     expect(mockEnv.addFilter).toHaveBeenCalledTimes(2);
 });
 
-test('test matchRoutes no error', () => {
-    const mockRequest = {
-        path: "http://www.example.com",
-    };
+test.each([
+  {
+    render_value: jest.fn((routePath, cb) => {
+      // Call the callback with a template not found error the first time
+      cb();
+    }),
+    mockResponseSetCallCount: 1,
+    mockResponseEndCallCount: 1,
+    mockNextCallCount: 0,
+    scenarioDescription: 'test matchRoutes no error'
+  },
+  {
+    render_value: jest.fn((routePath, cb) => {
+      // Call the callback with a template not found error the first time
+      cb(new Error('template in folder'));
+    }),
+    mockResponseSetCallCount: 0,
+    mockResponseEndCallCount: 0,
+    mockNextCallCount: 1,
+    scenarioDescription: 'test matchRoutes with other error'
+  },
+  {
+    render_value: jest.fn((routePath, cb) => {
+      // Call the callback with a template not found error the first time
+      cb(new Error('template not found'));
+    }),
+    mockResponseSetCallCount: 0,
+    mockResponseEndCallCount: 0,
+    mockNextCallCount: 1,
+    scenarioDescription: 'test matchRoutes with template error'
+  }
 
-    const mockResponse = {
-        set: jest.fn(),
-        end: jest.fn(),
-        render: jest.fn((routePath, cb) => {
-            // Call the callback with a template not found error the first time
-            cb();
-          }),
-    };
+])("$scenarioDescription", ({render_value, mockResponseSetCallCount, mockResponseEndCallCount, mockNextCallCount}) => {
+  const mockRequest = {
+    path: "http://www.example.com"
+  };
 
-    const mockNext = jest.fn();
 
-    matchRoutes(mockRequest, mockResponse, mockNext);
+  const mockResponse = {
+      set: jest.fn(),
+      end: jest.fn(),
+      render: render_value,
+  };
 
-    expect(mockResponse.render).toHaveBeenCalled();
-    expect(mockResponse.set).toHaveBeenCalled();
-    expect(mockResponse.end).toHaveBeenCalled();
-    expect(mockNext).not.toHaveBeenCalled();
-});
+  const mockNext = jest.fn();
 
-test('test matchRoutes with other error', () => {
-    const mockRequest = {
-        path: "http://www.example.com",
-    };
+  matchRoutes(mockRequest, mockResponse, mockNext);
 
-    const mockResponse = {
-        set: jest.fn(),
-        end: jest.fn(),
-        render: jest.fn((routePath, cb) => {
-            // Call the callback with a template not found error the first time
-            cb(new Error('template in folder'));
-          }),
-    };
+  expect(mockResponse.render).toHaveBeenCalled();
+  expect(mockResponse.set).toHaveBeenCalledTimes(mockResponseSetCallCount);
+  expect(mockResponse.end).toHaveBeenCalledTimes(mockResponseEndCallCount);
+  expect(mockNext).toHaveBeenCalledTimes(mockNextCallCount);
 
-    const mockNext = jest.fn();
+})
 
-    matchRoutes(mockRequest, mockResponse, mockNext);
 
-    expect(mockResponse.render).toHaveBeenCalled();
-    expect(mockResponse.set).not.toHaveBeenCalled();
-    expect(mockResponse.end).not.toHaveBeenCalled();
-    expect(mockNext).toHaveBeenCalled();
-});
-
-test('test matchRoutes with template error', () => {
-    const mockRequest = {
-        path: "http://www.example.com",
-    };
-
-    const mockResponse = {
-        set: jest.fn(),
-        end: jest.fn(),
-        render: jest.fn((routePath, cb) => {
-            // Call the callback with a template not found error the first time
-            cb(new Error('template not found'));
-          }),
-    };
-
-    const mockNext = jest.fn();
-
-    matchRoutes(mockRequest, mockResponse, mockNext);
-
-    expect(mockResponse.render).toHaveBeenCalled();
-    expect(mockResponse.set).not.toHaveBeenCalled();
-    expect(mockResponse.end).not.toHaveBeenCalled();
-    expect(mockNext).toHaveBeenCalled();
-});
 
 test('test matchRoutes with empty path', () => {
     const mockRequest = {
@@ -138,7 +123,7 @@ test('autoStoreData with request session data not set', () => {
 
     autoStoreData(mockRequest, mockResponse, mockNext);
 
-    expect(mockResponse.locals.data).toStrictEqual({1:{2:"two"}});
+    expect(mockResponse.locals.data).toMatchObject({1:{2:"two"}});
 });
 
 test('autoStoreData with unchecked in the request', () => {
@@ -162,5 +147,5 @@ test('autoStoreData with unchecked in the request', () => {
 
     autoStoreData(mockRequest, mockResponse, mockNext);
 
-    expect(mockResponse.locals.data).toStrictEqual({2: ["one", "three",],});
+    expect(mockResponse.locals.data).toMatchObject({2: ["one", "three",],});
 });

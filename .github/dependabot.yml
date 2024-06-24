@@ -1,0 +1,18 @@
+#########################################################################
+# Dependabot configuration file
+#########################################################################
+
+version: 2
+updates:
+  ###################################
+  # NPM workspace  ##################
+  ###################################
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    versioning-strategy: increase
+    open-pull-requests-limit: 20
+    commit-message:
+      prefix: "Upgrade: [dependabot] - "
+
