@@ -1,0 +1,41 @@
+<div class="data-panel__wrapper no-outline" tabindex="-1">
+  <div class="nhsuk-card data-panel" id="dispensing-doctor-panel">
+    <div class="nhsuk-card__content">
+      <h3 class="nhsuk-card__heading">
+        <span>Dispensing Doctor</span>
+      </h3>
+      {% if patient.dispensingDocName === "" %}
+      <span class="data-panel__text-only-content" id="no-dispensing-doctor">No Dispensing Doctor Information recorded for this patient.</span>
+      {% else %}
+
+      <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Practice Name</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.dispensingDocName === 'Not Recorded' or patient.dispensingDocName === undefined %}--none{% endif %}">
+              {{ patient.dispensingDocName or 'Dr Priyanka Kapoor' }}
+            </span>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Address</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.dispensingDocAddress === 'Not Recorded' or patient.dispensingDocAddress === undefined %}--none{% endif %} data-field__content--address">
+              {{ patient.dispensingDocAddress or '15 AUSTHORPE ROAD, ROSSGATES, LEEDS, WEST YORKSHIRE, LS15 8BA' }}
+            </span>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Telephone</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.dispensingDocTel === 'Not Recorded' or patient.dispensingDocTel === undefined %}--none{% endif %}">
+              {{ patient.dispensingDocTel | ukMobile or '0113450450' | ukMobile }}
+            </span>
+          </dd>
+        </div>
+      </dl>
+
+      {% endif %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,94 @@
+<div class="data-panel__wrapper no-outline" tabindex="-1">
+  <div class="nhsuk-card data-panel" id="next-of-kin-panel">
+    <div class="nhsuk-card__content">
+
+      <h3 class="nhsuk-card__heading">
+        <span>1. {{ patient.nokName or 'Mr William James Oliver Wolderton' }}
+          <span class="data-panel__subtitle">Next of Kin</span>
+        </span>
+      </h3>
+
+      <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Relationship</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.nokRelationshipType === 'Not Recorded' or patient.nokRelationshipType === undefined %}--none{% endif %}">
+              {{ patient.nokRelationship or 'Husband' }}
+              <em>{{ patient.nokRelationshipType or 'Personal Relationship' }}</em></span>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">NHS Number</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.nokNhsNumber === 'Not Recorded' or patient.nokNhsNumber === undefined %}--none{% endif %}">
+              <form action="change-record" method="POST">
+                <input type="hidden" name="change-by-nhs" value="{{ patient.nokNhsNumber or '5900009890' }}" />
+                <button role="button" tabindex="0" class="unstyle-button">
+                  {{ patient.nokNhsNumber | formatNhsNumber or '5900009890' | formatNhsNumber }}
+                </button>
+              </form>
+            </span>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Address</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.nokAddress === 'Not Recorded' or patient.nokAddress === undefined %}--none{% endif %} data-field__content--address">
+              {{ patient.nokAddress or '123 TEST STREET, TEST LANE, LEEDS, WEST YORKSHIRE, LS1 1JL' }}
+            </span>
+            <br>
+            <span class="data-field__note">From 08-Nov-2023</span>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Telephone</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.nokMainTel === 'Not Recorded' or patient.nokMainTel === undefined %}--none{% endif %}">
+              {{ patient.nokMainTel or 'Not Recorded' }}
+              </span>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Email</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.nokMainEmail === 'Not Recorded' or patient.nokMainEmail === undefined %}--none{% endif %}">
+              {{ patient.nokMainEmail or 'Not Recorded' }}</span>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Language</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.nokLanguage === 'Not Recorded' or patient.nokLanguage === undefined %}--none{% endif %}">
+              {{ patient.nokLanguage or 'English' }}
+             </span>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Preferred Method of Contact</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.nokContactMethod === 'Not Recorded' or patient.nokContactMethod === undefined %}--none{% endif %}">
+              {{ patient.nokContactMethod or 'Letter' }}
+            </span>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Written Contact Preferences</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.nokWrittenContact === 'Not Recorded' or patient.nokWrittenContact === undefined %}--none{% endif %}">
+              {{ patient.nokWrittenContact or 'Not Recorded' }}
+            </span>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Copy Correspondence</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.nokCopyCorrespond === 'Not Recorded' or patient.nokCopyCorrespond === undefined %}--none{% endif %}">
+              {{ patient.nokCopyCorrespond or 'Not Recorded' }}
+            </span>
+          </dd>
+        </div>
+      </dl>
+
+    </div>
+  </div>
+</div>
