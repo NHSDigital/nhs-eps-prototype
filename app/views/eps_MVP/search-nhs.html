@@ -24,11 +24,11 @@ Find a patient by NHS number - {{ serviceName }}
 
 <div class="nhsuk-tab-set find-patient-tabset">
   <div class="find-patient-tabset__container">
-    <a href="search" class="nhsuk-tab-set__tab nhsuk-tab-set__tab--active" id="nhs-number-search-tab" type="button">
+    <a href="search" class="nhsuk-tab-set__tab" id="nhs-number-search-tab" type="button">
       <span class="nhsuk-u-visually-hidden">Search by </span>
       Prescription ID search
     </a>
-    <a href="search-nhs" class="nhsuk-tab-set__tab" id="basic-search-tab" type="button">
+    <a href="search-nhs" class="nhsuk-tab-set__tab nhsuk-tab-set__tab--active" id="basic-search-tab" type="button">
       <span class="nhsuk-u-visually-hidden">Search by </span>
       NHS number search
     </a>
@@ -54,9 +54,9 @@ Find a patient by NHS number - {{ serviceName }}
         <div class="patient-search-form__field-group">
           <h2 class="nhsuk-heading-m nhsuk-u-margin-bottom-1 no-outline" id="nhs-number-search-form-nhs-number--label" tabindex="-1">
             <span class="nhsuk-u-visually-hidden">Search by </span>
-            Search using a prescription ID number
+            Search using NHS number
           </h2>
-          <div class="nhsuk-hint" id="nhs-number-hint">This is 18 characters and may also be called barcode or token ID.</div>
+          <div class="nhsuk-hint" id="nhs-number-hint">This is a 10 digit number, like 485 777 3456.</div>
           <div class="nhsuk-form-group">
             <input autofocus aria-describedby="nhs-number-hint" aria-labelledby="nhs-number-search-form-nhs-number--label" autocomplete="off" class="nhsuk-input nhsuk-input--width-10" id="nhs-number-search-form-nhs-number" name="nhsNumber" type="tel" value="">
           </div>
@@ -93,7 +93,7 @@ Find a patient by NHS number - {{ serviceName }}
 
         {% endif %}
 
-        <button aria-disabled="false" class="nhsuk-button patient-search-form__button" id="nhs-number-submit" type="submit">Find a prescription</button>
+        <button aria-disabled="false" class="nhsuk-button patient-search-form__button" id="nhs-number-submit" type="submit">Find a patient</button>
       </form>
     </div>
   </div>
