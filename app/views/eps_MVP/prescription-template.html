@@ -1,0 +1,93 @@
+{% extends './_includes/layout-application.html' %}
+{% set primarynav = 'patient' %}
+{% set hideNav = 'true' %}
+{% set hideJump = 'true' %}
+{% set containerClasses = 'patient-search-form-container' %}
+
+{% block pageTitle %}
+Prescription - {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+<div class="above-tab-space">
+  <section class="nhsuk-hero">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+          <div class="nhsuk-hero__wrapper"><h1 class="nhsuk-u-margin-bottom-3">National prescription tracker</h1></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="nhsuk-tab-set find-patient-tabset">
+  <div class="find-patient-tabset__container">
+    <a href="search" class="nhsuk-tab-set__tab" id="nhs-number-search-tab" type="button">
+      <span class="nhsuk-u-visually-hidden">Search by </span>
+      Prescription ID search
+    </a>
+    <a href="search-nhs" class="nhsuk-tab-set__tab nhsuk-tab-set__tab--active" id="basic-search-tab" type="button">
+      <span class="nhsuk-u-visually-hidden">Search by </span>
+      NHS number search
+    </a>
+    <a href="search-basic" class="nhsuk-tab-set__tab" id="advanced-search-tab" type="button">
+      <span class="nhsuk-u-visually-hidden">Search by </span>
+      Basic details search
+    </a>
+    
+  </div>
+</div>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="main-body-wrapper">
+
+<div class="patient-search-form row">
+  <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+    <div>
+      <div class="sidebar__wrapper">
+        {% include './_includes/includes-sidebar-eps.html' %}
+        <div class="sidebar__children">
+
+          <section class="data-section" tabindex="-1" title="Key demographic information">
+            <h2 class="nhsuk-u-margin-bottom-0 no-outline" id="key-demographic-heading" tabindex="-1">Key demographic information</h2>
+            {% include "./_panels/panel-name.html" %}
+            {% include "./_panels/panel-key-details.html" %}
+            {% include "./_panels/panel-scr-consent.html" %}
+            {% include "./_panels/panel-addresses.html" %}
+            {% include "./_panels/panel-contact-prefs.html" %}
+
+          </section>
+    
+    
+         
+            </div>
+          </section>
+       
+    
+    
+       
+        
+    
+          
+    
+    
+   
+    
+    
+      
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+</div>
+
+</div>
+{% endblock %}
