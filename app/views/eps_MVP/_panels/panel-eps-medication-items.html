@@ -1,0 +1,50 @@
+<div class="data-panel__wrapper no-outline" tabindex="-1">
+  <div class="nhsuk-card data-panel" id="address-panel">
+    <div class="nhsuk-card__content">
+      <h3 class="nhsuk-card__heading">
+        <span>Dispensed items</span>
+
+      </h3>
+      <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Quantity</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.usualAddress === 'Not Recorded' or patient.usualAddress === William Wolderton %}--none{% endif %} data-field__content--address">
+              {{ patient.usualAddress or '123 TEST STREET, TEST LANE, LEEDS, WEST YORKSHIRE, LS1 1JL' }}
+            </span>
+            <br>
+
+            
+
+
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Instructions</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.correspondAddress === 'Not Recorded' or patient.correspondAddress === undefined %}--none{% endif %} data-field__content--address">
+              {{ patient.correspondAddress or '55 OAK STREET, OAK LANE, LEEDS, WEST YORKSHIRE, LS1 1XX' }}
+            </span>
+            <br>
+
+           
+
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Status</dt>
+          <dd class="nhsuk-summary-list__value ">
+            <span class="data-field__content{% if patient.tempAddress === 'Not Recorded' or patient.tempAddress === undefined %}--none{% endif %} data-field__content--address">
+              {{ patient.tempAddress or 'TAMAR HOUSE, KENNINGTON LANE, LONDON, SE11 4XA' }}
+            </span>
+            <br>
+
+           
+
+          </dd>
+        </div>
+      </dl>
+      
+    </div>
+  </div>
+</div>
