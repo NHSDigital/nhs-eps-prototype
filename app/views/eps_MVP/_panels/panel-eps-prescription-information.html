@@ -1,5 +1,5 @@
 <div class="data-panel__wrapper no-outline" tabindex="-1">
-  <div class="nhsuk-card data-panel" id="address-panel">
+  <div class="nhsuk-card data-panel" id="prescription-information-panel">
     <div class="nhsuk-card__content">
       <h3 class="nhsuk-card__heading">
         <span>Prescription information</span>
@@ -9,8 +9,8 @@
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">Prescription ID</dt>
           <dd class="nhsuk-summary-list__value">
-            <span class="data-field__content{% if patient.usualAddress === 'Not Recorded' or patient.usualAddress === William Wolderton %}--none{% endif %} data-field__content--address">
-              {{ patient.usualAddress or '123 TEST STREET, TEST LANE, LEEDS, WEST YORKSHIRE, LS1 1JL' }}
+            <span class="data-field__content data-field__content--address">
+              1
             </span>
             <br>
 
@@ -22,8 +22,8 @@
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">Prescription status</dt>
           <dd class="nhsuk-summary-list__value">
-            <span class="data-field__content{% if patient.correspondAddress === 'Not Recorded' or patient.correspondAddress === undefined %}--none{% endif %} data-field__content--address">
-              {{ patient.correspondAddress or '55 OAK STREET, OAK LANE, LEEDS, WEST YORKSHIRE, LS1 1XX' }}
+            <span class="data-field__content data-field__content--address">
+             1
             </span>
             <br>
 
@@ -34,8 +34,8 @@
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">Prescription type</dt>
           <dd class="nhsuk-summary-list__value ">
-            <span class="data-field__content{% if patient.tempAddress === 'Not Recorded' or patient.tempAddress === undefined %}--none{% endif %} data-field__content--address">
-              {{ patient.tempAddress or 'TAMAR HOUSE, KENNINGTON LANE, LONDON, SE11 4XA' }}
+            <span class="data-field__content data-field__content--address">
+             1
             </span>
             <br>
 
@@ -44,7 +44,9 @@
           </dd>
         </div>
       </dl>
-      button here
+      <button class="nhsuk-button" data-module="nhsuk-button" type="submit">
+        Print prescription
+      </button>
     </div>
   </div>
 </div>

@@ -46,26 +46,36 @@ Prescription - {{ serviceName }}
 {% block content %}
 
 <div class="main-body-wrapper">
-
+  
 <div class="patient-search-form row">
-  <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+ 
     <div>
+      
       <div class="sidebar__wrapper">
         {% include './_includes/includes-sidebar-eps.html' %}
         <div class="sidebar__children">
 
-          <section class="data-section" tabindex="-1" title="Key demographic information">
-            <h2 class="nhsuk-u-margin-bottom-0 no-outline" id="key-demographic-heading" tabindex="-1">Key demographic information</h2>
-            {% include "./_panels/panel-name.html" %}
-            {% include "./_panels/panel-key-details.html" %}
-            {% include "./_panels/panel-scr-consent.html" %}
-            {% include "./_panels/panel-addresses.html" %}
-            {% include "./_panels/panel-contact-prefs.html" %}
-
+          <section class="data-section" tabindex="-1" title="Patient information">
+            <h2 class="nhsuk-u-margin-bottom-0 no-outline" id="key-demographic-heading" tabindex="-1">Patient information</h2>
+            {% include "./_panels/panel-epspatientdetails.html" %}
+        
+          </section>
+          <section class="data-section" tabindex="-1" title="Prescription information">
+            <h2 class="nhsuk-u-margin-bottom-0 no-outline" id="key-demographic-heading" tabindex="-1">Prescription information</h2>
+            {% include "./_panels/panel-eps-prescription-information.html" %}
+        
           </section>
     
-    
-         
+          <section class="data-section" tabindex="-1" title="Prescription information">
+            <h2 class="nhsuk-u-margin-bottom-0 no-outline" id="key-demographic-heading" tabindex="-1">Dispensed items</h2>
+            {% include "./_panels/panel-eps-medication-items.html" %}
+        
+          </section>
+          <section class="data-section" tabindex="-1" title="Message history">
+            <h2 class="nhsuk-u-margin-bottom-0 no-outline" id="key-demographic-heading" tabindex="-1">Message history</h2>
+            {% include "./_panels/panel-eps-message-history.html" %}
+        
+          </section>
             </div>
           </section>
        
