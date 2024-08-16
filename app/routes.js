@@ -44,5 +44,5 @@ router.use((req, res, next) => {
 require('./views/v1/_routes.js')(router);
 require('./views/v2/_routes.js')(router);
 require('./views/live/_routes.js')(router);
-
+require('./views/eps_MVP/_routes.js')(router);
 module.exports = router;
