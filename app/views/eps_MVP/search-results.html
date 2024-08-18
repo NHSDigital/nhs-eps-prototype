@@ -1,257 +1,93 @@
 {% extends './_includes/layout-application.html' %}
 {% set primarynav = 'patient' %}
 {% set hideNav = 'true' %}
-{% set hideJump = 'false' %}
-
+{% set hideJump = 'true' %}
+{% set containerClasses = 'patient-search-form-container' %}
 {% block pageTitle %}
-Find a patient by NHS number - {{ serviceName }}
+  Find a patient
 {% endblock %}
 
-{% block customStyles %}
-<style>
-  a {
-    cursor: pointer;
-    text-decoration: underline;
-  }
+{% block beforeContent %}
+  <section class="nhsuk-hero">
 
-  .patient-search-form .nhsuk-input {
-    margin-bottom: 8px;
-  }
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+          <div class="nhsuk-hero__wrapper">
+            <h1 class="nhsuk-u-margin-bottom-3 nhsuk-heading-l">Find a patient</h1>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  @media (min-width: 40.0625em) {
-    .patient-search-form .nhsuk-input {
-      margin-bottom: 16px;
-    }
-  }
+  </section>
 
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item">
+          <a class="nhsuk-breadcrumb__link" id="find-patient" href="/search/nhs-number-search{% if redirectBack %}?redirect-back={{ redirectBack }}{% endif %}">Find a patient</a>
+        </li>
+        <li class="nhsuk-breadcrumb__item">
+          <a class="nhsuk-breadcrumb__link" href="#">Search results</a>
+        </li>
+      </ol>
+      <p class="nhsuk-breadcrumb__back">
+        <a class="nhsuk-breadcrumb__backlink" href="/search/nhs-number-search{% if redirectBack %}?redirect-back={{ redirectBack }}{% endif %}">Find a patient</a>
+      </p>
+    </div>
+  </nav>
 
-
-  .query-filter-section {
-    display: flex;
-    align-items: baseline;
-  }
-
-  .query-filter-section__search {
-    margin-right: 8px;
-  }
-
-  @media (min-width: 40.0625em) {
-    .query-filter-section__search {
-      margin-right: 16px;
-    }
-  }
-
-  .query-results-table {
-    margin-bottom: 16px;
-    justify-content: left;
-    border-bottom: 3px solid #c8cfd3;
-    background-color: #ffffff;
-  }
-
-  @media (min-width: 40.0625em) {
-    .query-results-table {
-      margin-bottom: 24px;
-    }
-  }
-
-  .row {
-    box-sizing: border-box;
-    display: flex;
-    flex: 0 1 auto;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin-right: -8px;
-    margin-left: -8px;
-  }
-  .query-results-table__header {
-    padding-right: 0.2rem;
-    padding-bottom: 0.2rem;
-    padding-left: 0.2rem;
-    border-bottom: 2px solid #c8cfd3;
-    border-bottom-width: 0.15rem;
-    background-color: #f0f4f5;
-    color: #212b32;
-  }
-  .row {
-    margin-right: 0 !important;
-    margin-left: 0 !important;
-  }
-
-  .query-results-table__data-row {
-    font-size: 14px;
-    font-size: 0.875rem;
-    line-height: 1.71429;
-    padding: 0;
-    padding-top: 12px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #c8cfd3;
-    background-color: #ffffff;
-    color: #4c6272;
-    cursor: pointer;
-    outline: none;
-  }
-
-  @media (min-width: 40.0625em) {
-    .query-results-table__data-row {
-      font-size: 16px;
-      font-size: 1rem;
-      line-height: 1.5;
-    }
-  }
-
-  .query-results-table__data-row-name {
-    padding-bottom: 0;
-    margin-bottom: 0;
-    font-size: 1rem;
-    font-weight: bold;
-  }
-
-  .query-results-table__data-row--deceased {
-    border-bottom: 1px solid #c8cfd3;
-    background-color: #212b32;
-    color: #ffffff;
-  }
-
-  .query-results-table__data-row--deceased .query-results-table__data-row-quality-warning {
-    margin-bottom: 4px;
-    padding: 0.1rem 0.25rem;
-    background-color: #d5281b;
-    border-radius: 2px;
-    color: #ffffff;
-    font-weight: bold;
-  }
-
-  @media (min-width: 40.0625em) {
-    .query-results-table__data-row--deceased .query-results-table__data-row-quality-warning {
-      margin-bottom: 4px;
-    }
-  }
-
-  .query-results-table__data-row-quality-warning {
-    padding: 0.1rem 0;
-    margin: 0;
-    color: #d5281b;
-    font-weight: bold;
-  }
-
-</style>
 {% endblock %}
-
-
-
 
 {% block content %}
+  <div class="nhsuk-grid-row">
 
-<div class="main-body-wrapper">
-
-  <main>
-
-    <div class="nhsuk-width-container-fluid query-results-container">
-      <div class="row">
-        <div class="" id="query-summary">
-          <div class="query-results-header">
-            <h1 class="nhsuk-u-margin-bottom-3 nhsuk-heading-xl" id="results-header">Search Results</h1>
-            <h2 class="nhsuk-heading-m" id="results-count-text">Showing 1-5 of 5 results for the search:
-              <br>
-              <span class="nhsuk-heading-s nhsuk-u-margin-top-1">Gender: Any gender, Last name: ROGERSON, Date of birth: 24-Jun-2001.</span>
-            </h2>
-            <p class="query-results-refine">If you can't find the patient you're looking for you can
-              <span><a id="refine-link" role="button" tabindex="0">refine&nbsp;your&nbsp;search</a><span> or </span><a id="new-search-link" role="button" tabindex="0">perform&nbsp;a&nbsp;new&nbsp;search</a></span>
-            </p>
-            <p class="query-results-refine">
-              <span>Alternatively, you can <a id="allocate_nhs_number-link" role="button" tabindex="0">allocate a new NHS Number</a><span> or </span><a id="create-birth-notification-link" role="button" tabindex="0">create a birth notification without the mother's NHS details</a></span>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div id="patientview-sentinel" style="height: 1px; background-color: transparent;"></div>
-      <details class="nhsuk-details" id="results-filter">
-        <summary class="nhsuk-details__summary">
-          <span class="nhsuk-details__summary-text">Sort and filter results</span>
-        </summary>
-        <div class="nhsuk-details__text">
-          <div class="query-filter-section">
-            <div class="query-filter-section__search">
-              <div class="nhsuk-form-group">
-                <label class="nhsuk-label" for="results-filter-search" id="results-filter-search--label">Search within results</label><input aria-labelledby="results-filter-search--label" autocomplete="off" class="nhsuk-input nhsuk-input--width-20" id="results-filter-search" name="search" type="text" value="">
-              </div>
-            </div>
-            <div class="nhsuk-form-group">
-              <label class="nhsuk-label" for="results-filter-sort" id="results-filter-sort--label">Sort by</label><select aria-label="Sort by" aria-labelledby="results-filter-sort--label" class="nhsuk-select" id="results-filter-sort" name="results-filter-sort">
-              <option value="MATCHING_LEVEL">Closest match</option>
-              <option value="LAST_NAME_ASC">Last name A-Z</option>
-              <option value="LAST_NAME_DESC">Last name Z-A</option>
-              <option value="DOB_DESC">Date of birth youngest to oldest</option>
-              <option value="DOB_ASC">Date of birth oldest to youngest</option>
-              <option value="POSTCODE_ASC">Postcode A-Z</option>
-              <option value="POSTCODE_DESC">Postcode Z-A</option>
-            </select></div>
-          </div>
-        </div>
-      </details>
-      <div class="query-results-table">
-        <div class="query-results-table__header row">
-          <div class="col-sm-3 col-lg-3"><b>Name</b></div>
-          <div class="col-sm-1 col-lg-1"><b>Gender</b></div>
-          <div class="col-sm-2 col-lg-2"><b>Date of birth</b></div>
-          <div class="col-sm-4 col-lg-4"><b>Address</b></div>
-          <div class="col-sm-2 col-lg-2"><b>NHS Number</b></div>
-        </div>
-        <div class="query-results-table__data-row row" role="button" tabindex="0">
-          <div class="col-sm-12 col-md-12">
-            <span class="query-results-table__data-row-quality-warning">Warning: may be incorrect</span>
-          </div>
-          <div class="col-sm-3 col-lg-3"><p class="query-results-table__data-row-name">Eugene Smith </p></div>
-          <div class="col-sm-1 col-lg-1">Male</div>
-          <div class="col-sm-2 col-lg-2">19-Jan-1979</div>
-          <div class="col-sm-4 col-lg-4">1 Elderberry Edge, Edinburgh, ED11&nbsp;8YL</div>
-          <div class="col-sm-2 col-lg-2">991 200 0334</div>
-        </div>
-        <div class="query-results-table__data-row row" role="button" tabindex="0">
-          <div class="col-sm-12 col-md-12"></div>
-          <div class="col-sm-3 col-lg-3"><p class="query-results-table__data-row-name">David Smith </p></div>
-          <div class="col-sm-1 col-lg-1">Male</div>
-          <div class="col-sm-2 col-lg-2">19-Jan-1979</div>
-          <div class="col-sm-4 col-lg-4">3 Dragon Fruit Drive, Doncaster, DO11&nbsp;8YL</div>
-          <div class="col-sm-2 col-lg-2">991 200 0331</div>
-        </div>
-        <div class="query-results-table__data-row query-results-table__data-row--deceased row" role="button" tabindex="0">
-          <div class="col-sm-12 col-md-12"></div>
-          <div class="col-sm-3 col-lg-3"><p class="query-results-table__data-row-name">Charles Smith (DECEASED) </p>
-            <br>
-            <span class="query-results-table__data-row-date-of-death">Date of Death: 09-Feb-2012</span>
-          </div>
-          <div class="col-sm-1 col-lg-1">Male</div>
-          <div class="col-sm-2 col-lg-2">19-Jan-1979</div>
-          <div class="col-sm-4 col-lg-4">5 Carrot Close, Chester, CH11&nbsp;8YL</div>
-          <div class="col-sm-2 col-lg-2">991 200 0323</div>
-        </div>
-        <div class="query-results-table__data-row query-results-table__data-row--deceased row" role="button" tabindex="0">
-          <div class="col-sm-12 col-md-12">
-            <span class="query-results-table__data-row-quality-warning">Warning: may be incorrect</span>
-          </div>
-          <div class="col-sm-3 col-lg-3"><p class="query-results-table__data-row-name">Boris Smith (DECEASED) </p>
-            <br>
-            <span class="query-results-table__data-row-date-of-death">Date of Death: 09-Feb-2012</span>
-          </div>
-          <div class="col-sm-1 col-lg-1">Male</div>
-          <div class="col-sm-2 col-lg-2">19-Jan-1979</div>
-          <div class="col-sm-4 col-lg-4">7 Bannana Boulevard, Bedford, BE11&nbsp;8YL</div>
-          <div class="col-sm-2 col-lg-2">991 200 0293</div>
-        </div>
-        <div class="query-results-table__data-row row" role="button" tabindex="0">
-          <div class="col-sm-12 col-md-12"></div>
-          <div class="col-sm-3 col-lg-3"><p class="query-results-table__data-row-name">Alberto Smith </p></div>
-          <div class="col-sm-1 col-lg-1">Male</div>
-          <div class="col-sm-2 col-lg-2">19-Jan-1979</div>
-          <div class="col-sm-4 col-lg-4">9 Apple Avenue, Aberdeen, AB11&nbsp;8YL</div>
-          <div class="col-sm-2 col-lg-2">991 200 0285</div>
-        </div>
-      </div>
+    <div class="nhsuk-grid-column-three-quarters">
+      <h2 class="nhsuk-heading-l">Search results</h2>
+      {% if returnedPatientsList | length %}
+        <h3 class='nhsuk-heading-xs'>We found {{ returnedPatientsList | length }} result{% if returnedPatientsList | length > 1 %}s{% endif %}.</h3>
+      {% else %}
+        <h3 class='nhsuk-heading-xs'>Sorry. We couldn't find any patients.</h3>
+      {% endif %}
+      <p>If you can't find the patient you're looking for you can 
+        <a id='refine-search-link' href='javascript:window.history.back()'>refine your search</a> or <a href='nhs-number-search'>perform a new search</a>.</p>
 
     </div>
 
-  </main>
+    <div class="nhsuk-grid-column-full">
 
-</div>
+      {% if returnedPatientsList | length %}
+      <div class="search-results-container">
+
+        <table id="search-results-table" class="responsive-table" role="grid">
+          <caption class="heading-medium">Search results</caption>
+          <thead>
+            <tr role="row">
+              <th scope="col" class="name-results-th">Name</th>
+              <th scope="col" class="gender-results-th">Gender</th>
+              <th scope="col" class="dob-results-th">Date of birth</th>
+              <th scope="col" class="address-results-th">Address</th>
+              <th scope="col" class="nhs-no-results-th">NHS Number</th>
+            </tr>
+          </thead>
+          <tbody class="patient-results">
+            {% for patientNhsNumber, patient in returnedPatientsList %}
+              {% include "includes/search-result-row.html" %}
+            {% endfor %}
+          </tbody>
+        </table>
+        <div class="table-foot">
+          <span class="load-more"></span>
+          <span class="results-count">
+            Showing {{ returnedPatientsList | length }} of {{ returnedPatientsList | length }}
+          </span>
+        </div>
+
+      </div>
+      {% endif %}
+
+    </div>
+
+  </div>
 {% endblock %}

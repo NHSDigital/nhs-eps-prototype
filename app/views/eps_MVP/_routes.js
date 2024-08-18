@@ -19,14 +19,14 @@ module.exports = (router) => {
   })
 
   // search via nhs number form
-  router.post("/eps_mvp/submit-search-nhs", function (req, res) {
+  router.post("/eps_mvp/search-nhs-post", function (req, res) {
     const nhsNumber = req.body["nhsNumber"];
     req.session.data.errors = {};
 
     // If there is no submitted option
     if (!nhsNumber) {
       req.session.data.errors["nhs-number"] = true;
-      return res.redirect("search");
+      return res.redirect("search-results");
     }
 
     // Find the patient by NHS number
@@ -41,16 +41,18 @@ module.exports = (router) => {
       console.log("Patient found:", patient[nhsNumber]);
     } else {
       console.log("No patient found with that NHS number.");
-      res.redirect("search");
+      res.redirect("search-results");
     }
 
     req.session.data.patient = patient;
 
-    res.redirect(`search-results`);
+    res.redirect(`search-results?nhsNumber=${nhsNumber}`);
   });
 
+  
+
   // search via nhs basic search
-  router.post("/eps_mvp/submit-search-basic", function (req, res) {
+  router.post("/eps_mvp/search-basic-post", function (req, res) {
     let searchPostcode = req.body["postcode-only-input"];
     let searchLastName = req.body["surname"];
 
