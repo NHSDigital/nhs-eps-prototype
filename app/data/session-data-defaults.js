@@ -265,7 +265,8 @@ module.exports = {
         "hoHistNationality": "Chile",
         "hoHistVisaType": "Not available",
         "hoHistImmigrationStatus": "Not available",
-        "hoHistHealthcareStatus": "Not available"
+        "hoHistHealthcareStatus": "Not available",
+        "prescriptionNo":""
       }
     },
     {
@@ -665,7 +666,8 @@ module.exports = {
         "hoHistNationality": "",
         "hoHistVisaType": "",
         "hoHistImmigrationStatus": "",
-        "hoHistHealthcareStatus": ""
+        "hoHistHealthcareStatus": "",
+        "prescriptionNo":""
       }
     },
     {
@@ -867,7 +869,8 @@ module.exports = {
         "hoHistNationality": "",
         "hoHistVisaType": "",
         "hoHistImmigrationStatus": "",
-        "hoHistHealthcareStatus": ""
+        "hoHistHealthcareStatus": "",
+        "prescriptionNo":""
       }
     },
     {
@@ -1068,7 +1071,8 @@ module.exports = {
         "hoHistNationality": "",
         "hoHistVisaType": "",
         "hoHistImmigrationStatus": "",
-        "hoHistHealthcareStatus": ""
+        "hoHistHealthcareStatus": "",
+        "prescriptionNo":"2AA517A840021E597Z"
       }
     }
   ]

@@ -50,15 +50,15 @@ Find a patient by NHS number - {{ serviceName }}
 <div class="patient-search-form row">
   <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
     <div>
-      <form action="search-nhs" method="POST" novalidate="">
+      <form action="search-presc-post" method="POST" novalidate="">
         <div class="patient-search-form__field-group">
-          <h2 class="nhsuk-heading-m nhsuk-u-margin-bottom-1 no-outline" id="nhs-number-search-form-nhs-number--label" tabindex="-1">
+          <h2 class="nhsuk-heading-m nhsuk-u-margin-bottom-1 no-outline" id="presc-number-search-form-nhs-number--label" tabindex="-1">
             <span class="nhsuk-u-visually-hidden">Search by </span>
             Search using a prescription ID number
           </h2>
-          <div class="nhsuk-hint" id="nhs-number-hint">This is 18 characters and may also be called barcode or token ID.</div>
+          <div class="nhsuk-hint" id="presc-number-hint">This is 18 characters and may also be called barcode or token ID.</div>
           <div class="nhsuk-form-group">
-            <input autofocus aria-describedby="nhs-number-hint" aria-labelledby="nhs-number-search-form-nhs-number--label" autocomplete="off" class="nhsuk-input nhsuk-input--width-10" id="nhs-number-search-form-nhs-number" name="nhsNumber" type="tel" value="">
+            <input autofocus aria-describedby="presc-number-hint" aria-labelledby="presc-number-search-form-presc-number--label" autocomplete="off" class="nhsuk-input nhsuk-input--width-18" id="presc-number-search-form-presc-number" name="prescNumber" type="tel" value="">
           </div>
         </div>
 
@@ -102,26 +102,25 @@ Find a patient by NHS number - {{ serviceName }}
     <div><h2 class="bulletins-header">Bulletins</h2>
       <div class="bulletins-box">
         <div class="bulletin-item" id="bulletin-item-0-20990101">
-          <p tabindex="0"><b>Welcome to the National Care Records Service (NCRS)</b>
+          <p tabindex="0"><b>Welcome to the National prescription tracker</b>
             <br>
-            NCRS has replaced the Summary Care Record application (SCRa). Users of SCRa are now being automatically redirected to NCRS.
+            This is the newest version of the prescription tracker. 
           </p>
           <ul>
             <li>
-              <a href="javascript:void(0)" rel="noopener noreferrer external" tabindex="0" target="_blank">Find out more about NCRS (opens in a new tab)</a>
+              <a href="javascript:void(0)" rel="noopener noreferrer external" tabindex="0" target="_blank">Find out more about prescription tracker (opens in a new tab)</a>
             </li>
             <li>
-              <a href="javascript:void(0)" rel="noopener noreferrer external" tabindex="0" target="_blank">Get help with using NCRS (opens in a new tab)</a>
+              <a href="javascript:void(0)" rel="noopener noreferrer external" tabindex="0" target="_blank">Get help with using prescription tracker (opens in a new tab)</a>
             </li>
           </ul>
           <p></p></div>
         <hr class="bulletin-separator">
         <div class="bulletin-item" id="bulletin-item-1-20240104">
-          <p tabindex="0"><b>Design changes to the Patient tab</b>
+          <p tabindex="0"><b>Help us make the service better for you</b>
             <br>
-            We would like your feedback on some proposed design changes to the Patient tab. If checking detailed patient demographics is an important part of your role, please
-            <a href="javascript:void(0)" rel="noopener noreferrer external" tabindex="0" target="_blank">sign up to be part of the research (opens in a new tab)</a>
-            .
+            We would like to hear from users of the Electronic Prescription Service (EPS) so we can better understand your experience and improve the service.
+            <a href="javascript:void(0)" rel="noopener noreferrer external" tabindex="0" target="_blank">Register you interest to take part.</a>
           </p>
         </div>
       </div>

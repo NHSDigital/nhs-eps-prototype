@@ -18,6 +18,48 @@ module.exports = (router) => {
     })
   })
 
+  //search via presc number
+// search via presc number form
+router.post("/eps_mvp/search-presc-post", function (req, res) {
+  const prescNumber = req.body["prescNumber"];
+  req.session.data.errors = {};
+
+  // If there is no submitted option
+  if (!prescNumber) {
+      req.session.data.errors["presc-number"] = true;
+      return res.redirect("search-results");
+  }
+
+  console.log("Searching for prescription number:", prescNumber);
+
+  // Find the patient by prescription number
+  let patientEntry = req.session.data.patients.find(p => {
+      return Object.values(p).some(patient => patient.prescriptionNo === prescNumber);
+  });
+
+  // Extract the patient object from the patientEntry
+  let patient = patientEntry ? Object.values(patientEntry).find(patient => patient.prescriptionNo === prescNumber) : null;
+
+  if (patient) {
+      // Assuming that the patient object has an nhsNumber field
+      const nhsNumber = patient.nhsNumber;
+
+      if (!nhsNumber) {
+          console.log("Patient found but no NHS number available.");
+          req.session.data.patient = null;
+          return res.redirect("search-results");
+      }
+
+      console.log("Patient found:", patient);
+      req.session.data.patient = patient;
+      return res.redirect(`search-results?nhsNumber=${nhsNumber}`);
+  } else {
+      console.log("No patient found with that prescription number.");
+      req.session.data.patient = null;
+      return res.redirect("search-results");
+  }
+});
+
   // search via nhs number form
   router.post("/eps_mvp/search-nhs-post", function (req, res) {
     const nhsNumber = req.body["nhsNumber"];
