@@ -31,3 +31,31 @@ button {
   box-shadow: 0 4px 0 #00376c;
   color: white;
 }
+//eps expanders jess
+.expanderButton1eps[aria-expanded="false"] {
+  color: #005eb8;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0px 8px 0px 0px;
+  position: relative;;
+ }
+ 
+ 
+ .expanderButton1eps[aria-expanded="false"]:after {
+  content: "Summary"
+ }
+ 
+ 
+ .expanderButton1eps[aria-expanded="true"] {
+  color: #005eb8;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0px;
+  position: relative;
+ }
+ 
+ 
+ .expanderButton1eps[aria-expanded="true"]:after {
+  content: "View less"
+ }
+ 

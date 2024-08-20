@@ -1,3 +1,77 @@
 .nhsuk-table__row__no-border * {
   border-bottom: none;
 }
+
+//expander row Jess
+.detailsRow {
+  td {
+    vertical-align: top;
+  }
+}
+
+
+.detailsTable {
+  margin-bottom: 0;
+
+
+  td {
+    border-bottom: none;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+
+
+  .detailsTableLabel {
+    text-align: right;
+    font-weight: 600;
+  }
+}
+
+
+.hidden {
+  display: none;
+}
+
+
+.detailsTableRight {
+  td {
+    text-align: left;
+  }
+}
+
+.expandedRow {
+  background-color: #005eb8;
+  color: #fff;
+
+
+  a {
+    color: #fff;
+  }
+
+
+  a:focus {
+    color: #231f20;
+
+
+    svg {
+      fill: #231f20;
+    }
+  }
+
+
+  svg {
+    fill: #fff;
+
+
+    circle {
+      stroke: none;
+      fill: none;
+    }
+  }
+
+
+  label::after {
+    color: #231f20;
+  }
+}
+
