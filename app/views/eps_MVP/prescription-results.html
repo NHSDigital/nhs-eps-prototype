@@ -1,0 +1,184 @@
+{% extends './_includes/layout-application.html' %}
+{% set primarynav = 'patient' %}
+{% set hideNav = 'true' %}
+{% set hideJump = 'true' %}
+{% set containerClasses = 'patient-search-form-container' %}
+{% block pageTitle %}
+  Find a patient
+{% endblock %}
+
+{% block beforeContent %}
+  <section class="nhsuk-hero">
+
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+          <div class="nhsuk-hero__wrapper">
+            <h1 class="nhsuk-u-margin-bottom-3 nhsuk-heading-l">National prescription tracker</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <div class="nhsuk-tab-set find-patient-tabset">
+    <div class="find-patient-tabset__container">
+      <a href="search" class="nhsuk-tab-set__tab" id="nhs-number-search-tab" type="button">
+        <span class="nhsuk-u-visually-hidden">Search by </span>
+        Prescription ID search
+      </a>
+      <a href="search-nhs" class="nhsuk-tab-set__tab nhsuk-tab-set__tab--active" id="basic-search-tab" type="button">
+        <span class="nhsuk-u-visually-hidden">Search by </span>
+        NHS number search
+      </a>
+      <a href="search-basic" class="nhsuk-tab-set__tab" id="advanced-search-tab" type="button">
+        <span class="nhsuk-u-visually-hidden">Search by </span>
+        Basic details search
+      </a>
+      
+    </div>
+  </div>
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item">
+          <a class="nhsuk-breadcrumb__link" id="find-patient" href="/search/nhs-number-search{% if redirectBack %}?redirect-back={{ redirectBack }}{% endif %}">Find a patient</a>
+        </li>
+        <li class="nhsuk-breadcrumb__item">
+          <a class="nhsuk-breadcrumb__link" href="#">Search results</a>
+        </li>
+      </ol>
+      <p class="nhsuk-breadcrumb__back">
+        <a class="nhsuk-breadcrumb__backlink" href="/search/nhs-number-search{% if redirectBack %}?redirect-back={{ redirectBack }}{% endif %}">Find a patient</a>
+      </p>
+    </div>
+  </nav>
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-three-quarters">
+      <h2 class="nhsuk-heading-l">Prescriptions list</h2>
+     <!--CONDITIONALS TO ADD IN WHEN DATA IS PASSED PROPERLY--> 
+     <!--
+        {% if returnedPatientsList | length %}
+        <h3 class='nhsuk-heading-xs'>We found {{ returnedPatientsList | length }} result{% if returnedPatientsList | length > 1 %}s{% endif %}.</h3>
+      {% else %}
+        <h3 class='nhsuk-heading-xs'>No prescriptions found</h3>
+        <p>We could not find any current or future dated prescriptions for this patient.</p>
+      {% endif %}
+     -->
+    <p>We found 15 results</p>
+      
+
+    </div>
+
+    <div class="nhsuk-grid-column-full">
+      <div class="nhsuk-tab-set find-patient-tabset">
+        <div class="find-patient-tabset__container">
+          <a href="#" class="nhsuk-tab-set__tab" id="current-prescriptions-tab" type="button">
+            <span class="nhsuk-u-visually-hidden">View </span>
+            Current prescriptions
+          </a>
+          <a href="#" class="nhsuk-tab-set__tab nhsuk-tab-set__tab--active" id="future-dated-prescriptions-tab" type="button">
+            <span class="nhsuk-u-visually-hidden">View </span>
+            Future dated prescriptions
+          </a>
+          <a href="#" class="nhsuk-tab-set__tab" id="claimed-and-expired-prescriptions-tab" type="button">
+            <span class="nhsuk-u-visually-hidden">View</span>
+            Claimed and expired prescriptions
+          </a>
+          
+        </div>
+      </div>
+     
+      <div class="search-results-current-container">
+
+        <table id="search-results-table-current" class="responsive-table" role="grid">
+       
+          <thead>
+            <tr role="row">
+              <th scope="col" class="prescriptionID-results-th">Prescription ID</th>
+              <th scope="col" class="status-results-th">Status</th>
+              <th scope="col" class="issuedate-results-th">Issue date</th>
+              <th scope="col" class="prescriptiontype-results-th">Prescription type</th>
+              <th scope="col" class="viewsummary-results-th">View summary</th>
+            </tr>
+          </thead>
+          <tbody class="patient-results">
+            {% for patientNhsNumber, patient in returnedPatientsList %}
+              {% include "includes/prescription-search-result-row.html" %}
+            {% endfor %}
+          </tbody>
+        </table>
+        <div class="table-foot">
+          <span class="load-more"></span>
+          <span class="results-count">
+            Showing {{ returnedPatientsList | length }} of {{ returnedPatientsList | length }}
+          </span>
+        </div>
+
+      </div>
+  
+      <div class="search-results-future-container">
+
+        <table id="search-results-table-current" class="responsive-table" role="grid">
+       
+          <thead>
+            <tr role="row">
+              <th scope="col" class="prescriptionID-results-th">Prescription ID</th>
+              <th scope="col" class="status-results-th">Status</th>
+              <th scope="col" class="issuedate-results-th">Issue date</th>
+              <th scope="col" class="prescriptiontype-results-th">Prescription type</th>
+              <th scope="col" class="viewsummary-results-th">View summary</th>
+            </tr>
+          </thead>
+          <tbody class="patient-results">
+            {% for patientNhsNumber, patient in returnedPatientsList %}
+              {% include "includes/prescription-search-result-row.html" %}
+            {% endfor %}
+          </tbody>
+        </table>
+        <div class="table-foot">
+          <span class="load-more"></span>
+          <span class="results-count">
+            Showing {{ returnedPatientsList | length }} of {{ returnedPatientsList | length }}
+          </span>
+        </div>
+
+      </div>
+
+      <div class="search-results-claimed-container">
+
+        <table id="search-results-table-current" class="responsive-table" role="grid">
+       
+          <thead>
+            <tr role="row">
+              <th scope="col" class="prescriptionID-results-th">Prescription ID</th>
+              <th scope="col" class="status-results-th">Status</th>
+              <th scope="col" class="issuedate-results-th">Issue date</th>
+              <th scope="col" class="prescriptiontype-results-th">Prescription type</th>
+              <th scope="col" class="viewsummary-results-th">View summary</th>
+            </tr>
+          </thead>
+          <tbody class="patient-results">
+            {% for patientNhsNumber, patient in returnedPatientsList %}
+              {% include "includes/prescription-search-result-row.html" %}
+            {% endfor %}
+          </tbody>
+        </table>
+        <div class="table-foot">
+          <span class="load-more"></span>
+          <span class="results-count">
+            Showing {{ returnedPatientsList | length }} of {{ returnedPatientsList | length }}
+          </span>
+        </div>
+
+      </div>
+    
+    </div>
+
+  </div>
+{% endblock %}
