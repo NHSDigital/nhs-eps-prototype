@@ -76,26 +76,93 @@
     </div>
 
     <div class="nhsuk-grid-column-full">
-      <div class="nhsuk-tab-set find-patient-tabset">
-        <div class="find-patient-tabset__container">
-          <a href="#" class="nhsuk-tab-set__tab" id="current-prescriptions-tab" type="button">
-            <span class="nhsuk-u-visually-hidden">View </span>
-            Current prescriptions
-          </a>
-          <a href="#" class="nhsuk-tab-set__tab nhsuk-tab-set__tab--active" id="future-dated-prescriptions-tab" type="button">
-            <span class="nhsuk-u-visually-hidden">View </span>
-            Future dated prescriptions
-          </a>
-          <a href="#" class="nhsuk-tab-set__tab" id="claimed-and-expired-prescriptions-tab" type="button">
-            <span class="nhsuk-u-visually-hidden">View</span>
-            Claimed and expired prescriptions
-          </a>
+      <div class="nhsuk-tabs" data-module="nhsuk-tabs">
+        <h2 class="nhsuk-tabs__title">
+          Contents
+        </h2>
+      
+        <ul class="nhsuk-tabs__list">
+      
+          <li class="nhsuk-tabs__list-item nhsuk-tabs__list-item--selected">
+            <a class="nhsuk-tabs__tab" href="#current-prescriptions">
+              Current prescriptions
+            </a>
+          </li>
+      
+          <li class="nhsuk-tabs__list-item">
+            <a class="nhsuk-tabs__tab" href="#future-dated-prescriptions">
+              Future dated prescriptions
+            </a>
+          </li>
+      
+          <li class="nhsuk-tabs__list-item">
+            <a class="nhsuk-tabs__tab" href="#claimed-and-expired-prescriptions">
+             Claimed and expired prescriptions
+            </a>
+          </li>
+      
+         
+      
+        </ul>
+      
+        <div class="nhsuk-tabs__panel" id="current-prescriptions">
+      <p>Current prescriptions</p>
+      <table id="search-results-table-current" class="responsive-table" role="grid">
+       
+        <thead>
+          <tr role="row">
+            <th scope="col" class="prescriptionID-results-th">Prescription ID</th>
+            <th scope="col" class="status-results-th">Status</th>
+            <th scope="col" class="issuedate-results-th">Issue date</th>
+            <th scope="col" class="prescriptiontype-results-th">Prescription type</th>
+            <th scope="col" class="viewsummary-results-th">View summary</th>
+          </tr>
+        </thead>
+        <tbody class="patient-results">
+          {% for patientNhsNumber, patient in returnedPatientsList %}
+            {% include "includes/prescription-search-result-row.html" %}
+          {% endfor %}
+        </tbody>
+      </table>
+      <div class="table-foot">
+        <span class="load-more"></span>
+        <span class="results-count">
+          Showing {{ returnedPatientsList | length }} of {{ returnedPatientsList | length }}
+        </span>
+      </div>
+        </div>
+      
+        <div class="nhsuk-tabs__panel nhsuk-tabs__panel--hidden" id="future-dated-prescriptions">
+      <p>Future dated prescriptions</p>
+      <table id="search-results-table-current" class="responsive-table" role="grid">
+       
+        <thead>
+          <tr role="row">
+            <th scope="col" class="prescriptionID-results-th">Prescription ID</th>
+            <th scope="col" class="status-results-th">Status</th>
+            <th scope="col" class="issuedate-results-th">Issue date</th>
+            <th scope="col" class="prescriptiontype-results-th">Prescription type</th>
+            <th scope="col" class="viewsummary-results-th">View summary</th>
+          </tr>
+        </thead>
+        <tbody class="patient-results">
+          {% for patientNhsNumber, patient in returnedPatientsList %}
+            {% include "includes/prescription-search-result-row.html" %}
+          {% endfor %}
+        </tbody>
+      </table>
+      <div class="table-foot">
+        <span class="load-more"></span>
+        <span class="results-count">
+          Showing {{ returnedPatientsList | length }} of {{ returnedPatientsList | length }}
+        </span>
+      </div>
+      
+        </div>
+      
+        <div class="nhsuk-tabs__panel nhsuk-tabs__panel--hidden" id="claimed-and-expired-prescriptions">
+      <p>Claimed and expired prescriptions</p>
           
-        </div>
-      </div>
-     
-      <div class="search-results-current-container">
-
         <table id="search-results-table-current" class="responsive-table" role="grid">
        
           <thead>
@@ -119,66 +186,73 @@
             Showing {{ returnedPatientsList | length }} of {{ returnedPatientsList | length }}
           </span>
         </div>
-
-      </div>
-  
-      <div class="search-results-future-container">
-
-        <table id="search-results-table-current" class="responsive-table" role="grid">
-       
-          <thead>
-            <tr role="row">
-              <th scope="col" class="prescriptionID-results-th">Prescription ID</th>
-              <th scope="col" class="status-results-th">Status</th>
-              <th scope="col" class="issuedate-results-th">Issue date</th>
-              <th scope="col" class="prescriptiontype-results-th">Prescription type</th>
-              <th scope="col" class="viewsummary-results-th">View summary</th>
-            </tr>
-          </thead>
-          <tbody class="patient-results">
-            {% for patientNhsNumber, patient in returnedPatientsList %}
-              {% include "includes/prescription-search-result-row.html" %}
-            {% endfor %}
-          </tbody>
-        </table>
-        <div class="table-foot">
-          <span class="load-more"></span>
-          <span class="results-count">
-            Showing {{ returnedPatientsList | length }} of {{ returnedPatientsList | length }}
-          </span>
+      
         </div>
-
-      </div>
-
-      <div class="search-results-claimed-container">
-
-        <table id="search-results-table-current" class="responsive-table" role="grid">
+      
        
-          <thead>
-            <tr role="row">
-              <th scope="col" class="prescriptionID-results-th">Prescription ID</th>
-              <th scope="col" class="status-results-th">Status</th>
-              <th scope="col" class="issuedate-results-th">Issue date</th>
-              <th scope="col" class="prescriptiontype-results-th">Prescription type</th>
-              <th scope="col" class="viewsummary-results-th">View summary</th>
-            </tr>
-          </thead>
-          <tbody class="patient-results">
-            {% for patientNhsNumber, patient in returnedPatientsList %}
-              {% include "includes/prescription-search-result-row.html" %}
-            {% endfor %}
-          </tbody>
-        </table>
-        <div class="table-foot">
-          <span class="load-more"></span>
-          <span class="results-count">
-            Showing {{ returnedPatientsList | length }} of {{ returnedPatientsList | length }}
-          </span>
-        </div>
-
       </div>
     
     </div>
 
+
+    
+
+
   </div>
 {% endblock %}
+
+<script>
+  //TABS TABS TABS 
+  document.addEventListener("DOMContentLoaded", function() {
+      // Function to toggle table visibility based on clicked anchor tag
+      function openPresc(event, tableId) {
+        event.preventDefault(); // Prevent default anchor behavior
+    
+        // Hide all tables with class 'contentcontent'
+        var tables = document.querySelectorAll(".contentcontent");
+        tables.forEach(function(table) {
+          table.style.display = "none";
+        });
+    
+        // Remove 'selected' class from all tabs
+        var tabs = document.querySelectorAll(".eps-tabs-item");
+        tabs.forEach(function(tab) {
+          tab.classList.remove("eps-tabs-item-active");
+        });
+    
+        // Show the table corresponding to the clicked anchor tag
+        document.getElementById(tableId).style.display = "";
+    
+        // Add 'selected' class to the parent tab
+        event.target.parentElement.classList.add("eps-tabs-item-active");
+    
+        console.log("Table with ID ", tableId, " is displayed."); // Add this line to log when the table is displayed
+      }
+    
+      // Add event listeners to the anchor tags within the list items
+      document.getElementById("active-presc").addEventListener('click', function(event) {
+        console.log("active-presc anchor clicked"); // Add this line to log when the active-presc anchor is clicked
+        openPresc(event, "current-prescriptions" );
+      });
+    
+      document.getElementById("future-presc").addEventListener('click', function(event) {
+        console.log("future-presc anchor clicked"); // Add this line to log when the future-presc anchor is clicked
+        openPresc(event, "future-prescriptions");
+      });
+    
+      document.getElementById("terminal-presc").addEventListener('click', function(event) {
+        console.log("terminal-presc anchor clicked"); // Add this line to log when the future-presc anchor is clicked
+        openPresc(event, "terminal-prescriptions");
+      });
+  
+  
+      // Add the 'eps-tabs-item-active' class to the default tab
+      var defaultTab = document.getElementById("active-presc").parentElement;
+      defaultTab.classList.add("eps-tabs-item-active");
+    
+      // Show the content corresponding to the default tab
+      var defaultContent = document.getElementById("current-prescriptions");
+      defaultContent.style.display = "block";
+    });
+    
+</script>
