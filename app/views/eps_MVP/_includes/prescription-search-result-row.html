@@ -7,38 +7,37 @@
 {%- endset -%}
 <tr role="row" class="patient-search-result" data-href="{{ patientRowHref }}?nhs-number={{ patientNhsNumber }}">
     <td role="gridcell">
-        <span class="table-heading" aria-hidden="true">Name</span>
+        <span class="table-heading" aria-hidden="true">Prescription ID</span>
         <span>
-            <a href="patient-overview" class="name-results-td">
-                {{ patient.firstName }}
-                {{ patient.lastName.toUpperCase() }}
+            <a href="#" class="name-results-td">
+               Prescription ID
             </a>
         </span>
     </td>
     <td role="gridcell">
-        <span class="table-heading" aria-hidden="true">Gender</span>
-        <span class="gender-results-td">{{ patient.gender }}</span>
+        <span class="table-heading" aria-hidden="true">Status</span>
+        <span class="gender-results-td">Status</span>
     </td>
     <td role="gridcell">
         <span class="table-heading" aria-hidden="true">Date of birth</span>
         <span class="dob-results-td">{{ patient.dob }}</span>
     </td>
     <td role="gridcell">
-        <span class="table-heading" aria-hidden="true">Address</span>
+        <span class="table-heading" aria-hidden="true">Issue date</span>
         <span class="address-results-td">
-            {{ patient.address }},&nbsp;
-            <span class='patient-pob-td'>{{ patient.county }},</span>&nbsp;
-            <span class='postcode-results-td'>
-                {{ patient.postcode }}
-            </span>
+           Issue date
         </span>
     </td>
     <td role="gridcell">
-        <span class="table-heading" aria-hidden="true">NHS Number</span>
+        <span class="table-heading" aria-hidden="true">Prescription type</span>
         <span class="nhs-no-results-td">
-            {{ patientNhsNumber.substr(0, 3) }}
-            {{ patientNhsNumber.substr(3, 3) }}
-            {{ patientNhsNumber.substr(6, 4) -}}
+           Presc type
+        </span>
+    </td>
+    <td role="gridcell">
+        <span class="table-heading" aria-hidden="true">View summary</span>
+        <span class="nhs-no-results-td">
+           Link
         </span>
     </td>
 </tr>
