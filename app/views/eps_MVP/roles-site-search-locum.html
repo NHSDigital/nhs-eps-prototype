@@ -1,0 +1,32 @@
+{% extends './_includes/layout-application.html' %}
+{% set primarynav = 'patient' %}
+{% set hideNav = 'true' %}
+{% set hideJump = 'true' %}
+
+{% block pageTitle %}
+Find a patient by NHS number - {{ serviceName }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="row">
+  <div class="col-sm-0 col-md-1 col-lg-1 col-xl-3"></div>
+  <div class="col-sm-12 col-md-10 col-lg-10 col-xl-6">
+    <h1 class="select-role-header" id="role-confirmed-header">Search for site</h1>
+    <p class="nhsuk-u-margin-bottom-2">You are logging in with a locum Pharmacist role. </p>
+    
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" for="three-quarters">
+        You can search for the site using the exact ODS code, partial dispensing site name or postcode.
+      </label>
+      <input class="nhsuk-input nhsuk-u-width-three-quarters nhsuk-u-margin-bottom-2" id="three-quarters" name="three-quarters" type="text">
+    </br> <a href="roles-confirm-locum" aria-disabled="false" class="nhsuk-button" id="confirm-current-role-locum" role="button" type="submit">Search</a>
+    </div>
+
+
+    
+  </div>
+</div>
+
+{% endblock %}
