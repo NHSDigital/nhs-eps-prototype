@@ -68,7 +68,7 @@ router.post("/eps_mvp/search-presc-post", function (req, res) {
     // If there is no submitted option
     if (!nhsNumber) {
       req.session.data.errors["nhs-number"] = true;
-      return res.redirect("search-results");
+      return res.redirect("search-nhs");
     }
 
     // Find the patient by NHS number
