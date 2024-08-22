@@ -78,7 +78,7 @@ Find a patient by NHS number - {{ serviceName }}
                 {% set patientList = item | objectToArray %}
                 {% for patient in patientList %}
                   <li>
-                    <a href="patient-overview?nhsNumber={{ patient.nhsNumber }}">
+                    <a href="search-results?nhsNumber={{ patient.nhsNumber }}">
                       {{ patient.firstName }} {{ patient.lastName }} | {{ patient.dob | calculateAge }}
                     </a>
                   </li>
