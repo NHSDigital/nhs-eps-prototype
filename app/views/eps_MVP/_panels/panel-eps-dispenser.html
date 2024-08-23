@@ -7,7 +7,7 @@
           <dt class="nhsuk-summary-list__key">Dispenser</dt>
           <dd class="nhsuk-summary-list__value">
             <span class="data-field__content data-field__content--address">
-              1
+              {{ prescription.Dispenserorg or 'COHENS CHEMIST (ODS: FV519)' }}
             </span>
             <br>
 
@@ -17,7 +17,7 @@
           <dt class="nhsuk-summary-list__key">Address</dt>
           <dd class="nhsuk-summary-list__value">
             <span class="data-field__content data-field__content--address">
-            1
+              {{ prescription.Dispenseraddress or '123 Lime street, Norfolk' }}
             </span>
             <br>
 
@@ -29,7 +29,7 @@
           <dt class="nhsuk-summary-list__key">Dispenser contact details</dt>
           <dd class="nhsuk-summary-list__value ">
             <span class="data-field__content data-field__content--address">
-             1
+              {{ prescription.Dispensercontact or '01234 123453' }}
             </span>
             <br>
 

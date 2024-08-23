@@ -1,16 +1,16 @@
 <div class="data-panel__wrapper no-outline" tabindex="-1">
-  <div class="nhsuk-card data-panel" id="prescription-information-panel">
+  <div class="nhsuk-card data-panel" id="address-panel">
     <div class="nhsuk-card__content">
       <h3 class="nhsuk-card__heading">
-        <span>Prescription information</span>
+        <span>{{ prescription.prescriptionItem1 or 'Blephaclean wipes(Thea Pharmaceuticals Ltd)' }}</span>
 
       </h3>
       <dl class="nhsuk-summary-list">
         <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">Prescription ID</dt>
+          <dt class="nhsuk-summary-list__key">Quantity</dt>
           <dd class="nhsuk-summary-list__value">
             <span class="data-field__content data-field__content--address">
-              {{ prescription.prescriptionID or '4FA217-P84302-2H597C' }}
+              {{ prescription.prescriptionItem1quantity or '21 tablets' }}
             </span>
             <br>
 
@@ -20,10 +20,10 @@
           </dd>
         </div>
         <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">Prescription status</dt>
+          <dt class="nhsuk-summary-list__key">Instructions</dt>
           <dd class="nhsuk-summary-list__value">
             <span class="data-field__content data-field__content--address">
-              {{ prescription.Status or 'Claimed' }}
+              {{ prescription.prescriptionItem1instructions or 'Take 3 times a day with water' }}
             </span>
             <br>
 
@@ -32,10 +32,10 @@
           </dd>
         </div>
         <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">Prescription type</dt>
+          <dt class="nhsuk-summary-list__key">Status</dt>
           <dd class="nhsuk-summary-list__value ">
             <span class="data-field__content data-field__content--address">
-              {{ prescription.prescriptionType or 'eRD' }}
+              {{ prescription.prescriptionItem1Status or 'Claimed' }}
             </span>
             <br>
 
@@ -44,9 +44,7 @@
           </dd>
         </div>
       </dl>
-      <button class="nhsuk-button" data-module="nhsuk-button" type="submit">
-        Print prescription
-      </button>
+      
     </div>
   </div>
 </div>

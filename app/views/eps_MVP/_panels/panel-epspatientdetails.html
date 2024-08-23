@@ -7,7 +7,10 @@
           <dt class="nhsuk-summary-list__key">Patient name</dt>
           <dd class="nhsuk-summary-list__value">
             <span class="data-field__content data-field__content--address">
-              1
+              {{ patient.firstName or 'Sofia' }}
+              {{ patient.middleNames or '' }}
+              {{ patient.lastName or 'Rodriguez' }}
+              {{ patient.suffix or '' }}
             </span>
             <br>
 
@@ -17,7 +20,7 @@
           <dt class="nhsuk-summary-list__key">NHS number</dt>
           <dd class="nhsuk-summary-list__value">
             <span class="data-field__content data-field__content--address">
-            1
+              {{ patient.nhsNumber | formatNhsNumber  or '9726918863' | formatNhsNumber }}
             </span>
             <br>
 
@@ -29,7 +32,7 @@
           <dt class="nhsuk-summary-list__key">Date of birth</dt>
           <dd class="nhsuk-summary-list__value ">
             <span class="data-field__content data-field__content--address">
-             1
+              {{ patient.dob or '5-Aug-1990' }}
             </span>
             <br>
 
@@ -41,7 +44,7 @@
           <dt class="nhsuk-summary-list__key">Address</dt>
           <dd class="nhsuk-summary-list__value ">
             <span class="data-field__content data-field__content--address">
-             1
+              {{ patient.usualAddress or '123 TEST STREET, TEST LANE, LEEDS, WEST YORKSHIRE, LS1 1JL' }}
             </span>
             <br>
 
