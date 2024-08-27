@@ -55,6 +55,10 @@ Prescription - {{ serviceName }}
         {% include './_includes/includes-sidebar-eps.html' %}
         <div class="sidebar__children">
 
+          <section class="data-section" tabindex="-1" title="Cancellation information">
+            {% include "./_panels/panel-eps-pending-cancellation.html" %}
+          </section>
+
           <section class="data-section" tabindex="-1" title="Patient information">
             <h2 class="nhsuk-u-margin-bottom-0 no-outline" id="key-demographic-heading" tabindex="-1">Patient information</h2>
             {% include "./_panels/panel-epspatientdetails.html" %}
