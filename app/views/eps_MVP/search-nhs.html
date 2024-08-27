@@ -102,4 +102,21 @@ Find a patient by NHS number - {{ serviceName }}
 </div>
 
 </div>
+<script>
+   document.getElementById('nhs-number-search-form-nhs-number').addEventListener('input', function (e) {
+        let value = e.target.value.replace(/\D/g, ''); // Remove non-digit characters
+        let formattedValue = value;
+        if (value.length > 3) {
+            formattedValue = value.slice(0, 3) + ' ' + value.slice(3);
+        }
+        if (value.length > 6) {
+            formattedValue = formattedValue.slice(0, 7) + ' ' + formattedValue.slice(7);
+        }
+        e.target.value = formattedValue;
+    });
+    document.getElementById('nhs-number-submit').addEventListener('submit', function (e) {
+        let input = document.getElementById('nhs-number-input');
+        input.value = input.value.replace(/\s/g, ''); // Remove spaces before submitting
+    });
+</script>
 {% endblock %}

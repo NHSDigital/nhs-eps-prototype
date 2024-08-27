@@ -93,7 +93,7 @@ Find a patient by NHS number - {{ serviceName }}
 
         {% endif %}
 
-        <button aria-disabled="false" class="nhsuk-button patient-search-form__button" id="nhs-number-submit" type="submit">Find a prescription</button>
+        <button aria-disabled="false" class="nhsuk-button patient-search-form__button" id="presc-number-submit" type="submit">Find a prescription</button>
       </form>
     </div>
   </div>
@@ -129,4 +129,33 @@ Find a patient by NHS number - {{ serviceName }}
 </div>
 
 </div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const prescInput = document.getElementById('presc-number-search-form-presc-number');
+    const form = document.querySelector('form[action="search-presc-post"]');
+  
+    const formatInput = (e) => {
+      let value = e.target.value.replace(/-/g, ''); // Remove all existing hyphens
+  
+      // Add hyphens after every 6 digits
+      if (value.length > 6) {
+        value = value.match(/.{1,6}/g).join('-'); // Split into groups of 6 and join with hyphens
+      }
+      
+      // Limit input to 18 characters
+      if (value.length > 18) {
+        value = value.slice(0, 18); // Ensure only the first 18 characters are kept
+      }
+      
+      e.target.value = value; // Update the input field with the formatted value
+    };
+  
+    prescInput.addEventListener('input', formatInput);
+  
+    form.addEventListener('submit', (e) => {
+      prescInput.value = prescInput.value.replace(/-/g, ''); // Remove hyphens before submitting the form
+    });
+  });
+  </script>
 {% endblock %}
+
