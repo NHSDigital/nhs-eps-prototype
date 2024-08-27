@@ -23,7 +23,22 @@
           <dt class="nhsuk-summary-list__key">Prescription status</dt>
           <dd class="nhsuk-summary-list__value">
             <span class="data-field__content data-field__content--address">
-              {{ prescription.Status or 'Claimed' }}
+              {% set prescstatus = prescription.PrescriptionMessage1NewStatus or 'Claimed' %}
+              <strong class="nhsuk-tag            
+                 {% if prescstatus == 'Available to download' %} nhsuk-tag--yellow             
+                {% elif prescstatus == 'All items dispensed' %} nhsuk-tag--green             
+                {% elif prescstatus == 'Cancelled' %} nhsuk-tag--red            
+                 {% elif prescstatus == 'Future issue date' %} nhsuk-tag--blue      
+                {% elif prescstatus == 'Some items dispensed' %} nhsuk-tag--blue
+                {% elif prescstatus == 'Future repeat dispense' %} nhsuk-tag--aqua-green  
+                {% elif prescstatus == 'No items dispensed' %} nhsuk-tag--white   
+                {% elif prescstatus == 'Expired' %} nhsuk-tag--orange      
+                {% elif prescstatus == 'Claimed' %} nhsuk-tag--grey 
+                {% elif prescstatus == 'Downloaded by a dispenser' %} nhsuk-tag--purple
+                {% elif prescstatus == 'Next repeat ready to download' %} nhsuk-tag--pink              
+                {% endif %}">
+                {{ prescstatus }}
+              </strong> 
             </span>
             <br>
 
