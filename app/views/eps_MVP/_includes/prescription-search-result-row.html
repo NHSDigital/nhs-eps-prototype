@@ -16,7 +16,21 @@
     </td>
     <td role="gridcell">
         <span class="table-heading" aria-hidden="true">Status</span>
-        <span class="gender-results-td">Status</span>
+        <span class="gender-results-td">    {% set prescstatus = prescription.PrescriptionMessage1NewStatus or 'Claimed' %}
+            <strong class="nhsuk-tag            
+              {% if prescstatus == 'Available to download' %} nhsuk-tag--yellow             
+              {% elif prescstatus == 'All items dispensed' %} nhsuk-tag--green             
+              {% elif prescstatus == 'Cancelled' %} nhsuk-tag--red            
+              {% elif prescstatus == 'Future issue date' %} nhsuk-tag--blue      
+              {% elif prescstatus == 'Some items dispensed' %} nhsuk-tag--blue
+              {% elif prescstatus == 'Future repeat dispense' %} nhsuk-tag--aqua-green  
+              {% elif prescstatus == 'No items dispensed' %} nhsuk-tag--white   
+              {% elif prescstatus == 'Expired' %} nhsuk-tag--orange      
+              {% elif prescstatus == 'Claimed' %} nhsuk-tag--grey 
+              {% elif prescstatus == 'Downloaded by a dispenser' %} nhsuk-tag--purple
+              {% elif prescstatus == 'Next repeat ready to download' %} nhsuk-tag--pink              
+              {% endif %}">
+              {{ prescstatus }}</span>
     </td>
    
     <td role="gridcell">
