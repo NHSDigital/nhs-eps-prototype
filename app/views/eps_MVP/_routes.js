@@ -27,7 +27,7 @@ router.post("/eps_mvp/search-presc-post", function (req, res) {
   // If there is no submitted option
   if (!prescNumber) {
       req.session.data.errors["presc-number"] = true;
-      return res.redirect("search-results");
+      return res.redirect("search");
   }
 
   console.log("Searching for prescription number:", prescNumber);
@@ -47,7 +47,7 @@ router.post("/eps_mvp/search-presc-post", function (req, res) {
       if (!nhsNumber) {
           console.log("Patient found but no NHS number available.");
           req.session.data.patient = null;
-          return res.redirect("search-results");
+          return res.redirect("search");
       }
 
       console.log("Patient found:", patient);
@@ -56,7 +56,7 @@ router.post("/eps_mvp/search-presc-post", function (req, res) {
   } else {
       console.log("No patient found with that prescription number.");
       req.session.data.patient = null;
-      return res.redirect("search-results");
+      return res.redirect("search");
   }
 });
 
