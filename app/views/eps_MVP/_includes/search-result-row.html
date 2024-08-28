@@ -1,11 +1,5 @@
-{%- set patientRowHref -%}
-    {%- if data['redirect-back'] -%}
-        {{- data['redirect-back'] -}}
-    {%- else -%}
-        /search/patient-overview
-    {%- endif -%}
-{%- endset -%}
-<tr role="row" class="patient-search-result" data-href="{{ patientRowHref }}?nhs-number={{ patientNhsNumber }}">
+
+<tr role="row" class="patient-search-result" data-href="prescription-results?nhs-number={{ patientNhsNumber }}">
     <td role="gridcell">
         <span class="table-heading" aria-hidden="true">Name</span>
         <span>
@@ -38,7 +32,7 @@
         <span class="nhs-no-results-td">
             {{ patientNhsNumber.substr(0, 3) }}
             {{ patientNhsNumber.substr(3, 3) }}
-            {{ patientNhsNumber.substr(6, 4) -}}
+            {{ patientNhsNumber.substr(6, 4) }}
         </span>
     </td>
 </tr>

@@ -103,20 +103,33 @@ Find a patient by NHS number - {{ serviceName }}
 
 </div>
 <script>
-   document.getElementById('nhs-number-search-form-nhs-number').addEventListener('input', function (e) {
-        let value = e.target.value.replace(/\D/g, ''); // Remove non-digit characters
-        let formattedValue = value;
-        if (value.length > 3) {
-            formattedValue = value.slice(0, 3) + ' ' + value.slice(3);
-        }
-        if (value.length > 6) {
-            formattedValue = formattedValue.slice(0, 7) + ' ' + formattedValue.slice(7);
-        }
-        e.target.value = formattedValue;
-    });
-    document.getElementById('nhs-number-submit').addEventListener('submit', function (e) {
-        let input = document.getElementById('nhs-number-input');
-        input.value = input.value.replace(/\s/g, ''); // Remove spaces before submitting
-    });
+document.getElementById('nhs-number-search-form-nhs-number').addEventListener('input', function (e) {
+    let value = e.target.value.replace(/\D/g, ''); // Remove all non-digit characters
+    let formattedValue = value;
+
+    // Format the value with spaces for display
+    if (value.length > 3) {
+        formattedValue = value.slice(0, 3) + ' ' + value.slice(3);
+    }
+    if (value.length > 6) {
+        formattedValue = formattedValue.slice(0, 7) + ' ' + formattedValue.slice(7);
+    }
+
+    e.target.value = formattedValue;
+});
+
+document.getElementById('nhs-number-submit').addEventListener('submit', function (e) {
+    let input = document.getElementById('nhs-number-search-form-nhs-number');
+    
+    // Remove spaces from the input before form submission
+    input.value = input.value.replace(/\s/g, '');
+
+    // Debugging: Check the cleaned value
+    console.log('Submitting NHS Number:', input.value);
+
+    // Allow the form to be submitted
+});
+
+
 </script>
 {% endblock %}

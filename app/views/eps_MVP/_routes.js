@@ -62,9 +62,13 @@ router.post("/eps_mvp/search-presc-post", function (req, res) {
 
   // search via nhs number form
   router.post("/eps_mvp/search-nhs-post", function (req, res) {
-    const nhsNumber = req.body["nhsNumber"];
+    let nhsNumber = req.body["nhsNumber"].replace(/\s/g, ''); // Remove spaces on server side
     req.session.data.errors = {};
 
+    if (!nhsNumber) {
+        req.session.data.errors["nhs-number"] = true;
+        return res.redirect("search-nhs");
+    }
     // If there is no submitted option
     if (!nhsNumber) {
       req.session.data.errors["nhs-number"] = true;
@@ -87,11 +91,10 @@ router.post("/eps_mvp/search-presc-post", function (req, res) {
     }
 
     req.session.data.patient = patient;
-
+    console.log("Received NHS Number:", nhsNumber);
     res.redirect(`search-results?nhsNumber=${nhsNumber}`);
   });
 
-  
 
   // search via nhs basic search
   router.post("/eps_mvp/search-basic-post", function (req, res) {
