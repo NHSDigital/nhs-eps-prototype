@@ -98,31 +98,68 @@ router.post("/eps_mvp/search-presc-post", function (req, res) {
 
   // search via nhs basic search
   router.post("/eps_mvp/search-basic-post", function (req, res) {
-    let searchPostcode = req.body["postcode-only-input"];
-    let searchLastName = req.body["surname"];
+    let patients = req.session.data['patients']; // Assumes patients data is stored in session
 
-    let dobDay = ''
-    let dobMonth = ''
-    let dobYear = ''
-
-    if (req.body['date-of-birth']) {
-      dobDay = req.body['date-of-birth-day'] || ''
-      dobMonth = req.body['date-of-birth-month'] || ''
-      dobYear = req.body['date-of-birth-year'] || ''
-    }
+    let searchPostcode = req.body["postcode-only"];
+    let searchLastName = req.body["last-name"];
+    let dobDay = req.body['dob-day'] || '';
+    let dobMonth = req.body['dob-month'] || '';
+    let dobYear = req.body['dob-year'] || '';
 
     req.session.data.errors = {};
 
-    // Check everything is filled in
     if (!searchPostcode && !searchLastName && !dobDay && !dobMonth && !dobYear) {
-      req.session.data.errors["basicSearch"] = true;
-      return res.redirect("search-basic");
+        req.session.data.errors["basicSearch"] = true;
+        return res.redirect("search-basic");
     }
 
-    req.session.data['results'] = ['9726918863','5900009890','9726919193','9726919207','9726919215'];
+    // Convert numeric month to abbreviated month name
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    let formattedInputDob = dobDay && dobMonth && dobYear
+        ? `${dobDay}-${monthNames[parseInt(dobMonth, 10) - 1]}-${dobYear}`
+        : '';
 
-    res.redirect(`search-results`);
-  });
+    console.log("Formatted Input DOB:", formattedInputDob); // Debugging line
+
+    let results = [];
+    for (let nhsNumber in patients) {
+        let patient = patients[nhsNumber];
+
+        console.log(`Checking patient ${nhsNumber}:`, patient); // Debugging line
+
+        // Check if searchLastName and patient.lastName are both defined before comparing
+        let lastNameMatches = searchLastName && patient.lastName && patient.lastName.toLowerCase() === searchLastName.toLowerCase();
+        console.log(`Last Name Matches: ${lastNameMatches}`); // Debugging line
+
+        // Check if the postcode matches any of the defined address fields
+        let postcodeMatches = searchPostcode && (
+            (patient.usualAddress && patient.usualAddress.includes(searchPostcode.toUpperCase())) ||
+            (patient.tempAddress && patient.tempAddress.includes(searchPostcode.toUpperCase())) ||
+            (patient.correspondAddress && patient.correspondAddress.includes(searchPostcode.toUpperCase()))
+        );
+        console.log(`Postcode Matches: ${postcodeMatches}`); // Debugging line
+
+        // Check if the date of birth matches
+        let dobMatches = formattedInputDob && patient.dob === formattedInputDob;
+        console.log(`DOB Matches: ${dobMatches}`); // Debugging line
+
+        // If any of the conditions match, add the NHS number to the results
+        if (lastNameMatches || postcodeMatches || dobMatches) {
+            results.push(nhsNumber);
+            console.log(`NHS Number: ${nhsNumber}`); // Debugging line
+        }
+    }
+
+    req.session.data['results'] = results;
+    
+    // Generate query string with results
+    let queryString = results.map(n => `nhsNumber=${n}`).join('&');
+    res.redirect(`search-results?${queryString}`);
+});
+
+
+
+
 
 // change record via a NHS number on NoK section
   router.post("/eps_mvp/change-record", function (req, res) {

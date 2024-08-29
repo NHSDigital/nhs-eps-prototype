@@ -870,7 +870,7 @@ module.exports = {
         "hoHistVisaType": "",
         "hoHistImmigrationStatus": "",
         "hoHistHealthcareStatus": "",
-        "prescriptionNo":""
+        "prescriptionNo":"6GA337P343022H597C"
       }
     },
     {
