@@ -1078,8 +1078,8 @@ module.exports = {
   ],
   "prescription": [
     {
-      "6GA337-P34302-2H597C": {
-        "prescriptionID":"6GA337-P34302-2H597C",
+      "6GA337P343022H597C": {
+        "prescriptionID":"6GA337P343022H597C",
         "pendingCancellation":"yes",
         "prescriptionStatus": "downloaded by a dispenser",
         "prescriptionType":"eRD",
