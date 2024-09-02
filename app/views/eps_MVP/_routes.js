@@ -133,9 +133,7 @@ router.post("/eps_mvp/search-presc-post", function (req, res) {
 
         // Check if the postcode matches any of the defined address fields
         let postcodeMatches = searchPostcode && (
-            (patient.usualAddress && patient.usualAddress.includes(searchPostcode.toUpperCase())) ||
-            (patient.tempAddress && patient.tempAddress.includes(searchPostcode.toUpperCase())) ||
-            (patient.correspondAddress && patient.correspondAddress.includes(searchPostcode.toUpperCase()))
+            (patient.usualAddress && patient.usualAddress.includes(searchPostcode.toUpperCase()))
         );
         console.log(`Postcode Matches: ${postcodeMatches}`); // Debugging line
 
