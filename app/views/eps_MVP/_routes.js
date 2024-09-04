@@ -217,7 +217,6 @@ router.post("/eps_mvp/search-presc-post", function (req, res) {
     return res.render('eps_mvp/patient-details', {'target': target})
   })
 
-
   // switcher routing
 
   router.post('/eps_mvp/switch', function (req, res) {
