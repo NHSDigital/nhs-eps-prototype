@@ -119,7 +119,7 @@
           </tr>
         </thead>
         <tbody class="patient-results">
-          {% for patientNhsNumber, patient in returnedPatientsList %}
+          {% for prescription in returnedPrescriptions.current %}
             {% include "includes/prescription-search-result-row.html" %}
           {% endfor %}
         </tbody>
@@ -127,7 +127,7 @@
       <div class="table-foot">
         <span class="load-more"></span>
         <span class="results-count">
-          Showing {{ returnedPatientsList | length }} of {{ returnedPatientsList | length }}
+          Showing {{ prescriptions|length  }} of {{ returnedPrescriptions | length }}
         </span>
       </div>
         </div>
@@ -146,7 +146,7 @@
           </tr>
         </thead>
         <tbody class="patient-results">
-          {% for patientNhsNumber, patient in returnedPatientsList %}
+          {% for prescription in returnedPrescriptions.future %}
             {% include "includes/prescription-search-result-row.html" %}
           {% endfor %}
         </tbody>
@@ -154,7 +154,7 @@
       <div class="table-foot">
         <span class="load-more"></span>
         <span class="results-count">
-          Showing {{ returnedPatientsList | length }} of {{ returnedPatientsList | length }}
+          Showing {{ prescriptions|length  }} of {{ returnedPrescriptions | length }}
         </span>
       </div>
       
@@ -175,7 +175,7 @@
             </tr>
           </thead>
           <tbody class="patient-results">
-            {% for patientNhsNumber, patient in returnedPatientsList %}
+            {% for prescription in returnedPrescriptions.expired %}
               {% include "includes/prescription-search-result-row.html" %}
             {% endfor %}
           </tbody>
@@ -183,7 +183,7 @@
         <div class="table-foot">
           <span class="load-more"></span>
           <span class="results-count">
-            Showing {{ returnedPatientsList | length }} of {{ returnedPatientsList | length }}
+            Showing {{ prescriptions|length  }} of {{ returnedPrescriptions | length }}
           </span>
         </div>
       
@@ -254,5 +254,7 @@
       var defaultContent = document.getElementById("current-prescriptions");
       defaultContent.style.display = "block";
     });
+
+    
     
 </script>

@@ -10,13 +10,13 @@
         <span class="table-heading" aria-hidden="true">Prescription ID</span>
         <span>
             <a href="#" class="name-results-td">
-               Prescription ID
+              {{ prescription.prescriptionID }}
             </a>
         </span>
     </td>
     <td role="gridcell">
         <span class="table-heading" aria-hidden="true">Status</span>
-        <span class="gender-results-td">    {% set prescstatus = prescription.PrescriptionMessage1NewStatus or 'Claimed' %}
+        <span class="gender-results-td">    {% set prescstatus = prescription.prescriptionStatus %}
             <strong class="nhsuk-tag            
               {% if prescstatus == 'Available to download' %} nhsuk-tag--yellow             
               {% elif prescstatus == 'All items dispensed' %} nhsuk-tag--green             
@@ -36,13 +36,13 @@
     <td role="gridcell">
         <span class="table-heading" aria-hidden="true">Issue date</span>
         <span class="address-results-td">
-           Issue date
+            {{ prescription.prescriptionIssueDate }}
         </span>
     </td>
     <td role="gridcell">
         <span class="table-heading" aria-hidden="true">Prescription type</span>
         <span class="nhs-no-results-td">
-           Presc type
+            {{ prescription.prescriptionType }}
         </span>
     </td>
     <td role="gridcell">
