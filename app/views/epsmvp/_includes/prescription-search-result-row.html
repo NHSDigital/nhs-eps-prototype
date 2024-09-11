@@ -1,54 +1,34 @@
-{%- set patientRowHref -%}
-    {%- if data['redirect-back'] -%}
-        {{- data['redirect-back'] -}}
-    {%- else -%}
-        /search/patient-overview
-    {%- endif -%}
-{%- endset -%}
-<tr role="row" class="patient-search-result" data-href="{{ patientRowHref }}?nhs-number={{ patientNhsNumber }}">
-    <td role="gridcell">
-        <span class="table-heading" aria-hidden="true">Prescription ID</span>
-        <span>
-            <a href="#" class="name-results-td">
-              {{ prescription.prescriptionID }}
-            </a>
-        </span>
-    </td>
-    <td role="gridcell">
-        <span class="table-heading" aria-hidden="true">Status</span>
-        <span class="gender-results-td">    {% set prescstatus = prescription.prescriptionStatus %}
-            <strong class="nhsuk-tag            
-              {% if prescstatus == 'Available to download' %} nhsuk-tag--yellow             
-              {% elif prescstatus == 'All items dispensed' %} nhsuk-tag--green             
-              {% elif prescstatus == 'Cancelled' %} nhsuk-tag--red            
-              {% elif prescstatus == 'Future issue date' %} nhsuk-tag--blue      
-              {% elif prescstatus == 'Some items dispensed' %} nhsuk-tag--blue
-              {% elif prescstatus == 'Future repeat dispense' %} nhsuk-tag--aqua-green  
-              {% elif prescstatus == 'No items dispensed' %} nhsuk-tag--white   
-              {% elif prescstatus == 'Expired' %} nhsuk-tag--orange      
-              {% elif prescstatus == 'Claimed' %} nhsuk-tag--grey 
-              {% elif prescstatus == 'Downloaded by a dispenser' %} nhsuk-tag--purple
-              {% elif prescstatus == 'Next repeat ready to download' %} nhsuk-tag--pink              
-              {% endif %}">
-              {{ prescstatus }}</span>
-    </td>
-   
-    <td role="gridcell">
-        <span class="table-heading" aria-hidden="true">Issue date</span>
-        <span class="address-results-td">
-            {{ prescription.prescriptionIssueDate }}
-        </span>
-    </td>
-    <td role="gridcell">
-        <span class="table-heading" aria-hidden="true">Prescription type</span>
-        <span class="nhs-no-results-td">
-            {{ prescription.prescriptionType }}
-        </span>
-    </td>
-    <td role="gridcell">
-        <span class="table-heading" aria-hidden="true">View summary</span>
-        <span class="nhs-no-results-td">
-           Link
-        </span>
-    </td>
+<tr role="row" class="patient-search-result">
+  <td class="nhsuk-table__cell">
+    {{ prescriptions.ID }}
+  </td>
+  <td class="nhsuk-table__cell">
+    <strong class="nhsuk-tag
+      {% if prescriptions.Status == 'Available to download' %} nhsuk-tag--yellow
+      {% elif prescriptions.Status == 'All items dispensed' %} nhsuk-tag--green
+      {% elif prescriptions.Status == 'Cancelled' %} nhsuk-tag--red
+      {% elif prescriptions.Status == 'Future issue date' %} nhsuk-tag--blue
+      {% elif prescriptions.Status == 'Some items dispensed' %} nhsuk-tag--blue
+      {% elif prescriptions.Status == 'Future repeat dispense' %} nhsuk-tag--aqua-green
+      {% elif prescriptions.Status == 'No items dispensed' %} nhsuk-tag--white
+      {% elif prescriptions.Status == 'Expired' %} nhsuk-tag--orange
+      {% elif prescriptions.Status == 'Claimed' %} nhsuk-tag--grey
+      {% elif prescriptions.Status == 'Downloaded by a dispenser' %} nhsuk-tag--purple
+      {% elif prescriptions.Status == 'Next repeat ready to download' %} nhsuk-tag--pink
+      {% endif %}">
+      {{ prescriptions.Status }}
+    </strong>
+  </td>
+
+  <td class="nhsuk-table__cell">
+    {{ prescriptions.IssueDate }}
+  </td>
+
+  <td class="nhsuk-table__cell">
+    {{ prescriptions.Type }}
+  </td>
+
+  <td class="nhsuk-table__cell">
+    <a href="{{ patientRowHref }}?nhs-number={{ patientNhsNumber }}">Link</a>
+  </td>
 </tr>
