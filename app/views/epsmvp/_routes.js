@@ -50,8 +50,14 @@ router.post("/epsmvp/search-presc-post", function (req, res) {
           return res.redirect("search");
       }
 
-      console.log("Patient found:", patient);
+      console.log("Patient with that prescription found: " + patient.nhsNumber + ", " + patient.firstName + " " + patient.lastName );
+
+      // create a new data object in the data store to hold the selected patients information
       req.session.data.patient = patient;
+      // save the prescription ID to the data store
+      req.session.data.prescriptionID = prescNumber;
+
+      // go to the results page
       return res.redirect(`search-results?nhsNumber=${nhsNumber}`);
   } else {
       console.log("No patient found with that prescription number.");
@@ -156,9 +162,6 @@ router.post("/epsmvp/search-presc-post", function (req, res) {
 });
 
 
-
-
-
 // change record via a NHS number on NoK section
   router.post("/epsmvp/change-record", function (req, res) {
     const nhsNumber = req.body["change-by-nhs"];
@@ -230,11 +233,11 @@ router.post("/epsmvp/search-presc-post", function (req, res) {
   router.get("/epsmvp/search-results", function (req, res, next) {
     // Get the NHS number from the query parameters
     const nhsNumber = req.query["nhsNumber"] ? req.query["nhsNumber"].trim() : '';
-    console.log('Received NHS Number:', nhsNumber);
+    // console.log('Received NHS Number:', nhsNumber);
 
     // Extract patients from session data
     const patientsArray = req.session.data.patients || [];
-    console.log('Session Patients Array:', patientsArray);
+    // console.log('Session Patients Array:', patientsArray);
 
     const returnedPatientsList = {};
 
@@ -243,10 +246,10 @@ router.post("/epsmvp/search-presc-post", function (req, res) {
         // Iterate through each patient record in the array
         for (const patientObject of patientsArray) {
             for (const [patientNhsNumber, patient] of Object.entries(patientObject)) {
-                console.log('Checking patient NHS Number:', patientNhsNumber, 'Patient Data:', patient);
+                // console.log('Checking patient NHS Number:', patientNhsNumber, 'Patient Data:', patient);
                 // Compare NHS numbers (trimmed)
                 if (patientNhsNumber.trim() === nhsNumber) {
-                    console.log('Match found:', patientNhsNumber);
+                    // console.log('Match found:', patientNhsNumber);
                     returnedPatientsList[patientNhsNumber] = patient;
                     break;  // Stop after finding the patient
                 }
@@ -256,16 +259,140 @@ router.post("/epsmvp/search-presc-post", function (req, res) {
         console.log('No NHS Number provided.');
     }
 
-    console.log('Returned Patients List:', returnedPatientsList);
+    // console.log('Returned Patients List:', returnedPatientsList);
 
     // Render the search results page with the returned patient list
     res.render('./epsmvp/search-results', {
         returnedPatientsList: returnedPatientsList
     });
-});
+  });
 
+  //prescription search results page
+  router.get("/epsmvp/prescription-results", function (req, res, next) {
+    // Get the details from the url query parameters
+    const nhsNumber = req.query["nhsNumber"] ? req.query["nhsNumber"].trim() : '';
+    const prescID = req.query["prescID"] ? req.query["prescID"].trim() : '';
 
+    // pull all prescriptions from session data into a new array that we can loop through
+    const prescriptionsArray = req.session.data.prescriptions || [];
+    const patientsArray = req.session.data.patients || [];
+    const returnedPatientsList = {};
 
+    // Ensure nhsNumber is not empty
+    if (nhsNumber) {
+      // Iterate through each patient record in the array
+      for (const patientObject of patientsArray) {
+        for (const [patientNhsNumber, patient] of Object.entries(patientObject)) {
+          // console.log('Checking patient NHS Number:', patientNhsNumber, 'Patient Data:', patient);
+          // Compare NHS numbers (trimmed)
+          if (patientNhsNumber.trim() === nhsNumber) {
+            //console.log('Match found:', patientNhsNumber);
+            returnedPatientsList[patientNhsNumber] = patient;
+            var returnedPatientFirstName = patient.firstName;
+            var returnedPatientLastName = patient.lastName;
+          }
+        }
+      }
+    }
 
+    // create empty arrays to store the matched item objects, we'' pass these back to the page
+    let returnedPrescriptionsListAll = [];
+    let returnedPrescriptionsListCurrent = [];
+    let returnedPrescriptionsListFuture = [];
+    let returnedPrescriptionsListExpired = [];
+
+    // If we have a prescription ID, use it to find the matching prescriptions
+    if (prescID) {
+      // look through the prescription array in the data file and add matches to the empty array
+      returnedPrescriptionsListAll = prescriptionsArray.filter(item => item[Object.keys(item)[0]].prescriptionID === prescID);
+    // else use the nhs number to find all prescriptions for that patient
+    } else {
+      // find the array of prescription ids
+      patientPrescriptionsList = returnedPatientsList[nhsNumber].prescriptionNo;
+      // loop through each and add to push matches to the returned list array
+      patientPrescriptionsList.forEach(prescription => {
+        // Filter the prescriptionsArray to find objects with a matching prescriptionID
+        const matchedPrescriptions = prescriptionsArray.filter(item => item[Object.keys(item)[0]].prescriptionID === prescription);
+        // Add all matched prescriptions to the returnedPrescriptionsListAll array
+        returnedPrescriptionsListAll.push(...matchedPrescriptions);
+      });
+    }
+
+    // Filter to show just the current prescriptions
+    returnedPrescriptionsListCurrent = returnedPrescriptionsListAll.filter(item => {
+      const key = Object.keys(item)[0];
+      const prescription = item[key];
+      // how we filter the list down
+      return prescription.prescriptionStatus !== 'Future issue date' && prescription.prescriptionStatus !== 'Future repeat dispense' && prescription.prescriptionStatus !== 'Expired' && prescription.prescriptionStatus !== 'Claimed';;
+    }).map(item => {
+      const key = Object.keys(item)[0];
+      const prescription = item[key];
+      return {
+        ID: prescription.prescriptionID,
+        Variant: prescription.prescriptionVariant,
+        Type: prescription.prescriptionType,
+        IssueDate: prescription.prescriptionIssueDate,
+        Item1: prescription.prescriptionItem1,
+        Item1Quantity: prescription.prescriptionItem1quantity,
+        Item2: prescription.prescriptionItem2,
+        Item2Quantity: prescription.prescriptionItem2quantity,
+        Status: prescription.prescriptionStatus
+      };
+    });
+
+    // Filter to show just the Future dated prescriptions
+    returnedPrescriptionsListFuture = returnedPrescriptionsListAll.filter(item => {
+      const key = Object.keys(item)[0];
+      const prescription = item[key];
+      // how we filter the list down
+      return prescription.prescriptionStatus === 'Future issue date' || prescription.prescriptionStatus === 'Future repeat dispense';
+    }).map(item => {
+      const key = Object.keys(item)[0];
+      const prescription = item[key];
+      return {
+        ID: prescription.prescriptionID,
+        Variant: prescription.prescriptionVariant,
+        Type: prescription.prescriptionType,
+        IssueDate: prescription.prescriptionIssueDate,
+        Item1: prescription.prescriptionItem1,
+        Item1Quantity: prescription.prescriptionItem1quantity,
+        Item2: prescription.prescriptionItem2,
+        Item2Quantity: prescription.prescriptionItem2quantity,
+        Status: prescription.prescriptionStatus
+      };
+    });
+
+    // Filter to show just the Future dated prescriptions
+    returnedPrescriptionsListExpired = returnedPrescriptionsListAll.filter(item => {
+      const key = Object.keys(item)[0];
+      const prescription = item[key];
+      // how we filter the list down
+      return prescription.prescriptionStatus === 'Expired' || prescription.prescriptionStatus === 'Claimed';
+    }).map(item => {
+      const key = Object.keys(item)[0];
+      const prescription = item[key];
+      return {
+        ID: prescription.prescriptionID,
+        Variant: prescription.prescriptionVariant,
+        Type: prescription.prescriptionType,
+        IssueDate: prescription.prescriptionIssueDate,
+        Item1: prescription.prescriptionItem1,
+        Item1Quantity: prescription.prescriptionItem1quantity,
+        Item2: prescription.prescriptionItem2,
+        Item2Quantity: prescription.prescriptionItem2quantity,
+        Status: prescription.prescriptionStatus
+      };
+    });
+
+    // Render the search results page with the filtered prescription lists
+    res.render('./epsmvp/prescription-results', {
+      returnedPrescriptionsListAll: returnedPrescriptionsListAll,
+      returnedPrescriptionsListCurrent: returnedPrescriptionsListCurrent,
+      returnedPrescriptionsListFuture: returnedPrescriptionsListFuture,
+      returnedPrescriptionsListExpired: returnedPrescriptionsListExpired,
+      returnedPatientFirstName: returnedPatientFirstName,
+      returnedPatientLastName: returnedPatientLastName
+  });
+  });
 
 }
