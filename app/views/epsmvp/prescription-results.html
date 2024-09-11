@@ -4,7 +4,7 @@
 {% set hideJump = 'true' %}
 {% set containerClasses = 'patient-search-form-container' %}
 {% block pageTitle %}
-  Find a patient
+Prescriptions list
 {% endblock %}
 
 {% block beforeContent %}
@@ -61,17 +61,18 @@
 
     <div class="nhsuk-grid-column-three-quarters">
       <h2 class="nhsuk-heading-l">Prescriptions list</h2>
-     <!--CONDITIONALS TO ADD IN WHEN DATA IS PASSED PROPERLY--> 
-     <!--
-        {% if returnedPatientsList | length %}
-        <h3 class='nhsuk-heading-xs'>We found {{ returnedPatientsList | length }} result{% if returnedPatientsList | length > 1 %}s{% endif %}.</h3>
+
+      {% if returnedPrescriptionsListAll.length %}
+      <p><strong>We found {{ returnedPrescriptionsListAll.length }} result{% if returnedPrescriptionsListAll.length > 1 %}s{% endif %}</strong> </p>
+
+      <div class="nhsuk-inset-text nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-4">
+        <span class="nhsuk-u-visually-hidden">Patient confirmation: </span>
+        <p>These prescriptions are for: <strong>{{ returnedPatientFirstName }} {{ returnedPatientLastName | upper }}</strong></p>
+      </div>
+
       {% else %}
-        <h3 class='nhsuk-heading-xs'>No prescriptions found</h3>
         <p>We could not find any current or future dated prescriptions for this patient.</p>
       {% endif %}
-     -->
-    <p>We found 15 results</p>
-      
 
     </div>
 
@@ -80,60 +81,55 @@
         <h2 class="nhsuk-tabs__title">
           Contents
         </h2>
-      
         <ul class="nhsuk-tabs__list">
-      
           <li class="nhsuk-tabs__list-item nhsuk-tabs__list-item--selected">
             <a class="nhsuk-tabs__tab" href="#current-prescriptions">
               Current prescriptions
             </a>
           </li>
-      
           <li class="nhsuk-tabs__list-item">
             <a class="nhsuk-tabs__tab" href="#future-dated-prescriptions">
               Future dated prescriptions
             </a>
           </li>
-      
           <li class="nhsuk-tabs__list-item">
             <a class="nhsuk-tabs__tab" href="#claimed-and-expired-prescriptions">
              Claimed and expired prescriptions
             </a>
           </li>
-      
-         
-      
         </ul>
       
         <div class="nhsuk-tabs__panel" id="current-prescriptions">
-      <p>Current prescriptions</p>
-      <table id="search-results-table-current" class="responsive-table" role="grid">
-       
-        <thead>
-          <tr role="row">
-            <th scope="col" class="prescriptionID-results-th">Prescription ID</th>
-            <th scope="col" class="status-results-th">Status</th>
-            <th scope="col" class="issuedate-results-th">Issue date</th>
-            <th scope="col" class="prescriptiontype-results-th">Prescription type</th>
-            <th scope="col" class="viewsummary-results-th">View summary</th>
-          </tr>
-        </thead>
-        <tbody class="patient-results">
-          {% for prescription in returnedPrescriptions.current %}
-            {% include "includes/prescription-search-result-row.html" %}
-          {% endfor %}
-        </tbody>
-      </table>
-      <div class="table-foot">
-        <span class="load-more"></span>
-        <span class="results-count">
-          Showing {{ prescriptions|length  }} of {{ returnedPrescriptions | length }}
-        </span>
-      </div>
+          <p class="nhsuk-u-visually-hidden">Current prescriptions</p>
+          <table id="search-results-table-current" class="responsive-table" role="grid">
+
+            <thead>
+              <tr role="row">
+                <th scope="col" class="prescriptionID-results-th">Prescription ID</th>
+                <th scope="col" class="status-results-th">Status</th>
+                <th scope="col" class="issuedate-results-th">Issue date</th>
+                <th scope="col" class="prescriptiontype-results-th">Prescription type</th>
+                <th scope="col" class="viewsummary-results-th">View summary</th>
+              </tr>
+            </thead>
+            <tbody class="patient-results">
+
+              {% for prescriptions in returnedPrescriptionsListCurrent %}
+              {% include "./_includes/prescription-search-result-row.html" %}
+              {% endfor %}
+            </tbody>
+          </table>
+
+          <div class="table-foot">
+            <span class="load-more"></span>
+            <span class="results-count">
+              Showing {{ returnedPrescriptionsListCurrent.length  }} of {{ returnedPrescriptionsListCurrent.length }}
+            </span>
+          </div>
         </div>
       
         <div class="nhsuk-tabs__panel nhsuk-tabs__panel--hidden" id="future-dated-prescriptions">
-      <p>Future dated prescriptions</p>
+          <p class="nhsuk-u-visually-hidden">Future dated prescriptions</p>
       <table id="search-results-table-current" class="responsive-table" role="grid">
        
         <thead>
@@ -146,22 +142,22 @@
           </tr>
         </thead>
         <tbody class="patient-results">
-          {% for prescription in returnedPrescriptions.future %}
-            {% include "includes/prescription-search-result-row.html" %}
-          {% endfor %}
+        {% for prescriptions in returnedPrescriptionsListFuture %}
+          {% include "./_includes/prescription-search-result-row.html" %}
+        {% endfor %}
         </tbody>
       </table>
       <div class="table-foot">
         <span class="load-more"></span>
         <span class="results-count">
-          Showing {{ prescriptions|length  }} of {{ returnedPrescriptions | length }}
+          Showing {{ returnedPrescriptionsListFuture.length  }} of {{ returnedPrescriptionsListFuture.length }}
         </span>
       </div>
       
         </div>
       
         <div class="nhsuk-tabs__panel nhsuk-tabs__panel--hidden" id="claimed-and-expired-prescriptions">
-      <p>Claimed and expired prescriptions</p>
+          <p class="nhsuk-u-visually-hidden">Claimed and expired prescriptions</p>
           
         <table id="search-results-table-current" class="responsive-table" role="grid">
        
@@ -175,17 +171,17 @@
             </tr>
           </thead>
           <tbody class="patient-results">
-            {% for prescription in returnedPrescriptions.expired %}
-              {% include "includes/prescription-search-result-row.html" %}
-            {% endfor %}
+          {% for prescriptions in returnedPrescriptionsListExpired %}
+            {% include "./_includes/prescription-search-result-row.html" %}
+          {% endfor %}
           </tbody>
         </table>
-        <div class="table-foot">
-          <span class="load-more"></span>
-          <span class="results-count">
-            Showing {{ prescriptions|length  }} of {{ returnedPrescriptions | length }}
-          </span>
-        </div>
+          <div class="table-foot">
+            <span class="load-more"></span>
+            <span class="results-count">
+              Showing {{ returnedPrescriptionsListExpired.length  }} of {{ returnedPrescriptionsListExpired.length }}
+            </span>
+          </div>
       
         </div>
       
