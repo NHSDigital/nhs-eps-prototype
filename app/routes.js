@@ -35,7 +35,7 @@ router.use((req, res, next) => {
   };
   // you can enable this in your .env file
   if (process.env.LOGGING === 'TRUE') {
-    console.log(JSON.stringify(log, null, 2));
+    // console.log(JSON.stringify(log, null, 2));
   }
   next();
 });
