@@ -33,12 +33,13 @@ router.post("/epsmvp/search-presc-post", function (req, res) {
   console.log("Searching for prescription number:", prescNumber);
 
   // Find the patient by prescription number
-  let patientEntry = req.session.data.patients.find(p => {
-      return Object.values(p).some(patient => patient.prescriptionNo === prescNumber);
-  });
+// Find the patient by prescription number
+let patientEntry = req.session.data.patients.find(p => {
+  return Object.values(p).some(patient => patient.prescriptionNo.includes(prescNumber));
+});
 
   // Extract the patient object from the patientEntry
-  let patient = patientEntry ? Object.values(patientEntry).find(patient => patient.prescriptionNo === prescNumber) : null;
+  let patient = patientEntry ? Object.values(patientEntry).find(patient => patient.prescriptionNo.includes(prescNumber)) : null;
 
   if (patient) {
       // Assuming that the patient object has an nhsNumber field

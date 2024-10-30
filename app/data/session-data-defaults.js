@@ -468,7 +468,8 @@ module.exports = {
         "hoHistNationality": "",
         "hoHistVisaType": "",
         "hoHistImmigrationStatus": "",
-        "hoHistHealthcareStatus": ""
+        "hoHistHealthcareStatus": "",
+        "prescriptionNo": ""
       }
     },
     {
@@ -874,7 +875,7 @@ module.exports = {
         "hoHistVisaType": "",
         "hoHistImmigrationStatus": "",
         "hoHistHealthcareStatus": "",
-        "prescriptionNo": ["6GA337P343022H597C"]
+        "prescriptionNo": [""]
       }
     },
     {
@@ -1232,7 +1233,7 @@ module.exports = {
       }
     },
     {
-      "6GA337P343022H597C/3": {
+      "6GA337P343022H597C": {
         "prescriptionID": "6GA337P343022H597C",
         "pendingCancellation": "yes",
         "prescriptionIssueDate": "02-Sep-2024",
