@@ -1,0 +1,32 @@
+{% extends "layouts/full-width-template.html" %}
+
+{% block pageTitle %}
+  {{ serviceName }}
+{% endblock %}
+
+
+{% block header %}
+  {% include "includes/includes-full-width-header-no-options.html" %}
+
+  {% if hideNav !== 'true' %}
+    {% include "includes/includes-patient-banner.html" %}
+    {% include "includes/includes-patient-chargeable-status.html" %}
+    {% include 'includes/includes-primary-nav.html' %}
+  {% endif %}
+
+{% endblock %}
+
+
+
+{% block bodyEnd %}
+
+  {% if data['devMode'] === 'true' %}
+    {% include "includes/devmode.html" %}
+  {% endif %}
+
+  {% block scripts %}
+    {% include "includes/scripts.html" %}
+    {% block pageScripts %}{% endblock %}
+  {% endblock %}
+
+{% endblock %}
