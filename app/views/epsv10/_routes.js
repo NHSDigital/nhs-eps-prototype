@@ -33,10 +33,9 @@ router.post("/epsv10/search-presc-post", function (req, res) {
   console.log("Searching for prescription number:", prescNumber);
 
   // Find the patient by prescription number
-// Find the patient by prescription number
-let patientEntry = req.session.data.patients.find(p => {
-  return Object.values(p).some(patient => patient.prescriptionNo.includes(prescNumber));
-});
+  let patientEntry = req.session.data.patients.find(p => {
+      return Object.values(p).some(patient => patient.prescriptionNo.includes(prescNumber));
+  });
 
   // Extract the patient object from the patientEntry
   let patient = patientEntry ? Object.values(patientEntry).find(patient => patient.prescriptionNo.includes(prescNumber)) : null;
@@ -51,15 +50,14 @@ let patientEntry = req.session.data.patients.find(p => {
           return res.redirect("search");
       }
 
-      console.log("Patient with that prescription found: " + patient.nhsNumber + ", " + patient.firstName + " " + patient.lastName );
+      console.log("Patient with that prescription found: " + patient.nhsNumber + ", " + patient.firstName + " " + patient.lastName);
 
-      // create a new data object in the data store to hold the selected patients information
+      // Save the patient and prescription data to the session
       req.session.data.patient = patient;
-      // save the prescription ID to the data store
       req.session.data.prescriptionID = prescNumber;
 
-      // go to the results page
-      return res.redirect(`search-results?nhsNumber=${nhsNumber}`);
+      // Redirect directly to prescription results
+      return res.redirect(`prescription-results?nhsNumber=${nhsNumber}&prescID=${prescNumber}`);
   } else {
       console.log("No patient found with that prescription number.");
       req.session.data.patient = null;
@@ -67,40 +65,41 @@ let patientEntry = req.session.data.patients.find(p => {
   }
 });
 
-  // search via nhs number form
-  router.post("/epsv10/search-nhs-post", function (req, res) {
-    let nhsNumber = req.body["nhsNumber"].replace(/\s/g, ''); // Remove spaces on server side
-    req.session.data.errors = {};
+ // Search via NHS number form
+router.post("/epsv10/search-nhs-post", function (req, res) {
+  let nhsNumber = req.body["nhsNumber"].replace(/\s/g, ''); // Remove spaces on server side
+  req.session.data.errors = {};
 
-    if (!nhsNumber) {
-        req.session.data.errors["nhs-number"] = true;
-        return res.redirect("search-nhs");
-    }
-    // If there is no submitted option
-    if (!nhsNumber) {
+  if (!nhsNumber) {
       req.session.data.errors["nhs-number"] = true;
       return res.redirect("search-nhs");
-    }
+  }
 
-    // Find the patient by NHS number
-    let patientEntry = req.session.data.patients.find(p => p[nhsNumber]);
+  // Find the patient by NHS number
+  let patientEntry = req.session.data.patients.find(p => p[nhsNumber]);
 
-    // and transform data
-    let patient = patientEntry ? patientEntry[nhsNumber] : null;
+  // Extract patient object
+  let patient = patientEntry ? patientEntry[nhsNumber] : null;
 
+  if (patient) {
+      // Log the patient details
+      console.log("Patient found:", patient.nhsNumber, patient.firstName, patient.lastName);
 
-    if (patient) {
-      // Here you can handle the found patient object
-      console.log("Patient found:", patient[nhsNumber]);
-    } else {
+      // Save the patient data to the session
+      req.session.data.patient = patient;
+
+      // Redirect directly to the prescription results page
+      return res.redirect(`prescription-results?nhsNumber=${nhsNumber}`);
+  } else {
       console.log("No patient found with that NHS number.");
-      res.redirect("search-results");
-    }
+      req.session.data.patient = null;
 
-    req.session.data.patient = patient;
-    console.log("Received NHS Number:", nhsNumber);
-    res.redirect(`search-results?nhsNumber=${nhsNumber}`);
-  });
+      // Redirect to the search page with an error
+      req.session.data.errors["nhs-number"] = true;
+      return res.redirect("search-nhs");
+  }
+});
+
 
 
   // search via nhs basic search
