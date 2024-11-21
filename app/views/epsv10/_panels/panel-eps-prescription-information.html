@@ -1,0 +1,67 @@
+<div class="data-panel__wrapper no-outline" tabindex="-1">
+  <div class="nhsuk-card data-panel" id="prescription-information-panel">
+    <div class="nhsuk-card__content">
+      <h3 class="nhsuk-card__heading">
+        <span>Prescription information</span>
+
+      </h3>
+      <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Prescription ID</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content data-field__content--address">
+              {{ prescription.prescriptionID or '4FA217-P84302-2H597C' }}
+            </span>
+            <br>
+
+            
+
+
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Prescription status</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content data-field__content--address">
+              {% set prescstatus = prescription.PrescriptionMessage1NewStatus or 'Claimed' %}
+              <strong class="nhsuk-tag            
+                 {% if prescstatus == 'Available to download' %} nhsuk-tag--yellow             
+                {% elif prescstatus == 'All items dispensed' %} nhsuk-tag--green             
+                {% elif prescstatus == 'Cancelled' %} nhsuk-tag--red            
+                 {% elif prescstatus == 'Future issue date' %} nhsuk-tag--blue      
+                {% elif prescstatus == 'Some items dispensed' %} nhsuk-tag--blue
+                {% elif prescstatus == 'Future repeat dispense' %} nhsuk-tag--aqua-green  
+                {% elif prescstatus == 'No items dispensed' %} nhsuk-tag--white   
+                {% elif prescstatus == 'Expired' %} nhsuk-tag--orange      
+                {% elif prescstatus == 'Claimed' %} nhsuk-tag--grey 
+                {% elif prescstatus == 'Downloaded by a dispenser' %} nhsuk-tag--purple
+                {% elif prescstatus == 'Next repeat ready to download' %} nhsuk-tag--pink              
+                {% endif %}">
+                {{ prescstatus }}
+              </strong> 
+            </span>
+            <br>
+
+           
+
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Prescription type</dt>
+          <dd class="nhsuk-summary-list__value ">
+            <span class="data-field__content data-field__content--address">
+              {{ prescription.prescriptionType or 'eRD' }}
+            </span>
+            <br>
+
+           
+
+          </dd>
+        </div>
+      </dl>
+      <button class="nhsuk-button" data-module="nhsuk-button" type="submit">
+        Print prescription
+      </button>
+    </div>
+  </div>
+</div>

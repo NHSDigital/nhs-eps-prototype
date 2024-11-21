@@ -1,0 +1,141 @@
+<div class="data-panel__wrapper no-outline" tabindex="-1">
+  <div class="nhsuk-card data-panel" id="message history">
+    <div class="nhsuk-card__content">
+      <h3 class="nhsuk-card__heading">
+        <span>Message history</span>
+
+      </h3>
+      <div class="nhs-screening-whole-timeline">
+        <!--first item-->
+        <div class="nhs-screening-whole-timeline__item">
+          <div class="nhs-timeline__header">
+            <h3 class="nhs-screening-whole-timeline__title">{{ prescription.prescriptionMessage1header or 'Dispenser has sent a claim notification' }}</h3>
+          </div>
+          <p class="nhs-screening-whole-timeline__date">
+            <time datetime="2019-06-14T14:01:00.000Z">Sent date: {{ prescription.prescriptionMessage1sendDateTime or '01-Aug-2024 13:35:33' }}
+            </time>
+          </p>
+          <div class="nhs-screening-whole-timeline__description">Organisation: {{ prescription.prescriptionMessage1Org or 'ASDA Pharmacy (ODS:OXY2G)' }}
+          </div>
+          <div class="nhs-screening-whole-timeline__description">
+            New status: 
+            {% set status = prescription.PrescriptionMessage1NewStatus or 'Claimed' %}
+            <strong class="nhsuk-tag            
+               {% if status == 'Available to download' %} nhsuk-tag--yellow             
+              {% elif status == 'All items dispensed' %} nhsuk-tag--green             
+              {% elif status == 'Cancelled' %} nhsuk-tag--red            
+               {% elif status == 'Future issue date' %} nhsuk-tag--blue      
+              {% elif status == 'Some items dispensed' %} nhsuk-tag--blue
+              {% elif status == 'Future repeat dispense' %} nhsuk-tag--aqua-green  
+              {% elif status == 'No items dispensed' %} nhsuk-tag--white   
+              {% elif status == 'Expired' %} nhsuk-tag--orange      
+              {% elif status == 'Claimed' %} nhsuk-tag--grey 
+              {% elif status == 'Downloaded by a dispenser' %} nhsuk-tag--purple
+              {% elif status == 'Next repeat ready to download' %} nhsuk-tag--pink              
+              {% endif %}">
+              {{ status }}
+            </strong> 
+          </div>
+        </div>
+              <!-- second item -->
+        <div class="nhs-screening-whole-timeline__item">
+          <div class="moj-timeline__header">
+            <h3 class="nhs-screening-whole-timeline__title">{{ prescription.prescriptionMessage2header or 'Dispenser has sent a dispense notification' }}</h3>
+          </div>
+          <p class="nhs-screening-whole-timeline__date">
+            <time datetime="2019-06-14T14:01:00.000Z">Sent date: {{ prescription.prescriptionMessage2sendDateTime or '07-Jun-2024 12:05:33' }}
+            </time>
+          </p>
+          <div class="nhs-screening-whole-timeline__description">Organisation: {{ prescription.prescriptionMessage2Org or 'ASDA Pharmacy (ODS:OXY2G)' }}
+          </div>
+          <div class="nhs-screening-whole-timeline__description"> 
+            New status: 
+            {% set status = prescription.PrescriptionMessage2NewStatus or 'All items dispensed' %}
+            <strong class="nhsuk-tag            
+               {% if status == 'Available to download' %} nhsuk-tag--yellow             
+              {% elif status == 'All items dispensed' %} nhsuk-tag--green             
+              {% elif status == 'Cancelled' %} nhsuk-tag--red            
+               {% elif status == 'Future issue date' %} nhsuk-tag--blue      
+              {% elif status == 'Some items dispensed' %} nhsuk-tag--blue
+              {% elif status == 'Future repeat dispense' %} nhsuk-tag--aqua-green  
+              {% elif status == 'No items dispensed' %} nhsuk-tag--white   
+              {% elif status == 'Expired' %} nhsuk-tag--orange      
+              {% elif status == 'Claimed' %} nhsuk-tag--grey 
+              {% elif status == 'Downloaded by a dispenser' %} nhsuk-tag--purple
+              {% elif status == 'Next repeat ready to download' %} nhsuk-tag--pink              
+              {% endif %}">
+              {{ status }}
+            </strong> 
+          </div>
+          <div class="nhs-screening-whole-timeline__description"> Dispense notification ID: b240434e-cb85-40bb-899c-1c61410c93a7
+          </div>
+          <div class="nhs-screening-whole-timeline__description">Prescription items: <ul class="nhsuk-u-padding-top-2"><li class="nhsuk-u-font-size-16">Phosphates enema (Formula B) 128ml standard tube</br>Quantity: 1 tube </li></ul>
+          </div>
+        </div>
+              <!-- second item-->
+              <div class="nhs-screening-whole-timeline__item">
+                <div class="moj-timeline__header">
+                  <h3 class="nhs-screening-whole-timeline__title"> {{ prescription.prescriptionMessage3header or 'Dispenser has downloaded the prescription' }}</h3>
+                </div>
+                <p class="nhs-screening-whole-timeline__date">
+                  <time datetime="2019-06-14T14:01:00.000Z">Sent date: {{ prescription.prescriptionMessage3sendDateTime or '06-Jun-2024 17:05:33' }}
+                  </time>
+                </p>
+                <div class="nhs-screening-whole-timeline__description">Organisation: {{ prescription.prescriptionMessage3Org or 'ASDA Pharmacy (ODS:OXY2G)' }}
+                </div>
+                <div class="nhs-screening-whole-timeline__description">
+                  New status: 
+                  {% set status = prescription.PrescriptionMessage3NewStatus or ' Downloaded by a dispenser' %}
+                  <strong class="nhsuk-tag            
+                     {% if status == 'Available to download' %} nhsuk-tag--yellow             
+                    {% elif status == 'All items dispensed' %} nhsuk-tag--green             
+                    {% elif status == 'Cancelled' %} nhsuk-tag--red            
+                     {% elif status == 'Future issue date' %} nhsuk-tag--blue      
+                    {% elif status == 'Some items dispensed' %} nhsuk-tag--blue
+                    {% elif status == 'Future repeat dispense' %} nhsuk-tag--aqua-green  
+                    {% elif status == 'No items dispensed' %} nhsuk-tag--white   
+                    {% elif status == 'Expired' %} nhsuk-tag--orange      
+                    {% elif status == 'Claimed' %} nhsuk-tag--grey 
+                    {% elif status == 'Downloaded by a dispenser' %} nhsuk-tag--purple
+                    {% elif status == 'Next repeat ready to download' %} nhsuk-tag--pink              
+                    {% endif %}">
+                    {{ status }}
+                  </strong>    
+                </div>
+              </div>
+        <!--first item-->
+              <div class="nhs-screening-whole-timeline__item">
+                <div class="moj-timeline__header">
+                  <h3 class="nhs-screening-whole-timeline__title"> {{ prescription.prescriptionMessage4header or 'Prescription has been uploaded' }}</h3>
+                </div>
+                <p class="nhs-screening-whole-timeline__date">
+                  <time datetime="2019-06-14T14:01:00.000Z">Sent date: {{ prescription.prescriptionMessage4sendDateTime or '05-June-2024 12:33:33' }}
+                  </time>
+                </p>
+                <div class="nhs-screening-whole-timeline__description">Organisation: {{ prescription.prescriptionMessage4Org or 'FIJI SURGERY (ODS: FI05964)' }}
+                </div>
+                <div class="nhs-screening-whole-timeline__description">
+                  New status: 
+                  {% set status = prescription.PrescriptionMessage4NewStatus or 'Available to download' %}
+                  <strong class="nhsuk-tag            
+                     {% if status == 'Available to download' %} nhsuk-tag--yellow             
+                    {% elif status == 'All items dispensed' %} nhsuk-tag--green             
+                    {% elif status == 'Cancelled' %} nhsuk-tag--red            
+                     {% elif status == 'Future issue date' %} nhsuk-tag--blue      
+                    {% elif status == 'Some items dispensed' %} nhsuk-tag--blue
+                    {% elif status == 'Future repeat dispense' %} nhsuk-tag--aqua-green  
+                    {% elif status == 'No items dispensed' %} nhsuk-tag--white   
+                    {% elif status == 'Expired' %} nhsuk-tag--orange      
+                    {% elif status == 'Claimed' %} nhsuk-tag--grey 
+                    {% elif status == 'Downloaded by a dispenser' %} nhsuk-tag--purple 
+                    {% elif status == 'Next repeat ready to download' %} nhsuk-tag--pink              
+                    {% endif %}">
+                    {{ status }}
+                  </strong>     
+              </div>
+              </div>
+              </div>
+      
+    </div>
+  </div>
+</div>

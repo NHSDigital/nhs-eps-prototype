@@ -1,0 +1,111 @@
+{% extends './_includes/layout-application.html' %}
+{% set primarynav = 'patient' %}
+{% set hideNav = 'true' %}
+{% set hideJump = 'true' %}
+
+{% block pageTitle %}
+Find a patient by NHS number - {{ serviceName }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="row">
+  <div class="col-sm-0 col-md-1 col-lg-1 col-xl-3"></div>
+  <div class="col-sm-12 col-md-10 col-lg-10 col-xl-6">
+      {% if data['action'] === 'change' %}
+      <h1 class="select-role-header nhsuk-heading-xl" id="select-role-header">
+        Change your role
+        <span class="nhsuk-caption-xl nhsuk-caption--bottom">Select the role you wish to use to access the service</span>
+      </h1>
+      {% else %}
+      <h1 class="select-role-header nhsuk-heading-xl" id="select-role-header">
+        Select your role
+      </h1>
+        <p>Select the role you wish to use to access the service</p>
+      {% endif %}
+
+    <div>
+      <div class="nhsuk-inset-text current-role">
+        <span class="nhsuk-u-visually-hidden">Information: </span>
+        <p id="current-role-details">You are currently logged in at <b>NHS CONNECTING FOR HEALTH (X09)</b> with <b>{{ data['roleType'] or 'Clinical Practitioner Access Role' }}</b></p></div>
+
+      {% if data['action'] !== 'change' %}
+      <a href="search" aria-disabled="false" class="nhsuk-button" id="confirm-current-role" role="button" type="submit">Confirm and continue to Find a patient</a>
+      {% endif %}
+
+
+    </div>
+
+    {% if data['action'] === 'change' %}
+    <p>If you don't want to change role, you can return to <a href="patient-details">Find a Patient</a></p>
+    {% else %}
+    <p>Alternatively, you can choose a new role below</p>
+    {% endif %}
+
+
+    <h2 class="allowed-role-title{% if data['action'] !== 'change' %} nhsuk-heading-m{% endif %}">Roles with access to the National Care Records Service</h2>
+
+    <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+        <h3 class="nhsuk-card__heading">
+          <div class="role-details">
+            <a href="roles-confirm?roleType=Demographic%20Administrator" class="role-name" role="button" tabindex="0">
+              <u>NHS CONNECTING FOR HEALTH (X09)</u></a>
+          </div>
+          <p class="role-details">Demographic Administrator</p></h3>
+       
+      </div>
+    </div>
+    <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+        <h3 class="nhsuk-card__heading">
+          <div class="role-details">
+            <a href="roles-confirm?roleType=Health%20Records%20Manager%20Access%20Role" class="role-name" role="button" tabindex="0">
+              <u>NHS CONNECTING FOR HEALTH (X09)</u></a>
+          </div>
+          <p class="role-details">Health Records Manager Access Role</p></h3>
+       
+      </div>
+    </div>
+    <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+        <h3 class="nhsuk-card__heading">
+          <div class="role-details">
+            <a href="roles-confirm?roleType=Midwife%20Access%20Role" class="role-name" role="button" tabindex="0">
+              <u>NHS CONNECTING FOR HEALTH (X09)</u></a>
+          </div>
+          <p class="role-details">Midwife Access Role</p></h3>
+       
+      </div>
+    </div>
+    <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+        <h3 class="nhsuk-card__heading">
+          <div class="role-details">
+            <a href="roles-confirm?roleType=Pharmacist" class="role-name" role="button" tabindex="0">
+              <u>NHS CONNECTING FOR HEALTH (X09)</u></a>
+          </div>
+          <p class="role-details">Pharmacist</p></h3>
+       
+      </div>
+    </div>
+
+    <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+        <h3 class="nhsuk-card__heading">
+          <div class="role-details">
+            <a href="roles-confirm?roleType=Admin%2FClinical%20Support%20Access%20Role" class="role-name" id="select_555292251104_X26" role="button" tabindex="0"><u>NHS ENGLAND - X26 (X26)</u>
+            </a>
+          </div>
+          <p class="role-details">Admin/Clinical Support Access Role</p></h3>
+        
+      </div>
+    </div>
+
+    <p class="rows-displayed-count"><b>Showing 6 of 6 roles</b></p>
+
+  </div>
+</div>
+
+{% endblock %}

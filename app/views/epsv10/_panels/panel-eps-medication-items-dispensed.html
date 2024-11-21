@@ -1,0 +1,66 @@
+<div class="data-panel__wrapper no-outline" tabindex="-1">
+  <div class="nhsuk-card data-panel" id="address-panel">
+    <div class="nhsuk-card__content">
+      <h3 class="nhsuk-card__heading">
+        <span>{{ prescription.prescriptionItem1 or 'Blephaclean wipes(Thea Pharmaceuticals Ltd)' }}</span>
+
+      </h3>
+      <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Quantity</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content data-field__content--address">
+              {{ prescription.prescriptionItem1quantity or '21 tablets' }}
+            </span>
+            <br>
+
+            
+
+
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Instructions</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content data-field__content--address">
+              {{ prescription.prescriptionItem1instructions or 'Take 3 times a day with water' }}
+            </span>
+            <br>
+
+           
+
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Status</dt>
+          <dd class="nhsuk-summary-list__value ">
+            <span class="data-field__content data-field__content--address">
+             
+              {% set itemstatus = prescription.PrescriptionMessage1NewStatus or 'Claimed' %}
+              <strong class="nhsuk-tag            
+                {% if itemstatus == 'Available to download' %} nhsuk-tag--yellow             
+                {% elif itemstatus == 'All items dispensed' %} nhsuk-tag--green             
+                {% elif itemstatus == 'Cancelled' %} nhsuk-tag--red            
+                {% elif itemstatus == 'Future issue date' %} nhsuk-tag--blue      
+                {% elif itemstatus == 'Some items dispensed' %} nhsuk-tag--blue
+                {% elif itemstatus == 'Future repeat dispense' %} nhsuk-tag--aqua-green  
+                {% elif itemstatus == 'No items dispensed' %} nhsuk-tag--white   
+                {% elif itemstatus == 'Expired' %} nhsuk-tag--orange      
+                {% elif itemstatus == 'Claimed' %} nhsuk-tag--grey 
+                {% elif itemstatus == 'Downloaded by a dispenser' %} nhsuk-tag--purple
+                {% elif itemstatus == 'Next repeat ready to download' %} nhsuk-tag--pink              
+                {% endif %}">
+                {{ itemstatus }}
+              </strong> 
+            </span>
+            <br>
+
+           
+
+          </dd>
+        </div>
+      </dl>
+      
+    </div>
+  </div>
+</div>

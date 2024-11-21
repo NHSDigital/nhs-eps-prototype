@@ -1,0 +1,122 @@
+{% extends './_includes/layout-application.html' %}
+{% set primarynav = 'patient' %}
+{% set hideNav = 'true' %}
+{% set hideJump = 'true' %}
+{% set containerClasses = 'patient-search-form-container' %}
+
+{% block pageTitle %}
+Prescription - {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+<div class="above-tab-space">
+  <section class="nhsuk-hero">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+          <div class="nhsuk-hero__wrapper"><h1 class="nhsuk-u-margin-bottom-3">National prescription tracker</h1></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="nhsuk-tab-set find-patient-tabset">
+  <div class="find-patient-tabset__container">
+    <a href="search" class="nhsuk-tab-set__tab" id="nhs-number-search-tab" type="button">
+      <span class="nhsuk-u-visually-hidden">Search by </span>
+      Prescription ID search
+    </a>
+    <a href="search-nhs" class="nhsuk-tab-set__tab nhsuk-tab-set__tab--active" id="basic-search-tab" type="button">
+      <span class="nhsuk-u-visually-hidden">Search by </span>
+      NHS number search
+    </a>
+    <a href="search-basic" class="nhsuk-tab-set__tab" id="advanced-search-tab" type="button">
+      <span class="nhsuk-u-visually-hidden">Search by </span>
+      Basic details search
+    </a>
+    
+  </div>
+</div>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="main-body-wrapper">
+  
+<div class="patient-search-form row">
+ 
+    <div>
+      
+      <div class="sidebar__wrapper">
+        {% include './_includes/includes-sidebar-eps.html' %}
+        <div class="sidebar__children">
+
+          <section class="data-section" tabindex="-1" title="Cancellation information">
+            {% include "./_panels/panel-eps-pending-cancellation.html" %}
+          </section>
+
+          <section class="data-section" tabindex="-1" title="Patient information">
+            <h2 class="nhsuk-u-margin-bottom-0 no-outline" id="key-demographic-heading" tabindex="-1">Patient information</h2>
+            {% include "./_panels/panel-epspatientdetails.html" %}
+        
+          </section>
+          <section class="data-section" tabindex="-1" title="Prescription information">
+            <h2 class="nhsuk-u-margin-bottom-0 no-outline" id="key-demographic-heading" tabindex="-1">Prescription information</h2>
+            {% include "./_panels/panel-eps-prescription-information.html" %}
+        
+          </section>
+    
+          <section class="data-section" tabindex="-1" title="Prescription information">
+            <h2 class="nhsuk-u-margin-bottom-0 no-outline" id="key-demographic-heading" tabindex="-1">Dispensed items</h2>
+            {% include "./_panels/panel-eps-medication-items-dispensed.html" %}
+        
+          </section>
+          <section class="data-section" tabindex="-1" title="Message history">
+            <h2 class="nhsuk-u-margin-bottom-0 no-outline" id="key-demographic-heading" tabindex="-1">Message history</h2>
+            {% include "./_panels/panel-eps-message-history.html" %}
+        
+          </section>
+          <section class="data-section" tabindex="-1" title="Nominated dispenser">
+            <h2 class="nhsuk-u-margin-bottom-0 no-outline" id="key-demographic-heading" tabindex="-1">Nominated dispenser information</h2>
+            {% include "./_panels/panel-eps-nominateddispenser.html" %}
+        
+          </section>
+          <section class="data-section" tabindex="-1" title="Dispenser">
+            <h2 class="nhsuk-u-margin-bottom-0 no-outline" id="key-demographic-heading" tabindex="-1">Dispenser information</h2>
+            {% include "./_panels/panel-eps-dispenser.html" %}
+        
+          </section>
+          <section class="data-section" tabindex="-1" title="Prescriber">
+            <h2 class="nhsuk-u-margin-bottom-0 no-outline" id="key-demographic-heading" tabindex="-1">Prescriber information</h2>
+            {% include "./_panels/panel-eps-prescriber.html" %}
+        
+          </section>
+            </div>
+          </section>
+       
+    
+    
+       
+        
+    
+          
+    
+    
+   
+    
+    
+      
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+</div>
+
+</div>
+{% endblock %}

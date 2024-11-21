@@ -1,0 +1,56 @@
+<div class="data-panel__wrapper no-outline" tabindex="-1">
+  <div class="nhsuk-card data-panel" id="patient-details-panel">
+    <div class="nhsuk-card__content">
+      
+      <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Prescriber</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content data-field__content--address">
+              {{ prescription.prescriberOrg or 'FIJI SURGERY (ODS: FI05964)' }}
+            </span>
+            <br>
+
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Address</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content data-field__content--address">
+              {{ prescription.prescriberAddress or '90 YARROW LANE, FINNSBURY, E45 T46' }}
+            </span>
+            <br>
+
+           
+
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Prescribed from </dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content data-field__content--address">
+              {{ prescription.prescriberCountry or 'England' }}
+            </span>
+            <br>
+
+           
+
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Prescriber contact details</dt>
+          <dd class="nhsuk-summary-list__value ">
+            <span class="data-field__content data-field__content--address">
+              {{ prescription.prescribercontact or '01232 231321' }}
+            </span>
+            <br>
+
+           
+
+          </dd>
+        </div>
+        
+      </dl>
+    </div>
+  </div>
+</div>
