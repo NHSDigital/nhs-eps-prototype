@@ -31,6 +31,13 @@ button {
   box-shadow: 0 4px 0 #00376c;
   color: white;
 }
+
+.button__green {
+  background-color: $color_nhsuk-green;
+  box-shadow: 0 4px 0 #004721;
+  color: white;
+}
+
 //eps expanders jess
 .expanderButton1eps[aria-expanded="false"] {
   color: #005eb8;

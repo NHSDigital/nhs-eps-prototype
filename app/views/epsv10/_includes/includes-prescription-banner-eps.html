@@ -1,0 +1,37 @@
+<div class="patient-summary-eps-prescription">
+  <div class="row bottom-xs">
+    
+    <div class="patient-summary__block" id="prescription-id">
+      <span class="patient-summary__info">Prescription ID: <span id="copyText">{{ prescription.prescriptionID or '4FA217-P84302-2H597C' }}</span><button aria-disabled="false" id="copyButton" aria-label="Copy this prescription ID to the clipboard" class="nhsuk-button nhsuk-button--reverse copy-button button__green" type="submit">Copy</button></span>
+    </div>
+   
+    <div class="patient-summary__block" id="summary-nhs-number">
+      <span class="patient-summary__info">Prescription status:{% set prescstatus = prescription.PrescriptionMessage1NewStatus or 'Claimed' %}    <strong class="nhsuk-tag            
+        {% if prescstatus == 'Available to download' %} nhsuk-tag--yellow             
+       {% elif prescstatus == 'All items dispensed' %} nhsuk-tag--green             
+       {% elif prescstatus == 'Cancelled' %} nhsuk-tag--red            
+        {% elif prescstatus == 'Future issue date' %} nhsuk-tag--blue      
+       {% elif prescstatus == 'Some items dispensed' %} nhsuk-tag--blue
+       {% elif prescstatus == 'Future repeat dispense' %} nhsuk-tag--aqua-green  
+       {% elif prescstatus == 'No items dispensed' %} nhsuk-tag--white   
+       {% elif prescstatus == 'Expired' %} nhsuk-tag--orange      
+       {% elif prescstatus == 'Claimed' %} nhsuk-tag--grey 
+       {% elif prescstatus == 'Downloaded by a dispenser' %} nhsuk-tag--purple
+       {% elif prescstatus == 'Next repeat ready to download' %} nhsuk-tag--pink              
+       {% endif %}">
+       {{ prescstatus }}
+     </strong>  </span>
+    </div>
+    <div class="patient-summary__block" id="summary-dob">
+      <span class="patient-summary__info">Prescription type: {{ prescription.prescriptionType or 'eRD' }}</span>
+    </div>
+    <div class="" id="summary-nhs-number-copy">
+      <button aria-disabled="false" id="copyButton" aria-label="Open a printable PDF of this prescription" class="nhsuk-button nhsuk-button--reverse copy-button button__blue" type="submit">Print summary</button>
+    </div>
+  </div>
+  
+ 
+  <div id="patientview-sentinel" style="height: 1px; background-color: transparent;"></div>
+</div>
+
+
