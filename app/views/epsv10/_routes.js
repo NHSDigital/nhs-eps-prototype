@@ -20,85 +20,66 @@ module.exports = (router) => {
 
   //search via presc number
 // search via presc number form
+// Redirect via spinner after prescription search
 router.post("/epsv10/search-presc-post", function (req, res) {
   const prescNumber = req.body["prescNumber"];
   req.session.data.errors = {};
 
-  // If there is no submitted option
   if (!prescNumber) {
-      req.session.data.errors["presc-number"] = true;
-      return res.redirect("search");
+    req.session.data.errors["presc-number"] = true;
+    return res.redirect("search");
   }
 
-  console.log("Searching for prescription number:", prescNumber);
+  let patientEntry = req.session.data.patients.find(p => 
+    Object.values(p).some(patient => patient.prescriptionNo.includes(prescNumber))
+  );
 
-  // Find the patient by prescription number
-  let patientEntry = req.session.data.patients.find(p => {
-      return Object.values(p).some(patient => patient.prescriptionNo.includes(prescNumber));
-  });
-
-  // Extract the patient object from the patientEntry
   let patient = patientEntry ? Object.values(patientEntry).find(patient => patient.prescriptionNo.includes(prescNumber)) : null;
 
   if (patient) {
-      // Assuming that the patient object has an nhsNumber field
-      const nhsNumber = patient.nhsNumber;
+    const nhsNumber = patient.nhsNumber;
 
-      if (!nhsNumber) {
-          console.log("Patient found but no NHS number available.");
-          req.session.data.patient = null;
-          return res.redirect("search");
-      }
-
-      console.log("Patient with that prescription found: " + patient.nhsNumber + ", " + patient.firstName + " " + patient.lastName);
-
-      // Save the patient and prescription data to the session
-      req.session.data.patient = patient;
-      req.session.data.prescriptionID = prescNumber;
-
-      // Redirect directly to prescription results
-      return res.redirect(`prescription-results?nhsNumber=${nhsNumber}&prescID=${prescNumber}`);
-  } else {
-      console.log("No patient found with that prescription number.");
+    if (!nhsNumber) {
       req.session.data.patient = null;
       return res.redirect("search");
+    }
+
+    req.session.data.patient = patient;
+    req.session.data.prescriptionID = prescNumber;
+
+    // Redirect to the spinner
+    return res.redirect(`spinner-prescription-list?nhsNumber=${nhsNumber}&prescID=${prescNumber}`);
+  } else {
+    req.session.data.patient = null;
+    return res.redirect("search");
   }
 });
 
- // Search via NHS number form
+// Redirect via spinner after NHS number search
 router.post("/epsv10/search-nhs-post", function (req, res) {
-  let nhsNumber = req.body["nhsNumber"].replace(/\s/g, ''); // Remove spaces on server side
+  const nhsNumber = req.body["nhsNumber"].replace(/\s/g, '');
   req.session.data.errors = {};
 
   if (!nhsNumber) {
-      req.session.data.errors["nhs-number"] = true;
-      return res.redirect("search-nhs");
+    req.session.data.errors["nhs-number"] = true;
+    return res.redirect("search-nhs");
   }
 
-  // Find the patient by NHS number
   let patientEntry = req.session.data.patients.find(p => p[nhsNumber]);
-
-  // Extract patient object
   let patient = patientEntry ? patientEntry[nhsNumber] : null;
 
   if (patient) {
-      // Log the patient details
-      console.log("Patient found:", patient.nhsNumber, patient.firstName, patient.lastName);
+    req.session.data.patient = patient;
 
-      // Save the patient data to the session
-      req.session.data.patient = patient;
-
-      // Redirect directly to the prescription results page
-      return res.redirect(`prescription-results?nhsNumber=${nhsNumber}`);
+    // Redirect to the spinner
+    return res.redirect(`spinner-prescription-list?nhsNumber=${nhsNumber}`);
   } else {
-      console.log("No patient found with that NHS number.");
-      req.session.data.patient = null;
-
-      // Redirect to the search page with an error
-      req.session.data.errors["nhs-number"] = true;
-      return res.redirect("search-nhs");
+    req.session.data.patient = null;
+    req.session.data.errors["nhs-number"] = true;
+    return res.redirect("search-nhs");
   }
 });
+
 
 
 

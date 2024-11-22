@@ -1,0 +1,57 @@
+{% extends './_includes/layout-application-none.html' %}
+
+{% block pageTitle %}
+  Checking your details
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+      <div class="nhsuk-width-container">
+         <h1 class="nhsuk-heading-l">Loading search results</h1>
+     
+      <form action="submit" method="post">
+        <section class="loading-container" id="gp-connect-0" style="display:block; min-height: 16em;">
+      
+          <div class="bar_container">
+            <div id="main_container">
+              <div id="pbar" class="progress-spinner" data-percent="0">
+                <img src="/images/loader-spinner.svg" width="200px" height="200px" id="spinner" class=""/>
+                <div class="ppc-loading">
+                  <div class="pcc-percents-wrapper">
+                    <span id="spinner-status" class="nhsuk-body">Loading</span><span aria-hidden="true">...</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </form>
+
+  </div>
+</div>
+
+
+<script>
+      // Extract NHS number and optional prescription ID from the query string
+      const urlParams = new URLSearchParams(window.location.search);
+    const nhsNumber = urlParams.get('nhsNumber');
+    const prescID = urlParams.get('prescID');
+
+    // Construct the redirect URL
+    const redirectUrl = prescID
+      ? `/epsv10/prescription-results?nhsNumber=${nhsNumber}&prescID=${prescID}`
+      : `/epsv10/prescription-results?nhsNumber=${nhsNumber}`;
+
+    // Redirect after 2 seconds
+    setTimeout(() => {
+      window.location.href = redirectUrl;
+    }, 2000);
+</script>
+
+
+
+
+
+
+
+{% endblock %}
