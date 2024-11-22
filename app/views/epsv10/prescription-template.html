@@ -2,7 +2,7 @@
 {% set primarynav = 'patient' %}
 {% set hideNav = 'true' %}
 {% set hideJump = 'true' %}
-{% set containerClasses = 'patient-search-form-container' %}
+
 
 {% block pageTitle %}
 Prescription - {{ serviceName }}
@@ -16,70 +16,40 @@ Prescription - {{ serviceName }}
 
 {% block content %}
 
-<div class="main-body-wrapper">
-  
-<div class="patient-search-form row">
- 
-    <div>
-      
-      <div class="sidebar__wrapper">
-        {% include './_includes/includes-sidebar-eps.html' %}
-        <div class="sidebar__children">
 
-          <section class="data-section" tabindex="-1" title="Cancellation information">
-            {% include "./_panels/panel-eps-pending-cancellation.html" %}
-          </section>
-
-         
-         
-    
-          <section class="data-section" tabindex="-1" title="Prescription information">
-            <h2 class="nhsuk-u-margin-bottom-0 no-outline" id="key-demographic-heading" tabindex="-1">Dispensed items</h2>
-            {% include "./_panels/panel-eps-medication-items-dispensed.html" %}
-        
-          </section>
-          <section class="data-section" tabindex="-1" title="Message history">
-            <h2 class="nhsuk-u-margin-bottom-0 no-outline" id="key-demographic-heading" tabindex="-1">Message history</h2>
-            {% include "./_panels/panel-eps-message-history.html" %}
-        
-          </section>
-          <section class="data-section" tabindex="-1" title="Nominated dispenser">
-            <h2 class="nhsuk-u-margin-bottom-0 no-outline" id="key-demographic-heading" tabindex="-1">Nominated dispenser information</h2>
-            {% include "./_panels/panel-eps-nominateddispenser.html" %}
-        
-          </section>
-          <section class="data-section" tabindex="-1" title="Dispenser">
-            <h2 class="nhsuk-u-margin-bottom-0 no-outline" id="key-demographic-heading" tabindex="-1">Dispenser information</h2>
-            {% include "./_panels/panel-eps-dispenser.html" %}
-        
-          </section>
-          <section class="data-section" tabindex="-1" title="Prescriber">
-            <h2 class="nhsuk-u-margin-bottom-0 no-outline" id="key-demographic-heading" tabindex="-1">Prescriber information</h2>
-            {% include "./_panels/panel-eps-prescriber.html" %}
-        
-          </section>
-            </div>
-          </section>
-       
-    
-    
-       
-        
-    
-          
-    
-    
+  <div class="nhsuk-width-container-fluid">
    
     
-    
-      
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-half">
+          {% include "./_panels/panel-eps-medication-items-dispensed.html" %}
+        </div>
+        <div class="nhsuk-grid-column-one-half">
+          {% include "./_panels/panel-eps-medication-items-dispensed.html" %}
         </div>
       </div>
-    </div>
+    
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-half">
+         {% include "./_panels/panel-eps-message-history.html" %}
+        </div>
+        <div class="nhsuk-grid-column-one-half">
+          {% include "./_panels/panel-eps-prescriber.html" %}
+          {% include "./_panels/panel-eps-nominateddispenser.html" %}
+          {% include "./_panels/panel-eps-dispenser.html" %}
+
+        </div>
+      </div>
+  </div>
+
+
+
+  
+
   </div>
 
   
 </div>
 
-</div>
+
 {% endblock %}
