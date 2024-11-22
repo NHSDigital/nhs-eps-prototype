@@ -79,12 +79,12 @@
 
 ////
 
-.patient-summary,.patient-summary-eps,.patient-summary-eps-prescription,.patient-summary--deceased,.patient-summary--yellow-alert {
+.patient-summary,.patient-summary-eps,.patient-summary-eps-prescription,.patient-summary-eps-site,.patient-summary--deceased,.patient-summary--yellow-alert {
   padding: 8px 24px
 }
 
 @media(min-width: 40.0625em) {
-  .patient-summary,.patient-summary-eps,.patient-summary-eps-prescription,.patient-summary--deceased,.patient-summary--yellow-alert {
+  .patient-summary,.patient-summary-eps,.patient-summary-eps-prescription,.patient-summary-eps-site,.patient-summary--deceased,.patient-summary--yellow-alert {
     padding-bottom:16px;
     padding-left: 32px;
     padding-right: 32px;
@@ -103,6 +103,11 @@
 
 .patient-summary-eps-prescription {
   background-color: #fff;
+  color: $nhsuk-text-color;
+}
+
+.patient-summary-eps-site {
+  background-color: $color_nhsuk-pale-yellow;
   color: $nhsuk-text-color;
 }
 
