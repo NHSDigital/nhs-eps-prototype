@@ -35,7 +35,7 @@ Prescriptions list
       {% if returnedPrescriptionsListAll.length %}
       <p><strong>We found {{ returnedPrescriptionsListAll.length }} result{% if returnedPrescriptionsListAll.length > 1 %}s{% endif %}</strong> </p>
 
-      <p><a href="spinner-ncrs" target="_blank"> View additional patient information in the National Care Records Service (opens in a new tab)</a>.</p>
+      <p><a href="spinner-ncrs?nhsNumber={{ patient.nhsNumber }}" target="_blank"> View additional patient information in the National Care Records Service (opens in a new tab)</a>.</p>
 
       {% else %}
         <p>We could not find any current or future dated prescriptions for this patient.</p>
