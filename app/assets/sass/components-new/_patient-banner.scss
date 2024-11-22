@@ -79,12 +79,12 @@
 
 ////
 
-.patient-summary,.patient-summary--deceased,.patient-summary--yellow-alert {
+.patient-summary,.patient-summary-eps,.patient-summary--deceased,.patient-summary--yellow-alert {
   padding: 8px 24px
 }
 
 @media(min-width: 40.0625em) {
-  .patient-summary,.patient-summary--deceased,.patient-summary--yellow-alert {
+  .patient-summary,.patient-summary-eps,.patient-summary--deceased,.patient-summary--yellow-alert {
     padding-bottom:16px;
     padding-left: 32px;
     padding-right: 32px;
@@ -95,6 +95,10 @@
 .patient-summary {
   background-color: #005eb8;
   color: #fff;
+}
+.patient-summary-eps {
+  background-color: #D2EDF6;
+  color: $nhsuk-text-color;
 }
 
 .patient-summary--deceased {

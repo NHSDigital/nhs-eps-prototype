@@ -8,7 +8,7 @@ Prescriptions list
 {% endblock %}
 
 {% block beforeContent %}
-  
+{% include './_includes/includes-patient-banner-eps.html' %} 
  
   <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
     <div class="nhsuk-width-container">
@@ -37,10 +37,7 @@ Prescriptions list
       {% if returnedPrescriptionsListAll.length %}
       <p><strong>We found {{ returnedPrescriptionsListAll.length }} result{% if returnedPrescriptionsListAll.length > 1 %}s{% endif %}</strong> </p>
 
-      <div class="nhsuk-inset-text nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-4">
-        <span class="nhsuk-u-visually-hidden">Patient confirmation: </span>
-        <p>These prescriptions are for: <strong>{{ returnedPatientFirstName }} {{ returnedPatientLastName | upper }}</strong></p>
-      </div>
+     
 
       {% else %}
         <p>We could not find any current or future dated prescriptions for this patient.</p>
