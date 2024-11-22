@@ -2,13 +2,13 @@
   <div class="row bottom-xs">
    
     <div class="patient-summary__block" id="summary-gender">
-      <span class="patient-summary__info">Current site:  {{ prescription.Dispenserorg or 'COHENS CHEMIST (ODS: FV519)' }}</span>
+      <span class="patient-summary__info">Current site:  {{ prescriptions.Dispenserorg or 'COHENS CHEMIST (ODS: FV519)' }}</span>
     </div>
     <div class="patient-summary__block" id="summary-nhs-number">
-      <span class="patient-summary__info">Address:{{ prescription.Dispenseraddress or '123 Lime street, Norfolk' }} </span>
+      <span class="patient-summary__info">Address:{{ prescriptions.Dispenseraddress or '123 Lime street, Norfolk' }} </span>
     </div>
     <div class="patient-summary__block" id="summary-dob">
-      <span class="patient-summary__info">Contact details: {{ prescription.Dispensercontact or '01234 123453' }}</span>
+      <span class="patient-summary__info">Contact details: {{ prescriptions.Dispensercontact or '01234 123453' }}</span>
     </div>
    
   </div>
