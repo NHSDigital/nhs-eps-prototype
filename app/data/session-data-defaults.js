@@ -1236,7 +1236,7 @@ module.exports = {
       "6GA337P343022H597C": {
         "prescriptionID": "6GA337P343022H597C",
         "pendingCancellation": "yes",
-        "prescriptionIssueDate": "02-Sep-2024",
+        "prescriptionIssueDate": "04-Sep-2024",
         "prescriptionStatus": "Downloaded by a dispenser",
         "prescriptionType": "eRD 3 of 6",
         "daysSupply": "28 days",

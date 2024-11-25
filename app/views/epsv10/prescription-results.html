@@ -27,6 +27,74 @@ Prescriptions list
 {% endblock %}
 
 {% block content %}
+<style>
+/* Make links appear like buttons (optional) */
+[aria-sort] button,
+[aria-sort] button:hover {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  color: #005ea5;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1em;
+  font-weight: inherit;
+  padding: 0 10px 0 0;
+  position: relative;
+  text-align: inherit;
+  margin: 0;
+}
+
+[aria-sort] button:focus {
+  background-color: #ffdd00;
+  color: #0b0c0c;
+  box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
+  outline: none;
+}
+
+
+[aria-sort] button:before {
+  content: "▲";
+  position: absolute;
+  right: -8px;
+  top: 2px; /* Adjusted for better alignment */
+  font-size: 0.7em;
+}
+
+[aria-sort] button:after {
+  content: "▼";
+  position: absolute;
+  right: -8px;
+  top: 14px; /* Adjusted to stack below the up arrow */
+  font-size: 0.7em;
+}
+
+[aria-sort=ascending] button:before {
+  content: "▲"; /* Highlight active up arrow */
+  font-size: 0.9em; /* Slightly larger to emphasize */
+  color: #005ea5; /* Optional: accent color for active */
+}
+
+[aria-sort=ascending] button:after {
+  content: "▼"; /* Inactive down arrow */
+  font-size: 0.7em;
+  color: #ccc; /* Light gray for inactive */
+}
+
+[aria-sort=descending] button:before {
+  content: "▲"; /* Inactive up arrow */
+  font-size: 0.7em;
+  color: #ccc; /* Light gray for inactive */
+}
+
+[aria-sort=descending] button:after {
+  content: "▼"; /* Highlight active down arrow */
+  font-size: 0.9em; /* Slightly larger to emphasize */
+  color: #005ea5; /* Optional: accent color for active */
+}
+
+
+</style>
   <div class="nhsuk-grid-row">
 
     <div class="nhsuk-grid-column-full">
@@ -72,10 +140,18 @@ Prescriptions list
 
             <thead>
               <tr role="row">
-                <th scope="col" class="prescriptionID-results-th">Prescription ID</th>
-                <th scope="col" class="status-results-th">Status</th>
-                <th scope="col" class="issuedate-results-th">Issue date</th>
-                <th scope="col" class="prescriptiontype-results-th">Prescription type</th>
+                <th scope="col" aria-sort="none">
+                  <button type="button" onclick="sortTable('columnName', 'asc')">Prescription ID </button>
+                </th>
+                <th scope="col" aria-sort="none">
+                  <button type="button" onclick="sortTable('columnName', 'asc')">Status </button>
+                </th>
+                <th scope="col" aria-sort="none">
+                  <button type="button" onclick="sortTable('columnName', 'asc')">Issue date </button>
+                </th>
+                <th scope="col" aria-sort="none">
+                  <button type="button" onclick="sortTable('columnName', 'asc')">Prescription type </button>
+                </th>
                 <th scope="col" class="viewsummary-results-th">View prescription</th>
               </tr>
             </thead>
@@ -101,11 +177,24 @@ Prescriptions list
        
         <thead>
           <tr role="row">
-            <th scope="col" class="prescriptionID-results-th">Prescription ID</th>
-            <th scope="col" class="status-results-th">Status</th>
-            <th scope="col" class="issuedate-results-th">Issue date</th>
-            <th scope="col" class="prescriptiontype-results-th">Prescription type</th>
-            <th scope="col" class="viewsummary-results-th">View prescription</th>
+            <thead>
+              <tr role="row">
+                <th scope="col" aria-sort="none">
+                  <button type="button" onclick="sortTable('columnName', 'asc')">Prescription ID </button>
+                </th>
+                <th scope="col" aria-sort="none">
+                  <button type="button" onclick="sortTable('columnName', 'asc')">Status </button>
+                </th>
+                <th scope="col" aria-sort="none">
+                  <button type="button" onclick="sortTable('columnName', 'asc')">Issue date </button>
+                </th>
+                <th scope="col" aria-sort="none">
+                  <button type="button" onclick="sortTable('columnName', 'asc')">Prescription type </button>
+                </th>
+                <th scope="col" class="viewsummary-results-th">View prescription</th>
+              </tr>
+            </thead>
+           
           </tr>
         </thead>
         <tbody class="patient-results">
@@ -130,11 +219,24 @@ Prescriptions list
        
           <thead>
             <tr role="row">
-              <th scope="col" class="prescriptionID-results-th">Prescription ID</th>
-              <th scope="col" class="status-results-th">Status</th>
-              <th scope="col" class="issuedate-results-th">Issue date</th>
-              <th scope="col" class="prescriptiontype-results-th">Prescription type</th>
-              <th scope="col" class="viewsummary-results-th">View prescription</th>
+              <thead>
+                <tr role="row">
+                  <th scope="col" aria-sort="none">
+                    <button type="button" onclick="sortTable('columnName', 'asc')">Prescription ID </button>
+                  </th>
+                  <th scope="col" aria-sort="none">
+                    <button type="button" onclick="sortTable('columnName', 'asc')">Status </button>
+                  </th>
+                  <th scope="col" aria-sort="none">
+                    <button type="button" onclick="sortTable('columnName', 'asc')">Issue date </button>
+                  </th>
+                  <th scope="col" aria-sort="none">
+                    <button type="button" onclick="sortTable('columnName', 'asc')">Prescription type </button>
+                  </th>
+                  <th scope="col" class="viewsummary-results-th">View prescription</th>
+                </tr>
+              </thead>
+            
             </tr>
           </thead>
           <tbody class="patient-results">
@@ -165,6 +267,23 @@ Prescriptions list
 {% endblock %}
 
 <script>
+document.querySelectorAll("[aria-sort]").forEach(header => {
+  header.addEventListener("click", function () {
+    const currentSort = this.getAttribute("aria-sort");
+    const newSort = currentSort === "ascending" ? "descending" : "ascending";
+
+    // Reset all other headers
+    document.querySelectorAll("[aria-sort]").forEach(h => h.setAttribute("aria-sort", "none"));
+
+    // Set the new sort state on the clicked header
+    this.setAttribute("aria-sort", newSort);
+
+    // Call your sorting function here
+    sortTable(this.dataset.columnKey, newSort);
+  });
+});
+
+
   //TABS TABS TABS 
   document.addEventListener("DOMContentLoaded", function() {
       // Function to toggle table visibility based on clicked anchor tag
@@ -218,6 +337,11 @@ Prescriptions list
       defaultContent.style.display = "block";
     });
 
-    
+  
+
+
+
+
+
     
 </script>
