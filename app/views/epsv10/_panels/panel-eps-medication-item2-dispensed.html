@@ -37,10 +37,17 @@
             <span class="data-field__content data-field__content--address">
               {{ prescription.prescriptionItem1Status or 'Claimed' }}
             </span>
-            <br>
-
-           
-
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">NHS App status</dt>
+          <dd class="nhsuk-summary-list__value ">
+            <span class="data-field__content data-field__content--address">
+              <strong class="nhsuk-tag">            
+                {{ prescriptions.prescriptionItem2DispNHSApp or 'Collected' }}
+              </strong> 
+            </span>
+            
           </dd>
         </div>
       </dl>
