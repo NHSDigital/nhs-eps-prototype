@@ -2,11 +2,11 @@
   <div class="row bottom-xs">
     
     <div class="patient-summary__block" id="prescription-id">
-      <span class="patient-summary__info">Prescription ID: <span id="copyText">{{ prescriptions.ID  or '4FA217-P84302-2H597C' }}</span><button aria-disabled="false" id="copyButton" aria-label="Copy this prescription ID to the clipboard" class="nhsuk-button nhsuk-button--reverse copy-button button__green" type="submit">Copy</button></span>
+      <span class="patient-summary__info">Prescription ID: <span id="copyText">{{ prescription.prescriptionID  or '4FA217-P84302-2H597C' }}</span><button aria-disabled="false" id="copyButton" aria-label="Copy this prescription ID to the clipboard" class="nhsuk-button nhsuk-button--reverse copy-button button__green" type="submit">Copy</button></span>
     </div>
    
     <div class="patient-summary__block" id="summary-nhs-number">
-      <span class="patient-summary__info">Prescription status:{% set prescstatus = prescriptions.Status or 'Claimed' %}    <strong class="nhsuk-tag            
+      <span class="patient-summary__info">Prescription status:{% set prescstatus = prescription.prescriptionStatus or 'Claimed' %}    <strong class="nhsuk-tag            
         {% if prescstatus == 'Available to download' %} nhsuk-tag--yellow             
        {% elif prescstatus == 'All items dispensed' %} nhsuk-tag--green             
        {% elif prescstatus == 'Cancelled' %} nhsuk-tag--red            
@@ -23,7 +23,7 @@
      </strong>  </span>
     </div>
     <div class="patient-summary__block" id="summary-dob">
-      <span class="patient-summary__info">Prescription type: {{ prescriptions.Type or 'eRD' }}</span>
+      <span class="patient-summary__info">Prescription type: {{ prescription.prescriptionType or 'eRD' }}</span>
     </div>
     <div class="" id="summary-nhs-number-copy">
       <button aria-disabled="false" id="copyButton" aria-label="Open a printable PDF of this prescription" class="nhsuk-button nhsuk-button--reverse copy-button button__blue" type="submit">Print summary</button>

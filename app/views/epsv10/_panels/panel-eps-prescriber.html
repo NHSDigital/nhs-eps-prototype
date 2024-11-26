@@ -7,7 +7,7 @@
           <dt class="nhsuk-summary-list__key">Prescriber</dt>
           <dd class="nhsuk-summary-list__value">
             <span class="data-field__content data-field__content--address">
-              {{ prescription.prescriberOrg or 'FIJI SURGERY (ODS: FI05964)' }}
+              {{ prescriptions.prescriberOrg or 'FIJI SURGERY (ODS: FI05964)' }}
             </span>
             <br>
 
@@ -17,7 +17,7 @@
           <dt class="nhsuk-summary-list__key">Address</dt>
           <dd class="nhsuk-summary-list__value">
             <span class="data-field__content data-field__content--address">
-              {{ prescription.prescriberAddress or '90 YARROW LANE, FINNSBURY, E45 T46' }}
+              {{ prescriptions.prescriberAddress or '90 YARROW LANE, FINNSBURY, E45 T46' }}
             </span>
             <br>
 
@@ -29,7 +29,7 @@
           <dt class="nhsuk-summary-list__key">Prescribed from </dt>
           <dd class="nhsuk-summary-list__value">
             <span class="data-field__content data-field__content--address">
-              {{ prescription.prescriberCountry or 'England' }}
+              {{ prescriptions.prescriberCountry or 'England' }}
             </span>
             <br>
 
@@ -41,7 +41,7 @@
           <dt class="nhsuk-summary-list__key">Prescriber contact details</dt>
           <dd class="nhsuk-summary-list__value ">
             <span class="data-field__content data-field__content--address">
-              {{ prescription.prescribercontact or '01232 231321' }}
+              {{ prescriptions.prescribercontact or '01232 231321' }}
             </span>
             <br>
 

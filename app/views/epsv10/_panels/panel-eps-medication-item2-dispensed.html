@@ -2,7 +2,7 @@
   <div class="nhsuk-card data-panel" id="address-panel">
     <div class="nhsuk-card__content">
       <h3 class="nhsuk-card__heading nhsuk-heading-xs">
-        <span>{{ prescription.prescriptionItem1 or 'Blephaclean wipes(Thea Pharmaceuticals Ltd)' }}</span>
+        <span>{{ prescriptions.prescriptionItem1 or 'Blephaclean wipes(Thea Pharmaceuticals Ltd)' }}</span>
 
       </h3>
       <dl class="nhsuk-summary-list">
@@ -10,7 +10,7 @@
           <dt class="nhsuk-summary-list__key">Quantity</dt>
           <dd class="nhsuk-summary-list__value">
             <span class="data-field__content data-field__content--address">
-              {{ prescription.prescriptionItem1quantity or '21 tablets' }}
+              {{ prescriptions.prescriptionItem1quantity or '21 tablets' }}
             </span>
             <br>
 
@@ -23,7 +23,7 @@
           <dt class="nhsuk-summary-list__key">Instructions</dt>
           <dd class="nhsuk-summary-list__value">
             <span class="data-field__content data-field__content--address">
-              {{ prescription.prescriptionItem1instructions or 'Take 3 times a day with water' }}
+              {{ prescriptions.prescriptionItem1instructions or 'Take 3 times a day with water' }}
             </span>
             <br>
 
@@ -35,7 +35,7 @@
           <dt class="nhsuk-summary-list__key">Status</dt>
           <dd class="nhsuk-summary-list__value ">
             <span class="data-field__content data-field__content--address">
-              {{ prescription.prescriptionItem1Status or 'Claimed' }}
+              {{ prescriptions.prescriptionItem1Status or 'Claimed' }}
             </span>
           </dd>
         </div>

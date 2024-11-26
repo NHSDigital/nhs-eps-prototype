@@ -10,7 +10,7 @@
           <dt class="nhsuk-summary-list__key">Prescription ID</dt>
           <dd class="nhsuk-summary-list__value">
             <span class="data-field__content data-field__content--address">
-              {{ prescription.prescriptionID or '4FA217-P84302-2H597C' }}
+              {{ prescriptions.prescriptionID or '4FA217-P84302-2H597C' }}
             </span>
             <br>
 
@@ -23,7 +23,7 @@
           <dt class="nhsuk-summary-list__key">Prescription status</dt>
           <dd class="nhsuk-summary-list__value">
             <span class="data-field__content data-field__content--address">
-              {% set prescstatus = prescription.PrescriptionMessage1NewStatus or 'Claimed' %}
+              {% set prescstatus = prescriptions.PrescriptionMessage1NewStatus or 'Claimed' %}
               <strong class="nhsuk-tag            
                  {% if prescstatus == 'Available to download' %} nhsuk-tag--yellow             
                 {% elif prescstatus == 'All items dispensed' %} nhsuk-tag--green             
@@ -50,7 +50,7 @@
           <dt class="nhsuk-summary-list__key">Prescription type</dt>
           <dd class="nhsuk-summary-list__value ">
             <span class="data-field__content data-field__content--address">
-              {{ prescription.prescriptionType or 'eRD' }}
+              {{ prescriptions.prescriptionType or 'eRD' }}
             </span>
             <br>
 
