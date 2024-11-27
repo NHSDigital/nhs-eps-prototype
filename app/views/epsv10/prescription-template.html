@@ -10,7 +10,7 @@ Prescription - {{ serviceName }}
 
 {% block beforeContent %}
 {% include './_includes/includes-patient-banner-eps.html' %} {% include './_includes/includes-prescription-banner-eps.html' %}
-{% include './_includes/includes-current-site-banner-eps.html' %}
+
 
 {% endblock %}
 
@@ -21,25 +21,23 @@ Prescription - {{ serviceName }}
    
     
       <div class="nhsuk-grid-row">
+       
         <div class="nhsuk-grid-column-one-half">
-          {% include "./_panels/panel-eps-medication-items-dispensed.html" %}
+          <h1 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">Dispensed items</h1>
+          {% include "./_panels/panel-eps-medication-items-dispensed.html" %} {% include "./_panels/panel-eps-medication-items-dispensed.html" %} {% include "./_panels/panel-eps-medication-items-dispensed.html" %} {% include "./_panels/panel-eps-medication-items-dispensed.html" %}
         </div>
         <div class="nhsuk-grid-column-one-half">
-          {% include "./_panels/panel-eps-medication-items-dispensed.html" %}
+          <h1 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">History</h1>
+          {% include "./_panels/panel-eps-message-history.html" %}    
+          <h1 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">Prescriber and dispenser information</h1> 
+          {% include "./_panels/panel-eps-dispenser.html" %}
+          {% include "./_panels/panel-eps-prescriber.html" %}
+          {% include "./_panels/panel-eps-nominateddispenser.html" %}
+         
         </div>
       </div>
     
-      <div class="nhsuk-grid-row">
-        <div class="nhsuk-grid-column-one-half">
-         {% include "./_panels/panel-eps-message-history.html" %}
-        </div>
-        <div class="nhsuk-grid-column-one-half">
-          {% include "./_panels/panel-eps-prescriber.html" %}
-          {% include "./_panels/panel-eps-nominateddispenser.html" %}
-          {% include "./_panels/panel-eps-dispenser.html" %}
-
-        </div>
-      </div>
+ 
   </div>
 
 

@@ -28,8 +28,16 @@
     <div class="" id="summary-nhs-number-copy">
       <button aria-disabled="false" id="copyButton" aria-label="Open a printable PDF of this prescription" class="nhsuk-button nhsuk-button--reverse copy-button button__blue" type="submit">Print summary</button>
     </div>
+    <div class="patient-summary__block" id="summary-gender">
+      <span class="patient-summary__info">Current site:  {{ prescriptions.Dispenserorg or 'COHENS CHEMIST (ODS: FV519)' }}</span>
+    </div>
+    
+    
   </div>
+  <div class="row bottom-xs">
   
+
+  </div>
  
   <div id="patientview-sentinel" style="height: 1px; background-color: transparent;"></div>
 </div>
