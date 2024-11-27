@@ -376,4 +376,57 @@ router.post("/epsv10/search-nhs-post", function (req, res) {
   });
   });
 
+ // Import your data file
+
+ router.get("/epsv10/prescription-template", function (req, res) {
+  const prescID = req.query["prescID"] ? req.query["prescID"].trim() : null;
+  const prescType = req.query["prescType"] ? req.query["prescType"].trim() : null;
+
+  // Validate inputs
+  if (!prescID || !prescType) {
+    console.log("Missing prescription ID or type.");
+    return res.redirect("/epsv10/search");
+  }
+
+  // Retrieve prescriptions from session data
+  const prescriptionsArray = req.session.data.prescriptions || [];
+
+  // Find the prescription by ID and type
+  const matchedPrescription = prescriptionsArray.find(item => {
+    const prescription = item[Object.keys(item)[0]];
+    return prescription.prescriptionID === prescID && prescription.prescriptionType === prescType;
+  });
+
+  if (!matchedPrescription) {
+    console.log("Prescription not found.");
+    return res.redirect("/epsv10/search");
+  }
+
+  // Extract prescription details for rendering
+  const prescription = matchedPrescription[Object.keys(matchedPrescription)[0]];
+    // Log the extracted prescription details
+    console.log("Prescription Details:", {
+      prescriptionID: prescription.prescriptionID,
+      prescriptionType: prescription.prescriptionType,
+      
+      prescriptionIssueDate: prescription.prescriptionIssueDate,
+      prescriptionStatus: prescription.prescriptionStatus,
+      prescriptionItems: [
+        { name: prescription.prescriptionItem1, quantity: prescription.prescriptionItem1quantity },
+        { name: prescription.prescriptionItem2, quantity: prescription.prescriptionItem2quantity },
+      ],
+    });
+
+  res.render("./epsv10/prescription-template", {
+    prescriptionID: prescription.prescriptionID,
+    prescriptionType: prescription.prescriptionType,
+    
+    prescriptionIssueDate: prescription.prescriptionIssueDate,
+    prescriptionStatus: prescription.prescriptionStatus,
+    prescriptionItems: [
+      { name: prescription.prescriptionItem1, quantity: prescription.prescriptionItem1quantity },
+      { name: prescription.prescriptionItem2, quantity: prescription.prescriptionItem2quantity },
+    ],
+  });
+});
 }

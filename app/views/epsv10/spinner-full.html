@@ -36,9 +36,10 @@
   const urlParams = new URLSearchParams(window.location.search);
   const nhsNumber = urlParams.get('nhsNumber');
   const prescID = urlParams.get('prescID');
+  const prescType = urlParams.get('prescType');
 
   // Construct the redirect URL for the prescription template page
-  const redirectUrl = `/epsv10/prescription-template?nhsNumber=${nhsNumber}&prescID=${prescID}`;
+  const redirectUrl = `/epsv10/prescription-template?nhsNumber=${nhsNumber}&prescID=${prescID}&prescType=${prescType}`;
 
   // Redirect after 2 seconds (or your desired time)
   setTimeout(() => {
