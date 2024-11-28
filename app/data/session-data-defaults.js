@@ -1088,7 +1088,7 @@ module.exports = {
         "pendingCancellation": "yes",
         "prescriptionIssueDate": "02-Sep-2024",
         "prescriptionStatus": "Downloaded by a dispenser",
-        "prescriptionType": "eRD",
+        "prescriptionType": "eRD 1 of 6",
         "daysSupply": "28 days",
         "prescriptionItem1": "Blephaclean wipes(Thea Pharmaceuticals Ltd)",
         "prescriptionItem1pendingCancelation": "no",
@@ -1129,7 +1129,7 @@ module.exports = {
         "nominatedDispensercontact": "01943 863158",
         "prescriberBox": "yes",
         "prescriberOrg": "FIJI SURGERY (ODS: FI05964)",
-        "prescriberAddress": "	90 YARROW LANE, FINNSBURY, E45 T46",
+        "prescriberAddress": "90 YARROW LANE, FINNSBURY, E45 T46",
         "prescriberCountry": "England",
         "prescribercontact": "01232 231321",
       }

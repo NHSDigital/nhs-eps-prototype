@@ -6,17 +6,17 @@
         <!--first item-->
         <div class="nhs-screening-whole-timeline__item">
           <div class="nhs-timeline__header">
-            <h3 class="nhs-screening-whole-timeline__title">{{ prescriptions.prescriptionMessage1header or 'Dispenser has sent a claim notification' }}</h3>
+            <h3 class="nhs-screening-whole-timeline__title">{{ prescriptionMessageHeader1 or 'Dispenser has sent a claim notification' }}</h3>
           </div>
           <p class="nhs-screening-whole-timeline__date">
-            <time datetime="2019-06-14T14:01:00.000Z">Sent date: {{ prescriptions.prescriptionMessage1sendDateTime or '01-Aug-2024 13:35:33' }}
+            <time datetime="2019-06-14T14:01:00.000Z">Sent date: {{ prescriptionMessageDateTime1 or '04-Aug-2024 13:35:33' }}
             </time>
           </p>
-          <div class="nhs-screening-whole-timeline__description">Organisation: {{ prescriptions.prescriptionMessage1Org or 'ASDA Pharmacy (ODS:OXY2G)' }}
+          <div class="nhs-screening-whole-timeline__description">Organisation: {{ prescriptionMessage1Org or 'ASDA Pharmacy (ODS:OXY2G)' }}
           </div>
           <div class="nhs-screening-whole-timeline__description">
             New status: 
-            {% set status = prescriptions.PrescriptionMessage1NewStatus or 'Claimed' %}
+            {% set status = PrescriptionNewStatus1 or 'Claimed' %}
             <strong class="nhsuk-tag            
                {% if status == 'Available to download' %} nhsuk-tag--yellow             
               {% elif status == 'All items dispensed' %} nhsuk-tag--green             
@@ -37,17 +37,17 @@
               <!-- second item -->
         <div class="nhs-screening-whole-timeline__item">
           <div class="moj-timeline__header">
-            <h3 class="nhs-screening-whole-timeline__title">{{ prescriptions.prescriptionMessage2header or 'Dispenser has sent a dispense notification' }}</h3>
+            <h3 class="nhs-screening-whole-timeline__title">{{ prescriptionMessageHeader2 or 'Dispenser has sent a dispense notification' }}</h3>
           </div>
           <p class="nhs-screening-whole-timeline__date">
-            <time datetime="2019-06-14T14:01:00.000Z">Sent date: {{ prescriptions.prescriptionMessage2sendDateTime or '07-Jun-2024 12:05:33' }}
+            <time datetime="2019-06-14T14:01:00.000Z">Sent date: {{ prescriptionMessageDateTime2 or '07-Jun-2024 12:05:33' }}
             </time>
           </p>
-          <div class="nhs-screening-whole-timeline__description">Organisation: {{ prescriptions.prescriptionMessage2Org or 'ASDA Pharmacy (ODS:OXY2G)' }}
+          <div class="nhs-screening-whole-timeline__description">Organisation: {{ prescriptionMessage2Org or 'ASDA Pharmacy (ODS:OXY2G)' }}
           </div>
           <div class="nhs-screening-whole-timeline__description"> 
             New status: 
-            {% set status = prescriptions.PrescriptionMessage2NewStatus or 'All items dispensed' %}
+            {% set status = prescriptionNewStatus2 or 'All items dispensed' %}
             <strong class="nhsuk-tag            
                {% if status == 'Available to download' %} nhsuk-tag--yellow             
               {% elif status == 'All items dispensed' %} nhsuk-tag--green             
@@ -72,17 +72,17 @@
               <!-- second item-->
               <div class="nhs-screening-whole-timeline__item">
                 <div class="moj-timeline__header">
-                  <h3 class="nhs-screening-whole-timeline__title"> {{ prescriptions.prescriptionMessage3header or 'Dispenser has downloaded the prescription' }}</h3>
+                  <h3 class="nhs-screening-whole-timeline__title"> {{ prescriptionMessageHeader3 or 'Dispenser has downloaded the prescription' }}</h3>
                 </div>
                 <p class="nhs-screening-whole-timeline__date">
-                  <time datetime="2019-06-14T14:01:00.000Z">Sent date: {{ prescriptions.prescriptionMessage3sendDateTime or '06-Jun-2024 17:05:33' }}
+                  <time datetime="2019-06-14T14:01:00.000Z">Sent date: {{ prescriptionMessageDateTime3 or '06-Jun-2024 17:05:33' }}
                   </time>
                 </p>
-                <div class="nhs-screening-whole-timeline__description">Organisation: {{ prescriptions.prescriptionMessage3Org or 'ASDA Pharmacy (ODS:OXY2G)' }}
+                <div class="nhs-screening-whole-timeline__description">Organisation: {{ prescriptionMessage3Org or 'ASDA Pharmacy (ODS:OXY2G)' }}
                 </div>
                 <div class="nhs-screening-whole-timeline__description">
                   New status: 
-                  {% set status = prescriptions.PrescriptionMessage3NewStatus or 'Downloaded by a dispenser' %}
+                  {% set status = prescriptionNewStatus3 or 'Downloaded by a dispenser' %}
                   <strong class="nhsuk-tag            
                      {% if status == 'Available to download' %} nhsuk-tag--yellow             
                     {% elif status == 'All items dispensed' %} nhsuk-tag--green             
@@ -101,7 +101,8 @@
                 </div>
               </div>
         <!--first item-->
-              <div class="nhs-screening-whole-timeline__item">
+        <!--
+  <div class="nhs-screening-whole-timeline__item">
                 <div class="moj-timeline__header">
                   <h3 class="nhs-screening-whole-timeline__title"> {{ prescriptions.prescriptionMessage4header or 'Prescription has been uploaded' }}</h3>
                 </div>
@@ -131,6 +132,8 @@
                   </strong>     
               </div>
               </div>
+        -->
+            
               </div>
       
     </div>
