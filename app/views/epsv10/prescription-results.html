@@ -10,7 +10,7 @@ Prescriptions list
 {% block beforeContent %}
 {% include './_includes/includes-patient-banner-eps.html' %} 
  
-  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+  <nav class="nhsuk-breadcrumb nhsuk-u-padding-bottom-0" aria-label="Breadcrumb">
     <div class="nhsuk-width-container">
       <div class="nhsuk-back-link">
 
@@ -28,6 +28,11 @@ Prescriptions list
 
 {% block content %}
 <style>
+/* Remove padding from the main content container */
+body, .nhsuk-main-wrapper {
+  padding-top: 0 !important; /* Override any existing padding */
+}
+
 /* Make links appear like buttons (optional) */
 [aria-sort] button,
 [aria-sort] button:hover {

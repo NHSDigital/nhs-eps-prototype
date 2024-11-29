@@ -39,7 +39,7 @@
               {% set itemstatus = prescriptionItems[0].itemstatusItem or 'Claimed' %}
               <strong class="nhsuk-tag            
                 {% if itemstatus == 'Available to download' %} nhsuk-tag--yellow             
-                {% elif itemstatus == 'All items dispensed' %} nhsuk-tag--green             
+                {% elif itemstatus == 'Item fully dispensed' %} nhsuk-tag--green             
                 {% elif itemstatus == 'Cancelled' %} nhsuk-tag--red            
                 {% elif itemstatus == 'Future issue date' %} nhsuk-tag--blue      
                 {% elif itemstatus == 'Some items dispensed' %} nhsuk-tag--blue
