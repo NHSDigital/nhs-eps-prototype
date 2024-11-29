@@ -310,6 +310,7 @@ router.post("/epsv10/search-nhs-post", function (req, res) {
       const prescription = item[key];
       return {
         ID: prescription.prescriptionID,
+        Cancellation: prescription.pendingCancellation,
         Variant: prescription.prescriptionVariant,
         Type: prescription.prescriptionType,
         IssueDate: prescription.prescriptionIssueDate,
@@ -332,6 +333,7 @@ router.post("/epsv10/search-nhs-post", function (req, res) {
       const prescription = item[key];
       return {
         ID: prescription.prescriptionID,
+        Cancellation: prescription.pendingCancellation,
         Variant: prescription.prescriptionVariant,
         Type: prescription.prescriptionType,
         IssueDate: prescription.prescriptionIssueDate,
@@ -354,6 +356,7 @@ router.post("/epsv10/search-nhs-post", function (req, res) {
       const prescription = item[key];
       return {
         ID: prescription.prescriptionID,
+        Cancellation: prescription.pendingCancellation,
         Variant: prescription.prescriptionVariant,
         Type: prescription.prescriptionType,
         IssueDate: prescription.prescriptionIssueDate,
