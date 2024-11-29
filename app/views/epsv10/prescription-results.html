@@ -199,94 +199,97 @@ function sortTable(columnIndex, tableId, isDate = false) {
       
         <div class="nhsuk-tabs__panel" id="current-prescriptions">
           <p class="nhsuk-u-visually-hidden">Current prescriptions</p>
-          <table id="search-results-table-current" class="responsive-table" role="grid">
-
-            <thead>
-              <tr role="row">
-                <th scope="col" aria-sort="none">
-                  <button type="button" onclick="sortTable(0, 'search-results-table-current')">Prescription ID</button>
-                </th>
-                <th scope="col" aria-sort="none">
-                  <button type="button" onclick="sortTable(1, 'search-results-table-current')">Pending cancellation</button>
-                </th>
-                <th scope="col" aria-sort="none">
-                  <button type="button" onclick="sortTable(2, 'search-results-table-current')">Status</button>
-                </th>
-                <th scope="col" aria-sort="none">
-                  <button type="button" onclick="sortTable(3, 'search-results-table-current', true)">Issue date</button>
-                </th>
-                <th scope="col" aria-sort="none">
-                  <button type="button" onclick="sortTable(4, 'search-results-table-current')">Prescription type</button>
-                </th>
-              </tr>
-            </thead>
-            <tbody class="patient-results">
-
-              {% for prescriptions in returnedPrescriptionsListCurrent %}
-              {% include "./_includes/prescription-search-result-row.html" %}
-              {% endfor %}
-            </tbody>
-          </table>
-
-          <div class="table-foot">
-            <span class="load-more"></span>
-            <span class="results-count">
-              Showing {{ returnedPrescriptionsListCurrent.length  }} of {{ returnedPrescriptionsListCurrent.length }}
-            </span>
-          </div>
+        
+          {% if returnedPrescriptionsListCurrent and returnedPrescriptionsListCurrent|length > 0 %}
+            <!-- Display table if there are results -->
+            <table id="search-results-table-current" class="responsive-table" role="grid">
+              <thead>
+                <tr role="row">
+                  <th scope="col" aria-sort="none">
+                    <button type="button" onclick="sortTable(0, 'search-results-table-current')">Prescription ID</button>
+                  </th>
+                  <th scope="col" aria-sort="none">
+                    <button type="button" onclick="sortTable(1, 'search-results-table-current')">Pending cancellation</button>
+                  </th>
+                  <th scope="col" aria-sort="none">
+                    <button type="button" onclick="sortTable(2, 'search-results-table-current')">Status</button>
+                  </th>
+                  <th scope="col" aria-sort="none">
+                    <button type="button" onclick="sortTable(3, 'search-results-table-current', true)">Issue date</button>
+                  </th>
+                  <th scope="col" aria-sort="none">
+                    <button type="button" onclick="sortTable(4, 'search-results-table-current')">Prescription type</button>
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="patient-results">
+                {% for prescriptions in returnedPrescriptionsListCurrent %}
+                  {% include "./_includes/prescription-search-result-row.html" %}
+                {% endfor %}
+              </tbody>
+            </table>
+        
+            <div class="table-foot">
+              <span class="load-more"></span>
+              <span class="results-count">
+                Showing {{ returnedPrescriptionsListCurrent.length }} of {{ returnedPrescriptionsListCurrent.length }}
+              </span>
+            </div>
+          {% else %}
+            <!-- Display no results message if the list is empty -->
+            <p class="no-results-message">No current prescriptions found.</p>
+          {% endif %}
         </div>
       
         <div class="nhsuk-tabs__panel nhsuk-tabs__panel--hidden" id="future-dated-prescriptions">
           <p class="nhsuk-u-visually-hidden">Future dated prescriptions</p>
-      <table id="search-results-table-future" class="responsive-table" role="grid">
-       
-        <thead>
-          <tr role="row">
-            <thead>
-              <tr role="row">
-                <th scope="col" aria-sort="none">
-                  <button type="button" onclick="sortTable(0, 'search-results-table-future')">Prescription ID</button>
-                </th>
-                <th scope="col" aria-sort="none">
-                  <button type="button" onclick="sortTable(1, 'search-results-table-future')">Pending cancellation</button>
-                </th>
-                <th scope="col" aria-sort="none">
-                  <button type="button" onclick="sortTable(2, 'search-results-table-future')">Status</button>
-                </th>
-                <th scope="col" aria-sort="none">
-                  <button type="button" onclick="sortTable(3, 'search-results-table-future', true)">Issue date</button>
-                </th>
-                <th scope="col" aria-sort="none">
-                  <button type="button" onclick="sortTable(4, 'search-results-table-future')">Prescription type</button>
-                </th>
-                
-              </tr>
-            </thead>
-           
-          </tr>
-        </thead>
-        <tbody class="patient-results">
-        {% for prescriptions in returnedPrescriptionsListFuture %}
-          {% include "./_includes/prescription-search-result-row.html" %}
-        {% endfor %}
-        </tbody>
-      </table>
-      <div class="table-foot">
-        <span class="load-more"></span>
-        <span class="results-count">
-          Showing {{ returnedPrescriptionsListFuture.length  }} of {{ returnedPrescriptionsListFuture.length }}
-        </span>
-      </div>
-      
+        
+          {% if returnedPrescriptionsListFuture and returnedPrescriptionsListFuture|length > 0 %}
+            <!-- Display table if there are results -->
+            <table id="search-results-table-future" class="responsive-table" role="grid">
+              <thead>
+                <tr role="row">
+                  <th scope="col" aria-sort="none">
+                    <button type="button" onclick="sortTable(0, 'search-results-table-future')">Prescription ID</button>
+                  </th>
+                  <th scope="col" aria-sort="none">
+                    <button type="button" onclick="sortTable(1, 'search-results-table-future')">Pending cancellation</button>
+                  </th>
+                  <th scope="col" aria-sort="none">
+                    <button type="button" onclick="sortTable(2, 'search-results-table-future')">Status</button>
+                  </th>
+                  <th scope="col" aria-sort="none">
+                    <button type="button" onclick="sortTable(3, 'search-results-table-future', true)">Issue date</button>
+                  </th>
+                  <th scope="col" aria-sort="none">
+                    <button type="button" onclick="sortTable(4, 'search-results-table-future')">Prescription type</button>
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="patient-results">
+                {% for prescriptions in returnedPrescriptionsListFuture %}
+                  {% include "./_includes/prescription-search-result-row.html" %}
+                {% endfor %}
+              </tbody>
+            </table>
+            <div class="table-foot">
+              <span class="load-more"></span>
+              <span class="results-count">
+                Showing {{ returnedPrescriptionsListFuture.length }} of {{ returnedPrescriptionsListFuture.length }}
+              </span>
+            </div>
+          {% else %}
+            <!-- Display no results message if the list is empty -->
+            <p class="no-results-message">No future-dated prescriptions found.</p>
+          {% endif %}
         </div>
       
         <div class="nhsuk-tabs__panel nhsuk-tabs__panel--hidden" id="claimed-and-expired-prescriptions">
           <p class="nhsuk-u-visually-hidden">Claimed and expired prescriptions</p>
           
-        <table id="search-results-table-claimed" class="responsive-table" role="grid">
-       
-          <thead>
-            <tr role="row">
+          {% if returnedPrescriptionsListExpired and returnedPrescriptionsListExpired|length > 0 %}
+            <!-- Display table if there are results -->
+            <table id="search-results-table-claimed" class="responsive-table" role="grid">
               <thead>
                 <tr role="row">
                   <th scope="col" aria-sort="none">
@@ -304,25 +307,25 @@ function sortTable(columnIndex, tableId, isDate = false) {
                   <th scope="col" aria-sort="none">
                     <button type="button" onclick="sortTable(4, 'search-results-table-claimed')">Prescription type</button>
                   </th>
-                
                 </tr>
               </thead>
-            
-            </tr>
-          </thead>
-          <tbody class="patient-results">
-          {% for prescriptions in returnedPrescriptionsListExpired %}
-            {% include "./_includes/prescription-search-result-row.html" %}
-          {% endfor %}
-          </tbody>
-        </table>
-          <div class="table-foot">
-            <span class="load-more"></span>
-            <span class="results-count">
-              Showing {{ returnedPrescriptionsListExpired.length  }} of {{ returnedPrescriptionsListExpired.length }}
-            </span>
-          </div>
-      
+              <tbody class="patient-results">
+                {% for prescriptions in returnedPrescriptionsListExpired %}
+                  {% include "./_includes/prescription-search-result-row.html" %}
+                {% endfor %}
+              </tbody>
+            </table>
+        
+            <div class="table-foot">
+              <span class="load-more"></span>
+              <span class="results-count">
+                Showing {{ returnedPrescriptionsListExpired.length }} of {{ returnedPrescriptionsListExpired.length }}
+              </span>
+            </div>
+          {% else %}
+            <!-- Display no results message if the list is empty -->
+            <p class="no-results-message">No claimed or expired prescriptions found.</p>
+          {% endif %}
         </div>
       
        
