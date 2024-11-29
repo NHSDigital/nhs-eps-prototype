@@ -1,12 +1,12 @@
 <div class="patient-summary-eps-prescription">
   <div class="row bottom-xs">
-    <div class="patient-summary__block nhsuk-u-margin-bottom-1" id="summary-gender">
-      <span class="patient-summary__info">Current site:  {{ prescriptionDispenseOrg or 'COHENS CHEMIST (ODS: FV519)' }}</span>
-    </div>
+
     <div class="patient-summary__block" id="prescription-id">
       <span class="patient-summary__info">Prescription ID: <span id="copyText">{{ prescriptionID  or '4FA217-P84302-2H597C' }}</span><button aria-disabled="false" id="copyButton" aria-label="Copy this prescription ID to the clipboard" class="nhsuk-button nhsuk-button--reverse copy-button button__green" type="submit">Copy</button></span>
     </div>
-   
+    <div class="patient-summary__block nhsuk-u-margin-bottom-1" id="summary-gender">
+      <span class="patient-summary__info">Current site:  {{ prescriptionDispenseOrg or 'COHENS CHEMIST (ODS: FV519)' }}</span>
+    </div>
     <div class="patient-summary__block" id="summary-nhs-number">
       <span class="patient-summary__info">Prescription status:{% set prescstatus = prescriptionStatus or 'Claimed' %}    <strong class="nhsuk-tag            
         {% if prescstatus == 'Available to download' %} nhsuk-tag--yellow             
