@@ -118,7 +118,7 @@ router.post("/epsv10/search-nhs-post", function (req, res) {
         return res.redirect('spinner-twin-list');
     } else {
         // Redirect to spinner-prescription-list for any other case
-        return res.redirect('spinner-prescription-list?nhsNumber=9726919215');
+        return res.redirect('spinner-prescription-list?nhsNumber=5900009890');
     }
 });
 
