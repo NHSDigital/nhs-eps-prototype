@@ -15,6 +15,8 @@
           </p>
           <div class="nhs-screening-whole-timeline__description">Organisation: {{ prescriptionMessage1Org or 'ASDA Pharmacy (ODS:OXY2G)' }}
           </div>
+
+          {% if prescriptionNewStatus1 %}
           <div class="nhs-screening-whole-timeline__description">
             New status: 
             {% set status = prescriptionNewStatus1 or 'Claimed' %}
@@ -34,6 +36,7 @@
               {{ status }}
             </strong> 
           </div>
+          {% endif %}
           {% if prescriptionDN1 === 'yes' %}
           <div class="nhs-screening-whole-timeline__description"> Dispense notification ID: {{ prescriptionDN1id or 'b240434e-cb85-40bb-899c-1c61410c93a7'}}
           </div>
@@ -150,6 +153,7 @@
   </p>
   <div class="nhs-screening-whole-timeline__description">Organisation: {{ prescriptionMessage4Org or 'ASDA Pharmacy (ODS:OXY2G)' }}
   </div>
+  
   <div class="nhs-screening-whole-timeline__description">
     New status: 
     {% set status = prescriptionNewStatus4 or 'Downloaded by a dispenser' %}
