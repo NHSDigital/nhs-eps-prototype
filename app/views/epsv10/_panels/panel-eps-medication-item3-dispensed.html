@@ -1,16 +1,16 @@
 <div class="data-panel__wrapper no-outline" tabindex="-1">
-  <div class="nhsuk-card data-panel" id="address-panel">
-    <div class="nhsuk-card__content">
+  <div class="nhsuk-card nhsuk-u-margin-bottom-3" id="address-panel">
+    <div class="nhsuk-card__content nhsuk-u-padding-3">
       <h3 class="nhsuk-card__heading nhsuk-heading-xs">
-        <span>{{ prescription.prescriptionItem1 or 'Blephaclean wipes(Thea Pharmaceuticals Ltd)' }}</span>
+        <span>{{ prescriptionItems[2].nameItem or 'Blephaclean wipes(Thea Pharmaceuticals Ltd)' }}</span>
 
       </h3>
-      <dl class="nhsuk-summary-list">
+      <dl class="nhsuk-summary-list nhsuk-u-margin-bottom-2">
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">Quantity</dt>
           <dd class="nhsuk-summary-list__value">
             <span class="data-field__content data-field__content--address">
-              {{ prescription.prescriptionItem1quantity or '21 tablets' }}
+              {{ prescriptionItems[2].quantityItem or '21 tablets' }}
             </span>
             <br>
 
@@ -23,7 +23,7 @@
           <dt class="nhsuk-summary-list__key">Instructions</dt>
           <dd class="nhsuk-summary-list__value">
             <span class="data-field__content data-field__content--address">
-              {{ prescriptions.prescriptionItem1instructions or 'Take 3 times a day with water' }}
+              {{ prescriptionItems[2].instructionItem or 'Take 3 times a day with water' }}
             </span>
             <br>
 
@@ -35,8 +35,25 @@
           <dt class="nhsuk-summary-list__key">Status</dt>
           <dd class="nhsuk-summary-list__value ">
             <span class="data-field__content data-field__content--address">
-              {{ prescriptions.prescriptionItem1Status or 'Claimed' }}
+             
+              {% set itemstatus = prescriptionItems[2].itemstatusItem or 'Claimed' %}
+              <strong class="nhsuk-tag            
+                {% if itemstatus == 'Available to download' %} nhsuk-tag--yellow             
+                {% elif itemstatus == 'Item fully dispensed' %} nhsuk-tag--green             
+                {% elif itemstatus == 'Cancelled' %} nhsuk-tag--red            
+                {% elif itemstatus == 'Future issue date' %} nhsuk-tag--blue      
+                {% elif itemstatus == 'Some items dispensed' %} nhsuk-tag--blue
+                {% elif itemstatus == 'Future repeat dispense' %} nhsuk-tag--aqua-green  
+                {% elif itemstatus == 'No items dispensed' %} nhsuk-tag--white   
+                {% elif itemstatus == 'Expired' %} nhsuk-tag--orange      
+                {% elif itemstatus == 'Claimed' %} nhsuk-tag--grey 
+                {% elif itemstatus == 'Downloaded by a dispenser' %} nhsuk-tag--purple
+                {% elif itemstatus == 'Next repeat ready to download' %} nhsuk-tag--pink              
+                {% endif %}">
+                {{ itemstatus }}
+              </strong> 
             </span>
+            
           </dd>
         </div>
         <div class="nhsuk-summary-list__row">
@@ -44,13 +61,16 @@
           <dd class="nhsuk-summary-list__value ">
             <span class="data-field__content data-field__content--address">
               <strong class="nhsuk-tag">            
-                {{ prescriptions.prescriptionItem3DispNHSApp or 'Collected' }}
+                {{ prescriptionItems[2].NHSAppItem or 'Collected' }}
               </strong> 
             </span>
             
           </dd>
         </div>
+
+
       </dl>
+      <p class="nhsuk-body-s">The NHS App status shows the patient where this prescription is in relation to the collection or dispatch process.</p>
       
     </div>
   </div>

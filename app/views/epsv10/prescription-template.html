@@ -24,7 +24,19 @@ Prescription - {{ serviceName }}
        
         <div class="nhsuk-grid-column-one-half">
           <h1 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">Dispensed items</h1>
-          {% include "./_panels/panel-eps-medication-items-dispensed.html" %} {% include "./_panels/panel-eps-medication-items-dispensed.html" %} {% include "./_panels/panel-eps-medication-items-dispensed.html" %} {% include "./_panels/panel-eps-medication-items-dispensed.html" %}
+          {% if prescriptionItems[0].exists === 'yes' %}
+          {% include "./_panels/panel-eps-medication-items-dispensed.html" %} 
+          {% endif %}
+
+          {% if prescriptionItems[1].exists === 'yes' %}
+          {% include "./_panels/panel-eps-medication-item2-dispensed.html" %} 
+          {% endif %}
+
+          {% if prescriptionItems[2].exists === 'yes' %}
+          {% include "./_panels/panel-eps-medication-item2-dispensed.html" %} 
+          {% endif %}
+           
+          {% include "./_panels/panel-eps-medication-items-dispensed.html" %}
         </div>
         <div class="nhsuk-grid-column-one-half">
           <h1 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">History</h1>
