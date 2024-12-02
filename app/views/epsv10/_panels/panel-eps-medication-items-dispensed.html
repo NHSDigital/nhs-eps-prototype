@@ -78,9 +78,15 @@
           <dt class="nhsuk-summary-list__key">NHS App status</dt>
           <dd class="nhsuk-summary-list__value ">
             <span class="data-field__content data-field__content--address">
-              <strong class="nhsuk-tag">            
-                {{ prescriptionItems[0].NHSAppItem or 'Collected' }}
-              </strong> 
+             
+              {% set appstatus = prescriptionItems[0].NHSAppItem or 'Collected' %}
+              <strong class="nhsuk-tag            
+              {% if appstatus == 'Status unavailable' %} nhsuk-tag--grey             
+              {% else %} nhsuk-tag            
+                    
+              {% endif %}">
+              {{ appstatus }}
+            </strong> 
             </span>
             
           </dd>

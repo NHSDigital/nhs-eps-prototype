@@ -17,7 +17,7 @@
           </div>
           <div class="nhs-screening-whole-timeline__description">
             New status: 
-            {% set status = PrescriptionNewStatus1 or 'Claimed' %}
+            {% set status = prescriptionNewStatus1 or 'Claimed' %}
             <strong class="nhsuk-tag            
                {% if status == 'Available to download' %} nhsuk-tag--yellow             
               {% elif status == 'Items dispensed' %} nhsuk-tag--green             
