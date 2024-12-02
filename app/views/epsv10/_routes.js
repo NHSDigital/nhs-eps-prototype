@@ -429,10 +429,10 @@ router.post("/epsv10/search-nhs-post", function (req, res) {
       prescriptionDN1: prescription.prescriptionMessage1DN,
       prescriptionDN1id: prescription.prescriptionMessage1DNID,
       prescriptionDN1Items: [
-        {item: prescription.prescriptionMessage1DNItem1},
-        {item: prescription.prescriptionMessage1DNItem2},
-        {item: prescription.prescriptionMessage1DNItem3},
-        {item: prescription.prescriptionMessage1DNItem4},
+        {item: prescription.prescriptionMessage1DNItem1, quantity:prescription.prescriptionMessage1DNItem1q},
+        {item: prescription.prescriptionMessage1DNItem2, quantity:prescription.prescriptionMessage1DNItem2q},
+        {item: prescription.prescriptionMessage1DNItem3, quantity:prescription.prescriptionMessage1DNItem3q},
+        {item: prescription.prescriptionMessage1DNItem4, quantity:prescription.prescriptionMessage1DNItem4q},
 
       ],
       
@@ -445,10 +445,10 @@ router.post("/epsv10/search-nhs-post", function (req, res) {
       prescriptionDN2: prescription.prescriptionMessage2DN,
       prescriptionDN2id: prescription.prescriptionMessage2DNID,
       prescriptionDN2Items: [
-        {item: prescription.prescriptionMessage2DNItem1},
-        {item: prescription.prescriptionMessage2DNItem2},
-        {item: prescription.prescriptionMessage2DNItem3},
-        {item: prescription.prescriptionMessage2DNItem4},
+        {item: prescription.prescriptionMessage2DNItem1, quantity:prescription.prescriptionMessage2DNItem1q},
+        {item: prescription.prescriptionMessage2DNItem2, quantity:prescription.prescriptionMessage2DNItem2q},
+        {item: prescription.prescriptionMessage2DNItem3, quantity:prescription.prescriptionMessage2DNItem3q},
+        {item: prescription.prescriptionMessage2DNItem4, quantity:prescription.prescriptionMessage2DNItem4q},
 
       ],
     
@@ -461,10 +461,10 @@ router.post("/epsv10/search-nhs-post", function (req, res) {
       prescriptionDN3: prescription.prescriptionMessage3DN, 
       prescriptionDN3id: prescription.prescriptionMessage3DNID,
       prescriptionDN3Items: [
-        {item: prescription.prescriptionMessage3DNItem1},
-        {item:  prescription.prescriptionMessage3DNItem2},
-        {item: prescription.prescriptionMessage3DNItem3},
-        {item: prescription.prescriptionMessage3DNItem4},
+        {item: prescription.prescriptionMessage3DNItem1, quantity:prescription.prescriptionMessage3DNItem1q},
+        {item: prescription.prescriptionMessage3DNItem2, quantity:prescription.prescriptionMessage3DNItem2q},
+        {item: prescription.prescriptionMessage3DNItem3, quantity:prescription.prescriptionMessage3DNItem3q},
+        {item: prescription.prescriptionMessage3DNItem4, quantity:prescription.prescriptionMessage3DNItem4q},
 
       ],
     
@@ -505,10 +505,10 @@ router.post("/epsv10/search-nhs-post", function (req, res) {
     prescriptionDN1: prescription.prescriptionMessage1DN,
     prescriptionDN1id: prescription.prescriptionMessage1DNID,
     prescriptionDN1Items: [
-      {item: prescription.prescriptionMessage1DNItem1},
-      {item: prescription.prescriptionMessage1DNItem2},
-      {item: prescription.prescriptionMessage1DNItem3},
-      {item: prescription.prescriptionMessage1DNItem4},
+      {item: prescription.prescriptionMessage1DNItem1, quantity:prescription.prescriptionMessage1DNItem1q},
+      {item: prescription.prescriptionMessage1DNItem2, quantity:prescription.prescriptionMessage1DNItem2q},
+      {item: prescription.prescriptionMessage1DNItem3, quantity:prescription.prescriptionMessage1DNItem3q},
+      {item: prescription.prescriptionMessage1DNItem4, quantity:prescription.prescriptionMessage1DNItem4q},
 
     ],
 
@@ -520,11 +520,10 @@ router.post("/epsv10/search-nhs-post", function (req, res) {
     prescriptionDN2: prescription.prescriptionMessage2DN,
     prescriptionDN2id: prescription.prescriptionMessage2DNID,
     prescriptionDN2Items: [
-      {item: prescription.prescriptionMessage2DNItem1},
-      {item: prescription.prescriptionMessage2DNItem2},
-      {item: prescription.prescriptionMessage2DNItem3},
-      {item: prescription.prescriptionMessage2DNItem4},
-
+      {item: prescription.prescriptionMessage2DNItem1, quantity:prescription.prescriptionMessage2DNItem1q},
+      {item: prescription.prescriptionMessage2DNItem2, quantity:prescription.prescriptionMessage2DNItem2q},
+      {item: prescription.prescriptionMessage2DNItem3, quantity:prescription.prescriptionMessage2DNItem3q},
+      {item: prescription.prescriptionMessage2DNItem4, quantity:prescription.prescriptionMessage2DNItem4q},
     ],
 
     prescriptionMessage3: prescription.prescriptionMessage3,
@@ -535,10 +534,10 @@ router.post("/epsv10/search-nhs-post", function (req, res) {
     prescriptionDN3: prescription.prescriptionMessage3DN, 
     prescriptionDN3id: prescription.prescriptionMessage3DNID,
     prescriptionDN3Items: [
-      {item: prescription.prescriptionMessage3DNItem1},
-      {item:  prescription.prescriptionMessage3DNItem2},
-      {item: prescription.prescriptionMessage3DNItem3},
-      {item: prescription.prescriptionMessage3DNItem4},
+      {item: prescription.prescriptionMessage3DNItem1, quantity:prescription.prescriptionMessage3DNItem1q},
+      {item: prescription.prescriptionMessage3DNItem2, quantity:prescription.prescriptionMessage3DNItem2q},
+      {item: prescription.prescriptionMessage3DNItem3, quantity:prescription.prescriptionMessage3DNItem3q},
+      {item: prescription.prescriptionMessage3DNItem4, quantity:prescription.prescriptionMessage3DNItem4q},
 
     ],
 
