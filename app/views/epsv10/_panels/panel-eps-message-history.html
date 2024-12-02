@@ -4,6 +4,7 @@
      
       <div class="nhs-screening-whole-timeline">
         <!--first item-->
+{% if prescriptionMessage1 === 'yes' %}
         <div class="nhs-screening-whole-timeline__item">
           <div class="nhs-timeline__header">
             <h3 class="nhs-screening-whole-timeline__title">{{ prescriptionMessageHeader1 or 'Dispenser has sent a claim notification' }}</h3>
@@ -33,8 +34,16 @@
               {{ status }}
             </strong> 
           </div>
+          {% if prescriptionDN1 === 'yes' %}
+          <div class="nhs-screening-whole-timeline__description"> Dispense notification ID: b240434e-cb85-40bb-899c-1c61410c93a7
+          </div>
+          <div class="nhs-screening-whole-timeline__description">Prescription items: <ul class="nhsuk-u-padding-top-2"><li class="nhsuk-u-font-size-16">Phosphates enema (Formula B) 128ml standard tube</br>Quantity: 1 tube </li></ul>
+          </div>
+          {% endif %}
         </div>
+{% endif %}
               <!-- second item -->
+{% if prescriptionMessage2 === 'yes' %}
         <div class="nhs-screening-whole-timeline__item">
           <div class="moj-timeline__header">
             <h3 class="nhs-screening-whole-timeline__title">{{ prescriptionMessageHeader2 or 'Dispenser has sent a dispense notification' }}</h3>
@@ -64,12 +73,18 @@
               {{ status }}
             </strong> 
           </div>
-          <div class="nhs-screening-whole-timeline__description"> Dispense notification ID: b240434e-cb85-40bb-899c-1c61410c93a7
-          </div>
-          <div class="nhs-screening-whole-timeline__description">Prescription items: <ul class="nhsuk-u-padding-top-2"><li class="nhsuk-u-font-size-16">Phosphates enema (Formula B) 128ml standard tube</br>Quantity: 1 tube </li></ul>
-          </div>
+{% if prescriptionDN2 === 'yes' %}
+<div class="nhs-screening-whole-timeline__description"> Dispense notification ID: b240434e-cb85-40bb-899c-1c61410c93a7
+</div>
+<div class="nhs-screening-whole-timeline__description">Prescription items: <ul class="nhsuk-u-padding-top-2"><li class="nhsuk-u-font-size-16">Phosphates enema (Formula B) 128ml standard tube</br>Quantity: 1 tube </li></ul>
+</div>
+{% endif %}
+
+         
         </div>
-              <!-- second item-->
+{% endif %}
+              <!-- third item-->
+{% if prescriptionMessage3 === 'yes' %}
               <div class="nhs-screening-whole-timeline__item">
                 <div class="moj-timeline__header">
                   <h3 class="nhs-screening-whole-timeline__title"> {{ prescriptionMessageHeader3 or 'Dispenser has downloaded the prescription' }}</h3>
@@ -99,7 +114,14 @@
                     {{ status }}
                   </strong>    
                 </div>
+                {% if prescriptionDN3 === 'yes' %}
+<div class="nhs-screening-whole-timeline__description"> Dispense notification ID: b240434e-cb85-40bb-899c-1c61410c93a7
+</div>
+<div class="nhs-screening-whole-timeline__description">Prescription items: <ul class="nhsuk-u-padding-top-2"><li class="nhsuk-u-font-size-16">Phosphates enema (Formula B) 128ml standard tube</br>Quantity: 1 tube </li></ul>
+</div>
+{% endif %}
               </div>
+{% endif %}
         <!--first item-->
         <!--
   <div class="nhs-screening-whole-timeline__item">
