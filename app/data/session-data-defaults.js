@@ -1633,7 +1633,7 @@ module.exports = {
         "prescriptionMessage1DN": "yes",
         "prescriptionMessage1DNID": "b240434e-cb85-40bb-899c-1c61410c93a7",
         "prescriptionMessage1DNItem1": "item1",
-        "prescriptionMessage1DNItem2": "item2",
+        "prescriptionMessage1DNItem2": "",
         "prescriptionMessage1DNItem3": "item3",
         "prescriptionMessage1DNItem4": "item4",
         "prescriptionMessage1DNItem1q": "quantity1",
