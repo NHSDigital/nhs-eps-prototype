@@ -875,7 +875,7 @@ module.exports = {
         "hoHistVisaType": "",
         "hoHistImmigrationStatus": "",
         "hoHistHealthcareStatus": "",
-        "prescriptionNo": [""]
+        "prescriptionNo": ["6GA337P3f3022H597C"]
       }
     },
   {
@@ -1078,7 +1078,7 @@ module.exports = {
           "hoHistVisaType": "",
           "hoHistImmigrationStatus": "",
           "hoHistHealthcareStatus": "",
-          "prescriptionNo": [""]
+          "prescriptionNo": ["6GA337P3f3022H597C"]
         }
     },
     {
