@@ -100,34 +100,28 @@ router.post("/epsv10/search-nhs-post", function (req, res) {
         return res.redirect("search-basic");
     }
 
-    // Format input DOB
+    // Ensure DOB is in correct format (e.g., '06-May-2013')
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    let formattedInputDob = dobDay && dobMonth && dobYear
-        ? `${dobDay}-${monthNames[parseInt(dobMonth, 10) - 1]}-${dobYear}`
+
+    // Pad single digit day and month with leading zeros if necessary
+    let paddedDobDay = dobDay.padStart(2, '0');
+    let paddedDobMonth = monthNames[parseInt(dobMonth, 10) - 1]; // Convert month number to month name
+    let formattedInputDob = dobYear && paddedDobDay && paddedDobMonth
+        ? `${paddedDobDay}-${paddedDobMonth}-${dobYear}`
         : '';
 
-    let results = [];
-    for (let nhsNumber in patients) {
-        let patient = patients[nhsNumber];
+    console.log("Formatted DOB:", formattedInputDob); // Log to verify the formatted DOB
 
-        // Normalize inputs and data for comparison
-        let normalizedPostcode = searchPostcode ? searchPostcode.replace(/\s+/g, '').toUpperCase() : '';
-        let normalizedPatientPostcode = patient.usualAddress ? patient.usualAddress.replace(/\s+/g, '').toUpperCase() : '';
-
-        let lastNameMatches = searchLastName && patient.lastName && patient.lastName.toLowerCase() === searchLastName.toLowerCase();
-        let postcodeMatches = normalizedPostcode && normalizedPatientPostcode.includes(normalizedPostcode);
-        let dobMatches = formattedInputDob && patient.dob === formattedInputDob;
-
-        if (lastNameMatches || postcodeMatches || dobMatches) {
-            results.push(nhsNumber);
-        }
+    // Check for a specific date of birth (6-May-2013)
+    if (formattedInputDob === '06-May-2013') {
+        // Redirect to search-results-twins if DOB matches 6-May-2013
+        return res.redirect('spinner-twin-list');
+    } else {
+        // Redirect to spinner-prescription-list for any other case
+        return res.redirect('spinner-prescription-list?nhsNumber=9726919215');
     }
-
-    req.session.data['results'] = results;
-
-    let queryString = results.map(n => `nhsNumber=${n}`).join('&');
-    res.redirect(`search-results?${queryString}`);
 });
+
 
 
 // change record via a NHS number on NoK section
