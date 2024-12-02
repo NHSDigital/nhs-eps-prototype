@@ -33,10 +33,14 @@ Prescription - {{ serviceName }}
           {% endif %}
 
           {% if prescriptionItems[2].exists === 'yes' %}
-          {% include "./_panels/panel-eps-medication-item2-dispensed.html" %} 
+          {% include "./_panels/panel-eps-medication-item3-dispensed.html" %} 
+          {% endif %}
+
+          {% if prescriptionItems[3].exists === 'yes' %}
+          {% include "./_panels/panel-eps-medication-item4-dispensed.html" %} 
           {% endif %}
            
-          {% include "./_panels/panel-eps-medication-items-dispensed.html" %}
+       
         </div>
         <div class="nhsuk-grid-column-one-half">
           <h1 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">History</h1>
