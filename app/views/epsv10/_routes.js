@@ -442,6 +442,20 @@ router.get("/epsv10/search-results", function (req, res, next) {
         {item: prescription.prescriptionMessage3DNItem4, quantity:prescription.prescriptionMessage3DNItem4q},
 
       ],
+      prescriptionMessage4: prescription.prescriptionMessage4,
+      prescriptionMessageHeader4: prescription.prescriptionMessage4header,
+      prescriptionMessageDateTime4: prescription.prescriptionMessage4sendDateTime,
+      prescriptionMessage4Org: prescription.prescriptionMessage4Org ,
+      prescriptionNewStatus4:prescription.prescriptionMessage4NewStatus,
+      prescriptionDN4: prescription.prescriptionMessage4DN, 
+      prescriptionDN4id: prescription.prescriptionMessage4DNID,
+      prescriptionDN4Items: [
+        {item: prescription.prescriptionMessage4DNItem1, quantity:prescription.prescriptionMessage4DNItem1q},
+        {item: prescription.prescriptionMessage4DNItem2, quantity:prescription.prescriptionMessage4DNItem2q},
+        {item: prescription.prescriptionMessage4DNItem3, quantity:prescription.prescriptionMessage4DNItem3q},
+        {item: prescription.prescriptionMessage4DNItem4, quantity:prescription.prescriptionMessage4DNItem4q},
+  
+      ],
     
   
       prescriptionDispenser: prescription.dispenserBox,
@@ -515,6 +529,21 @@ router.get("/epsv10/search-results", function (req, res, next) {
       {item: prescription.prescriptionMessage3DNItem2, quantity:prescription.prescriptionMessage3DNItem2q},
       {item: prescription.prescriptionMessage3DNItem3, quantity:prescription.prescriptionMessage3DNItem3q},
       {item: prescription.prescriptionMessage3DNItem4, quantity:prescription.prescriptionMessage3DNItem4q},
+
+    ],
+
+    prescriptionMessage4: prescription.prescriptionMessage4,
+    prescriptionMessageHeader4: prescription.prescriptionMessage4header,
+    prescriptionMessageDateTime4: prescription.prescriptionMessage4sendDateTime,
+    prescriptionMessage4Org: prescription.prescriptionMessage4Org ,
+    prescriptionNewStatus4:prescription.prescriptionMessage4NewStatus,
+    prescriptionDN4: prescription.prescriptionMessage4DN, 
+    prescriptionDN4id: prescription.prescriptionMessage4DNID,
+    prescriptionDN4Items: [
+      {item: prescription.prescriptionMessage4DNItem1, quantity:prescription.prescriptionMessage4DNItem1q},
+      {item: prescription.prescriptionMessage4DNItem2, quantity:prescription.prescriptionMessage4DNItem2q},
+      {item: prescription.prescriptionMessage4DNItem3, quantity:prescription.prescriptionMessage4DNItem3q},
+      {item: prescription.prescriptionMessage4DNItem4, quantity:prescription.prescriptionMessage4DNItem4q},
 
     ],
 
