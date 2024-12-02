@@ -35,7 +35,7 @@
             </strong> 
           </div>
           {% if prescriptionDN1 === 'yes' %}
-          <div class="nhs-screening-whole-timeline__description"> Dispense notification ID: b240434e-cb85-40bb-899c-1c61410c93a7
+          <div class="nhs-screening-whole-timeline__description"> Dispense notification ID: {{ prescriptionDN1id or 'b240434e-cb85-40bb-899c-1c61410c93a7'}}
           </div>
           <div class="nhs-screening-whole-timeline__description">Prescription items: <ul class="nhsuk-u-padding-top-2"><li class="nhsuk-u-font-size-16">Phosphates enema (Formula B) 128ml standard tube</br>Quantity: 1 tube </li></ul>
           </div>
@@ -74,7 +74,7 @@
             </strong> 
           </div>
 {% if prescriptionDN2 === 'yes' %}
-<div class="nhs-screening-whole-timeline__description"> Dispense notification ID: b240434e-cb85-40bb-899c-1c61410c93a7
+<div class="nhs-screening-whole-timeline__description"> Dispense notification ID: {{ prescriptionDN2id or 'b240434e-cb85-40bb-899c-1c61410c93a7'}}
 </div>
 <div class="nhs-screening-whole-timeline__description">Prescription items: <ul class="nhsuk-u-padding-top-2"><li class="nhsuk-u-font-size-16">Phosphates enema (Formula B) 128ml standard tube</br>Quantity: 1 tube </li></ul>
 </div>
@@ -115,7 +115,7 @@
                   </strong>    
                 </div>
                 {% if prescriptionDN3 === 'yes' %}
-<div class="nhs-screening-whole-timeline__description"> Dispense notification ID: b240434e-cb85-40bb-899c-1c61410c93a7
+<div class="nhs-screening-whole-timeline__description"> Dispense notification ID: {{ prescriptionDN3id or 'b240434e-cb85-40bb-899c-1c61410c93a7'}}
 </div>
 <div class="nhs-screening-whole-timeline__description">Prescription items: <ul class="nhsuk-u-padding-top-2"><li class="nhsuk-u-font-size-16">Phosphates enema (Formula B) 128ml standard tube</br>Quantity: 1 tube </li></ul>
 </div>
