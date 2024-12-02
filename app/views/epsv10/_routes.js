@@ -85,7 +85,7 @@ router.post("/epsv10/search-nhs-post", function (req, res) {
 
   // search via nhs basic search
   router.post("/epsv10/search-basic-post", function (req, res) {
-    let patients = req.session.data['patients']; // Assumes patients data is stored in session
+    let patients = req.session.data['patients'] || {}; // Ensure patients is defined
 
     let searchPostcode = req.body["postcode-only"];
     let searchLastName = req.body["last-name"];
@@ -100,44 +100,31 @@ router.post("/epsv10/search-nhs-post", function (req, res) {
         return res.redirect("search-basic");
     }
 
-    // Convert numeric month to abbreviated month name
+    // Format input DOB
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     let formattedInputDob = dobDay && dobMonth && dobYear
         ? `${dobDay}-${monthNames[parseInt(dobMonth, 10) - 1]}-${dobYear}`
         : '';
 
-    console.log("Formatted Input DOB:", formattedInputDob); // Debugging line
-
     let results = [];
     for (let nhsNumber in patients) {
         let patient = patients[nhsNumber];
 
-        console.log(`Checking patient ${nhsNumber}:`, patient); // Debugging line
+        // Normalize inputs and data for comparison
+        let normalizedPostcode = searchPostcode ? searchPostcode.replace(/\s+/g, '').toUpperCase() : '';
+        let normalizedPatientPostcode = patient.usualAddress ? patient.usualAddress.replace(/\s+/g, '').toUpperCase() : '';
 
-        // Check if searchLastName and patient.lastName are both defined before comparing
         let lastNameMatches = searchLastName && patient.lastName && patient.lastName.toLowerCase() === searchLastName.toLowerCase();
-        console.log(`Last Name Matches: ${lastNameMatches}`); // Debugging line
-
-        // Check if the postcode matches any of the defined address fields
-        let postcodeMatches = searchPostcode && (
-            (patient.usualAddress && patient.usualAddress.includes(searchPostcode.toUpperCase()))
-        );
-        console.log(`Postcode Matches: ${postcodeMatches}`); // Debugging line
-
-        // Check if the date of birth matches
+        let postcodeMatches = normalizedPostcode && normalizedPatientPostcode.includes(normalizedPostcode);
         let dobMatches = formattedInputDob && patient.dob === formattedInputDob;
-        console.log(`DOB Matches: ${dobMatches}`); // Debugging line
 
-        // If any of the conditions match, add the NHS number to the results
         if (lastNameMatches || postcodeMatches || dobMatches) {
             results.push(nhsNumber);
-            console.log(`NHS Number: ${nhsNumber}`); // Debugging line
         }
     }
 
     req.session.data['results'] = results;
-    
-    // Generate query string with results
+
     let queryString = results.map(n => `nhsNumber=${n}`).join('&');
     res.redirect(`search-results?${queryString}`);
 });
@@ -210,43 +197,33 @@ router.post("/epsv10/search-nhs-post", function (req, res) {
   })
  
   
- //search results page
-  router.get("/epsv10/search-results", function (req, res, next) {
-    // Get the NHS number from the query parameters
-    const nhsNumber = req.query["nhsNumber"] ? req.query["nhsNumber"].trim() : '';
-    // console.log('Received NHS Number:', nhsNumber);
+ // Search results page
+router.get("/epsv10/search-results", function (req, res, next) {
+  // Get NHS numbers from query parameters
+  const nhsNumbers = req.query["nhsNumber"] ? [].concat(req.query["nhsNumber"]) : [];
+  
+  // Extract patients from session data
+  const patients = req.session.data.patients || {};
 
-    // Extract patients from session data
-    const patientsArray = req.session.data.patients || [];
-    // console.log('Session Patients Array:', patientsArray);
-
-    const returnedPatientsList = {};
-
-    // Ensure nhsNumber is not empty
-    if (nhsNumber) {
-        // Iterate through each patient record in the array
-        for (const patientObject of patientsArray) {
-            for (const [patientNhsNumber, patient] of Object.entries(patientObject)) {
-                // console.log('Checking patient NHS Number:', patientNhsNumber, 'Patient Data:', patient);
-                // Compare NHS numbers (trimmed)
-                if (patientNhsNumber.trim() === nhsNumber) {
-                    // console.log('Match found:', patientNhsNumber);
-                    returnedPatientsList[patientNhsNumber] = patient;
-                    break;  // Stop after finding the patient
-                }
-            }
-        }
-    } else {
-        console.log('No NHS Number provided.');
-    }
-
-    // console.log('Returned Patients List:', returnedPatientsList);
-
-    // Render the search results page with the returned patient list
-    res.render('./epsv10/search-results', {
-        returnedPatientsList: returnedPatientsList
-    });
+  // Prepare returnedPatientsList
+  const returnedPatientsList = {};
+  nhsNumbers.forEach(nhsNumber => {
+      if (patients[nhsNumber]) {
+          returnedPatientsList[nhsNumber] = patients[nhsNumber];
+      }
   });
+
+  // Log an error message if no results found
+  if (Object.keys(returnedPatientsList).length === 0) {
+      console.log("No patients found for the provided NHS numbers.");
+  }
+
+  // Render the search results page
+  res.render('./epsv10/search-results', {
+      returnedPatientsList: returnedPatientsList,
+      nhsNumbers: nhsNumbers // Renamed for clarity
+  });
+});
 
   //prescription search results page
   router.get("/epsv10/prescription-results", function (req, res, next) {
