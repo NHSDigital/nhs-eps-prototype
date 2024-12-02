@@ -44,7 +44,7 @@ Find a patient by NHS number - {{ serviceName }}
     {% endif %}
 
 
-    <h2 class="allowed-role-title{% if data['action'] !== 'change' %} nhsuk-heading-m{% endif %}">Roles with access to the National Care Records Service</h2>
+    <h2 class="allowed-role-title{% if data['action'] !== 'change' %} nhsuk-heading-m{% endif %}">Roles with access to the Clinical prescription tracking service</h2>
 
     <div class="nhsuk-card allowed-role">
       <div class="nhsuk-card__content">
@@ -91,7 +91,8 @@ Find a patient by NHS number - {{ serviceName }}
       </div>
     </div>
 
-    <div class="nhsuk-card allowed-role">
+    <!--
+   <div class="nhsuk-card allowed-role">
       <div class="nhsuk-card__content">
         <h3 class="nhsuk-card__heading">
           <div class="role-details">
@@ -102,6 +103,8 @@ Find a patient by NHS number - {{ serviceName }}
         
       </div>
     </div>
+    -->
+ 
 
     <p class="rows-displayed-count"><b>Showing 6 of 6 roles</b></p>
 
