@@ -31,7 +31,7 @@ Find a patient by NHS number - {{ serviceName }}
         <p id="current-role-details">You are currently logged in at <b>NHS CONNECTING FOR HEALTH (X09)</b> with <b>{{ data['roleType'] or 'Clinical Practitioner Access Role' }}</b></p></div>
 
       {% if data['action'] !== 'change' %}
-      <a href="search" aria-disabled="false" class="nhsuk-button" id="confirm-current-role" role="button" type="submit">Confirm and continue to Find a patient</a>
+      <a href="search" aria-disabled="false" class="nhsuk-button" id="confirm-current-role" role="button" type="submit">Continue to find a prescription</a>
       {% endif %}
 
 
