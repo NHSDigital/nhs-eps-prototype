@@ -1,0 +1,61 @@
+{% if data.patient['fgmFlag'] === 'yes' %}
+
+<div class="data-panel__wrapper no-outline" tabindex="-1">
+  <div class="nhsuk-card data-panel" id="fgm-details-panel">
+    <div class="nhsuk-card__content">
+      <h3 class="nhsuk-card__heading">
+        <span>This child has a family history of female genital mutilation</span>
+      </h3>
+      <p>Family history is known to be relevant when safeguarding against FGM. Bear this in mind in relation to your wider safeguarding responsibilities. If you have any concerns about this patient you should:</p>
+      <ul>
+        <li>Follow your local safeguarding procedures</li>
+        <li>Speak with your manager or safeguarding lead</li>
+        <li>Consult the
+          <a href="https://www.gov.uk/government/publications/safeguarding-women-and-girls-at-risk-of-fgm" rel="noopener noreferrer external" target="_blank">safeguarding women and girls at risk of FGM (opens in a new tab)</a>
+          guidance on the GOV.UK website
+        </li>
+      </ul>
+      <div class="nhsuk-action-link">
+        <a href="patient-details-fgm" class="nhsuk-action-link__link" id="view-female-genital-mutilation-link" tabindex="0">
+          <svg aria-hidden="true" class="nhsuk-icon nhsuk-icon__arrow-right-circle" height="36" viewBox="0 0 24 24" width="36" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+          </svg>
+          <span class="nhsuk-action-link__text">View FGM information sharing indicator</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% else %}
+
+<div class="data-panel__wrapper no-outline" data-intersect-id="df847a36-7d0a-494e-bf44-11bbf3f5b1a1" tabindex="-1">
+  <div class="nhsuk-card data-panel" id="fgm-details-panel">
+    <div class="nhsuk-card__content">
+      <h3 class="nhsuk-card__heading">
+        <span>There is no Female genital mutilation - Information sharing (FGM-IS) indicator for this patient</span>
+      </h3>
+      <p>Family history is known to be relevant when safeguarding against FGM. Bear this in mind in relation to your wider safeguarding responsibilities. If you have any concerns about this patient you should:</p>
+      <ul>
+        <li>Follow your local safeguarding procedures</li>
+        <li>Speak with your manager or safeguarding lead</li>
+        <li>Consult the
+          <a href="https://www.gov.uk/government/publications/safeguarding-women-and-girls-at-risk-of-fgm" rel="noopener noreferrer external" target="_blank">safeguarding women and girls at risk of FGM (opens in a new tab)</a>
+          guidance on the GOV.UK website
+        </li>
+      </ul>
+      <div class="nhsuk-action-link">
+        <a class="nhsuk-action-link__link" id="add-female-genital-mutilation-link" role="button" tabindex="0">
+          <svg aria-hidden="true" class="nhsuk-icon nhsuk-icon__arrow-right-circle" height="36" viewBox="0 0 24 24" width="36" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+          </svg>
+          <span class="nhsuk-action-link__text">Add FGM information sharing indicator</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endif %}

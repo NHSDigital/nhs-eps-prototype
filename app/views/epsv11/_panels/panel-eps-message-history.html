@@ -1,0 +1,193 @@
+<div class="data-panel__wrapper no-outline" tabindex="-1">
+  <div class="nhsuk-card nhsuk-u-margin-bottom-3 data-panel" id="message history">
+    <div class="nhsuk-card__content nhsuk-u-padding-4">
+     
+      <div class="nhs-screening-whole-timeline">
+        <!--first item-->
+{% if prescriptionMessage1 === 'yes' %}
+        <div class="nhs-screening-whole-timeline__item nhsuk-u-padding-bottom-1">
+          <div class="nhs-timeline__header">
+            <h3 class="nhs-screening-whole-timeline__title">{{ prescriptionMessageHeader1 or 'Dispenser has sent a claim notification' }}</h3>
+          </div>
+          <p class="nhs-screening-whole-timeline__date">
+            <time datetime="2019-06-14T14:01:00.000Z">Sent date: {{ prescriptionMessageDateTime1 or '04-Aug-2024 13:35:33' }}
+            </time>
+          </p>
+          <div class="nhs-screening-whole-timeline__description">Organisation: {{ prescriptionMessage1Org or 'ASDA Pharmacy (ODS:OXY2G)' }}
+          </div>
+
+          {% if prescriptionNewStatus1 %}
+          <div class="nhs-screening-whole-timeline__description">
+            New status: 
+            {% set status = prescriptionNewStatus1 or 'Claimed' %}
+            <strong class="nhsuk-tag            
+               {% if status == 'Available to download' %} nhsuk-tag--yellow             
+              {% elif status == 'Items dispensed' %} nhsuk-tag--green             
+              {% elif status == 'Cancelled' %} nhsuk-tag--red            
+               {% elif status == 'Future issue date' %} nhsuk-tag--blue      
+              {% elif status == 'Some items dispensed' %} nhsuk-tag--blue
+              {% elif status == 'Future repeat dispense' %} nhsuk-tag--aqua-green  
+              {% elif status == 'No items dispensed' %} nhsuk-tag--white   
+              {% elif status == 'Expired' %} nhsuk-tag--orange      
+              {% elif status == 'Claimed' %} nhsuk-tag--grey 
+              {% elif status == 'Downloaded by a dispenser' %} nhsuk-tag--purple
+              {% elif status == 'Next repeat ready to download' %} nhsuk-tag--pink              
+              {% endif %}">
+              {{ status }}
+            </strong> 
+          </div>
+          {% endif %}
+          {% if prescriptionDN1 === 'yes' %}
+          <div class="nhs-screening-whole-timeline__description"> Dispense notification ID: {{ prescriptionDN1id or 'b240434e-cb85-40bb-899c-1c61410c93a7'}}
+          </div>
+          <div class="nhs-screening-whole-timeline__description">Prescription items: <ul class="nhsuk-u-padding-top-2">
+            {% if prescriptionDN1Items[0].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN1Items[0].item }}</br>Quantity: {{ prescriptionDN1Items[0].quantity }} </li> {% endif %}
+            {% if prescriptionDN1Items[1].item %} <li class="nhsuk-u-font-size-16">{{ prescriptionDN1Items[1].item }}</br>Quantity: {{ prescriptionDN1Items[1].quantity }} </li> {% endif %}
+            {% if prescriptionDN1Items[2].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN1Items[2].item }}</br>Quantity: {{ prescriptionDN1Items[2].quantity }} </li> {% endif %}
+            {% if prescriptionDN1Items[3].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN1Items[3].item }}</br>Quantity: {{ prescriptionDN1Items[3].quantity }} </li> {% endif %}
+          </ul>
+          </div>
+          {% endif %}
+        </div>
+{% endif %}
+              <!-- second item -->
+{% if prescriptionMessage2 === 'yes' %}
+        <div class="nhs-screening-whole-timeline__item nhsuk-u-padding-bottom-1">
+          <div class="moj-timeline__header">
+            <h3 class="nhs-screening-whole-timeline__title">{{ prescriptionMessageHeader2 or 'Dispenser has sent a dispense notification' }}</h3>
+          </div>
+          <p class="nhs-screening-whole-timeline__date">
+            <time datetime="2019-06-14T14:01:00.000Z">Sent date: {{ prescriptionMessageDateTime2 or '07-Jun-2024 12:05:33' }}
+            </time>
+          </p>
+          <div class="nhs-screening-whole-timeline__description">Organisation: {{ prescriptionMessage2Org or 'ASDA Pharmacy (ODS:OXY2G)' }}
+          </div>
+          <div class="nhs-screening-whole-timeline__description"> 
+            New status: 
+            {% set status = prescriptionNewStatus2 or 'All items dispensed' %}
+            <strong class="nhsuk-tag            
+               {% if status == 'Available to download' %} nhsuk-tag--yellow             
+              {% elif status == 'Items dispensed' %} nhsuk-tag--green             
+              {% elif status == 'Cancelled' %} nhsuk-tag--red            
+               {% elif status == 'Future issue date' %} nhsuk-tag--blue      
+              {% elif status == 'Some items dispensed' %} nhsuk-tag--blue
+              {% elif status == 'Future repeat dispense' %} nhsuk-tag--aqua-green  
+              {% elif status == 'No items dispensed' %} nhsuk-tag--white   
+              {% elif status == 'Expired' %} nhsuk-tag--orange      
+              {% elif status == 'Claimed' %} nhsuk-tag--grey 
+              {% elif status == 'Downloaded by a dispenser' %} nhsuk-tag--purple
+              {% elif status == 'Next repeat ready to download' %} nhsuk-tag--pink              
+              {% endif %}">
+              {{ status }}
+            </strong> 
+          </div>
+{% if prescriptionDN2 === 'yes' %}
+<div class="nhs-screening-whole-timeline__description"> Dispense notification ID: {{ prescriptionDN2id or 'b240434e-cb85-40bb-899c-1c61410c93a7'}}
+</div>
+<div class="nhs-screening-whole-timeline__description">Prescription items: <ul class="nhsuk-u-padding-top-2">
+  {% if prescriptionDN2Items[0].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN2Items[0].item }}</br>Quantity: {{ prescriptionDN2Items[0].quantity }} </li> {% endif %}
+  {% if prescriptionDN2Items[1].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN2Items[1].item }}</br>Quantity: {{ prescriptionDN2Items[1].quantity }} </li> {% endif %}
+  {% if prescriptionDN2Items[2].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN2Items[2].item }}</br>Quantity: {{ prescriptionDN2Items[2].quantity }} </li> {% endif %}
+  {% if prescriptionDN2Items[3].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN2Items[3].item }}</br>Quantity: {{ prescriptionDN2Items[3].quantity }} </li> {% endif %}
+</ul>
+</div>
+{% endif %}
+
+         
+        </div>
+{% endif %}
+              <!-- third item-->
+{% if prescriptionMessage3 === 'yes' %}
+              <div class="nhs-screening-whole-timeline__item nhsuk-u-padding-bottom-1">
+                <div class="moj-timeline__header">
+                  <h3 class="nhs-screening-whole-timeline__title"> {{ prescriptionMessageHeader3 or 'Dispenser has downloaded the prescription' }}</h3>
+                </div>
+                <p class="nhs-screening-whole-timeline__date">
+                  <time datetime="2019-06-14T14:01:00.000Z">Sent date: {{ prescriptionMessageDateTime3 or '06-Jun-2024 17:05:33' }}
+                  </time>
+                </p>
+                <div class="nhs-screening-whole-timeline__description">Organisation: {{ prescriptionMessage3Org or 'ASDA Pharmacy (ODS:OXY2G)' }}
+                </div>
+                <div class="nhs-screening-whole-timeline__description">
+                  New status: 
+                  {% set status = prescriptionNewStatus3 or 'Downloaded by a dispenser' %}
+                  <strong class="nhsuk-tag            
+                     {% if status == 'Available to download' %} nhsuk-tag--yellow             
+                    {% elif status == 'Items dispensed' %} nhsuk-tag--green             
+                    {% elif status == 'Cancelled' %} nhsuk-tag--red            
+                     {% elif status == 'Future issue date' %} nhsuk-tag--blue      
+                    {% elif status == 'Some items dispensed' %} nhsuk-tag--blue
+                    {% elif status == 'Future repeat dispense' %} nhsuk-tag--aqua-green  
+                    {% elif status == 'No items dispensed' %} nhsuk-tag--white   
+                    {% elif status == 'Expired' %} nhsuk-tag--orange      
+                    {% elif status == 'Claimed' %} nhsuk-tag--grey 
+                    {% elif status == 'Downloaded by a dispenser' %} nhsuk-tag--purple
+                    {% elif status == 'Next repeat ready to download' %} nhsuk-tag--pink              
+                    {% endif %}">
+                    {{ status }}
+                  </strong>    
+                </div>
+                {% if prescriptionDN3 === 'yes' %}
+<div class="nhs-screening-whole-timeline__description"> Dispense notification ID: {{ prescriptionDN3id or 'b240434e-cb85-40bb-899c-1c61410c93a7'}}
+</div>
+<div class="nhs-screening-whole-timeline__description">Prescription items: <ul class="nhsuk-u-padding-top-2">
+  {% if prescriptionDN3Items[0].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN3Items[0].item }}</br>Quantity: {{ prescriptionDN3Items[0].quantity }} </li>{% endif %}
+  {% if prescriptionDN3Items[1].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN3Items[1].item }}</br>Quantity: {{ prescriptionDN3Items[1].quantity }} </li>{% endif %}
+  {% if prescriptionDN3Items[2].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN3Items[2].item }}</br>Quantity: {{ prescriptionDN3Items[2].quantity }} </li>{% endif %}
+  {% if prescriptionDN3Items[3].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN3Items[3].item }}</br>Quantity: {{ prescriptionDN3Items[3].quantity }} </li>{% endif %}
+</ul>
+</div>
+{% endif %}
+              </div>
+{% endif %}
+  
+<!-- Fourth item-->
+{% if prescriptionMessage4 === 'yes' %}
+<div class="nhs-screening-whole-timeline__item nhsuk-u-padding-bottom-1">
+  <div class="moj-timeline__header">
+    <h3 class="nhs-screening-whole-timeline__title"> {{ prescriptionMessageHeader4 or 'Dispenser has downloaded the prescription' }}</h3>
+  </div>
+  <p class="nhs-screening-whole-timeline__date">
+    <time datetime="2019-06-14T14:01:00.000Z">Sent date: {{ prescriptionMessageDateTime4 or '06-Jun-2024 17:05:33' }}
+    </time>
+  </p>
+  <div class="nhs-screening-whole-timeline__description">Organisation: {{ prescriptionMessage4Org or 'ASDA Pharmacy (ODS:OXY2G)' }}
+  </div>
+  
+  <div class="nhs-screening-whole-timeline__description">
+    New status: 
+    {% set status = prescriptionNewStatus4 or 'Downloaded by a dispenser' %}
+    <strong class="nhsuk-tag            
+       {% if status == 'Available to download' %} nhsuk-tag--yellow             
+      {% elif status == 'Items dispensed' %} nhsuk-tag--green             
+      {% elif status == 'Cancelled' %} nhsuk-tag--red            
+       {% elif status == 'Future issue date' %} nhsuk-tag--blue      
+      {% elif status == 'Some items dispensed' %} nhsuk-tag--blue
+      {% elif status == 'Future repeat dispense' %} nhsuk-tag--aqua-green  
+      {% elif status == 'No items dispensed' %} nhsuk-tag--white   
+      {% elif status == 'Expired' %} nhsuk-tag--orange      
+      {% elif status == 'Claimed' %} nhsuk-tag--grey 
+      {% elif status == 'Downloaded by a dispenser' %} nhsuk-tag--purple
+      {% elif status == 'Next repeat ready to download' %} nhsuk-tag--pink              
+      {% endif %}">
+      {{ status }}
+    </strong>    
+  </div>
+  {% if prescriptionDN4 === 'yes' %}
+<div class="nhs-screening-whole-timeline__description"> Dispense notification ID: {{ prescriptionDN4id or 'b240434e-cb85-40bb-899c-1c61410c93a7'}}
+</div>
+<div class="nhs-screening-whole-timeline__description">Prescription items: <ul class="nhsuk-u-padding-top-2">
+{% if prescriptionDN4Items[0].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN4Items[0].item }}</br>Quantity: {{ prescriptionDN4Items[0].quantity }} </li>{% endif %}
+{% if prescriptionDN4Items[1].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN4Items[1].item }}</br>Quantity: {{ prescriptionDN4Items[1].quantity }} </li>{% endif %}
+{% if prescriptionDN4Items[2].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN4Items[2].item }}</br>Quantity: {{ prescriptionDN4Items[2].quantity }} </li>{% endif %}
+{% if prescriptionDN4Items[3].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN4Items[3].item }}</br>Quantity: {{ prescriptionDN4Items[3].quantity }} </li>{% endif %}
+</ul>
+</div>
+{% endif %}
+</div>
+{% endif %}
+              </div>
+      
+    </div>
+  </div>
+</div>
