@@ -95,11 +95,13 @@ router.post("/epsv11/search-nhs-post", function (req, res) {
 
     req.session.data.errors = {};
 
+    //if fields empty we go back to search basic
     if (!searchPostcode && !searchLastName && !dobDay && !dobMonth && !dobYear) {
         req.session.data.errors["basicSearch"] = true;
         return res.redirect("search-basic");
     }
-
+    console.log("Postcode:", searchPostcode); // Log to verify the postcode
+    console.log("Last name:", searchLastName); // Log to verify the last name
     // Ensure DOB is in correct format (e.g., '06-May-2013')
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -122,6 +124,9 @@ router.post("/epsv11/search-nhs-post", function (req, res) {
     }
 });
 
+//we know that dob matching works 
+//we need to format the postcode and the database postcode - e.g. all lower case to match
+//we need to format the last name e.g. all lowercase to match
 
 
 // change record via a NHS number on NoK section
