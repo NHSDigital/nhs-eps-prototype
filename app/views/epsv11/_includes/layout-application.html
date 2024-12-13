@@ -113,7 +113,21 @@
 
   </div> <!-- end .modal-content -->
 </div> <!-- end .modal-overlay -->
+<!--logout modal-->
 
+<div class="modal-overlay" id="logout_modal" aria-hidden="true" role="dialog" aria-labelledby="logout_modal_title">
+  <div class="modal-content" role="document">
+    <h2 class="nhsuk-modal__heading">Are you sure you want to log out?</h2>
+    <p class="nhsuk-modal__description">
+      Logging out will end your session. Make sure you've saved any changes before proceeding.
+    </p>
+    <div class="nhsuk-button-group">
+      <a class="nhsuk-button" href="/logout" id="confirm_logout">Log out</a>
+      <button class="nhsuk-button nhsuk-button--secondary" id="cancel_logout">Cancel</button>
+    </div>
+    <button class="btn-close" id="logout_modal_close">x</button>
+  </div>
+</div>
 
 
   {% if data['devMode'] === 'true' %}
@@ -167,6 +181,32 @@
         countdownButton.innerText = `Wait ${countdownTime} seconds`;
 
         // Start a timer that counts down every second
+
+//logout jd
+document.addEventListener('DOMContentLoaded', () => {
+    // Modal references
+    const logoutButton = document.getElementById('masthead-logout-button');
+    const logoutModal = document.getElementById('logout_modal');
+    const logoutModalClose = document.getElementById('logout_modal_close');
+    const cancelLogout = document.getElementById('cancel_logout');
+
+    // Open the logout modal
+    logoutButton.addEventListener('click', (event) => {
+      event.preventDefault();
+      logoutModal.style.display = 'block';
+      logoutModal.setAttribute('aria-hidden', 'false');
+    });
+
+    // Close the logout modal
+    [logoutModalClose, cancelLogout].forEach((button) => {
+      button.addEventListener('click', () => {
+        logoutModal.style.display = 'none';
+        logoutModal.setAttribute('aria-hidden', 'true');
+      });
+    });
+  });
+
+
 
       </script>
 
