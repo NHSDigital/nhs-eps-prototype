@@ -1,7 +1,7 @@
 <div class="data-panel__wrapper no-outline" tabindex="-1">
   <div class="nhsuk-card nhsuk-u-margin-bottom-3" id="address-panel">
     <div class="nhsuk-card__content nhsuk-u-padding-3">
-      <h3 class="nhsuk-card__heading nhsuk-heading-xs">
+      <h3 class="nhsuk-card__heading nhsuk-heading-xs nhsuk-u-margin-bottom-1!important">
         <span>{{ prescriptionItems[0].nameItem or 'Blephaclean wipes(Thea Pharmaceuticals Ltd)' }}</span>
 
       </h3>
@@ -11,9 +11,9 @@
 
       <dl class="nhsuk-summary-list nhsuk-u-margin-bottom-2">
         <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">Quantity</dt>
+          <dt class="nhsuk-summary-list__key nhsuk-heading-xs nhsuk-u-padding-right-2">Quantity</dt>
           <dd class="nhsuk-summary-list__value">
-            <span class="data-field__content data-field__content--address">
+            <span class="data-field__content data-field__content--address nhsuk-u-font-size-16">
               {{ prescriptionItems[0].quantityItem or '21 tablets' }}
             </span>
             <br>
@@ -24,9 +24,9 @@
           </dd>
         </div>
         <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">Instructions</dt>
+          <dt class="nhsuk-summary-list__key nhsuk-heading-xs nhsuk-u-padding-right-2">Instructions</dt>
           <dd class="nhsuk-summary-list__value">
-            <span class="data-field__content data-field__content--address">
+            <span class="data-field__content data-field__content--address nhsuk-u-font-size-16">
               {{ prescriptionItems[0].instructionItem or 'Take 3 times a day with water' }}
             </span>
             <br>
@@ -36,7 +36,7 @@
           </dd>
         </div>
         <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">Status</dt>
+          <dt class="nhsuk-summary-list__key nhsuk-heading-xs nhsuk-u-padding-right-2">Status</dt>
           <dd class="nhsuk-summary-list__value ">
             <span class="data-field__content data-field__content--address">
              
@@ -76,12 +76,12 @@
 
 
         <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">NHS App status</dt>
+          <dt class="nhsuk-summary-list__key nhsuk-heading-xs nhsuk-u-padding-right-2">NHS App status</dt>
           <dd class="nhsuk-summary-list__value ">
             <span class="data-field__content data-field__content--address">
              
               {% set appstatus = prescriptionItems[0].NHSAppItem or 'Collected' %}
-              <strong class="nhsuk-tag            
+              <strong class="nhsuk-tag           
               {% if appstatus == 'Status unavailable' %} nhsuk-tag--grey             
               {% else %} nhsuk-tag            
                     
@@ -95,11 +95,11 @@
 
 
       </dl>
-      <p class="nhsuk-body-s">The NHS App status shows the patient where this prescription is in relation to the collection or dispatch process.</p>
+      <p class="nhsuk-body-s nhsuk-u-margin-bottom-2">The NHS App status shows the patient where this prescription is in relation to the collection or dispatch process.</p>
       {% if prescriptionItems[0].initialitem %}
 <details class="nhsuk-details">
         <summary class="nhsuk-details__summary">
-          <span class="nhsuk-details__summary-text">
+          <span class="nhsuk-details__summary-text nhsuk-u-font-size-16">
        What was initially prescribed
           </span>
         </summary>
