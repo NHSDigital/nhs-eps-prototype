@@ -96,8 +96,8 @@
 
       </dl>
       <p class="nhsuk-body-s">The NHS App status shows the patient where this prescription is in relation to the collection or dispatch process.</p>
-      
-<details class="nhsuk-details nhsuk-expander">
+      {% if prescriptionItems[0].initialitem %}
+<details class="nhsuk-details">
         <summary class="nhsuk-details__summary">
           <span class="nhsuk-details__summary-text">
        What was initially prescribed
@@ -135,7 +135,7 @@
         </div>
       </details>
      
-      
+      {% endif %}
 
     </div>
   </div>
