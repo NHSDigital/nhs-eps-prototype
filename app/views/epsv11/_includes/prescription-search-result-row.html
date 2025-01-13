@@ -6,9 +6,7 @@
   <td class="nhsuk-table__cell">
     {{ prescriptions.Type }}
   </td>
-  <td class="nhsuk-table__cell">
-    {{ prescriptions.ID }} <br/> <a href="./spinner-full?prescID={{ prescriptions.ID }}&nhsNumber={{ patient.nhsNumber }}&prescType={{ prescriptions.Type }}">View prescription</a>
-  </td>
+ 
   <td class="nhsuk-table__cell">
     <strong class="nhsuk-tag
       {% if prescriptions.Status == 'Available to download' %} nhsuk-tag--yellow
@@ -29,11 +27,14 @@
   <td class="nhsuk-table__cell">
     {% if prescriptions.Cancellation == "yes" %}
    
-      ⚠️ 1 item pending cancellation.
+      ⚠️ 1 item pending cancellation
     </div>
   {% else %}
     None
   {% endif %}
+  </td>
+  <td class="nhsuk-table__cell">
+    {{ prescriptions.ID }} <br/> <a href="./spinner-full?prescID={{ prescriptions.ID }}&nhsNumber={{ patient.nhsNumber }}&prescType={{ prescriptions.Type }}">View prescription</a>
   </td>
 
 
