@@ -1,103 +1,103 @@
 <div class="data-panel__wrapper no-outline" tabindex="-1">
-  <div class="nhsuk-card data-panel nhsuk-u-margin-bottom-3" id="address-panel">
+  <div class="nhsuk-card nhsuk-u-margin-bottom-3" id="address-panel">
     <div class="nhsuk-card__content nhsuk-u-padding-3">
       <h3 class="nhsuk-card__heading nhsuk-heading-xs">
         <span>{{ prescriptionItems[1].nameItem or 'Blephaclean wipes(Thea Pharmaceuticals Ltd)' }}</span>
 
       </h3>
-      {% if prescriptionItems[1].pendingCancellationItem === 'yes' %}
-<p>⚠️ This item is pending cancellation.</p>
-{% endif %}
-      <dl class="nhsuk-summary-list nhsuk-u-margin-bottom-2">
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">Quantity</dt>
-          <dd class="nhsuk-summary-list__value">
-            <span class="data-field__content data-field__content--address">
-              {{ prescriptionItems[1].quantityItem or '21 tablets' }}
-            </span>
-            <br>
-
-            
-
-
-          </dd>
-        </div>
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">Instructions</dt>
-          <dd class="nhsuk-summary-list__value">
-            <span class="data-field__content data-field__content--address">
-              {{ prescriptionItems[1].instructionItem or 'Take 3 times a day with water' }}
-            </span>
-            <br>
-
-           
-
-          </dd>
-        </div>
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">Status</dt>
-          <dd class="nhsuk-summary-list__value ">
-            <span class="data-field__content data-field__content--address">
-              {% set itemstatus = prescriptionItems[1].itemstatusItem or 'Claimed' %}
-              <strong class="nhsuk-tag            
-                {% if itemstatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
-                {% elif itemstatus == 'Item fully dispensed' %} nhsuk-tag--green             
-                {% elif itemstatus == 'Item cancelled' %} nhsuk-tag--red            
-                {% elif itemstatus == 'Future issue date' %} nhsuk-tag--blue      
-                {% elif itemstatus == 'Item dispensed - partial' %} nhsuk-tag--blue
-                {% elif itemstatus == 'Item not dispensed - owing' %} nhsuk-tag--blue
-                {% elif itemstatus == 'Future repeat dispense' %} nhsuk-tag--aqua-green  
-                {% elif itemstatus == 'Item not dispensed' %} nhsuk-tag--orange   
-                {% elif itemstatus == 'Item expired' %} nhsuk-tag--white      
-                {% elif itemstatus == 'Claimed' %} nhsuk-tag--grey 
-                {% elif itemstatus == 'Item with dispenser' %} nhsuk-tag--purple
-                {% elif itemstatus == 'Next repeat ready to download' %} nhsuk-tag--pink              
-                {% endif %}">
-                {{ itemstatus }}
-              </strong> 
-            </span>
-          </dd>
-        </div>
-        {% if prescriptionItems[1].pendingCancellationItem === 'yes' %}
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">Cancellation reason</dt>
-          <dd class="nhsuk-summary-list__value ">
-            <span class="data-field__content data-field__content--address">
-              {{ prescriptionItems[1].cancellationReasonItem or 'Prescribing error' }}
-            </span>
-            
-          </dd>
-        </div>
-        {% endif %}
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">NHS App status</dt>
-          <dd class="nhsuk-summary-list__value ">
-            <span class="data-field__content data-field__content--address">
+      <div>
+        
              
-              {% set appstatus = prescriptionItems[1].NHSAppItem or 'Collected' %}
-              <strong class="nhsuk-tag            
-              {% if appstatus == 'Status unavailable' %} nhsuk-tag--grey             
-              {% else %} nhsuk-tag            
-                    
-              {% endif %}">
-              {{ appstatus }}
-            </strong> 
-            </span>
-          </dd>
-        </div>
-      </dl>
+          {% set itemstatus = prescriptionItems[1].itemstatusItem or 'Claimed' %}
+          <strong class="nhsuk-tag            
+            {% if itemstatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
+            {% elif itemstatus == 'Item fully dispensed' %} nhsuk-tag--green             
+            {% elif itemstatus == 'Item cancelled' %} nhsuk-tag--red            
+            {% elif itemstatus == 'Future issue date' %} nhsuk-tag--blue      
+            {% elif itemstatus == 'Item dispensed - partial' %} nhsuk-tag--blue
+            {% elif itemstatus == 'Item not dispensed - owing' %} nhsuk-tag--blue
+            {% elif itemstatus == 'Future repeat dispense' %} nhsuk-tag--aqua-green  
+            {% elif itemstatus == 'Item not dispensed' %} nhsuk-tag--orange   
+            {% elif itemstatus == 'Item expired' %} nhsuk-tag--white      
+            {% elif itemstatus == 'Claimed' %} nhsuk-tag--grey 
+            {% elif itemstatus == 'Item with dispenser' %} nhsuk-tag--purple
+            {% elif itemstatus == 'Next repeat ready to download' %} nhsuk-tag--pink              
+            {% endif %}">
+            {{ itemstatus }}
+          </strong> 
+        
+      </div>
+   
+      <div> {% if prescriptionItems[1].pendingCancellationItem === 'yes' %}
+        <p>⚠️ This item is pending cancellation.</p>
+        <p class="nhsuk-u-margin-2"><strong>Cancellation reason</strong> </br>  {{ prescriptionItems[1].cancellationReasonItem or 'Prescribing error' }} </p>
+        {% endif %}</div>
+     
+
+
       <details class="nhsuk-details">
         <summary class="nhsuk-details__summary">
           <span class="nhsuk-details__summary-text">
-           What is the NHS App status
+          NHS App status, item quantity and instructions
           </span>
         </summary>
         <div class="nhsuk-details__text">
           <p>The NHS App status shows the patient where this prescription is in relation to the collection or dispatch process.</p>
+          <dl class="nhsuk-summary-list nhsuk-u-margin-bottom-2">
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">NHS App status</dt>
+              <dd class="nhsuk-summary-list__value ">
+                <span class="data-field__content data-field__content--address">
+                 
+                  {% set appstatus = prescriptionItems[1].NHSAppItem or 'Collected' %}
+                  <strong class="nhsuk-tag            
+                  {% if appstatus == 'Status unavailable' %} nhsuk-tag--grey             
+                  {% else %} nhsuk-tag            
+                        
+                  {% endif %}">
+                  {{ appstatus }}
+                </strong> 
+                </span>
+                
+              </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Quantity</dt>
+              <dd class="nhsuk-summary-list__value">
+                <span class="data-field__content data-field__content--address">
+                  {{ prescriptionItems[1].quantityItem or '21 tablets' }}
+                </span>
+                <br>
+    
+                
+    
+    
+              </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Instructions</dt>
+              <dd class="nhsuk-summary-list__value">
+                <span class="data-field__content data-field__content--address">
+                  {{ prescriptionItems[1].instructionItem or 'Take 3 times a day with water' }}
+                </span>
+                <br>
+    
+               
+    
+              </dd>
+            </div>
+            
+       
+    
+           
+    
+    
+          </dl>
           
       
         </div>
       </details>
+      
     </div>
   </div>
 </div>

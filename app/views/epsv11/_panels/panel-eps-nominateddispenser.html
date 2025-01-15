@@ -2,43 +2,13 @@
   <div class="nhsuk-card nhsuk-u-margin-bottom-3 data-panel" id="patient-details-panel">
     <div class="nhsuk-card__content nhsuk-u-padding-3">
       
-      <dl class="nhsuk-summary-list">
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">Nominated dispenser</dt>
-          <dd class="nhsuk-summary-list__value">
-            <span class="data-field__content data-field__content--address">
-              {{ prescriptionNomDispenserOrg or 'COHENS CHEMIST (ODS: FV519)' }}
-            </span>
-            <br>
+      <p class="nhsuk-u-margin-bottom-2"><strong>Nominated dispenser</strong> </br>    {{ prescriptionNomDispenserOrg or 'COHENS CHEMIST (ODS: FV519)' }}</p>
+      <p class="nhsuk-u-margin-bottom-2">  {{ prescriptionNomDispenserAddress or '22 RUE LANE, CHISWICK, KT19 D12' }}
+        <p class="nhsuk-u-margin-bottom-2"><strong>Contact details</strong> </br>  {{ prescriptionNomDispeserContact or '01943 863158' }}</p>
 
-          </dd>
-        </div>
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">Address</dt>
-          <dd class="nhsuk-summary-list__value">
-            <span class="data-field__content ">
-              {{ prescriptionNomDispenserAddress or '22 RUE LANE, CHISWICK, KT19 D12' }}
-            </span>
-            <br>
 
-           
 
-          </dd>
-        </div>
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">Contact details</dt>
-          <dd class="nhsuk-summary-list__value ">
-            <span class="data-field__content data-field__content--address">
-              {{ prescriptionNomDispeserContact or '01943 863158' }}
-            </span>
-            <br>
-
-           
-
-          </dd>
-        </div>
-        
-      </dl>
+    
     </div>
   </div>
 </div>

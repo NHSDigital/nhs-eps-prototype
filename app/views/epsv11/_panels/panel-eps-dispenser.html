@@ -1,44 +1,12 @@
 <div class="data-panel__wrapper no-outline" tabindex="-1">
   <div class="nhsuk-card nhsuk-u-margin-bottom-3 data-panel" id="patient-details-panel">
     <div class="nhsuk-card__content nhsuk-u-padding-3">
-      
-      <dl class="nhsuk-summary-list">
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">Dispenser</dt>
-          <dd class="nhsuk-summary-list__value">
-            <span class="data-field__content data-field__content--address">
-              {{ prescriptionDispenseOrg or 'COHENS CHEMIST (ODS: FV519)' }}
-            </span>
-            <br>
+     
+      <p class="nhsuk-u-margin-bottom-2"><strong>Dispenser</strong> </br> {{ prescriptionDispenseOrg or 'COHENS CHEMIST (ODS: FV519)' }}</p>
+      <p class="nhsuk-u-margin-bottom-2"> {{ prescriptionDispenserAddress or '123 Lime street, Norfolk' }}
+        <p class="nhsuk-u-margin-bottom-2"><strong>Contact details</strong> </br> {{ prescriptionDispenserContact or '01234 123453' }}</p>
 
-          </dd>
-        </div>
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">Address</dt>
-          <dd class="nhsuk-summary-list__value">
-            <span class="data-field__content data-field__content--address">
-              {{ prescriptionDispenserAddress or '123 Lime street, Norfolk' }}
-            </span>
-            <br>
 
-           
-
-          </dd>
-        </div>
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">Contact details</dt>
-          <dd class="nhsuk-summary-list__value ">
-            <span class="data-field__content data-field__content--address">
-              {{ prescriptionDispenserContact or '01234 123453' }}
-            </span>
-            <br>
-
-           
-
-          </dd>
-        </div>
-        
-      </dl>
     </div>
   </div>
 </div>

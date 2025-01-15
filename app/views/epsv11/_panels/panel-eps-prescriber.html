@@ -1,56 +1,13 @@
 <div class="data-panel__wrapper no-outline" tabindex="-1">
   <div class="nhsuk-card nhsuk-u-margin-bottom-3 data-panel" id="patient-details-panel">
     <div class="nhsuk-card__content nhsuk-u-padding-3">
-      
-      <dl class="nhsuk-summary-list">
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">Prescriber</dt>
-          <dd class="nhsuk-summary-list__value">
-            <span class="data-field__content data-field__content--address">
-              {{ prescriptionPrescriberOrg or 'FIpo SURGERY (ODS: FI05964)' }}
-            </span>
-            <br>
 
-          </dd>
-        </div>
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">Address</dt>
-          <dd class="nhsuk-summary-list__value">
-            <span class="data-field__content data-field__content--address">
-              {{ prescriptionPrescriberAddress or '91 YARROW LANE, FINNSBURY, E45 T46' }}
-            </span>
-            <br>
-
-           
-
-          </dd>
-        </div>
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">Prescribed from </dt>
-          <dd class="nhsuk-summary-list__value">
-            <span class="data-field__content data-field__content--address">
-              {{ prescriptionPrescriberCountry or 'England' }}
-            </span>
-            <br>
-
-           
-
-          </dd>
-        </div>
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">Contact details</dt>
-          <dd class="nhsuk-summary-list__value ">
-            <span class="data-field__content data-field__content--address">
-              {{ prescriptionPrescriberContact or '01232 231321' }}
-            </span>
-            <br>
-
-           
-
-          </dd>
-        </div>
-        
-      </dl>
+      <p class="nhsuk-u-margin-bottom-2"><strong>Prescriber</strong> </br>{{ prescriptionPrescriberOrg or 'FIpo SURGERY (ODS: FI05964)' }}</p>
+      <p class="nhsuk-u-margin-bottom-2"> {{ prescriptionPrescriberAddress or '91 YARROW LANE, FINNSBURY, E45 T46' }}
+      </p>
+      <p class="nhsuk-u-margin-bottom-2"><strong>Contact details</strong> </br>{{ prescriptionPrescriberContact or '01232 231321' }}</p>
+      <p class="nhsuk-u-margin-bottom-2"><strong>Prescribes from</strong> </br>{{ prescriptionPrescriberCountry or 'England' }}</p>
+   
     </div>
   </div>
 </div>
