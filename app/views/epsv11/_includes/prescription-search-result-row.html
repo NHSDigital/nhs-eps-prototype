@@ -34,7 +34,7 @@
   {% endif %}
   </td>
   <td class="nhsuk-table__cell">
-    {{ prescriptions.ID }} <br/> <a href="./spinner-full?prescID={{ prescriptions.ID }}&nhsNumber={{ patient.nhsNumber }}&prescType={{ prescriptions.Type }}">View prescription</a>
+   <span class="prescriptionIDnumber">{{ prescriptions.ID }}</span>  <br/> <a href="./spinner-full?prescID={{ prescriptions.ID }}&nhsNumber={{ patient.nhsNumber }}&prescType={{ prescriptions.Type }}">View prescription</a>
   </td>
 
 
@@ -42,3 +42,29 @@
 
 
 </tr>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Select all elements with the class 'prescription-id'
+    const prescriptionElements = document.querySelectorAll(".prescriptionIDnumber");
+
+    // Iterate over the selected elements
+    prescriptionElements.forEach((element) => {
+      let prescriptionID = element.textContent.trim();
+
+      // Remove any existing dashes
+      prescriptionID = prescriptionID.replace(/-/g, "");
+
+      // Ensure the ID is the correct length (18 characters) before formatting
+      if (prescriptionID.length === 18) {
+        // Format the prescription ID by adding dashes
+        const formattedID = prescriptionID.replace(/(.{6})(.{6})(.{6})/, "$1-$2-$3");
+
+        // Update the content with the formatted ID
+        element.textContent = formattedID;
+      } else {
+        console.warn("Prescription ID is not 18 characters long:", prescriptionID);
+      }
+    });
+  });
+</script>
