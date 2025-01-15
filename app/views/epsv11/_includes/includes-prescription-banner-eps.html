@@ -42,4 +42,15 @@
   <div id="patientview-sentinel" style="height: 1px; background-color: transparent;"></div>
 </div>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+  const copyTextElement = document.getElementById("copyText");
+  let prescriptionID = copyTextElement.textContent;
 
+  // Format the prescription ID by adding dashes
+  const formattedID = prescriptionID.replace(/(.{6})(.{6})(.{6})/, "$1-$2-$3");
+
+  // Update the content with the formatted ID
+  copyTextElement.textContent = formattedID;
+});
+</script>
