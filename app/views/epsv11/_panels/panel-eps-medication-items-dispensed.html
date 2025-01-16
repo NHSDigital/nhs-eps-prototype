@@ -101,43 +101,42 @@
       
     
       {% if prescriptionItems[0].initialitem %}
-<details class="nhsuk-details">
-        <summary class="nhsuk-details__summary">
-          <span class="nhsuk-details__summary-text nhsuk-u-font-size-16">
-       What was initially prescribed
-          </span>
-        </summary>
-        <div class="nhsuk-details__text">
-          <h4 class="nhsuk-heading-xs">{{ prescriptionItems[0].initialitem }}</h4>
-          <dl class="nhsuk-summary-list">
+<p class="nhsuk-u-margin-bottom-0"><strong>What was initially prescribed</strong></p>
 
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Quantity 
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                {{ prescriptionItems[0].initialQuantity }}
-              </dd>
-          
-            </div>
-          
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Instructions
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                {{ prescriptionItems[0].instructionInitial }}
-              </dd>
-          
-            </div>
-          
-         
-  
-          
-          </dl>
-       
-        </div>
-      </details>
+<dl class="nhsuk-summary-list">
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Item
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      {{ prescriptionItems[0].initialitem }}
+    </dd>
+
+  </div>
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Quantity 
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      {{ prescriptionItems[0].initialQuantity }}
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Instructions
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      {{ prescriptionItems[0].instructionInitial }}
+    </dd>
+
+  </div>
+
+
+
+
+</dl>
      
       {% endif %}
 
