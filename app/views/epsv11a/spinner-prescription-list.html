@@ -41,8 +41,8 @@
 
     // Construct the redirect URL
     const redirectUrl = prescID
-      ? `/epsv10/prescription-results?nhsNumber=${nhsNumber}&prescID=${prescID}`
-      : `/epsv10/prescription-results?nhsNumber=${nhsNumber}`;
+      ? `/epsv11a/prescription-results?nhsNumber=${nhsNumber}&prescID=${prescID}`
+      : `/epsv11a/prescription-results?nhsNumber=${nhsNumber}`;
 
     // Redirect after 2 seconds
     setTimeout(() => {
