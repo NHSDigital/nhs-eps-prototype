@@ -1,0 +1,139 @@
+{% extends './_includes/layout-application.html' %}
+{% set primarynav = 'patient' %}
+{% set hideNav = 'true' %}
+{% set hideJump = 'true' %}
+{% set containerClasses = 'patient-search-form-container' %}
+
+{% block pageTitle %}
+Find a patient by NHS number - {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+<div class="above-tab-space">
+  <section class="nhsuk-hero">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+          <div class="nhsuk-hero__wrapper"><h1 class="nhsuk-u-margin-bottom-3">Find a prescription</h1></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="nhsuk-tab-set find-patient-tabset">
+  <div class="find-patient-tabset__container">
+    <a href="search" class="nhsuk-tab-set__tab" id="nhs-number-search-tab" type="button">
+      <span class="nhsuk-u-visually-hidden">Search by </span>
+      Prescription ID search
+    </a>
+    <a href="search-nhs" class="nhsuk-tab-set__tab" id="basic-search-tab" type="button">
+      <span class="nhsuk-u-visually-hidden">Search by </span>
+      NHS number search
+    </a>
+    <a href="search-basic" class="nhsuk-tab-set__tab nhsuk-tab-set__tab--active" id="advanced-search-tab" type="button">
+      <span class="nhsuk-u-visually-hidden">Search by </span>
+      Basic details search
+    </a>
+    
+  </div>
+</div>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="main-body-wrapper">
+
+<div class="patient-search-form row">
+  <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+    <div>
+      <form action="search-basic-post" method="POST" novalidate="">
+        <div class="patient-search-form__field-group">
+          <h2 class="nhsuk-heading-m nhsuk-u-margin-bottom-1 no-outline" id="nhs-number-search-form-nhs-number--label" tabindex="-1">
+            <span class="nhsuk-u-visually-hidden">Search by </span>
+            Search using basic details
+          </h2>
+          <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-1 no-outline">Surname</h3>
+         
+          <div class="nhsuk-form-group">
+            <input class="nhsuk-input nhsuk-input--width-20{% if errors['last-name'] %} nhsuk-input--error{% endif %}" id="last-name" name="last-name" type="text" value="{{ data['last-name'] }}">
+          </div>
+          <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-1 no-outline">Date of birth</h3>
+          <div class="nhsuk-hint" id="nhs-number-hint">For example, 31 03 1980</div>
+          <div class="nhsuk-date-input" id="dob">
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label" for="dob-day">
+                  Day
+                </label>
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2{% if errors['dob'] %} nhsuk-input--error{% endif %}" id="dob-day" name="dob-day" type="number" pattern="[0-9]*" value="{{ data['dob-day'] }}">
+              </div>
+            </div>
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label" for="dob-month">
+                  Month
+                </label>
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2{% if errors['dob'] %} nhsuk-input--error{% endif %}" id="dob-month" name="dob-month" type="number" pattern="[0-9]*" value="{{ data['dob-month'] }}">
+              </div>
+            </div>
+            <div class="nhsuk-date-input__item">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-date-input__label" for="dob-year">
+                  Year
+                </label>
+                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4{% if errors['dob'] %} nhsuk-input--error{% endif %}" id="dob-year" name="dob-year" type="number" pattern="[0-9]*" value="{{ data['dob-year'] }}">
+              </div>
+            </div>
+          </div>
+          <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-1 no-outline">Postcode</h3>
+          <div class="nhsuk-hint" id="nhs-number-hint">For example, LS1 1AB</div>
+          <div class="nhsuk-form-group">
+            <input class="nhsuk-input nhsuk-input--width-10{% if errors['postcode-only'] %} nhsuk-input--error{% endif %}" id="postcode-only-input" name="postcode-only" type="text">
+          </div>
+        </div>
+
+        {% if data['devMode'] === 'true' %}
+        {# DEVMODE SCENARIOS #}
+        <br>
+        <details class="nhsuk-details dev-mode">
+          <summary class="nhsuk-details__summary">
+            <span class="nhsuk-details__summary-text">
+              Show Patient list
+            </span>
+          </summary>
+
+          <div class="nhsuk-details__text">
+            <ul class="govuk-list govuk-list--bullet">
+              {% for item in data.patients %}
+                {% set patientList = item | objectToArray %}
+                {% for patient in patientList %}
+                  <li>
+                    <a href="patient-overview?nhsNumber={{ patient.nhsNumber }}">
+                      {{ patient.firstName }} {{ patient.lastName }} | {{ patient.dob | calculateAge }}
+                    </a>
+                  </li>
+                  {% else %}
+                  <li>None found</li>
+                {% endfor %}
+              {% endfor %}
+            </ul>
+          </div>
+        </details>
+        <br>
+
+        {% endif %}
+
+        <button aria-disabled="false" class="nhsuk-button patient-search-form__button" id="nhs-number-submit" type="submit">Find a patient</button>
+      </form>
+    </div>
+  </div>
+
+  
+</div>
+
+</div>
+{% endblock %}

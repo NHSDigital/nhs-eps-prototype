@@ -1,0 +1,49 @@
+<div class="data-panel__wrapper no-outline" tabindex="-1">
+  <div class="nhsuk-card data-panel" id="name-panel">
+    <div class="nhsuk-card__content">
+      <h3 class="nhsuk-card__heading">
+        <span>Name</span>
+
+        {% if data.perms['editDemog'] !== 'no' %}
+        <a href="patient-details-history" class="data-panel__view-history-button" id="name-panel-view-history" role="button" tabindex="0">View history
+          <span class="nhsuk-u-visually-hidden">Name</span>
+        </a>
+        {% endif %}
+
+        {% if data.perms['viewHistory'] !== 'no' %}
+        <a href="javascript:void(0)" class="data-panel__edit-button" id="pds-start-edit-button-name" role="button" tabindex="0">Edit
+          <span class="nhsuk-u-visually-hidden">Name</span>
+        </a>
+        {% endif %}
+      </h3>
+      <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Usual Name</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content">
+              {{ patient.prefix or 'Miss' }}
+              {{ patient.firstName or 'Sofia' }}
+              {{ patient.middleNames or '' }}
+              {{ patient.lastName or 'Rodriguez' }}
+              {{ patient.suffix or '' }}
+            </span>
+            <br>
+            <span class="data-field__note">From {{ patient.effectiveFrom or '5-Aug-90' }}</span>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Preferred Name</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.preferredName === 'Not Recorded' or patient.preferredName === undefined %}--none{% endif %}">{{ patient.preferredName or 'Not Recorded' }}</span>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Other Name</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.aliasName === 'Not Recorded' or patient.aliasName === undefined %}--none{% endif %}">{{ patient.aliasName or 'Not Recorded' }}</span>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</div>

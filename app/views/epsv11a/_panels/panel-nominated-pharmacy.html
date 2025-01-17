@@ -1,0 +1,45 @@
+<div class="data-panel__wrapper no-outline" tabindex="-1">
+  <div class="nhsuk-card data-panel" id="nominated-pharmacy-panel">
+    <div class="nhsuk-card__content">
+      <h3 class="nhsuk-card__heading">
+        <span>Nominated Pharmacy</span>
+      </h3>
+      {% if patient.nomPharmName === "" or patient.nomPharmName === "Not Recorded" or  patient.nomPharmName === undefined %}
+      <span class="data-panel__text-only-content" id="no-nominated-pharmacy">No Nominated Pharmacy Information recorded for this patient.</span>
+      {% else %}
+      <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Name</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.nomPharmName === 'Not Recorded' or patient.nomPharmName === undefined %}--none{% endif %}">
+              {{ patient.nomPharmName or 'FITTLEWORTH MEDICAL LIMITED)' }}
+            </span>
+            <br>
+            {% if patient.nomPharmNameFrom !== "" %}
+            <span class="data-field__note">From {{ patient.nomPharmNameFrom }}</span>
+            {% endif %}
+
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Address</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.nomPharmAddress === 'Not Recorded' or patient.nomPharmAddress === undefined %}--none{% endif %} data-field__content--address">
+              {{ patient.nomPharmAddress or '5-7 CHELTENHAM MOUNT, HARROGATE, NORTH YORKSHIRE, HG1 1DW' }}
+            </span>
+            <br>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Telephone</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.nomPharmTel === 'Not Recorded' or patient.nomPharmTel === undefined %}--none{% endif %}">
+              {{ patient.nomPharmTel | ukMobile or '01254 393805' | ukMobile }}
+              </span>
+          </dd>
+        </div>
+      </dl>
+      {% endif %}
+    </div>
+  </div>
+</div>

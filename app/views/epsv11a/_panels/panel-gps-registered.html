@@ -1,0 +1,94 @@
+<div class="data-panel__wrapper no-outline" tabindex="-1">
+  <div class="nhsuk-card data-panel" id="gp-list-panel">
+    <div class="nhsuk-card__content">
+      <h3 class="nhsuk-card__heading">
+        <span>GPs Registered at this Practice</span>
+      </h3>
+      <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Name</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.regGp1Name === 'Not Recorded' or patient.regGp1Name === undefined %}--none{% endif %}">
+              {{ patient.regGp1Name or 'Dr Steve Fisher' }}
+            </span>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">GP Code</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.regGp1Code === 'Not Recorded' or patient.regGp1Code === undefined %}--none{% endif %}">
+              {{ patient.regGp1Code or 'B86055' }}
+              G3332809
+            </span>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">GMC Code</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.regGmc1Code === 'Not Recorded' or patient.regGmc1Code === undefined %}--none{% endif %}">
+              {{ patient.regGmc1Code or 'Not Recorded' }}
+            </span>
+          </dd>
+        </div>
+      </dl>
+
+      {% if patient.regGp2Name %}
+      <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Name</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.regGp2Name === 'Not Recorded' or patient.regGp2Name === undefined %}--none{% endif %}">
+              {{ patient.regGp2Name or 'Dr Priyanka Kapoor' }}
+            </span>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">GP Code</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.regGp2Code === 'Not Recorded' or patient.regGp2Code === undefined %}--none{% endif %}">
+              {{ patient.regGp2Code or 'G8123457' }}
+            </span>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">GMC Code</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.regGmc2Code === 'Not Recorded' or patient.regGmc2Code === undefined %}--none{% endif %}">
+              {{ patient.regGmc2Code or 'Not Recorded' }}
+            </span>
+          </dd>
+        </div>
+      </dl>
+      {% endif %}
+
+      {% if patient.regGp3Name %}
+      <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Name</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.regGp3Name === 'Not Recorded' or patient.regGp3Name === undefined %}--none{% endif %}">
+              {{ patient.regGp3Name or 'Dr Mary Moore' }}
+            </span>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">GP Code</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.regGp3Code === 'Not Recorded' or patient.regGp3Code === undefined %}--none{% endif %}">
+              {{ patient.regGp3Code or 'G8123433' }}
+            </span>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">GMC Code</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.regGmc3Code === 'Not Recorded' or patient.regGmc3Code === undefined %}--none{% endif %}">
+              {{ patient.regGmc3Code or 'Not Recorded' }}
+            </span>
+          </dd>
+        </div>
+      </dl>
+      {% endif %}
+    </div>
+  </div>
+</div>

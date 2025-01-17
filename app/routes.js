@@ -47,4 +47,5 @@ require('./views/live/_routes.js')(router);
 require('./views/epsmvp/_routes.js')(router);
 require('./views/epsv10/_routes.js')(router);
 require('./views/epsv11/_routes.js')(router);
+require('./views/epsv11a/_routes.js')(router);
 module.exports = router;
