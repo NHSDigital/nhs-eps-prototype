@@ -82,114 +82,37 @@ router.post("/epsv11/search-nhs-post", function (req, res) {
 
 
 
-
- // Search via NHS basic search
-router.post("/epsv11/search-basic-post", function (req, res) {
-  let patients = req.session.data['patients'] || {}; // Ensure patients is defined
-
-  // Normalize input values
-  let searchPostcode = (req.body["postcode-only"] || '').trim().toUpperCase().replace(/\s+/g, ''); // Normalize postcode and remove spaces
-  let searchLastName = (req.body["last-name"] || '').trim().toLowerCase(); // Normalize last name
-  let dobDay = req.body['dob-day'] || '';
-  let dobMonth = req.body['dob-month'] || '';
-  let dobYear = req.body['dob-year'] || '';
-
-  req.session.data.errors = {}; // Initialize errors
-
-  // Validation: Ensure at least one search field is provided
-  if (!searchPostcode && !searchLastName && !dobDay && !dobMonth && !dobYear) {
-      req.session.data.errors["basicSearch"] = true;
-      return res.redirect("search-basic");
-  }
-
-  // Format DOB into 'DD-MMM-YYYY'
-  const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  let paddedDobDay = dobDay.padStart(2, '0'); // Ensure the day has two digits
-  let paddedDobMonth = dobMonth ? monthNames[parseInt(dobMonth, 10) - 1] : ''; // Ensure month is padded with correct month name
-  let formattedInputDob = dobYear && paddedDobDay && paddedDobMonth
-      ? `${paddedDobDay}-${paddedDobMonth}-${dobYear}`
-      : '';
-
-  console.log("Formatted DOB:", formattedInputDob); // Debugging: Log the formatted input DOB
-
-  // Helper function to extract the postcode from an address and remove spaces
-  function extractPostcode(address) {
-      // Postcode pattern to match UK postcodes (e.g., LS6 1JL)
-      const postcodePattern = /\b([A-Z]{1,2}\d[A-Z\d]? \d[A-Z]{2})\b/i;
-      const match = address.match(postcodePattern);
-      return match ? match[0].toUpperCase().replace(/\s+/g, '') : ''; // Normalize postcode and remove spaces
-  }
-
-  // Normalize DOB: Remove leading zeroes and compare
-  function normalizeDob(dob) {
-      if (dob) {
-          let [day, month, year] = dob.split('-');
-          return `${day.padStart(2, '0')}-${month}-${year}`; // Normalize day with leading zero
-      }
-      return '';
-  }
-
-  // Filter patients
-  let returnedPatientsList = Object.entries(patients).flatMap(([key, nhsPatients]) => {
-      return Object.entries(nhsPatients).filter(([nhsNumber, patient]) => {
-          // Normalize patient data for comparison
-          let patientLastName = (patient.lastName || "").trim().toLowerCase();
-          let patientDob = normalizeDob(patient.dob || ""); // Normalize patient DOB
-          let patientPostcode = extractPostcode((patient.usualAddress || "").trim().toLowerCase());
-
-          // Debugging for patient details
-          console.log(`Checking Patient NHS Number: ${nhsNumber}`);
-          console.log(`Patient Last Name: ${patientLastName}`);
-          console.log(`Patient DOB: ${patientDob}`);
-          console.log(`Patient Postcode: ${patientPostcode}`);
-
-          // Debugging individual comparisons
-          let matchesPostcode = searchPostcode
-              ? patientPostcode.includes(searchPostcode) // Check if postcode matches (case-insensitive, allows partial match)
-              : true;
-          console.log(`Matches Postcode: ${matchesPostcode} (Input: ${searchPostcode}, Patient: ${patientPostcode})`);
-
-          let matchesLastName = searchLastName
-              ? patientLastName === searchLastName // Check if last name matches exactly
-              : true;
-          console.log(`Matches Last Name: ${matchesLastName} (Input: ${searchLastName}, Patient: ${patientLastName})`);
-
-          let matchesDob = formattedInputDob
-              ? patientDob === formattedInputDob // Check if DOB matches exactly
-              : true;
-          console.log(`Matches DOB: ${matchesDob} (Input: ${formattedInputDob}, Patient: ${patientDob})`);
-
-          // Final match check
-          if (matchesPostcode && matchesLastName && matchesDob) {
-              console.log(`Patient ${nhsNumber} matches search criteria.`);
-          } else {
-              console.log(`Patient ${nhsNumber} does NOT match search criteria.`);
-          }
-
-          return matchesPostcode && matchesLastName && matchesDob;
-      }).map(([nhsNumber, patient]) => ({ nhsNumber, ...patient })); // Return matched patients
-  });
-
-  // Debugging the final results
-  console.log("Matching Patients:", JSON.stringify(returnedPatientsList, null, 2));
-
-  // Save filtered patients in session and redirect to results page
-  req.session.data.returnedPatientsList = returnedPatientsList;
-
-  if (returnedPatientsList.length > 0) {
-      return res.redirect("search-results");
-  } else {
-      return res.redirect("search-basic");
-  }
+  // search via nhs basic search
+  router.post("/epsv11/search-basic-post", function (req, res) {
+    let patients = req.session.data['patients'] || {}; // Ensure patients is defined
+    let searchPostcode = req.body["postcode-only"];
+    let searchLastName = req.body["last-name"];
+    let dobDay = req.body['dob-day'] || '';
+    let dobMonth = req.body['dob-month'] || '';
+    let dobYear = req.body['dob-year'] || '';
+    req.session.data.errors = {};
+    if (!searchPostcode && !searchLastName && !dobDay && !dobMonth && !dobYear) {
+        req.session.data.errors["basicSearch"] = true;
+        return res.redirect("search-basic");
+    }
+    // Ensure DOB is in correct format (e.g., '06-May-2013')
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    // Pad single digit day and month with leading zeros if necessary
+    let paddedDobDay = dobDay.padStart(2, '0');
+    let paddedDobMonth = monthNames[parseInt(dobMonth, 10) - 1]; // Convert month number to month name
+    let formattedInputDob = dobYear && paddedDobDay && paddedDobMonth
+        ? `${paddedDobDay}-${paddedDobMonth}-${dobYear}`
+        : '';
+    console.log("Formatted DOB:", formattedInputDob); // Log to verify the formatted DOB
+    // Check for a specific date of birth (6-May-2013)
+    if (formattedInputDob === '06-May-2013') {
+        // Redirect to search-results-twins if DOB matches 6-May-2013
+        return res.redirect('spinner-twin-list');
+    } else {
+        // Redirect to spinner-prescription-list for any other case
+        return res.redirect('spinner-prescription-list?nhsNumber=5900009890');
+    }
 });
-
-
-
-
-
-//we know that dob matching works 
-//we need to format the postcode and the database postcode - e.g. all lower case to match
-//we need to format the last name e.g. all lowercase to match
 
 
 // change record via a NHS number on NoK section
