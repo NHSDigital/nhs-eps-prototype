@@ -1,5 +1,5 @@
 {% extends './_includes/layout-application.html' %}
-{% set primarynav = 'patient' %}
+{% set primarynav = 'items' %}
 {% set hideNav = 'true' %}
 {% set hideJump = 'true' %}
 
@@ -10,7 +10,7 @@ Prescription - {{ serviceName }}
 
 {% block beforeContent %}
 {% include './_includes/includes-patient-banner-eps.html' %} {% include './_includes/includes-prescription-banner-eps.html' %}
-
+{% include './_includes/includes-primary-nav.html' %}
 
 {% endblock %}
 
@@ -29,28 +29,39 @@ Prescription - {{ serviceName }}
     
       <div class="nhsuk-grid-row">
        
-        <div class="nhsuk-grid-column-one-half">
+       
           {% if prescriptionDispensed ==='yes' %}
-          <h1 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">Dispensed items</h1>
+          <h1 class="nhsuk-heading-xs">Dispensed items</h1>
+          <div class="nhsuk-grid-column-one-half">
           {% if prescriptionItems[0].exists === 'yes' and prescriptionItems[0].Dispensed === 'yes' %}
           {% include "./_panels/panel-eps-medication-items-dispensed.html" %} 
           {% endif %}
 
-          {% if prescriptionItems[1].exists === 'yes' and prescriptionItems[1].Dispensed === 'yes' %}
-          {% include "./_panels/panel-eps-medication-item2-dispensed.html" %} 
-          {% endif %}
+         
 
           {% if prescriptionItems[2].exists === 'yes' and prescriptionItems[2].Dispensed === 'yes' %}
           {% include "./_panels/panel-eps-medication-item3-dispensed.html" %} 
           {% endif %}
 
+        
+          
+       
+
+          
+        </div>
+        <div class="nhsuk-grid-column-one-half">
+          {% if prescriptionItems[1].exists === 'yes' and prescriptionItems[1].Dispensed === 'yes' %}
+          {% include "./_panels/panel-eps-medication-item2-dispensed.html" %} 
+          {% endif %}
           {% if prescriptionItems[3].exists === 'yes' and prescriptionItems[3].Dispensed === 'yes' %}
           {% include "./_panels/panel-eps-medication-item4-dispensed.html" %} 
           {% endif %}
-          
-          {% endif %} 
+         
+        </div>
+        {% endif %} 
+<!-- ignore for now-->
 
-          {% if prescriptionPrescribed === 'yes' %}
+<!-- {% if prescriptionPrescribed === 'yes' %}
           <h1 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">Prescribed items</h1>
           {% if prescriptionItems[0].exists === 'yes' and prescriptionItems[0].Prescribed === 'yes' %}
           {% include "./_panels/panel-eps-medication-items-dispensed.html" %} 
@@ -67,26 +78,10 @@ Prescription - {{ serviceName }}
           {% if prescriptionItems[3].exists === 'yes' and prescriptionItems[3].Prescribed === 'yes' %}
           {% include "./_panels/panel-eps-medication-item4-dispensed.html" %} 
           {% endif %}
-          {% endif %} 
-        </div>
-        <div class="nhsuk-grid-column-one-half">
-          <h1 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">Prescriber and dispenser information</h1>
-          {% if prescriptionDispenser === 'yes' %}
-          {% include "./_panels/panel-eps-dispenser.html" %}
-          {% endif %}
-         
-          {% if prescriptionPrescriber === 'yes' %}
-          {% include "./_panels/panel-eps-prescriber.html" %}
-          {% endif %}
+          {% endif %} -->
 
-          {% if prescriptionNomDispenser === 'yes' %}
-          {% include "./_panels/panel-eps-nominateddispenser.html" %}
-          {% endif %}
-          
-          <h1 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">History</h1> 
-          {% include "./_panels/panel-eps-message-history.html" %}  
-         
-        </div>
+
+
       </div>
     
  

@@ -782,6 +782,436 @@ router.get("/epsv11a/prescription-template-2", function (req, res) {
 
   });
 });
+//template 2
+router.get("/epsv11a/prescription-template-2-info", function (req, res) {
+  const prescID = req.query["prescID"] ? req.query["prescID"].trim() : null;
+  const prescType = req.query["prescType"] ? req.query["prescType"].trim() : null;
 
+  // Validate inputs
+  if (!prescID || !prescType) {
+    console.log("Missing prescription ID or type.");
+    return res.redirect("/epsv11a/search");
+  }
+
+  // Retrieve prescriptions from session data
+  const prescriptionsArray = req.session.data.prescriptions || [];
+
+  // Find the prescription by ID and type
+  const matchedPrescription = prescriptionsArray.find(item => {
+    const prescription = item[Object.keys(item)[0]];
+    return prescription.prescriptionID === prescID && prescription.prescriptionType === prescType;
+  });
+
+  if (!matchedPrescription) {
+    console.log("Prescription not found.");
+    return res.redirect("/epsv11a/search");
+  }
+
+  // Extract prescription details for rendering
+  const prescription = matchedPrescription[Object.keys(matchedPrescription)[0]];
+    // Log the extracted prescription details
+    console.log("Prescription Details:", {
+      prescriptionID: prescription.prescriptionID,
+      prescriptionType: prescription.prescriptionType,
+      prescriptionERDsupply: prescription.daysSupply, 
+      pendingCancellation: prescription.pendingCancellation,
+      prescriptionIssueDate: prescription.prescriptionIssueDate,
+      prescriptionStatus: prescription.prescriptionStatus,
+      prescriptionDispensed: prescription.itemsDispensed,
+      prescriptionPrescribed: prescription.itemsPrescribed,
+
+
+      prescriptionItems: [
+        { exists:prescription.prescriptionItem1exists, nameItem: prescription.prescriptionItem1, quantityItem: prescription.prescriptionItem1quantity, pendingCancellationItem: prescription.prescriptionItem1pendingCancelation, cancellationReasonItem:prescription.prescriptionItem1cancellationreason, quantityItem: prescription.prescriptionItem1quantity, instructionItem: prescription.prescriptionItem1instructions, itemstatusItem: prescription.prescriptionItem1Status, NHSAppItem: prescription.prescriptionItem1PrescNHSApp, Prescribed: prescription.prescriptionItem1Prescribed, Dispensed: prescription.prescriptionItem1Dispensed},
+        { exists:prescription.prescriptionItem2exists, nameItem: prescription.prescriptionItem2, quantityItem: prescription.prescriptionItem2quantity, pendingCancellationItem: prescription.prescriptionItem2pendingCancelation, cancellationReasonItem:prescription.prescriptionItem2cancellationreason, quantityItem: prescription.prescriptionItem2quantity, instructionItem: prescription.prescriptionItem2instructions, itemstatusItem: prescription.prescriptionItem2Status, NHSAppItem: prescription.prescriptionItem2PrescNHSApp, Prescribed: prescription.prescriptionItem2Prescribed, Dispensed: prescription.prescriptionItem2Dispensed},
+        { exists:prescription.prescriptionItem3exists, nameItem: prescription.prescriptionItem3, quantityItem: prescription.prescriptionItem3quantity, pendingCancellationItem: prescription.prescriptionItem3pendingCancelation, cancellationReasonItem:prescription.prescriptionItem3cancellationreason, quantityItem: prescription.prescriptionItem3quantity, instructionItem: prescription.prescriptionItem3instructions, itemstatusItem: prescription.prescriptionItem3Status, NHSAppItem: prescription.prescriptionItem3PrescNHSApp, Prescribed: prescription.prescriptionItem3Prescribed, Dispensed: prescription.prescriptionItem3Dispensed},
+        { exists:prescription.prescriptionItem4exists, nameItem: prescription.prescriptionItem4, quantityItem: prescription.prescriptionItem4quantity, pendingCancellationItem: prescription.prescriptionItem4pendingCancelation, cancellationReasonItem:prescription.prescriptionItem4cancellationreason, quantityItem: prescription.prescriptionItem4quantity, instructionItem: prescription.prescriptionItem4instructions, itemstatusItem: prescription.prescriptionItem4Status, NHSAppItem: prescription.prescriptionItem4PrescNHSApp, Prescribed: prescription.prescriptionItem4Prescribed, Dispensed: prescription.prescriptionItem4Dispensed},
+      ],
+      prescriptionMessage1: prescription.prescriptionMessage1,
+      prescriptionMessageHeader1: prescription.prescriptionMessage1header,
+      prescriptionMessageDateTime1: prescription.prescriptionMessage1sendDateTime,
+      prescriptionLess2: prescription.prescriptionless2,
+      prescriptionMessage1Org: prescription.prescriptionMessage1Org,
+      PrescriptionNewStatus1: prescription.prescriptionMessage1NewStatus,
+      prescriptionDN1: prescription.prescriptionMessage1DN,
+      prescriptionDN1id: prescription.prescriptionMessage1DNID,
+      prescriptionDN1Items: [
+        {item: prescription.prescriptionMessage1DNItem1, quantity:prescription.prescriptionMessage1DNItem1q},
+        {item: prescription.prescriptionMessage1DNItem2, quantity:prescription.prescriptionMessage1DNItem2q},
+        {item: prescription.prescriptionMessage1DNItem3, quantity:prescription.prescriptionMessage1DNItem3q},
+        {item: prescription.prescriptionMessage1DNItem4, quantity:prescription.prescriptionMessage1DNItem4q},
+
+      ],
+      
+
+      prescriptionMessage2: prescription.prescriptionMessage2,
+      prescriptionMessageHeader2: prescription.prescriptionMessage2header,
+      prescriptionMessageDateTime2: prescription.prescriptionMessage2sendDateTime,
+      prescriptionMessage2Org: prescription.prescriptionMessage2Org,
+      prescriptionNewStatus2: prescription.prescriptionMessage2NewStatus,
+      prescriptionDN2: prescription.prescriptionMessage2DN,
+      prescriptionDN2id: prescription.prescriptionMessage2DNID,
+      prescriptionDN2Items: [
+        {item: prescription.prescriptionMessage2DNItem1, quantity:prescription.prescriptionMessage2DNItem1q},
+        {item: prescription.prescriptionMessage2DNItem2, quantity:prescription.prescriptionMessage2DNItem2q},
+        {item: prescription.prescriptionMessage2DNItem3, quantity:prescription.prescriptionMessage2DNItem3q},
+        {item: prescription.prescriptionMessage2DNItem4, quantity:prescription.prescriptionMessage2DNItem4q},
+
+      ],
+    
+
+      prescriptionMessage3: prescription.prescriptionMessage3,
+      prescriptionMessageHeader3: prescription.prescriptionMessage3header,
+      prescriptionMessageDateTime3: prescription.prescriptionMessage3sendDateTime,
+      prescriptionMessage3Org: prescription.prescriptionMessage3Org ,
+      prescriptionNewStatus3:prescription.prescriptionMessage3NewStatus, 
+      prescriptionDN3: prescription.prescriptionMessage3DN, 
+      prescriptionDN3id: prescription.prescriptionMessage3DNID,
+      prescriptionDN3Items: [
+        {item: prescription.prescriptionMessage3DNItem1, quantity:prescription.prescriptionMessage3DNItem1q},
+        {item: prescription.prescriptionMessage3DNItem2, quantity:prescription.prescriptionMessage3DNItem2q},
+        {item: prescription.prescriptionMessage3DNItem3, quantity:prescription.prescriptionMessage3DNItem3q},
+        {item: prescription.prescriptionMessage3DNItem4, quantity:prescription.prescriptionMessage3DNItem4q},
+
+      ],
+      prescriptionMessage4: prescription.prescriptionMessage4,
+      prescriptionMessageHeader4: prescription.prescriptionMessage4header,
+      prescriptionMessageDateTime4: prescription.prescriptionMessage4sendDateTime,
+      prescriptionMessage4Org: prescription.prescriptionMessage4Org ,
+      prescriptionNewStatus4:prescription.prescriptionMessage4NewStatus,
+      prescriptionDN4: prescription.prescriptionMessage4DN, 
+      prescriptionDN4id: prescription.prescriptionMessage4DNID,
+      prescriptionDN4Items: [
+        {item: prescription.prescriptionMessage4DNItem1, quantity:prescription.prescriptionMessage4DNItem1q},
+        {item: prescription.prescriptionMessage4DNItem2, quantity:prescription.prescriptionMessage4DNItem2q},
+        {item: prescription.prescriptionMessage4DNItem3, quantity:prescription.prescriptionMessage4DNItem3q},
+        {item: prescription.prescriptionMessage4DNItem4, quantity:prescription.prescriptionMessage4DNItem4q},
+  
+      ],
+    
+  
+      prescriptionDispenser: prescription.dispenserBox,
+      prescriptionDispenseOrg: prescription.Dispenserorg,
+      prescriptionDispenserAddress: prescription.Dispenseraddress, 
+      prescriptionDispenserContact: prescription.Dispensercontact,
+      prescriptionNomDispenser: prescription.nominatedDispenserBox, 
+      prescriptionNomDispenserOrg: prescription.nominatedDispenserorg, 
+      prescriptionNomDispenserAddress: prescription.nominatedDispenseraddress, 
+      prescriptionNomDispeserContact: prescription.nominatedDispensercontact, 
+      prescriptionPrescriber: prescription.prescriberBox, 
+      prescriptionPrescriberOrg: prescription.prescriberOrg, 
+      prescriptionPrescriberAddress: prescription.prescriberAddress, 
+      prescriptionPrescriberContact: prescription.prescribercontact, 
+      prescriptionPrescriberCountry: prescription.prescriberCountry,
+    });
+
+  res.render("./epsv11a/prescription-template-2-info", {
+    prescriptionID: prescription.prescriptionID,
+    prescriptionType: prescription.prescriptionType,
+    prescriptionERDsupply: prescription.daysSupply, 
+    pendingCancellation: prescription.pendingCancellation,
+    prescriptionIssueDate: prescription.prescriptionIssueDate,
+    prescriptionLess2: prescription.prescriptionless2,
+    prescriptionStatus: prescription.prescriptionStatus,
+    prescriptionDispensed: prescription.itemsDispensed,
+    prescriptionPrescribed: prescription.itemsPrescribed,
+    prescriptionItems: [
+      { exists:prescription.prescriptionItem1exists, nameItem: prescription.prescriptionItem1, quantityItem1: prescription.prescriptionItem1quantity, pendingCancellationItem: prescription.prescriptionItem1pendingCancelation, cancellationReasonItem:prescription.prescriptionItem1cancellationreason, quantityItem: prescription.prescriptionItem1quantity, instructionItem: prescription.prescriptionItem1instructions, itemstatusItem: prescription.prescriptionItem1Status, NHSAppItem: prescription.prescriptionItem1PrescNHSApp, Prescribed: prescription.prescriptionItem1Prescribed, Dispensed: prescription.prescriptionItem1Dispensed},
+      { exists:prescription.prescriptionItem2exists, nameItem: prescription.prescriptionItem2, quantityItem2: prescription.prescriptionItem2quantity, pendingCancellationItem: prescription.prescriptionItem2pendingCancelation, cancellationReasonItem:prescription.prescriptionItem2cancellationreason, quantityItem: prescription.prescriptionItem2quantity, instructionItem: prescription.prescriptionItem2instructions, itemstatusItem: prescription.prescriptionItem2Status, NHSAppItem: prescription.prescriptionItem2PrescNHSApp, Prescribed: prescription.prescriptionItem2Prescribed, Dispensed: prescription.prescriptionItem2Dispensed},
+      { exists:prescription.prescriptionItem3exists, nameItem: prescription.prescriptionItem3, quantityItem: prescription.prescriptionItem3quantity, pendingCancellationItem: prescription.prescriptionItem3pendingCancelation, cancellationReasonItem:prescription.prescriptionItem3cancellationreason, quantityItem: prescription.prescriptionItem3quantity, instructionItem: prescription.prescriptionItem3instructions, itemstatusItem: prescription.prescriptionItem3Status, NHSAppItem: prescription.prescriptionItem3PrescNHSApp, Prescribed: prescription.prescriptionItem3Prescribed, Dispensed: prescription.prescriptionItem3Dispensed},
+      { exists:prescription.prescriptionItem4exists, nameItem: prescription.prescriptionItem4, quantityItem: prescription.prescriptionItem4quantity, pendingCancellationItem: prescription.prescriptionItem4pendingCancelation, cancellationReasonItem:prescription.prescriptionItem4cancellationreason, quantityItem: prescription.prescriptionItem4quantity, instructionItem: prescription.prescriptionItem4instructions, itemstatusItem: prescription.prescriptionItem4Status, NHSAppItem: prescription.prescriptionItem4PrescNHSApp, Prescribed: prescription.prescriptionItem4Prescribed, Dispensed: prescription.prescriptionItem4Dispensed},
+    ],
+    prescriptionMessage1: prescription.prescriptionMessage1,
+    prescriptionMessageHeader1: prescription.prescriptionMessage1header,
+    prescriptionMessageDateTime1: prescription.prescriptionMessage1sendDateTime,
+    prescriptionMessage1Org: prescription.prescriptionMessage1Org,
+    prescriptionNewStatus1: prescription.prescriptionMessage1NewStatus,
+    prescriptionDN1: prescription.prescriptionMessage1DN,
+    prescriptionDN1id: prescription.prescriptionMessage1DNID,
+    prescriptionDN1Items: [
+      {item: prescription.prescriptionMessage1DNItem1, quantity:prescription.prescriptionMessage1DNItem1q},
+      {item: prescription.prescriptionMessage1DNItem2, quantity:prescription.prescriptionMessage1DNItem2q},
+      {item: prescription.prescriptionMessage1DNItem3, quantity:prescription.prescriptionMessage1DNItem3q},
+      {item: prescription.prescriptionMessage1DNItem4, quantity:prescription.prescriptionMessage1DNItem4q},
+
+    ],
+
+    prescriptionMessage2: prescription.prescriptionMessage2,
+    prescriptionMessageHeader2: prescription.prescriptionMessage2header,
+    prescriptionMessageDateTime2: prescription.prescriptionMessage2sendDateTime,
+    prescriptionMessage2Org: prescription.prescriptionMessage2Org,
+    prescriptionNewStatus2: prescription.prescriptionMessage2NewStatus,
+    prescriptionDN2: prescription.prescriptionMessage2DN,
+    prescriptionDN2id: prescription.prescriptionMessage2DNID,
+    prescriptionDN2Items: [
+      {item: prescription.prescriptionMessage2DNItem1, quantity:prescription.prescriptionMessage2DNItem1q},
+      {item: prescription.prescriptionMessage2DNItem2, quantity:prescription.prescriptionMessage2DNItem2q},
+      {item: prescription.prescriptionMessage2DNItem3, quantity:prescription.prescriptionMessage2DNItem3q},
+      {item: prescription.prescriptionMessage2DNItem4, quantity:prescription.prescriptionMessage2DNItem4q},
+    ],
+
+    prescriptionMessage3: prescription.prescriptionMessage3,
+    prescriptionMessageHeader3: prescription.prescriptionMessage3header,
+    prescriptionMessageDateTime3: prescription.prescriptionMessage3sendDateTime,
+    prescriptionMessage3Org: prescription.prescriptionMessage3Org ,
+    prescriptionNewStatus3:prescription.prescriptionMessage3NewStatus,
+    prescriptionDN3: prescription.prescriptionMessage3DN, 
+    prescriptionDN3id: prescription.prescriptionMessage3DNID,
+    prescriptionDN3Items: [
+      {item: prescription.prescriptionMessage3DNItem1, quantity:prescription.prescriptionMessage3DNItem1q},
+      {item: prescription.prescriptionMessage3DNItem2, quantity:prescription.prescriptionMessage3DNItem2q},
+      {item: prescription.prescriptionMessage3DNItem3, quantity:prescription.prescriptionMessage3DNItem3q},
+      {item: prescription.prescriptionMessage3DNItem4, quantity:prescription.prescriptionMessage3DNItem4q},
+
+    ],
+
+    prescriptionMessage4: prescription.prescriptionMessage4,
+    prescriptionMessageHeader4: prescription.prescriptionMessage4header,
+    prescriptionMessageDateTime4: prescription.prescriptionMessage4sendDateTime,
+    prescriptionMessage4Org: prescription.prescriptionMessage4Org ,
+    prescriptionNewStatus4:prescription.prescriptionMessage4NewStatus,
+    prescriptionDN4: prescription.prescriptionMessage4DN, 
+    prescriptionDN4id: prescription.prescriptionMessage4DNID,
+    prescriptionDN4Items: [
+      {item: prescription.prescriptionMessage4DNItem1, quantity:prescription.prescriptionMessage4DNItem1q},
+      {item: prescription.prescriptionMessage4DNItem2, quantity:prescription.prescriptionMessage4DNItem2q},
+      {item: prescription.prescriptionMessage4DNItem3, quantity:prescription.prescriptionMessage4DNItem3q},
+      {item: prescription.prescriptionMessage4DNItem4, quantity:prescription.prescriptionMessage4DNItem4q},
+
+    ],
+
+    prescriptionDispenser: prescription.dispenserBox,
+    prescriptionDispenseOrg: prescription.Dispenserorg,
+    prescriptionDispenserAddress: prescription.Dispenseraddress, 
+    prescriptionDispenserContact: prescription.Dispensercontact,
+    prescriptionNomDispenser: prescription.nominatedDispenserBox, 
+    prescriptionNomDispenserOrg: prescription.nominatedDispenserorg, 
+    prescriptionNomDispenserAddress: prescription.nominatedDispenseraddress, 
+    prescriptionNomDispeserContact: prescription.nominatedDispensercontact, 
+    prescriptionPrescriber: prescription.prescriberBox, 
+    prescriptionPrescriberOrg: prescription.prescriberOrg, 
+    prescriptionPrescriberAddress: prescription.prescriberAddress, 
+    prescriptionPrescriberContact: prescription.prescribercontact, 
+    prescriptionPrescriberCountry: prescription.prescriberCountry,
+
+
+  });
+});
+
+//template 2
+router.get("/epsv11a/prescription-template-2-history", function (req, res) {
+  const prescID = req.query["prescID"] ? req.query["prescID"].trim() : null;
+  const prescType = req.query["prescType"] ? req.query["prescType"].trim() : null;
+
+  // Validate inputs
+  if (!prescID || !prescType) {
+    console.log("Missing prescription ID or type.");
+    return res.redirect("/epsv11a/search");
+  }
+
+  // Retrieve prescriptions from session data
+  const prescriptionsArray = req.session.data.prescriptions || [];
+
+  // Find the prescription by ID and type
+  const matchedPrescription = prescriptionsArray.find(item => {
+    const prescription = item[Object.keys(item)[0]];
+    return prescription.prescriptionID === prescID && prescription.prescriptionType === prescType;
+  });
+
+  if (!matchedPrescription) {
+    console.log("Prescription not found.");
+    return res.redirect("/epsv11a/search");
+  }
+
+  // Extract prescription details for rendering
+  const prescription = matchedPrescription[Object.keys(matchedPrescription)[0]];
+    // Log the extracted prescription details
+    console.log("Prescription Details:", {
+      prescriptionID: prescription.prescriptionID,
+      prescriptionType: prescription.prescriptionType,
+      prescriptionERDsupply: prescription.daysSupply, 
+      pendingCancellation: prescription.pendingCancellation,
+      prescriptionIssueDate: prescription.prescriptionIssueDate,
+      prescriptionStatus: prescription.prescriptionStatus,
+      prescriptionDispensed: prescription.itemsDispensed,
+      prescriptionPrescribed: prescription.itemsPrescribed,
+
+
+      prescriptionItems: [
+        { exists:prescription.prescriptionItem1exists, nameItem: prescription.prescriptionItem1, quantityItem: prescription.prescriptionItem1quantity, pendingCancellationItem: prescription.prescriptionItem1pendingCancelation, cancellationReasonItem:prescription.prescriptionItem1cancellationreason, quantityItem: prescription.prescriptionItem1quantity, instructionItem: prescription.prescriptionItem1instructions, itemstatusItem: prescription.prescriptionItem1Status, NHSAppItem: prescription.prescriptionItem1PrescNHSApp, Prescribed: prescription.prescriptionItem1Prescribed, Dispensed: prescription.prescriptionItem1Dispensed},
+        { exists:prescription.prescriptionItem2exists, nameItem: prescription.prescriptionItem2, quantityItem: prescription.prescriptionItem2quantity, pendingCancellationItem: prescription.prescriptionItem2pendingCancelation, cancellationReasonItem:prescription.prescriptionItem2cancellationreason, quantityItem: prescription.prescriptionItem2quantity, instructionItem: prescription.prescriptionItem2instructions, itemstatusItem: prescription.prescriptionItem2Status, NHSAppItem: prescription.prescriptionItem2PrescNHSApp, Prescribed: prescription.prescriptionItem2Prescribed, Dispensed: prescription.prescriptionItem2Dispensed},
+        { exists:prescription.prescriptionItem3exists, nameItem: prescription.prescriptionItem3, quantityItem: prescription.prescriptionItem3quantity, pendingCancellationItem: prescription.prescriptionItem3pendingCancelation, cancellationReasonItem:prescription.prescriptionItem3cancellationreason, quantityItem: prescription.prescriptionItem3quantity, instructionItem: prescription.prescriptionItem3instructions, itemstatusItem: prescription.prescriptionItem3Status, NHSAppItem: prescription.prescriptionItem3PrescNHSApp, Prescribed: prescription.prescriptionItem3Prescribed, Dispensed: prescription.prescriptionItem3Dispensed},
+        { exists:prescription.prescriptionItem4exists, nameItem: prescription.prescriptionItem4, quantityItem: prescription.prescriptionItem4quantity, pendingCancellationItem: prescription.prescriptionItem4pendingCancelation, cancellationReasonItem:prescription.prescriptionItem4cancellationreason, quantityItem: prescription.prescriptionItem4quantity, instructionItem: prescription.prescriptionItem4instructions, itemstatusItem: prescription.prescriptionItem4Status, NHSAppItem: prescription.prescriptionItem4PrescNHSApp, Prescribed: prescription.prescriptionItem4Prescribed, Dispensed: prescription.prescriptionItem4Dispensed},
+      ],
+      prescriptionMessage1: prescription.prescriptionMessage1,
+      prescriptionMessageHeader1: prescription.prescriptionMessage1header,
+      prescriptionMessageDateTime1: prescription.prescriptionMessage1sendDateTime,
+      prescriptionLess2: prescription.prescriptionless2,
+      prescriptionMessage1Org: prescription.prescriptionMessage1Org,
+      PrescriptionNewStatus1: prescription.prescriptionMessage1NewStatus,
+      prescriptionDN1: prescription.prescriptionMessage1DN,
+      prescriptionDN1id: prescription.prescriptionMessage1DNID,
+      prescriptionDN1Items: [
+        {item: prescription.prescriptionMessage1DNItem1, quantity:prescription.prescriptionMessage1DNItem1q},
+        {item: prescription.prescriptionMessage1DNItem2, quantity:prescription.prescriptionMessage1DNItem2q},
+        {item: prescription.prescriptionMessage1DNItem3, quantity:prescription.prescriptionMessage1DNItem3q},
+        {item: prescription.prescriptionMessage1DNItem4, quantity:prescription.prescriptionMessage1DNItem4q},
+
+      ],
+      
+
+      prescriptionMessage2: prescription.prescriptionMessage2,
+      prescriptionMessageHeader2: prescription.prescriptionMessage2header,
+      prescriptionMessageDateTime2: prescription.prescriptionMessage2sendDateTime,
+      prescriptionMessage2Org: prescription.prescriptionMessage2Org,
+      prescriptionNewStatus2: prescription.prescriptionMessage2NewStatus,
+      prescriptionDN2: prescription.prescriptionMessage2DN,
+      prescriptionDN2id: prescription.prescriptionMessage2DNID,
+      prescriptionDN2Items: [
+        {item: prescription.prescriptionMessage2DNItem1, quantity:prescription.prescriptionMessage2DNItem1q},
+        {item: prescription.prescriptionMessage2DNItem2, quantity:prescription.prescriptionMessage2DNItem2q},
+        {item: prescription.prescriptionMessage2DNItem3, quantity:prescription.prescriptionMessage2DNItem3q},
+        {item: prescription.prescriptionMessage2DNItem4, quantity:prescription.prescriptionMessage2DNItem4q},
+
+      ],
+    
+
+      prescriptionMessage3: prescription.prescriptionMessage3,
+      prescriptionMessageHeader3: prescription.prescriptionMessage3header,
+      prescriptionMessageDateTime3: prescription.prescriptionMessage3sendDateTime,
+      prescriptionMessage3Org: prescription.prescriptionMessage3Org ,
+      prescriptionNewStatus3:prescription.prescriptionMessage3NewStatus, 
+      prescriptionDN3: prescription.prescriptionMessage3DN, 
+      prescriptionDN3id: prescription.prescriptionMessage3DNID,
+      prescriptionDN3Items: [
+        {item: prescription.prescriptionMessage3DNItem1, quantity:prescription.prescriptionMessage3DNItem1q},
+        {item: prescription.prescriptionMessage3DNItem2, quantity:prescription.prescriptionMessage3DNItem2q},
+        {item: prescription.prescriptionMessage3DNItem3, quantity:prescription.prescriptionMessage3DNItem3q},
+        {item: prescription.prescriptionMessage3DNItem4, quantity:prescription.prescriptionMessage3DNItem4q},
+
+      ],
+      prescriptionMessage4: prescription.prescriptionMessage4,
+      prescriptionMessageHeader4: prescription.prescriptionMessage4header,
+      prescriptionMessageDateTime4: prescription.prescriptionMessage4sendDateTime,
+      prescriptionMessage4Org: prescription.prescriptionMessage4Org ,
+      prescriptionNewStatus4:prescription.prescriptionMessage4NewStatus,
+      prescriptionDN4: prescription.prescriptionMessage4DN, 
+      prescriptionDN4id: prescription.prescriptionMessage4DNID,
+      prescriptionDN4Items: [
+        {item: prescription.prescriptionMessage4DNItem1, quantity:prescription.prescriptionMessage4DNItem1q},
+        {item: prescription.prescriptionMessage4DNItem2, quantity:prescription.prescriptionMessage4DNItem2q},
+        {item: prescription.prescriptionMessage4DNItem3, quantity:prescription.prescriptionMessage4DNItem3q},
+        {item: prescription.prescriptionMessage4DNItem4, quantity:prescription.prescriptionMessage4DNItem4q},
+  
+      ],
+    
+  
+      prescriptionDispenser: prescription.dispenserBox,
+      prescriptionDispenseOrg: prescription.Dispenserorg,
+      prescriptionDispenserAddress: prescription.Dispenseraddress, 
+      prescriptionDispenserContact: prescription.Dispensercontact,
+      prescriptionNomDispenser: prescription.nominatedDispenserBox, 
+      prescriptionNomDispenserOrg: prescription.nominatedDispenserorg, 
+      prescriptionNomDispenserAddress: prescription.nominatedDispenseraddress, 
+      prescriptionNomDispeserContact: prescription.nominatedDispensercontact, 
+      prescriptionPrescriber: prescription.prescriberBox, 
+      prescriptionPrescriberOrg: prescription.prescriberOrg, 
+      prescriptionPrescriberAddress: prescription.prescriberAddress, 
+      prescriptionPrescriberContact: prescription.prescribercontact, 
+      prescriptionPrescriberCountry: prescription.prescriberCountry,
+    });
+
+  res.render("./epsv11a/prescription-template-2-history", {
+    prescriptionID: prescription.prescriptionID,
+    prescriptionType: prescription.prescriptionType,
+    prescriptionERDsupply: prescription.daysSupply, 
+    pendingCancellation: prescription.pendingCancellation,
+    prescriptionIssueDate: prescription.prescriptionIssueDate,
+    prescriptionLess2: prescription.prescriptionless2,
+    prescriptionStatus: prescription.prescriptionStatus,
+    prescriptionDispensed: prescription.itemsDispensed,
+    prescriptionPrescribed: prescription.itemsPrescribed,
+    prescriptionItems: [
+      { exists:prescription.prescriptionItem1exists, nameItem: prescription.prescriptionItem1, quantityItem1: prescription.prescriptionItem1quantity, pendingCancellationItem: prescription.prescriptionItem1pendingCancelation, cancellationReasonItem:prescription.prescriptionItem1cancellationreason, quantityItem: prescription.prescriptionItem1quantity, instructionItem: prescription.prescriptionItem1instructions, itemstatusItem: prescription.prescriptionItem1Status, NHSAppItem: prescription.prescriptionItem1PrescNHSApp, Prescribed: prescription.prescriptionItem1Prescribed, Dispensed: prescription.prescriptionItem1Dispensed},
+      { exists:prescription.prescriptionItem2exists, nameItem: prescription.prescriptionItem2, quantityItem2: prescription.prescriptionItem2quantity, pendingCancellationItem: prescription.prescriptionItem2pendingCancelation, cancellationReasonItem:prescription.prescriptionItem2cancellationreason, quantityItem: prescription.prescriptionItem2quantity, instructionItem: prescription.prescriptionItem2instructions, itemstatusItem: prescription.prescriptionItem2Status, NHSAppItem: prescription.prescriptionItem2PrescNHSApp, Prescribed: prescription.prescriptionItem2Prescribed, Dispensed: prescription.prescriptionItem2Dispensed},
+      { exists:prescription.prescriptionItem3exists, nameItem: prescription.prescriptionItem3, quantityItem: prescription.prescriptionItem3quantity, pendingCancellationItem: prescription.prescriptionItem3pendingCancelation, cancellationReasonItem:prescription.prescriptionItem3cancellationreason, quantityItem: prescription.prescriptionItem3quantity, instructionItem: prescription.prescriptionItem3instructions, itemstatusItem: prescription.prescriptionItem3Status, NHSAppItem: prescription.prescriptionItem3PrescNHSApp, Prescribed: prescription.prescriptionItem3Prescribed, Dispensed: prescription.prescriptionItem3Dispensed},
+      { exists:prescription.prescriptionItem4exists, nameItem: prescription.prescriptionItem4, quantityItem: prescription.prescriptionItem4quantity, pendingCancellationItem: prescription.prescriptionItem4pendingCancelation, cancellationReasonItem:prescription.prescriptionItem4cancellationreason, quantityItem: prescription.prescriptionItem4quantity, instructionItem: prescription.prescriptionItem4instructions, itemstatusItem: prescription.prescriptionItem4Status, NHSAppItem: prescription.prescriptionItem4PrescNHSApp, Prescribed: prescription.prescriptionItem4Prescribed, Dispensed: prescription.prescriptionItem4Dispensed},
+    ],
+    prescriptionMessage1: prescription.prescriptionMessage1,
+    prescriptionMessageHeader1: prescription.prescriptionMessage1header,
+    prescriptionMessageDateTime1: prescription.prescriptionMessage1sendDateTime,
+    prescriptionMessage1Org: prescription.prescriptionMessage1Org,
+    prescriptionNewStatus1: prescription.prescriptionMessage1NewStatus,
+    prescriptionDN1: prescription.prescriptionMessage1DN,
+    prescriptionDN1id: prescription.prescriptionMessage1DNID,
+    prescriptionDN1Items: [
+      {item: prescription.prescriptionMessage1DNItem1, quantity:prescription.prescriptionMessage1DNItem1q},
+      {item: prescription.prescriptionMessage1DNItem2, quantity:prescription.prescriptionMessage1DNItem2q},
+      {item: prescription.prescriptionMessage1DNItem3, quantity:prescription.prescriptionMessage1DNItem3q},
+      {item: prescription.prescriptionMessage1DNItem4, quantity:prescription.prescriptionMessage1DNItem4q},
+
+    ],
+
+    prescriptionMessage2: prescription.prescriptionMessage2,
+    prescriptionMessageHeader2: prescription.prescriptionMessage2header,
+    prescriptionMessageDateTime2: prescription.prescriptionMessage2sendDateTime,
+    prescriptionMessage2Org: prescription.prescriptionMessage2Org,
+    prescriptionNewStatus2: prescription.prescriptionMessage2NewStatus,
+    prescriptionDN2: prescription.prescriptionMessage2DN,
+    prescriptionDN2id: prescription.prescriptionMessage2DNID,
+    prescriptionDN2Items: [
+      {item: prescription.prescriptionMessage2DNItem1, quantity:prescription.prescriptionMessage2DNItem1q},
+      {item: prescription.prescriptionMessage2DNItem2, quantity:prescription.prescriptionMessage2DNItem2q},
+      {item: prescription.prescriptionMessage2DNItem3, quantity:prescription.prescriptionMessage2DNItem3q},
+      {item: prescription.prescriptionMessage2DNItem4, quantity:prescription.prescriptionMessage2DNItem4q},
+    ],
+
+    prescriptionMessage3: prescription.prescriptionMessage3,
+    prescriptionMessageHeader3: prescription.prescriptionMessage3header,
+    prescriptionMessageDateTime3: prescription.prescriptionMessage3sendDateTime,
+    prescriptionMessage3Org: prescription.prescriptionMessage3Org ,
+    prescriptionNewStatus3:prescription.prescriptionMessage3NewStatus,
+    prescriptionDN3: prescription.prescriptionMessage3DN, 
+    prescriptionDN3id: prescription.prescriptionMessage3DNID,
+    prescriptionDN3Items: [
+      {item: prescription.prescriptionMessage3DNItem1, quantity:prescription.prescriptionMessage3DNItem1q},
+      {item: prescription.prescriptionMessage3DNItem2, quantity:prescription.prescriptionMessage3DNItem2q},
+      {item: prescription.prescriptionMessage3DNItem3, quantity:prescription.prescriptionMessage3DNItem3q},
+      {item: prescription.prescriptionMessage3DNItem4, quantity:prescription.prescriptionMessage3DNItem4q},
+
+    ],
+
+    prescriptionMessage4: prescription.prescriptionMessage4,
+    prescriptionMessageHeader4: prescription.prescriptionMessage4header,
+    prescriptionMessageDateTime4: prescription.prescriptionMessage4sendDateTime,
+    prescriptionMessage4Org: prescription.prescriptionMessage4Org ,
+    prescriptionNewStatus4:prescription.prescriptionMessage4NewStatus,
+    prescriptionDN4: prescription.prescriptionMessage4DN, 
+    prescriptionDN4id: prescription.prescriptionMessage4DNID,
+    prescriptionDN4Items: [
+      {item: prescription.prescriptionMessage4DNItem1, quantity:prescription.prescriptionMessage4DNItem1q},
+      {item: prescription.prescriptionMessage4DNItem2, quantity:prescription.prescriptionMessage4DNItem2q},
+      {item: prescription.prescriptionMessage4DNItem3, quantity:prescription.prescriptionMessage4DNItem3q},
+      {item: prescription.prescriptionMessage4DNItem4, quantity:prescription.prescriptionMessage4DNItem4q},
+
+    ],
+
+    prescriptionDispenser: prescription.dispenserBox,
+    prescriptionDispenseOrg: prescription.Dispenserorg,
+    prescriptionDispenserAddress: prescription.Dispenseraddress, 
+    prescriptionDispenserContact: prescription.Dispensercontact,
+    prescriptionNomDispenser: prescription.nominatedDispenserBox, 
+    prescriptionNomDispenserOrg: prescription.nominatedDispenserorg, 
+    prescriptionNomDispenserAddress: prescription.nominatedDispenseraddress, 
+    prescriptionNomDispeserContact: prescription.nominatedDispensercontact, 
+    prescriptionPrescriber: prescription.prescriberBox, 
+    prescriptionPrescriberOrg: prescription.prescriberOrg, 
+    prescriptionPrescriberAddress: prescription.prescriberAddress, 
+    prescriptionPrescriberContact: prescription.prescribercontact, 
+    prescriptionPrescriberCountry: prescription.prescriberCountry,
+
+
+  });
+});
 
 }

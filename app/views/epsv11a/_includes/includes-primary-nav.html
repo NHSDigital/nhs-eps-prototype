@@ -1,10 +1,16 @@
+
+<style>
+
+</style>
+
+
+
+
 <div class="nhsuk-tab-set tab-side-padding">
-  <a href="patient-overview" class="nhsuk-tab-set__tab{% if primarynav === 'overview' %} nhsuk-tab-set__tab--active{% endif %} tab-internal-padding" id="patient-dashboard-navigation-tab">Overview</a>
-  <a href="patient-details" class="nhsuk-tab-set__tab{% if primarynav === 'patient' %} nhsuk-tab-set__tab--active{% endif %} tab-internal-padding" id="patient-demographics-navigation-tab">Patient Details</a>
-  <a href="patient-clinical" class="nhsuk-tab-set__tab{% if primarynav === 'clinical' %} nhsuk-tab-set__tab--active{% endif %} tab-internal-padding" id="patient-clinicals-navigation-tab">Clinical</a>
-  {% if data.perms['documents'] !== "no" %}
-  <a href="patient-documents" class="nhsuk-tab-set__tab{% if primarynav === 'documents' %} nhsuk-tab-set__tab--active{% endif %} tab-internal-padding" id="patient-documents-navigation-tab">Documents</a>
-  {% endif %}
+  <a href="prescription-template-2?nhsNumber=5900009890&prescID=6GA337P3f3022H597C&prescType=Acute" class="nhsuk-u-font-size-16 nhsuk-tab-set__tab{% if primarynav === 'items' %} nhsuk-tab-set__tab--active{% endif %} tab-internal-padding" id="patient-dashboard-navigation-tab">Prescription items</a>
+  <a href="prescription-template-2-info?nhsNumber=5900009890&prescID=6GA337P3f3022H597C&prescType=Acute" class="nhsuk-u-font-size-16 nhsuk-tab-set__tab{% if primarynav === 'information' %} nhsuk-tab-set__tab--active{% endif %} tab-internal-padding" id="patient-demographics-navigation-tab">Prescriber and dispenser information</a>
+  <a href="prescription-template-2-history?nhsNumber=5900009890&prescID=6GA337P3f3022H597C&prescType=Acute" class=" nhsuk-u-font-size-16 nhsuk-tab-set__tab{% if primarynav === 'history' %} nhsuk-tab-set__tab--active{% endif %} tab-internal-padding" id="patient-clinicals-navigation-tab">History</a>
+ 
 </div>
 
 {%  if data['layout'] === 'twoCol' %}
@@ -12,7 +18,7 @@
   <ul class="nhsuk-sub-navigation__list" id="subnav">
     {# javascript renders the menu in here #}
 
-    <!--
+  
     <li class="nhsuk-sub-navigation__item" data-target="#key-demographic">
       <a type="button" aria-current="page" class="nhsuk-sub-navigation__link" tabindex="0">
         Key demographic information
@@ -22,7 +28,7 @@
     #contacts-and-next-of-kin
     #charge-status-panel
     #flags-data
-    -->
+   
 
   </ul>
 </nav>
