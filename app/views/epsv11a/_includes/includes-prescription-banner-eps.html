@@ -7,9 +7,10 @@
     <div class="nhsuk-u-margin-0" id="summary-nhs-number-copy">
       <button aria-disabled="false" id="copyButton" aria-label="Copy this patient's NHS number to the clipboard" class="nhsuk-button nhsuk-button--reverse copy-button button__green nhsuk-u-margin-1 nhsuk-u-margin-right-4" type="submit">Copy</button>
     </div>
-    <div class="patient-summary__block" id="summary-gender">
-      <span class="patient-summary__info">Current site:  {{ prescriptionDispenseOrg or 'COHENS CHEMIST (ODS: FV519)' }}</span>
+    <div class="patient-summary__block" id="summary-dob">
+      <span class="patient-summary__info">Issue date: {{ prescriptionIssueDate or '02-Jan-2025'}}</span>
     </div>
+    
     <div class="patient-summary__block" id="summary-nhs-number">
       <span class="patient-summary__info">Status:{% set prescstatus = prescriptionStatus or 'Items dispensed' %}    <strong class="nhsuk-tag            
         {% if prescstatus == 'Available to download' %} nhsuk-tag--yellow             
@@ -30,12 +31,12 @@
     <div class="patient-summary__block" id="summary-dob">
       <span class="patient-summary__info">Type: {{ prescriptionType or 'eRD' }}</span>
     </div>
+    {% if prescriptionERDsupply %}
     <div class="patient-summary__block" id="summary-dob">
-      <span class="patient-summary__info">Issue date: {{ prescriptionIssueDate or '02-Jan-2025'}}</span>
+      <span class="patient-summary__info">Days supply: {{ prescriptionERDsupply }}</span>
     </div>
-    <div id="summary-nhs-number-copy" class=" nhsuk-u-margin-1">
-      <button aria-disabled="false" id="copyButton" aria-label="Open a printable PDF of this prescription" class="nhsuk-button nhsuk-button--reverse copy-button button__blue" type="submit">Print summary</button>
-    </div>
+    {% endif %}
+   
   
     
     
