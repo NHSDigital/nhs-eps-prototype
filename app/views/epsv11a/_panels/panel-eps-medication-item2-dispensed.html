@@ -87,6 +87,46 @@
         </div>
       </dl>
       <p class="nhsuk-body-s">The NHS App status shows the patient where this prescription is in relation to the collection or dispatch process.</p>
+      {% if prescriptionItems[1].initialitem %}
+      <p class="nhsuk-u-margin-bottom-0"><strong>What was initially prescribed</strong></p>
+      
+      <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Item
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ prescriptionItems[1].initialitem }}
+          </dd>
+      
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Quantity 
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ prescriptionItems[1].initialQuantity }}
+          </dd>
+      
+        </div>
+      
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Instructions
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ prescriptionItems[1].instructionInitial }}
+          </dd>
+      
+        </div>
+      
+      
+      
+      
+      </dl>
+           
+            {% endif %}
+   
     </div>
   </div>
 </div>
