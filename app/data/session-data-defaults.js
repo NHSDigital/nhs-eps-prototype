@@ -266,6 +266,7 @@ module.exports = {
         "hoHistVisaType": "Not available",
         "hoHistImmigrationStatus": "Not available",
         "hoHistHealthcareStatus": "Not available",
+        "superceded": "",
         "prescriptionNo": ""
       }
     },
@@ -469,6 +470,7 @@ module.exports = {
         "hoHistVisaType": "",
         "hoHistImmigrationStatus": "",
         "hoHistHealthcareStatus": "",
+        "superceded": "yes",
         "prescriptionNo": ["6GA337P343022H597C", "6GA337P3f3022H597C","2GA357P3f3022B591C"]
       }
     },
@@ -672,6 +674,7 @@ module.exports = {
         "hoHistVisaType": "",
         "hoHistImmigrationStatus": "",
         "hoHistHealthcareStatus": "",
+        "superceded": "",
         "prescriptionNo": [""]
       }
     },
@@ -875,6 +878,7 @@ module.exports = {
         "hoHistVisaType": "",
         "hoHistImmigrationStatus": "",
         "hoHistHealthcareStatus": "",
+        "superceded": "",
         "prescriptionNo": ["6GA337P3f3022H597C"]
       }
     },
@@ -1078,6 +1082,7 @@ module.exports = {
           "hoHistVisaType": "",
           "hoHistImmigrationStatus": "",
           "hoHistHealthcareStatus": "",
+          "superceded": "",
           "prescriptionNo": ["6GA337P3f3022H597C"]
         }
     },
@@ -1280,6 +1285,7 @@ module.exports = {
         "hoHistVisaType": "",
         "hoHistImmigrationStatus": "",
         "hoHistHealthcareStatus": "",
+        "superceded": "",
         "prescriptionNo": ["6GA337P343022H597C", "6GA337P3f3022H597C","2GA357P3f3022B591C","9PA657P5J3022B791G", "7DA157B5J1021B591D","9DA257B5J1021B591D"]
       }
     }

@@ -235,7 +235,7 @@ router.get("/epsv11a/search-results", function (req, res, next) {
       // Iterate through each patient record in the array
       for (const patientObject of patientsArray) {
         for (const [patientNhsNumber, patient] of Object.entries(patientObject)) {
-          // console.log('Checking patient NHS Number:', patientNhsNumber, 'Patient Data:', patient);
+           console.log('Checking patient NHS Number:', patientNhsNumber, 'Patient Data:', patient);
           // Compare NHS numbers (trimmed)
           if (patientNhsNumber.trim() === nhsNumber) {
             //console.log('Match found:', patientNhsNumber);
