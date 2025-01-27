@@ -1,0 +1,83 @@
+<div class="data-panel__wrapper no-outline" tabindex="-1">
+  <div class="nhsuk-card data-panel" id="key-details-panel">
+    <div class="nhsuk-card__content">
+      <h3 class="nhsuk-card__heading">
+        <span>Key Details</span>
+
+        {% if data.perms['editDemog'] !== 'no' %}
+        <a href="patient-details-history" class="data-panel__view-history-button" id="name-panel-view-history" role="button" tabindex="0">View history
+          <span class="nhsuk-u-visually-hidden">Key details</span>
+        </a>
+        {% endif %}
+
+        {% if data.perms['viewHistory'] !== 'no' %}
+        <a href="javascript:void(0)" class="data-panel__edit-button" id="pds-start-edit-button-name" role="button" tabindex="0">Edit
+          <span class="nhsuk-u-visually-hidden">Key details</span>
+        </a>
+        {% endif %}
+
+      </h3>
+      <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Gender</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content">
+              {{ patient.gender or 'Female' }}
+            </span>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">NHS Number</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content">
+              {{ patient.nhsNumber | formatNhsNumber  or '9726918863' | formatNhsNumber }}
+              <button aria-disabled="false" id="copyButton2" aria-label="Copy this patient's NHS number to the clipboard" class="nhsuk-button copy-button" type="submit">Copy</button>
+            </span>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Date of Birth</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.dob === 'Not Recorded' or patient.dob === undefined %}--none{% endif %}">
+              {{ patient.dob or '5-Aug-1990' }}
+            </span>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Birth Order</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.birthOrder === 'Not Recorded' or patient.birthOrder === undefined %}--none{% endif %}">
+              {{ patient.birthOrder or 'Not Recorded' }}
+            </span>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Place of Birth</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.placeOfBirth === 'Not Recorded' or patient.placeOfBirth === undefined %}--none{% endif %}">
+              {{ patient.placeOfBirth or 'London' }}
+            </span>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Language</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.language === 'Not Recorded' or patient.language === undefined %}--none{% endif %}">
+              {{ patient.language or 'Spanish' }}
+            </span>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">GP Practice</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.gpPractice === 'Not Recorded' or patient.gpPractice === undefined %}--none{% endif %}">
+              <a id="key-details-panel-gp-practice" role="button" tabindex="0">
+              {{ patient.gpPractice or 'FIELDHEAD SURGERY (B85051)' }}
+              </a>
+            </span>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</div>

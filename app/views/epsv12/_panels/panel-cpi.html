@@ -1,0 +1,50 @@
+{% if not data.patient['cpisFlag'] !== 'yes' %}
+
+<div class="data-panel__wrapper no-outline" tabindex="-1">
+  <div class="nhsuk-card data-panel" id="cpis-panel">
+    <div class="nhsuk-card__content">
+      <h3 class="nhsuk-card__heading">
+        <span>View child protection information</span>
+      </h3>
+      <p>The patient's child protection information includes details about the type of protection order, the responsible local authority, contact numbers and who has previously viewed the information.</p>
+      <div class="nhsuk-action-link">
+        <a href="patient-details-cpis" class="nhsuk-action-link__link" id="view-cpis-link" tabindex="0">
+          <svg aria-hidden="true" class="nhsuk-icon nhsuk-icon__arrow-right-circle" height="36" viewBox="0 0 24 24" width="36" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+          </svg>
+          <span class="nhsuk-action-link__text">View child protection information</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% else %}
+
+<div class="data-panel__wrapper no-outline" tabindex="-1">
+  <div class="nhsuk-card data-panel" id="cpis-panel">
+    <div class="nhsuk-card__content">
+      <h3 class="nhsuk-card__heading">
+        <span>There is no Child Protection Information Sharing (CP-IS) record for this patient</span>
+      </h3>
+      <p>However, there may still be safeguarding issues to consider. A CP-IS record can consist of one or more of the following: </p>
+      <ul>
+        <li>Child Protection Plan</li>
+        <li>Looked After Child Status</li>
+        <li>Unborn Child Protection Plan</li>
+      </ul>
+      <p>This does not include other social care plans such as a Child in Need Plan. If you have any concerns about this patient you should: </p>
+      <ul>
+        <li>follow your local safeguarding procedures</li>
+        <li>speak with your manager or safeguarding lead</li>
+        <li>consult the
+          <a href="https://www.gov.uk/government/publications/working-together-to-safeguard-children--2" rel="noopener noreferrer external" target="_blank">statutory guidance for Working together to safeguard children (opens in a new tab)</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+{% endif %}

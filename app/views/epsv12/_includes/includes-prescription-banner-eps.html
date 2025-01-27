@@ -1,0 +1,58 @@
+<div class="patient-summary-eps-prescription">
+  <div class="row bottom-xs">
+
+    <div class="patient-summary__block" id="prescription-id">
+      <span class="patient-summary__info">Prescription ID: <span id="copyText">{{ prescriptionID  or '4FA217-P84302-2H597C' }}</span></span>
+    </div>
+    <div class="nhsuk-u-margin-0" id="summary-nhs-number-copy">
+      <button aria-disabled="false" id="copyButton" aria-label="Copy this patient's NHS number to the clipboard" class="nhsuk-button nhsuk-button--reverse copy-button button__green nhsuk-u-margin-1 nhsuk-u-margin-right-4" type="submit">Copy</button>
+    </div>
+    <div class="patient-summary__block" id="summary-dob">
+      <span class="patient-summary__info">Issue date: {{ prescriptionIssueDate }}</span>
+    </div>
+   
+    <div class="patient-summary__block" id="summary-nhs-number">
+      <span class="patient-summary__info">Status:{% set prescstatus = prescriptionStatus or 'Claimed' %}    <strong class="nhsuk-tag            
+        {% if prescstatus == 'Available to download' %} nhsuk-tag--yellow             
+       {% elif prescstatus == 'Items dispensed' %} nhsuk-tag--green             
+       {% elif prescstatus == 'Cancelled' %} nhsuk-tag--red            
+        {% elif prescstatus == 'Future issue date' %} nhsuk-tag--blue      
+       {% elif prescstatus == 'Some items owed' %} nhsuk-tag--blue
+       {% elif prescstatus == 'Future repeat dispense' %} nhsuk-tag--aqua-green  
+       {% elif prescstatus == 'No items dispensed' %} nhsuk-tag--white   
+       {% elif prescstatus == 'Expired' %} nhsuk-tag--orange      
+       {% elif prescstatus == 'Claimed' %} nhsuk-tag--grey 
+       {% elif prescstatus == 'Downloaded by a dispenser' %} nhsuk-tag--purple
+       {% elif prescstatus == 'Next repeat ready to download' %} nhsuk-tag--pink              
+       {% endif %}">
+       {{ prescstatus }}
+     </strong>  </span>
+    </div>
+    <div class="patient-summary__block" id="summary-dob">
+      <span class="patient-summary__info">Type: {{ prescriptionType or 'eRD' }}</span>
+    </div>
+
+{% if prescriptionERDsupply %}
+<div class="patient-summary__block" id="summary-dob">
+  <span class="patient-summary__info">Days supply: {{ prescriptionERDsupply }}</span>
+</div>
+{% endif %}
+    
+    
+  </div>
+
+ 
+  <div id="patientview-sentinel" style="height: 1px; background-color: transparent;"></div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const copyTextElement = document.getElementById("copyText");
+  let prescriptionID = copyTextElement.textContent;
+
+  // Format the prescription ID by adding dashes
+  const formattedID = prescriptionID.replace(/(.{6})(.{6})(.{6})/, "$1-$2-$3");
+
+  // Update the content with the formatted ID
+  copyTextElement.textContent = formattedID;
+});
+</script>

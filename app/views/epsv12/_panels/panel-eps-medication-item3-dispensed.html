@@ -1,0 +1,55 @@
+<div class="data-panel__wrapper no-outline" tabindex="-1">
+  <div class="nhsuk-card nhsuk-u-margin-bottom-3" id="address-panel">
+    <div class="nhsuk-card__content nhsuk-u-padding-3">
+      <h3 class="nhsuk-card__heading nhsuk-heading-xs">
+        <span>{{ prescriptionItems[2].nameItem or 'Blephaclean wipes(Thea Pharmaceuticals Ltd)' }}</span>
+
+      </h3>
+      
+        
+       <div class="nhsuk-u-grid-row" id="status">{% set itemstatus = prescriptionItems[2].itemstatusItem or 'Claimed' %}
+        <strong class="nhsuk-u-margin-bottom-2 nhsuk-tag            
+          {% if itemstatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
+          {% elif itemstatus == 'Item fully dispensed' %} nhsuk-tag--green             
+          {% elif itemstatus == 'Item cancelled' %} nhsuk-tag--red            
+          {% elif itemstatus == 'Future issue date' %} nhsuk-tag--blue      
+          {% elif itemstatus == 'Item dispensed - partial' %} nhsuk-tag--blue
+          {% elif itemstatus == 'Item not dispensed - owing' %} nhsuk-tag--blue
+          {% elif itemstatus == 'Future repeat dispense' %} nhsuk-tag--aqua-green  
+          {% elif itemstatus == 'Item not dispensed' %} nhsuk-tag--orange   
+          {% elif itemstatus == 'Item expired' %} nhsuk-tag--white      
+          {% elif itemstatus == 'Claimed' %} nhsuk-tag--grey 
+          {% elif itemstatus == 'Item with dispenser' %} nhsuk-tag--purple
+          {% elif itemstatus == 'Next repeat ready to download' %} nhsuk-tag--pink              
+          {% endif %}">
+          {{ itemstatus }}
+        </strong> 
+      
+    
+ 
+    {% if prescriptionItems[2].pendingCancellationItem === 'yes' %}
+      <p>⚠️ This item is pending cancellation.</p>
+      <p class="nhsuk-u-margin-2"><strong>Cancellation reason</strong> </br>  {{ prescriptionItems[2].cancellationReasonItem or 'Prescribing error' }} </p>
+      {% endif %} </div>      
+          
+     <div class="nhsuk-u-grid-row" id="quantity-instruction-app">
+      <div class="nhsuk-grid-column-one-third"> 
+        <p class="nhsuk-u-margin-bottom-2"><strong>Quantity</strong></p>  
+        <p class="nhsuk-u-margin-bottom-2"><strong>Instructions</strong></p>
+        {% set appstatus = prescriptionItems[2].NHSAppItem or 'Collected' %}
+        {% if appstatus === 'Status unavailable' %}
+        {% else %}<p class="nhsuk-u-margin-bottom-2"><strong>Pharmacy status</strong></p> {%endif%}
+      </div>
+      <div class="nhsuk-grid-column-two-thirds">
+        <p class="nhsuk-u-margin-bottom-2">{{ prescriptionItems[2].quantityItem or '21 tablets' }}</p>
+        <p>{{ prescriptionItems[2].instructionItem or 'Take 3 times a day with water' }}</p>
+        {% set appstatus = prescriptionItems[2].NHSAppItem or 'Collected' %}
+        {% if appstatus === 'Status unavailable' %}
+        {% else %}<p><strong class="nhsuk-tag">{{ appstatus }}</strong></p> {%endif%}
+      </div>
+     </div>
+ 
+      
+    </div>
+  </div>
+</div>
