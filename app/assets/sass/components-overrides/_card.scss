@@ -181,3 +181,24 @@
 .nhsuk-card__headingMVP {
   margin-bottom: 0px;
 }
+
+
+.nhsuk-card {
+  overflow: hidden; /* Ensures nothing spills outside */
+}
+
+.nhsuk-card__headingCancelled {
+  background-color: #ed8b00;
+  padding: 12px 16px; /* Slightly increased padding for a cleaner look */
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  width: calc(100% + 32px); /* Extends beyond padding */
+  margin: -16px -16px -8px -16px; /* Pulls background to edges */
+  box-sizing: border-box;
+  position: relative; /* Keeps layout intact */
+  top: -16px; /* Moves it up to remove spacing at the top */
+  border-top-left-radius: 4px; /* Optional: Matches NHS styling */
+  border-top-right-radius: 4px;
+}
+
