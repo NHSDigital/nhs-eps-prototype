@@ -1,6 +1,6 @@
 <div class="data-panel__wrapper no-outline" tabindex="-1">
   <div class="nhsuk-card nhsuk-u-margin-bottom-3" id="address-panel">
-    <div class="nhsuk-card__content nhsuk-u-padding-3">
+    <div class="nhsuk-card__content nhsuk-u-padding-top-3 nhsuk-u-padding-bottom-1 nhsuk-u-padding-right-3 nhsuk-u-padding-left-3">
       <h3 class="nhsuk-card__heading nhsuk-heading-xs">
         <span>{{ prescriptionItems[2].nameItem or 'Blephaclean wipes(Thea Pharmaceuticals Ltd)' }}</span>
 
@@ -11,7 +11,7 @@
 
 {% endif %}
 
-<p> {% set itemstatus = prescriptionItems[2].itemstatusItem or 'Claimed' %}
+<p class="nhsuk-u-margin-bottom-2"> {% set itemstatus = prescriptionItems[2].itemstatusItem or 'Claimed' %}
   <strong class="nhsuk-tag            
     {% if itemstatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
     {% elif itemstatus == 'Item fully dispensed' %} nhsuk-tag--green             

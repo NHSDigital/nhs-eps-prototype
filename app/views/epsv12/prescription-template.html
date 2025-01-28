@@ -84,14 +84,16 @@ Prescription - {{ serviceName }}
           {% if prescriptionDispenser === 'yes' %}
           {% include "./_panels/panel-eps-dispenser.html" %}
           {% endif %}
-         
+          
+          {% if prescriptionNomDispenser === 'yes' %}
+          {% include "./_panels/panel-eps-nominateddispenser.html" %}
+          {% endif %} 
+
           {% if prescriptionPrescriber === 'yes' %}
           {% include "./_panels/panel-eps-prescriber.html" %}
           {% endif %}
 
-          {% if prescriptionNomDispenser === 'yes' %}
-          {% include "./_panels/panel-eps-nominateddispenser.html" %}
-          {% endif %}
+         
           
 
         </div>
