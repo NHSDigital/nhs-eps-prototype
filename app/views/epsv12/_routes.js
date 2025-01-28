@@ -46,9 +46,10 @@ router.post("/epsv12/search-presc-post", function (req, res) {
 
     req.session.data.patient = patient;
     req.session.data.prescriptionID = prescNumber;
+    req.session.data.searchTerm = 'prescription';
 
     // Redirect to the spinner
-    return res.redirect(`spinner-prescription-list?nhsNumber=${nhsNumber}&prescID=${prescNumber}`);
+    return res.redirect(`spinner-prescription-list?nhsNumber=${nhsNumber}&prescID=${prescNumber}&searchTerm=prescription`);
   } else {
     req.session.data.patient = null;
     return res.redirect("search");
@@ -69,10 +70,11 @@ router.post("/epsv12/search-nhs-post", function (req, res) {
   let patient = patientEntry ? patientEntry[nhsNumber] : null;
 
   if (patient) {
-    req.session.data.patient = patient;
+    req.session.data.patient = patient; 
+    req.session.data.searchTerm = 'nhs';
 
     // Redirect to the spinner
-    return res.redirect(`spinner-prescription-list?nhsNumber=${nhsNumber}`);
+    return res.redirect(`spinner-prescription-list?nhsNumber=${nhsNumber}&searchTerm=nhs`);
   } else {
     req.session.data.patient = null;
     req.session.data.errors["nhs-number"] = true;
@@ -110,7 +112,8 @@ router.post("/epsv12/search-nhs-post", function (req, res) {
         return res.redirect('spinner-twin-list');
     } else {
         // Redirect to spinner-prescription-list for any other case
-        return res.redirect('spinner-prescription-list?nhsNumber=5900009890');
+        req.session.data.searchTerm = 'basic';
+        return res.redirect('spinner-prescription-list?nhsNumber=5900009890&searchTerm=basic');
     }
 });
 
@@ -265,6 +268,7 @@ router.get("/epsv12/search-results", function (req, res, next) {
     returnedPrescriptionsListCurrent = returnedPrescriptionsListAll.filter(item => {
       const key = Object.keys(item)[0];
       const prescription = item[key];
+      
       // how we filter the list down
       return prescription.prescriptionStatus !== 'Future issue date' && prescription.prescriptionStatus !== 'Future repeat dispense' && prescription.prescriptionStatus !== 'Expired' && prescription.prescriptionStatus !== 'Claimed';;
     }).map(item => {
@@ -337,7 +341,8 @@ router.get("/epsv12/search-results", function (req, res, next) {
       returnedPrescriptionsListFuture: returnedPrescriptionsListFuture,
       returnedPrescriptionsListExpired: returnedPrescriptionsListExpired,
       returnedPatientFirstName: returnedPatientFirstName,
-      returnedPatientLastName: returnedPatientLastName
+      returnedPatientLastName: returnedPatientLastName,
+      searchTerm: req.query.searchTerm // Pass searchTerm here
   });
   });
 

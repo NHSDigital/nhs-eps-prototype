@@ -38,11 +38,12 @@
       const urlParams = new URLSearchParams(window.location.search);
     const nhsNumber = urlParams.get('nhsNumber');
     const prescID = urlParams.get('prescID');
+    const searchTerm = urlParams.get ('searchTerm');
 
     // Construct the redirect URL
     const redirectUrl = prescID
-      ? `/epsv12/prescription-results?nhsNumber=${nhsNumber}&prescID=${prescID}`
-      : `/epsv12/prescription-results?nhsNumber=${nhsNumber}`;
+      ? `/epsv12/prescription-results?nhsNumber=${nhsNumber}&prescID=${prescID}&searchTerm=${searchTerm}`
+      : `/epsv12/prescription-results?nhsNumber=${nhsNumber}&searchTerm=${searchTerm}`;
 
     // Redirect after 2 seconds
     setTimeout(() => {
