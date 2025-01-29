@@ -401,10 +401,10 @@ router.get("/epsv12/search-results", function (req, res, next) {
       prescriptionDN1: prescription.prescriptionMessage1DN,
       prescriptionDN1id: prescription.prescriptionMessage1DNID,
       prescriptionDN1Items: [
-        {item: prescription.prescriptionMessage1DNItem1, quantity:prescription.prescriptionMessage1DNItem1q},
-        {item: prescription.prescriptionMessage1DNItem2, quantity:prescription.prescriptionMessage1DNItem2q},
-        {item: prescription.prescriptionMessage1DNItem3, quantity:prescription.prescriptionMessage1DNItem3q},
-        {item: prescription.prescriptionMessage1DNItem4, quantity:prescription.prescriptionMessage1DNItem4q},
+        {item: prescription.prescriptionMessage1DNItem1, quantity:prescription.prescriptionMessage1DNItem1q, instruction: prescription.prescriptionMessage1DNItem1ins},
+        {item: prescription.prescriptionMessage1DNItem2, quantity:prescription.prescriptionMessage1DNItem2q, instruction: prescription.prescriptionMessage1DNItem2ins},
+        {item: prescription.prescriptionMessage1DNItem3, quantity:prescription.prescriptionMessage1DNItem3q, instruction: prescription.prescriptionMessage1DNItem3ins},
+        {item: prescription.prescriptionMessage1DNItem4, quantity:prescription.prescriptionMessage1DNItem4q, instruction: prescription.prescriptionMessage1DNItem4ins},
 
       ],
       
@@ -417,10 +417,10 @@ router.get("/epsv12/search-results", function (req, res, next) {
       prescriptionDN2: prescription.prescriptionMessage2DN,
       prescriptionDN2id: prescription.prescriptionMessage2DNID,
       prescriptionDN2Items: [
-        {item: prescription.prescriptionMessage2DNItem1, quantity:prescription.prescriptionMessage2DNItem1q},
-        {item: prescription.prescriptionMessage2DNItem2, quantity:prescription.prescriptionMessage2DNItem2q},
-        {item: prescription.prescriptionMessage2DNItem3, quantity:prescription.prescriptionMessage2DNItem3q},
-        {item: prescription.prescriptionMessage2DNItem4, quantity:prescription.prescriptionMessage2DNItem4q},
+        {item: prescription.prescriptionMessage2DNItem1, quantity:prescription.prescriptionMessage2DNItem1q, instruction: prescription.prescriptionMessage2DNItem1ins},
+        {item: prescription.prescriptionMessage2DNItem2, quantity:prescription.prescriptionMessage2DNItem2q, instruction: prescription.prescriptionMessage2DNItem2ins},
+        {item: prescription.prescriptionMessage2DNItem3, quantity:prescription.prescriptionMessage2DNItem3q, instruction: prescription.prescriptionMessage2DNItem3ins},
+        {item: prescription.prescriptionMessage2DNItem4, quantity:prescription.prescriptionMessage2DNItem4q, instruction: prescription.prescriptionMessage2DNItem4ins},
 
       ],
     
@@ -433,10 +433,10 @@ router.get("/epsv12/search-results", function (req, res, next) {
       prescriptionDN3: prescription.prescriptionMessage3DN, 
       prescriptionDN3id: prescription.prescriptionMessage3DNID,
       prescriptionDN3Items: [
-        {item: prescription.prescriptionMessage3DNItem1, quantity:prescription.prescriptionMessage3DNItem1q},
-        {item: prescription.prescriptionMessage3DNItem2, quantity:prescription.prescriptionMessage3DNItem2q},
-        {item: prescription.prescriptionMessage3DNItem3, quantity:prescription.prescriptionMessage3DNItem3q},
-        {item: prescription.prescriptionMessage3DNItem4, quantity:prescription.prescriptionMessage3DNItem4q},
+        {item: prescription.prescriptionMessage3DNItem1, quantity:prescription.prescriptionMessage3DNItem1q, instruction: prescription.prescriptionMessage3DNItem1ins},
+        {item: prescription.prescriptionMessage3DNItem2, quantity:prescription.prescriptionMessage3DNItem2q, instruction: prescription.prescriptionMessage3DNItem2ins},
+        {item: prescription.prescriptionMessage3DNItem3, quantity:prescription.prescriptionMessage3DNItem3q, instruction: prescription.prescriptionMessage3DNItem3ins},
+        {item: prescription.prescriptionMessage3DNItem4, quantity:prescription.prescriptionMessage3DNItem4q, instruction: prescription.prescriptionMessage3DNItem4ins},
 
       ],
       prescriptionMessage4: prescription.prescriptionMessage4,
@@ -447,10 +447,10 @@ router.get("/epsv12/search-results", function (req, res, next) {
       prescriptionDN4: prescription.prescriptionMessage4DN, 
       prescriptionDN4id: prescription.prescriptionMessage4DNID,
       prescriptionDN4Items: [
-        {item: prescription.prescriptionMessage4DNItem1, quantity:prescription.prescriptionMessage4DNItem1q},
-        {item: prescription.prescriptionMessage4DNItem2, quantity:prescription.prescriptionMessage4DNItem2q},
-        {item: prescription.prescriptionMessage4DNItem3, quantity:prescription.prescriptionMessage4DNItem3q},
-        {item: prescription.prescriptionMessage4DNItem4, quantity:prescription.prescriptionMessage4DNItem4q},
+        {item: prescription.prescriptionMessage4DNItem1, quantity:prescription.prescriptionMessage4DNItem1q, instruction: prescription.prescriptionMessage4DNItem1ins},
+        {item: prescription.prescriptionMessage4DNItem2, quantity:prescription.prescriptionMessage4DNItem2q, instruction: prescription.prescriptionMessage4DNItem2ins},
+        {item: prescription.prescriptionMessage4DNItem3, quantity:prescription.prescriptionMessage4DNItem3q, instruction: prescription.prescriptionMessage4DNItem3ins},
+        {item: prescription.prescriptionMessage4DNItem4, quantity:prescription.prescriptionMessage4DNItem4q, instruction: prescription.prescriptionMessage4DNItem4ins},
   
       ],
     
@@ -494,10 +494,10 @@ router.get("/epsv12/search-results", function (req, res, next) {
     prescriptionDN1: prescription.prescriptionMessage1DN,
     prescriptionDN1id: prescription.prescriptionMessage1DNID,
     prescriptionDN1Items: [
-      {item: prescription.prescriptionMessage1DNItem1, quantity:prescription.prescriptionMessage1DNItem1q},
-      {item: prescription.prescriptionMessage1DNItem2, quantity:prescription.prescriptionMessage1DNItem2q},
-      {item: prescription.prescriptionMessage1DNItem3, quantity:prescription.prescriptionMessage1DNItem3q},
-      {item: prescription.prescriptionMessage1DNItem4, quantity:prescription.prescriptionMessage1DNItem4q},
+      {item: prescription.prescriptionMessage1DNItem1, quantity:prescription.prescriptionMessage1DNItem1q, instruction: prescription.prescriptionMessage1DNItem1ins},
+      {item: prescription.prescriptionMessage1DNItem2, quantity:prescription.prescriptionMessage1DNItem2q, instruction: prescription.prescriptionMessage1DNItem2ins},
+      {item: prescription.prescriptionMessage1DNItem3, quantity:prescription.prescriptionMessage1DNItem3q, instruction: prescription.prescriptionMessage1DNItem3ins},
+      {item: prescription.prescriptionMessage1DNItem4, quantity:prescription.prescriptionMessage1DNItem4q, instruction: prescription.prescriptionMessage1DNItem4ins},
 
     ],
 
@@ -509,10 +509,10 @@ router.get("/epsv12/search-results", function (req, res, next) {
     prescriptionDN2: prescription.prescriptionMessage2DN,
     prescriptionDN2id: prescription.prescriptionMessage2DNID,
     prescriptionDN2Items: [
-      {item: prescription.prescriptionMessage2DNItem1, quantity:prescription.prescriptionMessage2DNItem1q},
-      {item: prescription.prescriptionMessage2DNItem2, quantity:prescription.prescriptionMessage2DNItem2q},
-      {item: prescription.prescriptionMessage2DNItem3, quantity:prescription.prescriptionMessage2DNItem3q},
-      {item: prescription.prescriptionMessage2DNItem4, quantity:prescription.prescriptionMessage2DNItem4q},
+      {item: prescription.prescriptionMessage2DNItem1, quantity:prescription.prescriptionMessage2DNItem1q, instruction: prescription.prescriptionMessage2DNItem1ins},
+      {item: prescription.prescriptionMessage2DNItem2, quantity:prescription.prescriptionMessage2DNItem2q, instruction: prescription.prescriptionMessage2DNItem2ins},
+      {item: prescription.prescriptionMessage2DNItem3, quantity:prescription.prescriptionMessage2DNItem3q, instruction: prescription.prescriptionMessage2DNItem3ins},
+      {item: prescription.prescriptionMessage2DNItem4, quantity:prescription.prescriptionMessage2DNItem4q, instruction: prescription.prescriptionMessage2DNItem4ins},
     ],
 
     prescriptionMessage3: prescription.prescriptionMessage3,
@@ -523,10 +523,10 @@ router.get("/epsv12/search-results", function (req, res, next) {
     prescriptionDN3: prescription.prescriptionMessage3DN, 
     prescriptionDN3id: prescription.prescriptionMessage3DNID,
     prescriptionDN3Items: [
-      {item: prescription.prescriptionMessage3DNItem1, quantity:prescription.prescriptionMessage3DNItem1q},
-      {item: prescription.prescriptionMessage3DNItem2, quantity:prescription.prescriptionMessage3DNItem2q},
-      {item: prescription.prescriptionMessage3DNItem3, quantity:prescription.prescriptionMessage3DNItem3q},
-      {item: prescription.prescriptionMessage3DNItem4, quantity:prescription.prescriptionMessage3DNItem4q},
+      {item: prescription.prescriptionMessage3DNItem1, quantity:prescription.prescriptionMessage3DNItem1q, instruction: prescription.prescriptionMessage3DNItem1ins},
+      {item: prescription.prescriptionMessage3DNItem2, quantity:prescription.prescriptionMessage3DNItem2q, instruction: prescription.prescriptionMessage3DNItem2ins},
+      {item: prescription.prescriptionMessage3DNItem3, quantity:prescription.prescriptionMessage3DNItem3q, instruction: prescription.prescriptionMessage3DNItem3ins},
+      {item: prescription.prescriptionMessage3DNItem4, quantity:prescription.prescriptionMessage3DNItem4q, instruction: prescription.prescriptionMessage3DNItem4ins},
 
     ],
 
@@ -538,10 +538,10 @@ router.get("/epsv12/search-results", function (req, res, next) {
     prescriptionDN4: prescription.prescriptionMessage4DN, 
     prescriptionDN4id: prescription.prescriptionMessage4DNID,
     prescriptionDN4Items: [
-      {item: prescription.prescriptionMessage4DNItem1, quantity:prescription.prescriptionMessage4DNItem1q},
-      {item: prescription.prescriptionMessage4DNItem2, quantity:prescription.prescriptionMessage4DNItem2q},
-      {item: prescription.prescriptionMessage4DNItem3, quantity:prescription.prescriptionMessage4DNItem3q},
-      {item: prescription.prescriptionMessage4DNItem4, quantity:prescription.prescriptionMessage4DNItem4q},
+      {item: prescription.prescriptionMessage4DNItem1, quantity:prescription.prescriptionMessage4DNItem1q, instruction: prescription.prescriptionMessage4DNItem1ins},
+      {item: prescription.prescriptionMessage4DNItem2, quantity:prescription.prescriptionMessage4DNItem2q, instruction: prescription.prescriptionMessage4DNItem2ins},
+      {item: prescription.prescriptionMessage4DNItem3, quantity:prescription.prescriptionMessage4DNItem3q, instruction: prescription.prescriptionMessage4DNItem3ins},
+      {item: prescription.prescriptionMessage4DNItem4, quantity:prescription.prescriptionMessage4DNItem4q, instruction: prescription.prescriptionMessage4DNItem4ins},
 
     ],
 
