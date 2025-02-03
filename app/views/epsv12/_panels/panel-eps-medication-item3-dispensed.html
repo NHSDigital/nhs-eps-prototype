@@ -30,7 +30,7 @@
   </strong> </p>
 
       <dl class="nhsuk-summary-list nhsuk-u-margin-bottom-2">
-        {% if prescriptionItems[2].pendingCancellationItem === 'yes' %}
+        {% if prescriptionItems[2].pendingCancellationItem === 'yes' or prescriptionItems[2].cancellationReasonItem %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">Cancellation reason</dt>
           <dd class="nhsuk-summary-list__value ">
