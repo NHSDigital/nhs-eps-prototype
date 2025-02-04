@@ -25,9 +25,14 @@
     </strong>
   </td>
   <td class="nhsuk-table__cell">
-    {% if prescriptions.Cancellation == "yes" %}
-   
-      ⚠️ 1 item pending cancellation
+    {% if prescriptions.Cancellation %}
+        {% if prescriptions.Cancellation === "4" %}
+      ⚠️ All items pending cancellation
+        {% elif prescriptions.Cancellation === "1" %}
+        ⚠️ 1 item pending cancellation 
+        {% else %}
+        ⚠️ {{prescriptions.Cancellation }} items pending cancellation 
+        {% endif %}
     </div>
   {% else %}
     None

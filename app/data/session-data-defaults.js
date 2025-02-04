@@ -1294,7 +1294,7 @@ module.exports = {
     {
       "6GA337P343022H597C": {
         "prescriptionID": "6GA337P343022H597C",
-        "pendingCancellation": "no",
+        "pendingCancellation": "",
         "prescriptionIssueDate": "22-Dec-2024",
         "prescriptionless2": "yes",
         "prescriptionStatus": "Claimed",
@@ -1439,7 +1439,7 @@ module.exports = {
     {
       "6GA337P3f3022H597C": {
         "prescriptionID": "6GA337P3f3022H597C",
-        "pendingCancellation": "no",
+        "pendingCancellation": "",
         "prescriptionIssueDate": "22-Jan-2024",
         "prescriptionless2": "",
         "prescriptionStatus": "Items dispensed",
@@ -1584,7 +1584,7 @@ module.exports = {
     {
       "6GA337P343022H597C": {
         "prescriptionID": "6GA337P343022H597C",
-        "pendingCancellation": "no",
+        "pendingCancellation": "",
         "prescriptionIssueDate": "22-Jan-2025",
         "prescriptionless2": "yes",
         "prescriptionStatus": "Items dispensed",
@@ -1729,7 +1729,7 @@ module.exports = {
     {
       "6GA337P343022H597C": {
         "prescriptionID": "6GA337P343022H597C",
-        "pendingCancellation": "no",
+        "pendingCancellation": "",
         "prescriptionIssueDate": "22-Feb-2025",
         "prescriptionless2": "yes",
         "prescriptionStatus": "Future repeat dispense",
@@ -1874,7 +1874,7 @@ module.exports = {
     {
       "6GA337P343022H597C": {
         "prescriptionID": "6GA337P343022H597C",
-        "pendingCancellation": "no",
+        "pendingCancellation": "",
         "prescriptionIssueDate": "22-Feb-2025",
         "prescriptionless2": "yes",
         "prescriptionStatus": "Future repeat dispense",
@@ -2019,7 +2019,7 @@ module.exports = {
     {
       "6GA337P343022H597C": {
         "prescriptionID": "6GA337P343022H597C",
-        "pendingCancellation": "no",
+        "pendingCancellation": "",
         "prescriptionIssueDate": "22-Mar-2025",
         "prescriptionless2": "yes",
         "prescriptionStatus": "Future repeat dispense",
@@ -2164,7 +2164,7 @@ module.exports = {
     {
       "6GA337P343022H597C": {
         "prescriptionID": "6GA337P343022H597C",
-        "pendingCancellation": "no",
+        "pendingCancellation": "",
         "prescriptionIssueDate": "22-April-2025",
         "prescriptionless2": "yes",
         "prescriptionStatus": "Future repeat dispense",
@@ -2309,7 +2309,7 @@ module.exports = {
     {
       "2GA357P3f3022B591C": {
         "prescriptionID": "2GA357P3f3022B591C",
-        "pendingCancellation": "yes",
+        "pendingCancellation": "1",
         "prescriptionIssueDate": "20-Jan-2024",
         "prescriptionless2": "",
         "prescriptionStatus": "Downloaded by a dispenser",
@@ -2454,7 +2454,7 @@ module.exports = {
     {
       "9PA657P5J3022B791G": {
         "prescriptionID": "9PA657P5J3022B791G",
-        "pendingCancellation": "no",
+        "pendingCancellation": "",
         "prescriptionIssueDate": "20-Jan-2024",
         "prescriptionless2": "",
         "prescriptionStatus": "Some items owed",
@@ -2599,7 +2599,7 @@ module.exports = {
     {
       "7DA157B5J1021B591D": {
         "prescriptionID": "7DA157B5J1021B591D",
-        "pendingCancellation": "no",
+        "pendingCancellation": "",
         "prescriptionIssueDate": "19-Jan-2024",
         "prescriptionless2": "",
         "prescriptionStatus": "Some items owed",
@@ -2744,7 +2744,7 @@ module.exports = {
     {
       "9DA257B5J1021B591D": {
         "prescriptionID": "9DA257B5J1021B591D",
-        "pendingCancellation": "no",
+        "pendingCancellation": "",
         "prescriptionIssueDate": "18-Jan-2024",
         "prescriptionless2": "",
         "prescriptionStatus": "Items dispensed",
@@ -2889,7 +2889,7 @@ module.exports = {
     {
       "5DA157B5D1021B501D": {
         "prescriptionID": "5DA157B5D1021B501D",
-        "pendingCancellation": "no",
+        "pendingCancellation": "",
         "prescriptionIssueDate": "02-Jan-2025",
         "prescriptionless2": "",
         "prescriptionStatus": "Cancelled",
@@ -3033,7 +3033,7 @@ module.exports = {
     {
       "6PA157P5J1021B591D": {
         "prescriptionID": "6PA157P5J1021B591D",
-        "pendingCancellation": "no",
+        "pendingCancellation": "",
         "prescriptionIssueDate": "01-Feb-2025",
         "prescriptionless2": "",
         "prescriptionStatus": "Claimed",
@@ -3166,7 +3166,7 @@ module.exports = {
     {
       "5GA127F5D1021B591D": {
         "prescriptionID": "5GA127F5D1021B591D",
-        "pendingCancellation": "yes",
+        "pendingCancellation": "4",
         "prescriptionIssueDate": "01-Feb-2025",
         "prescriptionless2": "",
         "prescriptionStatus": "Downloaded by a dispenser",
