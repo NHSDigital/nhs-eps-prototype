@@ -1,7 +1,7 @@
 
 {% if patient.superceded !== '' or patient.superceded !== undefined or searchTerm === 'basic'%}
 
-{% if patient.superceded === 'yes' and searchTerm === 'nhs' or searchTerm === 'prescription'%}
+{% if patient.superceded === 'yes' and (searchTerm === 'nhs' or searchTerm === 'prescription') %}
   {% if searchTerm === 'nhs'%}
     {% set message = "The NHS number you entered is no longer valid and the patient has been given a new one. Please make sure the patient's details are correct." %}
   {% elif searchTerm === 'prescription' %}
