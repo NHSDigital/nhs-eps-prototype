@@ -8,7 +8,8 @@ module.exports = {
       "editDemog": "yes",
       "viewHistory": "yes",
       "ovm": "no",
-      "bna": "no"
+      "bna": "no",
+        "site":""
     },
   "roles": [
     {
@@ -17,49 +18,64 @@ module.exports = {
         "editDemog": "yes",
         "viewHistory": "yes",
         "ovm": "yes",
-        "bna": "yes"
+        "bna": "yes",
+        "site":""
       },
       "Health Records Manager": {
         "documents": "yes",
         "editDemog": "yes",
         "viewHistory": "yes",
         "ovm": "no",
-        "bna": "no"
+        "bna": "no",
+        "site":""
       },
       "Pharmacist": {
         "documents": "yes",
         "editDemog": "yes",
         "viewHistory": "yes",
         "ovm": "no",
-        "bna": "no"
+        "bna": "no",
+        "site":"Cohen's chemist (ODS:FV519)"
       },
       "Demographic Administrator": {
         "documents": "yes",
         "editDemog": "yes",
         "viewHistory": "yes",
         "ovm": "no",
-        "bna": "no"
+        "bna": "no",
+        "site":""
+      },
+      "General practitioner": {
+        "documents": "yes",
+        "editDemog": "yes",
+        "viewHistory": "yes",
+        "ovm": "no",
+        "bna": "no",
+        "site":"Fiji surgery (ODS:FI05964)"
       },
       "Health Records Manager Access Role": {
         "documents": "yes",
         "editDemog": "yes",
         "viewHistory": "yes",
         "ovm": "no",
-        "bna": "no"
+        "bna": "no",
+        "site":""
       },
       "Midwife Access Role": {
         "documents": "yes",
         "editDemog": "yes",
         "viewHistory": "yes",
         "ovm": "no",
-        "bna": "no"
+        "bna": "no",
+        "site":""
       },
       "Admin/Clinical Support Access Role": {
         "documents": "yes",
         "editDemog": "yes",
         "viewHistory": "yes",
         "ovm": "no",
-        "bna": "no"
+        "bna": "no",
+        "site":""
       }
     }
   ],
