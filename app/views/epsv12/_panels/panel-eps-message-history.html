@@ -35,7 +35,7 @@
           </div>
           {% endif %}
           {% if prescriptionDN1 === 'yes' %}
-          <details class="nhsuk-details nhsuk-u-padding-top-2">
+          <details class="nhsuk-details nhsuk-u-padding-top-2 nhsuk-u-margin-bottom-0">
             <summary class="nhsuk-details__summary">
               <span class="nhsuk-details__summary-text nhsuk-u-font-size-16">
                 Dispense notification information
@@ -87,7 +87,7 @@
             </strong> 
           </div>
 {% if prescriptionDN2 === 'yes' %}
-<details class="nhsuk-details nhsuk-u-padding-top-2">
+<details class="nhsuk-details nhsuk-u-padding-top-2 nhsuk-u-margin-bottom-0">
   <summary class="nhsuk-details__summary">
     <span class="nhsuk-details__summary-text nhsuk-u-font-size-16">
       Dispense notification information
@@ -139,16 +139,28 @@
                     {{ status }}
                   </strong>    
                 </div>
-                {% if prescriptionDN3 === 'yes' %}
-<div class="nhs-screening-whole-timeline__description"> Dispense notification ID: {{ prescriptionDN3id or 'b240434e-cb85-40bb-899c-1c61410c93a7'}}
-</div>
-<div class="nhs-screening-whole-timeline__description">Prescription items: <ul class="nhsuk-u-padding-top-2 nhsuk-u-margin-bottom-1">
-  {% if prescriptionDN3Items[0].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN3Items[0].item }}</br>Quantity: {{ prescriptionDN3Items[0].quantity }}</br>Instruction: {{ prescriptionDN3Items[0].instruction }} </li>{% endif %}
-  {% if prescriptionDN3Items[1].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN3Items[1].item }}</br>Quantity: {{ prescriptionDN3Items[1].quantity }}</br>Instruction: {{ prescriptionDN3Items[1].instruction }} </li>{% endif %}
-  {% if prescriptionDN3Items[2].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN3Items[2].item }}</br>Quantity: {{ prescriptionDN3Items[2].quantity }}</br>Instruction: {{ prescriptionDN3Items[2].instruction }} </li>{% endif %}
-  {% if prescriptionDN3Items[3].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN3Items[3].item }}</br>Quantity: {{ prescriptionDN3Items[3].quantity }}</br>Instruction: {{ prescriptionDN3Items[3].instruction }} </li>{% endif %}
-</ul>
-</div>
+          
+
+{% if prescriptionDN3 === 'yes' %}
+<details class="nhsuk-details nhsuk-u-padding-top-2 nhsuk-u-margin-bottom-0">
+  <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text nhsuk-u-font-size-16">
+      Dispense notification information
+    </span>
+  </summary>
+  <div class="nhsuk-details__text">
+    <div class="nhs-screening-whole-timeline__description"> Dispense notification ID: {{ prescriptionDN2id or 'b240434e-cb85-40bb-899c-1c61410c93a7'}}
+    </div>
+    <div class="nhs-screening-whole-timeline__description">Prescription items: <ul class="nhsuk-u-padding-top-2">
+      {% if prescriptionDN3Items[0].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN3Items[0].item }}</br>Quantity: {{ prescriptionDN3Items[0].quantity }}</br>Instruction: {{ prescriptionDN3Items[0].instruction }} </li> {% endif %}
+      {% if prescriptionDN3Items[1].item %} <li class="nhsuk-u-font-size-16">{{ prescriptionDN3Items[1].item }}</br>Quantity: {{ prescriptionDN3Items[1].quantity }}</br>Instruction: {{ prescriptionDN3Items[1].instruction }} </li> {% endif %}
+      {% if prescriptionDN3Items[2].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN3Items[2].item }}</br>Quantity: {{ prescriptionDN3Items[2].quantity }}</br>Instruction: {{ prescriptionDN3Items[2].instruction }} </li> {% endif %}
+      {% if prescriptionDN3Items[3].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN3Items[3].item }}</br>Quantity: {{ prescriptionDN3Items[3].quantity }}</br>Instruction: {{ prescriptionDN3Items[3].instruction }} </li> {% endif %}
+    </ul>
+    </div>
+
+  </div>
+</details>
 {% endif %}
               </div>
 {% endif %}
@@ -182,16 +194,28 @@
       {{ status }}
     </strong>    
   </div>
-  {% if prescriptionDN4 === 'yes' %}
-<div class="nhs-screening-whole-timeline__description"> Dispense notification ID: {{ prescriptionDN4id or 'b240434e-cb85-40bb-899c-1c61410c93a7'}}
-</div>
-<div class="nhs-screening-whole-timeline__description">Prescription items: <ul class="nhsuk-u-padding-top-2 nhsuk-u-margin-bottom-1">
-{% if prescriptionDN4Items[0].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN4Items[0].item }}</br>Quantity: {{ prescriptionDN4Items[0].quantity }}</br>Instruction: {{ prescriptionDN4Items[0].instruction }} </li>{% endif %}
-{% if prescriptionDN4Items[1].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN4Items[1].item }}</br>Quantity: {{ prescriptionDN4Items[1].quantity }}</br>Instruction: {{ prescriptionDN4Items[1].instruction }} </li>{% endif %}
-{% if prescriptionDN4Items[2].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN4Items[2].item }}</br>Quantity: {{ prescriptionDN4Items[2].quantity }}</br>Instruction: {{ prescriptionDN4Items[2].instruction }} </li>{% endif %}
-{% if prescriptionDN4Items[3].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN4Items[3].item }}</br>Quantity: {{ prescriptionDN4Items[3].quantity }}</br>Instruction: {{ prescriptionDN4Items[3].instruction }} </li>{% endif %}
-</ul>
-</div>
+
+
+{% if prescriptionDN4 === 'yes' %}
+<details class="nhsuk-details nhsuk-u-padding-top-2 nhsuk-u-margin-bottom-0">
+  <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text nhsuk-u-font-size-16">
+      Dispense notification information
+    </span>
+  </summary>
+  <div class="nhsuk-details__text">
+    <div class="nhs-screening-whole-timeline__description"> Dispense notification ID: {{ prescriptionDN4id or 'b240434e-cb85-40bb-899c-1c61410c93a7'}}
+    </div>
+    <div class="nhs-screening-whole-timeline__description">Prescription items: <ul class="nhsuk-u-padding-top-2">
+      {% if prescriptionDN4Items[0].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN4Items[0].item }}</br>Quantity: {{ prescriptionDN4Items[0].quantity }}</br>Instruction: {{ prescriptionDN4Items[0].instruction }} </li> {% endif %}
+      {% if prescriptionDN4Items[1].item %} <li class="nhsuk-u-font-size-16">{{ prescriptionDN4Items[1].item }}</br>Quantity: {{ prescriptionDN4Items[1].quantity }}</br>Instruction: {{ prescriptionDN4Items[1].instruction }} </li> {% endif %}
+      {% if prescriptionDN4Items[2].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN4Items[2].item }}</br>Quantity: {{ prescriptionDN4Items[2].quantity }}</br>Instruction: {{ prescriptionDN4Items[2].instruction }} </li> {% endif %}
+      {% if prescriptionDN4Items[3].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN4Items[3].item }}</br>Quantity: {{ prescriptionDN4Items[3].quantity }}</br>Instruction: {{ prescriptionDN4Items[3].instruction }} </li> {% endif %}
+    </ul>
+    </div>
+
+  </div>
+</details>
 {% endif %}
 </div>
 {% endif %}
