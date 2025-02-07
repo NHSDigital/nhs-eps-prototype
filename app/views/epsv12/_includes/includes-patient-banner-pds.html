@@ -1,4 +1,4 @@
-<div class="patient-summary-eps">
+<div class="patient-summary-epsalert">
   <div class="row bottom-xs">
     <div class="patient-summary__block" id="summary-name">
       <h1 class="nhsuk-heading-xs patient-summary__info">
@@ -6,20 +6,30 @@
         {{ patient.lastName | upper or 'Rodriguez'| upper }}
       </h1></div>
     <div class="patient-summary__block" id="summary-gender">
-      <span class="patient-summary__info">Gender: {{ patient.gender or 'Female' }}</span>
+      <span class="patient-summary__info">Gender: Unavailable</span>
     </div>
     <div class="patient-summary__block" id="summary-nhs-number">
       <span class="patient-summary__info">NHS number: <span id="copyText2">{{ patient.nhsNumber | formatNhsNumber  or '9726918863' | formatNhsNumber }}</span></span>
     </div>
     <div class="patient-summary__block" id="summary-dob">
-      <span class="patient-summary__info">Date of birth: {{ patient.dob or '5-Aug-1990' }}</span>
+      <span class="patient-summary__info">Date of birth: Unavailable</span>
     </div>
     <div class="patient-summary__block" id="summary-address">
-      <span class="patient-summary__info">Address: {{ patient.usualAddress or '123 TEST STREET, TEST LANE, LEEDS, WEST YORKSHIRE, LS1 1JL' }}</span>
+      <span class="patient-summary__info">Address: Unavailable</span>
+    </div>
+    <div class="patient-summary__block" id="summary-address">
+      <span class="patient-summary__info">Some information is unavailable right now. It may help to refresh the page or try again later.</span>
     </div>
   </div>
   
- 
+  
+
+
+
+
+
+
+
   <div id="patientview-sentinel" style="height: 1px; background-color: transparent;"></div>
 </div>
 

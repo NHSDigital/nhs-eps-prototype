@@ -84,7 +84,7 @@
 }
 
 @media(min-width: 40.0625em) {
-  .patient-summary,.patient-summary-eps,.patient-summary-eps-prescription,.patient-summary-eps-site,.patient-summary--deceased,.patient-summary--yellow-alert {
+  .patient-summary,.patient-summary-eps,.patient-summary-epsalert,.patient-summary-eps-prescription,.patient-summary-eps-site,.patient-summary--deceased,.patient-summary--yellow-alert {
     padding-bottom:16px;
     padding-left: 32px;
     padding-right: 32px;
@@ -98,6 +98,11 @@
 }
 .patient-summary-eps {
   background-color: #D2EDF6;
+  color: $nhsuk-text-color;
+}
+
+.patient-summary-epsalert {
+  background-color: #ffeb3b;
   color: $nhsuk-text-color;
 }
 
