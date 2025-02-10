@@ -9,7 +9,8 @@ module.exports = {
       "viewHistory": "yes",
       "ovm": "no",
       "bna": "no",
-        "site":""
+        "site":"",
+        "address":""
     },
   "roles": [
     {
@@ -19,7 +20,8 @@ module.exports = {
         "viewHistory": "yes",
         "ovm": "yes",
         "bna": "yes",
-        "site":""
+        "site":"",
+        "address":""
       },
       "Health Records Manager": {
         "documents": "yes",
@@ -27,7 +29,17 @@ module.exports = {
         "viewHistory": "yes",
         "ovm": "no",
         "bna": "no",
-        "site":""
+        "site":"",
+        "address":""
+      },
+      "Health Records Manager": {
+        "documents": "yes",
+        "editDemog": "yes",
+        "viewHistory": "yes",
+        "ovm": "no",
+        "bna": "no",
+        "site":"Locum pharmacy (ODS: FFFFF)",
+        "address":""
       },
       "Pharmacist": {
         "documents": "yes",
@@ -35,7 +47,8 @@ module.exports = {
         "viewHistory": "yes",
         "ovm": "no",
         "bna": "no",
-        "site":"Cohen's chemist (ODS:FV519)"
+        "site":"Cohen's chemist (ODS:FV519)",
+        "address":""
       },
       "Demographic Administrator": {
         "documents": "yes",
@@ -43,7 +56,8 @@ module.exports = {
         "viewHistory": "yes",
         "ovm": "no",
         "bna": "no",
-        "site":""
+        "site":"",
+        "address":""
       },
       "General practitioner": {
         "documents": "yes",
@@ -51,7 +65,8 @@ module.exports = {
         "viewHistory": "yes",
         "ovm": "no",
         "bna": "no",
-        "site":"Fiji surgery (ODS:FI05964)"
+        "site":"Fiji surgery (ODS:FI05964)",
+        "address":""
       },
       "Health Records Manager Access Role": {
         "documents": "yes",
@@ -59,7 +74,8 @@ module.exports = {
         "viewHistory": "yes",
         "ovm": "no",
         "bna": "no",
-        "site":""
+        "site":"",
+        "address":""
       },
       "Midwife Access Role": {
         "documents": "yes",
@@ -67,7 +83,8 @@ module.exports = {
         "viewHistory": "yes",
         "ovm": "no",
         "bna": "no",
-        "site":""
+        "site":"",
+        "address":""
       },
       "Admin/Clinical Support Access Role": {
         "documents": "yes",
@@ -75,7 +92,8 @@ module.exports = {
         "viewHistory": "yes",
         "ovm": "no",
         "bna": "no",
-        "site":""
+        "site":"",
+        "address":""
       }
     }
   ],
