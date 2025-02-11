@@ -1,0 +1,147 @@
+{% extends './_includes/layout-application-no-footer.html' %}
+{% set primarynav = 'patient' %}
+{% set hideNav = 'true' %}
+{% set hideJump = 'true' %}
+
+{% block pageTitle %}
+Error 404 - {{ serviceName }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="row">
+  <div class="col-sm-0 col-md-1 col-lg-1 col-xl-3"></div>
+  <div class="col-sm-12 col-md-10 col-lg-10 col-xl-6">
+    
+    <table class="nhsuk-table">
+      <caption class="nhsuk-table__caption">Prescription statuses</caption>
+      <thead role="rowgroup" class="nhsuk-table__head">
+        <tr role="row">
+          <th role="columnheader" class="" scope="col">
+            Prescription status
+          </th>
+          <th role="columnheader" class="" scope="col">
+            Meaning
+          </th>
+        </tr>
+      </thead>
+      <tbody class="nhsuk-table__body">
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--pink">
+            Next eRD scheduled for release
+          </strong></td>
+          <td class="nhsuk-table__cell ">The status is for ERD prescription types only and does not apply to acute or repeats. 
+
+            It means the prescription has been signed and submitted to Spine but isn't available for release to a dispenser yet.  </td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--yellow">
+            Available to download
+          </strong></td>
+          <td class="nhsuk-table__cell ">The prescription is on Spine and is ready to be pulled down by the nominated dispenser or non-nominated dispenser if non-nominated.
+
+            Applies to all prescription types (acute, repeats and eRDs) </td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--purple">
+            Downloaded by a dispenser
+          </strong></td>
+          <td class="nhsuk-table__cell ">	
+            The prescription has been downloaded by the the dispenser 
+            
+            It can be up to 3 days on average before the prescription is ready to collect 
+            
+            We do not have a ready to collect status in EPS (that will be Phase 2) </td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--blue">
+            Some items dispensed
+          </strong></td>
+          <td class="nhsuk-table__cell ">Locked to the dispenser because they are actively working on the prescription or pending further action. 
+
+            This status is used when a prescription is partially dispensed</td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--white">
+            Expired
+          </strong></td>
+          <td class="nhsuk-table__cell ">The prescription has been sat in Spine for 180 days with no activity so is moved to an 'Expired' status. 
+
+            and then will be moved to the archive after 90 days</td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--red">
+            Cancelled
+          </strong></td>
+          <td class="nhsuk-table__cell ">A prescriber has cancelled the whole prescription 
+
+            It can only be in this state when all the prescription items are cancelled or expired </td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--green">
+            All items dispensed
+          </strong></td>
+          <td class="nhsuk-table__cell ">It could mean a number of things: 
+
+            It could mean a dispenser has prepped the prescription and it's ready to collect
+            It could mean a dispenser has dispensed the prescription 
+            It could be sent after the patient has received their prescriptions </td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--orange">
+            Not dispensed
+          </strong></td>
+          <td class="nhsuk-table__cell ">Dispenser states the prescription has not been dispensed for a given reason </td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--grey">
+            Claimed
+          </strong></td>
+          <td class="nhsuk-table__cell ">A dispenser claims for a prescription to get reimbursed financially 
+
+            This could happen at any point after the prescription is marked as dispensed e.g. some dispensers will do this in bulk at the end of the month, others might do it more regularly 
+            
+            We can't be 100% sure the prescription has been delivered or collected before the prescription moves to Claim status but it's the best option we have available
+            
+            If a claim is amended, the end state is still "Claimed,"</td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--pink">
+            Not claimed
+          </strong></td>
+          <td class="nhsuk-table__cell ">A prescription is left in 'dispensed' status for 180 days and a no claim message is automatically sent to the BSA.</td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--aqua-green">
+            Future eRD issue
+          </strong></td>
+          <td class="nhsuk-table__cell ">eRD status only. 
+
+            Spine mark future issues of eRDs that aren't ready to release yet with a status of 'Repeat Dispense Future Instance'  </td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--blue">
+            Future issue date dispense
+          </strong></td>
+          <td class="nhsuk-table__cell ">Any prescription type (acute, repeat, eRD) can be in this state.
+
+            Clinician sets a start date in the future for when a prescription can be dispensed. e.g. a delayed anti-biotic. </td>
+        </tr>
+      
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--red">
+            Future prescription cancelled
+          </strong></td>
+          <td class="nhsuk-table__cell ">This is used to cancel prescriptions which are stored locally before submitting to EPS. This is held in Spine and when the prescription is submitted this will cancel the prescription.</td>
+        </tr>
+      
+      </tbody>
+    </table>
+    
+
+  </div>
+</div>
+
+{% endblock %}
+
