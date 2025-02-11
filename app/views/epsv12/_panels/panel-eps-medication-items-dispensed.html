@@ -5,10 +5,7 @@
     <div class="nhsuk-card__content nhsuk-u-padding-top-3 nhsuk-u-padding-bottom-2 nhsuk-u-padding-right-3 nhsuk-u-padding-left-3">
       <h3 class="nhsuk-card__headingMVP nhsuk-heading-xs nhsuk-u-margin-bottom-1">
         <span>{{ prescriptionItems[0].nameItem or 'Blephaclean wipes(Thea Pharmaceuticals Ltd)' }}</span>
-
       </h3>
-
-
 <p class="nhsuk-u-margin-bottom-2"> {% set itemstatus = prescriptionItems[0].itemstatusItem or 'Claimed' %}
   <strong class="nhsuk-tag            
     {% if itemstatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
@@ -28,10 +25,7 @@
   </strong> </p>
   {% if prescriptionItems[0].pendingCancellationItem === 'yes' %}
 <p class="nhsuk-u-margin-bottom-2">⚠️ This item is pending cancellation.</p>
-    
-
 {% endif %}
-
       <dl class="nhsuk-summary-list nhsuk-u-margin-bottom-2">
         {% if prescriptionItems[0].pendingCancellationItem === 'yes' or prescriptionItems[0].cancellationReasonItem %}
         <div class="nhsuk-summary-list__row">
@@ -39,14 +33,10 @@
           <dd class="nhsuk-summary-list__value ">
             <span class="data-field__content data-field__content--address">
               {{ prescriptionItems[0].cancellationReasonItem or 'Prescribing error' }}
-            </span>
-            
+            </span> 
           </dd>
         </div>
         {% endif %}
-
-
-        
         <div class="nhsuk-summary-list__row nhsuk-u-padding-top-0 nhsuk-u-padding-bottom-0">
           <dt class="nhsuk-summary-list__key">Quantity</dt>
           <dd class="nhsuk-summary-list__value">
@@ -54,10 +44,6 @@
               {{ prescriptionItems[0].quantityItem or '21 tablets' }}
             </span>
             <br>
-
-            
-
-
           </dd>
         </div>
         <div class="nhsuk-summary-list__row nhsuk-u-padding-top-0 nhsuk-u-padding-bottom-0">
@@ -67,17 +53,10 @@
               {{ prescriptionItems[0].instructionItem or 'Take 3 times a day with water' }}
             </span>
             <br>
-
-           
-
           </dd>
         </div>
-        
-       
-
 {% set appstatus = prescriptionItems[0].NHSAppItem or 'Collected' %}
 {% if appstatus == 'Status unavailable' %}
-
 {% else%}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">Pharmacy status</dt>
@@ -93,11 +72,7 @@
           </dd>
         </div>
 {% endif %}
-
       </dl>
-   
-    
-      
       {% if prescriptionItems[0].initialitem %}
       <details class="nhsuk-details">
         <summary class="nhsuk-details__summary">
@@ -114,7 +89,6 @@
               <dd class="nhsuk-summary-list__value">
                 {{ prescriptionItems[0].initialitem }}
               </dd>
-          
             </div>
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
@@ -123,9 +97,7 @@
               <dd class="nhsuk-summary-list__value">
                 {{ prescriptionItems[0].initialQuantity }}
               </dd>
-          
-            </div>
-          
+            </div>        
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
                 Instructions
@@ -133,25 +105,12 @@
               <dd class="nhsuk-summary-list__value">
                 {{ prescriptionItems[0].instructionInitial }}
               </dd>
-          
             </div>
-          
-          
-          
-          
           </dl>
       
         </div>
       </details>
 
-
-
-
-
-     
-      
-      
-           
             {% endif %}
     </div>
   </div>
