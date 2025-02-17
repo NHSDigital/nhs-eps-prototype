@@ -44,11 +44,40 @@ Find a patient by NHS number - {{ serviceName }}
     {% endif %}
 
 <!-- <h2 class="allowed-role-title{% if data['action'] !== 'change' %} nhsuk-heading-m{% endif %}">Roles with access to the Clinical prescription tracking service</h2>-->
-   
+{% for role in roles %}
+  <div class="nhsuk-card allowed-role">
+    <div class="nhsuk-card__content">
+      <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-3">
+        <h3 class="nhsuk-card__heading">
+          <div class="role-details">
+            <a href="roles-confirm?roleType={{ role.roleName }}" class="role-name" role="button" tabindex="0">
+              <u>{{ role.site }}</u>
+            </a>
+          </div>
+        </h3>
+        <p class="role-details">{{ role.roleName }}</p>
+      </div>
 
+      <div class="nhsuk-grid-column-one-half">
+        <p class="nhsuk-u-margin-top-1 nhsuk-u-font-size-12">
+          {{ role.site }}<br>
+          {{ role.addressLine1 }}<br>
+          {{ role.addressLine2 }}<br>
+          {{ role.addressLine3 }}<br>
+          {{ role.postcode }}
+        </p>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+
+
+
+<!-- Hard coded page back up-->
+ <!-- 
     <div class="nhsuk-card allowed-role">
       <div class="nhsuk-card__content">
-        <div class="nhsuk-grid-column-one-half">
+        <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-3">
           <h3 class="nhsuk-card__heading">
             <div class="role-details">
               <a href="roles-confirm?roleType=Demographic%20Administrator" class="role-name" role="button" tabindex="0">
@@ -69,7 +98,7 @@ Find a patient by NHS number - {{ serviceName }}
     </div>
     <div class="nhsuk-card allowed-role">
       <div class="nhsuk-card__content">
-        <div class="nhsuk-grid-column-one-half"> <h3 class="nhsuk-card__heading">
+        <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-3"> <h3 class="nhsuk-card__heading">
           <div class="role-details">
             <a href="roles-confirm?roleType=Health%20Records%20Manager%20Access%20Role" class="role-name" role="button" tabindex="0">
               <u>NHS CONNECTING FOR HEALTH (X09)</u></a>
@@ -79,7 +108,7 @@ Find a patient by NHS number - {{ serviceName }}
           <div class="nhsuk-grid-column-one-half">
             <p class="nhsuk-u-margin-top-1 nhsuk-u-font-size-12"> 
               Site
-            </br> Site 2
+            </br> {{roles.addressLine1}}
           </br> Site 3
         </br> Site 4
             </p>
@@ -125,6 +154,8 @@ Find a patient by NHS number - {{ serviceName }}
        
       </div>
     </div>
+-->
+
 
     <!--
    <div class="nhsuk-card allowed-role">

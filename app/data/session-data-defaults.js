@@ -14,88 +14,122 @@ module.exports = {
     },
   "roles": [
     {
-      "all": {
-        "documents": "yes",
-        "editDemog": "yes",
-        "viewHistory": "yes",
-        "ovm": "yes",
-        "bna": "yes",
-        "site":"",
-        "address":""
-      },
-      "Health Records Manager": {
+    
+      "roleName":"Health Records Manager", 
         "documents": "yes",
         "editDemog": "yes",
         "viewHistory": "yes",
         "ovm": "no",
         "bna": "no",
-        "site":"",
-        "address":""
+        "eps":"yes",
+        "selected":"yes",
+        "site":"Site site site",
+        "addressLine1":"1234 road road",
+        "addressLine2":"dsadas",
+        "addressLine3":"dsadsa",
+        "postcode":"KT10923"
+          
       },
-      "Health Records Manager": {
+      { "roleName":"Health Records Manager",
         "documents": "yes",
         "editDemog": "yes",
         "viewHistory": "yes",
         "ovm": "no",
         "bna": "no",
+        "eps":"yes",
+        "selected":"yes",
         "site":"Locum pharmacy (ODS: FFFFF)",
-        "address":""
+        "addressLine1":"",
+        "addressLine2":"",
+        "addressLine3":"",
+        "postcode":""
       },
-      "Pharmacist": {
+      { "roleName":"Pharmacist",
         "documents": "yes",
         "editDemog": "yes",
         "viewHistory": "yes",
         "ovm": "no",
         "bna": "no",
+        "eps":"yes",
+        "selected":"yes",
         "site":"Cohen's chemist (ODS:FV519)",
-        "address":""
+        "addressLine1":"asdasd",
+        "addressLine2":"adsad",
+        "addressLine3":"sad",
+        "postcode":"dsadlkj"
       },
-      "Demographic Administrator": {
+      { "roleName":"Demographic Administrator",
         "documents": "yes",
         "editDemog": "yes",
         "viewHistory": "yes",
         "ovm": "no",
         "bna": "no",
-        "site":"",
-        "address":""
+        "eps":"yes",
+        "selected":"yes",
+        "site":"Site Site Site",
+        "addressLine1":"sda",
+        "addressLine2":"sds",
+        "addressLine3":"dsds",
+        "postcode":"dsd"
       },
-      "General practitioner": {
+      { "roleName":"General practitioner",
         "documents": "yes",
         "editDemog": "yes",
         "viewHistory": "yes",
         "ovm": "no",
         "bna": "no",
+        "eps":"yes",
+        "selected":"yes",
         "site":"Fiji surgery (ODS:FI05964)",
-        "address":""
+        "site":"Site Site Site",
+        "addressLine1":"sda",
+        "addressLine2":"sds",
+        "addressLine3":"dsds",
+        "postcode":"dsd"
       },
-      "Health Records Manager Access Role": {
+      { "roleName":"Health Records Manager Access Role",
         "documents": "yes",
         "editDemog": "yes",
         "viewHistory": "yes",
         "ovm": "no",
         "bna": "no",
-        "site":"",
-        "address":""
+        "eps":"yes",
+        "selected":"yes",
+        "site":"Site Site Site",
+        "addressLine1":"sda",
+        "addressLine2":"sds",
+        "addressLine3":"dsds",
+        "postcode":"dsd"
       },
-      "Midwife Access Role": {
+      { "roleName":"Midwife Access Role",
         "documents": "yes",
         "editDemog": "yes",
         "viewHistory": "yes",
         "ovm": "no",
         "bna": "no",
-        "site":"",
-        "address":""
+        "eps":"yes",
+        "selected":"yes",
+        "site":"Site Site Site",
+        "addressLine1":"sda",
+        "addressLine2":"sds",
+        "addressLine3":"dsds",
+        "postcode":"dsd"
       },
-      "Admin/Clinical Support Access Role": {
+      { "roleName":"Admin/Clinical Support Access Role",
         "documents": "yes",
         "editDemog": "yes",
         "viewHistory": "yes",
         "ovm": "no",
         "bna": "no",
-        "site":"",
-        "address":""
+        "eps":"yes",
+        "selected":"yes",
+        "site":"Site Site Site",
+        "addressLine1":"sda",
+        "addressLine2":"sds",
+        "addressLine3":"dsds",
+        "postcode":"dsd"
       }
-    }
+    
   ],
   "patients": [
     {

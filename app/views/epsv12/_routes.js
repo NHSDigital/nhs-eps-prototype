@@ -479,6 +479,11 @@ router.get("/epsv12/prescription-results-pds", function (req, res, next) {
 });
 });
 
+// Role selection journey
+router.get('/epsv12/roles', (req, res) => {
+  let roles = req.session.data.roles; // Retrieve roles from session data
+  res.render('./epsv12/roles', { roles }); // Ensure res.render() is inside the function
+});
  // Import your data file
 
  router.get("/epsv12/prescription-template", function (req, res) {
