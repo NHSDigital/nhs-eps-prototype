@@ -1,0 +1,152 @@
+{% extends './_includes/layout-application-no-footer.html' %}
+{% set primarynav = 'patient' %}
+{% set hideNav = 'true' %}
+{% set hideJump = 'true' %}
+
+{% block pageTitle %}
+Role journey - {{ serviceName }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="row">
+  <div class="col-sm-0 col-md-1 col-lg-1 col-xl-3"></div>
+  <div class="col-sm-12 col-md-10 col-lg-10 col-xl-6">
+    
+ <h1>Role selection journeys</h1>
+ <div class="nhsuk-card allowed-role">
+  <div class="nhsuk-card__content">
+   
+      <h3 class="nhsuk-card__heading">
+        <div class="role-details">
+          <a href="roles?selection=yes&cards=yes&noAccess=yes&action=no" class="role-name" role="button" tabindex="0">
+            <u>Role selected - all components</u>
+          </a>
+        </div>
+      </h3>
+      <p class="role-details">Role selected, role cards and roles without access</p>
+   
+
+    
+  </div>
+</div>
+<div class="nhsuk-card allowed-role">
+  <div class="nhsuk-card__content">
+   
+      <h3 class="nhsuk-card__heading">
+        <div class="role-details">
+          <a href="roles?selection=yes&cards=yes&noAccess=no&action=no" class="role-name" role="button" tabindex="0">
+            <u>Role selected - no roles without access</u>
+          </a>
+        </div>
+      </h3>
+      <p class="role-details">Role selected and role cards</p>
+   
+
+    
+  </div>
+</div>
+<div class="nhsuk-card allowed-role">
+  <div class="nhsuk-card__content">
+   
+      <h3 class="nhsuk-card__heading">
+        <div class="role-details">
+          <a href="roles?selection=yes&cards=no&noAccess=yes&action=no" class="role-name" role="button" tabindex="0">
+            <u>Role selected - with roles without access</u>
+          </a>
+        </div>
+      </h3>
+      <p class="role-details">Role selected and roles without access</p>
+   
+
+    
+  </div>
+</div>
+
+<div class="nhsuk-card allowed-role">
+  <div class="nhsuk-card__content">
+   
+      <h3 class="nhsuk-card__heading">
+        <div class="role-details">
+          <a href="roles?selection=yes&cards=no&noAccess=no&action=no" class="role-name" role="button" tabindex="0">
+            <u>Role selected - no roles without access and no other available roles</u>
+          </a>
+        </div>
+      </h3>
+      <p class="role-details">Role selected</p>
+   
+
+    
+  </div>
+</div>
+<div class="nhsuk-card allowed-role">
+  <div class="nhsuk-card__content">
+   
+      <h3 class="nhsuk-card__heading">
+        <div class="role-details">
+          <a href="roles?selection=yes&cards=yes&noAccess=yes&action=no" class="role-name" role="button" tabindex="0">
+            <u>No role selected - roles with and without access</u>
+          </a>
+        </div>
+      </h3>
+      <p class="role-details">Roles with access and roles without access</p>
+   
+
+    
+  </div>
+</div>
+<div class="nhsuk-card allowed-role">
+  <div class="nhsuk-card__content">
+   
+      <h3 class="nhsuk-card__heading">
+        <div class="role-details">
+          <a href="roles?selection=no&cards=yes&noAccess=yes&action=no" class="role-name" role="button" tabindex="0">
+            <u>No role selected - roles with access</u>
+          </a>
+        </div>
+      </h3>
+      <p class="role-details">Roles with access and roles without access</p>
+   
+
+    
+  </div>
+</div>
+<div class="nhsuk-card allowed-role">
+  <div class="nhsuk-card__content">
+   
+      <h3 class="nhsuk-card__heading">
+        <div class="role-details">
+          <a href="roles?selection=no&cards=yes&noAccess=no&action=no" class="role-name" role="button" tabindex="0">
+            <u>No role selected - one role with access</u>
+          </a>
+        </div>
+      </h3>
+      <p class="role-details">Roles with access</p>
+   
+
+    
+  </div>
+</div>
+
+<div class="nhsuk-card allowed-role">
+  <div class="nhsuk-card__content">
+   
+      <h3 class="nhsuk-card__heading">
+        <div class="role-details">
+          <a href="roles?selection=no&cards=no&noAccess=yes&action=no" class="role-name" role="button" tabindex="0">
+            <u>No access to tracker</u>
+          </a>
+        </div>
+      </h3>
+      <p class="role-details">Roles without access</p>
+   
+
+    
+  </div>
+</div>
+  </div>
+</div>
+
+{% endblock %}
+

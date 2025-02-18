@@ -147,3 +147,18 @@
     </div>
   </nav>
 </header>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+  const storedParams = sessionStorage.getItem("roleSelectionParams");
+  const changeRoleLink = document.getElementById("masthead-change-role-button");
+
+  if (changeRoleLink && storedParams) {
+    let newParams = new URLSearchParams(storedParams);
+    newParams.set("action", "change"); // Ensure "action=change" is always added
+
+    changeRoleLink.href = `roles?${newParams.toString()}`;
+  }
+});
+
+</script>

@@ -4,7 +4,7 @@
 {% set hideJump = 'true' %}
 
 {% block pageTitle %}
-Find a patient by NHS number - {{ serviceName }}
+Role selection - {{ serviceName }}
 {% endblock %}
 
 
@@ -25,26 +25,35 @@ Find a patient by NHS number - {{ serviceName }}
         <p>Select the role you wish to use to access the service</p>
       {% endif %}
 
-    <div>
-      <div class="nhsuk-inset-text current-role">
-        <span class="nhsuk-u-visually-hidden">Information: </span>
-        <p id="current-role-details">You are currently logged in at NHS CONNECTING FOR HEALTH (X09) with {{ data['roleType'] or 'Clinical Practitioner Access Role' }}</p></div>
+      {% if selection == "yes" %}
+      <div>
+        <div class="nhsuk-inset-text current-role">
+          <span class="nhsuk-u-visually-hidden">Information: </span>
+          <p id="current-role-details">You are currently logged in at NHS CONNECTING FOR HEALTH (X09) with {{ data['roleType'] or 'Clinical Practitioner Access Role' }}</p></div>
+  
+        
+        <a href="search" aria-disabled="false" class="nhsuk-button" id="confirm-current-role" role="button" type="submit">Continue to find a prescription</a>
+        <p>Alternatively, you can choose a new role below</p>
+      </div>
+      {% elif data['action'] === 'change' %}
+      <div>
+        <div class="nhsuk-inset-text current-role">
+          <span class="nhsuk-u-visually-hidden">Information: </span>
+          <p id="current-role-details">You are currently logged in at NHS CONNECTING FOR HEALTH (X09) with {{ data['roleType'] or 'Clinical Practitioner Access Role' }}</p></div>
+  
+        
+        <a href="search" aria-disabled="false" class="nhsuk-button" id="confirm-current-role" role="button" type="submit">Continue to find a prescription</a>
+        <p>Alternatively, you can choose a new role below</p>
+      </div>
 
-      {% if data['action'] !== 'change' %}
-      <a href="search" aria-disabled="false" class="nhsuk-button" id="confirm-current-role" role="button" type="submit">Continue to find a prescription</a>
       {% endif %}
 
 
-    </div>
-
-    {% if data['action'] === 'change' %}
-    <a href="search" aria-disabled="false" class="nhsuk-button" id="confirm-current-role" role="button" type="submit">Continue to find a prescription</a>
-    {% else %}
-    <p>Alternatively, you can choose a new role below</p>
-    {% endif %}
+   
 
 <!-- <h2 class="allowed-role-title{% if data['action'] !== 'change' %} nhsuk-heading-m{% endif %}">Roles with access to the Clinical prescription tracking service</h2>-->
-{% for role in roles %}
+{% if cards == "yes" %}
+{% for role in roles  %}
   <div class="nhsuk-card allowed-role">
     <div class="nhsuk-card__content">
       <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-3">
@@ -60,7 +69,7 @@ Find a patient by NHS number - {{ serviceName }}
 
       <div class="nhsuk-grid-column-one-half">
         <p class="nhsuk-u-margin-top-1 nhsuk-u-font-size-12">
-          {{ role.site }}<br>
+         
           {{ role.addressLine1 }}<br>
           {{ role.addressLine2 }}<br>
           {{ role.addressLine3 }}<br>
@@ -69,10 +78,11 @@ Find a patient by NHS number - {{ serviceName }}
       </div>
     </div>
   </div>
+  
 {% endfor %}
+{% endif %}
 
-
-
+<p class="rows-displayed-count"><b>Showing {{data.roles | length }} of {{data.roles | length }} roles</b></p>
 <!-- Hard coded page back up-->
  <!-- 
     <div class="nhsuk-card allowed-role">
@@ -170,11 +180,70 @@ Find a patient by NHS number - {{ serviceName }}
       </div>
     </div>
     -->
- 
-
-    <p class="rows-displayed-count"><b>Showing 6 of 6 roles</b></p>
-
+{% if noAccess == "yes" %}
+    <details class="nhsuk-details nhsuk-expander">
+      <summary class="nhsuk-details__summary">
+        <span class="nhsuk-details__summary-text">
+          View your roles without access to the clinical prescription tracking service
+        </span>
+      </summary>
+      <div class="nhsuk-details__text">
+    
+        <table class="nhsuk-table">
+         
+          <thead role="rowgroup" class="nhsuk-table__head">
+            <tr role="row">
+              <th role="columnheader" class="" scope="col">
+               Organisation
+              </th>
+              <th role="columnheader" class="" scope="col">
+               Role
+              </th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+            {% for role in roles %}
+            <tr role="row" class="nhsuk-table__row">
+              <td class="nhsuk-table__cell">{{ role.site }}</td>
+              <td class="nhsuk-table__cell ">{{ role.roleName }}</td>
+            </tr>
+           {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </details>
+{% endif %}
   </div>
 </div>
-
+<script>
+  function saveQueryParams() {
+    const params = new URLSearchParams(window.location.search);
+    sessionStorage.setItem("roleSelectionParams", params.toString());
+  }
+  
+  function restoreQueryParams() {
+    const storedParams = sessionStorage.getItem("roleSelectionParams");
+    if (storedParams) {
+      const currentParams = new URLSearchParams(window.location.search);
+      const storedParamsObj = new URLSearchParams(storedParams);
+  
+      // Merge stored parameters with current ones
+      storedParamsObj.forEach((value, key) => {
+        if (!currentParams.has(key)) {
+          currentParams.set(key, value);
+        }
+      });
+  
+      // Update URL only if there are missing parameters
+      if (currentParams.toString() !== window.location.search.substring(1)) {
+        window.location.search = currentParams.toString();
+      }
+    }
+  }
+  
+  // Call the functions when the page loads
+  saveQueryParams();
+  restoreQueryParams();
+  
+  </script>
 {% endblock %}
