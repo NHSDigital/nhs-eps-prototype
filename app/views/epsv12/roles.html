@@ -38,7 +38,7 @@ Find a patient by NHS number - {{ serviceName }}
     </div>
 
     {% if data['action'] === 'change' %}
-    <p>If you don't want to change role, you can return to <a href="patient-details">Find a Patient</a></p>
+    <a href="search" aria-disabled="false" class="nhsuk-button" id="confirm-current-role" role="button" type="submit">Continue to find a prescription</a>
     {% else %}
     <p>Alternatively, you can choose a new role below</p>
     {% endif %}
