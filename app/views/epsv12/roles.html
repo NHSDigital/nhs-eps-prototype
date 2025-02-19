@@ -57,7 +57,11 @@ Role selection - {{ serviceName }}
 
 <!-- <h2 class="allowed-role-title{% if data['action'] !== 'change' %} nhsuk-heading-m{% endif %}">Roles with access to the Clinical prescription tracking service</h2>-->
 {% if cards == "yes" %}
+{% set eps_count = 0 %}
 {% for role in roles  %}
+
+{% if role.eps =="yes"%}
+{% set eps_count = eps_count + 1 %}
   <div class="nhsuk-card allowed-role">
     <div class="nhsuk-card__content">
       <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-3">
@@ -82,9 +86,9 @@ Role selection - {{ serviceName }}
       </div>
     </div>
   </div>
- 
+ {% endif %}
 {% endfor %}
-<p class="rows-displayed-count"><b>Showing {{data.roles | length }} of {{data.roles | length }} roles</b></p>
+<p class="rows-displayed-count"><b>Showing {{ eps_count }} of {{ roles | length }} roles</b></p>
 {% endif %}
 
 
@@ -208,10 +212,12 @@ Role selection - {{ serviceName }}
           </thead>
           <tbody class="nhsuk-table__body">
             {% for role in roles %}
+            {% if role.eps =="no"%}
             <tr role="row" class="nhsuk-table__row">
               <td class="nhsuk-table__cell">{{ role.site }}</td>
               <td class="nhsuk-table__cell ">{{ role.roleName }}</td>
             </tr>
+            {% endif %}
            {% endfor %}
           </tbody>
         </table>
