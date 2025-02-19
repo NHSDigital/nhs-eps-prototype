@@ -33,7 +33,7 @@ Role selection - {{ serviceName }}
   
         
         <a href="search" aria-disabled="false" class="nhsuk-button" id="confirm-current-role" role="button" type="submit">Continue to find a prescription</a>
-        <p>Alternatively, you can choose a new role below</p>
+     
       </div>
       {% elif data['action'] === 'change' %}
       <div>
@@ -43,11 +43,15 @@ Role selection - {{ serviceName }}
   
         
         <a href="search" aria-disabled="false" class="nhsuk-button" id="confirm-current-role" role="button" type="submit">Continue to find a prescription</a>
-        <p>Alternatively, you can choose a new role below</p>
+       
       </div>
 
       {% endif %}
-
+      {% if selection == "yes" %} 
+      {% if cards == "yes" %}
+      <p>Alternatively, you can choose a new role below</p>
+      {% endif %}
+      {% endif %}
 
    
 
@@ -78,11 +82,12 @@ Role selection - {{ serviceName }}
       </div>
     </div>
   </div>
-  
+ 
 {% endfor %}
+<p class="rows-displayed-count"><b>Showing {{data.roles | length }} of {{data.roles | length }} roles</b></p>
 {% endif %}
 
-<p class="rows-displayed-count"><b>Showing {{data.roles | length }} of {{data.roles | length }} roles</b></p>
+
 <!-- Hard coded page back up-->
  <!-- 
     <div class="nhsuk-card allowed-role">
@@ -215,6 +220,8 @@ Role selection - {{ serviceName }}
 {% endif %}
   </div>
 </div>
+
+
 <script>
   function saveQueryParams() {
     const params = new URLSearchParams(window.location.search);
