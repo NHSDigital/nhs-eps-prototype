@@ -20,7 +20,7 @@ Find a patient by NHS number - {{ serviceName }}
       <tbody class="nhsuk-table__body">
       <tr class="nhsuk-table__row">
         <td class="current-role-table-type"><b>Organisation</b></td>
-        <td>NHS CONNECTING FOR HEALTH (X09)</td>
+        <td>{{ selectedRole.site }}</td>
         <td class="current-role-table-link">
           <a href="roles?action=change" id="change-org" role="button" tabindex="0"><u>Change
             <span class="nhsuk-u-visually-hidden">Organisation</span>
@@ -29,7 +29,7 @@ Find a patient by NHS number - {{ serviceName }}
       </tr>
       <tr class="nhsuk-table__row">
         <td class="current-role-table-type"><b>Role</b></td>
-        <td>{{ data['roleType'] or 'Clinical Practitioner Access Role' }}</td>
+        <td>{{ selectedRole.roleName }}</td>
         <td class="current-role-table-link">
           <a href="roles?action=change" id="change-role" role="button" tabindex="0"><u>Change
             <span class="nhsuk-u-visually-hidden">Role</span>

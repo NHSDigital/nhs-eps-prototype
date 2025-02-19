@@ -486,6 +486,19 @@ router.get('/epsv12/roles', (req, res) => {
   res.render('./epsv12/roles', { selection, cards, noAccess, roles }); // Ensure res.render() is inside the function
 });
 
+//confirmed role
+router.get('/epsv12/roles-confirm', (req, res) => {
+  let roles = req.session.data.roles; // Retrieve roles from session data
+  let selectedRole = roles.find(role => role.id === req.query.roleId); // Find role by ID
+
+  if (!selectedRole) {
+    return res.redirect('/epsv12/roles'); // Redirect if no role found
+  }
+
+  res.render('./epsv12/roles-confirm', { selectedRole }); // Pass selected role to template
+});
+
+
  // Import your data file
 
  router.get("/epsv12/prescription-template", function (req, res) {
