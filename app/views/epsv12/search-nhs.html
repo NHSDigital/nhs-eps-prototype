@@ -53,14 +53,43 @@ Find a patient by NHS number - {{ serviceName }}
   <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
     <div>
       <form action="search-nhs-post" method="POST" novalidate="">
-        <div class="patient-search-form__field-group">
+        {% if errors["nhs-number"] %}
+          <div
+            class="nhsuk-error-summary"
+            id="nhsuk-presc-no-error-summary"
+            aria-labelledby="error-summary-title"
+            role="alert"
+            tabindex="-1"
+          >
+            <h2 class="nhsuk-error-summary__title" id="error-summary-title">
+              There is a problem
+            </h2>
+            <div class="nhsuk-error-summary__body">
+              <p>{{ errors["nhs-number"] }}</p>
+              <ul class="nhsuk-list nhsuk-error-summary__list">
+                
+                <li>
+                  <a href="#nhs-number-search-form-nhs-number"
+                    >This is a 10 digit number, like 123 456 7890 </a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          {% endif %}
+        <div class="patient-search-form__field-group {% if errors["nhs-number"]  %} nhsuk-form-group--error {% endif%}">
           <h2 class="nhsuk-heading-m nhsuk-u-margin-bottom-1 no-outline" id="nhs-number-search-form-nhs-number--label" tabindex="-1">
             <span class="nhsuk-u-visually-hidden">Search by </span>
             Search using NHS number
           </h2>
           <div class="nhsuk-hint" id="nhs-number-hint">This is a 10 digit number, like 485 777 3456.</div>
+          {% if errors["nhs-number"] %}
+          <span id="nhs-no-error-error" class="nhsuk-error-message">
+            You must enter a prescription  ID number
+          </span>
+          {% endif %}
           <div class="nhsuk-form-group">
-            <input autofocus aria-describedby="nhs-number-hint" aria-labelledby="nhs-number-search-form-nhs-number--label" autocomplete="off" class="nhsuk-input nhsuk-input--width-10" id="nhs-number-search-form-nhs-number" name="nhsNumber" type="tel" value="">
+            <input autofocus aria-describedby="nhs-number-hint" aria-labelledby="nhs-number-search-form-nhs-number--label" autocomplete="off" class="nhsuk-input nhsuk-input--width-10 {% if errors["nhs-number"]  %} nhsuk-input--error{% endif %}" id="nhs-number-search-form-nhs-number" name="nhsNumber" type="tel" value="">
           </div>
         </div>
 

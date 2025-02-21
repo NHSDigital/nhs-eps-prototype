@@ -1,22 +1,26 @@
 module.exports = (router) => {
 
   router.get('/epsv12/search', function (req, res) {
-    // check for clear
     let refine = req.query.refine || 'false';
     let lastSearch = req.session.data["last-search"];
     let target = 'epsv12/search';
+
     if (lastSearch === 'basic') {
       target = 'epsv12/search-basic';
     } else if (lastSearch === 'advanced') {
       target = 'epsv12/search-advanced';
-    } else {
-      target = 'epsv12/search';
     }
 
+    let errors = req.session.data.errors || {}; // Get errors from session
+    req.session.data.errors = {}; // Clear errors so they don't persist after refresh
+
     return res.render(target, {
-      'refine': refine
-    })
-  })
+      'refine': refine,
+      'errors': errors
+    });
+});
+
+
 
   //search via presc number
 // search via presc number form
@@ -26,7 +30,7 @@ router.post("/epsv12/search-presc-post", function (req, res) {
   req.session.data.errors = {};
 
   if (!prescNumber) {
-    req.session.data.errors["presc-number"] = true;
+    req.session.data.errors = { "presc-number": "You must enter a prescription ID number" };
     return res.redirect("search");
   }
 
@@ -51,7 +55,7 @@ router.post("/epsv12/search-presc-post", function (req, res) {
     // Redirect to the spinner
     return res.redirect(`spinner-prescription-list?nhsNumber=${nhsNumber}&prescID=${prescNumber}&searchTerm=prescription`);
   } else {
-    req.session.data.patient = null;
+    req.session.data.errors = { "presc-number": "No matching prescription found" };
     return res.redirect("search");
   }
 });
@@ -62,7 +66,7 @@ router.post("/epsv12/search-nhs-post", function (req, res) {
   req.session.data.errors = {};
 
   if (!nhsNumber) {
-    req.session.data.errors["nhs-number"] = true;
+    req.session.data.errors = { "nhs-number": "You must enter an NHS number" };
     return res.redirect("search-nhs");
   }
 
@@ -77,11 +81,21 @@ router.post("/epsv12/search-nhs-post", function (req, res) {
     return res.redirect(`spinner-prescription-list?nhsNumber=${nhsNumber}&searchTerm=nhs`);
   } else {
     req.session.data.patient = null;
-    req.session.data.errors["nhs-number"] = true;
+    req.session.data.errors = { "nhs-number": "You must enter an NHS number" };
     return res.redirect("search-nhs");
   }
 });
 
+router.get('/epsv12/search-nhs', function (req, res) {
+  let target = 'epsv12/search-nhs'; // Ensure the correct template is set
+
+  let errors = req.session.data.errors || {}; // Get errors from session
+  req.session.data.errors = {}; // Clear errors so they don't persist after refresh
+
+  return res.render(target, {
+    'errors': errors
+  });
+});
 
 
   // search via nhs basic search

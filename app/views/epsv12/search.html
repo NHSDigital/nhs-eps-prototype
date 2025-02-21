@@ -52,7 +52,7 @@ Find a patient by NHS number - {{ serviceName }}
   <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
     <div>
       <form action="search-presc-post" method="POST" novalidate="">
-        {% if errors | length %}
+        {% if errors["presc-number"] %}
           <div
             class="nhsuk-error-summary"
             id="nhsuk-presc-no-error-summary"
@@ -64,10 +64,10 @@ Find a patient by NHS number - {{ serviceName }}
               There is a problem
             </h2>
             <div class="nhsuk-error-summary__body">
-              <p>You must enter a prescription ID number.</p>
+              <p>{{ errors["presc-number"] }}</p>
               <ul class="nhsuk-list nhsuk-error-summary__list">
                 <li>
-                  <a href="#presc-number-input"
+                  <a href="#presc-number-search-form-presc-number"
                     >This may also be called a barcode or token ID.</a
                   >
                 </li>
@@ -76,20 +76,20 @@ Find a patient by NHS number - {{ serviceName }}
           </div>
           {% endif %}
     
-        <div class="patient-search-form__field-group">
+        <div class="patient-search-form__field-group {% if errors["presc-number"]  %} nhsuk-form-group--error {% endif%}">
           <h2 class="nhsuk-heading-m nhsuk-u-margin-bottom-1 no-outline" id="presc-number-search-form-nhs-number--label" tabindex="-1">
             <span class="nhsuk-u-visually-hidden">Search by </span>
             Search using a prescription ID
           </h2>
           <div class="nhsuk-hint" id="presc-number-hint">This is 18 characters and may also be called barcode or token ID.</div>
-          {% if errors | length %}
+          {% if errors["presc-number"] %}
           <span id="nhs-no-error-error" class="nhsuk-error-message">
             You must enter a prescription  ID number
           </span>
           {% endif %}
           <div class="nhsuk-form-group">
             
-            <input autofocus aria-describedby="presc-number-hint" aria-labelledby="presc-number-search-form-presc-number" autocomplete="off" class="nhsuk-input nhsuk-input--width-18" id="presc-number-search-form-presc-number" name="prescNumber" type="tel" value="">
+            <input autofocus aria-describedby="presc-number-hint" aria-labelledby="presc-number-search-form-presc-number" autocomplete="off" class="nhsuk-input nhsuk-input--width-18 {% if errors["presc-number"]  %} nhsuk-input--error{% endif %}" id="presc-number-search-form-presc-number" name="prescNumber" type="tel" value="">
           </div>
         </div>
 
