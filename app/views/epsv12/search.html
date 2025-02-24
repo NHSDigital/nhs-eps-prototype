@@ -84,7 +84,7 @@ Find a patient by NHS number - {{ serviceName }}
           <div class="nhsuk-hint" id="presc-number-hint">This is 18 characters and may also be called barcode or token ID.</div>
           {% if errors["presc-number"] %}
           <span id="nhs-no-error-error" class="nhsuk-error-message">
-            You must enter a prescription  ID number
+            {{ errors["presc-number"] }}
           </span>
           {% endif %}
           <div class="nhsuk-form-group">

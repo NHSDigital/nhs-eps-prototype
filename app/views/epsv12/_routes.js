@@ -30,7 +30,7 @@ router.post("/epsv12/search-presc-post", function (req, res) {
   req.session.data.errors = {};
 
   if (!prescNumber) {
-    req.session.data.errors = { "presc-number": "You must enter a prescription ID number" };
+    req.session.data.errors = { "presc-number": "Enter a prescription ID number" };
     return res.redirect("search");
   }
 
@@ -66,7 +66,7 @@ router.post("/epsv12/search-nhs-post", function (req, res) {
   req.session.data.errors = {};
 
   if (!nhsNumber) {
-    req.session.data.errors = { "nhs-number": "You must enter an NHS number" };
+    req.session.data.errors = { "nhs-number": "Enter an NHS number" };
     return res.redirect("search-nhs");
   }
 
