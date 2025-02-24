@@ -64,11 +64,11 @@ Find a patient by NHS number - {{ serviceName }}
               There is a problem
             </h2>
             <div class="nhsuk-error-summary__body">
-              <p>{{ errors["presc-number"] }}</p>
+              
               <ul class="nhsuk-list nhsuk-error-summary__list">
                 <li>
                   <a href="#presc-number-search-form-presc-number"
-                    >This may also be called a barcode or token ID.</a
+                    >{{ errors["presc-number"] }}</a
                   >
                 </li>
               </ul>

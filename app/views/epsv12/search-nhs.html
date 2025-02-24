@@ -65,12 +65,12 @@ Find a patient by NHS number - {{ serviceName }}
               There is a problem
             </h2>
             <div class="nhsuk-error-summary__body">
-              <p>{{ errors["nhs-number"] }}</p>
+            
               <ul class="nhsuk-list nhsuk-error-summary__list">
                 
                 <li>
                   <a href="#nhs-number-search-form-nhs-number"
-                    >This is a 10 digit number, like 123 456 7890 </a
+                    >{{ errors["nhs-number"] }}</a
                   >
                 </li>
               </ul>
