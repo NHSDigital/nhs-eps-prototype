@@ -107,21 +107,33 @@ router.get('/epsv12/search-nhs', function (req, res) {
     let dobMonth = req.body['dob-month'] || '';
     let dobYear = req.body['dob-year'] || '';
     req.session.data.errors = {};
- // Collect all errors
- if (!searchPostcode) {
-  req.session.data.errors["postcode-only"] = true;
-}
-if (!searchLastName) {
-  req.session.data.errors["last-name"] = true;
-}
-if (!dobDay || !dobMonth || !dobYear) {
-  req.session.data.errors["dob"] = true;
-}
+    // Collect all errors
+    if (!searchPostcode) {
+      req.session.data.errors["postcode-only"] = true;
+  }
+  if (!searchLastName) {
+      req.session.data.errors["last-name"] = true;
+  }
 
-// If there are errors, redirect back to the form
-if (Object.keys(req.session.data.errors).length > 0) {
-  return res.redirect("search-basic");
-}
+  // Date of birth validation logic
+  if (!dobDay && !dobMonth && !dobYear) {
+      req.session.data.errors["dob"] = "You must enter a date of birth"; // General DOB error
+  } else {
+      if (!dobDay) {
+          req.session.data.errors["dob-day"] = "You must enter a day";
+      }
+      if (!dobMonth) {
+          req.session.data.errors["dob-month"] = "You must enter a month";
+      }
+      if (!dobYear) {
+          req.session.data.errors["dob-year"] = "You must enter a year";
+      }
+  }
+
+  // If there are errors, redirect back to the form
+  if (Object.keys(req.session.data.errors).length > 0) {
+      return res.redirect("search-basic");
+  }
 
     // Ensure DOB is in correct format (e.g., '06-May-2013')
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];

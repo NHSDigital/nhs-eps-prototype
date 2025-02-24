@@ -79,11 +79,32 @@ Find a patient by NHS number - {{ serviceName }}
               {% endif %}
               {% if errors["dob"] %}
                 <li>
-                  <a href="#dob"
+                  <a href="#dob-day"
                     > You must enter a date of birth </a
                   >
-                </li>
+                </li> 
               {% endif %}
+              {% if errors["dob-day"] %}
+              <li>
+                <a href="#dob-day"
+                  >  {{ errors["dob-day"] }}</a
+                >
+              </li> 
+            {% endif %}
+            {% if errors["dob-month"] %}
+            <li>
+              <a href="#dob-month"
+                >{{ errors["dob-month"] }}</a
+              >
+            </li> 
+          {% endif %}
+          {% if errors["dob-year"] %}
+          <li>
+            <a href="#dob-year"
+              >{{ errors["dob-year"] }} </a
+            >
+          </li> 
+        {% endif %}
               {% if errors["postcode-only"] %}
               <li>
                 <a href="#postcode-only"
@@ -95,7 +116,7 @@ Find a patient by NHS number - {{ serviceName }}
             </div>
           </div>
           {% endif %}
-          <h2 class="nhsuk-heading-m nhsuk-u-margin-bottom-1 no-outline" id="nhs-number-search-form-nhs-number--label" tabindex="-1">
+          <h2 class="nhsuk-heading-m nhsuk-u-margin-bottom-3 no-outline" id="nhs-number-search-form-nhs-number--label" tabindex="-1">
             <span class="nhsuk-u-visually-hidden">Search by </span>
             Search using basic details
           </h2>
@@ -110,21 +131,28 @@ Find a patient by NHS number - {{ serviceName }}
             <input class="nhsuk-input nhsuk-input--width-20{% if errors['last-name'] %} nhsuk-input--error{% endif %}" id="last-name" name="last-name" type="text" value="{{ data['last-name'] }}">
           </div>
 
-          <div class="nhsuk-form-group {% if errors["dob"]  %} nhsuk-form-group--error {% endif%}">
+          <div class="nhsuk-form-group {% if errors["dob"]  %} nhsuk-form-group--error {% endif%} {% if errors["dob-day"]  %} nhsuk-form-group--error {% endif%} {% if errors["dob-month"]  %} nhsuk-form-group--error {% endif%} {% if errors["dob-year"]  %} nhsuk-form-group--error {% endif%}">
             <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-1 no-outline">Date of birth</h3>
             <div class="nhsuk-hint" id="nhs-number-hint">For example, 31 03 1980</div>
             {% if errors["dob"] %}
-            <span id="nhs-no-error-error" class="nhsuk-error-message">
-              You must enter a date of birth
-            </span>
-            {% endif %}
+            <span class="nhsuk-error-message">{{ errors["dob"] }}</span>
+          {% endif %}
+          {% if errors["dob-day"] %}
+            <span class="nhsuk-error-message">{{ errors["dob-day"] }}</span>
+          {% endif %}
+          {% if errors["dob-month"] %}
+            <span class="nhsuk-error-message">{{ errors["dob-month"] }}</span>
+          {% endif %}
+          {% if errors["dob-year"] %}
+            <span class="nhsuk-error-message">{{ errors["dob-year"] }}</span>
+          {% endif %}
             <div class="nhsuk-date-input" id="dob">
               <div class="nhsuk-date-input__item">
-                <div class="nhsuk-form-group {% if errors["dob"]  %} nhsuk-form-group--error {% endif%}">
+                <div class="nhsuk-form-group">
                   <label class="nhsuk-label nhsuk-date-input__label" for="dob-day">
                     Day
                   </label>
-                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2{% if errors['dob'] %} nhsuk-input--error{% endif %}" id="dob-day" name="dob-day" type="number" pattern="[0-9]*" value="{{ data['dob-day'] }}">
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2{% if errors['dob-day'] or errors['dob'] %} nhsuk-input--error{% endif %}" id="dob-day" name="dob-day" type="number" pattern="[0-9]*" value="{{ data['dob-day'] }}">
                 </div>
               </div>
               <div class="nhsuk-date-input__item">
@@ -132,7 +160,7 @@ Find a patient by NHS number - {{ serviceName }}
                   <label class="nhsuk-label nhsuk-date-input__label" for="dob-month">
                     Month
                   </label>
-                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2{% if errors['dob'] %} nhsuk-input--error{% endif %}" id="dob-month" name="dob-month" type="number" pattern="[0-9]*" value="{{ data['dob-month'] }}">
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2{% if errors['dob-month'] or errors['dob'] %} nhsuk-input--error{% endif %}" id="dob-month" name="dob-month" type="number" pattern="[0-9]*" value="{{ data['dob-month'] }}">
                 </div>
               </div>
               <div class="nhsuk-date-input__item">
@@ -140,7 +168,7 @@ Find a patient by NHS number - {{ serviceName }}
                   <label class="nhsuk-label nhsuk-date-input__label" for="dob-year">
                     Year
                   </label>
-                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4{% if errors['dob'] %} nhsuk-input--error{% endif %}" id="dob-year" name="dob-year" type="number" pattern="[0-9]*" value="{{ data['dob-year'] }}">
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4{% if errors['dob-year'] or errors['dob'] %} nhsuk-input--error{% endif %}" id="dob-year" name="dob-year" type="number" pattern="[0-9]*" value="{{ data['dob-year'] }}">
                 </div>
               </div>
             </div>
