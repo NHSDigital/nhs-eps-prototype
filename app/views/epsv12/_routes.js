@@ -107,10 +107,22 @@ router.get('/epsv12/search-nhs', function (req, res) {
     let dobMonth = req.body['dob-month'] || '';
     let dobYear = req.body['dob-year'] || '';
     req.session.data.errors = {};
-    if (!searchPostcode && !searchLastName && !dobDay && !dobMonth && !dobYear) {
-        req.session.data.errors["basicSearch"] = true;
-        return res.redirect("search-basic");
-    }
+ // Collect all errors
+ if (!searchPostcode) {
+  req.session.data.errors["postcode-only"] = true;
+}
+if (!searchLastName) {
+  req.session.data.errors["last-name"] = true;
+}
+if (!dobDay || !dobMonth || !dobYear) {
+  req.session.data.errors["dob"] = true;
+}
+
+// If there are errors, redirect back to the form
+if (Object.keys(req.session.data.errors).length > 0) {
+  return res.redirect("search-basic");
+}
+
     // Ensure DOB is in correct format (e.g., '06-May-2013')
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     // Pad single digit day and month with leading zeros if necessary
@@ -129,6 +141,16 @@ router.get('/epsv12/search-nhs', function (req, res) {
         req.session.data.searchTerm = 'basic';
         return res.redirect('spinner-prescription-list?nhsNumber=5900009890&searchTerm=basic');
     }
+});
+
+//get basic route
+router.get('/epsv12/search-basic', function (req, res) {
+  let errors = req.session.data.errors || {}; // Get errors from session
+  req.session.data.errors = {}; // Clear errors so they don't persist after refresh
+
+  return res.render('epsv12/search-basic', {
+    errors: errors
+  });
 });
 
 
