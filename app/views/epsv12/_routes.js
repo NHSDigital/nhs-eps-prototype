@@ -98,6 +98,7 @@ router.get('/epsv12/search-nhs', function (req, res) {
 });
 
 
+
   // search via nhs basic search
   router.post("/epsv12/search-basic-post", function (req, res) {
     let patients = req.session.data['patients'] || {}; // Ensure patients is defined
@@ -532,6 +533,12 @@ router.get('/epsv12/roles', (req, res) => {
   let roles = req.session.data.roles; // Retrieve roles from session data
   const { selection, cards, noAccess } = req.query;
   res.render('./epsv12/roles', { selection, cards, noAccess, roles }); // Ensure res.render() is inside the function
+});
+
+// Locum role
+router.get('/epsv12/roles-site-search-locum', (req, res) => {
+  let locumsites = req.session.data.locumsites || []; // Retrieve from session or set default empty array
+  res.render('./epsv12/roles-site-search-locum', { locumsites }); // Pass locumsites to the template
 });
 
 //confirmed role

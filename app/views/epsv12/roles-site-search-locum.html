@@ -1,4 +1,4 @@
-{% extends './_includes/layout-application.html' %}
+{% extends './_includes/layout-application-search.html' %}
 {% set primarynav = 'patient' %}
 {% set hideNav = 'true' %}
 {% set hideJump = 'true' %}
@@ -13,14 +13,40 @@ Find a patient by NHS number - {{ serviceName }}
 <div class="row">
   <div class="col-sm-0 col-md-1 col-lg-1 col-xl-3"></div>
   <div class="col-sm-12 col-md-10 col-lg-10 col-xl-6">
-    <h1 class="select-role-header" id="role-confirmed-header">Search for site</h1>
-    <p class="nhsuk-u-margin-bottom-2">You are logging in with a locum Pharmacist role. </p>
-    
+    <div class="nhsuk-back-link">
+
+      <a class="nhsuk-back-link__link" href="#">
+        <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+          <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+        </svg>
+        Go back</a>
+    </div>
+    <h1 class="select-role-header nhsuk-u-margin-bottom-2" id="role-confirmed-header">Search for dispensing site</h1>
+    <p class="nhsuk-u-margin-bottom-2">You are logging in with a Locum Pharmacist role. You can search for the dispensing site you are working from using the dispensing site name, ODS code or postcode. </br> You can search using multiple criteria, but you don't need to use all. If you search by dispensing site name, include a postcode to help narrow your search. </p>
+  
     <div class="nhsuk-form-group">
-      <label class="nhsuk-label" for="three-quarters">
-        You can search for the site using the exact ODS code, partial dispensing site name or postcode.
+      <label class="nhsuk-label" for="two-thirds">
+       Dispensing site name
       </label>
-      <input class="nhsuk-input nhsuk-u-width-three-quarters nhsuk-u-margin-bottom-2"
+      <input class="nhsuk-input nhsuk-u-width-two-thirds nhsuk-u-margin-bottom-2"
+      id="searchWithincolumns"
+      name="searchWithincolumns"
+      type="text"
+      aria-describedby="searchWithincolumns"
+      value="">
+      <label class="nhsuk-label" for="input-width-10">
+        Postcode
+      </label>
+      <input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-margin-bottom-2"
+      id="searchWithincolumns"
+      name="searchWithincolumns"
+      type="text"
+      aria-describedby="searchWithincolumns"
+      value="">
+      <label class="nhsuk-label" for="input-width-10">
+        ODS code
+      </label>
+      <input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-margin-bottom-2"
       id="searchWithincolumns"
       name="searchWithincolumns"
       type="text"
@@ -36,6 +62,8 @@ Find a patient by NHS number - {{ serviceName }}
         <h2>Search results</h2>
         <p>Showing 1 to 14 of 14 results for the search: "hd1" </p>
         <thead>
+    
+
           <tr role="row">
            
             <th scope="col">Dispensing site name</th>
@@ -47,147 +75,17 @@ Find a patient by NHS number - {{ serviceName }}
         </thead>
         <tbody id="search-results-table">
   
-          <!--- - - - - - - - - ROW 1 - - - - - - - - --->
-  
+          {% for locumsite in locumsites %}
+
           <tr role="row">
             
-            <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="tracker-selectrole-confirm-locum4">MEDICARE CHEMISTS</a> </span></td>
-            <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-            <td role="gridcell"><span class="table-heading" aria-hidden="true">140 WESTBOURNE ROAD, MARSH, HUDDERSFIELD, WEST YORKSHIRE</span></td>
-            <td role="gridcell"><span class="table-heading" aria-hidden="true">HD1 4LF</span></td>
+            <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="tracker-selectrole-confirm-locum4">{{ locumsite.dispensingSiteName }}</a> </span></td>
+            <td role="gridcell"><span class="table-heading" aria-hidden="true">{{ locumsite.odsCode }}</span> </td>
+            <td role="gridcell"><span class="table-heading" aria-hidden="true">{{ locumsite.address }}</span></td>
+            <td role="gridcell"><span class="table-heading" aria-hidden="true">{{ locumsite.postCode }}</span></td>
             
           </tr>
-          <!--ROW 2-->
-          <tr role="row">
-            
-            <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">BRADFORD ROAD PHARMACY</a></span></td>
-            <td role="gridcell"><span class="table-heading" aria-hidden="true">FC063</span> </td>
-            <td role="gridcell"><span class="table-heading" aria-hidden="true">107 BRADFORD ROAD, FARTOWN, HUDDERSFIELD, WEST YORKSHIRE</span></td>
-            <td role="gridcell"><span class="table-heading" aria-hidden="true">HD1 6DZ</span></td>
-            
-          </tr>
-         
-           <!--ROW 3-->
-           <tr role="row">
-            
-            <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">MEDICARE CHEMISTS</a></span></td>
-            <td role="gridcell"><span class="table-heading" aria-hidden="true">FCX65</span> </td>
-            <td role="gridcell"><span class="table-heading" aria-hidden="true">MELTHAM ROAD SURGERY, 9 MELTHAM ROAD, LOCKWOOD, HUDDERSFIELD, WEST YORKSHIRE</span></td>
-            <td role="gridcell"><span class="table-heading" aria-hidden="true">HD1 3UP</span></td>
-            
-          </tr>
-             
-              <!--ROW 4-->
-              <tr role="row">
-            
-                <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="tracker-selectrole-confirm-locum3">BOOTS THE CHEMISTS LTD</a></span></td>
-                <td role="gridcell"><span class="table-heading" aria-hidden="true">FD819</span> </td>
-                <td role="gridcell"><span class="table-heading" aria-hidden="true">22 KING STREET, HUDDERSFIELD, NOTTINGHAMSHIRE</span></td>
-                <td role="gridcell"><span class="table-heading" aria-hidden="true">HD1 2QE</span></td>
-                
-              </tr>
-            
-             <!--ROW 5-->
-             <tr role="row">
-            
-              <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">K L COCKROFT</a></span></td>
-              <td role="gridcell"><span class="table-heading" aria-hidden="true">FFL24</span> </td>
-              <td role="gridcell"><span class="table-heading" aria-hidden="true">125 FITZWILLIAM STREET, HUDDERSFIELD, CHESHIRE</span></td>
-              <td role="gridcell"><span class="table-heading" aria-hidden="true">HD1 5PS</span></td>
-              
-            </tr>
-  
-               <!--ROW 6-->
-               <tr role="row">
-            
-                <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">B SINGH</a></span></td>
-                <td role="gridcell"><span class="table-heading" aria-hidden="true">FGA97</span></td>
-                <td role="gridcell"><span class="table-heading" aria-hidden="true">6 CHURCH STREET, PADDOCK, HUDDERSFIELD, WEST YORKSHIRE</span></td>
-                <td role="gridcell"><span class="table-heading" aria-hidden="true">HD1 4TR</span></td>
-                
-              </tr>
-  
-                 <!--ROW 7-->
-                 <tr role="row">
-            
-                  <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">TESCO IN-STORE PHARMACY</a></span></td>
-                  <td role="gridcell"><span class="table-heading" aria-hidden="true">FN621</span> </td>
-                  <td role="gridcell"><span class="table-heading" aria-hidden="true">VIADUCT STREET, HUDDERSFIELD, SOMERSET</span></td>
-                  <td role="gridcell"><span class="table-heading" aria-hidden="true">HD1 1RW</span></td>
-                  
-                </tr>
-  
-                   <!--ROW 8-->
-              <tr role="row">
-            
-                <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">PEACH CW CHEMISTS LTD</a></span></td>
-                <td role="gridcell"><span class="table-heading" aria-hidden="true">FTD01</span> </td>
-                <td role="gridcell"><span class="table-heading" aria-hidden="true">62 WESTBOURNE ROAD, MARSH, HUDDERSFIELD, WEST YORKSHIRE</span></td>
-                <td role="gridcell"><span class="table-heading" aria-hidden="true">HD1 4LE</span></td>
-                
-              </tr>
-  
-                 <!--ROW 9-->
-                 <tr role="row">
-            
-                  <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">AKRAM ZA LTD</a></span></td>
-                  <td role="gridcell"><span class="table-heading" aria-hidden="true">FTG41</span> </td>
-                  <td role="gridcell"><span class="table-heading" aria-hidden="true">187 MANCHESTER ROAD, THORNTON LODGE, HUDDERSFIELD, WEST YORKSHRIRE</span></td>
-                  <td role="gridcell"><span class="table-heading" aria-hidden="true">HD1 3JG</span></td>
-                  
-                </tr>
-  
-                   <!--ROW 10-->
-              <tr role="row">
-            
-                <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="tracker-selectrole-confirm-locum">SUPERDRUG</a></span></td>
-                <td role="gridcell"><span class="table-heading" aria-hidden="true">FKJ70</span> </td>
-                <td role="gridcell"><span class="table-heading" aria-hidden="true">20 PRINCESS ALEXANDER WLK, HUDDERSFIELD, WEST YORKSHIRE</span></td>
-                <td role="gridcell"><span class="table-heading" aria-hidden="true">HD1 2TT</span></td>
-                
-              </tr>
-  
-                 <!--ROW 11-->
-                 <tr role="row">
-            
-                  <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="tracker-selectrole-confirm-locum2">LLYODS PHARMACY</a></span></td>
-                  <td role="gridcell"><span class="table-heading" aria-hidden="true">FY889</span></td>
-                  <td role="gridcell"><span class="table-heading" aria-hidden="true">45-47 MARKET STREET, HUDDERSFIELD, SURREY</span></td>
-                  <td role="gridcell"><span class="table-heading" aria-hidden="true">HD1 2HL</span></td>
-                  
-                </tr>
-  
-                   <!--ROW 12-->
-              <tr role="row">
-            
-                <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">PADDOCK HEAD PHARMACY</a></span></td>
-                <td role="gridcell"><span class="table-heading" aria-hidden="true">FYR12</span></td>
-                <td role="gridcell"><span class="table-heading" aria-hidden="true">203 LUCK LANE, PADDOCK, HUDDERSFIELD, WEST YORKSHIRE </span></td>
-                <td role="gridcell"><span class="table-heading" aria-hidden="true">HD1 4RB</span></td>
-                
-              </tr>
-  
-                 <!--ROW 13-->
-                 <tr role="row">
-            
-                  <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">SAINSBURY'S SUPERMARKETS LTD</a></span></td>
-                  <td role="gridcell"><span class="table-heading" aria-hidden="true">FLD02</span></td>
-                  <td role="gridcell"><span class="table-heading" aria-hidden="true">SOUTHGATE, HUDDERSFIELD</span></td>
-                  <td role="gridcell"><span class="table-heading" aria-hidden="true">HD1 6QR</span></td>
-                  
-                </tr>
-  
-                   <!--ROW 14-->
-              <tr role="row">
-            
-                <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">GREENHEAD PHARMACY</a></span></td>
-                <td role="gridcell"><span class="table-heading" aria-hidden="true">FW188</span> </td>
-                <td role="gridcell"><span class="table-heading" aria-hidden="true">SOUTHGATE, HUDDERSFIELD</span></td>
-                <td role="gridcell"><span class="table-heading" aria-hidden="true">HD1 4EL</span></td>
-                
-              </tr>
-  
-    
+          {% endfor %}
         </tbody>
       </table>
       <div class="table-foot">

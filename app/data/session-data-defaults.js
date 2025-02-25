@@ -138,6 +138,108 @@ module.exports = {
       }
     
   ],
+"locumsites": [
+  {
+    "id":"0",
+        "dispensingSiteName":"Medicare chemists",
+        "odsCode": "FAA09",
+        "address": "140 Westbourne road, Marsh, Huddersfield, West Yorkshire",
+        "postCode": "HD1 4LF"
+  },
+  {
+    "id":"1",
+    "dispensingSiteName":"Bradford road pharmacy",
+    "odsCode": "FC063",
+    "address": "107 Bradford road, Fartown, Huddersfield, West Yorkshire",
+    "postCode": "HD1 6DZ"
+  },
+  {
+    "id":"2",
+    "dispensingSiteName":"Medicare chemists",
+    "odsCode": "FCX65",
+    "address": "Meltham road surgery, 9 Meltham road, Lockwood, Huddersfield, West Yorkshire",
+    "postCode": "HD1 3UP"
+  },
+  {
+    "id":"3",
+    "dispensingSiteName":"Boots the chemist ltd",
+    "odsCode": "FD819",
+    "address": "22 King street, Huddersfield, Cheshire",
+    "postCode": "HD1 5PS"
+  },
+  {
+    "id":"4",
+    "dispensingSiteName":"K L Cockroft",
+    "odsCode": "FFL24",
+    "address": "125 Fitzwilliam street, Huddersfield, Cheshire",
+    "postCode": "HD1 5PS"
+  },
+  {
+    "id":"5",
+    "dispensingSiteName":"B Singh",
+    "odsCode": "FGA97",
+    "address": "6 Church street, Paddock, Huddersfield, West Yorkshire",
+    "postCode": "HD1 4LE"
+  },
+  {
+    "id":"6",
+    "dispensingSiteName":"Tesco in-store pharmacy",
+    "odsCode": "FN261",
+    "address": "Viaduct street, Huddersfield, Somerset",
+    "postCode": "HD1 1RW"
+  },
+  {
+    "id":"7",
+    "dispensingSiteName":"Peach CW chemists ltd",
+    "odsCode": "FTD01",
+    "address": "62 Westbourne road, Thronton lodge, Huddersfield, West Yorkshire",
+    "postCode": "HD1 4LE"
+  },
+  {
+    "id":"8",
+    "dispensingSiteName":"Akram ZA Ltd",
+    "odsCode": "FTG41",
+    "address": "187 Manchester road, Thornton lodge, Huddersfield, West Yorkshire",
+    "postCode": "HD1 1RW"
+  },
+  {
+    "id":"9",
+    "dispensingSiteName":"Superdrug",
+    "odsCode": "FKJ70",
+    "address": "20 Princess alexander walk, Huddersfield, West Yorkshire",
+    "postCode": "HD1 2TT"
+  },
+  {
+    "id":"10",
+    "dispensingSiteName":"Llyods pharmacy",
+    "odsCode": "FY889",
+    "address": "",
+    "postCode": "HD1 2TT"
+  },
+  {
+    "id":"11",
+    "dispensingSiteName":"Llyods pharmacy",
+    "odsCode": "FY889",
+    "address": "45-47 Market street, Huddersfield, Surrey",
+    "postCode": "HD1 2HL"
+  },
+  {
+    "id":"12",
+    "dispensingSiteName":"Paddock head pharmacy",
+    "odsCode": "FYR12",
+    "address": "203 Luck lane, Paddock, Huddersfield, West Yorkshire",
+    "postCode": "HD1 4RB"
+  },
+  {
+    "id":"13",
+    "dispensingSiteName":"Sainsbury's supermarket ltd",
+    "odsCode": "FLD02",
+    "address": "Southgate, Huddersfield",
+    "postCode": "HD1 6QR"
+  }
+  
+],
+
   "patients": [
     {
       "9726918863": {
