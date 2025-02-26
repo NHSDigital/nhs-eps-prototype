@@ -240,6 +240,241 @@ module.exports = {
   
 ],
 
+"leedsLocumsites": [
+  {
+    "id":"0",
+        "dispensingSiteName":"Superdrug pharmacy",
+        "odsCode": "FAA09",
+        "address": "31-35 The Merrion Centre, Leeds",
+        "postCode": "LS2 8NG"
+  },
+  {
+    "id":"1",
+    "dispensingSiteName":"Boots",
+    "odsCode": "FC063",
+    "address": "1 Bond street, Trinity centre, Leeds West Yorkshire",
+    "postCode": "LS1 5EY"
+  },
+  {
+    "id":"2",
+    "dispensingSiteName":"Boots",
+    "odsCode": "FCX65",
+    "address": "City station concourse, Leeds, West Yorkshire",
+    "postCode": "LS1 4DT"
+  },
+  {
+    "id":"3",
+    "dispensingSiteName":"Woodhouse lane - Pharmacy plus health",
+    "odsCode": "FD819",
+    "address": "166 Woodhouse lane, Leeds, West Yorkshire",
+    "postCode": "LS2 9HB"
+  },
+  {
+    "id":"4",
+    "dispensingSiteName":"Alpha and Omega",
+    "odsCode": "FFL24",
+    "address": "2 High Court, Leeds",
+    "postCode": "LS2 7ES"
+  },
+  {
+    "id":"5",
+    "dispensingSiteName":"Outland - pharmacy plus health",
+    "odsCode": "FGA97",
+    "address": "Unit 2 Oatlands retail park, Oatland drive, Leeds",
+    "postCode": "LS7 1ST"
+  },
+  {
+    "id":"6",
+    "dispensingSiteName":"Hyde park pharmacy",
+    "odsCode": "FN261",
+    "address": "22-24 Woodsley road, Leeds, West Yorkshire",
+    "postCode": "LS3 1DT"
+  },
+  {
+    "id":"7",
+    "dispensingSiteName":"Tylee Andrew Ltd",
+    "odsCode": "FTD01",
+    "address": "25 Hyde park road, Leeds",
+    "postCode": "LS6 1PY"
+  },
+  {
+    "id":"8",
+    "dispensingSiteName":"Boots",
+    "odsCode": "FTG41",
+    "address": "Crown point retails park, Junction street, Leeds, West Yorkshire",
+    "postCode": "LS10 1ET"
+  },
+  {
+    "id":"9",
+    "dispensingSiteName":"Well",
+    "odsCode": "FKJ70",
+    "address": "84-86 Lincoln green road, Leeds",
+    "postCode": "LS9 7SU"
+  },
+  {
+    "id":"10",
+    "dispensingSiteName":"RW Pullan",
+    "odsCode": "FY889",
+    "address": "58 Brudnell road, Leeds",
+    "postCode": "LS6 1EG"
+  },
+  {
+    "id":"11",
+    "dispensingSiteName":"Cohens chemist",
+    "odsCode": "FY889",
+    "address": "5A Shafton lane, Holbeck, Leeds",
+    "postCode": "LS11 9LY"
+  },
+  {
+    "id":"12",
+    "dispensingSiteName":"Cohen's chemist",
+    "odsCode": "FYR12",
+    "address": "Chapeltown health centre, Spencer place, Leeds",
+    "postCode": "LS7 4BB"
+  },
+  {
+    "id":"13",
+    "dispensingSiteName":"Cohen's chemist",
+    "odsCode": "FLD02",
+    "address": "Bloom building, Green lane, New Wortley, Leeds, West Yorkshire",
+    "postCode": "LS12 1JZ"
+  },
+  {
+    "id":"14",
+    "dispensingSiteName":"Well",
+    "odsCode": "FLD02",
+    "address": "275 Burley road, Leeds, West Yorkshire",
+    "postCode": "LS4 2EL"
+  },
+  {
+    "id":"15",
+    "dispensingSiteName":"Star pharmacy",
+    "odsCode": "FLD02",
+    "address": "136 Cardigan road, Leeds, West Yorkshire",
+    "postCode": "LS6 1LU"
+  },
+  {
+    "id":"16",
+    "dispensingSiteName":"Shifa pharmacy",
+    "odsCode": "FLD02",
+    "address": "225 Chapel town road, Leeds, West Yorkshire",
+    "postCode": "LS7 3DX"
+  },
+  {
+    "id":"17",
+    "dispensingSiteName":"East park - Pharmacy plus health",
+    "odsCode": "FLD02",
+    "address": "5-7 East park road, East end park, Leeds, West yorkshire",
+    "postCode": "LS9 9JG"
+  },
+  {
+    "id":"18",
+    "dispensingSiteName":"Chapeltown - Pharmacy plus health",
+    "odsCode": "FLD02",
+    "address": "Chapeltown joint serv ctr, 263 Chapeltown road, Leeds",
+    "postCode": "LS7 3EX"
+  },
+  {
+    "id":"19",
+    "dispensingSiteName":"Khan pharmacy",
+    "odsCode": "FLD02",
+    "address": "168 Roundhay road, Leeds",
+    "postCode": "LS8 5PL"
+  },
+  {
+    "id":"20",
+    "dispensingSiteName":"Beeston hill pharmacy",
+    "odsCode": "FLD02",
+    "address": "134 Beeston road, Beeston, Leeds",
+    "postCode": "LS11 8BB"
+  },
+  {
+    "id":"21",
+    "dispensingSiteName":"Boots",
+    "odsCode": "FLD02",
+    "address": "132 Beeston road, Leeds",
+    "postCode": "LS11 8BB"
+  },
+  {
+    "id":"22",
+    "dispensingSiteName":"Medichem pharmacy",
+    "odsCode": "FLD02",
+    "address": "St Martins house, 210-212 Chapeltown road, Leeds",
+    "postCode": "LS7 4HZ"
+  },
+  {
+    "id":"23",
+    "dispensingSiteName":"Al-Shafa pharmacy",
+    "odsCode": "FLD02",
+    "address": "Unit 2&3 Hillside Bldg, Beeston road, Beeston, Leeds, West Yorkshire",
+    "postCode": "LS11 6AY"
+  },
+  {
+    "id":"24",
+    "dispensingSiteName":"Alsyed pharmacy",
+    "odsCode": "FLD02",
+    "address": "230 york road, Leeds",
+    "postCode": "LS9 9BP"
+  },
+  {
+    "id":"25",
+    "dispensingSiteName":"Alsyed pharmacy",
+    "odsCode": "FLD02",
+    "address": "35 Harehills road, Leeds",
+    "postCode": "LS8 5HR"
+  },
+  {
+    "id":"26",
+    "dispensingSiteName":"Imaan pharmacy",
+    "odsCode": "FLD02",
+    "address": "262-266 Harehills road, Leeds",
+    "postCode": "LS9 7BD"
+  },
+  {
+    "id":"27",
+    "dispensingSiteName":"Well",
+    "odsCode": "FLD02",
+    "address": "17-18 Penny hill centre, Hunslet, Leeds",
+    "postCode": "LS9 7BD"
+  },
+  {
+    "id":"27",
+    "dispensingSiteName":"Well",
+    "odsCode": "FLD02",
+    "address": "17-18 Penny hill centre, Hunslet, Leeds",
+    "postCode": "LS9 7BD"
+  },
+  {
+    "id":"28",
+    "dispensingSiteName":"Roundhay pharmacy",
+    "odsCode": "FLD02",
+    "address": "211 Roundhay roads, Leeds",
+    "postCode": "LS8 4HS"
+  },
+  {
+    "id":"29",
+    "dispensingSiteName":"Shaan pharmacy",
+    "odsCode": "FLD02",
+    "address": "176 Harehills lane, LEeds, West Yorkshire",
+    "postCode": "LS8 5JP"
+  },
+  {
+    "id":"30",
+    "dispensingSiteName":"Hunslet pharmacy",
+    "odsCode": "FLD02",
+    "address": "Unit 1, Fraternity house, 52 Church street, Hunslet, Leeds",
+    "postCode": "LS8 4HS"
+  },
+  {
+    "id":"31",
+    "dispensingSiteName":"Roundhay pharmacy",
+    "odsCode": "FLD02",
+    "address": "211 Roundhay roads, Leeds",
+    "postCode": "LS8 4HS"
+  }
+  
+],
+
   "patients": [
     {
       "9726918863": {
@@ -648,7 +883,7 @@ module.exports = {
         "hoHistImmigrationStatus": "",
         "hoHistHealthcareStatus": "",
         "superceded": "yes",
-        "prescriptionNo": ["6GA337P343022H597C", "6GA337P3f3022H597C","2GA357P3f3022B591C"]
+        "prescriptionNo": ["6GA337P343022H597C", "2GA357P3f3022B591C"]
       }
     },
     {
