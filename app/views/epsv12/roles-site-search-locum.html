@@ -29,28 +29,28 @@ Find a patient by NHS number - {{ serviceName }}
        Dispensing site name
       </label>
       <input class="nhsuk-input nhsuk-u-width-two-thirds nhsuk-u-margin-bottom-2"
-      id="searchWithincolumns"
-      name="searchWithincolumns"
+      id="site-search"
+      name="site-search"
       type="text"
-      aria-describedby="searchWithincolumns"
+      aria-describedby="site-search"
       value="">
       <label class="nhsuk-label" for="input-width-10">
         Postcode
       </label>
       <input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-margin-bottom-2"
-      id="searchWithincolumns"
-      name="searchWithincolumns"
+      id="postcode-search"
+      name="postcode-search"
       type="text"
-      aria-describedby="searchWithincolumns"
+      aria-describedby="postcode-search"
       value="">
       <label class="nhsuk-label" for="input-width-10">
         ODS code
       </label>
       <input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-margin-bottom-2"
-      id="searchWithincolumns"
-      name="searchWithincolumns"
+      id="ods-search"
+      name="ods-search"
       type="text"
-      aria-describedby="searchWithincolumns"
+      aria-describedby="ods-search"
       value="">
     </br> <a aria-disabled="false" class="nhsuk-button nhsuk-u-margin-top-2" onclick="searchLOC()" id="confirm-current-role-locum" role="button">Search</a>
     </div>
@@ -672,7 +672,9 @@ Find a patient by NHS number - {{ serviceName }}
 
 <script>
   function searchLOC() {
-  var searchTerm = document.getElementById("searchWithincolumns").value.toUpperCase();
+  var searchTerm = document.getElementById("site-search").value.toUpperCase();
+  var postcodeSearch = document.getElementById("postcode-search").value.toUpperCase();
+  var odsSearch = document.getElementById("ods-search").value.toUpperCase();
   console.log("Search term:", searchTerm);
   
   var hd1Table = document.getElementById("hd1-table");
@@ -691,13 +693,16 @@ Find a patient by NHS number - {{ serviceName }}
   longList.style.display = "none";
   
   // Check if search term is HD1 or HK1
-  if (searchTerm === "HD1") {
+  if (postcodeSearch === "HD1") {
     // Show HD1 table
     hd1Table.style.display = ""; // or "block" if you're not using table layout
-  } else if (searchTerm === "HK1") {
+  } else if (postcodeSearch === "HK1") {
     // Show HK1 table
     hk1Table.style.display = ""; // or "block" if you're not using table layout
-  } else if (searchTerm === "BOOTS") {
+  } 
+  
+
+  if (searchTerm === "BOOTS") {
     // Show HK1 table
     tooMany.style.display = ""; // or "block" if you're not using table layout
   } else if (searchTerm === "LEEDS") {

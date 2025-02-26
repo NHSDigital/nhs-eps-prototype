@@ -467,7 +467,7 @@ module.exports = {
   },
   {
     "id":"31",
-    "dispensingSiteName":"Roundhay pharmacy",
+    "dispensingSiteName":"Al-shafa",
     "odsCode": "FLD02",
     "address": "211 Roundhay roads, Leeds",
     "postCode": "LS8 4HS"
