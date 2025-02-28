@@ -37,30 +37,30 @@
 
 
 .masthead-service {
-  flex-grow: 1
+  flex-grow: 1;
 }
 
 .masthead .nhsuk-header__menu {
   float: none;
   justify-self: flex-end;
   margin: 0;
-  position: unset
+  position: unset;
 }
 
 .masthead .nhsuk-header__menu-toggle {
-  right: 0
+  right: 0;
 }
 
 
 .in-page-nav {
   margin-bottom: 8px;
-  margin-top: 8px
+  margin-top: 8px;
 }
 
 @media(min-width: 40.0625em) {
   .in-page-nav {
     margin-bottom:8px;
-    margin-top: 8px
+    margin-top: 8px;
   }
 }
 
@@ -317,9 +317,9 @@
 }
 
 .nhsuk-header:after {
-  clear: both;
+  clear: none;
   content: "";
-  display: block
+  display: inline-block;
 }
 
 .nhsuk-header__container {
@@ -327,26 +327,26 @@
 }
 
 .nhsuk-header__container:after {
-  clear: both;
+  clear: none;
   content: "";
-  display: block
+  display: inline-block;
 }
 
 @media (max-width: 40.0525em) {
   .nhsuk-header__container {
     margin:0;
-    padding: 16px
+    padding: 16px;
   }
 }
 
 .nhsuk-header__logo {
-  float: left
+  float: left;
 }
 
 @media (max-width: 40.0525em) {
   .nhsuk-header__logo {
     position:relative;
-    z-index: 1
+    z-index: 1;
   }
 }
 
@@ -395,7 +395,7 @@
 }
 
 .nhsuk-header__link {
-  display: block;
+  display: inline;
   height: 40px;
   width: 100px
 }
@@ -429,36 +429,36 @@
 .nhsuk-header__content:after {
   clear: both;
   content: "";
-  display: block
+  display: block;
 }
 
 @media print {
   .nhsuk-header__content {
-    display: none
+    display: none;
   }
 }
 
 .nhsuk-header__content.js-show {
-  border-bottom: 4px solid #f0f4f5
+  border-bottom: 4px solid #f0f4f5;
 }
 
 @media (min-width: 40.0625em) {
   .nhsuk-header__content {
-    float:right
+    float:right;
   }
 
   .nhsuk-header__content.js-show {
-    border-bottom: 0
+    border-bottom: 0;
   }
 }
 
 .nhsuk-header__menu {
-  float: right
+  float: right;
 }
 
 @media (min-width: 40.0625em) {
   .nhsuk-header__menu {
-    float:left
+    float:left;
   }
 }
 
@@ -1249,7 +1249,7 @@
 
 .masthead-container {
   align-items: center;
-  display: flex;
+  display: inline-block;
   justify-content: space-between;
   padding-left: 0;
   padding-right: 0
