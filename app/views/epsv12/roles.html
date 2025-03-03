@@ -10,9 +10,13 @@ Role selection - {{ serviceName }}
 
 {% block content %}
 
+
+
 <div class="row">
   <div class="col-sm-0 col-md-1 col-lg-1 col-xl-3"></div>
   <div class="col-sm-12 col-md-10 col-lg-10 col-xl-6">
+
+
       {% if data['action'] === 'change' %}
       <h1 class="select-role-header nhsuk-heading-xl" id="select-role-header">
         Change your role
@@ -29,7 +33,7 @@ Role selection - {{ serviceName }}
       <div>
         <div class="nhsuk-inset-text current-role">
           <span class="nhsuk-u-visually-hidden">Information: </span>
-          <p id="current-role-details">You are currently logged in at NHS CONNECTING FOR HEALTH (X09) with {{ data['roleType'] or 'Clinical Practitioner Access Role' }}</p></div>
+          <p id="current-role-details">You are currently logged in at {{ selectedRole.site or "NHS CONNECTING FOR HEALTH (X09)"}} with {{ selectedRole.roleName or "PERSONAL PATIENT DATA" }}</p></div>
   
         
         <a href="search" aria-disabled="false" class="nhsuk-button" id="confirm-current-role" role="button" type="submit">Continue to find a prescription</a>
@@ -39,7 +43,7 @@ Role selection - {{ serviceName }}
       <div>
         <div class="nhsuk-inset-text current-role">
           <span class="nhsuk-u-visually-hidden">Information: </span>
-          <p id="current-role-details">You are currently logged in at NHS CONNECTING FOR HEALTH (X09) with {{ data['roleType'] or 'Clinical Practitioner Access Role' }}</p></div>
+          <p id="current-role-details">You are currently logged in at {{ selectedRole.site or "NHS CONNECTING FOR HEALTH (X09)"}} with {{ selectedRole.roleName or "PERSONAL PATIENT DATA" }}</p></div>
   
         
         <a href="search" aria-disabled="false" class="nhsuk-button" id="confirm-current-role" role="button" type="submit">Continue to find a prescription</a>
@@ -47,6 +51,8 @@ Role selection - {{ serviceName }}
       </div>
 
       {% endif %}
+
+      
       {% if selection == "yes" %} 
       {% if cards == "yes" %}
       <p>Alternatively, you can choose a new role below</p>
@@ -55,12 +61,13 @@ Role selection - {{ serviceName }}
 
    
 
-<!-- <h2 class="allowed-role-title{% if data['action'] !== 'change' %} nhsuk-heading-m{% endif %}">Roles with access to the Clinical prescription tracking service</h2>-->
+
 {% if cards == "yes" %}
 {% set eps_count = 0 %}
 {% for role in roles  %}
 
-{% if role.eps =="yes"%}
+  
+{% if role.eps == "yes" and role.selected != "yes" %}  {# Skip the selected role #}
 {% set eps_count = eps_count + 1 %}
   <div class="nhsuk-card allowed-role">
     <div class="nhsuk-card__content">
@@ -92,103 +99,6 @@ Role selection - {{ serviceName }}
 {% endif %}
 
 
-<!-- Hard coded page back up-->
- <!-- 
-    <div class="nhsuk-card allowed-role">
-      <div class="nhsuk-card__content">
-        <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-3">
-          <h3 class="nhsuk-card__heading">
-            <div class="role-details">
-              <a href="roles-confirm?roleType=Demographic%20Administrator" class="role-name" role="button" tabindex="0">
-                <u>NHS CONNECTING FOR HEALTH (X09)</u></a>
-            </div>
-            </h3><p class="role-details">Demographic Administrator</p>
-        </div>
-       
-          <div class="nhsuk-grid-column-one-half">
-            <p class="nhsuk-u-margin-top-1 nhsuk-u-font-size-12"> 
-              Site
-            </br> Site 2
-          </br> Site 3
-        </br> Site 4
-            </p>
-          </div>
-      </div>
-    </div>
-    <div class="nhsuk-card allowed-role">
-      <div class="nhsuk-card__content">
-        <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-3"> <h3 class="nhsuk-card__heading">
-          <div class="role-details">
-            <a href="roles-confirm?roleType=Health%20Records%20Manager%20Access%20Role" class="role-name" role="button" tabindex="0">
-              <u>NHS CONNECTING FOR HEALTH (X09)</u></a>
-          </div>
-          </h3><p class="role-details">Health Records Manager Access Role</p></div>
-       
-          <div class="nhsuk-grid-column-one-half">
-            <p class="nhsuk-u-margin-top-1 nhsuk-u-font-size-12"> 
-              Site
-            </br> {{roles.addressLine1}}
-          </br> Site 3
-        </br> Site 4
-            </p>
-          </div>
-      </div>
-    </div>
-    <div class="nhsuk-card allowed-role">
-      <div class="nhsuk-card__content">
-        <div class="nhsuk-grid-column-one-half">
-          <h3 class="nhsuk-card__heading">
-            <div class="role-details">
-              <a href="roles-confirm?roleType=Midwife%20Access%20Role" class="role-name" role="button" tabindex="0">
-                <u>NHS CONNECTING FOR HEALTH (X09)</u></a>
-            </div>
-            </h3><p class="role-details">Midwife Access Role</p>
-        </div>
-        
-          <div class="nhsuk-grid-column-one-half">    
-            <p class="nhsuk-u-margin-top-1 nhsuk-u-font-size-12"> 
-            Site
-          </br> Site 2
-        </br> Site 3
-      </br> Site 4
-          </p></div>
-      </div>
-    </div>
-    <div class="nhsuk-card allowed-role">
-      <div class="nhsuk-card__content">
-        <div class="nhsuk-grid-column-one-half">     <h3 class="nhsuk-card__heading">
-          <div class="role-details">
-            <a href="roles-confirm?roleType=Pharmacist" class="role-name" role="button" tabindex="0">
-              <u>NHS CONNECTING FOR HEALTH (X09)</u></a>
-          </div>
-          </h3> <p class="role-details">Pharmacist</p> </div>
-        <div class="nhsuk-grid-column-one-half">
-          <p class="nhsuk-u-margin-top-1 nhsuk-u-font-size-12"> 
-            Site
-          </br> Site 2
-        </br> Site 3
-      </br> Site 4
-          </p> </div>
-   
-       
-      </div>
-    </div>
--->
-
-
-    <!--
-   <div class="nhsuk-card allowed-role">
-      <div class="nhsuk-card__content">
-        <h3 class="nhsuk-card__heading">
-          <div class="role-details">
-            <a href="roles-confirm?roleType=Admin%2FClinical%20Support%20Access%20Role" class="role-name" id="select_555292251104_X26" role="button" tabindex="0"><u>NHS ENGLAND - X26 (X26)</u>
-            </a>
-          </div>
-          <p class="role-details">Admin/Clinical Support Access Role</p></h3>
-        
-      </div>
-    </div>
-    -->
 {% if noAccess == "yes" %}
     <details class="nhsuk-details nhsuk-expander">
       <summary class="nhsuk-details__summary">
