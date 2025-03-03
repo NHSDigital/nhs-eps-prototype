@@ -531,8 +531,35 @@ router.get("/epsv12/prescription-results-pds", function (req, res, next) {
 // Role selection journey
 router.get('/epsv12/roles', (req, res) => {
   let roles = req.session.data.roles; // Retrieve roles from session data
-  const { selection, cards, noAccess } = req.query;
-  res.render('./epsv12/roles', { selection, cards, noAccess, roles }); // Ensure res.render() is inside the function
+  let { selection, cards, noAccess } = req.query;
+ // Update session values based on query parameters
+ if (selection) req.session.data.selection = selection;
+ if (cards) req.session.data.cards = cards;
+ if (noAccess) req.session.data.noAccess = noAccess;
+
+ // Retrieve stored values if not provided in query params
+ selection = selection || req.session.data.selection || "no";
+ cards = cards || req.session.data.cards || "no";
+ noAccess = noAccess || req.session.data.noAccess || "no";
+
+ let selectedRole = roles.find(role => role.selected === "yes") || null;
+
+ if (selection === "yes") {
+   if (!selectedRole && roles.length > 0) {
+     // Select the first available role if none is selected
+     selectedRole = roles[0]; 
+     roles.forEach(role => role.selected = ""); // Clear all selections
+     selectedRole.selected = "yes"; // Set the first role as selected
+   }
+ } else {
+   roles.forEach(role => role.selected = ""); // Clear selection if selection=no
+   selectedRole = null;
+ }
+
+ // Save updated roles back to session
+ req.session.data.roles = roles;
+
+ res.render('./epsv12/roles', { selection, cards, noAccess, roles, selectedRole });
 });
 
 // Locum role
@@ -549,7 +576,12 @@ router.get('/epsv12/roles-confirm', (req, res) => {
   if (!selectedRole) {
     return res.redirect('/epsv12/roles'); // Redirect if no role found
   }
+// Update all roles: set `selected` to "" for all, then "yes" for the selected one
+roles.forEach(role => role.selected = ""); 
+selectedRole.selected = "yes"; 
 
+// Save updated roles back to session
+req.session.data.roles = roles;
   res.render('./epsv12/roles-confirm', { selectedRole }); // Pass selected role to template
 });
 

@@ -108,7 +108,15 @@
       {% endblock %}
 
       {% block footer %}
-    <div class="footer__confidential" id="footer-user-details"><strong>CONFIDENTIAL:</strong> PERSONAL PATIENT DATA accessed by HUSKAHOUND, Dogtanian - NHS CONNECTING FOR HEALTH (X09)</div>
+      {% set selectedRole = (data.roles | selectattr("selected", "equalto", "yes") | first) %}
+      {% if selectedRole %}
+        <div class="nhsuk-header__role">
+          <div class="footer__confidential" id="footer-user-details"><strong>CONFIDENTIAL:</strong> {{ selectedRole.roleName or "PERSONAL PATIENT DATA" }} accessed by HUSKAHOUND, Dogtanian - {{ selectedRole.site or "NHS CONNECTING FOR HEALTH (X09)"}}</div>
+        </div>
+
+        
+   
+{% endif %}
 
     <footer role="contentinfo">
       <div class="nhsuk-footer-container">
