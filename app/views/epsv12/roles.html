@@ -16,41 +16,60 @@ Role selection - {{ serviceName }}
   <div class="col-sm-0 col-md-1 col-lg-1 col-xl-3"></div>
   <div class="col-sm-12 col-md-10 col-lg-10 col-xl-6">
 
+    {% if selection == "no" and cards == "no" and noAccess == "yes" %}
+   
+      
+    <h1 class="select-role-header nhsuk-heading-xl" id="select-role-header">
+      No access to the clinical prescription tracking service
+    </h1>
+    <p>None of the roles on your smartcard allow you to access the clinical prescription tracking service. Contact your local Registration Authority to obtain the correct role.</p>
 
-      {% if data['action'] === 'change' %}
-      <h1 class="select-role-header nhsuk-heading-xl" id="select-role-header">
-        Change your role
-        <span class="nhsuk-caption-xl nhsuk-caption--bottom">Select the role you wish to use to access the service</span>
-      </h1>
-      {% else %}
-      <h1 class="select-role-header nhsuk-heading-xl" id="select-role-header">
-        Select your role
-      </h1>
-        <p>Select the role you wish to use to access the service</p>
-      {% endif %}
+    {% else %}
 
-      {% if selection == "yes" %}
-      <div>
-        <div class="nhsuk-inset-text current-role">
-          <span class="nhsuk-u-visually-hidden">Information: </span>
-          <p id="current-role-details">You are currently logged in at {{ selectedRole.site or "NHS CONNECTING FOR HEALTH (X09)"}} with {{ selectedRole.roleName or "PERSONAL PATIENT DATA" }}</p></div>
-  
-        
-        <a href="search" aria-disabled="false" class="nhsuk-button" id="confirm-current-role" role="button" type="submit">Continue to find a prescription</a>
+    {% if data['action'] === 'change' %}
+    <h1 class="select-role-header nhsuk-heading-xl" id="select-role-header">
+      Change your role
+      <span class="nhsuk-caption-xl nhsuk-caption--bottom">Select the role you wish to use to access the service</span>
+    </h1>
+    {% else %}
+    <h1 class="select-role-header nhsuk-heading-xl" id="select-role-header">
+      Select your role
+    </h1>
+      <p>Select the role you wish to use to access the service</p>
+    {% endif %}
+
+    {% if selection == "yes" %}
+    <div>
+      <div class="nhsuk-inset-text current-role">
+        <span class="nhsuk-u-visually-hidden">Information: </span>
+        <p id="current-role-details">You are currently logged in at {{ selectedRole.site or "NHS CONNECTING FOR HEALTH (X09)"}} with {{ selectedRole.roleName or "PERSONAL PATIENT DATA" }}</p></div>
+
+      
+      <a href="search" aria-disabled="false" class="nhsuk-button" id="confirm-current-role" role="button" type="submit">Continue to find a prescription</a>
+   
+    </div>
+    {% elif data['action'] === 'change' %}
+    <div>
+      <div class="nhsuk-inset-text current-role">
+        <span class="nhsuk-u-visually-hidden">Information: </span>
+        <p id="current-role-details">You are currently logged in at {{ selectedRole.site or "NHS CONNECTING FOR HEALTH (X09)"}} with {{ selectedRole.roleName or "PERSONAL PATIENT DATA" }}</p></div>
+
+      
+      <a href="search" aria-disabled="false" class="nhsuk-button" id="confirm-current-role" role="button" type="submit">Continue to find a prescription</a>
      
-      </div>
-      {% elif data['action'] === 'change' %}
-      <div>
-        <div class="nhsuk-inset-text current-role">
-          <span class="nhsuk-u-visually-hidden">Information: </span>
-          <p id="current-role-details">You are currently logged in at {{ selectedRole.site or "NHS CONNECTING FOR HEALTH (X09)"}} with {{ selectedRole.roleName or "PERSONAL PATIENT DATA" }}</p></div>
-  
-        
-        <a href="search" aria-disabled="false" class="nhsuk-button" id="confirm-current-role" role="button" type="submit">Continue to find a prescription</a>
-       
-      </div>
+    </div>
 
-      {% endif %}
+    {% endif %}
+
+
+
+    {% endif %}
+    
+
+    
+
+   
+
 
       
       {% if selection == "yes" %} 
@@ -100,6 +119,7 @@ Role selection - {{ serviceName }}
 
 
 {% if noAccess == "yes" %}
+<h2>Your roles without access</h2>
     <details class="nhsuk-details nhsuk-expander">
       <summary class="nhsuk-details__summary">
         <span class="nhsuk-details__summary-text">
