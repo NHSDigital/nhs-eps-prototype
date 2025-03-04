@@ -83,11 +83,16 @@ Role selection - {{ serviceName }}
 
 {% if cards == "yes" %}
 {% set eps_count = 0 %}
+{% set shown_role = false %}  {# Track if a role has been displayed #}
 {% for role in roles  %}
 
   
-{% if role.eps == "yes" and role.selected != "yes" %}  {# Skip the selected role #}
+{% if role.eps == "yes" and role.selected != "yes" and (singleRole != "yes" or not shown_role) %}
+
+      
+
 {% set eps_count = eps_count + 1 %}
+{% set shown_role = true %}  {# Mark that we’ve shown one role #}
   <div class="nhsuk-card allowed-role">
     <div class="nhsuk-card__content">
       <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-3">
