@@ -11,10 +11,8 @@ Role journey - {{ serviceName }}
 {% block content %}
 
 <div class="row">
-  <div class="col-sm-0 col-md-1 col-lg-1 col-xl-3"></div>
-  <div class="col-sm-12 col-md-10 col-lg-10 col-xl-6">
-    
- <h1>Role selection journeys</h1>
+  <div class="nhsuk-grid-column-one-third">
+ <h1 class="nhsuk-heading-m">Role selected journeys</h1>
  <div class="nhsuk-card allowed-role">
   <div class="nhsuk-card__content">
    
@@ -80,72 +78,80 @@ Role journey - {{ serviceName }}
     
   </div>
 </div>
-<div class="nhsuk-card allowed-role">
-  <div class="nhsuk-card__content">
-   
-      <h3 class="nhsuk-card__heading">
-        <div class="role-details">
-          <a href="roles?selection=no&cards=yes&noAccess=yes&singleRole=no&action=no" class="role-name" role="button" tabindex="0">
-            <u>No role selected - roles with and without access</u>
-          </a>
-        </div>
-      </h3>
-      <p class="role-details">Roles with access and roles without access</p>
-   
-
+  </div>
+  <div class="nhsuk-grid-column-one-third">
+    <h1 class="nhsuk-heading-m">Role not selected journeys</h1>
+    <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="roles?selection=no&cards=yes&noAccess=yes&singleRole=no&action=no" class="role-name" role="button" tabindex="0">
+                <u>No role selected - roles with and without access</u>
+              </a>
+            </div>
+          </h3>
+          <p class="role-details">Roles with access and roles without access</p>
+       
     
-  </div>
-</div>
-<div class="nhsuk-card allowed-role">
-  <div class="nhsuk-card__content">
-   
-      <h3 class="nhsuk-card__heading">
-        <div class="role-details">
-          <a href="roles?selection=no&cards=yes&noAccess=no&singleRole=no&action=no" class="role-name" role="button" tabindex="0">
-            <u>No role selected - roles with access</u>
-          </a>
-        </div>
-      </h3>
-      <p class="role-details">Roles with access</p>
-   
-
+        
+      </div>
+    </div>
+    <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="roles?selection=no&cards=yes&noAccess=no&singleRole=no&action=no" class="role-name" role="button" tabindex="0">
+                <u>No role selected - roles with access</u>
+              </a>
+            </div>
+          </h3>
+          <p class="role-details">Roles with access</p>
+       
     
-  </div>
-</div>
-<div class="nhsuk-card allowed-role">
-  <div class="nhsuk-card__content">
-   
-      <h3 class="nhsuk-card__heading">
-        <div class="role-details">
-          <a href="roles?selection=no&cards=yes&noAccess=no&singleRole=yes&action=no" class="role-name" role="button" tabindex="0">
-            <u>No role selected - one role with access</u>
-          </a>
-        </div>
-      </h3>
-      <p class="role-details">Roles with access</p>
-   
-
+        
+      </div>
+    </div>
+    <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="roles?selection=no&cards=yes&noAccess=no&singleRole=yes&action=no" class="role-name" role="button" tabindex="0">
+                <u>No role selected - one role with access</u>
+              </a>
+            </div>
+          </h3>
+          <p class="role-details">Roles with access</p>
+       
     
-  </div>
-</div>
-
-<div class="nhsuk-card allowed-role">
-  <div class="nhsuk-card__content">
-   
-      <h3 class="nhsuk-card__heading">
-        <div class="role-details">
-          <a href="roles?selection=no&cards=no&noAccess=yes&singleRole=no&action=no" class="role-name" role="button" tabindex="0">
-            <u>No access to tracker</u>
-          </a>
-        </div>
-      </h3>
-      <p class="role-details">Roles without access</p>
-   
-
+        
+      </div>
+    </div>
     
+    <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="roles?selection=no&cards=no&noAccess=yes&singleRole=no&action=no" class="role-name" role="button" tabindex="0">
+                <u>No access to tracker</u>
+              </a>
+            </div>
+          </h3>
+          <p class="role-details">Roles without access</p>
+       
+    
+        
+      </div>
+    </div>
   </div>
-</div>
+  <div class="nhsuk-grid-column-one-third">
+    <h1 class="nhsuk-heading-m">Error messages</h1>
   </div>
+
+  
 </div>
 
 {% endblock %}
