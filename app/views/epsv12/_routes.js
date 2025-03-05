@@ -11,11 +11,22 @@ module.exports = (router) => {
       target = 'epsv12/search-advanced';
     }
 
-    let errors = req.session.data.errors || {}; // Get errors from session
-    req.session.data.errors = {}; // Clear errors so they don't persist after refresh
+    let errorType = req.query.error;
+    let errors = {};
 
-    return res.render(target, {
-      'refine': refine,
+    if (errorType === "missing-presc-number") {
+        errors["presc-number"] = "Enter a prescription ID number";
+    } else if (errorType === "no-matching-presc") {
+        errors["presc-number"] = "The prescription ID number is not recognised.";
+    } else if (errorType === "no-nhs-number") {
+        errors["presc-number"] = "No NHS number found for this prescription";
+    } else if (errorType === "special-character") {
+      errors["presc-number"] = "The prescription ID number must contain only letters, numbers, dashes or the + character.";
+  }  else if (errorType === "too-many") {
+    errors["presc-number"] = "The prescription ID number must contain 18 characters";
+}
+
+    return res.render('epsv12/search', {
       'errors': errors
     });
 });
@@ -30,8 +41,7 @@ router.post("/epsv12/search-presc-post", function (req, res) {
   req.session.data.errors = {};
 
   if (!prescNumber) {
-    req.session.data.errors = { "presc-number": "Enter a prescription ID number" };
-    return res.redirect("search");
+    return res.redirect("search?error=missing-presc-number");
   }
 
   let patientEntry = req.session.data.patients.find(p => 
@@ -44,8 +54,7 @@ router.post("/epsv12/search-presc-post", function (req, res) {
     const nhsNumber = patient.nhsNumber;
 
     if (!nhsNumber) {
-      req.session.data.patient = null;
-      return res.redirect("search");
+      return res.redirect("search?error=no-nhs-number");
     }
 
     req.session.data.patient = patient;
@@ -55,8 +64,7 @@ router.post("/epsv12/search-presc-post", function (req, res) {
     // Redirect to the spinner
     return res.redirect(`spinner-prescription-list?nhsNumber=${nhsNumber}&prescID=${prescNumber}&searchTerm=prescription`);
   } else {
-    req.session.data.errors = { "presc-number": "No matching prescription found" };
-    return res.redirect("search");
+    return res.redirect("search?error=no-matching-presc");
   }
 });
 
