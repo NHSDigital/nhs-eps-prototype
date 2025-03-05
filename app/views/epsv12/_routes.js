@@ -120,33 +120,49 @@ router.get('/epsv12/search-nhs', function (req, res) {
     let dobDay = req.body['dob-day'] || '';
     let dobMonth = req.body['dob-month'] || '';
     let dobYear = req.body['dob-year'] || '';
-    req.session.data.errors = {};
-    // Collect all errors
-    if (!searchPostcode) {
-      req.session.data.errors["postcode-only"] = true;
-  }
-  if (!searchLastName) {
-      req.session.data.errors["last-name"] = true;
-  }
+    let errors = [];
+   // Validate surname
+   if (!searchLastName) {
+    errors.push("error=missing-last-name");
+} else if (searchLastName.length < 2) {
+    errors.push("error=short-last-name");
+} else if (!/^[A-Za-z'-]+$/.test(searchLastName)) {
+    errors.push("error=invalid-last-name");
+}
 
-  // Date of birth validation logic
-  if (!dobDay && !dobMonth && !dobYear) {
-      req.session.data.errors["dob"] = "You must enter a date of birth"; // General DOB error
-  } else {
-      if (!dobDay) {
-          req.session.data.errors["dob-day"] = "You must enter a day";
-      }
-      if (!dobMonth) {
-          req.session.data.errors["dob-month"] = "You must enter a month";
-      }
-      if (!dobYear) {
-          req.session.data.errors["dob-year"] = "You must enter a year";
-      }
-  }
+// Validate postcode
+if (!searchPostcode) {
+    errors.push("error=missing-postcode");
+}
+
+// Date of birth validation logic
+if (!dobDay && !dobMonth && !dobYear) {
+    errors.push("error=missing-dob"); // General DOB error
+} else {
+    if (!dobDay) {
+        errors.push("error=missing-dob-day");
+    } else if (!/^\d{1,2}$/.test(dobDay)) {
+        errors.push("error=invalid-dob-day");
+    }
+    
+    if (!dobMonth) {
+        errors.push("error=missing-dob-month");
+    } else if (!/^\d{1,2}$/.test(dobMonth)) {
+        errors.push("error=invalid-dob-month");
+    }
+    
+    if (!dobYear) {
+        errors.push("error=missing-dob-year");
+    } else if (!/^\d{4}$/.test(dobYear)) {
+        errors.push("error=invalid-dob-year");
+    }
+}
 
   // If there are errors, redirect back to the form
-  if (Object.keys(req.session.data.errors).length > 0) {
-      return res.redirect("search-basic");
+ 
+    // If there are errors, redirect with error messages in the URL
+    if (errors.length > 0) {
+      return res.redirect(`search-basic?${errors.join("&")}`);
   }
 
     // Ensure DOB is in correct format (e.g., '06-May-2013')
@@ -171,12 +187,38 @@ router.get('/epsv12/search-nhs', function (req, res) {
 
 //get basic route
 router.get('/epsv12/search-basic', function (req, res) {
-  let errors = req.session.data.errors || {}; // Get errors from session
-  req.session.data.errors = {}; // Clear errors so they don't persist after refresh
+  let errorTypes = req.query.error ? [].concat(req.query.error) : []; // Convert to array
+  let errors = {};
 
-  return res.render('epsv12/search-basic', {
-    errors: errors
+  errorTypes.forEach((error) => {
+      if (error === "missing-last-name") {
+          errors["last-name"] = "Enter the patient's last name";
+      } else if (error === "short-last-name") {
+          errors["last-name"] = "Surname must be at least 2 characters long";
+      } else if (error === "invalid-last-name") {
+          errors["last-name"] = "Surname can only contain letters, hyphens, and apostrophes";
+      } else if (error === "missing-postcode") {
+          errors["postcode-only"] = "Enter the patient's postcode";
+      } else if (error === "missing-dob") {
+          errors["dob"] = "Enter the patient's date of birth";
+      } else if (error === "missing-dob-day") {
+          errors["dob-day"] = "Date of birth must include a day";
+      } else if (error === "invalid-dob-day") {
+          errors["dob-day"] = "Date of birth must include a valid day";
+      } else if (error === "missing-dob-month") {
+          errors["dob-month"] = "Date of birth must include a month";
+      } else if (error === "invalid-dob-month") {
+          errors["dob-month"] = "Date of birth must include a valid month";
+      } else if (error === "missing-dob-year") {
+          errors["dob-year"] = "Date of birth must include a year";
+      } else if (error === "invalid-dob-year") {
+          errors["dob-year"] = "Date of birth must include a valid year";
+      } else if (error === "future-dob-year") {
+        errors["dob-year"] = "Date of birth must be in the past";
+    }
   });
+
+  return res.render('epsv12/search-basic', { errors });
 });
 
 

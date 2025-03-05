@@ -73,14 +73,14 @@ Find a patient by NHS number - {{ serviceName }}
                 {% if errors["last-name"] %}
                 <li>
                   <a href="#last-name"
-                    > You must enter a surname </a
+                    > {{ errors["last-name"] }} </a
                   >
                 </li>
               {% endif %}
               {% if errors["dob"] %}
                 <li>
                   <a href="#dob-day"
-                    > You must enter a date of birth </a
+                    > {{ errors["dob"] }} </a
                   >
                 </li> 
               {% endif %}
@@ -108,7 +108,7 @@ Find a patient by NHS number - {{ serviceName }}
               {% if errors["postcode-only"] %}
               <li>
                 <a href="#postcode-only"
-                  > You must enter a postcode </a
+                  > {{ errors["postcode-only"] }} </a
                 >
               </li>
             {% endif %}
@@ -125,7 +125,7 @@ Find a patient by NHS number - {{ serviceName }}
             <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-1 no-outline">Surname</h3>
             {% if errors["last-name"] %}
             <span id="nhs-no-error-error" class="nhsuk-error-message">
-              You must enter a surname
+              {{ errors["last-name"] }}
             </span>
             {% endif %}
             <input class="nhsuk-input nhsuk-input--width-20{% if errors['last-name'] %} nhsuk-input--error{% endif %}" id="last-name" name="last-name" type="text" value="{{ data['last-name'] }}">
@@ -182,7 +182,7 @@ Find a patient by NHS number - {{ serviceName }}
             <div class="nhsuk-hint" id="nhs-number-hint">For example, LS1 1AB</div>
             {% if errors["postcode-only"] %}
             <span id="nhs-no-error-error" class="nhsuk-error-message">
-              You must enter a postcode
+              {{ errors["postcode-only"] }}
             </span>
             {% endif %}
            
