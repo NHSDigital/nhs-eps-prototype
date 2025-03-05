@@ -154,7 +154,7 @@
   if (changeRoleLink && storedParams) {
     let newParams = new URLSearchParams(storedParams);
     newParams.set("action", "change"); // Ensure "action=change" is always added
-
+    newParams.set("selection", "yes"); // Ensure "selection=yes"" is always added
     changeRoleLink.href = `roles?${newParams.toString()}`;
   }
 });

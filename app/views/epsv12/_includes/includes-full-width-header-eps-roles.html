@@ -97,6 +97,7 @@
 
       <ul class="nhsuk-header__navigation-list">
         
+        {% if selection == 'yes'%}
         <li class="nhsuk-header__navigation-item">
           <a href="search" class="nhsuk-header__navigation-link" id="masthead-find-patient-button" role="button" tabindex="0">Search for a prescription
             <svg aria-hidden="true" class="nhsuk-icon nhsuk-icon__chevron-right" height="34" viewBox="0 0 24 24" width="34" xmlns="http://www.w3.org/2000/svg">
@@ -104,7 +105,7 @@
             </svg>
           </a>
         </li>
-        
+        {% endif%}
 
         <!--
         <li class="nhsuk-header__navigation-item">
@@ -115,10 +116,9 @@
           </a>
         </li>
         -->
+   
         
-        
-  
-       
+  <!--
         <li class="nhsuk-header__navigation-item">
           <a href="roles?action=change" class="nhsuk-header__navigation-link" id="masthead-change-role-button" role="button" tabindex="0">Change role
             <svg aria-hidden="true" class="nhsuk-icon nhsuk-icon__chevron-right" height="34" viewBox="0 0 24 24" width="34" xmlns="http://www.w3.org/2000/svg">
@@ -126,6 +126,9 @@
             </svg>
           </a>
         </li>
+        -->
+       
+        
 
         <li class="nhsuk-header__navigation-item">
           <a href="#" class="nhsuk-header__navigation-link" id="masthead-find-patient-button" role="button" tabindex="0">Give feedback <i class="fa-solid fa-up-right-from-square nhsuk-u-margin-left-1"></i>
@@ -156,7 +159,7 @@
   if (changeRoleLink && storedParams) {
     let newParams = new URLSearchParams(storedParams);
     newParams.set("action", "change"); // Ensure "action=change" is always added
-
+    newParams.set("selection", "yes"); // Ensure "selection=yes"" is always added
     changeRoleLink.href = `roles?${newParams.toString()}`;
   }
 });
