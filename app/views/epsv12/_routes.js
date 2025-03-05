@@ -71,11 +71,10 @@ router.post("/epsv12/search-presc-post", function (req, res) {
 // Redirect via spinner after NHS number search
 router.post("/epsv12/search-nhs-post", function (req, res) {
   const nhsNumber = req.body["nhsNumber"].replace(/\s/g, '');
-  req.session.data.errors = {};
+  
 
   if (!nhsNumber) {
-    req.session.data.errors = { "nhs-number": "Enter an NHS number" };
-    return res.redirect("search-nhs");
+    return res.redirect("search-nhs?error=missing-nhs-number");
   }
 
   let patientEntry = req.session.data.patients.find(p => p[nhsNumber]);
@@ -88,19 +87,25 @@ router.post("/epsv12/search-nhs-post", function (req, res) {
     // Redirect to the spinner
     return res.redirect(`spinner-prescription-list?nhsNumber=${nhsNumber}&searchTerm=nhs`);
   } else {
-    req.session.data.patient = null;
-    req.session.data.errors = { "nhs-number": "You must enter an NHS number" };
-    return res.redirect("search-nhs");
+    return res.redirect("search-nhs?error=no-matching-nhs");
   }
 });
 
 router.get('/epsv12/search-nhs', function (req, res) {
-  let target = 'epsv12/search-nhs'; // Ensure the correct template is set
+  let errorType = req.query.error;
+  let errors = {};
 
-  let errors = req.session.data.errors || {}; // Get errors from session
-  req.session.data.errors = {}; // Clear errors so they don't persist after refresh
+  if (errorType === "missing-nhs-number") {
+      errors["nhs-number"] = "Enter an NHS number";
+  } else if (errorType === "no-matching-nhs") {
+      errors["nhs-number"] = "No matching prescriptions found for this NHS number";
+  } else if (errorType === "too-many-nums") {
+    errors["nhs-number"] = "NHS number must contain 10 digits";
+} else if (errorType === "special-chars") {
+  errors["nhs-number"] = "NHS number must contain 10 digits, with no letters or special characters";
+}
 
-  return res.render(target, {
+  return res.render('epsv12/search-nhs', {
     'errors': errors
   });
 });

@@ -85,7 +85,7 @@ Find a patient by NHS number - {{ serviceName }}
           <div class="nhsuk-hint" id="nhs-number-hint">This is a 10 digit number, like 485 777 3456.</div>
           {% if errors["nhs-number"] %}
           <span id="nhs-no-error-error" class="nhsuk-error-message">
-            You must enter a prescription  ID number
+            {{ errors["nhs-number"] }}
           </span>
           {% endif %}
           <div class="nhsuk-form-group">

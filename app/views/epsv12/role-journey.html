@@ -148,7 +148,7 @@ Role journey - {{ serviceName }}
     </div>
   </div>
   <div class="nhsuk-grid-column-one-third">
-    <h1 class="nhsuk-heading-m">Error messages</h1>
+    <h1 class="nhsuk-heading-m">Error messages - prescription search</h1>
 
     <div class="nhsuk-card allowed-role">
       <div class="nhsuk-card__content">
@@ -197,8 +197,8 @@ Role journey - {{ serviceName }}
        
           <h3 class="nhsuk-card__heading">
             <div class="role-details">
-              <a href="search?error=too-many" class="role-name" role="button" tabindex="0">
-                <u>Not enough or too many characters</u>
+              <a href="search?error=special-character" class="role-name" role="button" tabindex="0">
+                <u>Special characters</u>
               </a>
             </div>
           </h3>
@@ -206,8 +206,46 @@ Role journey - {{ serviceName }}
       </div>
     </div>
 
-
-
+    <h1 class="nhsuk-heading-m">Error messages - NHS number search</h1>
+    <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="search-nhs?error=missing-nhs-number" class="role-name" role="button" tabindex="0">
+                <u>No entry</u>
+              </a>
+            </div>
+          </h3>
+  
+      </div>
+    </div>
+    <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="search-nhs?error=too-many-nums" class="role-name" role="button" tabindex="0">
+                <u>Not enough or too many numbers</u>
+              </a>
+            </div>
+          </h3>
+  
+      </div>
+    </div>
+    <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="search-nhs?error=special-chars" class="role-name" role="button" tabindex="0">
+                <u>Special characters entered</u>
+              </a>
+            </div>
+          </h3>
+  
+      </div>
+    </div>
 
   </div>
 
