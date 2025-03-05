@@ -17,11 +17,11 @@ module.exports = (router) => {
     if (errorType === "missing-presc-number") {
         errors["presc-number"] = "Enter a prescription ID number";
     } else if (errorType === "no-matching-presc") {
-        errors["presc-number"] = "The prescription ID number is not recognised.";
+        errors["presc-number"] = "The prescription ID number is not recognised";
     } else if (errorType === "no-nhs-number") {
         errors["presc-number"] = "No NHS number found for this prescription";
     } else if (errorType === "special-character") {
-      errors["presc-number"] = "The prescription ID number must contain only letters, numbers, dashes or the + character.";
+      errors["presc-number"] = "The prescription ID number must contain only letters, numbers, dashes or the + character";
   }  else if (errorType === "too-many") {
     errors["presc-number"] = "The prescription ID number must contain 18 characters";
 }
