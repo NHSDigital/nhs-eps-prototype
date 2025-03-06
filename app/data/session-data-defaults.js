@@ -4307,7 +4307,7 @@ module.exports = {
         "prescriptionItem1pendingCancelation": "no",
         "prescriptionItem1quantity": "60 capsules",
         "prescriptionItem1quantityInitial":"60 capsules",
-        "prescriptionItem1instructions": "One puff daily",
+        "prescriptionItem1instructions": "Take two capsules daily",
         "prescriptionItem1instructionsInitial": "2 times a day for 30 days",
         "prescriptionItem1Status": "Item fully dispensed",
         "prescriptionItem1PrescNHSApp":"Dispensed", 
