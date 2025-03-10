@@ -23,11 +23,11 @@ module.exports = {
         "bna": "no",
         "eps":"yes",
         "selected":"yes",
-        "site":"Site site site",
-        "addressLine1":"1234 road road",
-        "addressLine2":"dsadas",
-        "addressLine3":"dsadsa",
-        "postcode":"KT10923"
+        "site":"Derby medical centre (ODS: DF665)",
+        "addressLine1":"8 Derby Square",
+        "addressLine2":"Epsom",
+        "addressLine3":"Surrey",
+        "postcode":"KT19 8AG"
           
       },
       {   "id":"1",
@@ -55,10 +55,10 @@ module.exports = {
         "eps":"yes",
         "selected":"",
         "site":"Cohen's chemist (ODS:FV519)",
-        "addressLine1":"asdasd",
-        "addressLine2":"adsad",
-        "addressLine3":"sad",
-        "postcode":"dsadlkj"
+        "addressLine1":"22 Rue lane",
+        "addressLine2":"Chiswick",
+        "addressLine3":"London",
+        "postcode":"KT19 D12"
       },
       {   "id":"3",
         "roleName":"Demographic Administrator",
@@ -69,11 +69,11 @@ module.exports = {
         "bna": "no",
         "eps":"yes",
         "selected":"",
-        "site":"Site Site Site",
-        "addressLine1":"sda",
-        "addressLine2":"sds",
-        "addressLine3":"dsds",
-        "postcode":"dsd"
+        "site":"Ashley centre surgery (ODS:DF134)",
+        "addressLine1":"Windsor Court, Ashley Rd",
+        "addressLine2":"Epsom",
+        "addressLine3":"Surrey",
+        "postcode":"KT18 5AQ"
       },
       {   "id":"4",
         "roleName":"General practitioner",
@@ -85,11 +85,10 @@ module.exports = {
         "eps":"yes",
         "selected":"",
         "site":"Fiji surgery (ODS:FI05964)",
-        "site":"Site Site Site",
-        "addressLine1":"sda",
-        "addressLine2":"sds",
-        "addressLine3":"dsds",
-        "postcode":"dsd"
+        "addressLine1":"90 Yarrow lane",
+        "addressLine2":"Finnsbury",
+        "addressLine3":"London",
+        "postcode":"E45 T46"
       },
       {   "id":"5",
         "roleName":"Health Records Manager Access Role",
@@ -100,11 +99,11 @@ module.exports = {
         "bna": "no",
         "eps":"yes",
         "selected":"",
-        "site":"Site Site Site",
-        "addressLine1":"sda",
-        "addressLine2":"sds",
-        "addressLine3":"dsds",
-        "postcode":"dsd"
+        "site":"Spring street surgery (ODS: EW324)",
+        "addressLine1":"Bourne Hall Health Centre, Ewell",
+        "addressLine2":"Epsom",
+        "addressLine3":"Surrey",
+        "postcode":"KT17 1TG"
       },
       {   "id":"6",
         "roleName":"Midwife Access Role",
@@ -115,11 +114,11 @@ module.exports = {
         "bna": "no",
         "eps":"no",
         "selected":"",
-        "site":"Site Site Site",
-        "addressLine1":"sda",
-        "addressLine2":"sds",
-        "addressLine3":"dsds",
-        "postcode":"dsd"
+        "site":"Epsom hospital (EH194)",
+        "addressLine1":"Dorking road",
+        "addressLine2":"Epsom",
+        "addressLine3":"Surrey",
+        "postcode":"KT18 7EG"
       },
       {   "id":"7",
         "roleName":"Admin/Clinical Support Access Role",
@@ -130,11 +129,11 @@ module.exports = {
         "bna": "no",
         "eps":"no",
         "selected":"",
-        "site":"Site Site Site",
-        "addressLine1":"sda",
-        "addressLine2":"sds",
-        "addressLine3":"dsds",
-        "postcode":"dsd"
+        "site":"Epsom hospital (EH194)",
+        "addressLine1":"Dorking road",
+        "addressLine2":"Epsom",
+        "addressLine3":"Surrey",
+        "postcode":"KT18 7EG"
       }
     
   ],
