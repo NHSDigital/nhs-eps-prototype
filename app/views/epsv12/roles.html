@@ -78,16 +78,72 @@ Role selection - {{ serviceName }}
       {% endif %}
       {% endif %}
 
-   
+      {% if allRoles == "yes" %}
+ 
+      <div class="nhsuk-card">
+        <div class="nhsuk-card__content">
+      
+         
+    
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="three-quarters">
+              Search for your role using the dispensing site name, ODS code or postcode.
+            </label>
+            <input class="nhsuk-input nhsuk-u-width-three-quarters" id="three-quarters" name="three-quarters" type="text">
+          </div>
+      
+          <table class="nhsuk-table-responsive">
+            <caption class="nhsuk-table__caption nhsuk-u-visually-hidden">Your roles</caption>
+            <thead role="rowgroup" class="nhsuk-table__head">
+              <tr role="row">
+                <th role="columnheader" class="" scope="col">
+                  Site
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Role
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Address
+                </th>
+              </tr>
+            </thead>
+            <tbody class="nhsuk-table__body">
+              {% for role in roles  %}
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Site </span><a href="roles-confirm?roleId={{ role.id }}" class="role-name" role="button" tabindex="0">{{ role.site }}</a>
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Role </span>{{ role.roleName }}
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Address </span>  {{ role.addressLine1 }}<br>
+                  {{ role.addressLine2 }}<br>
+                  {{ role.addressLine3 }}<br>
+                  {{ role.postcode }}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div> 
+
+{% else %}
 
 
 {% if cards == "yes" %}
 {% set eps_count = 0 %}
+{% if singleRole == "yes" %}
+{% set role_limit = 1 %}
+{% else %}
+{% set role_limit = 3 %}
+{% endif %}
 {% set shown_role = false %}  {# Track if a role has been displayed #}
 {% for role in roles  %}
 
   
-{% if role.eps == "yes" and role.selected != "yes" and (singleRole != "yes" or not shown_role) %}
+{% if role.eps == "yes" and role.selected != "yes" and (allRoles == "yes" or eps_count < role_limit) %}
 
       
 
@@ -119,9 +175,14 @@ Role selection - {{ serviceName }}
   </div>
  {% endif %}
 {% endfor %}
-<p class="rows-displayed-count"><b>Showing {{ eps_count }} of {{ roles | length }} roles</b></p>
+
 {% endif %}
 
+
+
+
+
+{% endif %}
 
 {% if noAccess == "yes" %}
 <h2>Your roles without access</h2>

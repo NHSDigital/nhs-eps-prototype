@@ -13,12 +13,31 @@ Role journey - {{ serviceName }}
 <div class="row">
   <div class="nhsuk-grid-column-one-third">
  <h1 class="nhsuk-heading-m">Role selected journeys</h1>
+
  <div class="nhsuk-card allowed-role">
   <div class="nhsuk-card__content">
    
       <h3 class="nhsuk-card__heading">
         <div class="role-details">
-          <a href="roles?selection=yes&cards=yes&noAccess=yes&singleRole=no&action=no" class="role-name" role="button" tabindex="0">
+          <a href="roles?selection=yes&cards=yes&noAccess=yes&singleRole=no&action=no&allRoles=yes" class="role-name" role="button" tabindex="0">
+            <u> More than 5 roles - Role selected - all components</u>
+          </a>
+        </div>
+      </h3>
+      <p class="role-details">Role selected, role cards and roles without access</p>
+   
+
+    
+  </div>
+</div>
+
+
+ <div class="nhsuk-card allowed-role">
+  <div class="nhsuk-card__content">
+   
+      <h3 class="nhsuk-card__heading">
+        <div class="role-details">
+          <a href="roles?selection=yes&cards=yes&noAccess=yes&singleRole=no&action=no&allRoles=no" class="role-name" role="button" tabindex="0">
             <u>Role selected - all components</u>
           </a>
         </div>
@@ -34,7 +53,7 @@ Role journey - {{ serviceName }}
    
       <h3 class="nhsuk-card__heading">
         <div class="role-details">
-          <a href="roles?selection=yes&cards=yes&noAccess=no&singleRole=no&action=no" class="role-name" role="button" tabindex="0">
+          <a href="roles?selection=yes&cards=yes&noAccess=no&singleRole=no&action=no&allRoles=no" class="role-name" role="button" tabindex="0">
             <u>Role selected - no roles without access</u>
           </a>
         </div>
@@ -50,7 +69,7 @@ Role journey - {{ serviceName }}
    
       <h3 class="nhsuk-card__heading">
         <div class="role-details">
-          <a href="roles?selection=yes&cards=no&noAccess=yes&singleRole=no&action=no" class="role-name" role="button" tabindex="0">
+          <a href="roles?selection=yes&cards=no&noAccess=yes&singleRole=no&action=no&allRoles=no" class="role-name" role="button" tabindex="0">
             <u>Role selected - including roles without access</u>
           </a>
         </div>
@@ -67,7 +86,7 @@ Role journey - {{ serviceName }}
    
       <h3 class="nhsuk-card__heading">
         <div class="role-details">
-          <a href="roles?selection=yes&cards=no&noAccess=no&singleRole=no&action=no" class="role-name" role="button" tabindex="0">
+          <a href="roles?selection=yes&cards=no&noAccess=no&singleRole=no&action=no&allRoles=no" class="role-name" role="button" tabindex="0">
             <u>Selected role only</u>
           </a>
         </div>
@@ -86,7 +105,7 @@ Role journey - {{ serviceName }}
        
           <h3 class="nhsuk-card__heading">
             <div class="role-details">
-              <a href="roles?selection=no&cards=yes&noAccess=yes&singleRole=no&action=no" class="role-name" role="button" tabindex="0">
+              <a href="roles?selection=no&cards=yes&noAccess=yes&singleRole=no&action=no&allRoles=no" class="role-name" role="button" tabindex="0">
                 <u>No role selected - roles with and without access</u>
               </a>
             </div>
@@ -102,7 +121,7 @@ Role journey - {{ serviceName }}
        
           <h3 class="nhsuk-card__heading">
             <div class="role-details">
-              <a href="roles?selection=no&cards=yes&noAccess=no&singleRole=no&action=no" class="role-name" role="button" tabindex="0">
+              <a href="roles?selection=no&cards=yes&noAccess=no&singleRole=no&action=no&allRoles=no" class="role-name" role="button" tabindex="0">
                 <u>No role selected - roles with access</u>
               </a>
             </div>
@@ -118,7 +137,7 @@ Role journey - {{ serviceName }}
        
           <h3 class="nhsuk-card__heading">
             <div class="role-details">
-              <a href="roles?selection=no&cards=yes&noAccess=no&singleRole=yes&action=no" class="role-name" role="button" tabindex="0">
+              <a href="roles?selection=no&cards=yes&noAccess=no&singleRole=yes&action=no&allRoles=no" class="role-name" role="button" tabindex="0">
                 <u>No role selected - one role with access</u>
               </a>
             </div>
@@ -135,7 +154,7 @@ Role journey - {{ serviceName }}
        
           <h3 class="nhsuk-card__heading">
             <div class="role-details">
-              <a href="roles?selection=no&cards=no&noAccess=yes&singleRole=no&action=no" class="role-name" role="button" tabindex="0">
+              <a href="roles?selection=no&cards=no&noAccess=yes&singleRole=no&action=no&allRoles=no" class="role-name" role="button" tabindex="0">
                 <u>No access to tracker</u>
               </a>
             </div>

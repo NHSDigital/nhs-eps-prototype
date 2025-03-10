@@ -623,18 +623,20 @@ router.get("/epsv12/prescription-results-pds", function (req, res, next) {
 // Role selection journey
 router.get('/epsv12/roles', (req, res) => {
   let roles = req.session.data.roles; // Retrieve roles from session data
-  let { selection, cards, noAccess,singleRole } = req.query;
+  let { selection, cards, noAccess,singleRole, allRoles } = req.query;
  // Update session values based on query parameters
  if (selection) req.session.data.selection = selection;
  if (cards) req.session.data.cards = cards;
  if (noAccess) req.session.data.noAccess = noAccess;
  if(singleRole)req.session.data.singleRole = singleRole;
+ if (allRoles) req.session.data.allRoles = allRoles; // Store allRoles parameter
 
  // Retrieve stored values if not provided in query params
  selection = selection || req.session.data.selection || "no";
  cards = cards || req.session.data.cards || "no";
  noAccess = noAccess || req.session.data.noAccess || "no";
  singleRole = singleRole || req.session.data.singleRole || "no";
+ allRoles = allRoles || req.session.data.allRoles || "no"; // Default to "no"
 
  let selectedRole = roles.find(role => role.selected === "yes") || null;
 
@@ -653,7 +655,7 @@ router.get('/epsv12/roles', (req, res) => {
  // Save updated roles back to session
  req.session.data.roles = roles;
 
- res.render('./epsv12/roles', { selection, cards, noAccess, roles, selectedRole, singleRole });
+ res.render('./epsv12/roles', { selection, cards, noAccess, roles, selectedRole, singleRole, allRoles });
 });
 
 // Locum role
