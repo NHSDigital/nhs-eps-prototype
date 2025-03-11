@@ -5,6 +5,7 @@ module.exports = (router) => {
     let lastSearch = req.session.data["last-search"];
     let target = 'epsv12/search';
 
+
     if (lastSearch === 'basic') {
       target = 'epsv12/search-basic';
     } else if (lastSearch === 'advanced') {
@@ -623,12 +624,13 @@ router.get("/epsv12/prescription-results-pds", function (req, res, next) {
 // Role selection journey
 router.get('/epsv12/roles', (req, res) => {
   let roles = req.session.data.roles; // Retrieve roles from session data
-  let { selection, cards, noAccess,singleRole, allRoles } = req.query;
+  let { selection, cards, action, noAccess,singleRole, allRoles } = req.query;
  // Update session values based on query parameters
  if (selection) req.session.data.selection = selection;
  if (cards) req.session.data.cards = cards;
  if (noAccess) req.session.data.noAccess = noAccess;
  if(singleRole)req.session.data.singleRole = singleRole;
+ if(action)req.session.data.action =action;
  if (allRoles) req.session.data.allRoles = allRoles; // Store allRoles parameter
 
  // Retrieve stored values if not provided in query params
@@ -636,9 +638,28 @@ router.get('/epsv12/roles', (req, res) => {
  cards = cards || req.session.data.cards || "no";
  noAccess = noAccess || req.session.data.noAccess || "no";
  singleRole = singleRole || req.session.data.singleRole || "no";
+ action = action || req.session.data.action || "no";
  allRoles = allRoles || req.session.data.allRoles || "no"; // Default to "no"
 
  let selectedRole = roles.find(role => role.selected === "yes") || null;
+  
+ // Check if we should skip the role selection page
+  if (
+    selection == "no" &&
+    cards == "no" &&
+    noAccess == "no" &&
+    singleRole ==="yes" &&
+    allRoles == "no" &&
+    action == "no" 
+  
+  ) {
+    let autoSelectedRole = roles[0];
+    roles.forEach(role => role.selected = ""); // Clear previous selections
+    autoSelectedRole.selected = "yes"; // Automatically select the single role
+    req.session.data.roles = roles;
+
+    return res.redirect(`/epsv12/search?selection=${selection}&cards=${cards}&noAccess=${noAccess}&singleRole=${singleRole}&action=${action}&allRoles=${allRoles}`); // Redirect to search page
+  }
 
  if (selection === "yes") {
    if (!selectedRole && roles.length > 0) {

@@ -116,14 +116,16 @@
         
         
   
-       
-        <li class="nhsuk-header__navigation-item">
+  
+        <li class="nhsuk-header__navigation-item" id="change-role-link">
           <a href="roles?action=change" class="nhsuk-header__navigation-link" id="masthead-change-role-button" role="button" tabindex="0">Change role
             <svg aria-hidden="true" class="nhsuk-icon nhsuk-icon__chevron-right" height="34" viewBox="0 0 24 24" width="34" xmlns="http://www.w3.org/2000/svg">
               <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
             </svg>
           </a>
         </li>
+
+
 
         <li class="nhsuk-header__navigation-item">
           <a href="#" class="nhsuk-header__navigation-link" id="masthead-find-patient-button" role="button" tabindex="0">Give feedback <i class="fa-solid fa-up-right-from-square nhsuk-u-margin-left-1"></i>
@@ -150,12 +152,31 @@
   document.addEventListener("DOMContentLoaded", function () {
   const storedParams = sessionStorage.getItem("roleSelectionParams");
   const changeRoleLink = document.getElementById("masthead-change-role-button");
+  const urlParams = new URLSearchParams(window.location.search); // Properly define urlParams
+
+// Log all URL parameters
+console.log("URL Parameters:", urlParams.toString());
+
+// Get the specific parameter you want to check (e.g., singleRole)
+const singleRole = urlParams.get("singleRole");
+console.log("singleRole:", singleRole); // Log the value of singleRole
+
+ const changeRoleItem = document.getElementById("change-role-link");
+ console.log("singleRole:", singleRole); // This will log the value of singleRole
+
+  
 
   if (changeRoleLink && storedParams) {
     let newParams = new URLSearchParams(storedParams);
     newParams.set("action", "change"); // Ensure "action=change" is always added
     newParams.set("selection", "yes"); // Ensure "selection=yes"" is always added
     changeRoleLink.href = `roles?${newParams.toString()}`;
+  }
+
+
+  // Check if the "singleRole" parameter is "yes"
+  if (singleRole == "yes") {
+    changeRoleItem.classList.add("nhsuk-u-visually-hidden"); // Hide the "Change Role" link
   }
 });
 
