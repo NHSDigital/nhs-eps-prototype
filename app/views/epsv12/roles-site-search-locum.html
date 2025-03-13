@@ -6,7 +6,135 @@
 {% block pageTitle %}
 Find a patient by NHS number - {{ serviceName }}
 {% endblock %}
+{% block customStyles %}
+<style>
+  a {
+    cursor: pointer;
+    text-decoration: underline;
+  }
 
+  .patient-search-form .nhsuk-input {
+    margin-bottom: 8px;
+  }
+
+  @media (min-width: 40.0625em) {
+    .patient-search-form .nhsuk-input {
+      margin-bottom: 16px;
+    }
+  }
+
+
+
+  .query-filter-section {
+    display: flex;
+    align-items: baseline;
+  }
+
+  .query-filter-section__search {
+    margin-right: 8px;
+  }
+
+  @media (min-width: 40.0625em) {
+    .query-filter-section__search {
+      margin-right: 16px;
+    }
+  }
+
+  .query-results-table {
+    margin-bottom: 16px;
+    justify-content: left;
+    border-bottom: 3px solid #c8cfd3;
+    background-color: #ffffff;
+  }
+
+  @media (min-width: 40.0625em) {
+    .query-results-table {
+      margin-bottom: 24px;
+    }
+  }
+
+  .row {
+    box-sizing: border-box;
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-right: -8px;
+    margin-left: -8px;
+  }
+  .query-results-table__header {
+    padding-right: 0.2rem;
+    padding-bottom: 0.2rem;
+    padding-left: 0.2rem;
+    border-bottom: 2px solid #c8cfd3;
+    border-bottom-width: 0.15rem;
+    background-color: #f0f4f5;
+    color: #212b32;
+  }
+  .row {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+  }
+
+  .query-results-table__data-row {
+    font-size: 14px;
+    font-size: 0.875rem;
+    line-height: 1.71429;
+    padding: 0;
+    padding-top: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #c8cfd3;
+    background-color: #ffffff;
+    color: #4c6272;
+    cursor: pointer;
+    outline: none;
+  }
+
+  @media (min-width: 40.0625em) {
+    .query-results-table__data-row {
+      font-size: 16px;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+  }
+
+  .query-results-table__data-row-name {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  .query-results-table__data-row--deceased {
+    border-bottom: 1px solid #c8cfd3;
+    background-color: #212b32;
+    color: #ffffff;
+  }
+
+  .query-results-table__data-row--deceased .query-results-table__data-row-quality-warning {
+    margin-bottom: 4px;
+    padding: 0.1rem 0.25rem;
+    background-color: #d5281b;
+    border-radius: 2px;
+    color: #ffffff;
+    font-weight: bold;
+  }
+
+  @media (min-width: 40.0625em) {
+    .query-results-table__data-row--deceased .query-results-table__data-row-quality-warning {
+      margin-bottom: 4px;
+    }
+  }
+
+  .query-results-table__data-row-quality-warning {
+    padding: 0.1rem 0;
+    margin: 0;
+    color: #d5281b;
+    font-weight: bold;
+  }
+
+</style>
+{% endblock %}
 
 {% block content %}
 
@@ -15,7 +143,7 @@ Find a patient by NHS number - {{ serviceName }}
   <div class="col-sm-12 col-md-10 col-lg-10 col-xl-6">
     <div class="nhsuk-back-link">
 
-      <a class="nhsuk-back-link__link" href="#">
+      <a class="nhsuk-back-link__link" href="roles">
         <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
           <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
         </svg>
@@ -54,39 +182,40 @@ Find a patient by NHS number - {{ serviceName }}
       value="">
     </br> <a aria-disabled="false" class="nhsuk-button nhsuk-u-margin-top-2" onclick="searchLOC()" id="confirm-current-role-locum" role="button">Search</a>
     </div>
+
+<!-- data results -->
+
+
+
 <!--HD1 table-->
     <div class="nhsuk-grid-column-full" id="hd1-table" style="display:none">
 
       <table class="responsive-table bna-table" role="grid">
-        <caption class="heading-medium">Search results</caption>
+ 
         <h2>Search results</h2>
         <p>Showing 1 to 14 of 14 results for the search: "hd1" </p>
-        <thead>
-    
-
-          <tr role="row">
-           
-            <th scope="col">Dispensing site name</th>
-            <th scope="col">ODS Code</th>
-            <th scope="col">Address</th>
-            <th scope="col">Postcode</th>
-           
-          </tr>
-        </thead>
-        <tbody id="search-results-table">
-  
+        <div class="query-results-table">
+          <div class="query-results-table__header row">
+            <div class="col-sm-4 col-lg-4"><b>Dispensing site</b></div>
+            <div class="col-sm-2 col-lg-2"><b>ODS code</b></div>
+            <div class="col-sm-4 col-lg-4"><b>Address</b></div>
+            <div class="col-sm-2 col-lg-2"><b>Postcode</b></div>
+            
+          </div>
           {% for locumsite in locumsites %}
-
-          <tr role="row">
+          <div class="query-results-table__data-row row" role="button" tabindex="0" href="#">
+            <div class="col-sm-12 col-md-12" href="#"></div>
+            <div class="col-sm-4 col-lg-4"><a class="query-results-table__data-row-name" href="#">{{ locumsite.dispensingSiteName }}</a></div>
+            <div class="col-sm-2 col-lg-2">{{ locumsite.odsCode }}</div>
+            <div class="col-sm-4 col-lg-4">{{ locumsite.address }}</div>
+            <div class="col-sm-2 col-lg-2">{{ locumsite.postCode }}&nbsp;</div>
+           
             
-            <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="tracker-selectrole-confirm-locum4">{{ locumsite.dispensingSiteName }}</a> </span></td>
-            <td role="gridcell"><span class="table-heading" aria-hidden="true">{{ locumsite.odsCode }}</span> </td>
-            <td role="gridcell"><span class="table-heading" aria-hidden="true">{{ locumsite.address }}</span></td>
-            <td role="gridcell"><span class="table-heading" aria-hidden="true">{{ locumsite.postCode }}</span></td>
-            
-          </tr>
-          {% endfor %}
-        </tbody>
+          </div>
+        {% endfor %}
+        
+        
+        </div>
       </table>
       <div class="table-foot">
         <span class="load-more"></span>
@@ -100,33 +229,29 @@ Find a patient by NHS number - {{ serviceName }}
     <div class="nhsuk-grid-column-full" id="hk1-table" style="display:none">
   
       <table class="responsive-table bna-table" role="grid">
-        <caption class="heading-medium">Search results</caption>
+        
         <h2>Search results</h2>
         <p>No results for the search: "hk1" </p>
-        <thead>
-          <tr role="row">
+        <div class="query-results-table">
+          <div class="query-results-table__header row">
+            <div class="col-sm-4 col-lg-4"><b>Dispensing site</b></div>
+            <div class="col-sm-2 col-lg-2"><b>ODS code</b></div>
+            <div class="col-sm-4 col-lg-4"><b>Address</b></div>
+            <div class="col-sm-2 col-lg-2"><b>Postcode</b></div>
+            
+          </div>
+         
+          <div class="query-results-table__data-row row" role="button" tabindex="0" >
+            <div class="col-sm-12 col-md-12"></div>
+            <div class="col-sm-12 col-lg-12">No results found</div>
+   
            
-            <th scope="col">Dispensing site name</th>
-            <th scope="col">ODS Code</th>
-            <th scope="col">Address</th>
-            <th scope="col">Postcode</th>
-           
-          </tr>
-        </thead>
-        <tbody id="search-results-table">
-  
-          <!--- - - - - - - - - ROW 1 - - - - - - - - --->
-  
-          <tr id="noresultshere" role="row";>
-               
-            <td colspan="8"> <p style="text-align:center">No results found.</p></td>
-           
-          </tr>
-          
-           
-  
-    
-        </tbody>
+            
+          </div>
+       
+        
+        
+        </div>
       </table>
       <div class="table-foot">
         <span class="load-more"></span>
@@ -142,30 +267,26 @@ Find a patient by NHS number - {{ serviceName }}
     <caption class="heading-medium">Search results</caption>
     <h2>Search results</h2>
     <p>Too many results for the search: "boots" </p>
-    <thead>
-      <tr role="row">
+      <div class="query-results-table">
+        <div class="query-results-table__header row">
+          <div class="col-sm-4 col-lg-4"><b>Dispensing site</b></div>
+          <div class="col-sm-2 col-lg-2"><b>ODS code</b></div>
+          <div class="col-sm-4 col-lg-4"><b>Address</b></div>
+          <div class="col-sm-2 col-lg-2"><b>Postcode</b></div>
+          
+        </div>
        
-        <th scope="col">Dispensing site name</th>
-        <th scope="col">ODS Code</th>
-        <th scope="col">Address</th>
-        <th scope="col">Postcode</th>
-       
-      </tr>
-    </thead>
-    <tbody id="search-results-table">
-  
-      <!--- - - - - - - - - ROW 1 - - - - - - - - --->
-  
-      <tr id="toomanyhere" role="row";>
-           
-        <td colspan="8"> <p style="text-align:center">There are too many search results. Try searching by a more specific search criteria.</p></td>
-       
-      </tr>
+        <div class="query-results-table__data-row row" role="button" tabindex="0" >
+          <div class="col-sm-12 col-md-12"></div>
+          <div class="col-sm-12 col-lg-12">There are too many search results. Try searching by a more specific search criteria.</div>
+ 
+         
+          
+        </div>
+     
       
-       
-  
-  
-    </tbody>
+      
+      </div>
   </table>
   <div class="table-foot">
     <span class="load-more"></span>
@@ -179,485 +300,78 @@ Find a patient by NHS number - {{ serviceName }}
   <div class="nhsuk-grid-column-full" id="long-table" style="display:none">
   
   <table class="responsive-table bna-table" role="grid">
-    <caption class="heading-medium">Search results</caption>
+   
     <h2>Search results</h2>
     <p>Showing 1 to 50 of 50 results for the search: "leeds"  </p>
-    <thead>
-      <tr role="row">
-       
-        <th scope="col">Dispensing site name</th>
-        <th scope="col">ODS Code</th>
-        <th scope="col">Address</th>
-        <th scope="col">Postcode</th>
-       
-      </tr>
-    </thead>
-    <tbody id="search-results-table">
-  
-      <!--- - - - - - - - - ROW 1 - - - - - - - - --->
-  
-      <tr role="row">
-            
-        <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">SUPERDRUG PHARMACY</a></span></td>
-        <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-        <td role="gridcell"><span class="table-heading" aria-hidden="true">31-35 THE MERRION CENTRE, LEEDS</span></td>
-        <td role="gridcell"><span class="table-heading" aria-hidden="true">LS2 8NG</span></td>
+    <div class="query-results-table">
+      <div class="query-results-table__header row">
+        <div class="col-sm-4 col-lg-4"><b>Dispensing site</b></div>
+        <div class="col-sm-2 col-lg-2"><b>ODS code</b></div>
+        <div class="col-sm-4 col-lg-4"><b>Address</b></div>
+        <div class="col-sm-2 col-lg-2"><b>Postcode</b></div>
         
-      </tr>
-     <!--- - - - - - - - - ROW 2 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow2"><span class="table-heading" aria-hidden="true"><a href="#">BOOTS</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true"> FAA09</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">1 BOND STREET, TRINITY CENTRE, LEEDS, WEST YORKSHIRE</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS1 5EY</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 3 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow3"><span class="table-heading" aria-hidden="true"><a href="#">BOOTS</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">CITY STATION CONCOURSE, LEEDS, WEST YORKSHIRE</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS1 4DT</span></td>
-      
-    </tr>
-  
-     <!--- - - - - - - - - ROW 4 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow4"><span class="table-heading" aria-hidden="true"><a href="#">WOODHOUSE LANE - PHARMACY PLUS HEALTH</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">166 Woodhouse Lane, Leeds, West Yorkshire</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS2 9HB</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 5 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow5"><span class="table-heading" aria-hidden="true"><a href="#">ALPHA & OMEGA</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">2 HIGH COURT, LEEDS</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS2 7ES</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 6 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow6"><span class="table-heading" aria-hidden="true"><a href="#">OATLAND - PHARMACY PLUS HEALTH</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">UNIT 2 OATLANDS RETAIL PK, OATLAND DRIVE, LEEDS</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS7 1ST</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 7 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow7"><span class="table-heading" aria-hidden="true"><a href="#">nme</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">ad</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">post</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 8 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow8"><span class="table-heading" aria-hidden="true">Dispensing site name </span><a href="#">HYDE PARK PHARMACY</a></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">ODS Code</span> FAA09</td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">Address</span>22-24 WOODSLEY ROAD, LEEDS, WEST YORKSHIRE</td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">Postcode</span>LS3 1DT</td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 9 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow9"><span class="table-heading" aria-hidden="true"><a href="#">Tylee Andrew Ltd</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">25 Hyde Park Road, Leeds</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS6 1PY</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 10 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow10"><span class="table-heading" aria-hidden="true"><a href="#">BOOTS</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">CROWN POINT RETAIL PARK, JUNCTION STREET, LEEDS, WEST YORKSHIRE</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS10 1ET</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 11 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow11"><span class="table-heading" aria-hidden="true">Dispensing site name </span><a href="#">WELL</a></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">ODS Code</span> FAA09</td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">Address</span>84-86 LINCOLN GREEN ROAD, LEEDS</td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">Postcode</span>LS9 7SU</td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 12 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow12"><span class="table-heading" aria-hidden="true"><a href="#">RW PULLAN</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">58 BRUDENELL ROAD, LEEDS</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS6 1EG</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 13 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow13"><span class="table-heading" aria-hidden="true"><a href="#">COHENS CHEMIST</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">5A SHAFTON LANE, HOLBECK, LEEDS</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS11 9LY</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 14 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow14"><span class="table-heading" aria-hidden="true"><a href="#">COHENS CHEMIST</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true"> FAA09</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">BLOOM BUILDING, GREEN LANE, NEW WORTLEY, LEEDS, WEST YORKSHIRE</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS12 1JZ</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 15 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow15"><span class="table-heading" aria-hidden="true"><a href="#">COHEN'S CHEMIST</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true"> FAA09</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">CHAPELTOWN HEALTH CENTRE, SPENCER PLACE, LEEDS</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS7 4BB</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 16 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow16"><span class="table-heading" aria-hidden="true"><a href="#">WELL</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">275 BURLEY ROAD, LEEDS, WEST YORKSHIRE</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS4 2EL</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 17 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow17"><span class="table-heading" aria-hidden="true"><a href="#">STAR PHARMACY</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">136 CARDIGAN ROAD, LEEDS, WEST YORKSHIRE</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS6 1LU</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 18 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow18"><span class="table-heading" aria-hidden="true"><a href="#">SHIFA PHARMACY</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">225 CHAPELTOWN ROAD, LEEDS, WEST YORKSHIRE</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS7 3DX</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 19 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow19"><span class="table-heading" aria-hidden="true">EAST PARK - PHARMACY PLUS HEALTH</span><a href="#"></a></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">5-7 East Park Road, East End Park, Leeds, West Yorkshire</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS9 9JG</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 20 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow20"><span class="table-heading" aria-hidden="true"><a href="#">nme</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">ad</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">post</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 21 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">CHAPELTOWN - PHARMACY PLUS HEALTH</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true"> FAA09</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">CHAPELTOWN JOINT SERV CTR, 263 CHAPELTOWN ROAD, LEEDS</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS7 3EX</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 22 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">KHAN PHARMACY</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">Address</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS8 5PL</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 23 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">BEESTON HILL PHARMACY</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">134 BEESTON ROAD, BEESTON, LEEDS</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS11 8BB</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 24 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">BOOTS</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">132 BEESTON ROAD, LEEDS</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS11 8BB</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 25 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">MEDICHEM PHARMACY</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">ST MARTINS HOUSE, 210 - 212 CHAPELTOWN ROAD, LEEDS</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS7 4HZ</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 26 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">AL-SHAFA PHARMACY</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">Unit 2&3 Hillside Bldg, Beeston Road, Beeston, Leeds, West Yorkshire</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS11 6AY</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 27 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">ALSYED PHARMACY</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">230 YORK ROAD, LEEDS</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS9 9BP</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 28 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">ALSYED PHARMACY</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">35 HAREHILLS ROAD, LEEDS</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS8 5HR</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 29 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">IMAAN PHARMACY</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">262-266 HAREHILLS LANE, LEEDS</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS9 7BD</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 30 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true">Dispensing site name </span><a href="#">WELL</a></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">ODS Code</span> FAA09</td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">Address</span>17-18 PENNY HILL CENTRE, HUNSLET, LEEDS</td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">Postcode</span>LS10 2AP</td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 31 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">ROUNDHAY PHARMACY</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">ODS Code</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">211 ROUNDHAY ROAD, LEEDS</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS8 4HS</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 32 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">SHAAN PHARMACY</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">176 HAREHILLS LANE, LEEDS, WEST YORKSHIRE</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS8 5JP</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 33 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">HUNSLET PHARMACY</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true"> FAA09</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">UNIT 1, FRATERNITY HOUSE, 52 CHURCH STREET, HUNSLET, LEEDS</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS10 2AR</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 34 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">AL-SHAFA PHARMACY</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">267 DEWSBURY ROAD, LEEDS</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS11 5HZ</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 35 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true">Dispensing site name </span><a href="#">HEADINGLEY - PHARMACY PLUS HEALTH</a></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">ODS Code</span> FAA09</td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">Address</span>HEADINGLEY MC,ST MICHAELS, COURT, 1 SHIRE OAK STREET, LEEDS, WEST YORKSHIRE</td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">Postcode</span>LS6 2AF</td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 36 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">ARMLEY MOOR PHARMACY</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">Address</span>90-91A Town Street, Armley, Leeds</td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">Postcode</span>LS12 3HD</td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 37 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">nme</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">ad</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">post</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 38 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">WELL</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">RUTLAND LODGE, SCOTT HALL ROAD, LEEDS, WEST YORKSHIRE</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS7 3RA</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 39 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">MEDICHEM PHARMACY</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">42 HARROGATE ROAD, LEEDS, WEST YORKSHIRE</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS7 4LA</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 40 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">MEDICHEM PHARMACY</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true"> FAA09</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">429 HAREHILLS LANE, LEEDS</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS9 6EY</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 41 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">WELL</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">STATION ROAD, ARMLEY, LEEDS</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS12 3EY</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 42 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">HAREHILLS PHARMACY</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">BELLBROOKE SURGERY, BELLBROOKE AVE, HAREHILLS, LEEDS</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS9 6AU</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 43 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">LEEDS PHARMACY</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">203 KIRKSTALL LANE, LEEDS, WEST YORKSHIRE</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS6 3EJ</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 44 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">BOOTS</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">UNIT 25-27 THE ARNDALE CT, HEADINGLEY, LEEDS, WEST YORKSHIRE</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS6 2UE</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 45 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true">Dispensing site name </span><a href="#">Meanwood Pharmacy</a></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">ODS Code</span> FAA09</td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">Address</span>569-571 Meanwood Road, Leeds</td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">Postcode</span>LS6 4AY</td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 46 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">PARKSIDE - PHARMACY PLUS HEALTH</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">311 Dewsbury Road, Leeds, West Yorkshire</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS11 5LQ</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 47 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">Armley Pharmacy</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">62 ARMLEY RIDGE ROAD, LEEDS</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS12 3NP</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 48 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">WELL</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">BEESTON DISTRICT CENTRE, TOWN STREET, BEESTON, LEEDS</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS11 8PN</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 49 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">OSMONDTHORPE - PHARMACY PLUS HEALTH</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">EAST LEEDS HEALTH CENTRE, 78 OSMONDTHORPE LANE, LEEDS, WEST YORKSHIRE</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS9 9EF</span></td>
-      
-    </tr>
-     <!--- - - - - - - - - ROW 50 - - - - - - - - --->
-     <tr role="row">
-            
-      <td role="gridcell" id="nameRow1"><span class="table-heading" aria-hidden="true"><a href="#">East Leeds Pharmacy</a></span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">FAA09</span> </td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">80 OSMONDTHORPE LANE, LEEDS</span></td>
-      <td role="gridcell"><span class="table-heading" aria-hidden="true">LS9 9EF</span></td>
-      
-    </tr>
-  
-  
-    </tbody>
+      </div>
+      {% for leedsLocumsite in leedsLocumsites %}
+      <div class="query-results-table__data-row row" role="button" tabindex="0" href="#">
+        <div class="col-sm-12 col-md-12" href="#"></div>
+        <div class="col-sm-4 col-lg-4"><a class="query-results-table__data-row-name" href="#">{{ leedsLocumsite.dispensingSiteName }}</a></div>
+        <div class="col-sm-2 col-lg-2">{{ leedsLocumsite.odsCode }}</div>
+        <div class="col-sm-4 col-lg-4">{{ leedsLocumsite.address }}</div>
+        <div class="col-sm-2 col-lg-2">{{ leedsLocumsite.postCode }}&nbsp;</div>
+       
+        
+      </div>
+    {% endfor %}
+    
+    
+    </div>
   </table>
   <div class="table-foot">
     <span class="load-more"></span>
     <span class="results-count">
-      Showing no results
+      Showing 50 results
     </span>
   </div>
   </div>
-    
+
+  <!-- two terms -->
+  <div class="nhsuk-grid-column-full" id="select-table" style="display:none">
+
+    <table class="responsive-table bna-table" role="grid">
+
+      <h2>Search results</h2>
+      <p>Showing 1 of 1 results for the search: "hd1" and "superdrug" </p>
+      <div class="query-results-table">
+        <div class="query-results-table__header row">
+          <div class="col-sm-4 col-lg-4"><b>Dispensing site</b></div>
+          <div class="col-sm-2 col-lg-2"><b>ODS code</b></div>
+          <div class="col-sm-4 col-lg-4"><b>Address</b></div>
+          <div class="col-sm-2 col-lg-2"><b>Postcode</b></div>
+          
+        </div>
+
+        {% for oneLocumsite in oneLocumsites %}
+        <div class="query-results-table__data-row row" role="button" tabindex="0" href="#">
+          <div class="col-sm-12 col-md-12" href="#"></div>
+          <div class="col-sm-4 col-lg-4"><a class="query-results-table__data-row-name" href="#">{{ oneLocumsite.dispensingSiteName }}</a></div>
+          <div class="col-sm-2 col-lg-2">{{ oneLocumsite.odsCode }}</div>
+          <div class="col-sm-4 col-lg-4">{{ oneLocumsite.address }}</div>
+          <div class="col-sm-2 col-lg-2">{{ oneLocumsite.postCode }}&nbsp;</div>
+         
+          
+        </div>
+      {% endfor %}
+      
+      
+      </div>
+    </table>
+    <div class="table-foot">
+      <span class="load-more"></span>
+      <span class="results-count">
+        Showing 1 of 1
+      </span>
+    </div>
+  </div>
 
    
  
@@ -680,9 +394,10 @@ Find a patient by NHS number - {{ serviceName }}
   var hd1Table = document.getElementById("hd1-table");
   var hk1Table = document.getElementById("hk1-table");
   var tooMany = document.getElementById('too-many');
-  var longList = document.getElementById('long-table')
+  var longList = document.getElementById('long-table');
+  var twoTable = document.getElementById("select-table");
   
-  if (!hd1Table || !hk1Table || !tooMany || !longList) {
+  if (!hd1Table || !hk1Table || !tooMany || !longList || !twoTable) {
     console.error("One or more elements not found");
     return;
   }
@@ -691,14 +406,21 @@ Find a patient by NHS number - {{ serviceName }}
   hk1Table.style.display = "none";
   tooMany.style.display = "none";
   longList.style.display = "none";
+  twoTable.style.display = "none"
   
   // Check if search term is HD1 or HK1
-  if (postcodeSearch === "HD1") {
-    // Show HD1 table
-    hd1Table.style.display = ""; // or "block" if you're not using table layout
-  } else if (postcodeSearch === "HK1") {
+  if (postcodeSearch === "HD1" && searchTerm === "SUPERDRUG") {
+    twoTable.style.display = ""; // Show the "two-table" element
+  }
+
+  
+  if (postcodeSearch === "HK1") {
     // Show HK1 table
     hk1Table.style.display = ""; // or "block" if you're not using table layout
+  } 
+  else if (postcodeSearch === "HD1" && searchTerm === "") {
+    // Show HD1 table
+    hd1Table.style.display = ""; // or "block" if you're not using table layout
   } 
   
 
@@ -709,6 +431,8 @@ Find a patient by NHS number - {{ serviceName }}
     // Show HK1 table
     longList.style.display = ""; // or "block" if you're not using table layout
   }   
+
+ 
   
   }
   </script>

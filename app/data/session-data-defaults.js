@@ -473,6 +473,15 @@ module.exports = {
   }
   
 ],
+"oneSite": [
+  {
+    "id":"0",
+        "dispensingSiteName":"Superdrug",
+        "odsCode": "FKJ70",
+        "address": "20 Princess alexander walk, Huddersfield, West yorkshire",
+        "postCode": "HD1 2TT"
+  }
+],
 
   "patients": [
     {

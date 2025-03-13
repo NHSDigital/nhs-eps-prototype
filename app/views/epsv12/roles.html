@@ -111,7 +111,11 @@ Role selection - {{ serviceName }}
               {% for role in roles  %}
               <tr role="row" class="nhsuk-table__row">
                 <td role="cell" class="nhsuk-table__cell">
-                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Site </span><a href="roles-confirm?roleId={{ role.id }}" class="role-name" role="button" tabindex="0">{{ role.site }}</a>
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Site </span><a href="{% if role.site == 'Locum pharmacy (ODS: FFFFF)' %}roles-site-search-locum{% else %}roles-confirm?roleId={{ role.id }}{% endif %}" 
+                  class="role-name" role="button" tabindex="0">
+                   {{ role.site }}
+               </a>
+               
                 </td>
                 <td role="cell" class="nhsuk-table__cell">
                   <span class="nhsuk-table-responsive__heading" aria-hidden="true">Role </span>{{ role.roleName }}
@@ -154,7 +158,7 @@ Role selection - {{ serviceName }}
       <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-3">
         <h3 class="nhsuk-card__heading">
           <div class="role-details">
-            <a href="roles-confirm?roleId={{ role.id }}" class="role-name" role="button" tabindex="0">
+            <a href="{% if role.site == 'Locum pharmacy (ODS: FFFFF)' %}roles-site-search-locum{% else %}roles-confirm?roleId={{ role.id }}{% endif %}" class="role-name" role="button" tabindex="0">
               <u>{{ role.site }}</u>
             </a>
           </div>

@@ -682,7 +682,27 @@ router.get('/epsv12/roles', (req, res) => {
 // Locum role
 router.get('/epsv12/roles-site-search-locum', (req, res) => {
   let locumsites = req.session.data.locumsites || []; // Retrieve from session or set default empty array
-  res.render('./epsv12/roles-site-search-locum', { locumsites }); // Pass locumsites to the template
+  let leedsLocumsites = req.session.data.leedsLocumsites || []; // Retrieve from session or set default empty array
+  let oneLocumsites = req.session.data.oneSite || []; // Retrieve from session or set default empty array
+  res.render('./epsv12/roles-site-search-locum', { locumsites, leedsLocumsites, oneLocumsites }); // Pass locumsites to the template
+});
+
+//confirmed role locum 
+//confirmed role
+router.get('/epsv12/roles-confirm-locum', (req, res) => {
+  let roles = req.session.data.roles; // Retrieve roles from session data
+  let selectedRole = roles.find(role => role.id === req.query.roleId); // Find role by ID
+
+  if (!selectedRole) {
+    return res.redirect('/epsv12/roles'); // Redirect if no role found
+  }
+// Update all roles: set `selected` to "" for all, then "yes" for the selected one
+roles.forEach(role => role.selected = ""); 
+selectedRole.selected = "yes"; 
+
+// Save updated roles back to session
+req.session.data.roles = roles;
+  res.render('./epsv12/roles-confirm-locum', { selectedRole }); // Pass selected role to template
 });
 
 //confirmed role
