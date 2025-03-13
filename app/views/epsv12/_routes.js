@@ -684,11 +684,13 @@ router.get('/epsv12/roles-site-search-locum', (req, res) => {
   let locumsites = req.session.data.locumsites || []; // Retrieve from session or set default empty array
   let leedsLocumsites = req.session.data.leedsLocumsites || []; // Retrieve from session or set default empty array
   let oneLocumsites = req.session.data.oneSite || []; // Retrieve from session or set default empty array
+
+  
   res.render('./epsv12/roles-site-search-locum', { locumsites, leedsLocumsites, oneLocumsites }); // Pass locumsites to the template
 });
 
 //confirmed role locum 
-//confirmed role
+//To do - save locum site 
 router.get('/epsv12/roles-confirm-locum', (req, res) => {
   let roles = req.session.data.roles; // Retrieve roles from session data
   let selectedRole = roles.find(role => role.id === req.query.roleId); // Find role by ID
