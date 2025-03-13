@@ -46,7 +46,7 @@ Find a patient by NHS number - {{ serviceName }}
       <tbody class="nhsuk-table__body">
       <tr class="nhsuk-table__row">
         <td class="current-role-table-type"><b>Dispensing site</b></td>
-        <td>{{ selectedRole.site }}</td>
+        <td>{{ selectedSite.dispensingSiteName }},{{ selectedSite.address }},{{ selectedSite.postCode }}</td>
         <td class="current-role-table-link">
           <a href="roles?action=change" id="change-org" role="button" tabindex="0"><u>Change
             <span class="nhsuk-u-visually-hidden">Organisation</span>

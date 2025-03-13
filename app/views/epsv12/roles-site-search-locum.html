@@ -205,7 +205,7 @@ Find a patient by NHS number - {{ serviceName }}
           {% for locumsite in locumsites %}
           <div class="query-results-table__data-row row" role="button" tabindex="0" href="#">
             <div class="col-sm-12 col-md-12" href="#"></div>
-            <div class="col-sm-4 col-lg-4"><a class="query-results-table__data-row-name" href="#">{{ locumsite.dispensingSiteName }}</a></div>
+            <div class="col-sm-4 col-lg-4"><a class="query-results-table__data-row-name" href="roles-confirm-locum?locSite={{ locumsite.id }}&roleId={{ selectedRole.id }}">{{ locumsite.dispensingSiteName }}</a></div>
             <div class="col-sm-2 col-lg-2">{{ locumsite.odsCode }}</div>
             <div class="col-sm-4 col-lg-4">{{ locumsite.address }}</div>
             <div class="col-sm-2 col-lg-2">{{ locumsite.postCode }}&nbsp;</div>
@@ -314,7 +314,7 @@ Find a patient by NHS number - {{ serviceName }}
       {% for leedsLocumsite in leedsLocumsites %}
       <div class="query-results-table__data-row row" role="button" tabindex="0" href="#">
         <div class="col-sm-12 col-md-12" href="#"></div>
-        <div class="col-sm-4 col-lg-4"><a class="query-results-table__data-row-name" href="#">{{ leedsLocumsite.dispensingSiteName }}</a></div>
+        <div class="col-sm-4 col-lg-4"><a class="query-results-table__data-row-name" href="roles-confirm-locum?leedsLoc={{ leedsLocumsite.id }}&roleId={{ selectedRole.id }}">{{ leedsLocumsite.dispensingSiteName }}</a></div>
         <div class="col-sm-2 col-lg-2">{{ leedsLocumsite.odsCode }}</div>
         <div class="col-sm-4 col-lg-4">{{ leedsLocumsite.address }}</div>
         <div class="col-sm-2 col-lg-2">{{ leedsLocumsite.postCode }}&nbsp;</div>
@@ -353,7 +353,7 @@ Find a patient by NHS number - {{ serviceName }}
         {% for oneLocumsite in oneLocumsites %}
         <div class="query-results-table__data-row row" role="button" tabindex="0" href="#">
           <div class="col-sm-12 col-md-12" href="#"></div>
-          <div class="col-sm-4 col-lg-4"><a class="query-results-table__data-row-name" href="#">{{ oneLocumsite.dispensingSiteName }}</a></div>
+          <div class="col-sm-4 col-lg-4"><a class="query-results-table__data-row-name" href="roles-confirm-locum?oneLoc={{ oneLocumsite.id }}&roleId={{ selectedRole.id }}">{{ oneLocumsite.dispensingSiteName }}</a></div>
           <div class="col-sm-2 col-lg-2">{{ oneLocumsite.odsCode }}</div>
           <div class="col-sm-4 col-lg-4">{{ oneLocumsite.address }}</div>
           <div class="col-sm-2 col-lg-2">{{ oneLocumsite.postCode }}&nbsp;</div>

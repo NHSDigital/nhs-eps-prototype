@@ -642,6 +642,13 @@ router.get('/epsv12/roles', (req, res) => {
  allRoles = allRoles || req.session.data.allRoles || "no"; // Default to "no"
 
  let selectedRole = roles.find(role => role.selected === "yes") || null;
+
+   // **Store roleId in session if a role is selected**
+   if (selectedRole) {
+    req.session.data.roleId = selectedRole.id;  
+  } else {
+    req.session.data.roleId = null; // Clear if no role is selected
+  }
   
  // Check if we should skip the role selection page
   if (
@@ -657,6 +664,7 @@ router.get('/epsv12/roles', (req, res) => {
     roles.forEach(role => role.selected = ""); // Clear previous selections
     autoSelectedRole.selected = "yes"; // Automatically select the single role
     req.session.data.roles = roles;
+    req.session.data.roleId = autoSelectedRole.id;
 
     return res.redirect(`/epsv12/search?selection=${selection}&cards=${cards}&noAccess=${noAccess}&singleRole=${singleRole}&action=${action}&allRoles=${allRoles}`); // Redirect to search page
   }
@@ -667,10 +675,13 @@ router.get('/epsv12/roles', (req, res) => {
      selectedRole = roles[0]; 
      roles.forEach(role => role.selected = ""); // Clear all selections
      selectedRole.selected = "yes"; // Set the first role as selected
+     req.session.data.roleId = selectedRole.id;
+     req.session.data.roleId = autoSelectedRole.id;
    }
  } else {
    roles.forEach(role => role.selected = ""); // Clear selection if selection=no
    selectedRole = null;
+   req.session.data.roleId = null;
  }
 
  // Save updated roles back to session
@@ -684,14 +695,6 @@ router.get('/epsv12/roles-site-search-locum', (req, res) => {
   let locumsites = req.session.data.locumsites || []; // Retrieve from session or set default empty array
   let leedsLocumsites = req.session.data.leedsLocumsites || []; // Retrieve from session or set default empty array
   let oneLocumsites = req.session.data.oneSite || []; // Retrieve from session or set default empty array
-
-  
-  res.render('./epsv12/roles-site-search-locum', { locumsites, leedsLocumsites, oneLocumsites }); // Pass locumsites to the template
-});
-
-//confirmed role locum 
-//To do - save locum site 
-router.get('/epsv12/roles-confirm-locum', (req, res) => {
   let roles = req.session.data.roles; // Retrieve roles from session data
   let selectedRole = roles.find(role => role.id === req.query.roleId); // Find role by ID
 
@@ -704,7 +707,48 @@ selectedRole.selected = "yes";
 
 // Save updated roles back to session
 req.session.data.roles = roles;
-  res.render('./epsv12/roles-confirm-locum', { selectedRole }); // Pass selected role to template
+
+
+console.log("Stored Role ID:", req.session.data.roleId);
+  res.render('./epsv12/roles-site-search-locum', { locumsites, leedsLocumsites, oneLocumsites, selectedRole }); // Pass locumsites to the template
+});
+
+router.get('/epsv12/roles-confirm-locum', (req, res) => {
+  let locumsites = req.session.data.locumsites || [];
+  let leedsLocumsites = req.session.data.leedsLocumsites || [];
+  let oneLocumsites = req.session.data.oneSite || [];
+
+  let roles = req.session.data.roles || [];
+  let roleId = req.query.roleId || (req.session.data.selectedRole ? req.session.data.selectedRole.id : null);
+
+  let selectedRole = roles.find(role => role.id === roleId);
+
+  if (!selectedRole) {
+    return res.redirect('/epsv12/roles');
+  }
+
+  // Use the site from session if it exists (for back navigation)
+  let selectedSite = req.session.data.selectedSite;
+
+  if (!selectedSite) {
+    if (req.query.locSite) {
+      selectedSite = locumsites.find(site => site.id === req.query.locSite);
+    } else if (req.query.leedsLoc) {
+      selectedSite = leedsLocumsites.find(site => site.id === req.query.leedsLoc);
+    } else if (req.query.oneLoc) {
+      selectedSite = oneLocumsites.find(site => site.id === req.query.oneLoc);
+    }
+  }
+
+  if (!selectedSite) {
+    return res.redirect('/epsv12/roles');
+  }
+
+  // Store in session for back navigation
+  req.session.data.selectedSite = selectedSite;
+  req.session.data.selectedRole = selectedRole;
+
+  res.render('./epsv12/roles-confirm-locum', { selectedRole, selectedSite });
 });
 
 //confirmed role
