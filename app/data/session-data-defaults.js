@@ -687,7 +687,7 @@ module.exports = {
         "hoHistImmigrationStatus": "Not available",
         "hoHistHealthcareStatus": "Not available",
         "superceded": "",
-        "prescriptionNo": ""
+        "prescriptionNo": ["6GA337P343022H597C"]
       }
     },
     {
