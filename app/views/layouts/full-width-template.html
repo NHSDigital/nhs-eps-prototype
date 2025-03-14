@@ -109,14 +109,21 @@
 
       {% block footer %}
       {% set selectedRole = (data.roles | selectattr("selected", "equalto", "yes") | first) %}
+      {% set selectedSite = data.selectedSite if data.selectedSite is defined else null %}
+      
       {% if selectedRole %}
         <div class="nhsuk-header__role">
-          <div class="footer__confidential" id="footer-user-details"><strong>CONFIDENTIAL:</strong> {{ selectedRole.roleName or "PERSONAL PATIENT DATA" }} accessed by HUSKAHOUND, Dogtanian - {{ selectedRole.site or "NHS CONNECTING FOR HEALTH (X09)"}}</div>
+          <div class="footer__confidential" id="footer-user-details">
+            <strong>CONFIDENTIAL:</strong> 
+            {{ selectedRole.roleName or "PERSONAL PATIENT DATA" }} accessed by HUSKAHOUND, Dogtanian - 
+            {{ selectedRole.site or "NHS CONNECTING FOR HEALTH (X09)" }} 
+            
+            {% if selectedRole.site == 'Locum pharmacy (ODS: FFFFF)' and selectedSite %}
+              - {{ selectedSite.dispensingSiteName }} ({{ selectedSite.odsCode }})
+            {% endif %}
+          </div>
         </div>
-
-        
-   
-{% endif %}
+      {% endif %}
 
     <footer role="contentinfo">
       <div class="nhsuk-footer-container">
