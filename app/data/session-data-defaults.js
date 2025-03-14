@@ -2152,7 +2152,7 @@ module.exports = {
         "pendingCancellation": "",
         "prescriptionIssueDate": "22-Feb-2025",
         "prescriptionless2": "yes",
-        "prescriptionStatus": "Future eRD issue",
+        "prescriptionStatus": "Next repeat ready to download",
         "prescriptionType": "eRD 3 of 6",
         "daysSupply": "28 days",
         "itemsDispensed": "yes",
