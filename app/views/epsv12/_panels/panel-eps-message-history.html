@@ -19,7 +19,8 @@
             {% set status = prescriptionNewStatus1 or 'Claimed' %}
             <strong class="nhsuk-tag            
                {% if status == 'Available to download' %} nhsuk-tag--yellow             
-              {% elif status == 'Items dispensed' %} nhsuk-tag--green             
+              {% elif status == 'Items dispensed' %} nhsuk-tag--green    
+              {% elif status == 'All items dispensed' %} nhsuk-tag--green            
               {% elif status == 'Cancelled' %} nhsuk-tag--red            
                {% elif status == 'Future issue date' %} nhsuk-tag--blue      
               {% elif status == 'Some items owed' %} nhsuk-tag--blue
@@ -72,7 +73,8 @@
             {% set status = prescriptionNewStatus2 or 'All items dispensed' %}
             <strong class="nhsuk-tag            
                {% if status == 'Available to download' %} nhsuk-tag--yellow             
-              {% elif status == 'Items dispensed' %} nhsuk-tag--green             
+              {% elif status == 'Items dispensed' %} nhsuk-tag--green          
+              {% elif status == 'All items dispensed' %} nhsuk-tag--green      
               {% elif status == 'Cancelled' %} nhsuk-tag--red            
                {% elif status == 'Future issue date' %} nhsuk-tag--blue      
               {% elif status == 'Some items dispensed' %} nhsuk-tag--blue
@@ -125,7 +127,8 @@
                   {% set status = prescriptionNewStatus3 or 'Downloaded by a dispenser' %}
                   <strong class="nhsuk-tag            
                      {% if status == 'Available to download' %} nhsuk-tag--yellow             
-                    {% elif status == 'Items dispensed' %} nhsuk-tag--green             
+                    {% elif status == 'Items dispensed' %} nhsuk-tag--green       
+                    {% elif status == 'All items dispensed' %} nhsuk-tag--green         
                     {% elif status == 'Cancelled' %} nhsuk-tag--red            
                      {% elif status == 'Future issue date' %} nhsuk-tag--blue      
                     {% elif status == 'Some items dispensed' %} nhsuk-tag--blue
@@ -180,7 +183,8 @@
     {% set status = prescriptionNewStatus4 or 'Downloaded by a dispenser' %}
     <strong class="nhsuk-tag            
        {% if status == 'Available to download' %} nhsuk-tag--yellow             
-      {% elif status == 'Items dispensed' %} nhsuk-tag--green             
+      {% elif status == 'Items dispensed' %} nhsuk-tag--green        
+      {% elif status == 'All items dispensed' %} nhsuk-tag--green        
       {% elif status == 'Cancelled' %} nhsuk-tag--red            
        {% elif status == 'Future issue date' %} nhsuk-tag--blue      
       {% elif status == 'Some items dispensed' %} nhsuk-tag--blue
@@ -234,7 +238,8 @@
     {% set status = prescriptionNewStatus5 or 'Downloaded by a dispenser' %}
     <strong class="nhsuk-tag            
        {% if status == 'Available to download' %} nhsuk-tag--yellow             
-      {% elif status == 'Items dispensed' %} nhsuk-tag--green             
+      {% elif status == 'Items dispensed' %} nhsuk-tag--green   
+      {% elif status == 'All items dispensed' %} nhsuk-tag--green           
       {% elif status == 'Cancelled' %} nhsuk-tag--red            
        {% elif status == 'Future issue date' %} nhsuk-tag--blue      
       {% elif status == 'Some items dispensed' %} nhsuk-tag--blue
