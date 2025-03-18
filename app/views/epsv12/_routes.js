@@ -393,7 +393,7 @@ router.get("/epsv12/search-results", function (req, res, next) {
       const prescription = item[key];
       
       // how we filter the list down
-      return prescription.prescriptionStatus !== 'Future issue date' && prescription.prescriptionStatus !== 'Future repeat dispense'&& prescription.prescriptionStatus !== 'Future eRD issue' && prescription.prescriptionStatus !== 'Expired' && prescription.prescriptionStatus !== 'Claimed';;
+      return prescription.prescriptionStatus !== 'Future issue date' && prescription.prescriptionStatus !== 'Future repeat dispense'&& prescription.prescriptionStatus !== 'Future eRD issue' && prescription.prescriptionStatus !== 'Expired' && prescription.prescriptionStatus !== 'Claimed' && prescription.prescriptionStatus !== 'Next repeat ready to download';;
     }).map(item => {
       const key = Object.keys(item)[0];
       const prescription = item[key];
@@ -416,7 +416,7 @@ router.get("/epsv12/search-results", function (req, res, next) {
       const key = Object.keys(item)[0];
       const prescription = item[key];
       // how we filter the list down
-      return prescription.prescriptionStatus === 'Future issue date' || prescription.prescriptionStatus === 'Future repeat dispense'|| prescription.prescriptionStatus === 'Future eRD issue';
+      return prescription.prescriptionStatus === 'Future issue date' || prescription.prescriptionStatus === 'Future repeat dispense'|| prescription.prescriptionStatus === 'Future eRD issue' || prescription.prescriptionStatus == 'Next repeat ready to download';
     }).map(item => {
       const key = Object.keys(item)[0];
       const prescription = item[key];
@@ -526,7 +526,7 @@ router.get("/epsv12/prescription-results-pds", function (req, res, next) {
     const prescription = item[key];
     
     // how we filter the list down
-    return prescription.prescriptionStatus !== 'Future issue date' && prescription.prescriptionStatus !== 'Future prescription cancelled'&& prescription.prescriptionStatus !== 'Future issue date dispense' && prescription.prescriptionStatus !== 'Future repeat dispense'&& prescription.prescriptionStatus !== 'Future eRD issue' && prescription.prescriptionStatus !== 'Expired' && prescription.prescriptionStatus !== 'Claimed';;
+    return prescription.prescriptionStatus !== 'Future issue date' && prescription.prescriptionStatus !== 'Future prescription cancelled'&& prescription.prescriptionStatus !== 'Future issue date dispense' && prescription.prescriptionStatus !== 'Future repeat dispense'&& prescription.prescriptionStatus !== 'Future eRD issue' && prescription.prescriptionStatus !== 'Expired' && prescription.prescriptionStatus !== 'Claimed'&& prescription.prescriptionStatus !== 'Next repeat ready to download';;
   }).map(item => {
     const key = Object.keys(item)[0];
     const prescription = item[key];
@@ -549,7 +549,7 @@ router.get("/epsv12/prescription-results-pds", function (req, res, next) {
     const key = Object.keys(item)[0];
     const prescription = item[key];
     // how we filter the list down
-    return prescription.prescriptionStatus === 'Future issue date' ||prescription.prescriptionStatus === 'Future prescription cancelled'|| prescription.prescriptionStatus === 'Future issue date dispense'|| prescription.prescriptionStatus === 'Future repeat dispense'|| prescription.prescriptionStatus === 'Future eRD issue';
+    return prescription.prescriptionStatus === 'Future issue date' ||prescription.prescriptionStatus === 'Future prescription cancelled'|| prescription.prescriptionStatus === 'Future issue date dispense'|| prescription.prescriptionStatus === 'Future repeat dispense'|| prescription.prescriptionStatus === 'Future eRD issue'|| prescription.prescriptionStatus == 'Next repeat ready to download';
   }).map(item => {
     const key = Object.keys(item)[0];
     const prescription = item[key];
@@ -912,6 +912,20 @@ req.session.data.roles = roles;
         {item: prescription.prescriptionMessage5DNItem4, quantity:prescription.prescriptionMessage5DNItem4q, instruction: prescription.prescriptionMessage5DNItem4ins},
   
       ],
+      prescriptionMessage6: prescription.prescriptionMessage6,
+      prescriptionMessageHeader6: prescription.prescriptionMessage6header,
+      prescriptionMessageDateTime6: prescription.prescriptionMessage6sendDateTime,
+      prescriptionMessage6Org: prescription.prescriptionMessage6Org ,
+      prescriptionNewStatus6:prescription.prescriptionMessage6NewStatus,
+      prescriptionDN6: prescription.prescriptionMessage6DN, 
+      prescriptionDN6id: prescription.prescriptionMessage6DNID,
+      prescriptionDN6Items: [
+        {item: prescription.prescriptionMessage6DNItem1, quantity:prescription.prescriptionMessage6DNItem1q, instruction: prescription.prescriptionMessage6DNItem1ins},
+        {item: prescription.prescriptionMessage6DNItem2, quantity:prescription.prescriptionMessage6DNItem2q, instruction: prescription.prescriptionMessage6DNItem2ins},
+        {item: prescription.prescriptionMessage6DNItem3, quantity:prescription.prescriptionMessage6DNItem3q, instruction: prescription.prescriptionMessage6DNItem3ins},
+        {item: prescription.prescriptionMessage6DNItem4, quantity:prescription.prescriptionMessage6DNItem4q, instruction: prescription.prescriptionMessage6DNItem4ins},
+  
+      ],
   
       prescriptionDispenser: prescription.dispenserBox,
       prescriptionDispenseOrg: prescription.Dispenserorg,
@@ -1015,6 +1029,21 @@ req.session.data.roles = roles;
       {item: prescription.prescriptionMessage5DNItem2, quantity:prescription.prescriptionMessage5DNItem2q, instruction: prescription.prescriptionMessage5DNItem2ins},
       {item: prescription.prescriptionMessage5DNItem3, quantity:prescription.prescriptionMessage5DNItem3q, instruction: prescription.prescriptionMessage5DNItem3ins},
       {item: prescription.prescriptionMessage5DNItem4, quantity:prescription.prescriptionMessage5DNItem4q, instruction: prescription.prescriptionMessage5DNItem4ins},
+
+    ],
+
+    prescriptionMessage6: prescription.prescriptionMessage6,
+    prescriptionMessageHeader6: prescription.prescriptionMessage6header,
+    prescriptionMessageDateTime6: prescription.prescriptionMessage6sendDateTime,
+    prescriptionMessage6Org: prescription.prescriptionMessage6Org ,
+    prescriptionNewStatus6:prescription.prescriptionMessage6NewStatus,
+    prescriptionDN6: prescription.prescriptionMessage6DN, 
+    prescriptionDN6id: prescription.prescriptionMessage6DNID,
+    prescriptionDN6Items: [
+      {item: prescription.prescriptionMessage6DNItem1, quantity:prescription.prescriptionMessage6DNItem1q, instruction: prescription.prescriptionMessage6DNItem1ins},
+      {item: prescription.prescriptionMessage6DNItem2, quantity:prescription.prescriptionMessage6DNItem2q, instruction: prescription.prescriptionMessage6DNItem2ins},
+      {item: prescription.prescriptionMessage6DNItem3, quantity:prescription.prescriptionMessage6DNItem3q, instruction: prescription.prescriptionMessage6DNItem3ins},
+      {item: prescription.prescriptionMessage6DNItem4, quantity:prescription.prescriptionMessage6DNItem4q, instruction: prescription.prescriptionMessage6DNItem4ins},
 
     ],
 
