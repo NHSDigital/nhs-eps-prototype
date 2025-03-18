@@ -16,7 +16,14 @@ Role selection - {{ serviceName }}
   <div class="col-sm-0 col-md-1 col-lg-1 col-xl-3"></div>
   <div class="col-sm-12 col-md-10 col-lg-10 col-xl-6">
 
-    {% if selection == "no" and cards == "no" and noAccess == "yes" %}
+    {% if selection == "no" and cards == "no" and noAccess == "no" %}
+
+    <h1 class="select-role-header nhsuk-heading-xl" id="select-role-header">
+      No access to the clinical prescription tracking service
+    </h1>
+    <p>None of the roles on your smartcard allow you to access the clinical prescription tracking service. Contact your local Registration Authority to obtain the correct role.</p>
+
+    {% elif selection == "no" and cards == "no" and noAccess == "yes" %}
    
       
     <h1 class="select-role-header nhsuk-heading-xl" id="select-role-header">
