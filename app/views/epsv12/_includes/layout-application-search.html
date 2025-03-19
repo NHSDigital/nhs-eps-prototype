@@ -130,6 +130,28 @@
 </div>
 
 
+<!--time out modal-->
+
+<div class="modal-overlay" id="timeout_modal" aria-hidden="true" role="dialog" aria-labelledby="timeout_modal_title">
+  <div class="modal-content" role="document">
+    <h2 class="nhsuk-modal__heading">Do you want to continue?</h2>
+    <p class="nhsuk-modal__description">
+      You have been idle for some time. If you want to continue your session, conduct another search.
+    </p>
+    <p class="nhsuk-modal__description">
+      If you do not take action, your session will time out in: 
+    </p>
+    <div class="nhsuk-button-group">
+      <a class="nhsuk-button" id="confirm_timeout">Close and continue </a>
+     
+    </div>
+    <button class="btn-close" id="timeout_modal_close">x</button>
+  </div>
+</div>
+
+
+
+
   {% if data['devMode'] === 'true' %}
     {% include "includes/devmode.html" %}
   {% endif %}
@@ -205,6 +227,54 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   });
+
+  //timeout modal
+  document.addEventListener('DOMContentLoaded', () => {
+    const timeoutModal = document.getElementById('timeout_modal');
+    const timeoutModalClose = document.getElementById('confirm_timeout');
+    const cancelTimeout = document.getElementById('timeout_modal_close');
+    const countdownElement = document.createElement('span');
+    let countdown = 120; // Countdown starts from 120 seconds
+
+    // Insert countdown element in the modal
+    const timeoutMessage = timeoutModal.querySelectorAll('.nhsuk-modal__description')[1];
+    countdownElement.textContent = ` ${countdown} seconds`;
+    timeoutMessage.appendChild(countdownElement);
+
+    // Function to update countdown
+    function startCountdown() {
+        const timer = setInterval(() => {
+            countdown--;
+            countdownElement.textContent = ` ${countdown} seconds`;
+            if (countdown <= 0) {
+                clearInterval(timer);
+                window.location.href = "/spinner-logout"; // Redirect on timeout (modify as needed)
+            }
+        }, 1000);
+        return timer;
+    }
+
+    // Function to show the modal
+    function showModal() {
+        timeoutModal.style.display = 'block';
+        timeoutModal.setAttribute('aria-hidden', 'false');
+        return startCountdown();
+    }
+
+    // Check URL parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('timeout') === 'yes') {
+        setTimeout(showModal, 15000); // Show modal after 15 seconds
+    }
+
+    // Close modal handlers
+    [timeoutModalClose, cancelTimeout].forEach((button) => {
+        button.addEventListener('click', () => {
+            timeoutModal.style.display = 'none';
+            timeoutModal.setAttribute('aria-hidden', 'true');
+        });
+    });
+});
 
 
 
