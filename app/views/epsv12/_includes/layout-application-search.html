@@ -248,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
             countdownElement.textContent = ` ${countdown} seconds`;
             if (countdown <= 0) {
                 clearInterval(timer);
-                window.location.href = "/spinner-logout"; // Redirect on timeout (modify as needed)
+                window.location.href = "spinner-logout"; // Redirect on timeout (modify as needed)
             }
         }, 1000);
         return timer;
