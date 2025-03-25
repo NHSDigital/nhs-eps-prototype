@@ -3045,7 +3045,7 @@ module.exports = {
         "prescriptionItem3pendingCancelation": "no",
         "prescriptionItem3quantity": "20 capsules",
         "prescriptionItem3instructions": "One capsule twice a day",
-        "prescriptionItem3Status": "Item to be dispensed",
+        "prescriptionItem3Status": "Item not dispensed - owing",
         "prescriptionItem3PrescNHSApp":"With pharmacy", 
         "prescriptionItem3cancellationreason": "",
         "prescriptionItem4": "Glyceryl trinitrate 400micrograms/does aerosol sublingual spray",
