@@ -69,6 +69,7 @@
        
           <div class="nhs-screening-whole-timeline__description nhsuk-u-margin-top-2">Organisation: {{ prescriptionMessage2Org or 'ASDA Pharmacy (ODS:OXY2G)' }}
           </div>
+          {% if prescriptionNewStatus2 %}
           <div class="nhs-screening-whole-timeline__description nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-2"> 
             New status: 
             {% set status = prescriptionNewStatus2 or 'All items dispensed' %}
@@ -90,6 +91,7 @@
               {{ status }}
             </strong> 
           </div>
+          {% endif %}
 {% if prescriptionDN2 === 'yes' %}
 <details class="nhsuk-details nhsuk-u-padding-top-2 nhsuk-u-margin-bottom-0">
   <summary class="nhsuk-details__summary">
@@ -124,6 +126,7 @@
                
                 <div class="nhs-screening-whole-timeline__description nhsuk-u-margin-top-2">Organisation: {{ prescriptionMessage3Org or 'ASDA Pharmacy (ODS:OXY2G)' }}
                 </div>
+                {% if prescriptionNewStatus3 %}
                 <div class="nhs-screening-whole-timeline__description nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-2">
                   New status: 
                   {% set status = prescriptionNewStatus3 or 'Downloaded by a dispenser' %}
@@ -145,7 +148,7 @@
                     {{ status }}
                   </strong>    
                 </div>
-          
+                {% endif %}
 
 {% if prescriptionDN3 === 'yes' %}
 <details class="nhsuk-details nhsuk-u-padding-top-2 nhsuk-u-margin-bottom-0">
@@ -180,7 +183,7 @@
  
   <div class="nhs-screening-whole-timeline__description nhsuk-u-margin-top-2">Organisation: {{ prescriptionMessage4Org or 'ASDA Pharmacy (ODS:OXY2G)' }}
   </div>
-  
+  {% if prescriptionNewStatus4 %}
   <div class="nhs-screening-whole-timeline__description nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-2">
     New status: 
     {% set status = prescriptionNewStatus4 or 'Downloaded by a dispenser' %}
@@ -202,7 +205,7 @@
       {{ status }}
     </strong>    
   </div>
-
+{% endif %}
 
 {% if prescriptionDN4 === 'yes' %}
 <details class="nhsuk-details nhsuk-u-padding-top-2 nhsuk-u-margin-bottom-0">
@@ -236,7 +239,7 @@
  
   <div class="nhs-screening-whole-timeline__description nhsuk-u-margin-top-2">Organisation: {{ prescriptionMessage5Org or 'ASDA Pharmacy (ODS:OXY2G)' }}
   </div>
-  
+  {% if prescriptionNewStatus5 %}
   <div class="nhs-screening-whole-timeline__description nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-2">
     New status: 
     {% set status = prescriptionNewStatus5 or 'Downloaded by a dispenser' %}
@@ -258,6 +261,8 @@
       {{ status }}
     </strong>    
   </div>
+  {% endif %}
+
   {% if prescriptionDN5 === 'yes' %}
 <div class="nhs-screening-whole-timeline__description"> Dispense notification ID: {{ prescriptionDN5id or 'b240434e-cb85-40bb-899c-1c61410c93a7'}}
 </div>
@@ -281,7 +286,7 @@
  
   <div class="nhs-screening-whole-timeline__description nhsuk-u-margin-top-2">Organisation: {{ prescriptionMessage6Org or 'ASDA Pharmacy (ODS:OXY2G)' }}
   </div>
-  
+  {% if prescriptionNewStatus6 %}
   <div class="nhs-screening-whole-timeline__description nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-2">
     New status: 
     {% set status = prescriptionNewStatus6 or 'Downloaded by a dispenser' %}
@@ -303,6 +308,7 @@
       {{ status }}
     </strong>    
   </div>
+  {% endif %}
   {% if prescriptionDN6 === 'yes' %}
 <div class="nhs-screening-whole-timeline__description"> Dispense notification ID: {{ prescriptionDN6id or 'b240434e-cb85-40bb-899c-1c61410c93a7'}}
 </div>
