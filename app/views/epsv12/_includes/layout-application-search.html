@@ -121,9 +121,6 @@
     <p class="nhsuk-modal__description">
       Logging out will end your session. 
     </p>
-    <p class="nhsuk-modal__description">
-      If you do not take action, your session will time out in: 
-    </p>
     <div class="nhsuk-button-group">
       <a class="nhsuk-button" href="./spinner-logout" id="confirm_logout">Log out</a>
       <button class="nhsuk-button nhsuk-button--secondary" id="cancel_logout">Cancel</button>
@@ -141,9 +138,12 @@
     <p class="nhsuk-modal__description">
       You will be logged out automatically in 2 minutes, or you can return to search for a prescription.
     </p>
-  
+    <p class="nhsuk-modal__description">
+      Your session will time out in: 
+    </p>
     <div class="nhsuk-button-group">
       <a class="nhsuk-button" id="confirm_timeout">Search for a prescription </a>
+      <a class="nhsuk-button nhsuk-button--secondary" href="./spinner-logout" id="logout_time">Logout</a>
      
     </div>
     <button class="btn-close" id="timeout_modal_close">x</button>
