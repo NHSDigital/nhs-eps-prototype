@@ -134,15 +134,15 @@
 
 <div class="modal-overlay" id="timeout_modal" aria-hidden="true" role="dialog" aria-labelledby="timeout_modal_title">
   <div class="modal-content" role="document">
-    <h2 class="nhsuk-modal__heading">You have been inactive for too long</h2>
+    <h2 class="nhsuk-modal__heading">You are about to be logged out</h2>
     <p class="nhsuk-modal__description">
-      You will be logged out automatically in 2 minutes, or you can return to search for a prescription.
+      For your security, you will be logged out in: 
     </p>
     <p class="nhsuk-modal__description">
-      Your session will time out in: 
+      To stay logged in, search for a prescription.
     </p>
     <div class="nhsuk-button-group">
-      <a class="nhsuk-button" id="confirm_timeout">Search for a prescription </a>
+      <a class="nhsuk-button" id="confirm_timeout" href="search">Search for a prescription </a>
       <a class="nhsuk-button nhsuk-button--secondary" href="./spinner-logout" id="logout_time">Logout</a>
      
     </div>
@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let countdown = 120; // Countdown starts from 120 seconds
 
     // Insert countdown element in the modal
-    const timeoutMessage = timeoutModal.querySelectorAll('.nhsuk-modal__description')[1];
+    const timeoutMessage = timeoutModal.querySelectorAll('.nhsuk-modal__description')[0];
     countdownElement.textContent = ` ${countdown} seconds`;
     timeoutMessage.appendChild(countdownElement);
 
@@ -269,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Close modal handlers
-    [timeoutModalClose, cancelTimeout].forEach((button) => {
+    [cancelTimeout].forEach((button) => {
         button.addEventListener('click', () => {
             timeoutModal.style.display = 'none';
             timeoutModal.setAttribute('aria-hidden', 'true');
