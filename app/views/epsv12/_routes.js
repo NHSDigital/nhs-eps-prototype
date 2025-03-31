@@ -393,7 +393,7 @@ router.get("/epsv12/search-results", function (req, res, next) {
       const prescription = item[key];
       
       // how we filter the list down
-      return prescription.prescriptionStatus !== 'Future issue date' && prescription.prescriptionStatus !== 'Future repeat dispense'&& prescription.prescriptionStatus !== 'Future eRD issue' && prescription.prescriptionStatus !== 'Expired' && prescription.prescriptionStatus !== 'Claimed' && prescription.prescriptionStatus !== 'Next repeat ready to download';;
+      return prescription.prescriptionStatus !== 'Future issue date' && prescription.prescriptionStatus !== 'Future repeat dispense'&& prescription.prescriptionStatus !== 'Future eRD issue' && prescription.prescriptionStatus !== 'Future prescription cancelled' && prescription.prescriptionStatus !== 'Expired' && prescription.prescriptionStatus !== 'Claimed' && prescription.prescriptionStatus !== 'Next repeat ready to download' &&prescription.prescriptionStatus !== 'Future prescription cancelled';;
     }).map(item => {
       const key = Object.keys(item)[0];
       const prescription = item[key];
@@ -416,7 +416,7 @@ router.get("/epsv12/search-results", function (req, res, next) {
       const key = Object.keys(item)[0];
       const prescription = item[key];
       // how we filter the list down
-      return prescription.prescriptionStatus === 'Future issue date' || prescription.prescriptionStatus === 'Future repeat dispense'|| prescription.prescriptionStatus === 'Future eRD issue' || prescription.prescriptionStatus == 'Next repeat ready to download';
+      return prescription.prescriptionStatus === 'Future issue date' || prescription.prescriptionStatus === 'Future repeat dispense'|| prescription.prescriptionStatus === 'Future eRD issue' || prescription.prescriptionStatus == 'Next repeat ready to download' || prescription.prescriptionStatus == 'Future prescription cancelled';
     }).map(item => {
       const key = Object.keys(item)[0];
       const prescription = item[key];
@@ -526,7 +526,7 @@ router.get("/epsv12/prescription-results-pds", function (req, res, next) {
     const prescription = item[key];
     
     // how we filter the list down
-    return prescription.prescriptionStatus !== 'Future issue date' && prescription.prescriptionStatus !== 'Future prescription cancelled'&& prescription.prescriptionStatus !== 'Future issue date dispense' && prescription.prescriptionStatus !== 'Future repeat dispense'&& prescription.prescriptionStatus !== 'Future eRD issue' && prescription.prescriptionStatus !== 'Expired' && prescription.prescriptionStatus !== 'Claimed'&& prescription.prescriptionStatus !== 'Next repeat ready to download';;
+    return prescription.prescriptionStatus !== 'Future issue date' && prescription.prescriptionStatus !== 'Future prescription cancelled'&& prescription.prescriptionStatus !== 'Future issue date dispense' && prescription.prescriptionStatus !== 'Future repeat dispense'&& prescription.prescriptionStatus !== 'Future eRD issue' && prescription.prescriptionStatus !== 'Expired' && prescription.prescriptionStatus !== 'Claimed'&& prescription.prescriptionStatus !== 'Next repeat ready to download' && prescription.prescriptionStatus !== 'Future prescription cancelled';;
   }).map(item => {
     const key = Object.keys(item)[0];
     const prescription = item[key];
@@ -549,7 +549,7 @@ router.get("/epsv12/prescription-results-pds", function (req, res, next) {
     const key = Object.keys(item)[0];
     const prescription = item[key];
     // how we filter the list down
-    return prescription.prescriptionStatus === 'Future issue date' ||prescription.prescriptionStatus === 'Future prescription cancelled'|| prescription.prescriptionStatus === 'Future issue date dispense'|| prescription.prescriptionStatus === 'Future repeat dispense'|| prescription.prescriptionStatus === 'Future eRD issue'|| prescription.prescriptionStatus == 'Next repeat ready to download';
+    return prescription.prescriptionStatus === 'Future issue date' ||prescription.prescriptionStatus === 'Future prescription cancelled'|| prescription.prescriptionStatus === 'Future issue date dispense'|| prescription.prescriptionStatus === 'Future repeat dispense'|| prescription.prescriptionStatus === 'Future eRD issue'|| prescription.prescriptionStatus == 'Next repeat ready to download' || prescription.prescriptionStatus == 'Future prescription cancelled';
   }).map(item => {
     const key = Object.keys(item)[0];
     const prescription = item[key];
