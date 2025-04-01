@@ -60,6 +60,123 @@
 <!--  </div>-->
 <!--  </div>-->
 <!--</header>-->
+<!-- 
+            \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+            ---------------------   NHS COOKIES BANNER      ---------------------------------------
+            \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+        -->
+        <style>
+
+          .nhsuk-cookie-banner {
+              -webkit-font-smoothing: antialiased;
+              font-family: Frutiger W01,Helvetica,Arial,Sans-serif;
+              color: #212b32;
+              font-size: 16px;
+              line-height: 1.5; 
+              margin: 0 !important;
+              background-color: #f0f4f5;
+              box-shadow: 0 0 4px 0 #212b32;
+          }
+          
+          #nhsuk-cookie-banner {
+              background-color: #f0f4f5;
+              box-shadow: 0 0 4px 0 #212b32;
+          }
+          
+          #nhsuk-cookie-banner .nhsuk-cookie-banner {
+              background:#f0f4f5;
+              position: relative;
+              padding: 24px 0 24px 0;
+              width: 100%;
+              z-index: 1;
+              box-shadow: 0 0 4px 0 #212b32;
+          }
+          
+          #nhsuk-cookie-banner .nhsuk-cookie-banner ul {
+              padding: 0;
+              margin: 8px 0 0 0;
+          }
+          
+          #nhsuk-cookie-banner .nhsuk-cookie-banner ul li {
+              display: block;
+          }
+          
+          @media (min-width: 48.0625em) {
+              #nhsuk-cookie-banner .nhsuk-cookie-banner ul li {
+                  display: inline;
+                  margin-right: 20px;
+              }
+          }
+          
+          #nhsuk-cookie-banner .nhsuk-success-banner {
+              background-color: #f0f4f5;
+              color: #212b32;
+              padding: 8px 0 8px 0;
+              position: relative;
+              box-shadow: 0 0 4px 0 #212b32;
+          }
+          
+          
+          .nhsuk-success-banner {
+              margin: 0 !important;
+          }
+          
+        </style>
+
+<div style="padding: 0 !important;">
+  <div class="nhsuk-cookie-banner" id="cookieBanner" aria-label="Cookie banner" role="banner" style="display: block;">
+    <div class="page-section" style="padding: 0 !important;">
+      <div class="nhsuk-width-container">
+        <h2 class="nhsuk-cookie-banner__heading govuk-heading-m">Cookies on NHS login</h2>
+        <p>Cookies collect information about how you use NHS login to help us make our site work as well as possible.</p>
+        <p class="nhsuk-body">We’d also like to use analytics cookies so we can understand how you use the service and make improvements.</p>
+        <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+          <button id="accept" onclick="closeCookies()" type="button" name="cookies" class="nhsuk-button full-width nhsuk-u-margin-right-3" data-module="cookieBanner">
+            Accept analytics cookies
+          </button>
+          <button id="reject" onclick="closeCookies()" type="button" name="cookies" class="nhsuk-button full-width " data-module="nhsuk-button">
+            Reject analytics cookies
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+ </div>
+
+ <div class="chargeable-status-banner--green" id="chargeable-status-banner-id">
+  
+  <div class="chargeable-status-banner-content">
+  Cookies are good. <a class="chargeable-status-banner-link">Click</a>
+  </div>
+</div>
+ <script>
+  // Function to check if a URL parameter exists
+  function getUrlParameter(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+      // Check if "showCookies=true" is in the URL
+      if (getUrlParameter('showCookies') === 'true') {
+          document.getElementById('cookieBanner').style.display = 'block'; // Show the banner
+      } else {
+          document.getElementById('cookieBanner').style.display = 'none'; // Hide it if the parameter is missing
+      }
+
+      // Ensure the second banner is hidden by default
+      document.getElementById('chargeable-status-banner-id').style.display = 'none';
+  });
+
+  // CLOSE COOKIES BANNER AND SET SESSION STORAGE
+  function closeCookies() {
+      document.getElementById('cookieBanner').style.display = 'none'; // Hide cookie banner
+      document.getElementById('chargeable-status-banner-id').style.display = 'block'; // Show second banner
+      sessionStorage.setItem('closeCookies', "true");
+  }
+</script>
+
+    
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
 
