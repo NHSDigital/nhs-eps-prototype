@@ -14,12 +14,13 @@
     {% elif itemstatus == 'Future issue date' %} nhsuk-tag--blue      
     {% elif itemstatus == 'Item dispensed - partial' %} nhsuk-tag--blue
     {% elif itemstatus == 'Item not dispensed - owing' %} nhsuk-tag--blue
-    {% elif itemstatus == 'Future repeat dispense' %} nhsuk-tag--aqua-green  
+    {% elif itemstatus == 'Future repeat dispense' %} nhsuk-tag--blue 
+    {% elif itemstatus == 'Future eRD issue' %} nhsuk-tag--aqua-green    
     {% elif itemstatus == 'Item not dispensed' %} nhsuk-tag--orange   
     {% elif itemstatus == 'Item expired' %} nhsuk-tag--white      
     {% elif itemstatus == 'Claimed' %} nhsuk-tag--grey 
     {% elif itemstatus == 'Item with dispenser' %} nhsuk-tag--purple
-    {% elif itemstatus == 'Next repeat ready to download' %} nhsuk-tag--pink              
+    {% elif itemstatus == 'Next repeat ready to download' %} nhsuk-tag--yellow              
     {% endif %}">
     {{ itemstatus }}
   </strong> </p>
