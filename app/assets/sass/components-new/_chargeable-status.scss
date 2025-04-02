@@ -69,7 +69,19 @@
 }
 
 .chargeable-status-banner-link,.chargeable-status-banner-link:visited {
-  color: #fff
+  color: #fff;
+  text-decoration: underline;
+}
+
+.chargeable-status-banner-link:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+ 
+.chargeable-status-banner-link:focus {
+  text-decoration: none;
+  color: #231f20;
 }
 
 .chargeable-status-tag {
