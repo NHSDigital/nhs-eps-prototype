@@ -846,10 +846,10 @@ req.session.data.roles = roles;
       prescriptionDN1: prescription.prescriptionMessage1DN,
       prescriptionDN1id: prescription.prescriptionMessage1DNID,
       prescriptionDN1Items: [
-        {item: prescription.prescriptionMessage1DNItem1, quantity:prescription.prescriptionMessage1DNItem1q, instruction: prescription.prescriptionMessage1DNItem1ins},
-        {item: prescription.prescriptionMessage1DNItem2, quantity:prescription.prescriptionMessage1DNItem2q, instruction: prescription.prescriptionMessage1DNItem2ins},
-        {item: prescription.prescriptionMessage1DNItem3, quantity:prescription.prescriptionMessage1DNItem3q, instruction: prescription.prescriptionMessage1DNItem3ins},
-        {item: prescription.prescriptionMessage1DNItem4, quantity:prescription.prescriptionMessage1DNItem4q, instruction: prescription.prescriptionMessage1DNItem4ins},
+        {item: prescription.prescriptionMessage1DNItem1, quantity:prescription.prescriptionMessage1DNItem1q, instruction: prescription.prescriptionMessage1DNItem1ins, status: prescription.prescriptionMessage1DNStatus1},
+        {item: prescription.prescriptionMessage1DNItem2, quantity:prescription.prescriptionMessage1DNItem2q, instruction: prescription.prescriptionMessage1DNItem2ins, status: prescription.prescriptionMessage1DNStatus2},
+        {item: prescription.prescriptionMessage1DNItem3, quantity:prescription.prescriptionMessage1DNItem3q, instruction: prescription.prescriptionMessage1DNItem3ins, status: prescription.prescriptionMessage1DNStatus3},
+        {item: prescription.prescriptionMessage1DNItem4, quantity:prescription.prescriptionMessage1DNItem4q, instruction: prescription.prescriptionMessage1DNItem4ins, status: prescription.prescriptionMessage1DNStatus4},
 
       ],
       
@@ -862,10 +862,10 @@ req.session.data.roles = roles;
       prescriptionDN2: prescription.prescriptionMessage2DN,
       prescriptionDN2id: prescription.prescriptionMessage2DNID,
       prescriptionDN2Items: [
-        {item: prescription.prescriptionMessage2DNItem1, quantity:prescription.prescriptionMessage2DNItem1q, instruction: prescription.prescriptionMessage2DNItem1ins},
-        {item: prescription.prescriptionMessage2DNItem2, quantity:prescription.prescriptionMessage2DNItem2q, instruction: prescription.prescriptionMessage2DNItem2ins},
-        {item: prescription.prescriptionMessage2DNItem3, quantity:prescription.prescriptionMessage2DNItem3q, instruction: prescription.prescriptionMessage2DNItem3ins},
-        {item: prescription.prescriptionMessage2DNItem4, quantity:prescription.prescriptionMessage2DNItem4q, instruction: prescription.prescriptionMessage2DNItem4ins},
+        {item: prescription.prescriptionMessage2DNItem1, quantity:prescription.prescriptionMessage2DNItem1q, instruction: prescription.prescriptionMessage2DNItem1ins, status: prescription.prescriptionMessage2DNStatus1},
+        {item: prescription.prescriptionMessage2DNItem2, quantity:prescription.prescriptionMessage2DNItem2q, instruction: prescription.prescriptionMessage2DNItem2ins, status: prescription.prescriptionMessage2DNStatus2},
+        {item: prescription.prescriptionMessage2DNItem3, quantity:prescription.prescriptionMessage2DNItem3q, instruction: prescription.prescriptionMessage2DNItem3ins, status: prescription.prescriptionMessage2DNStatus3},
+        {item: prescription.prescriptionMessage2DNItem4, quantity:prescription.prescriptionMessage2DNItem4q, instruction: prescription.prescriptionMessage2DNItem4ins, status: prescription.prescriptionMessage2DNStatus4},
 
       ],
     
@@ -878,10 +878,10 @@ req.session.data.roles = roles;
       prescriptionDN3: prescription.prescriptionMessage3DN, 
       prescriptionDN3id: prescription.prescriptionMessage3DNID,
       prescriptionDN3Items: [
-        {item: prescription.prescriptionMessage3DNItem1, quantity:prescription.prescriptionMessage3DNItem1q, instruction: prescription.prescriptionMessage3DNItem1ins},
-        {item: prescription.prescriptionMessage3DNItem2, quantity:prescription.prescriptionMessage3DNItem2q, instruction: prescription.prescriptionMessage3DNItem2ins},
-        {item: prescription.prescriptionMessage3DNItem3, quantity:prescription.prescriptionMessage3DNItem3q, instruction: prescription.prescriptionMessage3DNItem3ins},
-        {item: prescription.prescriptionMessage3DNItem4, quantity:prescription.prescriptionMessage3DNItem4q, instruction: prescription.prescriptionMessage3DNItem4ins},
+        {item: prescription.prescriptionMessage3DNItem1, quantity:prescription.prescriptionMessage3DNItem1q, instruction: prescription.prescriptionMessage3DNItem1ins, status: prescription.prescriptionMessage3DNStatus1},
+        {item: prescription.prescriptionMessage3DNItem2, quantity:prescription.prescriptionMessage3DNItem2q, instruction: prescription.prescriptionMessage3DNItem2ins, status: prescription.prescriptionMessage3DNStatus2},
+        {item: prescription.prescriptionMessage3DNItem3, quantity:prescription.prescriptionMessage3DNItem3q, instruction: prescription.prescriptionMessage3DNItem3ins, status: prescription.prescriptionMessage3DNStatus3},
+        {item: prescription.prescriptionMessage3DNItem4, quantity:prescription.prescriptionMessage3DNItem4q, instruction: prescription.prescriptionMessage3DNItem4ins, status: prescription.prescriptionMessage3DNStatus4},
 
       ],
       prescriptionMessage4: prescription.prescriptionMessage4,
@@ -892,10 +892,10 @@ req.session.data.roles = roles;
       prescriptionDN4: prescription.prescriptionMessage4DN, 
       prescriptionDN4id: prescription.prescriptionMessage4DNID,
       prescriptionDN4Items: [
-        {item: prescription.prescriptionMessage4DNItem1, quantity:prescription.prescriptionMessage4DNItem1q, instruction: prescription.prescriptionMessage4DNItem1ins},
-        {item: prescription.prescriptionMessage4DNItem2, quantity:prescription.prescriptionMessage4DNItem2q, instruction: prescription.prescriptionMessage4DNItem2ins},
-        {item: prescription.prescriptionMessage4DNItem3, quantity:prescription.prescriptionMessage4DNItem3q, instruction: prescription.prescriptionMessage4DNItem3ins},
-        {item: prescription.prescriptionMessage4DNItem4, quantity:prescription.prescriptionMessage4DNItem4q, instruction: prescription.prescriptionMessage4DNItem4ins},
+        {item: prescription.prescriptionMessage4DNItem1, quantity:prescription.prescriptionMessage4DNItem1q, instruction: prescription.prescriptionMessage4DNItem1ins, status: prescription.prescriptionMessage4DNStatus1},
+        {item: prescription.prescriptionMessage4DNItem2, quantity:prescription.prescriptionMessage4DNItem2q, instruction: prescription.prescriptionMessage4DNItem2ins, status: prescription.prescriptionMessage4DNStatus2},
+        {item: prescription.prescriptionMessage4DNItem3, quantity:prescription.prescriptionMessage4DNItem3q, instruction: prescription.prescriptionMessage4DNItem3ins, status: prescription.prescriptionMessage4DNStatus3},
+        {item: prescription.prescriptionMessage4DNItem4, quantity:prescription.prescriptionMessage4DNItem4q, instruction: prescription.prescriptionMessage4DNItem4ins, status: prescription.prescriptionMessage4DNStatus4},
   
       ],
       prescriptionMessage5: prescription.prescriptionMessage5,
@@ -906,10 +906,10 @@ req.session.data.roles = roles;
       prescriptionDN5: prescription.prescriptionMessage5DN, 
       prescriptionDN5id: prescription.prescriptionMessage5DNID,
       prescriptionDN5Items: [
-        {item: prescription.prescriptionMessage5DNItem1, quantity:prescription.prescriptionMessage5DNItem1q, instruction: prescription.prescriptionMessage5DNItem1ins},
-        {item: prescription.prescriptionMessage5DNItem2, quantity:prescription.prescriptionMessage5DNItem2q, instruction: prescription.prescriptionMessage5DNItem2ins},
-        {item: prescription.prescriptionMessage5DNItem3, quantity:prescription.prescriptionMessage5DNItem3q, instruction: prescription.prescriptionMessage5DNItem3ins},
-        {item: prescription.prescriptionMessage5DNItem4, quantity:prescription.prescriptionMessage5DNItem4q, instruction: prescription.prescriptionMessage5DNItem4ins},
+        {item: prescription.prescriptionMessage5DNItem1, quantity:prescription.prescriptionMessage5DNItem1q, instruction: prescription.prescriptionMessage5DNItem1ins, status: prescription.prescriptionMessage5DNStatus1},
+        {item: prescription.prescriptionMessage5DNItem2, quantity:prescription.prescriptionMessage5DNItem2q, instruction: prescription.prescriptionMessage5DNItem2ins, status: prescription.prescriptionMessage5DNStatus2},
+        {item: prescription.prescriptionMessage5DNItem3, quantity:prescription.prescriptionMessage5DNItem3q, instruction: prescription.prescriptionMessage5DNItem3ins, status: prescription.prescriptionMessage5DNStatus3},
+        {item: prescription.prescriptionMessage5DNItem4, quantity:prescription.prescriptionMessage5DNItem4q, instruction: prescription.prescriptionMessage5DNItem4ins, status: prescription.prescriptionMessage5DNStatus4},
   
       ],
       prescriptionMessage6: prescription.prescriptionMessage6,
@@ -920,10 +920,10 @@ req.session.data.roles = roles;
       prescriptionDN6: prescription.prescriptionMessage6DN, 
       prescriptionDN6id: prescription.prescriptionMessage6DNID,
       prescriptionDN6Items: [
-        {item: prescription.prescriptionMessage6DNItem1, quantity:prescription.prescriptionMessage6DNItem1q, instruction: prescription.prescriptionMessage6DNItem1ins},
-        {item: prescription.prescriptionMessage6DNItem2, quantity:prescription.prescriptionMessage6DNItem2q, instruction: prescription.prescriptionMessage6DNItem2ins},
-        {item: prescription.prescriptionMessage6DNItem3, quantity:prescription.prescriptionMessage6DNItem3q, instruction: prescription.prescriptionMessage6DNItem3ins},
-        {item: prescription.prescriptionMessage6DNItem4, quantity:prescription.prescriptionMessage6DNItem4q, instruction: prescription.prescriptionMessage6DNItem4ins},
+        {item: prescription.prescriptionMessage6DNItem1, quantity:prescription.prescriptionMessage6DNItem1q, instruction: prescription.prescriptionMessage6DNItem1ins, status: prescription.prescriptionMessage6DNStatus1},
+        {item: prescription.prescriptionMessage6DNItem2, quantity:prescription.prescriptionMessage6DNItem2q, instruction: prescription.prescriptionMessage6DNItem2ins, status: prescription.prescriptionMessage6DNStatus2},
+        {item: prescription.prescriptionMessage6DNItem3, quantity:prescription.prescriptionMessage6DNItem3q, instruction: prescription.prescriptionMessage6DNItem3ins, status: prescription.prescriptionMessage6DNStatus3},
+        {item: prescription.prescriptionMessage6DNItem4, quantity:prescription.prescriptionMessage6DNItem4q, instruction: prescription.prescriptionMessage6DNItem4ins, status: prescription.prescriptionMessage6DNStatus4},
   
       ],
   
@@ -966,10 +966,10 @@ req.session.data.roles = roles;
     prescriptionDN1: prescription.prescriptionMessage1DN,
     prescriptionDN1id: prescription.prescriptionMessage1DNID,
     prescriptionDN1Items: [
-      {item: prescription.prescriptionMessage1DNItem1, quantity:prescription.prescriptionMessage1DNItem1q, instruction: prescription.prescriptionMessage1DNItem1ins},
-      {item: prescription.prescriptionMessage1DNItem2, quantity:prescription.prescriptionMessage1DNItem2q, instruction: prescription.prescriptionMessage1DNItem2ins},
-      {item: prescription.prescriptionMessage1DNItem3, quantity:prescription.prescriptionMessage1DNItem3q, instruction: prescription.prescriptionMessage1DNItem3ins},
-      {item: prescription.prescriptionMessage1DNItem4, quantity:prescription.prescriptionMessage1DNItem4q, instruction: prescription.prescriptionMessage1DNItem4ins},
+      {item: prescription.prescriptionMessage1DNItem1, quantity:prescription.prescriptionMessage1DNItem1q, instruction: prescription.prescriptionMessage1DNItem1ins, status: prescription.prescriptionMessage1DNStatus1},
+      {item: prescription.prescriptionMessage1DNItem2, quantity:prescription.prescriptionMessage1DNItem2q, instruction: prescription.prescriptionMessage1DNItem2ins, status: prescription.prescriptionMessage1DNStatus2},
+      {item: prescription.prescriptionMessage1DNItem3, quantity:prescription.prescriptionMessage1DNItem3q, instruction: prescription.prescriptionMessage1DNItem3ins, status: prescription.prescriptionMessage1DNStatus3},
+      {item: prescription.prescriptionMessage1DNItem4, quantity:prescription.prescriptionMessage1DNItem4q, instruction: prescription.prescriptionMessage1DNItem4ins, status: prescription.prescriptionMessage1DNStatus4},
 
     ],
 
@@ -981,10 +981,10 @@ req.session.data.roles = roles;
     prescriptionDN2: prescription.prescriptionMessage2DN,
     prescriptionDN2id: prescription.prescriptionMessage2DNID,
     prescriptionDN2Items: [
-      {item: prescription.prescriptionMessage2DNItem1, quantity:prescription.prescriptionMessage2DNItem1q, instruction: prescription.prescriptionMessage2DNItem1ins},
-      {item: prescription.prescriptionMessage2DNItem2, quantity:prescription.prescriptionMessage2DNItem2q, instruction: prescription.prescriptionMessage2DNItem2ins},
-      {item: prescription.prescriptionMessage2DNItem3, quantity:prescription.prescriptionMessage2DNItem3q, instruction: prescription.prescriptionMessage2DNItem3ins},
-      {item: prescription.prescriptionMessage2DNItem4, quantity:prescription.prescriptionMessage2DNItem4q, instruction: prescription.prescriptionMessage2DNItem4ins},
+      {item: prescription.prescriptionMessage2DNItem1, quantity:prescription.prescriptionMessage2DNItem1q, instruction: prescription.prescriptionMessage2DNItem1ins, status: prescription.prescriptionMessage2DNStatus1},
+      {item: prescription.prescriptionMessage2DNItem2, quantity:prescription.prescriptionMessage2DNItem2q, instruction: prescription.prescriptionMessage2DNItem2ins, status: prescription.prescriptionMessage2DNStatus2},
+      {item: prescription.prescriptionMessage2DNItem3, quantity:prescription.prescriptionMessage2DNItem3q, instruction: prescription.prescriptionMessage2DNItem3ins, status: prescription.prescriptionMessage2DNStatus3},
+      {item: prescription.prescriptionMessage2DNItem4, quantity:prescription.prescriptionMessage2DNItem4q, instruction: prescription.prescriptionMessage2DNItem4ins, status: prescription.prescriptionMessage2DNStatus4},
     ],
 
     prescriptionMessage3: prescription.prescriptionMessage3,
@@ -995,10 +995,10 @@ req.session.data.roles = roles;
     prescriptionDN3: prescription.prescriptionMessage3DN, 
     prescriptionDN3id: prescription.prescriptionMessage3DNID,
     prescriptionDN3Items: [
-      {item: prescription.prescriptionMessage3DNItem1, quantity:prescription.prescriptionMessage3DNItem1q, instruction: prescription.prescriptionMessage3DNItem1ins},
-      {item: prescription.prescriptionMessage3DNItem2, quantity:prescription.prescriptionMessage3DNItem2q, instruction: prescription.prescriptionMessage3DNItem2ins},
-      {item: prescription.prescriptionMessage3DNItem3, quantity:prescription.prescriptionMessage3DNItem3q, instruction: prescription.prescriptionMessage3DNItem3ins},
-      {item: prescription.prescriptionMessage3DNItem4, quantity:prescription.prescriptionMessage3DNItem4q, instruction: prescription.prescriptionMessage3DNItem4ins},
+      {item: prescription.prescriptionMessage3DNItem1, quantity:prescription.prescriptionMessage3DNItem1q, instruction: prescription.prescriptionMessage3DNItem1ins, status: prescription.prescriptionMessage3DNStatus1},
+      {item: prescription.prescriptionMessage3DNItem2, quantity:prescription.prescriptionMessage3DNItem2q, instruction: prescription.prescriptionMessage3DNItem2ins, status: prescription.prescriptionMessage3DNStatus2},
+      {item: prescription.prescriptionMessage3DNItem3, quantity:prescription.prescriptionMessage3DNItem3q, instruction: prescription.prescriptionMessage3DNItem3ins, status: prescription.prescriptionMessage3DNStatus3},
+      {item: prescription.prescriptionMessage3DNItem4, quantity:prescription.prescriptionMessage3DNItem4q, instruction: prescription.prescriptionMessage3DNItem4ins, status: prescription.prescriptionMessage3DNStatus4},
 
     ],
 
@@ -1010,10 +1010,10 @@ req.session.data.roles = roles;
     prescriptionDN4: prescription.prescriptionMessage4DN, 
     prescriptionDN4id: prescription.prescriptionMessage4DNID,
     prescriptionDN4Items: [
-      {item: prescription.prescriptionMessage4DNItem1, quantity:prescription.prescriptionMessage4DNItem1q, instruction: prescription.prescriptionMessage4DNItem1ins},
-      {item: prescription.prescriptionMessage4DNItem2, quantity:prescription.prescriptionMessage4DNItem2q, instruction: prescription.prescriptionMessage4DNItem2ins},
-      {item: prescription.prescriptionMessage4DNItem3, quantity:prescription.prescriptionMessage4DNItem3q, instruction: prescription.prescriptionMessage4DNItem3ins},
-      {item: prescription.prescriptionMessage4DNItem4, quantity:prescription.prescriptionMessage4DNItem4q, instruction: prescription.prescriptionMessage4DNItem4ins},
+      {item: prescription.prescriptionMessage4DNItem1, quantity:prescription.prescriptionMessage4DNItem1q, instruction: prescription.prescriptionMessage4DNItem1ins, status: prescription.prescriptionMessage4DNStatus1},
+      {item: prescription.prescriptionMessage4DNItem2, quantity:prescription.prescriptionMessage4DNItem2q, instruction: prescription.prescriptionMessage4DNItem2ins, status: prescription.prescriptionMessage4DNStatus2},
+      {item: prescription.prescriptionMessage4DNItem3, quantity:prescription.prescriptionMessage4DNItem3q, instruction: prescription.prescriptionMessage4DNItem3ins, status: prescription.prescriptionMessage4DNStatus3},
+      {item: prescription.prescriptionMessage4DNItem4, quantity:prescription.prescriptionMessage4DNItem4q, instruction: prescription.prescriptionMessage4DNItem4ins, status: prescription.prescriptionMessage4DNStatus4},
 
     ],
 
@@ -1025,10 +1025,10 @@ req.session.data.roles = roles;
     prescriptionDN5: prescription.prescriptionMessage5DN, 
     prescriptionDN5id: prescription.prescriptionMessage5DNID,
     prescriptionDN5Items: [
-      {item: prescription.prescriptionMessage5DNItem1, quantity:prescription.prescriptionMessage5DNItem1q, instruction: prescription.prescriptionMessage5DNItem1ins},
-      {item: prescription.prescriptionMessage5DNItem2, quantity:prescription.prescriptionMessage5DNItem2q, instruction: prescription.prescriptionMessage5DNItem2ins},
-      {item: prescription.prescriptionMessage5DNItem3, quantity:prescription.prescriptionMessage5DNItem3q, instruction: prescription.prescriptionMessage5DNItem3ins},
-      {item: prescription.prescriptionMessage5DNItem4, quantity:prescription.prescriptionMessage5DNItem4q, instruction: prescription.prescriptionMessage5DNItem4ins},
+      {item: prescription.prescriptionMessage5DNItem1, quantity:prescription.prescriptionMessage5DNItem1q, instruction: prescription.prescriptionMessage5DNItem1ins, status: prescription.prescriptionMessage5DNStatus1},
+      {item: prescription.prescriptionMessage5DNItem2, quantity:prescription.prescriptionMessage5DNItem2q, instruction: prescription.prescriptionMessage5DNItem2ins, status: prescription.prescriptionMessage5DNStatus2},
+      {item: prescription.prescriptionMessage5DNItem3, quantity:prescription.prescriptionMessage5DNItem3q, instruction: prescription.prescriptionMessage5DNItem3ins, status: prescription.prescriptionMessage5DNStatus3},
+      {item: prescription.prescriptionMessage5DNItem4, quantity:prescription.prescriptionMessage5DNItem4q, instruction: prescription.prescriptionMessage5DNItem4ins, status: prescription.prescriptionMessage5DNStatus4},
 
     ],
 
@@ -1040,10 +1040,10 @@ req.session.data.roles = roles;
     prescriptionDN6: prescription.prescriptionMessage6DN, 
     prescriptionDN6id: prescription.prescriptionMessage6DNID,
     prescriptionDN6Items: [
-      {item: prescription.prescriptionMessage6DNItem1, quantity:prescription.prescriptionMessage6DNItem1q, instruction: prescription.prescriptionMessage6DNItem1ins},
-      {item: prescription.prescriptionMessage6DNItem2, quantity:prescription.prescriptionMessage6DNItem2q, instruction: prescription.prescriptionMessage6DNItem2ins},
-      {item: prescription.prescriptionMessage6DNItem3, quantity:prescription.prescriptionMessage6DNItem3q, instruction: prescription.prescriptionMessage6DNItem3ins},
-      {item: prescription.prescriptionMessage6DNItem4, quantity:prescription.prescriptionMessage6DNItem4q, instruction: prescription.prescriptionMessage6DNItem4ins},
+      {item: prescription.prescriptionMessage6DNItem1, quantity:prescription.prescriptionMessage6DNItem1q, instruction: prescription.prescriptionMessage6DNItem1ins, status: prescription.prescriptionMessage6DNStatus1},
+      {item: prescription.prescriptionMessage6DNItem2, quantity:prescription.prescriptionMessage6DNItem2q, instruction: prescription.prescriptionMessage6DNItem2ins, status: prescription.prescriptionMessage6DNStatus2},
+      {item: prescription.prescriptionMessage6DNItem3, quantity:prescription.prescriptionMessage6DNItem3q, instruction: prescription.prescriptionMessage6DNItem3ins, status: prescription.prescriptionMessage6DNStatus3},
+      {item: prescription.prescriptionMessage6DNItem4, quantity:prescription.prescriptionMessage6DNItem4q, instruction: prescription.prescriptionMessage6DNItem4ins, status: prescription.prescriptionMessage6DNStatus4},
 
     ],
 
