@@ -49,7 +49,7 @@
               <div class="nhs-screening-whole-timeline__description"> Dispense notification ID: {{ prescriptionDN1id or 'b240434e-cb85-40bb-899c-1c61410c93a7'}}
               </div>
               <div class="nhs-screening-whole-timeline__description">Prescription items: <ul class="nhsuk-u-padding-top-2">
-                {% if prescriptionDN1Items[0].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN1Items[0].item }}</br>Quantity: {{ prescriptionDN1Items[0].quantity }}</br>Instruction: {{ prescriptionDN1Items[0].instruction }} </br>Status: {% set itemStatus = prescriptionDN1Items[0].status %} <strong class="nhsuk-tag            
+                {% if prescriptionDN1Items[0].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN1Items[0].item }}</br>{% set itemStatus = prescriptionDN1Items[0].status %} <strong class="nhsuk-tag            
                   {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
                   {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
                   {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
@@ -66,8 +66,8 @@
                   {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
                   {% endif %}">
                  {{ itemStatus }}
-                </strong> </li> {% endif %}
-                {% if prescriptionDN1Items[1].item %} <li class="nhsuk-u-font-size-16">{{ prescriptionDN1Items[1].item }}</br>Quantity: {{ prescriptionDN1Items[1].quantity }}</br>Instruction: {{ prescriptionDN1Items[1].instruction }} </br>Status: {% set itemStatus = prescriptionDN1Items[1].status %} <strong class="nhsuk-tag            
+                </strong></br>Quantity: {{ prescriptionDN1Items[0].quantity }}</br>Instruction: {{ prescriptionDN1Items[0].instruction }}  </li> {% endif %}
+                {% if prescriptionDN1Items[1].item %} <li class="nhsuk-u-font-size-16">{{ prescriptionDN1Items[1].item }}</br>{% set itemStatus = prescriptionDN1Items[1].status %} <strong class="nhsuk-tag            
                   {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
                   {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
                   {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
@@ -83,7 +83,7 @@
                   {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
                   {% endif %}">
                  {{ itemStatus }}
-                </strong> </li> {% endif %}
+                </strong> </br>Quantity: {{ prescriptionDN1Items[1].quantity }}</br>Instruction: {{ prescriptionDN1Items[1].instruction }}</li> {% endif %}
                 {% if prescriptionDN1Items[2].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN1Items[2].item }}</br>Quantity: {{ prescriptionDN1Items[2].quantity }}</br>Instruction: {{ prescriptionDN1Items[2].instruction }} </br>Status: {% set itemStatus = prescriptionDN1Items[2].status %} <strong class="nhsuk-tag            
                   {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
                   {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
@@ -101,7 +101,7 @@
                   {% endif %}">
                  {{ itemStatus }}
                 </strong> </li>{% endif %}
-                {% if prescriptionDN1Items[3].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN1Items[3].item }}</br>Quantity: {{ prescriptionDN1Items[3].quantity }}</br>Instruction: {{ prescriptionDN1Items[3].instruction }}</br>Status: {% set itemStatus = prescriptionDN1Items[3].status %} <strong class="nhsuk-tag            
+                {% if prescriptionDN1Items[3].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN1Items[3].item }}</br>{% set itemStatus = prescriptionDN1Items[3].status %} <strong class="nhsuk-tag            
                   {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
                   {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
                   {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
@@ -117,7 +117,7 @@
                   {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange             
                   {% endif %}">
                  {{ itemStatus }}
-                </strong> </li>{% endif %}
+                </strong> </br>Quantity: {{ prescriptionDN1Items[3].quantity }}</br>Instruction: {{ prescriptionDN1Items[3].instruction }}</li>{% endif %}
               </ul>
               </div>
           
@@ -173,7 +173,7 @@
     <div class="nhs-screening-whole-timeline__description"> Dispense notification ID: {{ prescriptionDN2id or 'b240434e-cb85-40bb-899c-1c61410c93a7'}}
     </div>
     <div class="nhs-screening-whole-timeline__description">Prescription items: <ul class="nhsuk-u-padding-top-2">
-      {% if prescriptionDN2Items[0].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN2Items[0].item }}</br>Quantity: {{ prescriptionDN2Items[0].quantity }}</br>Instruction: {{ prescriptionDN2Items[0].instruction }}</br>Status: {% set itemStatus = prescriptionDN2Items[0].status %} <strong class="nhsuk-tag            
+      {% if prescriptionDN2Items[0].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN2Items[0].item }}</br>{% set itemStatus = prescriptionDN2Items[0].status %} <strong class="nhsuk-tag            
         {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
         {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
         {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
@@ -189,8 +189,8 @@
         {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange             
         {% endif %}">
        {{ itemStatus }}
-      </strong> </li> {% endif %}
-      {% if prescriptionDN2Items[1].item %} <li class="nhsuk-u-font-size-16">{{ prescriptionDN2Items[1].item }}</br>Quantity: {{ prescriptionDN2Items[1].quantity }}</br>Instruction: {{ prescriptionDN2Items[1].instruction }} </br>Status: {% set itemStatus = prescriptionDN2Items[1].status %} <strong class="nhsuk-tag            
+      </strong> </br>Quantity: {{ prescriptionDN2Items[0].quantity }}</br>Instruction: {{ prescriptionDN2Items[0].instruction }}</li> {% endif %}
+      {% if prescriptionDN2Items[1].item %} <li class="nhsuk-u-font-size-16">{{ prescriptionDN2Items[1].item }}</br> {% set itemStatus = prescriptionDN2Items[1].status %} <strong class="nhsuk-tag            
         {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
         {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
         {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
@@ -206,8 +206,8 @@
         {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
         {% endif %}">
        {{ itemStatus }}
-      </strong> </li> {% endif %}
-      {% if prescriptionDN2Items[2].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN2Items[2].item }}</br>Quantity: {{ prescriptionDN2Items[2].quantity }}</br>Instruction: {{ prescriptionDN2Items[2].instruction }} </br>Status: {% set itemStatus = prescriptionDN2Items[2].status %} <strong class="nhsuk-tag            
+      </strong> </br>Quantity: {{ prescriptionDN2Items[1].quantity }}</br>Instruction: {{ prescriptionDN2Items[1].instruction }}</li> {% endif %}
+      {% if prescriptionDN2Items[2].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN2Items[2].item }}</br> {% set itemStatus = prescriptionDN2Items[2].status %} <strong class="nhsuk-tag            
         {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
         {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
         {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
@@ -223,8 +223,8 @@
         {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
         {% endif %}">
        {{ itemStatus }}
-      </strong> </li>{% endif %}
-      {% if prescriptionDN2Items[3].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN2Items[3].item }}</br>Quantity: {{ prescriptionDN2Items[3].quantity }}</br>Instruction: {{ prescriptionDN2Items[3].instruction }} </br>Status: {% set itemStatus = prescriptionDN2Items[3].status %} <strong class="nhsuk-tag            
+      </strong></br>Quantity: {{ prescriptionDN2Items[2].quantity }}</br>Instruction: {{ prescriptionDN2Items[2].instruction }}  </li>{% endif %}
+      {% if prescriptionDN2Items[3].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN2Items[3].item }}</br>{% set itemStatus = prescriptionDN2Items[3].status %} <strong class="nhsuk-tag            
         {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
         {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
         {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
@@ -240,7 +240,7 @@
         {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
         {% endif %}">
        {{ itemStatus }}
-      </strong> </li> {% endif %}
+      </strong></br>Quantity: {{ prescriptionDN2Items[3].quantity }}</br>Instruction: {{ prescriptionDN2Items[3].instruction }}  </li> {% endif %}
     </ul>
     </div>
 
@@ -298,7 +298,7 @@
     <div class="nhs-screening-whole-timeline__description"> Dispense notification ID: {{ prescriptionDN2id or 'b240434e-cb85-40bb-899c-1c61410c93a7'}}
     </div>
     <div class="nhs-screening-whole-timeline__description">Prescription items: <ul class="nhsuk-u-padding-top-2">
-      {% if prescriptionDN3Items[0].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN3Items[0].item }}</br>Quantity: {{ prescriptionDN3Items[0].quantity }}</br>Instruction: {{ prescriptionDN3Items[0].instruction }} </br>Status: {% set itemStatus = prescriptionDN3Items[0].status %} <strong class="nhsuk-tag            
+      {% if prescriptionDN3Items[0].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN3Items[0].item }}</br>{% set itemStatus = prescriptionDN3Items[0].status %} <strong class="nhsuk-tag            
         {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
         {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
         {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
@@ -314,8 +314,8 @@
         {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
         {% endif %}">
        {{ itemStatus }}
-      </strong> </li> {% endif %}
-      {% if prescriptionDN3Items[1].item %} <li class="nhsuk-u-font-size-16">{{ prescriptionDN3Items[1].item }}</br>Quantity: {{ prescriptionDN3Items[1].quantity }}</br>Instruction: {{ prescriptionDN3Items[1].instruction }}</br>Status: {% set itemStatus = prescriptionDN3Items[1].status %} <strong class="nhsuk-tag            
+      </strong> </br>Quantity: {{ prescriptionDN3Items[0].quantity }}</br>Instruction: {{ prescriptionDN3Items[0].instruction }} </li> {% endif %}
+      {% if prescriptionDN3Items[1].item %} <li class="nhsuk-u-font-size-16">{{ prescriptionDN3Items[1].item }}</br>{% set itemStatus = prescriptionDN3Items[1].status %} <strong class="nhsuk-tag            
         {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
         {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
         {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
@@ -331,8 +331,8 @@
         {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
         {% endif %}">
        {{ itemStatus }}
-      </strong> </li> {% endif %}
-      {% if prescriptionDN3Items[2].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN3Items[2].item }}</br>Quantity: {{ prescriptionDN3Items[2].quantity }}</br>Instruction: {{ prescriptionDN3Items[2].instruction }} </br>Status: {% set itemStatus = prescriptionDN3Items[2].status %} <strong class="nhsuk-tag            
+      </strong> </br>Quantity: {{ prescriptionDN3Items[1].quantity }}</br>Instruction: {{ prescriptionDN3Items[1].instruction }}</li> {% endif %}
+      {% if prescriptionDN3Items[2].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN3Items[2].item }}</br> {% set itemStatus = prescriptionDN3Items[2].status %} <strong class="nhsuk-tag            
         {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
         {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
         {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
@@ -348,8 +348,8 @@
         {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
         {% endif %}">
        {{ itemStatus }}
-      </strong> </li> {% endif %}
-      {% if prescriptionDN3Items[3].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN3Items[3].item }}</br>Quantity: {{ prescriptionDN3Items[3].quantity }}</br>Instruction: {{ prescriptionDN3Items[3].instruction }} </br>Status: {% set itemStatus = prescriptionDN3Items[3].status %} <strong class="nhsuk-tag            
+      </strong></br>Quantity: {{ prescriptionDN3Items[2].quantity }}</br>Instruction: {{ prescriptionDN3Items[2].instruction }}  </li> {% endif %}
+      {% if prescriptionDN3Items[3].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN3Items[3].item }}</br>{% set itemStatus = prescriptionDN3Items[3].status %} <strong class="nhsuk-tag            
         {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
         {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
         {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
@@ -365,7 +365,7 @@
         {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
         {% endif %}">
        {{ itemStatus }}
-      </strong> </li> {% endif %}
+      </strong> </br>Quantity: {{ prescriptionDN3Items[3].quantity }}</br>Instruction: {{ prescriptionDN3Items[3].instruction }} </li> {% endif %}
     </ul>
     </div>
 
@@ -422,7 +422,7 @@
     <div class="nhs-screening-whole-timeline__description"> Dispense notification ID: {{ prescriptionDN4id or 'b240434e-cb85-40bb-899c-1c61410c93a7'}}
     </div>
     <div class="nhs-screening-whole-timeline__description">Prescription items: <ul class="nhsuk-u-padding-top-2">
-      {% if prescriptionDN4Items[0].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN4Items[0].item }}</br>Quantity: {{ prescriptionDN4Items[0].quantity }}</br>Instruction: {{ prescriptionDN4Items[0].instruction }} </br>Status: {% set itemStatus = prescriptionDN4Items[0].status %} <strong class="nhsuk-tag            
+      {% if prescriptionDN4Items[0].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN4Items[0].item }}</br> {% set itemStatus = prescriptionDN4Items[0].status %} <strong class="nhsuk-tag            
         {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
         {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
         {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
@@ -438,8 +438,8 @@
         {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
         {% endif %}">
        {{ itemStatus }}
-      </strong> </li> {% endif %}
-      {% if prescriptionDN4Items[1].item %} <li class="nhsuk-u-font-size-16">{{ prescriptionDN4Items[1].item }}</br>Quantity: {{ prescriptionDN4Items[1].quantity }}</br>Instruction: {{ prescriptionDN4Items[1].instruction }}</br>Status: {% set itemStatus = prescriptionDN4Items[1].status %} <strong class="nhsuk-tag            
+      </strong> </br>Quantity: {{ prescriptionDN4Items[0].quantity }}</br>Instruction: {{ prescriptionDN4Items[0].instruction }} </li> {% endif %}
+      {% if prescriptionDN4Items[1].item %} <li class="nhsuk-u-font-size-16">{{ prescriptionDN4Items[1].item }}</br> {% set itemStatus = prescriptionDN4Items[1].status %} <strong class="nhsuk-tag            
         {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
         {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
         {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
@@ -455,8 +455,8 @@
         {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange             
         {% endif %}">
        {{ itemStatus }}
-      </strong> </li>{% endif %}
-      {% if prescriptionDN4Items[2].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN4Items[2].item }}</br>Quantity: {{ prescriptionDN4Items[2].quantity }}</br>Instruction: {{ prescriptionDN4Items[2].instruction }} </br>Status: {% set itemStatus = prescriptionDN4Items[2].status %} <strong class="nhsuk-tag            
+      </strong></br>Quantity: {{ prescriptionDN4Items[1].quantity }}</br>Instruction: {{ prescriptionDN4Items[1].instruction }} </li>{% endif %}
+      {% if prescriptionDN4Items[2].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN4Items[2].item }}</br> {% set itemStatus = prescriptionDN4Items[2].status %} <strong class="nhsuk-tag            
         {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
         {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
         {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
@@ -472,8 +472,8 @@
         {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
         {% endif %}">
        {{ itemStatus }}
-      </strong> </li>{% endif %}
-      {% if prescriptionDN4Items[3].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN4Items[3].item }}</br>Quantity: {{ prescriptionDN4Items[3].quantity }}</br>Instruction: {{ prescriptionDN4Items[3].instruction }} </br>Status: {% set itemStatus = prescriptionDN4Items[3].status %} <strong class="nhsuk-tag            
+      </strong> </br>Quantity: {{ prescriptionDN4Items[2].quantity }}</br>Instruction: {{ prescriptionDN4Items[2].instruction }} </li>{% endif %}
+      {% if prescriptionDN4Items[3].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN4Items[3].item }}</br>{% set itemStatus = prescriptionDN4Items[3].status %} <strong class="nhsuk-tag            
         {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
         {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
         {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
@@ -489,7 +489,7 @@
         {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
         {% endif %}">
        {{ itemStatus }}
-      </strong> </li> {% endif %}
+      </strong></br>Quantity: {{ prescriptionDN4Items[3].quantity }}</br>Instruction: {{ prescriptionDN4Items[3].instruction }}  </li> {% endif %}
     </ul>
     </div>
 
@@ -538,7 +538,7 @@
 <div class="nhs-screening-whole-timeline__description"> Dispense notification ID: {{ prescriptionDN5id or 'b240434e-cb85-40bb-899c-1c61410c93a7'}}
 </div>
 <div class="nhs-screening-whole-timeline__description">Prescription items: <ul class="nhsuk-u-padding-top-2 nhsuk-u-margin-bottom-1">
-{% if prescriptionDN5Items[0].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN5Items[0].item }}</br>Quantity: {{ prescriptionDN5Items[0].quantity }}</br>Instruction: {{ prescriptionDN5Items[0].instruction }} </br>Status: {% set itemStatus = prescriptionDN5Items[0].status %} <strong class="nhsuk-tag            
+{% if prescriptionDN5Items[0].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN5Items[0].item }}</br>{% set itemStatus = prescriptionDN5Items[0].status %} <strong class="nhsuk-tag            
   {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
   {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
   {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
@@ -554,8 +554,8 @@
   {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange             
   {% endif %}">
  {{ itemStatus }}
-</strong> </li>{% endif %}
-{% if prescriptionDN5Items[1].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN5Items[1].item }}</br>Quantity: {{ prescriptionDN5Items[1].quantity }}</br>Instruction: {{ prescriptionDN5Items[1].instruction }}</br>Status: {% set itemStatus = prescriptionDN5Items[1].status %} <strong class="nhsuk-tag            
+</strong> </br>Quantity: {{ prescriptionDN5Items[0].quantity }}</br>Instruction: {{ prescriptionDN5Items[0].instruction }} </li>{% endif %}
+{% if prescriptionDN5Items[1].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN5Items[1].item }}</br>{% set itemStatus = prescriptionDN5Items[1].status %} <strong class="nhsuk-tag            
   {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
   {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
   {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
@@ -571,8 +571,8 @@
   {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
   {% endif %}">
  {{ itemStatus }}
-</strong> </li>{% endif %}
-{% if prescriptionDN5Items[2].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN5Items[2].item }}</br>Quantity: {{ prescriptionDN5Items[2].quantity }}</br>Instruction: {{ prescriptionDN5Items[2].instruction }}</br>Status: {% set itemStatus = prescriptionDN5Items[2].status %} <strong class="nhsuk-tag            
+</strong> </br>Quantity: {{ prescriptionDN5Items[1].quantity }}</br>Instruction: {{ prescriptionDN5Items[1].instruction }}</li>{% endif %}
+{% if prescriptionDN5Items[2].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN5Items[2].item }}</br>{% set itemStatus = prescriptionDN5Items[2].status %} <strong class="nhsuk-tag            
   {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
   {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
   {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
@@ -588,8 +588,8 @@
   {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
   {% endif %}">
  {{ itemStatus }}
-</strong> </li>{% endif %}
-{% if prescriptionDN5Items[3].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN5Items[3].item }}</br>Quantity: {{ prescriptionDN5Items[3].quantity }}</br>Instruction: {{ prescriptionDN5Items[3].instruction }} </br>Status: {% set itemStatus = prescriptionDN5Items[3].status %} <strong class="nhsuk-tag            
+</strong> </br>Quantity: {{ prescriptionDN5Items[2].quantity }}</br>Instruction: {{ prescriptionDN5Items[2].instruction }}</li>{% endif %}
+{% if prescriptionDN5Items[3].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN5Items[3].item }}</br> {% set itemStatus = prescriptionDN5Items[3].status %} <strong class="nhsuk-tag            
   {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
   {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
   {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
@@ -605,7 +605,7 @@
   {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
   {% endif %}">
  {{ itemStatus }}
-</strong> </li>{% endif %}
+</strong></br>Quantity: {{ prescriptionDN5Items[3].quantity }}</br>Instruction: {{ prescriptionDN5Items[3].instruction }}  </li>{% endif %}
 </ul>
 </div>
 {% endif %}
@@ -650,7 +650,7 @@
 <div class="nhs-screening-whole-timeline__description"> Dispense notification ID: {{ prescriptionDN6id or 'b240434e-cb85-40bb-899c-1c61410c93a7'}}
 </div>
 <div class="nhs-screening-whole-timeline__description">Prescription items: <ul class="nhsuk-u-padding-top-2 nhsuk-u-margin-bottom-1">
-{% if prescriptionDN6Items[0].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN6Items[0].item }}</br>Quantity: {{ prescriptionDN6Items[0].quantity }}</br>Instruction: {{ prescriptionDN6Items[0].instruction }} </br>Status: {% set itemStatus = prescriptionDN6Items[0].status %} <strong class="nhsuk-tag            
+{% if prescriptionDN6Items[0].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN6Items[0].item }}</br> {% set itemStatus = prescriptionDN6Items[0].status %} <strong class="nhsuk-tag            
   {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
   {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
   {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
@@ -666,8 +666,8 @@
   {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange             
   {% endif %}">
  {{ itemStatus }}
-</strong>   </li>{% endif %}
-{% if prescriptionDN6Items[1].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN6Items[1].item }}</br>Quantity: {{ prescriptionDN6Items[1].quantity }}</br>Instruction: {{ prescriptionDN6Items[1].instruction }}</br>Status: {% set itemStatus = prescriptionDN6Items[1].status %} <strong class="nhsuk-tag            
+</strong>  </br>Quantity: {{ prescriptionDN6Items[0].quantity }}</br>Instruction: {{ prescriptionDN6Items[0].instruction }}  </li>{% endif %}
+{% if prescriptionDN6Items[1].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN6Items[1].item }}</br>{% set itemStatus = prescriptionDN6Items[1].status %} <strong class="nhsuk-tag            
   {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
   {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
   {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
@@ -683,8 +683,8 @@
   {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
   {% endif %}">
  {{ itemStatus }}
-</strong></li> {% endif %}
-{% if prescriptionDN6Items[2].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN6Items[2].item }}</br>Quantity: {{ prescriptionDN6Items[2].quantity }}</br>Instruction: {{ prescriptionDN6Items[2].instruction }} </br>Status: {% set itemStatus = prescriptionDN6Items[2].status %} <strong class="nhsuk-tag            
+</strong></br>Quantity: {{ prescriptionDN6Items[1].quantity }}</br>Instruction: {{ prescriptionDN6Items[1].instruction }}</li> {% endif %}
+{% if prescriptionDN6Items[2].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN6Items[2].item }}</br>{% set itemStatus = prescriptionDN6Items[2].status %} <strong class="nhsuk-tag            
   {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
   {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
   {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
@@ -700,8 +700,8 @@
   {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
   {% endif %}">
  {{ itemStatus }}
-</strong> </li>{% endif %}
-{% if prescriptionDN6Items[3].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN6Items[3].item }}</br>Quantity: {{ prescriptionDN6Items[3].quantity }}</br>Instruction: {{ prescriptionDN6Items[3].instruction }} </br>Status: {% set itemStatus = prescriptionDN6Items[3].status %} <strong class="nhsuk-tag            
+</strong> </br>Quantity: {{ prescriptionDN6Items[2].quantity }}</br>Instruction: {{ prescriptionDN6Items[2].instruction }} </li>{% endif %}
+{% if prescriptionDN6Items[3].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN6Items[3].item }} </br> {% set itemStatus = prescriptionDN6Items[3].status %} <strong class="nhsuk-tag            
   {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
   {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
   {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
@@ -717,7 +717,7 @@
   {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange             
   {% endif %}">
  {{ itemStatus }}
-</strong> </li>{% endif %}
+</strong> </br>Quantity: {{ prescriptionDN6Items[3].quantity }}</br>Instruction: {{ prescriptionDN6Items[3].instruction }}</li>{% endif %}
 </ul>
 </div>
 {% endif %}
