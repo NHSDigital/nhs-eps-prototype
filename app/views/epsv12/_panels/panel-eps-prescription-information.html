@@ -33,11 +33,12 @@
                 {% elif prescstatus == 'Future repeat dispense' %} nhsuk-tag--blue 
                 {% elif prescstatus == 'Future eRD issue' %} nhsuk-tag--aqua-green    
                 {% elif prescstatus == 'No items dispensed' %} nhsuk-tag--white   
+                {% elif prescstatus == 'Not dispensed' %} nhsuk-tag--red
                 {% elif prescstatus == 'Expired' %} nhsuk-tag--orange      
                 {% elif prescstatus == 'Claimed' %} nhsuk-tag--grey 
                 {% elif prescstatus == 'Downloaded by a dispenser' %} nhsuk-tag--purple
-                {% elif prescstatus == 'Next repeat ready to download' %} nhsuk-tag--yellow
-                {% elif status == 'Future prescription cancelled' %} nhsuk-tag--pink               
+                {% elif prescstatus == 'Next repeat ready to download' %} nhsuk-tag--orange
+                {% elif status == 'Future prescription cancelled' %} nhsuk-tag--red               
                 {% endif %}">
                 {{ prescstatus }}
               </strong> 

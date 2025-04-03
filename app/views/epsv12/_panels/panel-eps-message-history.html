@@ -27,11 +27,12 @@
               {% elif status == 'Some items owed' %} nhsuk-tag--blue
               {% elif status == 'Future repeat dispense' %} nhsuk-tag--blue 
               {% elif status == 'No items dispensed' %} nhsuk-tag--white   
+              {% elif status == 'Not dispensed' %} nhsuk-tag--red   
               {% elif status == 'Expired' %} nhsuk-tag--orange      
               {% elif status == 'Claimed' %} nhsuk-tag--grey 
               {% elif status == 'Downloaded by a dispenser' %} nhsuk-tag--purple
-              {% elif status == 'Next repeat ready to download' %} nhsuk-tag--yellow   
-              {% elif status == 'Future prescription cancelled' %} nhsuk-tag--pink             
+              {% elif status == 'Next repeat ready to download' %} nhsuk-tag--orange   
+              {% elif status == 'Future prescription cancelled' %} nhsuk-tag--red             
               {% endif %}">
               {{ status }}
             </strong> 
@@ -58,10 +59,11 @@
                   {% elif itemStatus == 'Future repeat dispense' %} nhsuk-tag--blue 
                   {% elif itemStatus == 'Future eRD issue' %} nhsuk-tag--aqua-green    
                   {% elif itemStatus == 'Item not dispensed' %} nhsuk-tag--orange   
+                  {% elif itemStatus == 'Not dispensed' %} nhsuk-tag--red  
                   {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
                   {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
                   {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
-                  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--yellow              
+                  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
                   {% endif %}">
                  {{ itemStatus }}
                 </strong> </li> {% endif %}
@@ -78,7 +80,7 @@
                   {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
                   {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
                   {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
-                  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--yellow              
+                  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
                   {% endif %}">
                  {{ itemStatus }}
                 </strong> </li> {% endif %}
@@ -95,7 +97,7 @@
                   {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
                   {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
                   {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
-                  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--yellow              
+                  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange             
                   {% endif %}">
                  {{ itemStatus }}
                 </strong> </li>{% endif %}
@@ -112,7 +114,7 @@
                   {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
                   {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
                   {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
-                  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--yellow              
+                  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange             
                   {% endif %}">
                  {{ itemStatus }}
                 </strong> </li>{% endif %}
@@ -149,11 +151,12 @@
               {% elif status == 'Some items owed' %} nhsuk-tag--blue
               {% elif status == 'Future repeat dispense' %} nhsuk-tag--blue 
               {% elif status == 'No items dispensed' %} nhsuk-tag--white   
+              {% elif status == 'Not dispensed' %} nhsuk-tag--red   
               {% elif status == 'Expired' %} nhsuk-tag--orange      
               {% elif status == 'Claimed' %} nhsuk-tag--grey 
               {% elif status == 'Downloaded by a dispenser' %} nhsuk-tag--purple
-              {% elif status == 'Next repeat ready to download' %} nhsuk-tag--yellow   
-              {% elif status == 'Future prescription cancelled' %} nhsuk-tag--pink               
+              {% elif status == 'Next repeat ready to download' %} nhsuk-tag--orange  
+              {% elif status == 'Future prescription cancelled' %} nhsuk-tag--red               
               {% endif %}">
               {{ status }}
             </strong> 
@@ -183,7 +186,7 @@
         {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
         {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
         {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
-        {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--yellow              
+        {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange             
         {% endif %}">
        {{ itemStatus }}
       </strong> </li> {% endif %}
@@ -200,7 +203,7 @@
         {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
         {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
         {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
-        {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--yellow              
+        {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
         {% endif %}">
        {{ itemStatus }}
       </strong> </li> {% endif %}
@@ -217,7 +220,7 @@
         {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
         {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
         {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
-        {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--yellow              
+        {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
         {% endif %}">
        {{ itemStatus }}
       </strong> </li>{% endif %}
@@ -234,7 +237,7 @@
         {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
         {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
         {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
-        {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--yellow              
+        {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
         {% endif %}">
        {{ itemStatus }}
       </strong> </li> {% endif %}
@@ -272,11 +275,12 @@
                     {% elif status == 'Some items owed' %} nhsuk-tag--blue
                     {% elif status == 'Future repeat dispense' %} nhsuk-tag--blue 
                     {% elif status == 'No items dispensed' %} nhsuk-tag--white   
+                    {% elif status == 'Not dispensed' %} nhsuk-tag--red   
                     {% elif status == 'Expired' %} nhsuk-tag--orange      
                     {% elif status == 'Claimed' %} nhsuk-tag--grey 
                     {% elif status == 'Downloaded by a dispenser' %} nhsuk-tag--purple
-                    {% elif status == 'Next repeat ready to download' %} nhsuk-tag--yellow 
-                    {% elif status == 'Future prescription cancelled' %} nhsuk-tag--pink               
+                    {% elif status == 'Next repeat ready to download' %} nhsuk-tag--orange 
+                    {% elif status == 'Future prescription cancelled' %} nhsuk-tag--red               
                     {% endif %}">
                     {{ status }}
                   </strong>    
@@ -307,7 +311,7 @@
         {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
         {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
         {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
-        {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--yellow              
+        {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
         {% endif %}">
        {{ itemStatus }}
       </strong> </li> {% endif %}
@@ -324,7 +328,7 @@
         {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
         {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
         {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
-        {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--yellow              
+        {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
         {% endif %}">
        {{ itemStatus }}
       </strong> </li> {% endif %}
@@ -341,7 +345,7 @@
         {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
         {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
         {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
-        {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--yellow              
+        {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
         {% endif %}">
        {{ itemStatus }}
       </strong> </li> {% endif %}
@@ -358,7 +362,7 @@
         {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
         {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
         {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
-        {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--yellow              
+        {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
         {% endif %}">
        {{ itemStatus }}
       </strong> </li> {% endif %}
@@ -394,12 +398,13 @@
       {% elif status == 'Some items dispensed' %} nhsuk-tag--blue
       {% elif status == 'Some items owed' %} nhsuk-tag--blue
       {% elif status == 'Future repeat dispense' %} nhsuk-tag--blue 
-      {% elif status == 'No items dispensed' %} nhsuk-tag--white   
+      {% elif status == 'No items dispensed' %} nhsuk-tag--white 
+      {% elif status == 'Not dispensed' %} nhsuk-tag--red   
       {% elif status == 'Expired' %} nhsuk-tag--orange      
       {% elif status == 'Claimed' %} nhsuk-tag--grey 
       {% elif status == 'Downloaded by a dispenser' %} nhsuk-tag--purple
-      {% elif status == 'Next repeat ready to download' %} nhsuk-tag--yellow
-      {% elif status == 'Future prescription cancelled' %} nhsuk-tag--pink                
+      {% elif status == 'Next repeat ready to download' %} nhsuk-tag--orange
+      {% elif status == 'Future prescription cancelled' %} nhsuk-tag--red                
       {% endif %}">
       {{ status }}
     </strong>    
@@ -430,7 +435,7 @@
         {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
         {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
         {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
-        {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--yellow              
+        {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
         {% endif %}">
        {{ itemStatus }}
       </strong> </li> {% endif %}
@@ -447,7 +452,7 @@
         {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
         {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
         {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
-        {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--yellow              
+        {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange             
         {% endif %}">
        {{ itemStatus }}
       </strong> </li>{% endif %}
@@ -464,7 +469,7 @@
         {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
         {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
         {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
-        {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--yellow              
+        {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
         {% endif %}">
        {{ itemStatus }}
       </strong> </li>{% endif %}
@@ -481,7 +486,7 @@
         {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
         {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
         {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
-        {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--yellow              
+        {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
         {% endif %}">
        {{ itemStatus }}
       </strong> </li> {% endif %}
@@ -516,12 +521,13 @@
       {% elif status == 'Some items dispensed' %} nhsuk-tag--blue
       {% elif status == 'Some items owed' %} nhsuk-tag--blue
       {% elif status == 'Future repeat dispense' %} nhsuk-tag--blue 
-      {% elif status == 'No items dispensed' %} nhsuk-tag--white   
+      {% elif status == 'No items dispensed' %} nhsuk-tag--white  
+      {% elif status == 'No items dispensed' %} nhsuk-tag--red    
       {% elif status == 'Expired' %} nhsuk-tag--orange      
       {% elif status == 'Claimed' %} nhsuk-tag--grey 
       {% elif status == 'Downloaded by a dispenser' %} nhsuk-tag--purple
-      {% elif status == 'Next repeat ready to download' %} nhsuk-tag--yellow 
-      {% elif status == 'Future prescription cancelled' %} nhsuk-tag--pink              
+      {% elif status == 'Next repeat ready to download' %} nhsuk-tag--orange
+      {% elif status == 'Future prescription cancelled' %} nhsuk-tag--red              
       {% endif %}">
       {{ status }}
     </strong>    
@@ -545,7 +551,7 @@
   {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
   {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
   {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
-  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--yellow              
+  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange             
   {% endif %}">
  {{ itemStatus }}
 </strong> </li>{% endif %}
@@ -562,7 +568,7 @@
   {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
   {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
   {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
-  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--yellow              
+  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
   {% endif %}">
  {{ itemStatus }}
 </strong> </li>{% endif %}
@@ -579,7 +585,7 @@
   {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
   {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
   {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
-  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--yellow              
+  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
   {% endif %}">
  {{ itemStatus }}
 </strong> </li>{% endif %}
@@ -596,7 +602,7 @@
   {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
   {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
   {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
-  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--yellow              
+  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
   {% endif %}">
  {{ itemStatus }}
 </strong> </li>{% endif %}
@@ -628,12 +634,13 @@
        {% elif status == 'Future eRD issue' %} nhsuk-tag--aqua-green    
       {% elif status == 'Some items dispensed' %} nhsuk-tag--blue
       {% elif status == 'Future repeat dispense' %} nhsuk-tag--blue 
-      {% elif status == 'No items dispensed' %} nhsuk-tag--white   
+      {% elif status == 'No items dispensed' %} nhsuk-tag--white  
+      {% elif status == 'Not dispensed' %} nhsuk-tag--red    
       {% elif status == 'Expired' %} nhsuk-tag--orange      
       {% elif status == 'Claimed' %} nhsuk-tag--grey 
       {% elif status == 'Downloaded by a dispenser' %} nhsuk-tag--purple
-      {% elif status == 'Next repeat ready to download' %} nhsuk-tag--yellow    
-      {% elif status == 'Future prescription cancelled' %} nhsuk-tag--pink            
+      {% elif status == 'Next repeat ready to download' %} nhsuk-tag--orange    
+      {% elif status == 'Future prescription cancelled' %} nhsuk-tag--red            
       {% endif %}">
       {{ status }}
     </strong>    
@@ -656,7 +663,7 @@
   {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
   {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
   {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
-  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--yellow              
+  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange             
   {% endif %}">
  {{ itemStatus }}
 </strong>   </li>{% endif %}
@@ -673,7 +680,7 @@
   {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
   {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
   {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
-  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--yellow              
+  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
   {% endif %}">
  {{ itemStatus }}
 </strong></li> {% endif %}
@@ -690,7 +697,7 @@
   {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
   {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
   {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
-  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--yellow              
+  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
   {% endif %}">
  {{ itemStatus }}
 </strong> </li>{% endif %}
@@ -707,7 +714,7 @@
   {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
   {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
   {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
-  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--yellow              
+  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange             
   {% endif %}">
  {{ itemStatus }}
 </strong> </li>{% endif %}
