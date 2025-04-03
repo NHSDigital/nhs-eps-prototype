@@ -769,6 +769,11 @@ req.session.data.roles = roles;
 });
 
 
+router.get('/epsv12/results-none', (req, res) => {
+  const initialSearch = req.query.initialSearch; // Get the value from URL query parameters
+  res.render('./epsv12/results-none', { initialSearch }); // Pass it to the template
+});
+
 //..........................................................................................................
 //..PPPPP..................................................rii...................tii........................
 //.PPPPPPPPPP..............................................rii.............pttt..tii........................

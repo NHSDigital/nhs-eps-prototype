@@ -1,0 +1,83 @@
+{% extends './_includes/layout-application.html' %}
+{% set primarynav = 'patient' %}
+{% set hideNav = 'true' %}
+{% set hideJump = 'true' %}
+{% set containerClasses = 'patient-search-form-container' %}
+{% block pageTitle %}
+Prescriptions list
+{% endblock %}
+
+{% block beforeContent %}
+
+ 
+  <nav class="nhsuk-breadcrumb nhsuk-u-padding-bottom-0" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-back-link">
+
+        <a class="nhsuk-back-link__link" href="{% if redirectBack %}?redirect-back={{ redirectBack }}{% endif %}">
+          <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+            <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+          </svg>
+          Go back</a>
+      </div>
+    </div>
+  
+  </nav>
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-full">
+
+
+      <h1 class="nhsuk-heading-l">No prescriptions found</h1>
+      <p>We could not find any prescriptions for the following search criteria:</p>
+     
+
+   
+
+
+     {% if initialSearch == "basicDeets" %}
+        <ul>
+          <li>Last name: Timone</li>
+          <li>Date of birth: 06-Jun-2006</li>
+          <li>Postcode: AB1 2CD</li>
+        </ul>
+
+        {% elif initialSearch == "nhsNum" %}
+        <ul>
+          <li>NHS number: 123 456 7890</li>
+      
+        </ul>
+        {% elif initialSearch == "prescId" %}
+        <ul>
+          <li>Prescription ID: fd2345 g21da2 a16D12</li>
+      
+        </ul>
+  {% endif %}
+     
+    </div>
+
+
+    
+    </div>
+
+
+    
+
+
+  </div>
+{% endblock %}
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Get URL parameters
+    const params = new URLSearchParams(window.location.search);
+    const initialSearchTerm = params.get("initialSearch");
+
+    console.log("Initial Search Term:", initialSearchTerm);
+  });
+</script>
