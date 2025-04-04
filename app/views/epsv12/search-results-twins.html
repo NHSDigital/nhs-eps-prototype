@@ -26,16 +26,17 @@
       
     </div>
   </div>
-  <nav class="nhsuk-breadcrumb nhsuk-u-padding-bottom-0" aria-label="Breadcrumb">
-    <div class="nhsuk-back-link nhsuk-u-margin-bottom-0 nhsuk-u-padding-left-8">
-
-      <a class="nhsuk-back-link__link" href="#">
-        <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
-          <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
-        </svg>
-        Go back</a>
-    </div>
-  </nav>
+  <div class="nhsuk-grid-row">
+    <nav class="nhsuk-breadcrumb nhsuk-u-padding-bottom-0" aria-label="Breadcrumb">
+      <div class="nhsuk-back-link nhsuk-u-margin-bottom-0 nhsuk-u-padding-left-8">
+  
+        <a class="nhsuk-back-link__link" href="#">
+          <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+            <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+          </svg>
+          Go back</a>
+      </div>
+    </nav>
 
 {% endblock %}
 {% block customStyles %}
@@ -121,6 +122,12 @@
     cursor: pointer;
     outline: none;
   }
+    .query-results-table__data-row:hover {
+    cursor: pointer;
+    border: 3px solid #ffb81C;
+}
+    
+  
 
   @media (min-width: 40.0625em) {
     .query-results-table__data-row {
@@ -166,10 +173,10 @@
   }
 
 </style>
+
 {% endblock %}
 
 {% block content %}
-  <div class="nhsuk-grid-row">
 
     <div class="nhsuk-grid-column-full">
  
@@ -200,22 +207,22 @@
             <div class="col-sm-4 col-lg-4"><b>Address</b></div>
             <div class="col-sm-2 col-lg-2"><b>NHS Number</b></div>
           </div>
-          <div class="query-results-table__data-row row" role="button" tabindex="0" href="./spinner-prescription-list?nhsNumber=9726919207">
+          <div class="query-results-table__data-row row" role="button" tabindex="0" onclick="window.location.href='./spinner-prescription-list?nhsNumber=9726919207'">
             <div class="col-sm-12 col-md-12" href="./spinner-prescription-list?nhsNumber=9726919207"></div>
             <div class="col-sm-3 col-lg-3"><a class="query-results-table__data-row-name" href="./spinner-prescription-list?nhsNumber=9726919207">Issac
                 Wolderton-Rodriguez </a></div>
             <div class="col-sm-1 col-lg-1">Male</div>
             <div class="col-sm-2 col-lg-2">6-May-2013</div>
-            <div class="col-sm-4 col-lg-4">     123 BRUDENEL CLOSE, HEADINGLEY, LEEDS, WEST YORKSHIRE, LS6 1JL&nbsp;</div>
+            <div class="col-sm-4 col-lg-4">123 Brundel Close, Headingley, Leeds, West Yorkshire, LS6 1JL&nbsp;</div>
             <div class="col-sm-2 col-lg-2">972 691 9207</div>
           </div>
-          <div class="query-results-table__data-row row" role="button" tabindex="0" href="#">
+          <div class="query-results-table__data-row row" role="button" tabindex="0" onclick="window.location.href='#'">
             <div class="col-sm-12 col-md-12" href="#"></div>
             <div class="col-sm-3 col-lg-3"><a class="query-results-table__data-row-name" href="#">Steve
               Wolderton-Rodriguez </a></div>
             <div class="col-sm-1 col-lg-1">Male</div>
             <div class="col-sm-2 col-lg-2">6-May-2013</div>
-            <div class="col-sm-4 col-lg-4"> 123 BRUDENEL CLOSE, HEADINGLEY, LEEDS, WEST YORKSHIRE, LS6 1JL&nbsp;</div>
+            <div class="col-sm-4 col-lg-4">123 Brundel Close, Headingley, Leeds, West Yorkshire, LS6 1JL&nbsp;</div>
             <div class="col-sm-2 col-lg-2">972 591 9207</div>
           </div>
   
