@@ -18,6 +18,7 @@
       {% elif prescriptions.Status == 'Future issue date dispense' %} nhsuk-tag--blue
       {% elif prescriptions.Status == 'Future prescription cancelled' %} nhsuk-tag--red
       {% elif prescriptions.Status == 'Some items owed' %} nhsuk-tag--blue
+      {% elif prescription.Status == 'Some items dispensed' %} nhsuk-tag--blue
       {% elif prescriptions.Status == 'Future repeat dispense' %} nhsuk-tag--blue
       {% elif prescriptions.Status == 'No items dispensed' %} nhsuk-tag--white
       {% elif prescriptions.Status == 'Not dispensed' %} nhsuk-tag--red
