@@ -32,32 +32,29 @@ Prescriptions list
 
     <div class="nhsuk-grid-column-full">
 
-
-      <h1 class="nhsuk-heading-l">No prescriptions found</h1>
-      <p>We could not find any prescriptions for the following search criteria:</p>
+      {% if initialSearch == "prescId" %} 
+      <h1 class="nhsuk-heading-l">No prescriptions found with the ID fd2345-g21da2-a16D12 </h1>
+      <p>Check that the prescription ID is correct. You can also <a href ="search-nhs">search using an NHS number</a> or <a href ="search-basic">other patient details</a>.</p>
      
+      {% endif %}
+      {% if initialSearch == "nhsNum" %} 
+      <h1 class="nhsuk-heading-l">No prescriptions found for the NHS number 123 456 7890 </h1>
+      <p>Check that the NHS number is correct. You can also <a href ="search">search using a prescription ID</a> or <a href ="search-basic">other patient details</a>.</p>
+     
+      {% endif %}
+      {% if initialSearch == "basicDeets" %} 
+      <h1 class="nhsuk-heading-l">No prescriptions found for the following search criteria </h1>
+      <p> <ul>
+        <li>Last name: Timone</li>
+        <li>Date of birth: 06-Jun-2006</li>
+        <li>Postcode: AB1 2CD</li>
+      </ul> 
+      </p>
+      <p>Check that the details are correct. You can also <a href ="search">search using a prescription ID</a> or <a href ="search-nhs">search using a NHS number</a>.</p>
+     
+      {% endif %}
 
-   
-
-
-     {% if initialSearch == "basicDeets" %}
-        <ul>
-          <li>Last name: Timone</li>
-          <li>Date of birth: 06-Jun-2006</li>
-          <li>Postcode: AB1 2CD</li>
-        </ul>
-
-        {% elif initialSearch == "nhsNum" %}
-        <ul>
-          <li>NHS number: 123 456 7890</li>
-      
-        </ul>
-        {% elif initialSearch == "prescId" %}
-        <ul>
-          <li>Prescription ID: fd2345 g21da2 a16D12</li>
-      
-        </ul>
-  {% endif %}
+     
      
     </div>
 
