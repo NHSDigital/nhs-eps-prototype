@@ -120,9 +120,10 @@ Find a patient by NHS number - {{ serviceName }}
             <span class="nhsuk-u-visually-hidden">Search by </span>
             Search using basic details
           </h2>
+          <p>Enter as many details as you know to get the best search results.</p>
 
           <div class="nhsuk-form-group {% if errors["last-name"]  %} nhsuk-form-group--error {% endif%}">
-            <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-1 no-outline">Surname</h3>
+            <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-1 no-outline">Last name</h3>
             {% if errors["last-name"] %}
             <span id="nhs-no-error-error" class="nhsuk-error-message">
               {{ errors["last-name"] }}

@@ -169,7 +169,7 @@ function sortTable(columnIndex, tableId, isDate = false) {
       
 
       {% else %}
-        <p>We could not find any current or future dated prescriptions for this patient.</p>
+        <p>We could not find any current or future-dated prescriptions for this patient.</p>
       {% endif %}
      <!--<p><a href="spinner-ncrs?nhsNumber={{ patient.nhsNumber }}" target="_blank"> View additional patient information in the National Care Records Service (opens in a new tab)</a>.</p>--> 
     </div>
@@ -187,7 +187,7 @@ function sortTable(columnIndex, tableId, isDate = false) {
           </li>
           <li class="nhsuk-tabs__list-item nhsuk-u-padding-right-2 nhsuk-u-padding-left-2">
             <a class="nhsuk-tabs__tab" href="#future-dated-prescriptions">
-              Future dated prescriptions ({{ returnedPrescriptionsListFuture.length  }})
+              Future-dated prescriptions ({{ returnedPrescriptionsListFuture.length  }})
             </a>
           </li>
           <li class="nhsuk-tabs__list-item nhsuk-u-padding-right-2 nhsuk-u-padding-left-2">
@@ -242,7 +242,7 @@ function sortTable(columnIndex, tableId, isDate = false) {
         </div>
       
         <div class="nhsuk-tabs__panel nhsuk-tabs__panel--hidden" id="future-dated-prescriptions">
-          <p class="nhsuk-u-visually-hidden">Future dated prescriptions</p>
+          <p class="nhsuk-u-visually-hidden">Future-dated prescriptions</p>
         
           {% if returnedPrescriptionsListFuture and returnedPrescriptionsListFuture|length > 0 %}
             <!-- Display table if there are results -->
