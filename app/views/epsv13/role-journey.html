@@ -1,0 +1,235 @@
+{% extends './_includes/layout-application-no-footer.html' %}
+{% set primarynav = 'patient' %}
+{% set hideNav = 'true' %}
+{% set hideJump = 'true' %}
+
+{% block pageTitle %}
+Role journey - {{ serviceName }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="row">
+  <div class="nhsuk-grid-column-one-third">
+ <h1 class="nhsuk-heading-m">Role selected journeys</h1>
+
+ <div class="nhsuk-card allowed-role">
+  <div class="nhsuk-card__content">
+   
+      <h3 class="nhsuk-card__heading">
+        <div class="role-details">
+          <a href="roles?selection=yes&cards=yes&noAccess=yes&singleRole=no&action=no&allRoles=yes" class="role-name" role="button" tabindex="0">
+            <u> More than 5 roles - Role selected - all components</u>
+          </a>
+        </div>
+      </h3>
+      <p class="role-details">Role selected, role cards and roles without access</p>
+   
+
+    
+  </div>
+</div>
+
+
+ <div class="nhsuk-card allowed-role">
+  <div class="nhsuk-card__content">
+   
+      <h3 class="nhsuk-card__heading">
+        <div class="role-details">
+          <a href="roles?selection=yes&cards=yes&noAccess=yes&singleRole=no&action=no&allRoles=no" class="role-name" role="button" tabindex="0">
+            <u>Role selected - all components</u>
+          </a>
+        </div>
+      </h3>
+      <p class="role-details">Role selected, role cards and roles without access</p>
+   
+
+    
+  </div>
+</div>
+<div class="nhsuk-card allowed-role">
+  <div class="nhsuk-card__content">
+   
+      <h3 class="nhsuk-card__heading">
+        <div class="role-details">
+          <a href="roles?selection=yes&cards=yes&noAccess=no&singleRole=no&action=no&allRoles=no" class="role-name" role="button" tabindex="0">
+            <u>Role selected - no roles without access</u>
+          </a>
+        </div>
+      </h3>
+      <p class="role-details">Role selected and role cards</p>
+   
+
+    
+  </div>
+</div>
+<div class="nhsuk-card allowed-role">
+  <div class="nhsuk-card__content">
+   
+      <h3 class="nhsuk-card__heading">
+        <div class="role-details">
+          <a href="roles?selection=yes&cards=no&noAccess=yes&singleRole=no&action=no&allRoles=no" class="role-name" role="button" tabindex="0">
+            <u>Role selected - including roles without access</u>
+          </a>
+        </div>
+      </h3>
+      <p class="role-details">Role selected and roles without access</p>
+   
+
+    
+  </div>
+</div>
+
+<div class="nhsuk-card allowed-role">
+  <div class="nhsuk-card__content">
+   
+      <h3 class="nhsuk-card__heading">
+        <div class="role-details">
+          <a href="roles?selection=no&cards=no&noAccess=no&singleRole=yes&action=no&allRoles=no" class="role-name" role="button" tabindex="0">
+            <u>One role only </u>
+          </a>
+        </div>
+      </h3>
+      <p class="role-details">If there is only one role we skip the role selection page.</p>
+   
+
+    
+  </div>
+</div>
+  </div>
+  <div class="nhsuk-grid-column-one-third">
+    <h1 class="nhsuk-heading-m">Role not selected journeys</h1>
+    <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="roles?selection=no&cards=yes&noAccess=yes&singleRole=no&action=no&allRoles=no" class="role-name" role="button" tabindex="0">
+                <u>No role selected - roles with and without access</u>
+              </a>
+            </div>
+          </h3>
+          <p class="role-details">Roles with access and roles without access</p>
+       
+    
+        
+      </div>
+    </div>
+    <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="roles?selection=no&cards=yes&noAccess=no&singleRole=no&action=no&allRoles=no" class="role-name" role="button" tabindex="0">
+                <u>No role selected - roles with access</u>
+              </a>
+            </div>
+          </h3>
+          <p class="role-details">Roles with access</p>
+       
+    
+        
+      </div>
+    </div>
+    <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="roles?selection=no&cards=yes&noAccess=no&singleRole=yes&action=no&allRoles=no" class="role-name" role="button" tabindex="0">
+                <u>No role selected - one role with access</u>
+              </a>
+            </div>
+          </h3>
+          <p class="role-details">Roles with access</p>
+       
+    
+        
+      </div>
+    </div>
+    
+    <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="roles?selection=no&cards=no&noAccess=yes&singleRole=no&action=no&allRoles=no" class="role-name" role="button" tabindex="0">
+                <u>No access to tracker</u>
+              </a>
+            </div>
+          </h3>
+          <p class="role-details">Roles without access</p>
+       
+    
+        
+      </div>
+    </div>
+
+    <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="roles?selection=no&cards=no&noAccess=no&singleRole=no&action=no&allRoles=no" class="role-name" role="button" tabindex="0">
+                <u>No smartcard roles</u>
+              </a>
+            </div>
+          </h3>
+          <p class="role-details">Nothing. We won't use the expander as it will confuse a user if there are no roles inside it.</p>
+       
+    
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="nhsuk-grid-column-one-third">
+    <h1 class="nhsuk-heading-m">Other</h1>
+
+    <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="search?timeout=yes" class="role-name" role="button" tabindex="0">
+                <u>Timeout modal </u>
+              </a>
+            </div>
+          </h3>
+          <p class="role-details">After 15-20 seconds the time out modal will appear. You can close it using the cross or the button. Or you can wait for the countdown to end which will log you out.</p>
+       
+    
+        
+      </div>
+    </div>
+
+    <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="search?showCookies=true" class="role-name" role="button" tabindex="0">
+                <u>Cookie banner </u>
+              </a>
+            </div>
+          </h3>
+          <p class="role-details">Cookie banner will sit above the header</p>
+       
+    
+        
+      </div>
+    </div>
+    </div>
+
+  
+
+
+ 
+
+ 
+
+</div>
+
+{% endblock %}
+

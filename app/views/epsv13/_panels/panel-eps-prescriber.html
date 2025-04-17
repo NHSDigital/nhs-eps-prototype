@@ -1,0 +1,13 @@
+<div class="data-panel__wrapper no-outline" tabindex="-1">
+  <div class="nhsuk-card nhsuk-u-margin-bottom-3 data-panel" style="box-shadow: none;" id="patient-details-panel">
+    <div class="nhsuk-card__content nhsuk-u-padding-top-3 nhsuk-u-padding-bottom-2 nhsuk-u-padding-right-3 nhsuk-u-padding-left-3">
+
+      <p class="nhsuk-u-margin-bottom-2"><strong>Prescriber</strong> </br>{{ prescriptionPrescriberOrg or 'Fipo Surgery (ODS: FI05964)' }}</p>
+      <p class="nhsuk-u-margin-bottom-2"> {{ prescriptionPrescriberAddress or '91 YARROW LANE, FINNSBURY, E45 T46' }}
+      </p>
+      <p class="nhsuk-u-margin-bottom-2"><strong>Phone number</strong> </br>{{ prescriptionPrescriberContact or '01232 231321' }}</p>
+      <p class="nhsuk-u-margin-bottom-1"><strong>Prescribed from</strong> </br>{{ prescriptionPrescriberCountry or 'England' }}</p>
+   
+    </div>
+  </div>
+</div>

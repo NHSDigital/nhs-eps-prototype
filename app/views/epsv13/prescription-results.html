@@ -1,0 +1,406 @@
+{% extends './_includes/layout-application.html' %}
+{% set primarynav = 'patient' %}
+{% set hideNav = 'true' %}
+{% set hideJump = 'true' %}
+{% set containerClasses = 'patient-search-form-container' %}
+{% block pageTitle %}
+Prescriptions list
+{% endblock %}
+
+{% block beforeContent %}
+{% include './_includes/includes-patient-banner-eps.html' %} {% include './_includes/includes-patient-supercede.html' %} 
+ 
+  <nav class="nhsuk-breadcrumb nhsuk-u-padding-bottom-0" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-back-link">
+
+        <a class="nhsuk-back-link__link" href="{% if redirectBack %}?redirect-back={{ redirectBack }}{% endif %}">
+          <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+            <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+          </svg>
+          Go back</a>
+      </div>
+    </div>
+  
+  </nav>
+
+{% endblock %}
+
+{% block content %}
+<style>
+/* Remove padding from the main content container */
+body, .nhsuk-main-wrapper {
+  padding-top: 0 !important; /* Override any existing padding */
+}
+
+/* Make links appear like buttons (optional) */
+[aria-sort] button,
+[aria-sort] button:hover {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  color: #005ea5;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1em;
+  font-weight: inherit;
+  padding: 0 10px 0 0;
+  position: relative;
+  text-align: inherit;
+  margin: 0;
+}
+
+[aria-sort] button:focus {
+  background-color: #ffdd00;
+  color: #0b0c0c;
+  box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
+  outline: none;
+}
+
+
+[aria-sort] button:before {
+  content: "▲";
+  position: absolute;
+  right: -8px;
+  top: 2px; /* Adjusted for better alignment */
+  font-size: 0.7em;
+}
+
+[aria-sort] button:after {
+  content: "▼";
+  position: absolute;
+  right: -8px;
+  top: 14px; /* Adjusted to stack below the up arrow */
+  font-size: 0.7em;
+}
+
+[aria-sort=ascending] button:before {
+  content: "▲"; /* Highlight active up arrow */
+  font-size: 0.9em; /* Slightly larger to emphasize */
+  color: #005ea5; /* Optional: accent color for active */
+}
+
+[aria-sort=ascending] button:after {
+  content: "▼"; /* Inactive down arrow */
+  font-size: 0.7em;
+  color: #ffffff /* Light gray for inactive */
+}
+
+[aria-sort=descending] button:before {
+  content: "▲"; /* Inactive up arrow */
+  font-size: 0.7em;
+  color: #ffffff; /* Light gray for inactive */
+}
+
+[aria-sort=descending] button:after {
+  content: "▼"; /* Highlight active down arrow */
+  font-size: 0.9em; /* Slightly larger to emphasize */
+  color: #005ea5; /* Optional: accent color for active */
+}
+
+
+</style>
+<script>
+
+function sortTable(columnIndex, tableId, isDate = false) {
+  console.log(`Sorting column ${columnIndex} in table ${tableId}`);
+  const table = document.getElementById(tableId);
+  const tbody = table.querySelector("tbody");
+
+  if (!tbody) {
+    console.error("No tbody found in table", tableId);
+    return;
+  }
+
+  const rows = Array.from(tbody.querySelectorAll("tr"));
+  console.log(`Found ${rows.length} rows`);
+
+  const currentHeader = table.querySelectorAll("th")[columnIndex];
+  const currentSort = currentHeader.getAttribute("aria-sort");
+  let newSortDirection = "ascending";
+
+  if (currentSort === "ascending") {
+    newSortDirection = "descending";
+  }
+
+  console.log(`Current sort direction: ${currentSort}, New sort direction: ${newSortDirection}`);
+
+  // Update ARIA attributes
+  table.querySelectorAll("th").forEach(header => header.setAttribute("aria-sort", "none"));
+  currentHeader.setAttribute("aria-sort", newSortDirection);
+
+  // Sort rows
+  const sortedRows = rows.sort((a, b) => {
+    const cellA = a.querySelectorAll("td")[columnIndex]?.innerText.trim();
+    const cellB = b.querySelectorAll("td")[columnIndex]?.innerText.trim();
+
+    if (!cellA || !cellB) {
+      console.error("Missing cells for comparison");
+      return 0;
+    }
+
+    if (isDate) {
+      console.log(`Comparing dates: ${cellA} vs ${cellB}`);
+      return newSortDirection === "ascending"
+        ? new Date(cellA) - new Date(cellB)
+        : new Date(cellB) - new Date(cellA);
+    } else {
+      console.log(`Comparing strings: ${cellA} vs ${cellB}`);
+      return newSortDirection === "ascending"
+        ? cellA.localeCompare(cellB, undefined, { numeric: true })
+        : cellB.localeCompare(cellA, undefined, { numeric: true });
+    }
+  });
+
+  // Append sorted rows to the table body
+  sortedRows.forEach(row => tbody.appendChild(row));
+}
+
+
+</script>
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-full">
+      <h2 class="nhsuk-heading-l">Prescriptions list</h2>
+
+      {% if returnedPrescriptionsListAll.length %}
+      <p><strong>We found {{ returnedPrescriptionsListAll.length }} result{% if returnedPrescriptionsListAll.length > 1 %}s{% endif %}</strong> </p>
+
+      
+
+      {% else %}
+        <p>We could not find any current or future dated prescriptions for this patient.</p>
+      {% endif %}
+     <!--<p><a href="spinner-ncrs?nhsNumber={{ patient.nhsNumber }}" target="_blank"> View additional patient information in the National Care Records Service (opens in a new tab)</a>.</p>--> 
+    </div>
+
+    <div class="nhsuk-grid-column-full">
+      <div class="nhsuk-tabs" data-module="nhsuk-tabs">
+        <h2 class="nhsuk-tabs__title">
+          Contents
+        </h2>
+        <ul class="nhsuk-tabs__list">
+          <li class="nhsuk-tabs__list-item nhsuk-tabs__list-item--selected nhsuk-u-padding-right-2 nhsuk-u-padding-left-2">
+            <a class="nhsuk-tabs__tab" href="#current-prescriptions">
+              Current prescriptions ({{ returnedPrescriptionsListCurrent.length  }})
+            </a>
+          </li>
+          <li class="nhsuk-tabs__list-item nhsuk-u-padding-right-2 nhsuk-u-padding-left-2">
+            <a class="nhsuk-tabs__tab" href="#future-dated-prescriptions">
+              Future dated prescriptions ({{ returnedPrescriptionsListFuture.length  }})
+            </a>
+          </li>
+          <li class="nhsuk-tabs__list-item nhsuk-u-padding-right-2 nhsuk-u-padding-left-2">
+            <a class="nhsuk-tabs__tab" href="#claimed-and-expired-prescriptions">
+             Claimed and expired prescriptions ({{ returnedPrescriptionsListExpired.length  }})
+            </a>
+          </li>
+        </ul>
+      
+        <div class="nhsuk-tabs__panel" id="current-prescriptions">
+          <p class="nhsuk-u-visually-hidden">Current prescriptions</p>
+        
+          {% if returnedPrescriptionsListCurrent and returnedPrescriptionsListCurrent|length > 0 %}
+            <!-- Display table if there are results -->
+            <table id="search-results-table-current" class="responsive-table" role="grid">
+              <thead>
+                <tr role="row">
+                  <th scope="col" style="width: 15%;" aria-sort="none">
+                    <button type="button" onclick="sortTable(0, 'search-results-table-current', true)">Issue date</button>
+                  </th>
+                  <th scope="col" style="width: 20%;" aria-sort="none">
+                    <button type="button" onclick="sortTable(1, 'search-results-table-current')">Prescription type</button>
+                  </th>
+                  <th scope="col" style="width: 20%;" aria-sort="none">
+                    <button type="button" onclick="sortTable(2, 'search-results-table-current')">Status</button>
+                  </th>
+                  <th scope="col" style="width: 20%;" aria-sort="none">
+                    <button type="button" onclick="sortTable(3, 'search-results-table-current')">Pending cancellation</button>
+                  </th>
+                  <th scope="col" style="width: 25%;" aria-sort="none">
+                    <button type="button" onclick="sortTable(4, 'search-results-table-current')">Prescription ID</button>
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="patient-results">
+                {% for prescriptions in returnedPrescriptionsListCurrent %}
+                  {% include "./_includes/prescription-search-result-row.html" %}
+                {% endfor %}
+              </tbody>
+            </table>
+        
+            <div class="table-foot">
+              <span class="load-more"></span>
+              <span class="results-count">
+                Showing {{ returnedPrescriptionsListCurrent.length }} of {{ returnedPrescriptionsListCurrent.length }}
+              </span>
+            </div>
+          {% else %}
+            <!-- Display no results message if the list is empty -->
+            <p class="no-results-message">No current prescriptions found.</p>
+          {% endif %}
+        </div>
+      
+        <div class="nhsuk-tabs__panel nhsuk-tabs__panel--hidden" id="future-dated-prescriptions">
+          <p class="nhsuk-u-visually-hidden">Future dated prescriptions</p>
+        
+          {% if returnedPrescriptionsListFuture and returnedPrescriptionsListFuture|length > 0 %}
+            <!-- Display table if there are results -->
+            <table id="search-results-table-future" class="responsive-table" role="grid">
+              <thead>
+                <tr role="row">
+                  <th scope="col" style="width: 15%;" aria-sort="none">
+                    <button type="button" onclick="sortTable(0, 'search-results-table-future', true)">Issue date</button>
+                  </th>
+                  <th scope="col" style="width: 20%;" aria-sort="none">
+                    <button type="button" onclick="sortTable(1, 'search-results-table-future')">Prescription type</button>
+                  </th>
+                 
+                  <th scope="col" style="width: 20%;" aria-sort="none">
+                    <button type="button" onclick="sortTable(2, 'search-results-table-future')">Status</button>
+                  </th>
+                  <th scope="col" style="width: 20%;" aria-sort="none">
+                    <button type="button" onclick="sortTable(3, 'search-results-table-future')">Pending cancellation</button>
+                  </th>
+                  <th scope="col" style="width: 25%;" aria-sort="none">
+                    <button type="button" onclick="sortTable(4, 'search-results-table-future')">Prescription ID</button>
+                  </th>
+                 
+                </tr>
+              </thead>
+              <tbody class="patient-results">
+                {% for prescriptions in returnedPrescriptionsListFuture %}
+                  {% include "./_includes/prescription-search-result-row.html" %}
+                {% endfor %}
+              </tbody>
+            </table>
+            <div class="table-foot">
+              <span class="load-more"></span>
+              <span class="results-count">
+                Showing {{ returnedPrescriptionsListFuture.length }} of {{ returnedPrescriptionsListFuture.length }}
+              </span>
+            </div>
+          {% else %}
+            <!-- Display no results message if the list is empty -->
+            <p class="no-results-message">No future-dated prescriptions found.</p>
+          {% endif %}
+        </div>
+      
+        <div class="nhsuk-tabs__panel nhsuk-tabs__panel--hidden" id="claimed-and-expired-prescriptions">
+          <p class="nhsuk-u-visually-hidden">Claimed and expired prescriptions</p>
+          
+          {% if returnedPrescriptionsListExpired and returnedPrescriptionsListExpired|length > 0 %}
+            <!-- Display table if there are results -->
+            <table id="search-results-table-claimed" class="responsive-table" role="grid">
+              <thead>
+                <tr role="row">
+                  <th scope="col" style="width: 15%;" aria-sort="none">
+                    <button type="button" onclick="sortTable(0, 'search-results-table-claimed', true)">Issue date</button>
+                  </th>
+                  <th scope="col" style="width: 20%;" aria-sort="none">
+                    <button type="button" onclick="sortTable(1, 'search-results-table-claimed')">Prescription type</button>
+                  </th>
+                 
+                  <th scope="col" style="width: 20%;" aria-sort="none">
+                    <button type="button" onclick="sortTable(2, 'search-results-table-claimed')">Status</button>
+                  </th>
+                  <th scope="col" style="width: 20%;" aria-sort="none">
+                    <button type="button" onclick="sortTable(3, 'search-results-table-claimed')">Pending cancellation</button>
+                  </th>
+                  <th scope="col" style="width: 25%;" aria-sort="none">
+                    <button type="button" onclick="sortTable(4, 'search-results-table-claimed')">Prescription ID</button>
+                  </th>
+                
+                </tr>
+              </thead>
+              <tbody class="patient-results">
+                {% for prescriptions in returnedPrescriptionsListExpired %}
+                  {% include "./_includes/prescription-search-result-row.html" %}
+                {% endfor %}
+              </tbody>
+            </table>
+        
+            <div class="table-foot">
+              <span class="load-more"></span>
+              <span class="results-count">
+                Showing {{ returnedPrescriptionsListExpired.length }} of {{ returnedPrescriptionsListExpired.length }}
+              </span>
+            </div>
+          {% else %}
+            <!-- Display no results message if the list is empty -->
+            <p class="no-results-message">No claimed or expired prescriptions found.</p>
+          {% endif %}
+        </div>
+      
+       
+      </div>
+    
+    </div>
+
+
+    
+
+
+  </div>
+{% endblock %}
+
+<script>
+
+  //TABS TABS TABS 
+  document.addEventListener("DOMContentLoaded", function() {
+      // Function to toggle table visibility based on clicked anchor tag
+      function openPresc(event, tableId) {
+        event.preventDefault(); // Prevent default anchor behavior
+    
+        // Hide all tables with class 'contentcontent'
+        var tables = document.querySelectorAll(".contentcontent");
+        tables.forEach(function(table) {
+          table.style.display = "none";
+        });
+    
+        // Remove 'selected' class from all tabs
+        var tabs = document.querySelectorAll(".eps-tabs-item");
+        tabs.forEach(function(tab) {
+          tab.classList.remove("eps-tabs-item-active");
+        });
+    
+        // Show the table corresponding to the clicked anchor tag
+        document.getElementById(tableId).style.display = "";
+    
+        // Add 'selected' class to the parent tab
+        event.target.parentElement.classList.add("eps-tabs-item-active");
+    
+        console.log("Table with ID ", tableId, " is displayed."); // Add this line to log when the table is displayed
+      }
+    
+      // Add event listeners to the anchor tags within the list items
+      document.getElementById("active-presc").addEventListener('click', function(event) {
+        console.log("active-presc anchor clicked"); // Add this line to log when the active-presc anchor is clicked
+        openPresc(event, "current-prescriptions" );
+      });
+    
+      document.getElementById("future-presc").addEventListener('click', function(event) {
+        console.log("future-presc anchor clicked"); // Add this line to log when the future-presc anchor is clicked
+        openPresc(event, "future-prescriptions");
+      });
+    
+      document.getElementById("terminal-presc").addEventListener('click', function(event) {
+        console.log("terminal-presc anchor clicked"); // Add this line to log when the future-presc anchor is clicked
+        openPresc(event, "terminal-prescriptions");
+      });
+  
+  
+      // Add the 'eps-tabs-item-active' class to the default tab
+      var defaultTab = document.getElementById("active-presc").parentElement;
+      defaultTab.classList.add("eps-tabs-item-active");
+    
+      // Show the content corresponding to the default tab
+      var defaultContent = document.getElementById("current-prescriptions");
+      defaultContent.style.display = "block";
+    });
+
+  
+
+
+    
+</script>

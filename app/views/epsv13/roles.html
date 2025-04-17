@@ -1,0 +1,269 @@
+{% extends './_includes/layout-application-roles.html' %}
+{% set primarynav = 'patient' %}
+{% set hideNav = 'true' %}
+{% set hideJump = 'true' %}
+
+{% block pageTitle %}
+Role selection - {{ serviceName }}
+{% endblock %}
+
+
+{% block content %}
+
+
+
+<div class="row">
+  <div class="col-sm-0 col-md-1 col-lg-1 col-xl-3"></div>
+  <div class="col-sm-12 col-md-10 col-lg-10 col-xl-6">
+
+    {% if selection == "no" and cards == "no" and noAccess == "no" %}
+
+    <h1 class="select-role-header nhsuk-heading-xl" id="select-role-header">
+      No access to the clinical prescription tracking service
+    </h1>
+    <p>None of the roles on your smartcard allow you to access the clinical prescription tracking service. Contact your local Registration Authority to obtain the correct role.</p>
+
+    {% elif selection == "no" and cards == "no" and noAccess == "yes" %}
+   
+      
+    <h1 class="select-role-header nhsuk-heading-xl" id="select-role-header">
+      No access to the clinical prescription tracking service
+    </h1>
+    <p>None of the roles on your smartcard allow you to access the clinical prescription tracking service. Contact your local Registration Authority to obtain the correct role.</p>
+
+    {% else %}
+
+    {% if data['action'] === 'change' %}
+    <h1 class="select-role-header nhsuk-heading-xl" id="select-role-header">
+      Change your role
+      <span class="nhsuk-caption-xl nhsuk-caption--bottom">Select the role you wish to use to access the service</span>
+    </h1>
+    {% else %}
+    <h1 class="select-role-header nhsuk-heading-xl" id="select-role-header">
+      Select your role
+    </h1>
+      <p>Select the role you wish to use to access the service</p>
+    {% endif %}
+
+    {% if selection == "yes" %}
+    <div>
+      <div class="nhsuk-inset-text current-role">
+        <span class="nhsuk-u-visually-hidden">Information: </span>
+        <p id="current-role-details">You are currently logged in at {{ selectedRole.site or "NHS CONNECTING FOR HEALTH (X09)"}} with {{ selectedRole.roleName or "PERSONAL PATIENT DATA" }}</p></div>
+
+      
+      <a href="search" aria-disabled="false" class="nhsuk-button" id="confirm-current-role" role="button" type="submit">Continue to find a prescription</a>
+   
+    </div>
+    {% elif data['action'] === 'change' %}
+    <div>
+      <div class="nhsuk-inset-text current-role">
+        <span class="nhsuk-u-visually-hidden">Information: </span>
+        <p id="current-role-details">You are currently logged in at {{ selectedRole.site or "NHS CONNECTING FOR HEALTH (X09)"}} with {{ selectedRole.roleName or "PERSONAL PATIENT DATA" }}</p></div>
+
+      
+      <a href="search" aria-disabled="false" class="nhsuk-button" id="confirm-current-role" role="button" type="submit">Continue to find a prescription</a>
+     
+    </div>
+
+    {% endif %}
+
+
+
+    {% endif %}
+    
+
+    
+
+   
+
+
+      
+      {% if selection == "yes" %} 
+      {% if cards == "yes" %}
+      <p>Alternatively, you can choose a new role below</p>
+      {% endif %}
+      {% endif %}
+
+      {% if allRoles == "yes" %}
+ 
+      <div class="nhsuk-card">
+        <div class="nhsuk-card__content">
+      
+         
+    
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="three-quarters">
+              Search for your role using the dispensing site name, ODS code or postcode.
+            </label>
+            <input class="nhsuk-input nhsuk-u-width-three-quarters" id="three-quarters" name="three-quarters" type="text">
+          </div>
+      
+          <table class="nhsuk-table-responsive">
+            <caption class="nhsuk-table__caption nhsuk-u-visually-hidden">Your roles</caption>
+            <thead role="rowgroup" class="nhsuk-table__head">
+              <tr role="row">
+                <th role="columnheader" class="" scope="col">
+                  Site
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Role
+                </th>
+                <th role="columnheader" class="" scope="col">
+                  Address
+                </th>
+              </tr>
+            </thead>
+            <tbody class="nhsuk-table__body">
+              {% for role in roles  %}
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Site </span><a href="{% if role.site == 'Locum pharmacy (ODS: FFFFF)' %}roles-site-search-locum?roleId={{ role.id }}{% else %}roles-confirm?roleId={{ role.id }}{% endif %}" 
+                  class="role-name" role="button" tabindex="0">
+                   {{ role.site }}
+               </a>
+               
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Role </span>{{ role.roleName }}
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading" aria-hidden="true">Address </span>  {{ role.addressLine1 }}<br>
+                  {{ role.addressLine2 }}<br>
+                  {{ role.addressLine3 }}<br>
+                  {{ role.postcode }}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div> 
+
+{% else %}
+
+
+{% if cards == "yes" %}
+{% set eps_count = 0 %}
+{% if singleRole == "yes" %}
+{% set role_limit = 1 %}
+{% else %}
+{% set role_limit = 3 %}
+{% endif %}
+{% set shown_role = false %}  {# Track if a role has been displayed #}
+{% for role in roles  %}
+
+  
+{% if role.eps == "yes" and role.selected != "yes" and (allRoles == "yes" or eps_count < role_limit) %}
+
+      
+
+{% set eps_count = eps_count + 1 %}
+{% set shown_role = true %}  {# Mark that we’ve shown one role #}
+  <div class="nhsuk-card allowed-role">
+    <div class="nhsuk-card__content">
+      <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-3">
+        <h3 class="nhsuk-card__heading">
+          <div class="role-details">
+            <a href="{% if role.site == 'Locum pharmacy (ODS: FFFFF)' %}roles-site-search-locum?roleId={{ role.id }}{% else %}roles-confirm?roleId={{ role.id }}{% endif %}" class="role-name" role="button" tabindex="0">
+              <u>{{ role.site }}</u>
+            </a>
+          </div>
+        </h3>
+        <p class="role-details">{{ role.roleName }}</p>
+      </div>
+
+      <div class="nhsuk-grid-column-one-half">
+        <p class="nhsuk-u-margin-top-1 nhsuk-u-font-size-12">
+         
+          {{ role.addressLine1 }}<br>
+          {{ role.addressLine2 }}<br>
+          {{ role.addressLine3 }}<br>
+          {{ role.postcode }}
+        </p>
+      </div>
+    </div>
+  </div>
+ {% endif %}
+{% endfor %}
+
+{% endif %}
+
+
+
+
+
+{% endif %}
+
+{% if noAccess == "yes" %}
+<h2>Your roles without access</h2>
+    <details class="nhsuk-details nhsuk-expander">
+      <summary class="nhsuk-details__summary">
+        <span class="nhsuk-details__summary-text">
+          View your roles without access to the clinical prescription tracking service
+        </span>
+      </summary>
+      <div class="nhsuk-details__text">
+    
+        <table class="nhsuk-table">
+         
+          <thead role="rowgroup" class="nhsuk-table__head">
+            <tr role="row">
+              <th role="columnheader" class="" scope="col">
+               Organisation
+              </th>
+              <th role="columnheader" class="" scope="col">
+               Role
+              </th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+            {% for role in roles %}
+            {% if role.eps =="no"%}
+            <tr role="row" class="nhsuk-table__row">
+              <td class="nhsuk-table__cell">{{ role.site }}</td>
+              <td class="nhsuk-table__cell ">{{ role.roleName }}</td>
+            </tr>
+            {% endif %}
+           {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </details>
+{% endif %}
+  </div>
+</div>
+
+
+<script>
+  function saveQueryParams() {
+    const params = new URLSearchParams(window.location.search);
+    sessionStorage.setItem("roleSelectionParams", params.toString());
+  }
+  
+  function restoreQueryParams() {
+    const storedParams = sessionStorage.getItem("roleSelectionParams");
+    if (storedParams) {
+      const currentParams = new URLSearchParams(window.location.search);
+      const storedParamsObj = new URLSearchParams(storedParams);
+  
+      // Merge stored parameters with current ones
+      storedParamsObj.forEach((value, key) => {
+        if (!currentParams.has(key)) {
+          currentParams.set(key, value);
+        }
+      });
+  
+      // Update URL only if there are missing parameters
+      if (currentParams.toString() !== window.location.search.substring(1)) {
+        window.location.search = currentParams.toString();
+      }
+    }
+  }
+  
+  // Call the functions when the page loads
+  saveQueryParams();
+  restoreQueryParams();
+  
+  </script>
+{% endblock %}

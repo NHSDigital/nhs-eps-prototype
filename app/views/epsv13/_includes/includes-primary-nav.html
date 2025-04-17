@@ -1,0 +1,66 @@
+<div class="nhsuk-tab-set tab-side-padding">
+  <a href="patient-overview" class="nhsuk-tab-set__tab{% if primarynav === 'overview' %} nhsuk-tab-set__tab--active{% endif %} tab-internal-padding" id="patient-dashboard-navigation-tab">Overview</a>
+  <a href="patient-details" class="nhsuk-tab-set__tab{% if primarynav === 'patient' %} nhsuk-tab-set__tab--active{% endif %} tab-internal-padding" id="patient-demographics-navigation-tab">Patient Details</a>
+  <a href="patient-clinical" class="nhsuk-tab-set__tab{% if primarynav === 'clinical' %} nhsuk-tab-set__tab--active{% endif %} tab-internal-padding" id="patient-clinicals-navigation-tab">Clinical</a>
+  {% if data.perms['documents'] !== "no" %}
+  <a href="patient-documents" class="nhsuk-tab-set__tab{% if primarynav === 'documents' %} nhsuk-tab-set__tab--active{% endif %} tab-internal-padding" id="patient-documents-navigation-tab">Documents</a>
+  {% endif %}
+</div>
+
+{%  if data['layout'] === 'twoCol' %}
+<nav class="nhsuk-sub-navigation nhsuk-stick-subnav">
+  <ul class="nhsuk-sub-navigation__list" id="subnav">
+    {# javascript renders the menu in here #}
+
+    <!--
+    <li class="nhsuk-sub-navigation__item" data-target="#key-demographic">
+      <a type="button" aria-current="page" class="nhsuk-sub-navigation__link" tabindex="0">
+        Key demographic information
+      </a>
+    </li>
+    #gp-care-providers
+    #contacts-and-next-of-kin
+    #charge-status-panel
+    #flags-data
+    -->
+
+  </ul>
+</nav>
+{% endif %}
+
+{% if hideMobileNav !== 'true' %}
+<div class="sticky-nav">
+  <div class="sticky-nav__container">
+    <div class="sticky-nav__section"><p class="sticky-nav__label">Currently Viewing:</p>
+      <div class="dropdown-select__wrapper">
+        <button class="dropdown-select">Name
+          <span class="dropdown-select__triangle"></span>
+        </button>
+        <div class="dropdown-select__dropdown" id="dropdown-content">
+
+          {# javascript renders the menu in here: looks like this markup
+          <p class="dropdown-select__dropdown-item dropdown-select__dropdown-item--header">Key demographic information</p>
+          <button class="dropdown-select__dropdown-item" type="button">
+            <span class="nhsuk-u-visually-hidden">Skip to </span>
+            Name
+            <span class="nhsuk-u-visually-hidden"> within Key demographic information</span>
+          </button>
+          #}
+
+        </div>
+      </div>
+    </div>
+
+    <div class="sticky-nav__name-container">
+      <div class="sticky-nav__name">
+        <h2>
+          {{ patient.firstName or 'Sofia' }} {{ patient.lastName | upper or 'Rodriguez'| upper }}
+        </h2>
+        <h3>
+          Date of birth: {{ patient.dob or '5-Aug-1990' }}
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
