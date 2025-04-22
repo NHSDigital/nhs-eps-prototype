@@ -131,10 +131,7 @@ router.get('/epsv13/search-nhs', function (req, res) {
     errors.push("error=invalid-last-name");
 }
 
-// Validate postcode
-if (!searchPostcode) {
-    errors.push("error=missing-postcode");
-}
+
 
 // Date of birth validation logic
 if (!dobDay && !dobMonth && !dobYear) {
@@ -179,7 +176,17 @@ if (!dobDay && !dobMonth && !dobYear) {
     if (formattedInputDob === '06-May-2013') {
         // Redirect to search-results-twins if DOB matches 6-May-2013
         return res.redirect('spinner-twin-list');
-    } else {
+    } 
+    else if ( searchLastName === "smith"){
+      // redirect to multiple search results 
+      return res.redirect('spinner-multiples-list');
+    }
+    else if ( searchLastName === "jones"){
+      // redirect to multiple search results 
+      return res.redirect('spinner-too-many-men');
+    } 
+   
+    else {
         // Redirect to spinner-prescription-list for any other case
         req.session.data.searchTerm = 'basic';
         return res.redirect('spinner-prescription-list?nhsNumber=5900009890&searchTerm=basic');
@@ -198,8 +205,6 @@ router.get('/epsv13/search-basic', function (req, res) {
           errors["last-name"] = "Surname must be at least 2 characters long";
       } else if (error === "invalid-last-name") {
           errors["last-name"] = "Surname can only contain letters, hyphens, and apostrophes";
-      } else if (error === "missing-postcode") {
-          errors["postcode-only"] = "Enter the patient's postcode";
       } else if (error === "missing-dob") {
           errors["dob"] = "Enter the patient's date of birth";
       } else if (error === "missing-dob-day") {
