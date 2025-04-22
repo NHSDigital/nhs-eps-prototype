@@ -175,27 +175,12 @@ Find a patient by NHS number - {{ serviceName }}
             </div>
           </div>
 
-
-      
-         
-          <div class="nhsuk-form-group {% if errors["postcode-only"]  %} nhsuk-form-group--error {% endif%}">
-            <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-1 no-outline">Postcode (optional)</h3>
-            <div class="nhsuk-hint" id="nhs-number-hint">For example, LS1 1AB</div>
-            {% if errors["postcode-only"] %}
-            <span id="nhs-no-error-error" class="nhsuk-error-message">
-              {{ errors["postcode-only"] }}
-            </span>
-            {% endif %}
-           
-            <input class="nhsuk-input nhsuk-input--width-10{% if errors['postcode-only'] %} nhsuk-input--error{% endif %}" id="postcode-only" name="postcode-only" type="text" value="{{ data['postcode-only'] }}">
-          </div>
-
           <div class="nhsuk-form-group">
 
             <fieldset class="nhsuk-fieldset" aria-describedby="example-hints-hint">
               <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
                 <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-1 no-outline">
-                  Gender (optional)
+                  Gender 
                 </h3>
               </legend>
           
@@ -205,7 +190,12 @@ Find a patient by NHS number - {{ serviceName }}
               </div>
           
               <div class="nhsuk-radios">
-          
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="example-hints-3" name="example-hints" type="radio" value="not sure">
+                  <label class="nhsuk-label nhsuk-radios__label" for="example-hints-3">
+                    Include both options in search
+                  </label>
+                </div>
                 <div class="nhsuk-radios__item">
                   <input class="nhsuk-radios__input" id="example-hints-1" name="example-hints" type="radio" value="yes">
                   <label class="nhsuk-label nhsuk-radios__label" for="example-hints-1">
@@ -220,23 +210,28 @@ Find a patient by NHS number - {{ serviceName }}
                   </label>
                 </div>
           
-                <div class="nhsuk-radios__item">
-                  <input class="nhsuk-radios__input" id="example-hints-3" name="example-hints" type="radio" value="not sure">
-                  <label class="nhsuk-label nhsuk-radios__label" for="example-hints-3">
-                    Not known
-                  </label>
-                </div>
+            
                
-                <div class="nhsuk-radios__item">
-                  <input class="nhsuk-radios__input" id="example-hints-3" name="example-hints" type="radio" value="not sure">
-                  <label class="nhsuk-label nhsuk-radios__label" for="example-hints-3">
-                    Include all options in search
-                  </label>
-                </div>
+                
               </div>
             </fieldset>
           
           </div>
+      
+         
+          <div class="nhsuk-form-group {% if errors["postcode-only"]  %} nhsuk-form-group--error {% endif%}">
+            <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-1 no-outline">Postcode (optional)</h3>
+            <div class="nhsuk-hint" id="nhs-number-hint">For example, LS1 1AB</div>
+            {% if errors["postcode-only"] %}
+            <span id="nhs-no-error-error" class="nhsuk-error-message">
+              {{ errors["postcode-only"] }}
+            </span>
+            {% endif %}
+           
+            <input class="nhsuk-input nhsuk-input--width-10{% if errors['postcode-only'] %} nhsuk-input--error{% endif %}" id="postcode-only" name="postcode-only" type="text" value="{{ data['postcode-only'] }}">
+          </div>
+
+         
 
 
 
