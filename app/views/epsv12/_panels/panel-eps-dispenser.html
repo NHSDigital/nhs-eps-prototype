@@ -1,10 +1,11 @@
 <div class="data-panel__wrapper no-outline" tabindex="-1">
   <div class="nhsuk-card nhsuk-u-margin-bottom-3 data-panel" style="box-shadow: none;" id="patient-details-panel">
     <div class="nhsuk-card__content nhsuk-u-padding-top-3 nhsuk-u-padding-bottom-2 nhsuk-u-padding-right-3 nhsuk-u-padding-left-3">
-     
-      <p class="nhsuk-u-margin-bottom-2"><strong>Dispenser</strong> </br> {{ prescriptionDispenseOrg or 'Cohens chemist (ODS: FV519)' }}</p>
-      <p class="nhsuk-u-margin-bottom-2"> {{ prescriptionDispenserAddress or '123 LIME STREET, NORFOLK' }}
-        <p class="nhsuk-u-margin-bottom-1"><strong>Phone number</strong> </br> {{ prescriptionDispenserContact or '01234 123453' }}</p>
+     <h3 class="nhsuk-heading-xs nhsuk-u-margin-bottom-0">Dispenser</h3>
+      <p class="nhsuk-u-margin-bottom-1">{{ prescriptionDispenseOrg or 'Cohens chemist (ODS: FV519)' }}</p>
+      <p class="nhsuk-u-margin-bottom-1"> {{ prescriptionDispenserAddress or '123 LIME STREET, NORFOLK' }} </p>
+      <h3 class="nhsuk-heading-xs nhsuk-u-margin-bottom-0">Phone number</h3>
+        <p class="nhsuk-u-margin-bottom-1">{{ prescriptionDispenserContact or '01234 123453' }}</p>
 
 
     </div>
