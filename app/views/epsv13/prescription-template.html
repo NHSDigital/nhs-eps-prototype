@@ -33,7 +33,7 @@ Prescription - {{ serviceName }}
           {% if prescriptionDispensed ==='yes' %}
           
            
-            <h1 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">Dispensed items</h1>
+            <h2 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">Dispensed items</h2>
             {% if prescriptionItems[0].exists === 'yes' and prescriptionItems[0].Dispensed === 'yes' %}
             {% include "./_panels/panel-eps-medication-items-dispensed.html" %} 
             {% endif %}
@@ -60,7 +60,7 @@ Prescription - {{ serviceName }}
           {% endif %} 
 
           {% if prescriptionPrescribed === 'yes' %}
-          <h1 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">Prescribed items</h1>
+          <h2 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">Prescribed items</h2>
           {% if prescriptionItems[0].exists === 'yes' and prescriptionItems[0].Prescribed === 'yes' %}
           {% include "./_panels/panel-eps-medication-items-dispensed.html" %} 
           {% endif %}
@@ -80,7 +80,7 @@ Prescription - {{ serviceName }}
         </div>
 
         <div class="nhsuk-grid-column-one-third">
-          <h1 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">Prescriber and dispenser information</h1> 
+          <h2 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">Prescriber and dispenser information</h2> 
           {% if prescriptionDispenser === 'yes' %}
           {% include "./_panels/panel-eps-dispenser.html" %}
           {% endif %}
@@ -100,7 +100,7 @@ Prescription - {{ serviceName }}
 
 
         <div class="nhsuk-grid-column-one-third">
-          <h1 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">History</h1>
+          <h2 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">History</h2>
           {% include "./_panels/panel-eps-message-history.html" %}    
          
         </div>
