@@ -120,7 +120,7 @@ Find a patient by NHS number - {{ serviceName }}
             <span class="nhsuk-u-visually-hidden">Search by </span>
             Search using basic details
           </h2>
-          <p>Enter as many details as you know to get the best search results.</p>
+          <p>Enter as many details as you know. </p>
 
           <div class="nhsuk-form-group {% if errors["last-name"]  %} nhsuk-form-group--error {% endif%}">
             <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-1 no-outline">Last name</h3>
@@ -223,16 +223,21 @@ Find a patient by NHS number - {{ serviceName }}
                 <div class="nhsuk-radios__item">
                   <input class="nhsuk-radios__input" id="example-hints-3" name="example-hints" type="radio" value="not sure">
                   <label class="nhsuk-label nhsuk-radios__label" for="example-hints-3">
-                    Other
+                    Not specified
                   </label>
                 </div>
                 <div class="nhsuk-radios__item">
                   <input class="nhsuk-radios__input" id="example-hints-3" name="example-hints" type="radio" value="not sure">
                   <label class="nhsuk-label nhsuk-radios__label" for="example-hints-3">
-                   Unknown
+                   Not known
                   </label>
                 </div>
-          
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="example-hints-3" name="example-hints" type="radio" value="not sure">
+                  <label class="nhsuk-label nhsuk-radios__label" for="example-hints-3">
+                   Not applicable
+                  </label>
+                </div>
               </div>
             </fieldset>
           
