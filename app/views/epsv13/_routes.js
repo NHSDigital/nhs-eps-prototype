@@ -131,6 +131,10 @@ router.get('/epsv13/search-nhs', function (req, res) {
     errors.push("error=invalid-last-name");
 }
 
+// Validate postcode
+if (searchPostcode && searchPostcode.trim().length === 1) {
+  errors.push("error=missing-postcode");
+}
 
 
 // Date of birth validation logic
@@ -219,8 +223,11 @@ router.get('/epsv13/search-basic', function (req, res) {
           errors["dob-year"] = "Date of birth must include a year";
       } else if (error === "invalid-dob-year") {
           errors["dob-year"] = "Date of birth must include a valid year";
+      } else if (error === "missing-postcode") {
+        errors["postcode-only"] = "Postcode must have at least 5 characters";
       } else if (error === "future-dob-year") {
         errors["dob-year"] = "Date of birth must be in the past";
+        
     }
   });
 
