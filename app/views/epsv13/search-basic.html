@@ -175,6 +175,21 @@ Find a patient by NHS number - {{ serviceName }}
             </div>
           </div>
 
+         
+      
+         
+          <div class="nhsuk-form-group {% if errors["postcode-only"]  %} nhsuk-form-group--error {% endif%}">
+            <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-1 no-outline">Postcode (optional)</h3>
+            <div class="nhsuk-hint" id="nhs-number-hint">For example, LS1 1AB</div>
+            {% if errors["postcode-only"] %}
+            <span id="nhs-no-error-error" class="nhsuk-error-message">
+              {{ errors["postcode-only"] }}
+            </span>
+            {% endif %}
+           
+            <input class="nhsuk-input nhsuk-input--width-10{% if errors['postcode-only'] %} nhsuk-input--error{% endif %}" id="postcode-only" name="postcode-only" type="text" value="{{ data['postcode-only'] }}">
+          </div>
+
           <div class="nhsuk-form-group">
 
             <fieldset class="nhsuk-fieldset" aria-describedby="example-hints-hint">
@@ -217,20 +232,6 @@ Find a patient by NHS number - {{ serviceName }}
             </fieldset>
           
           </div>
-      
-         
-          <div class="nhsuk-form-group {% if errors["postcode-only"]  %} nhsuk-form-group--error {% endif%}">
-            <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-1 no-outline">Postcode (optional)</h3>
-            <div class="nhsuk-hint" id="nhs-number-hint">For example, LS1 1AB</div>
-            {% if errors["postcode-only"] %}
-            <span id="nhs-no-error-error" class="nhsuk-error-message">
-              {{ errors["postcode-only"] }}
-            </span>
-            {% endif %}
-           
-            <input class="nhsuk-input nhsuk-input--width-10{% if errors['postcode-only'] %} nhsuk-input--error{% endif %}" id="postcode-only" name="postcode-only" type="text" value="{{ data['postcode-only'] }}">
-          </div>
-
          
 
 
