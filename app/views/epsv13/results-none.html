@@ -45,7 +45,8 @@ Prescriptions list
       {% if initialSearch == "basicDeets" %} 
       <h1 class="nhsuk-heading-l">No prescriptions found for the following search criteria </h1>
       <p> <ul>
-        <li>Last name: Timone</li>
+        <li>First name: Timone</li>
+        <li>Last name: Matata</li>
         <li>Date of birth: 06-Jun-2006</li>
         <li>Postcode: AB1 2CD</li>
       </ul> 
@@ -53,7 +54,18 @@ Prescriptions list
       <p>Check that the details are correct. </p>
      <p>You can also <a href ="search">search using a prescription ID</a> or <a href ="search-nhs">search using a NHS number</a>.</p>
       {% endif %}
+      {% if initialSearch == "basicDeetsNotAll" %} 
+      <h1 class="nhsuk-heading-l">No prescriptions found for the following search criteria </h1>
+      <p> <ul>
+       
+        <li>Last name: Matata</li>
+        <li>Date of birth: 06-Jun-2006</li>
 
+      </ul> 
+      </p>
+      <p>Check that the details are correct. </p>
+     <p>You can also <a href ="search">search using a prescription ID</a> or <a href ="search-nhs">search using a NHS number</a>.</p>
+      {% endif %}
      
      
     </div>
