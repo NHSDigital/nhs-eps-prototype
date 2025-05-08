@@ -1,0 +1,93 @@
+{% extends './_includes/layout-application.html' %}
+{% set primarynav = 'patient' %}
+{% set hideNav = 'true' %}
+{% set hideJump = 'true' %}
+{% set containerClasses = 'patient-search-form-container' %}
+{% block pageTitle %}
+Prescriptions list
+{% endblock %}
+
+{% block beforeContent %}
+
+ 
+  
+
+{% endblock %}
+
+{% block content %}
+<nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+  <ol class="nhsuk-breadcrumb__list">
+    <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="search">Home</a></li>
+   
+
+   
+
+  </ol>
+  <p class="nhsuk-breadcrumb__back">
+    <a class="nhsuk-breadcrumb__backlink" href="#">
+      <span class="nhsuk-u-visually-hidden">Back to &nbsp;</span>
+      Level three
+    </a>
+  </p>
+</nav>
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-full">
+      <h1 class="nhsuk-heading-xl">Privacy Notice for the Clinical Prescription Tracking Service (CPTS)</h1>
+     <h2>1. Introduction</h2>
+  <ul> 
+    Welcome to the Clinical Prescription Tracking Service (CPTS). This privacy notice explains for the CPTS: 
+    <li>Why we collect information about you (we call this “personal data”) </li>
+    <li>What we do with it, including who we share it with </li>
+    <li>How long we keep it for and where we store it </li>
+    <li>Our legal basis for using it </li>
+    <li>What your data protection rights are.  </li>
+
+
+  </ul>
+     
+       <h2>2. About the Clinical Prescription Tracking Service (CPTS) </h2>
+       <p>The CPTS allows authorised personnel working at prescribing and dispensing sites to verify that an electronic prescription exists and to identify the status of an electronic prescription to support patients’ direct care. </p>
+
+       <h2>3. What Data We Collect </h2> 
+        
+       <ul> 
+        We collect a range of personal data from our users, including: 
+        <li>Identifiable data: Through signing in via NHS CIS2 authentication we store your CIS2 Unique User ID (UUID), name, role and organisation name.  </li>
+        <li>Usage Data: Information about how you interact with our product, including your IP address, browser type, operating system, and activity logs.  </li>
+        <li>Device Information: Information about the device you use to access our services, such as device type, operating system, and device identifiers. </li>
+
+    
+    
+      </ul>
+        
+       
+      <h2>4. Where We Get Your Data From  </h2>
+      <p>We collect data directly from you when you interact with our product (e.g., authenticating, searching for prescriptions). </p>
+
+      <h2>5. How We Use Your Data </h2> 
+        
+       <ul> 
+        We use your personal data for the following purposes: 
+        <li>To provide CPTS core functionality: We need to process your data to enable you to use and interact with our product  </li>
+        <li>Service improvement: We analyse your usage patterns to understand how you use our product and improve its functionality. To do this we put small files called “analytic cookies” on to your device using a software called Amazon CloudWatch RUM These cookies are optional. The information collected includes: the type of device you used, your browser type, your operating system, the date/time you used the service and how you interacted with the service. For more information, please see our cookie policy.  </li>
+        <li>Audit and security: We collect activity logs of actions you have taken for monitoring and audit purposes.  We process your authentication credentials, usage data and device information to ensure the security of the service.  </li>
+        <li>Answer enquiries and investigate issues with the service: if you contact us about any issues you are having with the service, we need to process your data to investigate and resolve the issue you raised </li>
+        <li>To comply with our legal obligations: We process your data to comply with our legal obligation to operate the service and any other any applicable laws or regulations.   </li>
+    
+    
+      </ul>
+
+       
+      </div>
+
+ 
+    
+    </div>
+
+
+    
+
+
+{% endblock %}
