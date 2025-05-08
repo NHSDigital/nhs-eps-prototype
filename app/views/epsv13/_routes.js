@@ -206,9 +206,11 @@ router.get('/epsv13/search-basic', function (req, res) {
       if (error === "missing-last-name") {
           errors["last-name"] = "Enter the patient's last name";
       } else if (error === "short-last-name") {
-          errors["last-name"] = "Surname must be at least 2 characters long";
+          errors["last-name"] = "Last name must be at least 2 characters long";
       } else if (error === "invalid-last-name") {
-          errors["last-name"] = "Surname can only contain letters, hyphens, and apostrophes";
+          errors["last-name"] = "Last name can only contain letters, hyphens, and apostrophes";
+      } else if (error === "invalid-first-name") {
+          errors["first-name"] = "First name can only contain letters, hyphens, and apostrophes";
       } else if (error === "missing-dob") {
           errors["dob"] = "Enter the patient's date of birth";
       } else if (error === "missing-dob-day") {

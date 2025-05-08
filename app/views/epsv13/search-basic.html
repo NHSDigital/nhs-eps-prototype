@@ -69,7 +69,13 @@ Find a patient by NHS number - {{ serviceName }}
             <div class="nhsuk-error-summary__body">
 
               <ul class="nhsuk-list nhsuk-error-summary__list">
-              
+                {% if errors["first-name"] %}
+                <li>
+                  <a href="#first-name"
+                    > {{ errors["first-name"] }} </a
+                  >
+                </li>
+              {% endif %}
                 {% if errors["last-name"] %}
                 <li>
                   <a href="#last-name"
@@ -121,6 +127,16 @@ Find a patient by NHS number - {{ serviceName }}
             Search using basic details
           </h2>
           <p>We can show a maximum of 10 search results. Enter as many details as you know to find the patient you’re searching for.</p>
+
+          <div class="nhsuk-form-group {% if errors["first-name"]  %} nhsuk-form-group--error {% endif%}">
+            <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-1 no-outline">First name (optional)</h3>
+            {% if errors["first-name"] %}
+            <span id="nhs-no-error-error" class="nhsuk-error-message">
+              {{ errors["first-name"] }}
+            </span>
+            {% endif %}
+            <input class="nhsuk-input nhsuk-input--width-20{% if errors['first-name'] %} nhsuk-input--error{% endif %}" id="first-name" name="first-name" type="text" value="{{ data['first-name'] }}">
+          </div>
 
           <div class="nhsuk-form-group {% if errors["last-name"]  %} nhsuk-form-group--error {% endif%}">
             <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-1 no-outline">Last name</h3>
@@ -190,48 +206,7 @@ Find a patient by NHS number - {{ serviceName }}
             <input class="nhsuk-input nhsuk-input--width-10{% if errors['postcode-only'] %} nhsuk-input--error{% endif %}" id="postcode-only" name="postcode-only" type="text" value="{{ data['postcode-only'] }}">
           </div>
 
-          <div class="nhsuk-form-group">
-
-            <fieldset class="nhsuk-fieldset" aria-describedby="example-hints-hint">
-              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-                <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-1 no-outline">
-                  Gender 
-                </h3>
-              </legend>
-          
-              <div class="nhsuk-hint" id="example-hints-hint">
-          
-                <p class="nhsuk-u-margin-bottom-2">This will be the gender linked to the patient's NHS number. It might be different to the gender they identify with.</p>
-              </div>
-          
-              <div class="nhsuk-radios">
-                <div class="nhsuk-radios__item">
-                  <input class="nhsuk-radios__input" id="example-hints-3" name="example-hints" type="radio" value="not sure" checked>
-                  <label class="nhsuk-label nhsuk-radios__label" for="example-hints-3">
-                    Include both options in search
-                  </label>
-                </div>
-                <div class="nhsuk-radios__item">
-                  <input class="nhsuk-radios__input" id="example-hints-1" name="example-hints" type="radio" value="yes">
-                  <label class="nhsuk-label nhsuk-radios__label" for="example-hints-1">
-                    Male
-                  </label>
-                </div>
-          
-                <div class="nhsuk-radios__item">
-                  <input class="nhsuk-radios__input" id="example-hints-2" name="example-hints" type="radio" value="no">
-                  <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
-                    Female
-                  </label>
-                </div>
-          
-            
-               
-                
-              </div>
-            </fieldset>
-          
-          </div>
+        
          
 
 
