@@ -50,6 +50,12 @@ Prescriptions list
      <p>Check that the details are correct, or <a href ="search">search using a prescription ID</a> or <a href ="search-nhs">search using an NHS number</a>.</p>
      <p>If the patient should have a prescription, contact the prescriber.</p> 
      {% endif %}
+     {% if initialSearch == "noPat" %} 
+     <h1 class="nhsuk-heading-l">Patient not found</h1>
+ <p>We could not find a patient using the details you searched for.</p>
+    <p>Check that the details are correct.</p>
+    <p>You can also <a href ="search">search using a prescription ID</a> or <a href ="search-nhs">search using an NHS number</a>.</p> 
+    {% endif %}
       {% if initialSearch == "basicDeetsNotAll" %} 
       <h1 class="nhsuk-heading-l">No prescriptions found for the following search criteria </h1>
       <p> <ul>
