@@ -788,6 +788,11 @@ router.get('/epsv13/results-none', (req, res) => {
   res.render('./epsv13/results-none', { initialSearch }); // Pass it to the template
 });
 
+router.get('/epsv13/results-none-new', (req, res) => {
+  const initialSearch = req.query.initialSearch; // Get the value from URL query parameters
+  res.render('./epsv13/results-none-new', { initialSearch }); // Pass it to the template
+});
+
 //..........................................................................................................
 //..PPPPP..................................................rii...................tii........................
 //.PPPPPPPPPP..............................................rii.............pttt..tii........................

@@ -1,0 +1,88 @@
+{% extends './_includes/layout-application.html' %}
+{% set primarynav = 'patient' %}
+{% set hideNav = 'true' %}
+{% set hideJump = 'true' %}
+{% set containerClasses = 'patient-search-form-container' %}
+{% block pageTitle %}
+Prescriptions list
+{% endblock %}
+
+{% block beforeContent %}
+
+ 
+  <nav class="nhsuk-breadcrumb nhsuk-u-padding-bottom-0" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-back-link">
+
+        <a class="nhsuk-back-link__link" href="{% if redirectBack %}?redirect-back={{ redirectBack }}{% endif %}">
+          <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+            <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+          </svg>
+          Go back</a>
+      </div>
+    </div>
+  
+  </nav>
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-full">
+
+      {% if initialSearch == "prescIde" %} 
+      <h1 class="nhsuk-heading-l">No prescriptions found </h1>
+      <p>We could not find any prescriptions using the prescription ID number you searched for.</p>
+     <p>Check that the details are correct, or <a href ="search-nhs">search using an NHS number</a> or <a href ="search-basic">search using a patient's basic details</a>.</p>
+     <p>If the patient should have a prescription, contact the prescriber.</p>
+      {% endif %}
+      {% if initialSearch == "nhsNum" %} 
+      <h1 class="nhsuk-heading-l">No prescriptions found </h1>
+      <p>We could not find any prescriptions using the NHS number you searched for.</p>
+     <p>Check that the details are correct, or <a href ="search">search using a prescription ID</a> or <a href ="search-basic">search using a patient's basic details</a>.</p>
+     <p>If the patient should have a prescription, contact the prescriber.</p> 
+     {% endif %}
+      {% if initialSearch == "basicDeets" %} 
+      <h1 class="nhsuk-heading-l">No prescriptions found</h1>
+  <p>We could not find any prescriptions using the patient details you searched for.</p>
+     <p>Check that the details are correct, or <a href ="search">search using a prescription ID</a> or <a href ="search-nhs">search using an NHS number</a>.</p>
+     <p>If the patient should have a prescription, contact the prescriber.</p> 
+     {% endif %}
+      {% if initialSearch == "basicDeetsNotAll" %} 
+      <h1 class="nhsuk-heading-l">No prescriptions found for the following search criteria </h1>
+      <p> <ul>
+       
+        <li>Last name: Matata</li>
+        <li>Date of birth: 06-Jun-2006</li>
+
+      </ul> 
+      </p>
+      <p>Check that the details are correct. </p>
+     <p>You can also <a href ="search">search using a prescription ID</a> or <a href ="search-nhs">search using a NHS number</a>.</p>
+      {% endif %}
+     
+     
+    </div>
+
+
+    
+    </div>
+
+
+    
+
+
+  </div>
+{% endblock %}
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Get URL parameters
+    const params = new URLSearchParams(window.location.search);
+    const initialSearchTerm = params.get("initialSearch");
+
+    console.log("Initial Search Term:", initialSearchTerm);
+  });
+</script>
