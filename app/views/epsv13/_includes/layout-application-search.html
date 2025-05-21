@@ -138,11 +138,9 @@
     <p class="nhsuk-modal__description">
       For your security, we will log you out in: 
     </p>
-    <p class="nhsuk-modal__description">
-      To stay logged in, search for a prescription or close this window.
-    </p>
+
     <div class="nhsuk-button-group">
-      <a class="nhsuk-button" id="confirm_timeout" href="search">Search for a prescription </a>
+      <a class="nhsuk-button" id="confirm_timeout" href="search">Stay logged in </a>
       <a class="nhsuk-button nhsuk-button--secondary" href="./spinner-logout" id="logout_time">Logout</a>
      
     </div>
@@ -221,12 +219,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Close the logout modal
-    [logoutModalClose, cancelLogout].forEach((button) => {
-      button.addEventListener('click', () => {
-        logoutModal.style.display = 'none';
-        logoutModal.setAttribute('aria-hidden', 'true');
-      });
-    });
+  //  [logoutModalClose, cancelLogout].forEach((button) => {
+   //   button.addEventListener('click', () => {
+   //     logoutModal.style.display = 'none';
+   //     logoutModal.setAttribute('aria-hidden', 'true');
+   //   });
+   // });
   });
 
   //timeout modal
