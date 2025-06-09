@@ -1,0 +1,271 @@
+{% extends './_includes/layout-application.html' %}
+{% set primarynav = 'patient' %}
+{% set hideNav = 'true' %}
+{% set hideJump = 'true' %}
+{% set containerClasses = 'patient-search-form-container' %}
+{% block pageTitle %}
+Prescriptions list
+{% endblock %}
+
+{% block beforeContent %}
+
+ 
+  
+
+{% endblock %}
+
+{% block content %}
+<nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+  <ol class="nhsuk-breadcrumb__list">
+    <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="search">Home</a></li>
+   
+
+   
+
+  </ol>
+  <p class="nhsuk-breadcrumb__back">
+    <a class="nhsuk-breadcrumb__backlink" href="#">
+      <span class="nhsuk-u-visually-hidden">Back to &nbsp;</span>
+      Level three
+    </a>
+  </p>
+</nav>
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-full">
+      <h1 class="nhsuk-heading-xl">Cookie policy</h1>
+      <p>NHS England uses cookies on the Prescription Tracker (CPTS). 
+        For information about how we store your data, check our <a>privacy policy</a> for this service. </p>
+      <h2 class="nhsuk-heading-l"> What are cookies?</h2>
+
+     
+        <p>Cookies are files saved on your phone, tablet or computer when you visit a website or app.</p>
+        <p>Some cookies make a website or app work and others store information about how you use a service, such as the pages you visit.</p>
+        <p>Cookies are not viruses or computer programs. They are very small so do not take up much space.</p>
+
+        <h2 class="nhsuk-heading-l"> How we use cookies</h2>
+        <p>We use cookies to make our service work and keep it secure. These are known as essential cookies.</p>
+        <p>We also use cookies to measure how you use our service, such as which links you click on. These are known as analytics cookies and we will only use them if you say it’s ok.</p>
+        
+
+     
+        
+       
+        
+        <details class="nhsuk-details">
+          <summary class="nhsuk-details__summary">
+            <span class="nhsuk-details__summary-text">
+             See the essential cookies we use
+            </span>
+          </summary>
+          <div class="nhsuk-details__text">
+        
+            <table role="table" class="nhsuk-table-responsive">
+              <caption class="nhsuk-table__caption nhsuk-u-visually-hidden">Essential cookies</caption>
+              <thead role="rowgroup" class="nhsuk-table__head">
+                <tr role="row">
+                  <th role="columnheader" class="" scope="col">
+                    Cookie name
+                  </th>
+                  <th role="columnheader" class="" scope="col">
+                    Purpose
+                  </th>
+                  <th role="columnheader" class="" scope="col">
+                    Expiry
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="nhsuk-table__body">
+                <tr role="row" class="nhsuk-table__row">
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading" aria-hidden="true">Cookie name </span>cpts-cookie-consent
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading" aria-hidden="true">Purpose </span>Saves your cookie consent settings 
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading" aria-hidden="true">Expiry </span>When you close the browser (if you do not use the banner) or 1 year (if you use the banner) 
+                  </td>
+                </tr>
+                <tr role="row" class="nhsuk-table__row">
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading" aria-hidden="true">Cookie name </span>CognitoIdentityServiceProvider.[unique ID].LastAuthUser 
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading" aria-hidden="true">Purpose </span>A security cookie used by Amazon Web Services (AWS). Stores authentication information about the user that has logged in for security purposes 
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading" aria-hidden="true">Expiry </span>1 year 
+                  </td>
+                </tr>
+                <tr role="row" class="nhsuk-table__row">
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading" aria-hidden="true">Cookie name </span>CognitoIdentityServiceProvider.[unique ID].accessToken  
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading" aria-hidden="true">Purpose </span>A security cookie used by AWS. Makes the service work by allow the user to access all parts of the service for security purposes  
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading" aria-hidden="true">Expiry </span>1 year 
+                  </td>
+                </tr>
+                <tr role="row" class="nhsuk-table__row">
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading" aria-hidden="true">Cookie name </span>CognitoIdentityServiceProvider.[unique ID].clockDrift   
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading" aria-hidden="true">Purpose </span>A security cookie used by AWS. Makes the service to work by helping all parts of the service to stay in sync for security purposes   
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading" aria-hidden="true">Expiry </span>1 year 
+                  </td>
+                </tr>
+                <tr role="row" class="nhsuk-table__row">
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading" aria-hidden="true">Cookie name </span>CognitoIdentityServiceProvider.[unique ID].idToken    
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading" aria-hidden="true">Purpose </span>A security cookie used by AWS. Stores information about the user that has logged in for security purposes    
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading" aria-hidden="true">Expiry </span>1 year 
+                  </td>
+                </tr>
+                <tr role="row" class="nhsuk-table__row">
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading" aria-hidden="true">Cookie name </span>CognitoIdentityServiceProvider.*.oauthMetadata     
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading" aria-hidden="true">Purpose </span>A security cookie used by AWS. Stores authentication information about the user for security purposes     
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading" aria-hidden="true">Expiry </span>1 year 
+                  </td>
+                </tr>
+                <tr role="row" class="nhsuk-table__row">
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading" aria-hidden="true">Cookie name </span>CognitoIdentityServiceProvider.*.refreshToken      
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading" aria-hidden="true">Purpose </span>A security cookie used by AWS. Keeps the user’s session active for security purposes      
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading" aria-hidden="true">Expiry </span>1 year 
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+        
+          </div>
+        </details>
+        <h2 class="nhsuk-heading-l">Optional analytics cookies we use</h2>
+        <p>We use software called Amazon CloudWatch RUM to collect analytics data about how you use the service so that we can make improvements. For information about how Amazon stores your data, check the <a>Amazon CloudWatch RUM privacy policy</a>. </p>
+        <details class="nhsuk-details">
+          <summary class="nhsuk-details__summary">
+            <span class="nhsuk-details__summary-text">
+              See the analytics cookies we use   
+            </span>
+          </summary>
+          <div class="nhsuk-details__text">
+        
+            <table role="table" class="nhsuk-table-responsive">
+              <caption class="nhsuk-table__caption nhsuk-u-visually-hidden">Analytics cookies</caption>
+              <thead role="rowgroup" class="nhsuk-table__head">
+                <tr role="row">
+                  <th role="columnheader" class="" scope="col">
+                    Cookie name
+                  </th>
+                  <th role="columnheader" class="" scope="col">
+                    Purpose
+                  </th>
+                  <th role="columnheader" class="" scope="col">
+                    Expiry
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="nhsuk-table__body">
+                <tr role="row" class="nhsuk-table__row">
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading" aria-hidden="true">Cookie name </span>cwr_s 
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading" aria-hidden="true">Purpose </span>Used by Amazon CloudWatch RUM. Tells us how you use our website by reading the previous page you visited 
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading" aria-hidden="true">Expiry </span>When you close the browser
+                  </td>
+                </tr>
+                <tr role="row" class="nhsuk-table__row">
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading" aria-hidden="true">Cookie name </span>cwr_u 
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading" aria-hidden="true">Purpose </span>Used by Amazon CloudWatch RUM. Tells us if you've used our website before 
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading" aria-hidden="true">Expiry </span>	When you close the browser
+                  </td>
+                </tr>
+                
+              
+              </tbody>
+            </table>
+        
+          </div>
+        </details>
+     
+
+        <div class="nhsuk-form-group">
+
+          <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+              <h3 class="nhsuk-fieldset__heading">
+                Choose if we can use cookies to measure your website use 
+              </h3>
+            </legend>
+        
+            <div class="nhsuk-radios">
+        
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="yes">
+                <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+                  Use cookies to measure my website use
+                </label>
+              </div>
+        
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
+                <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+                  Do not use cookies to measure my website use
+                </label>
+              </div>
+        
+            </div>
+          </fieldset>
+         
+        
+        </div>
+
+        <a class="nhsuk-button" href="cookies-selected">Save my cookie settings </a>
+        <h2 class="nhsuk-heading-l">How to change your cookie settings </h2>
+        <p>You can visit this page at any time to change your cookie settings.</p>
+        <p>You can also change your cookie settings in most devices and browsers. CPTS might not work properly if all cookies are turned off, because it needs the essential cookies to work.</p>
+        <p>You can also delete any cookies that are already on your device or browser by visiting their cookie settings.  </p>
+
+        <h2 class="nhsuk-heading-l">Changes to this cookie policy  </h2>
+        <p>If this cookie policy changes, you will see the cookie banner again next time you visit CPTS. You can check this policy for any changes to the cookies that we use. </p>
+      </div>
+
+ 
+    
+    </div>
+
+
+    
+
+
+{% endblock %}
+
+
+ 

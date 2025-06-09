@@ -1,0 +1,74 @@
+{% extends './_includes/layout-application.html' %}
+{% set primarynav = 'patient' %}
+{% set hideNav = 'true' %}
+{% set hideJump = 'true' %}
+{% set containerClasses = 'patient-search-form-container' %}
+{% block pageTitle %}
+Prescriptions list
+{% endblock %}
+
+{% block beforeContent %}
+
+ 
+
+
+{% endblock %}
+
+{% block content %}
+
+<nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+  <ol class="nhsuk-breadcrumb__list">
+    <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="search">Home</a></li>
+    <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="cookies">Cookie policy</a></li>
+
+   
+
+  </ol>
+  <p class="nhsuk-breadcrumb__back">
+    <a class="nhsuk-breadcrumb__backlink" href="#">
+      <span class="nhsuk-u-visually-hidden">Back to &nbsp;</span>
+      Level three
+    </a>
+  </p>
+</nav>
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-full">
+      <h1 class="nhsuk-heading-xl">Your cookie settings have been saved</h1>
+    
+
+     
+        <p>We'll save your settings for a year.</p>
+        <p>We'll ask you if you're still OK with us using cookies when either:</p>
+        
+<ul>
+  <li>it's been a year since you last saved your settings</li>
+  <li>we add any new cookies or change the cookies we use</li>
+</ul>
+     
+        <p>You can also <a href="cookies">choose which cookies we use</a> at any time. </p>
+        
+     
+        
+       
+        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-top-7 nhsuk-u-margin-bottom-0">
+          Page last reviewed: 15 March 2025<br>
+          Next review due: 15 March 2026
+        </p>
+       
+
+      
+      </div>
+
+ 
+    
+    </div>
+
+
+    
+
+
+{% endblock %}
+
+
+ 

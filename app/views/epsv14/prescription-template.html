@@ -1,0 +1,122 @@
+{% extends './_includes/layout-application.html' %}
+{% set primarynav = 'patient' %}
+{% set hideNav = 'true' %}
+{% set hideJump = 'true' %}
+
+
+{% block pageTitle %}
+Prescription - {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+{% include './_includes/includes-patient-banner-eps.html' %}{% include './_includes/includes-prescription-banner-eps.html' %}
+
+
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="nhsuk-width-container-fluid">
+    <div class="nhsuk-back-link">
+
+      <a class="nhsuk-back-link__link" href="#">
+        <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+          <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+        </svg>
+        Go back</a>
+    </div>
+    
+      <div class="nhsuk-grid-row">
+       
+        <div class="nhsuk-grid-column-one-third nhsuk-u-padding-left-2 nhsuk-u-padding-right-2">
+          {% if prescriptionDispensed ==='yes' %}
+          
+           
+            <h2 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">Dispensed items</h2>
+            {% if prescriptionItems[0].exists === 'yes' and prescriptionItems[0].Dispensed === 'yes' %}
+            {% include "./_panels/panel-eps-medication-items-dispensed.html" %} 
+            {% endif %}
+
+            {% if prescriptionItems[1].exists === 'yes' and prescriptionItems[1].Dispensed === 'yes' %}
+            {% include "./_panels/panel-eps-medication-item2-dispensed.html" %} 
+            {% endif %}
+
+            {% if prescriptionItems[2].exists === 'yes' and prescriptionItems[2].Dispensed === 'yes' %}
+            {% include "./_panels/panel-eps-medication-item3-dispensed.html" %} 
+            {% endif %}
+            
+            {% if prescriptionItems[3].exists === 'yes' and prescriptionItems[3].Dispensed === 'yes' %}
+            {% include "./_panels/panel-eps-medication-item4-dispensed.html" %} 
+            {% endif %}
+        
+        
+         
+
+         
+
+       
+          
+          {% endif %} 
+
+          {% if prescriptionPrescribed === 'yes' %}
+          <h2 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">Prescribed items</h2>
+          {% if prescriptionItems[0].exists === 'yes' and prescriptionItems[0].Prescribed === 'yes' %}
+          {% include "./_panels/panel-eps-medication-items-dispensed.html" %} 
+          {% endif %}
+
+          {% if prescriptionItems[1].exists === 'yes' and prescriptionItems[1].Prescribed === 'yes' %}
+          {% include "./_panels/panel-eps-medication-item2-dispensed.html" %} 
+          {% endif %}
+
+          {% if prescriptionItems[2].exists === 'yes' and prescriptionItems[2].Prescribed === 'yes' %}
+          {% include "./_panels/panel-eps-medication-item3-dispensed.html" %} 
+          {% endif %}
+
+          {% if prescriptionItems[3].exists === 'yes' and prescriptionItems[3].Prescribed === 'yes' %}
+          {% include "./_panels/panel-eps-medication-item4-dispensed.html" %} 
+          {% endif %}
+          {% endif %} 
+        </div>
+
+        <div class="nhsuk-grid-column-one-third">
+          <h2 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">Prescriber and dispenser information</h2> 
+          {% if prescriptionDispenser === 'yes' %}
+          {% include "./_panels/panel-eps-dispenser.html" %}
+          {% endif %}
+          
+          {% if prescriptionNomDispenser === 'yes' %}
+          {% include "./_panels/panel-eps-nominateddispenser.html" %}
+          {% endif %} 
+
+          {% if prescriptionPrescriber === 'yes' %}
+          {% include "./_panels/panel-eps-prescriber.html" %}
+          {% endif %}
+
+         
+          
+
+        </div>
+
+
+        <div class="nhsuk-grid-column-one-third">
+          <h2 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">History</h2>
+          {% include "./_panels/panel-eps-message-history.html" %}    
+         
+        </div>
+      </div>
+    
+ 
+  </div>
+
+
+
+  
+
+  </div>
+
+  
+</div>
+
+
+{% endblock %}

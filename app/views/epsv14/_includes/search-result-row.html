@@ -1,0 +1,40 @@
+
+<tr role="row" class="patient-search-result" data-href="./prescription-results?nhs-number={{ patientNhsNumber }}">
+    <td role="gridcell">
+        <span class="table-heading" aria-hidden="true"><a href="./prescription-results?nhsNumber={{ patient.nhsNumber }}&prescID={{ data['prescriptionID'] }}" class="name-results-td">
+            {{ patient.firstName }}
+            {{ patient.lastName }}
+        </a></span>
+        <span>
+            <a href="#" class="name-results-td">
+                {{ patients.firstName }}
+                {{ patients.lastName }}
+            </a>
+        </span>
+    </td>
+    <td role="gridcell">
+        <span class="table-heading" aria-hidden="true">{{ patient.gender }}</span>
+        <span class="gender-results-td">{{ patients.gender }}</span>
+    </td>
+    <td role="gridcell">
+        <span class="table-heading" aria-hidden="true">{{ patient.dob }}</span>
+        <span class="dob-results-td">{{ patients.dob }}</span>
+    </td>
+    <td role="gridcell">
+        <span class="table-heading" aria-hidden="true">{{ patient.usualAddress }}</span>
+        <span class="address-results-td">
+            {{ patients.address }},&nbsp;
+            <span class='patient-pob-td'>{{ patients.usualAddress }},</span>&nbsp;
+            <span class='postcode-results-td'>
+                {{ patient.postcode }}
+            </span>
+        </span>
+    </td>
+    <td role="gridcell">
+        <span class="table-heading" aria-hidden="true">   {{ patientNhsNumber }}</span>
+        <span class="nhs-no-results-td">
+            
+          
+        </span>
+    </td>
+</tr>
