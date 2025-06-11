@@ -8,7 +8,13 @@ Prescriptions list
 {% endblock %}
 
 {% block beforeContent %}
+{% if initialSearch == "nhsNum" %} 
+{% include './_includes/includes-patient-banner-eps.html' %}
+{% elif initialSearch == "basicDeets" %}
+ {% include './_includes/includes-patient-banner-eps.html' %}
+ {% else %}
 
+ {% endif %}
  
   <nav class="nhsuk-breadcrumb nhsuk-u-padding-bottom-0" aria-label="Breadcrumb">
     <div class="nhsuk-width-container">
