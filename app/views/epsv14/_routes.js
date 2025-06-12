@@ -269,21 +269,25 @@ router.get('/epsv14/search-basic', function (req, res) {
   });
 
 
-  router.post("/epsv14/switch-layout", function (req, res) {
-    let columns = req.session.data["layout"];
+ router.get("/epsv14/timeline-layout-toggle", function (req, res) {
+  let timelineOrder = req.session.data["timelineOrder"];
+  const prescID = req.query["prescID"]?.trim() || null;
+  const prescType = req.query["prescType"]?.trim() || null;
+  const nhsNumber = req.query["nhsNumber"]?.trim() || null;
+  console.log("Query params received:", { prescID, prescType, nhsNumber });
 
-    if (columns === 'oneCol') {
-      console.log("switched to 2 column layout:");
-      columns = 'twoCol';
-    } else {
-      console.log("switched to 1 column layout:");
-      columns = 'oneCol';
-    }
-    // save the change
-    req.session.data["layout"] = columns;
-    // relaod the page
-    res.redirect(`patient-details`);
-  });
+  if (!prescID || !prescType) {
+    console.log("Missing prescription ID or type.");
+    return res.redirect("/epsv14/search");
+  }
+
+  // Toggle
+  timelineOrder = (timelineOrder === 'newest') ? 'oldest' : 'newest';
+  req.session.data["timelineOrder"] = timelineOrder;
+
+  const redirectUrl = `/epsv14/prescription-template?nhsNumber=${nhsNumber}&prescID=${prescID}&prescType=${prescType}`;
+  return res.redirect(redirectUrl);
+});
 
   router.get('/epsv14/patient-details', function (req, res) {
     const target = req.query.tab;
@@ -967,6 +971,7 @@ router.get('/epsv14/results-none-new', (req, res) => {
     });
 
   res.render("./epsv14/prescription-template", {
+
     prescriptionID: prescription.prescriptionID,
     prescriptionType: prescription.prescriptionType,
     prescriptionERDsupply: prescription.daysSupply, 

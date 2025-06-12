@@ -2,7 +2,7 @@
 {% set primarynav = 'patient' %}
 {% set hideNav = 'true' %}
 {% set hideJump = 'true' %}
-
+{% set timelineOrder = 'oldest' %}
 
 {% block pageTitle %}
 Prescription - {{ serviceName }}
@@ -100,7 +100,17 @@ Prescription - {{ serviceName }}
 
 
         <div class="nhsuk-grid-column-one-third">
-          <h2 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">History</h2>
+          
+         
+           
+        <div class="layout-selection-row">
+          <h2 class="nhsuk-heading-xs nhsuk-u-margin-bottom-2">History</h2> 
+          
+          <a href="/epsv14/timeline-layout-toggle?nhsNumber={{ patient.nhsNumber }}&prescID={{ prescriptionID }}&prescType={{ prescriptionType }}" class="layout-selection-row--right unstyle-button">
+  {% if data['timelineOrder'] === 'oldest' %}Newest{% else %}Oldest{% endif %} first
+</a>
+        </div>
+      
           {% include "./_panels/panel-eps-message-history.html" %}    
          
         </div>
