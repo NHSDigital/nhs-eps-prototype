@@ -1,9 +1,11 @@
 <div class="patient-summary-epsalert">
   <div class="row bottom-xs">
-   
+      <div class="patient-summary__block" id="summary-nhs-number">
+      <span class="patient-summary__info">NHS number: <span id="copyText2">{{ patient.nhsNumber | formatNhsNumber  or '9726918863' | formatNhsNumber }}</span></span>
+    </div>
   
     <div class="patient-summary__block" id="summary-address">
-      <span class="patient-summary__info"> Some information is unavailable right now. It may help to refresh the page or try again later.</span>
+      <span class="patient-summary__info"> There has been a problem and patient details are not available right now. Try again later.</span>
     </div>
   </div>
   

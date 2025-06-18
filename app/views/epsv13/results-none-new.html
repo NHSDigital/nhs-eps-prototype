@@ -12,6 +12,8 @@ Prescriptions list
 {% include './_includes/includes-patient-banner-eps.html' %}
 {% elif initialSearch == "basicDeets" %}
  {% include './_includes/includes-patient-banner-eps.html' %}
+ {% elif initialSearch == "nhsNumNoDeet" %}
+ {% include './_includes/includes-generic-banner-pds.html' %}
  {% else %}
 
  {% endif %}
@@ -45,6 +47,12 @@ Prescriptions list
      <p>If the patient should have a prescription, contact the prescriber.</p>
       {% endif %}
       {% if initialSearch == "nhsNum" %} 
+      <h1 class="nhsuk-heading-l">No prescriptions found </h1>
+      <p>We could not find any prescriptions using the NHS number you searched for.</p>
+     <p>Check that the details are correct, or <a href ="search">search using a prescription ID</a> or <a href ="search-basic">search using a patient's basic details</a>.</p>
+     <p>If the patient should have a prescription, contact the prescriber.</p> 
+     {% endif %}
+          {% if initialSearch == "nhsNumNoDeet" %} 
       <h1 class="nhsuk-heading-l">No prescriptions found </h1>
       <p>We could not find any prescriptions using the NHS number you searched for.</p>
      <p>Check that the details are correct, or <a href ="search">search using a prescription ID</a> or <a href ="search-basic">search using a patient's basic details</a>.</p>
