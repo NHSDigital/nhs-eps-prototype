@@ -58,6 +58,12 @@ Prescriptions list
      <p>Check that the details are correct, or <a href ="search">search using a prescription ID</a> or <a href ="search-basic">search using a patient's basic details</a>.</p>
      <p>If the patient should have a prescription, contact the prescriber.</p> 
      {% endif %}
+       {% if initialSearch == "nhsNumNoBan" %} 
+      <h1 class="nhsuk-heading-l">No prescriptions found </h1>
+      <p>We could not find any prescriptions using the NHS number you searched for.</p>
+     <p>Check that the details are correct, or <a href ="search">search using a prescription ID</a> or <a href ="search-basic">search using a patient's basic details</a>.</p>
+     <p>If the patient should have a prescription, contact the prescriber.</p> 
+     {% endif %}
       {% if initialSearch == "basicDeets" %} 
       <h1 class="nhsuk-heading-l">No prescriptions found</h1>
   <p>We could not find any prescriptions using the patient details you searched for.</p>
