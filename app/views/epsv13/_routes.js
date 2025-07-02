@@ -205,30 +205,48 @@ router.get('/epsv13/search-basic', function (req, res) {
   errorTypes.forEach((error) => {
       if (error === "missing-last-name") {
           errors["last-name"] = "Enter the patient's last name";
-      } else if (error === "short-last-name") {
-          errors["last-name"] = "Last name must be at least 2 characters long";
+      } else if (error === "long-last-name") {
+          errors["last-name"] = "Last name must be 35 characters or less";
       } else if (error === "invalid-last-name") {
-          errors["last-name"] = "Last name can only contain letters, hyphens, and apostrophes";
+          errors["last-name"] = "Last name can only include letters, hyphens, apostrophes and spaces";
+      } else if (error === "multiple-last-name") {
+          errors["last-name"] = "Last name must be 35 characters or less, and can only include letters, hyphens, apostrophes and spaces";
       } else if (error === "invalid-first-name") {
-          errors["first-name"] = "First name can only contain letters, hyphens, and apostrophes";
+          errors["first-name"] = "First name can only include letters, hyphens, apostrophes and spaces";
+      }   else if (error === "long-first-name") {
+          errors["first-name"] = "First name must be 35 characters or less";
+      } else if (error === "multiple-first-name") {
+          errors["first-name"] = "First name must be 35 characters or less, and can only include letters, hyphens, apostrophes and spaces";
       } else if (error === "missing-dob") {
           errors["dob"] = "Enter the patient's date of birth";
+      } else if (error === "multiple-dob") {
+          errors["dob"] = "Date of birth must be a real date";
       } else if (error === "missing-dob-day") {
           errors["dob-day"] = "Date of birth must include a day";
       } else if (error === "invalid-dob-day") {
-          errors["dob-day"] = "Date of birth must include a valid day";
+          errors["dob-day"] = "Date of birth must be a real date";
+      } else if (error === "number-dob-day") {
+          errors["dob-day"] = "Day must only include numbers";
       } else if (error === "missing-dob-month") {
           errors["dob-month"] = "Date of birth must include a month";
       } else if (error === "invalid-dob-month") {
-          errors["dob-month"] = "Date of birth must include a valid month";
+          errors["dob-month"] = "Date of birth must be a real date";
+      } else if (error === "number-dob-month") {
+          errors["dob-month"] = "Month must only include numbers";
       } else if (error === "missing-dob-year") {
           errors["dob-year"] = "Date of birth must include a year";
-      } else if (error === "invalid-dob-year") {
-          errors["dob-year"] = "Date of birth must include a valid year";
-      } else if (error === "missing-postcode") {
+      } else if (error === "number-dob-year") {
+          errors["dob-year"] = "Year must include 4 numbers";
+      } else if (error === "letter-dob-year") {
+          errors["dob-year"] = "Year must only include numbers";
+      } else if (error === "number-postcode") {
         errors["postcode-only"] = "Postcode must have at least 5 characters";
+      } else if (error === "invalid-postcode") {
+        errors["postcode-only"] = "Enter a real UK postcode";
+      } else if (error === "multiple-postcode") {
+        errors["postcode-only"] = "Enter a real UK postcode";
       } else if (error === "future-dob-year") {
-        errors["dob-year"] = "Date of birth must be in the past";
+        errors["dob"] = "Date of birth must be in the past";
         
     }
   });
