@@ -129,6 +129,19 @@
   </div>
 </div>
 
+<div class="modal-overlay" id="session_modal" aria-hidden="true" role="dialog" aria-labelledby="session_modal_title">
+  <div class="modal-content" role="document">
+    <h2 class="nhsuk-modal__heading">Are you sure you want to start a new session?</h2>
+    <p class="nhsuk-modal__description">
+      Starting this session will close your sessions in other windows or on other devices. 
+    </p>
+    <div class="nhsuk-button-group">
+      <a class="nhsuk-button"  id="stay_session">Start session</a>
+      <a class="nhsuk-button nhsuk-button--secondary" href="./spinner-logout" id="session_logout">Cancel session</a>
+    </div>
+   
+  </div>
+</div>
 
   {% if data['devMode'] === 'true' %}
     {% include "includes/devmode.html" %}
@@ -202,6 +215,36 @@ document.addEventListener('DOMContentLoaded', () => {
       button.addEventListener('click', () => {
         logoutModal.style.display = 'none';
         logoutModal.setAttribute('aria-hidden', 'true');
+      });
+    });
+  });
+
+//sesssion modal
+document.addEventListener('DOMContentLoaded', () => {
+    // Modal references
+ 
+    const sessionModal = document.getElementById('session_modal');
+    
+    const sessionLogout = document.getElementById('stay_session');
+
+  
+
+   // Function to show the modal
+    function showModal() {
+        sessionModal.style.display = 'block';
+        sessionModal.setAttribute('aria-hidden', 'false');
+
+    }
+
+const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('session') === 'yes') {
+        setTimeout(showModal, 1500); // Show modal after 15 seconds
+    }
+    // Close the session modal
+    [sessionLogout].forEach((button) => {
+      button.addEventListener('click', () => {
+        sessionModal.style.display = 'none';
+        sessionModal.setAttribute('aria-hidden', 'true');
       });
     });
   });
