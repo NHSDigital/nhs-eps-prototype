@@ -6757,6 +6757,7 @@ module.exports = {
         "daysSupply": "",
         "itemsDispensed": "no",
         "itemsPrescribed": "yes",
+        "fullPrescriptionNotDispensedReason":"Not required by patient",
         "prescriptionItem1": "Raberprazole 10mg tablets",
         "prescriptionItem1Initial": "",
         "prescriptionItem1exists": "yes",

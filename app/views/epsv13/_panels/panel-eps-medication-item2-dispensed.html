@@ -41,7 +41,16 @@
           </dd>
         </div>
         {% endif %}
-
+        {% if itemstatus == 'Item not dispensed' %}
+         <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Not dispensed reason</dt>
+          <dd class="nhsuk-summary-list__value ">
+            <span class="data-field__content data-field__content--address">
+              {{ prescriptionItems[1].notDispensedReason or 'Prescribing error' }}
+            </span> 
+          </dd>
+        </div>
+        {% endif %}
         <div class="nhsuk-summary-list__row nhsuk-u-padding-top-0 nhsuk-u-padding-bottom-0">
           <dt class="nhsuk-summary-list__key">Quantity</dt>
           <dd class="nhsuk-summary-list__value">
