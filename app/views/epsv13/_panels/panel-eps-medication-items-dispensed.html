@@ -38,7 +38,7 @@
           </dd>
         </div>
         {% endif %}
-        {% if itemstatus == 'Item not dispensed' %}
+        {% if prescriptionItems[0].notDispensedReason %}
          <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">Not dispensed reason</dt>
           <dd class="nhsuk-summary-list__value ">
