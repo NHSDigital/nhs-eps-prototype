@@ -28,7 +28,7 @@
 <p class="nhsuk-u-margin-bottom-2">⚠️ This item is pending cancellation.</p>
 {% endif %}
       <dl class="nhsuk-summary-list nhsuk-u-margin-bottom-2">
-        {% if prescriptionItems[0].pendingCancellationItem === 'yes' or prescriptionItems[0].cancellationReasonItem %}
+        {% if prescriptionItems[0].cancellationReasonItem  %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">Cancellation reason</dt>
           <dd class="nhsuk-summary-list__value ">

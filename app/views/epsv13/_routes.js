@@ -871,6 +871,7 @@ router.get('/epsv13/results-none-new', (req, res) => {
       prescriptionStatus: prescription.prescriptionStatus,
       prescriptionDispensed: prescription.itemsDispensed,
       prescriptionPrescribed: prescription.itemsPrescribed,
+      prescriptionFullCancellationReason: prescription.prescriptionCancellationReason,
 prescriptionNotDispensedFullReason: prescription.fullPrescriptionNotDispensedReason,
 
       prescriptionItems: [
@@ -994,6 +995,7 @@ prescriptionNotDispensedFullReason: prescription.fullPrescriptionNotDispensedRea
     prescriptionStatus: prescription.prescriptionStatus,
     prescriptionDispensed: prescription.itemsDispensed,
     prescriptionPrescribed: prescription.itemsPrescribed,
+    prescriptionFullCancellationReason: prescription.prescriptionCancellationReason,
     prescriptionNotDispensedFullReason: prescription.fullPrescriptionNotDispensedReason,
     prescriptionItems: [
       { exists:prescription.prescriptionItem1exists, nameItem: prescription.prescriptionItem1, initialitem: prescription.prescriptionItem1Initial, quantityItem: prescription.prescriptionItem1quantity, initialQuantity: prescription.prescriptionItem1quantityInitial, pendingCancellationItem: prescription.prescriptionItem1pendingCancelation, cancellationReasonItem:prescription.prescriptionItem1cancellationreason, notDispensedReason:prescription.prescriptionItem1notDispensereason, quantityItem: prescription.prescriptionItem1quantity, instructionItem: prescription.prescriptionItem1instructions, instructionInitial:prescription.prescriptionItem1instructionsInitial, itemstatusItem: prescription.prescriptionItem1Status, NHSAppItem: prescription.prescriptionItem1PrescNHSApp, Prescribed: prescription.prescriptionItem1Prescribed, Dispensed: prescription.prescriptionItem1Dispensed},
