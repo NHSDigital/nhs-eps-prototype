@@ -871,7 +871,7 @@ router.get('/epsv13/results-none-new', (req, res) => {
       prescriptionStatus: prescription.prescriptionStatus,
       prescriptionDispensed: prescription.itemsDispensed,
       prescriptionPrescribed: prescription.itemsPrescribed,
-
+prescriptionNotDispensedFullReason: prescription.fullPrescriptionNotDispensedReason,
 
       prescriptionItems: [
         { exists:prescription.prescriptionItem1exists, nameItem: prescription.prescriptionItem1, initialitem: prescription.prescriptionItem1Initial, quantityItem: prescription.prescriptionItem1quantity, initialQuantity: prescription.prescriptionItem1quantityInitial, pendingCancellationItem: prescription.prescriptionItem1pendingCancelation, cancellationReasonItem:prescription.prescriptionItem1cancellationreason, notDispensedReason:prescription.prescriptionItem1notDispensereason, quantityItem: prescription.prescriptionItem1quantity, instructionItem: prescription.prescriptionItem1instructions, instructionInitial:prescription.prescriptionItem1instructionsInitial, itemstatusItem: prescription.prescriptionItem1Status, NHSAppItem: prescription.prescriptionItem1PrescNHSApp, Prescribed: prescription.prescriptionItem1Prescribed, Dispensed: prescription.prescriptionItem1Dispensed},
@@ -994,6 +994,7 @@ router.get('/epsv13/results-none-new', (req, res) => {
     prescriptionStatus: prescription.prescriptionStatus,
     prescriptionDispensed: prescription.itemsDispensed,
     prescriptionPrescribed: prescription.itemsPrescribed,
+    prescriptionNotDispensedFullReason: prescription.fullPrescriptionNotDispensedReason,
     prescriptionItems: [
       { exists:prescription.prescriptionItem1exists, nameItem: prescription.prescriptionItem1, initialitem: prescription.prescriptionItem1Initial, quantityItem: prescription.prescriptionItem1quantity, initialQuantity: prescription.prescriptionItem1quantityInitial, pendingCancellationItem: prescription.prescriptionItem1pendingCancelation, cancellationReasonItem:prescription.prescriptionItem1cancellationreason, notDispensedReason:prescription.prescriptionItem1notDispensereason, quantityItem: prescription.prescriptionItem1quantity, instructionItem: prescription.prescriptionItem1instructions, instructionInitial:prescription.prescriptionItem1instructionsInitial, itemstatusItem: prescription.prescriptionItem1Status, NHSAppItem: prescription.prescriptionItem1PrescNHSApp, Prescribed: prescription.prescriptionItem1Prescribed, Dispensed: prescription.prescriptionItem1Dispensed},
       { exists:prescription.prescriptionItem2exists, nameItem: prescription.prescriptionItem2, quantityItem2: prescription.prescriptionItem2quantity, pendingCancellationItem: prescription.prescriptionItem2pendingCancelation, cancellationReasonItem:prescription.prescriptionItem2cancellationreason, notDispensedReason:prescription.prescriptionItem2notDispensereason, quantityItem: prescription.prescriptionItem2quantity, instructionItem: prescription.prescriptionItem2instructions, itemstatusItem: prescription.prescriptionItem2Status, NHSAppItem: prescription.prescriptionItem2PrescNHSApp, Prescribed: prescription.prescriptionItem2Prescribed, Dispensed: prescription.prescriptionItem2Dispensed},
