@@ -5,11 +5,7 @@
         <span>{{ prescriptionItems[2].nameItem or 'Blephaclean wipes(Thea Pharmaceuticals Ltd)' }}</span>
 
       </h3>
-{% if prescriptionItems[2].pendingCancellationItem === 'yes' %}
-<p>⚠️ This item is pending cancellation.</p>
-     
 
-{% endif %}
 
 <p class="nhsuk-u-margin-bottom-2"> {% set itemstatus = prescriptionItems[2].itemstatusItem or 'Claimed' %}
   <strong class="nhsuk-tag            
@@ -28,6 +24,11 @@
     {% endif %}">
     {{ itemstatus }}
   </strong> </p>
+  {% if prescriptionItems[2].pendingCancellationItem === 'yes' %}
+<p>⚠️ This item is pending cancellation.</p>
+     
+
+{% endif %}
 
       <dl class="nhsuk-summary-list nhsuk-u-margin-bottom-2">
         {% if prescriptionItems[2].cancellationReasonItem %}
