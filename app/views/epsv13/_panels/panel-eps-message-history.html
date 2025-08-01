@@ -49,7 +49,7 @@
             <div class="nhsuk-details__text">
               <div class="nhs-screening-whole-timeline__description"> Dispense notification ID: {{ prescriptionDN1id or 'b240434e-cb85-40bb-899c-1c61410c93a7'}}
               </div>
-              <div class="nhs-screening-whole-timeline__description">Prescription items: <ul class="nhsuk-u-padding-top-2">
+              <div class="nhs-screening-whole-timeline__description">Dispensed items: <ul class="nhsuk-u-padding-top-2">
                 {% if prescriptionDN1Items[0].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN1Items[0].item }}</br>{% set itemStatus = prescriptionDN1Items[0].status %} <strong class="nhsuk-tag            
                   {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
                   {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
@@ -174,7 +174,7 @@
   <div class="nhsuk-details__text">
     <div class="nhs-screening-whole-timeline__description"> Dispense notification ID: {{ prescriptionDN2id or 'b240434e-cb85-40bb-899c-1c61410c93a7'}}
     </div>
-    <div class="nhs-screening-whole-timeline__description">Prescription items: <ul class="nhsuk-u-padding-top-2">
+    <div class="nhs-screening-whole-timeline__description">Dispensed items: <ul class="nhsuk-u-padding-top-2">
       {% if prescriptionDN2Items[0].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN2Items[0].item }}</br>{% set itemStatus = prescriptionDN2Items[0].status %} <strong class="nhsuk-tag            
         {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
         {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
@@ -299,7 +299,7 @@
   <div class="nhsuk-details__text">
     <div class="nhs-screening-whole-timeline__description"> Dispense notification ID: {{ prescriptionDN2id or 'b240434e-cb85-40bb-899c-1c61410c93a7'}}
     </div>
-    <div class="nhs-screening-whole-timeline__description">Prescription items: <ul class="nhsuk-u-padding-top-2">
+    <div class="nhs-screening-whole-timeline__description">Dispensed items: <ul class="nhsuk-u-padding-top-2">
       {% if prescriptionDN3Items[0].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN3Items[0].item }}</br>{% set itemStatus = prescriptionDN3Items[0].status %} <strong class="nhsuk-tag            
         {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
         {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
@@ -423,7 +423,7 @@
   <div class="nhsuk-details__text">
     <div class="nhs-screening-whole-timeline__description"> Dispense notification ID: {{ prescriptionDN4id or 'b240434e-cb85-40bb-899c-1c61410c93a7'}}
     </div>
-    <div class="nhs-screening-whole-timeline__description">Prescription items: <ul class="nhsuk-u-padding-top-2">
+    <div class="nhs-screening-whole-timeline__description">Dispensed items: <ul class="nhsuk-u-padding-top-2">
       {% if prescriptionDN4Items[0].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN4Items[0].item }}</br> {% set itemStatus = prescriptionDN4Items[0].status %} <strong class="nhsuk-tag            
         {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
         {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
@@ -539,7 +539,7 @@
   {% if prescriptionDN5 === 'yes' %}
 <div class="nhs-screening-whole-timeline__description"> Dispense notification ID: {{ prescriptionDN5id or 'b240434e-cb85-40bb-899c-1c61410c93a7'}}
 </div>
-<div class="nhs-screening-whole-timeline__description">Prescription items: <ul class="nhsuk-u-padding-top-2 nhsuk-u-margin-bottom-1">
+<div class="nhs-screening-whole-timeline__description">Dispensed items: <ul class="nhsuk-u-padding-top-2 nhsuk-u-margin-bottom-1">
 {% if prescriptionDN5Items[0].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN5Items[0].item }}</br>{% set itemStatus = prescriptionDN5Items[0].status %} <strong class="nhsuk-tag            
   {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
   {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
@@ -651,7 +651,7 @@
   {% if prescriptionDN6 === 'yes' %}
 <div class="nhs-screening-whole-timeline__description"> Dispense notification ID: {{ prescriptionDN6id or 'b240434e-cb85-40bb-899c-1c61410c93a7'}}
 </div>
-<div class="nhs-screening-whole-timeline__description">Prescription items: <ul class="nhsuk-u-padding-top-2 nhsuk-u-margin-bottom-1">
+<div class="nhs-screening-whole-timeline__description">Dispensed items: <ul class="nhsuk-u-padding-top-2 nhsuk-u-margin-bottom-1">
 {% if prescriptionDN6Items[0].item %}<li class="nhsuk-u-font-size-16">{{ prescriptionDN6Items[0].item }}</br> {% set itemStatus = prescriptionDN6Items[0].status %} <strong class="nhsuk-tag            
   {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
   {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
