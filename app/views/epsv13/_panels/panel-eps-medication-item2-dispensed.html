@@ -146,16 +146,203 @@
       
         </div>
       </details>
-
-
-
-
-
-     
-      
-      
-           
             {% endif %}
+{% if prescriptionItems[1].Dispensed === 'yes' %}
+        <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Dispense information 
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+         <!-- dispense notification 1-->
+          {% if prescriptionDN1Items[1].item %}
+          <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Item
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ prescriptionDN1Items[1].item }}
+              </dd>
+            </div>
+             <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Date and time
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ prescriptionMessageDateTime1 or '04-Aug-2024 13:35:33' }}
+              </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Quantity 
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+               {{ prescriptionDN1Items[1].quantity }}
+              </dd>
+            </div>        
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Instructions
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+             {{ prescriptionDN1Items[1].instruction }}
+              </dd>
+            </div>
+          </dl>
+          {% endif %}
+        <!-- dispense notification 2-->
+         {% if prescriptionDN2Items[1].item %}
+         <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Item
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ prescriptionDN2Items[1].item }}
+              </dd>
+            </div>
+             <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Date and time
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ prescriptionMessageDateTime2 or '04-Aug-2024 13:35:33' }}
+              </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Quantity 
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+               {{ prescriptionDN2Items[1].quantity }}
+              </dd>
+            </div>        
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Instructions
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+             {{ prescriptionDN2Items[1].instruction }}
+              </dd>
+            </div>
+          </dl>
+        {% endif %}
+          <!--dispense notification 3-->
+          {% if prescriptionDN3Items[1].item %}
+           <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Item
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ prescriptionDN3Items[1].item }}
+              </dd>
+            </div>
+             <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Date and time
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ prescriptionMessageDateTime3 or '04-Aug-2024 13:35:33' }}
+              </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Quantity 
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+               {{ prescriptionDN3Items[1].quantity }}
+              </dd>
+            </div>        
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Instructions
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+             {{ prescriptionDN3Items[1].instruction }}
+              </dd>
+            </div>
+          </dl>
+          {% endif %}
+          <!--dispense notification 4-->
+          {% if prescriptionDN4Items[1].item %}
+           <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Item
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ prescriptionDN4Items[1].item }}
+              </dd>
+            </div>
+             <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Date and time
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ prescriptionMessageDateTime4 or '04-Aug-2024 13:35:33' }}
+              </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Quantity 
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+               {{ prescriptionDN4Items[1].quantity }}
+              </dd>
+            </div>        
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Instructions
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+             {{ prescriptionDN4Items[1].instruction }}
+              </dd>
+            </div>
+          </dl>
+          {% endif %}
+          <!-- dispense notificayion 5-->
+           {% if prescriptionDN5Items[1].item %}
+           <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Item
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ prescriptionDN5Items[1].item }}
+              </dd>
+            </div>
+             <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Date and time
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ prescriptionMessageDateTime5 or '04-Aug-2024 13:35:33' }}
+              </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Quantity 
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+               {{ prescriptionDN5Items[1].quantity }}
+              </dd>
+            </div>        
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Instructions
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+             {{ prescriptionDN5Items[1].instruction }}
+              </dd>
+            </div>
+          </dl>
+          {% endif %}
+        </div>
+      </details>
+{% endif %}
     </div>
   </div>
 </div>
