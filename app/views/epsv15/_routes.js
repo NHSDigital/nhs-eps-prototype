@@ -888,6 +888,9 @@ prescriptionNotDispensedFullReason: prescription.fullPrescriptionNotDispensedRea
       PrescriptionNewStatus1: prescription.prescriptionMessage1NewStatus,
       prescriptionDN1: prescription.prescriptionMessage1DN,
       prescriptionDN1id: prescription.prescriptionMessage1DNID,
+      prescriptionDNaddItem: prescription.prescriptionItemAdditionalItem1,
+      prescriptionDNaddItemQ:prescription.prescriptionItemAdditionalItem1q,
+      prescriptionDNaddItemsIns:prescription.prescriptionItemAdditionalItem1ins,
       prescriptionDN1Items: [
         {item: prescription.prescriptionMessage1DNItem1, quantity:prescription.prescriptionMessage1DNItem1q, instruction: prescription.prescriptionMessage1DNItem1ins, status: prescription.prescriptionMessage1DNStatus1},
         {item: prescription.prescriptionMessage1DNItem2, quantity:prescription.prescriptionMessage1DNItem2q, instruction: prescription.prescriptionMessage1DNItem2ins, status: prescription.prescriptionMessage1DNStatus2},
@@ -1010,6 +1013,9 @@ prescriptionNotDispensedFullReason: prescription.fullPrescriptionNotDispensedRea
     prescriptionNewStatus1: prescription.prescriptionMessage1NewStatus,
     prescriptionDN1: prescription.prescriptionMessage1DN,
     prescriptionDN1id: prescription.prescriptionMessage1DNID,
+    prescriptionDNaddItem: prescription.prescriptionItemAdditionalItem1,
+    prescriptionDNaddItemQ:prescription.prescriptionItemAdditionalItem1q,
+    prescriptionDNaddItemsIns:prescription.prescriptionItemAdditionalItem1ins,
     prescriptionDN1Items: [
       {item: prescription.prescriptionMessage1DNItem1, quantity:prescription.prescriptionMessage1DNItem1q, instruction: prescription.prescriptionMessage1DNItem1ins, status: prescription.prescriptionMessage1DNStatus1},
       {item: prescription.prescriptionMessage1DNItem2, quantity:prescription.prescriptionMessage1DNItem2q, instruction: prescription.prescriptionMessage1DNItem2ins, status: prescription.prescriptionMessage1DNStatus2},
