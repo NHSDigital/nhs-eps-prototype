@@ -1,0 +1,157 @@
+<div class="data-panel__wrapper no-outline" tabindex="-1">
+  <div class="nhsuk-card nhsuk-u-margin-bottom-3" style="box-shadow: none;" id="address-panel">
+    <div class="nhsuk-card__content nhsuk-u-padding-top-3 nhsuk-u-padding-bottom-1 nhsuk-u-padding-right-3 nhsuk-u-padding-left-3">
+      <h3 class="nhsuk-card__headingMVP nhsuk-heading-xs nhsuk-u-margin-bottom-1">
+        <span>{{ prescriptionItems[3].nameItem or 'Blephaclean wipes(Thea Pharmaceuticals Ltd)' }}</span>
+
+      </h3>
+{% if prescriptionItems[3].pendingCancellationItem === 'yes' %}
+<p>⚠️ This item is pending cancellation.</p>
+     
+
+{% endif %}
+
+<p class="nhsuk-u-margin-bottom-2"> {% set itemstatus = prescriptionItems[3].itemstatusItem or 'Claimed' %}
+  <strong class="nhsuk-tag            
+    {% if itemstatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
+    {% elif itemstatus == 'Item fully dispensed' %} nhsuk-tag--green             
+    {% elif itemstatus == 'Item cancelled' %} nhsuk-tag--red            
+    {% elif itemstatus == 'Future issue date' %} nhsuk-tag--blue      
+    {% elif itemstatus == 'Item dispensed - partial' %} nhsuk-tag--blue
+    {% elif itemstatus == 'Item not dispensed - owing' %} nhsuk-tag--blue
+    {% elif itemstatus == 'Future repeat dispense' %} nhsuk-tag--blue 
+    {% elif itemstatus == 'Item not dispensed' %} nhsuk-tag--orange   
+    {% elif itemstatus == 'Item expired' %} nhsuk-tag--white      
+    {% elif itemstatus == 'Claimed' %} nhsuk-tag--grey 
+    {% elif itemstatus == 'Item with dispenser' %} nhsuk-tag--purple
+    {% elif itemstatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
+    {% endif %}">
+    {{ itemstatus }}
+  </strong> </p>
+
+      <dl class="nhsuk-summary-list nhsuk-u-margin-bottom-2">
+        {% if prescriptionItems[3].cancellationReasonItem %}
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Cancellation reason</dt>
+          <dd class="nhsuk-summary-list__value ">
+            <span class="data-field__content data-field__content--address">
+              {{ prescriptionItems[3].cancellationReasonItem or 'Prescribing error' }}
+            </span>
+            
+          </dd>
+        </div>
+        {% endif %}
+        {% if prescriptionItems[3].notDispensedReason %}
+         <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Not dispensed reason</dt>
+          <dd class="nhsuk-summary-list__value ">
+            <span class="data-field__content data-field__content--address">
+              {{ prescriptionItems[3].notDispensedReason or 'Prescribing error' }}
+            </span> 
+          </dd>
+        </div>
+        {% endif %}
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Quantity</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content data-field__content--address">
+              {{ prescriptionItems[3].quantityItem or '21 tablets' }}
+            </span>
+            <br>
+
+            
+
+
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Instructions</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content data-field__content--address">
+              {{ prescriptionItems[3].instructionItem or 'Take 3 times a day with water' }}
+            </span>
+            <br>
+
+           
+
+          </dd>
+        </div>
+        
+       
+
+{% set appstatus = prescriptionItems[3].NHSAppItem or 'Collected' %}
+{% if appstatus == 'Status unavailable' %}
+
+{% else%}
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Pharmacy status</dt>
+          <dd class="nhsuk-summary-list__value ">
+            <span class="data-field__content data-field__content--address">
+             
+              {% set appstatus = prescriptionItems[3].NHSAppItem or 'Collected' %}
+              <strong class="nhsuk-tag">
+              {{ appstatus }}
+            </strong> 
+            </span>
+            
+          </dd>
+        </div>
+{% endif %}
+
+      </dl>
+    
+     <!-- not needed--> 
+      <!--
+       {% if prescriptionItems[3].initialitem %}
+      <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            What was initially prescribed
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Item
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ prescriptionItems[3].initialitem }}
+              </dd>
+          
+            </div>
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Quantity 
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ prescriptionItems[3].initialQuantity }}
+              </dd>
+          
+            </div>
+          
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Instructions
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                {{ prescriptionItems[3].instructionInitial }}
+              </dd>
+          
+            </div>
+          
+          
+          
+          
+          </dl>
+      
+        </div>
+      </details>
+           
+            {% endif %}
+     -->
+    
+      
+    </div>
+  </div>
+</div>

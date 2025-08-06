@@ -1,0 +1,440 @@
+{% extends './_includes/layout-application-search.html' %}
+{% set primarynav = 'patient' %}
+{% set hideNav = 'true' %}
+{% set hideJump = 'true' %}
+
+{% block pageTitle %}
+Find a patient by NHS number - {{ serviceName }}
+{% endblock %}
+{% block customStyles %}
+<style>
+  a {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  .patient-search-form .nhsuk-input {
+    margin-bottom: 8px;
+  }
+
+  @media (min-width: 40.0625em) {
+    .patient-search-form .nhsuk-input {
+      margin-bottom: 16px;
+    }
+  }
+
+
+
+  .query-filter-section {
+    display: flex;
+    align-items: baseline;
+  }
+
+  .query-filter-section__search {
+    margin-right: 8px;
+  }
+
+  @media (min-width: 40.0625em) {
+    .query-filter-section__search {
+      margin-right: 16px;
+    }
+  }
+
+  .query-results-table {
+    margin-bottom: 16px;
+    justify-content: left;
+    border-bottom: 3px solid #c8cfd3;
+    background-color: #ffffff;
+  }
+
+  @media (min-width: 40.0625em) {
+    .query-results-table {
+      margin-bottom: 24px;
+    }
+  }
+
+  .row {
+    box-sizing: border-box;
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-right: -8px;
+    margin-left: -8px;
+  }
+  .query-results-table__header {
+    padding-right: 0.2rem;
+    padding-bottom: 0.2rem;
+    padding-left: 0.2rem;
+    border-bottom: 2px solid #c8cfd3;
+    border-bottom-width: 0.15rem;
+    background-color: #f0f4f5;
+    color: #212b32;
+  }
+  .row {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+  }
+
+  .query-results-table__data-row {
+    font-size: 14px;
+    font-size: 0.875rem;
+    line-height: 1.71429;
+    padding: 0;
+    padding-top: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #c8cfd3;
+    background-color: #ffffff;
+    color: #4c6272;
+    cursor: pointer;
+    outline: none;
+  }
+
+  @media (min-width: 40.0625em) {
+    .query-results-table__data-row {
+      font-size: 16px;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+  }
+
+  .query-results-table__data-row-name {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  .query-results-table__data-row--deceased {
+    border-bottom: 1px solid #c8cfd3;
+    background-color: #212b32;
+    color: #ffffff;
+  }
+
+  .query-results-table__data-row--deceased .query-results-table__data-row-quality-warning {
+    margin-bottom: 4px;
+    padding: 0.1rem 0.25rem;
+    background-color: #d5281b;
+    border-radius: 2px;
+    color: #ffffff;
+    font-weight: bold;
+  }
+
+  @media (min-width: 40.0625em) {
+    .query-results-table__data-row--deceased .query-results-table__data-row-quality-warning {
+      margin-bottom: 4px;
+    }
+  }
+
+  .query-results-table__data-row-quality-warning {
+    padding: 0.1rem 0;
+    margin: 0;
+    color: #d5281b;
+    font-weight: bold;
+  }
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-sm-0 col-md-1 col-lg-1 col-xl-3"></div>
+  <div class="col-sm-12 col-md-10 col-lg-10 col-xl-6">
+    <div class="nhsuk-back-link">
+
+      <a class="nhsuk-back-link__link" href="roles">
+        <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+          <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+        </svg>
+        Go back</a>
+    </div>
+    <h1 class="select-role-header nhsuk-u-margin-bottom-2" id="role-confirmed-header">Search for dispensing site</h1>
+    <p class="nhsuk-u-margin-bottom-2">You are logging in with a Locum Pharmacist role. You can search for the dispensing site you are working from using the dispensing site name, ODS code or postcode. </br> You can search using multiple criteria, but you don't need to use all. If you search by dispensing site name, include a postcode to help narrow your search. </p>
+  
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" for="two-thirds">
+       Dispensing site name
+      </label>
+      <input class="nhsuk-input nhsuk-u-width-two-thirds nhsuk-u-margin-bottom-2"
+      id="site-search"
+      name="site-search"
+      type="text"
+      aria-describedby="site-search"
+      value="">
+      <label class="nhsuk-label" for="input-width-10">
+        Postcode
+      </label>
+      <input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-margin-bottom-2"
+      id="postcode-search"
+      name="postcode-search"
+      type="text"
+      aria-describedby="postcode-search"
+      value="">
+      <label class="nhsuk-label" for="input-width-10">
+        ODS code
+      </label>
+      <input class="nhsuk-input nhsuk-input--width-10 nhsuk-u-margin-bottom-2"
+      id="ods-search"
+      name="ods-search"
+      type="text"
+      aria-describedby="ods-search"
+      value="">
+    </br> <a aria-disabled="false" class="nhsuk-button nhsuk-u-margin-top-2" onclick="searchLOC()" id="confirm-current-role-locum" role="button">Search</a>
+    </div>
+
+<!-- data results -->
+
+
+
+<!--HD1 table-->
+    <div class="nhsuk-grid-column-full" id="hd1-table" style="display:none">
+
+      <table class="responsive-table bna-table" role="grid">
+ 
+        <h2>Search results</h2>
+        <p>Showing 1 to 14 of 14 results for the search: 'hd1' </p>
+        <div class="query-results-table">
+          <div class="query-results-table__header row">
+            <div class="col-sm-4 col-lg-4"><b>Dispensing site</b></div>
+            <div class="col-sm-2 col-lg-2"><b>ODS code</b></div>
+            <div class="col-sm-4 col-lg-4"><b>Address</b></div>
+            <div class="col-sm-2 col-lg-2"><b>Postcode</b></div>
+            
+          </div>
+          {% for locumsite in locumsites %}
+          <div class="query-results-table__data-row row" role="button" tabindex="0" href="#">
+            <div class="col-sm-12 col-md-12" href="#"></div>
+            <div class="col-sm-4 col-lg-4"><a class="query-results-table__data-row-name" href="roles-confirm-locum?locSite={{ locumsite.id }}&roleId={{ selectedRole.id }}">{{ locumsite.dispensingSiteName }}</a></div>
+            <div class="col-sm-2 col-lg-2">{{ locumsite.odsCode }}</div>
+            <div class="col-sm-4 col-lg-4">{{ locumsite.address }}</div>
+            <div class="col-sm-2 col-lg-2">{{ locumsite.postCode }}&nbsp;</div>
+           
+            
+          </div>
+        {% endfor %}
+        
+        
+        </div>
+      </table>
+      <div class="table-foot">
+        <span class="load-more"></span>
+        <span class="results-count">
+          Showing 14 of 14
+        </span>
+      </div>
+    </div>
+  
+    <!--HK1 table-->
+    <div class="nhsuk-grid-column-full" id="hk1-table" style="display:none">
+  
+      <table class="responsive-table bna-table" role="grid">
+        
+        <h2>Search results</h2>
+        <p>No results for the search: 'hk1' </p>
+        <div class="query-results-table">
+          <div class="query-results-table__header row">
+            <div class="col-sm-4 col-lg-4"><b>Dispensing site</b></div>
+            <div class="col-sm-2 col-lg-2"><b>ODS code</b></div>
+            <div class="col-sm-4 col-lg-4"><b>Address</b></div>
+            <div class="col-sm-2 col-lg-2"><b>Postcode</b></div>
+            
+          </div>
+         
+          <div class="query-results-table__data-row row" role="button" tabindex="0" >
+            <div class="col-sm-12 col-md-12"></div>
+            <div class="col-sm-12 col-lg-12">No results found</div>
+   
+           
+            
+          </div>
+       
+        
+        
+        </div>
+      </table>
+      <div class="table-foot">
+        <span class="load-more"></span>
+        <span class="results-count">
+          Showing no results
+        </span>
+      </div>
+    </div>
+  <!--Too many results to show-->
+  <div class="nhsuk-grid-column-full" id="too-many" style="display:none">
+  
+  <table class="responsive-table bna-table" role="grid">
+    <caption class="heading-medium">Search results</caption>
+    <h2>Search results</h2>
+    <p>Too many results for the search: 'boots' </p>
+      <div class="query-results-table">
+        <div class="query-results-table__header row">
+          <div class="col-sm-4 col-lg-4"><b>Dispensing site</b></div>
+          <div class="col-sm-2 col-lg-2"><b>ODS code</b></div>
+          <div class="col-sm-4 col-lg-4"><b>Address</b></div>
+          <div class="col-sm-2 col-lg-2"><b>Postcode</b></div>
+          
+        </div>
+       
+        <div class="query-results-table__data-row row" role="button" tabindex="0" >
+          <div class="col-sm-12 col-md-12"></div>
+          <div class="col-sm-12 col-lg-12">There are too many search results. Try searching by a more specific search criteria.</div>
+ 
+         
+          
+        </div>
+     
+      
+      
+      </div>
+  </table>
+  <div class="table-foot">
+    <span class="load-more"></span>
+    <span class="results-count">
+      Showing no results
+    </span>
+  </div>
+  </div>
+  
+  <!-- big table of results-->
+  <div class="nhsuk-grid-column-full" id="long-table" style="display:none">
+  
+  <table class="responsive-table bna-table" role="grid">
+   
+    <h2>Search results</h2>
+    <p>Showing 1 to 50 of 50 results for the search: 'leeds'  </p>
+    <div class="query-results-table">
+      <div class="query-results-table__header row">
+        <div class="col-sm-4 col-lg-4"><b>Dispensing site</b></div>
+        <div class="col-sm-2 col-lg-2"><b>ODS code</b></div>
+        <div class="col-sm-4 col-lg-4"><b>Address</b></div>
+        <div class="col-sm-2 col-lg-2"><b>Postcode</b></div>
+        
+      </div>
+      {% for leedsLocumsite in leedsLocumsites %}
+      <div class="query-results-table__data-row row" role="button" tabindex="0" href="#">
+        <div class="col-sm-12 col-md-12" href="#"></div>
+        <div class="col-sm-4 col-lg-4"><a class="query-results-table__data-row-name" href="roles-confirm-locum?leedsLoc={{ leedsLocumsite.id }}&roleId={{ selectedRole.id }}">{{ leedsLocumsite.dispensingSiteName }}</a></div>
+        <div class="col-sm-2 col-lg-2">{{ leedsLocumsite.odsCode }}</div>
+        <div class="col-sm-4 col-lg-4">{{ leedsLocumsite.address }}</div>
+        <div class="col-sm-2 col-lg-2">{{ leedsLocumsite.postCode }}&nbsp;</div>
+       
+        
+      </div>
+    {% endfor %}
+    
+    
+    </div>
+  </table>
+  <div class="table-foot">
+    <span class="load-more"></span>
+    <span class="results-count">
+      Showing 50 results
+    </span>
+  </div>
+  </div>
+
+  <!-- two terms -->
+  <div class="nhsuk-grid-column-full" id="select-table" style="display:none">
+
+    <table class="responsive-table bna-table" role="grid">
+
+      <h2>Search results</h2>
+      <p>Showing 1 of 1 results for the search: 'hd1' and 'superdrug' </p>
+      <div class="query-results-table">
+        <div class="query-results-table__header row">
+          <div class="col-sm-4 col-lg-4"><b>Dispensing site</b></div>
+          <div class="col-sm-2 col-lg-2"><b>ODS code</b></div>
+          <div class="col-sm-4 col-lg-4"><b>Address</b></div>
+          <div class="col-sm-2 col-lg-2"><b>Postcode</b></div>
+          
+        </div>
+
+        {% for oneLocumsite in oneLocumsites %}
+        <div class="query-results-table__data-row row" role="button" tabindex="0" href="#">
+          <div class="col-sm-12 col-md-12" href="#"></div>
+          <div class="col-sm-4 col-lg-4"><a class="query-results-table__data-row-name" href="roles-confirm-locum?oneLoc={{ oneLocumsite.id }}&roleId={{ selectedRole.id }}">{{ oneLocumsite.dispensingSiteName }}</a></div>
+          <div class="col-sm-2 col-lg-2">{{ oneLocumsite.odsCode }}</div>
+          <div class="col-sm-4 col-lg-4">{{ oneLocumsite.address }}</div>
+          <div class="col-sm-2 col-lg-2">{{ oneLocumsite.postCode }}&nbsp;</div>
+         
+          
+        </div>
+      {% endfor %}
+      
+      
+      </div>
+    </table>
+    <div class="table-foot">
+      <span class="load-more"></span>
+      <span class="results-count">
+        Showing 1 of 1
+      </span>
+    </div>
+  </div>
+
+   
+ 
+  </div>
+
+
+</div>
+
+
+
+
+
+<script>
+  function searchLOC() {
+  var searchTerm = document.getElementById("site-search").value.toUpperCase();
+  var postcodeSearch = document.getElementById("postcode-search").value.toUpperCase();
+  var odsSearch = document.getElementById("ods-search").value.toUpperCase();
+  console.log("Search term:", searchTerm);
+  
+  var hd1Table = document.getElementById("hd1-table");
+  var hk1Table = document.getElementById("hk1-table");
+  var tooMany = document.getElementById('too-many');
+  var longList = document.getElementById('long-table');
+  var twoTable = document.getElementById("select-table");
+  
+  if (!hd1Table || !hk1Table || !tooMany || !longList || !twoTable) {
+    console.error("One or more elements not found");
+    return;
+  }
+  // Hide both tables initially
+  hd1Table.style.display = "none";
+  hk1Table.style.display = "none";
+  tooMany.style.display = "none";
+  longList.style.display = "none";
+  twoTable.style.display = "none"
+  
+  // Check if search term is HD1 or HK1
+  if (postcodeSearch === "HD1" && searchTerm === "SUPERDRUG") {
+    twoTable.style.display = ""; // Show the "two-table" element
+  }
+
+  
+  if (postcodeSearch === "HK1") {
+    // Show HK1 table
+    hk1Table.style.display = ""; // or "block" if you're not using table layout
+  } 
+  else if (postcodeSearch === "HD1" && searchTerm === "") {
+    // Show HD1 table
+    hd1Table.style.display = ""; // or "block" if you're not using table layout
+  } 
+  
+
+  if (searchTerm === "BOOTS") {
+    // Show HK1 table
+    tooMany.style.display = ""; // or "block" if you're not using table layout
+  } else if (searchTerm === "LEEDS") {
+    // Show HK1 table
+    longList.style.display = ""; // or "block" if you're not using table layout
+  }   
+
+ 
+  
+  }
+  </script>
+
+{% endblock %}

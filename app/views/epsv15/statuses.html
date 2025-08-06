@@ -1,0 +1,326 @@
+{% extends './_includes/layout-application-no-footer.html' %}
+{% set primarynav = 'patient' %}
+{% set hideNav = 'true' %}
+{% set hideJump = 'true' %}
+
+{% block pageTitle %}
+Statuses - {{ serviceName }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="row">
+  <div class="col-sm-0 col-md-1 col-lg-1 col-xl-3"></div>
+  <div class="col-sm-12 col-md-10 col-lg-10 col-xl-6">
+    
+    <table class="nhsuk-table">
+      <caption class="nhsuk-table__caption">Prescription statuses</caption>
+      <thead role="rowgroup" class="nhsuk-table__head">
+        <tr role="row">
+          <th role="columnheader" class="" scope="col">
+            Prescription status
+          </th>
+          <th role="columnheader" class="" scope="col">
+            Meaning
+          </th>
+        </tr>
+      </thead>
+      <tbody class="nhsuk-table__body">
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--orange">
+            Next repeat ready to be downloaded
+          </strong></td>
+          <td class="nhsuk-table__cell ">The status is for ERD prescription types only and does not apply to acute or repeats. 
+
+            It means the prescription has been signed and submitted to Spine but isn't available for release to a dispenser yet.  </td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--yellow">
+            Available to download
+          </strong></td>
+          <td class="nhsuk-table__cell ">The prescription is on Spine and is ready to be pulled down by the nominated dispenser or non-nominated dispenser if non-nominated.
+
+            Applies to all prescription types (acute, repeats and eRDs) </td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--purple">
+            Downloaded by a dispenser
+          </strong></td>
+          <td class="nhsuk-table__cell ">	
+            The prescription has been downloaded by the the dispenser 
+            
+            It can be up to 3 days on average before the prescription is ready to collect 
+            
+            We do not have a ready to collect status in EPS (that will be Phase 2) </td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--blue">
+            Some items dispensed
+          </strong></td>
+          <td class="nhsuk-table__cell ">Locked to the dispenser because they are actively working on the prescription or pending further action. 
+
+            This status is used when a prescription is partially dispensed</td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--white">
+            Expired
+          </strong></td>
+          <td class="nhsuk-table__cell ">The prescription has been sat in Spine for 180 days with no activity so is moved to an 'Expired' status. 
+
+            and then will be moved to the archive after 90 days</td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--red">
+            Cancelled
+          </strong></td>
+          <td class="nhsuk-table__cell ">A prescriber has cancelled the whole prescription 
+
+            It can only be in this state when all the prescription items are cancelled or expired </td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--green">
+            All items dispensed
+          </strong></td>
+          <td class="nhsuk-table__cell ">It could mean a number of things: 
+
+            It could mean a dispenser has prepped the prescription and it's ready to collect
+            It could mean a dispenser has dispensed the prescription 
+            It could be sent after the patient has received their prescriptions </td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--red">
+            Not dispensed
+          </strong></td>
+          <td class="nhsuk-table__cell ">Dispenser states the prescription has not been dispensed for a given reason </td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--grey">
+            Claimed
+          </strong></td>
+          <td class="nhsuk-table__cell ">A dispenser claims for a prescription to get reimbursed financially 
+
+            This could happen at any point after the prescription is marked as dispensed e.g. some dispensers will do this in bulk at the end of the month, others might do it more regularly 
+            
+            We can't be 100% sure the prescription has been delivered or collected before the prescription moves to Claim status but it's the best option we have available
+            
+            If a claim is amended, the end state is still "Claimed,"</td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--pink">
+            Not claimed
+          </strong></td>
+          <td class="nhsuk-table__cell ">A prescription is left in 'dispensed' status for 180 days and a no claim message is automatically sent to the BSA.</td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--aqua-green">
+            Future eRD issue
+          </strong></td>
+          <td class="nhsuk-table__cell ">eRD status only. 
+
+            Spine mark future issues of eRDs that aren't ready to release yet with a status of 'Repeat Dispense Future Instance'  </td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--blue">
+            Future issue date dispense
+          </strong></td>
+          <td class="nhsuk-table__cell ">Any prescription type (acute, repeat, eRD) can be in this state.
+
+            Clinician sets a start date in the future for when a prescription can be dispensed. e.g. a delayed anti-biotic. </td>
+        </tr>
+      
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--red">
+            Future prescription cancelled
+          </strong></td>
+          <td class="nhsuk-table__cell ">This is used to cancel prescriptions which are stored locally before submitting to EPS. This is held in Spine and when the prescription is submitted this will cancel the prescription.</td>
+        </tr>
+      
+      </tbody>
+    </table>
+
+    <table class="nhsuk-table">
+      <caption class="nhsuk-table__caption">Item statuses</caption>
+      <thead role="rowgroup" class="nhsuk-table__head">
+        <tr role="row">
+          <th role="columnheader" class="" scope="col">
+            Item status
+          </th>
+          <th role="columnheader" class="" scope="col">
+            Meaning
+          </th>
+        </tr>
+      </thead>
+      <tbody class="nhsuk-table__body">
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--green">
+           Item fully dispensed
+          </strong></td>
+          <td class="nhsuk-table__cell ">The item has been collected / received by the patient. 
+
+            In reality, some pharmacies will mark an item as dispensed when the medication has been packaged and is ready to collect, but hasn't yet been picked up by the patient.  </td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--orange">
+           Item not dispensed
+          </strong></td>
+          <td class="nhsuk-table__cell ">	The dispenser hasn't / isn't going to give the item to the patient. </td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--blue">
+            Item not dispensed - partial 
+          </strong></td>
+          <td class="nhsuk-table__cell ">	
+            The item has been partially collected / received by the patient, in a less quantity than was requested by the prescriber.
+
+In reality, some pharmacies will mark an item as partially dispensed when the medication has been packed and is ready to collect, but hasn't yet been picked up by the patient.
+
+The patient has to go back to the same pharmacy with the same prescription for the remaining quantity of that item 
+
+EPS can't calculate what is owing to the patient.  </td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--blue">
+           Item not dispensed - owing 
+          </strong></td>
+          <td class="nhsuk-table__cell ">The dispenser does not have the item in stock and asks the patient to return on another day. 
+
+            Used when one or more line items are out of stock and no alternative is available. 
+            
+            The patient has to go back to the same pharmacy with the same prescription for the remaining item/s </td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--red">
+           Item cancelled 
+          </strong></td>
+          <td class="nhsuk-table__cell ">Before the dispenser dispenses the item the prescriber can decide to cancel the item for various recorded reasons. 
+
+            Patient can not collect this item on their prescription. </td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--white">
+            Item expired
+          </strong></td>
+          <td class="nhsuk-table__cell ">Prescription items all have different expiry periods once the prescription signed, so they are only valid for a certain timeframe. E.g. a controlled drug would have a much shorter expiry period after the point the prescriptions is signed. 
+
+            This status means the patient has failed to collect their prescription in the time period, or the pharmacy has failed to provide that item for various reasons.
+            
+            The item is expired and the patient would need to go back to the GP.  </td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--yellow">
+          Item to be dispensed 
+          </strong></td>
+          <td class="nhsuk-table__cell ">This is the start state for a prescription item when it is first created by the prescriber and sent to Spine. </td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--purple">
+           Item with dispenser 
+          </strong></td>
+          <td class="nhsuk-table__cell ">	Item has been downloaded by the pharmacy (as part of the prescription).</td>
+        </tr>
+        
+        
+       
+      
+        
+      </tbody>
+    </table>
+
+    <table class="nhsuk-table">
+      <caption class="nhsuk-table__caption">Pharmacy statuses</caption>
+      <thead role="rowgroup" class="nhsuk-table__head">
+        <tr role="row">
+          <th role="columnheader" class="" scope="col">
+            Pharmacy status
+          </th>
+          <th role="columnheader" class="" scope="col">
+            Meaning
+          </th>
+        </tr>
+      </thead>
+      <tbody class="nhsuk-table__body">
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag">
+            Prescriber approved
+          </strong></td>
+          <td class="nhsuk-table__cell ">To be confirmed</td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag">
+            Prescriber cancelled
+          </strong></td>
+          <td class="nhsuk-table__cell ">	To be confirmed</td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag">
+            With pharmacy
+          </strong></td>
+          <td class="nhsuk-table__cell ">	
+            To be confirmed</td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag">
+            With pharmacy but tracking not supported
+          </strong></td>
+          <td class="nhsuk-table__cell ">To be confirmed</td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag">
+            Ready to collect
+          </strong></td>
+          <td class="nhsuk-table__cell ">To be confirmed</td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag">
+            Ready to collect - partial
+          </strong></td>
+          <td class="nhsuk-table__cell ">To be confirmed </td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag">
+            With pharmacy - preparing remainder
+          </strong></td>
+          <td class="nhsuk-table__cell ">To be confirmed </td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag">
+            Not dispensed
+          </strong></td>
+          <td class="nhsuk-table__cell ">	To be confirmed</td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag">
+            Collected
+          </strong></td>
+          <td class="nhsuk-table__cell ">	To be confirmed</td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag">
+            Ready to dispatch	
+          </strong></td>
+          <td class="nhsuk-table__cell ">To be confirmed</td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag">
+            Ready to dispatch - partial
+          </strong></td>
+          <td class="nhsuk-table__cell ">	To be confirmed</td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><strong class="nhsuk-tag">
+            Dispatched
+          </strong></td>
+          <td class="nhsuk-table__cell ">	To be confirmed</td>
+        </tr>
+      
+        
+      </tbody>
+    </table>
+    
+
+  </div>
+</div>
+
+{% endblock %}
+

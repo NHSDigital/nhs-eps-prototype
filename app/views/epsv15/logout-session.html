@@ -1,0 +1,31 @@
+{% extends './_includes/layout-application-none-timer.html' %}
+{% set primarynav = 'patient' %}
+{% set hideNav = 'true' %}
+{% set hideJump = 'true' %}
+
+{% block pageTitle %}
+Log out - {{ serviceName }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="row">
+  <div class="col-sm-0 col-md-1 col-lg-1 col-xl-3"></div>
+  <div class="col-sm-12 col-md-10 col-lg-10 col-xl-6">
+    
+      <h1 class="select-role-header nhsuk-heading-l nhsuk-u-margin-bottom-3" id="select-role-header">
+      You have been logged out
+      </h1>
+        <p>We have logged you out because you started another session in a new window or browser.</p>
+         <p>Contact the NHS national service desk at <a>ssd.nationalservicedesk@nhs.net</a> if you did not start another session in another window or browser.</p>
+    </br>
+       
+      
+
+   
+  </div>
+</div>
+
+{% endblock %}
+

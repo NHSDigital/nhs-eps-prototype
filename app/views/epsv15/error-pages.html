@@ -1,0 +1,453 @@
+{% extends './_includes/layout-application-no-footer.html' %}
+{% set primarynav = 'patient' %}
+{% set hideNav = 'true' %}
+{% set hideJump = 'true' %}
+
+{% block pageTitle %}
+Role journey - {{ serviceName }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="row">
+  <div class="nhsuk-grid-column-one-third">
+ <h1 class="nhsuk-heading-m">Prescription ID search</h1>
+
+ <div class="nhsuk-card allowed-role">
+  <div class="nhsuk-card__content">
+   
+      <h3 class="nhsuk-card__heading">
+        <div class="role-details">
+          <a href="search?error=missing-presc-number" class="role-name" role="button" tabindex="0">
+            <u>No prescription number entered</u>
+          </a>
+        </div>
+      </h3>
+
+  </div>
+</div>
+<div class="nhsuk-card allowed-role">
+  <div class="nhsuk-card__content">
+   
+      <h3 class="nhsuk-card__heading">
+        <div class="role-details">
+          <a href="search?error=no-matching-presc" class="role-name" role="button" tabindex="0">
+            <u>Invalid prescription ID</u>
+          </a>
+        </div>
+      </h3>
+
+  </div>
+</div>
+<div class="nhsuk-card allowed-role">
+  <div class="nhsuk-card__content">
+   
+      <h3 class="nhsuk-card__heading">
+        <div class="role-details">
+          <a href="search?error=too-many" class="role-name" role="button" tabindex="0">
+            <u>Not enough or too many characters</u>
+          </a>
+        </div>
+      </h3>
+
+  </div>
+</div>
+<div class="nhsuk-card allowed-role">
+  <div class="nhsuk-card__content">
+   
+      <h3 class="nhsuk-card__heading">
+        <div class="role-details">
+          <a href="search?error=special-character" class="role-name" role="button" tabindex="0">
+            <u>Special characters</u>
+          </a>
+        </div>
+      </h3>
+
+  </div>
+</div>
+  </div>
+  <div class="nhsuk-grid-column-one-third">
+    <h1 class="nhsuk-heading-m">NHS Number search</h1>
+    <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="search-nhs?error=missing-nhs-number" class="role-name" role="button" tabindex="0">
+                <u>No entry</u>
+              </a>
+            </div>
+          </h3>
+  
+      </div>
+    </div>
+    <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="search-nhs?error=too-many-nums" class="role-name" role="button" tabindex="0">
+                <u>Not enough or too many numbers</u>
+              </a>
+            </div>
+          </h3>
+  
+      </div>
+    </div>
+    <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="search-nhs?error=special-chars" class="role-name" role="button" tabindex="0">
+                <u>Special characters entered</u>
+              </a>
+            </div>
+          </h3>
+  
+      </div>
+    </div>
+    
+    
+  </div>
+  <div class="nhsuk-grid-column-one-third">
+    <h1 class="nhsuk-heading-m">Basic details search</h1>
+    <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="search-basic?error=missing-last-name&error=missing-dob" class="role-name" role="button" tabindex="0">
+                <u>All fields empty</u>
+              </a>
+            </div>
+          </h3>
+  
+      </div>
+    </div>
+  
+ <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="search-basic?error=long-last-name" class="role-name" role="button" tabindex="0">
+                <u>Last name exceeds 35 characters</u>
+              </a>
+            </div>
+          </h3>
+  
+      </div>
+    </div>
+
+   <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="search-basic?error=missing-last-name" class="role-name" role="button" tabindex="0">
+                <u>Last name is empty</u>
+              </a>
+            </div>
+          </h3>
+  
+      </div>
+    </div>
+
+     <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="search-basic?error=invalid-last-name" class="role-name" role="button" tabindex="0">
+                <u>Last name includes unaccepted characters</u>
+              </a>
+            </div>
+          </h3>
+  
+      </div>
+    </div>
+ 
+     <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="search-basic?error=multiple-last-name" class="role-name" role="button" tabindex="0">
+                <u>Last name includes unaccepted characters and exceeds 35 characters</u>
+              </a>
+            </div>
+          </h3>
+  
+      </div>
+    </div>
+
+     <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="search-basic?error=long-first-name" class="role-name" role="button" tabindex="0">
+                <u>First name exceeds 35 characters</u>
+              </a>
+            </div>
+          </h3>
+  
+      </div>
+    </div>
+       <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="search-basic?error=invalid-first-name" class="role-name" role="button" tabindex="0">
+                <u>First name includes unaccepted characters</u>
+              </a>
+            </div>
+          </h3>
+  
+      </div>
+    </div>
+       <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="search-basic?error=multiple-first-name" class="role-name" role="button" tabindex="0">
+                <u>First name includes unaccepted characters and exceeds 35 characters</u>
+              </a>
+            </div>
+          </h3>
+  
+      </div>
+    </div>
+
+    <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="search-basic?error=missing-dob" class="role-name" role="button" tabindex="0">
+                <u>Date of birth empty</u>
+              </a>
+            </div>
+          </h3>
+  
+      </div>
+    </div>
+
+       <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="search-basic?error=future-dob-year" class="role-name" role="button" tabindex="0">
+                <u>Date of birth is in the future</u>
+              </a>
+            </div>
+          </h3>
+  
+      </div>
+    </div>
+
+     <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="search-basic?error=multiple-dob" class="role-name" role="button" tabindex="0">
+                <u>Multiple errors in date of birth</u>
+              </a>
+            </div>
+          </h3>
+  
+      </div>
+    </div>
+
+     <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="search-basic?error=missing-dob-day" class="role-name" role="button" tabindex="0">
+                <u>Day is missing</u>
+              </a>
+            </div>
+          </h3>
+  
+      </div>
+    </div>
+
+   <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="search-basic?error=invalid-dob-day" class="role-name" role="button" tabindex="0">
+                <u>Invalid day e.g. 32</u>
+              </a>
+            </div>
+          </h3>
+  
+      </div>
+    </div>
+
+      <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="search-basic?error=number-dob-day" class="role-name" role="button" tabindex="0">
+                <u>Day has non-numeric input</u>
+              </a>
+            </div>
+          </h3>
+  
+      </div>
+    </div>
+ 
+     <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="search-basic?error=missing-dob-month" class="role-name" role="button" tabindex="0">
+                <u>Month is missing</u>
+              </a>
+            </div>
+          </h3>
+  
+      </div>
+    </div>
+
+    <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="search-basic?error=invalid-dob-month" class="role-name" role="button" tabindex="0">
+                <u>Invalid month e.g. 13</u>
+              </a>
+            </div>
+          </h3>
+  
+      </div>
+    </div>
+
+    <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="search-basic?error=number-dob-month" class="role-name" role="button" tabindex="0">
+                <u>Month has non numeric input </u>
+              </a>
+            </div>
+          </h3>
+  
+      </div>
+    </div>
+
+  
+    <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="search-basic?error=missing-dob-year" class="role-name" role="button" tabindex="0">
+                <u>Year is missing </u>
+              </a>
+            </div>
+          </h3>
+  
+      </div>
+    </div>
+   
+
+ <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="search-basic?error=number-dob-year" class="role-name" role="button" tabindex="0">
+                <u>Year is less than 4 digits </u>
+              </a>
+            </div>
+          </h3>
+  
+      </div>
+    </div>
+   
+    <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="search-basic?error=letter-dob-year" class="role-name" role="button" tabindex="0">
+                <u>Year has non numeric input </u>
+              </a>
+            </div>
+          </h3>
+  
+      </div>
+    </div>
+
+     
+    <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="search-basic?error=number-postcode" class="role-name" role="button" tabindex="0">
+                <u>Postcode has less than 5 characters </u>
+              </a>
+            </div>
+          </h3>
+  
+      </div>
+    </div>
+
+    <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="search-basic?error=invalid-postcode" class="role-name" role="button" tabindex="0">
+                <u>Postcode includes invalid characters </u>
+              </a>
+            </div>
+          </h3>
+  
+      </div>
+    </div>
+   
+    <div class="nhsuk-card allowed-role">
+      <div class="nhsuk-card__content">
+       
+          <h3 class="nhsuk-card__heading">
+            <div class="role-details">
+              <a href="search-basic?error=multiple-postcode" class="role-name" role="button" tabindex="0">
+                <u>Postcode includes multiple errors </u>
+              </a>
+            </div>
+          </h3>
+  
+      </div>
+    </div>
+ 
+  
+
+  </div>
+
+  
+
+
+ 
+
+ 
+
+</div>
+
+{% endblock %}
+

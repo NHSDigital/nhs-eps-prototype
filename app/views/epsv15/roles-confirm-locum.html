@@ -1,0 +1,72 @@
+{% extends './_includes/layout-application.html' %}
+{% set primarynav = 'patient' %}
+{% set hideNav = 'true' %}
+{% set hideJump = 'true' %}
+
+{% block pageTitle %}
+Find a patient by NHS number - {{ serviceName }}
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+  <div class="col-sm-0 col-md-1 col-lg-1 col-xl-3"></div>
+  <div class="col-sm-12 col-md-10 col-lg-10 col-xl-6">
+    <h1 class="select-role-header" id="role-confirmed-header">Role confirmed</h1>
+    <p class="nhsuk-u-margin-bottom-2">The following role is now active</p>
+    <table class="nhsuk-table current-role-table nhsuk-u-margin-bottom-3" id="current-role-table">
+      <caption class="nhsuk-table__caption">Current role details</caption>
+      <tbody class="nhsuk-table__body">
+      <tr class="nhsuk-table__row">
+        <td class="current-role-table-type"><b>Organisation</b></td>
+        <td>{{ selectedRole.site }}</td>
+        <td class="current-role-table-link">
+          <a href="roles?action=change" id="change-org" role="button" tabindex="0"><u>Change
+            <span class="nhsuk-u-visually-hidden">Organisation</span>
+          </u></a>
+        </td>
+      </tr>
+      <tr class="nhsuk-table__row">
+        <td class="current-role-table-type"><b>Role</b></td>
+        <td>{{ selectedRole.roleName }}</td>
+        <td class="current-role-table-link">
+          <a href="roles?action=change" id="change-role" role="button" tabindex="0"><u>Change
+            <span class="nhsuk-u-visually-hidden">Role</span>
+          </u></a>
+        </td>
+      </tr>
+      
+      </tbody>
+ 
+    </table>
+    <p>On behalf of:</p>
+
+    <table class="nhsuk-table current-role-table nhsuk-u-margin-bottom-3" id="current-role-table">
+
+      <tbody class="nhsuk-table__body">
+      <tr class="nhsuk-table__row">
+        <td class="current-role-table-type"><b>Dispensing site</b></td>
+        <td>{{ selectedSite.dispensingSiteName }},{{ selectedSite.address }},{{ selectedSite.postCode }}</td>
+        <td class="current-role-table-link">
+          <a href="roles-site-search-locum" id="change-org" role="button" tabindex="0"><u>Change
+            <span class="nhsuk-u-visually-hidden">Organisation</span>
+          </u></a>
+        </td>
+      </tr>
+
+      
+      </tbody>
+ 
+    </table>
+
+
+
+
+
+    <a href="search" aria-disabled="false" class="nhsuk-button" id="confirm-current-role" role="button" type="submit">Continue to find a prescription</a>
+  </div>
+</div>
+
+
+
+{% endblock %}

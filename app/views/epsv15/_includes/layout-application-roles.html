@@ -1,0 +1,259 @@
+{% extends "layouts/full-width-template.html" %}
+
+{% block pageTitle %}
+  {{ serviceName }}
+{% endblock %}
+
+
+{% block header %}
+  {% include "./includes-full-width-header-eps-roles.html" %}
+
+  {% if hideNav !== 'true' %}
+   
+    {% include "./includes-patient-chargeable-status.html" %}
+    {% include './includes-primary-nav.html' %}
+  {% endif %}
+
+{% endblock %}
+
+
+
+{% block bodyEnd %}
+<style>
+  .two-column-col--mb-0 * {
+    margin-bottom: 7px !important;
+  }
+</style>
+
+<div class="modal-overlay" id="modal_window" aria-hidden="true" role="dialog" aria-labelledby="modal_title">
+  <div class="modal-content" id="modal_holder" role="document">
+
+    <div id="modal-form">
+
+      <h2 class="nhsuk-modal__heading">Are you sure you want to leave?</h2>
+
+      <div class="two-column-row" style="margin-bottom: 0;">
+        <div class="two-column-col two-column-col--left two-column-col--mb-0" >
+          <p class="nhsuk-modal__description">We are continously improving the Prescription Tracker and listening to feedback from our users.</p>
+          <div class="nhsuk-form-group nhsuk-u-margin-top-6">
+
+            <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--s">
+                <h1 class="nhsuk-fieldset__heading">
+                  What would you like to do?
+                </h1>
+              </legend>
+
+              <div class="nhsuk-radios nhsuk-radios--inline nhsuk-radios--conditional">
+
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="decision-ncrs" name="decision" type="radio" value="ncrs">
+                  <label class="nhsuk-label nhsuk-radios__label" for="decision-ncrs">
+                    Try the Prescription Tracker again
+                  </label>
+                </div>
+
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="decision-scra" name="decision" type="radio" value="scra" aria-controls="conditional-contact-1" aria-expanded="false">
+                  <label class="nhsuk-label nhsuk-radios__label" for="decision-scra">
+                    Use the old Prescription Tracker instead
+                  </label>
+                </div>
+
+                <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-1">
+
+                  <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="reason">
+                      Let us know why are you chosing to use the old prescription tracking service
+                    </label>
+                    <input class="nhsuk-input " id="reason" name="reason" type="text">
+                  </div>
+
+                </div>
+
+              </div>
+            </fieldset>
+
+          </div>
+
+          <a class="nhsuk-button" type="submit" href="javascript:submitsForm()">Continue</a>
+        </div>
+        <div class="two-column-col two-column-col--right two-column-col--mb-0">
+
+          <figure>
+            <img src="/images/2col.svg" class="nhsuk-image__img" alt="An illustative example of the new 2 column layout">
+            <figcaption>The new 2 column layout shows more information on the single screen</figcaption>
+          </figure>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div id="modal-thanks" style="display:none;">
+
+      <h2 class="nhsuk-heading-l">Thank you for your feedback</h2>
+
+      <div class="nhsuk-warning-callout">
+        <h3 class="nhsuk-warning-callout__label">Please note</h3>
+        <p>
+          From Monday 3 June 2025, the old Prescription Tracker will no longer be available.
+        </p>
+      </div>
+      <div class="nhsuk-button-group">
+        <button class="nhsuk-button nhsuk-button--disabled" id="return" type="submit" disabled href="javascript:submitsForm()">Continue to old tracker</button>
+        <a class="nhsuk-link" href="">Cancel</a>
+      </div>
+
+    </div>
+
+    <button class="btn-close" id="modal_close" >x</button>
+
+    </div>
+
+  </div> <!-- end .modal-content -->
+</div> <!-- end .modal-overlay -->
+<!--logout modal-->
+
+<div class="modal-overlay" id="logout_modal" aria-hidden="true" role="dialog" aria-labelledby="logout_modal_title">
+  <div class="modal-content" role="document">
+    <h2 class="nhsuk-modal__heading">Are you sure you want to log out?</h2>
+    <p class="nhsuk-modal__description">
+      Logging out will end your session. 
+    </p>
+    <div class="nhsuk-button-group">
+      <a class="nhsuk-button" href="./spinner-logout" id="confirm_logout">Log out</a>
+      <button class="nhsuk-button nhsuk-button--secondary" id="cancel_logout">Cancel</button>
+    </div>
+    <button class="btn-close" id="logout_modal_close">x</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="session_modal" aria-hidden="true" role="dialog" aria-labelledby="session_modal_title">
+  <div class="modal-content" role="document">
+    <h2 class="nhsuk-modal__heading">You are already logged in to the Prescription Tracker</h2>
+    <p class="nhsuk-modal__description">
+    There is a session using these login details in another browser, window or device. You can continue to start a new session in this window, but this will end the other session.
+    </p>
+    <div class="nhsuk-button-group">
+      <a class="nhsuk-button"  id="stay_session">Start a new session</a>
+      <a class="nhsuk-button nhsuk-button--secondary" href="./spinner-logout" id="session_logout">Close this window</a>
+    </div>
+   
+  </div>
+</div>
+
+  {% if data['devMode'] === 'true' %}
+    {% include "includes/devmode.html" %}
+  {% endif %}
+
+  {% block scripts %}
+    {% include "includes/scripts.html" %}
+
+    {% block pageScripts %}
+      <script>
+        function submitsForm() {
+
+          let radio1 = document.getElementById('decision-ncrs');
+          let radio2 = document.getElementById('decision-scra');
+
+          if (radio1.checked) {
+            document.getElementById('modal_close').click();
+          } else if (radio2.checked) {
+            // countdownTime = 6
+
+            const timer = setInterval(() => {
+              countdownTime--; // Decrease the countdown time
+              countdownButton.innerText = `Wait ${countdownTime} seconds`; // Update the button text
+
+              if (countdownTime <= 0) {
+                clearInterval(timer); // Stop the timer
+                countdownButton.disabled = false; // Enable the button
+                countdownButton.innerText = 'Continue to SCRa'; // Update the button text to indicate it can be clicked
+                countdownButton.classList.remove('nhsuk-button--disabled');
+
+              }
+            }, 1000);
+
+            document.getElementById('modal-form').style.display = 'none'
+            document.getElementById('modal-thanks').style.display = 'block'
+            // document.getElementById('modal_close').classList.add("nhsuk-button")
+            document.getElementById('modal_close').innerHTML = ""
+
+          } else {
+
+          }
+        }
+
+        const countdownButton = document.getElementById('return');
+
+        // Set the countdown time in seconds
+        let countdownTime = 5;
+
+        // Update the button text to show the countdown
+        countdownButton.innerText = `Wait ${countdownTime} seconds`;
+
+        // Start a timer that counts down every second
+
+//logout jd
+document.addEventListener('DOMContentLoaded', () => {
+    // Modal references
+    const logoutButton = document.getElementById('masthead-logout-button');
+    const logoutModal = document.getElementById('logout_modal');
+    const logoutModalClose = document.getElementById('logout_modal_close');
+    const cancelLogout = document.getElementById('cancel_logout');
+
+    // Open the logout modal
+    logoutButton.addEventListener('click', (event) => {
+      event.preventDefault();
+      logoutModal.style.display = 'block';
+      logoutModal.setAttribute('aria-hidden', 'false');
+    });
+
+    // Close the logout modal
+    [logoutModalClose, cancelLogout].forEach((button) => {
+      button.addEventListener('click', () => {
+        logoutModal.style.display = 'none';
+        logoutModal.setAttribute('aria-hidden', 'true');
+      });
+    });
+  });
+
+//sesssion modal
+document.addEventListener('DOMContentLoaded', () => {
+    // Modal references
+ 
+    const sessionModal = document.getElementById('session_modal');
+    
+    const sessionLogout = document.getElementById('stay_session');
+
+  
+
+   // Function to show the modal
+    function showModal() {
+        sessionModal.style.display = 'block';
+        sessionModal.setAttribute('aria-hidden', 'false');
+
+    }
+
+const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('session') === 'yes') {
+        setTimeout(showModal, 1500); // Show modal after 15 seconds
+    }
+    // Close the session modal
+    [sessionLogout].forEach((button) => {
+      button.addEventListener('click', () => {
+        sessionModal.style.display = 'none';
+        sessionModal.setAttribute('aria-hidden', 'true');
+      });
+    });
+  });
+
+
+
+      </script>
+
+
+{% endblock %}
+{% endblock %}
+{% endblock %}

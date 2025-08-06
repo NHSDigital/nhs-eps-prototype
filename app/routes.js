@@ -51,4 +51,5 @@ require('./views/epsv11a/_routes.js')(router);
 require('./views/epsv12/_routes.js')(router);
 require('./views/epsv13/_routes.js')(router);
 require('./views/epsv14/_routes.js')(router);
+require('./views/epsv15/_routes.js')(router);
 module.exports = router;

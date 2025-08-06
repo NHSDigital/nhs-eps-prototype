@@ -1,0 +1,80 @@
+<div class="data-panel__wrapper no-outline" tabindex="-1">
+  <div class="nhsuk-card data-panel" id="contact-details-panel">
+    <div class="nhsuk-card__content">
+      <h3 class="nhsuk-card__heading">
+        <span>Contact Details</span>
+
+        {% if data.perms['editDemog'] !== 'no' %}
+        <a href="patient-details-history" class="data-panel__view-history-button" id="name-panel-view-history" role="button" tabindex="0">View history
+          <span class="nhsuk-u-visually-hidden">Contact Details</span>
+        </a>
+        {% endif %}
+
+        {% if data.perms['viewHistory'] !== 'no' %}
+        <a href="javascript:void(0)" class="data-panel__edit-button" id="pds-start-edit-button-name" role="button" tabindex="0">Edit
+          <span class="nhsuk-u-visually-hidden">Contact Details</span>
+        </a>
+        {% endif %}
+
+      </h3>
+      <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Contact Preferences</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.contactPref === 'Not Recorded' or patient.contactPref === undefined %}--none{% endif %}">
+              {{ patient.contactPref or 'Letter, Call mother\'s mobile' }}
+            </span>
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Written Contact Preferences</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.writtenContactPref === 'Not Recorded' or patient.writtenContactPref === undefined %}--none{% endif %}">
+              {{ patient.writtenContactPref or 'Large Print' }}
+            </span>
+          </dd>
+        </div>
+      </dl>
+      <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Telephone</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.telMain === 'Not Recorded' or patient.telMain === undefined %}--none{% endif %}">
+              {{ patient.telMain | ukMobile or '1234567890' | ukMobile }}
+            </span>
+          </dd>
+        </div>
+      </dl>
+      <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Email</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.emailMain === 'Not Recorded' or patient.emailMain === undefined %}--none{% endif %}">
+              {{ patient.emailMain or 'sofiatest@test.com' }}
+            </span>
+          </dd>
+        </div>
+      </dl>
+      <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Fax</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.fax === 'Not Recorded' or patient.fax === undefined %}--none{% endif %}">
+              {{ patient.fax or 'Not Recorded' }}
+            </span>
+          </dd>
+        </div>
+      </dl>
+      <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Textphone</dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="data-field__content{% if patient.textPhone === 'Not Recorded' or patient.textPhone === undefined %}--none{% endif %}">
+              {{ patient.textPhone or 'Not Recorded' }}
+            </span>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</div>
