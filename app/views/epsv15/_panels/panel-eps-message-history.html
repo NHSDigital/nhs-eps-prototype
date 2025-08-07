@@ -72,10 +72,26 @@
                 </br></br>{{ prescriptionDNaddItem }}</br>Quantity: {{ prescriptionDNaddItemQ }}</br>Instruction: {{ prescriptionDNaddItemsIns }}
                 {% endif %}
               </li>
+              {% elif prescriptionDN1Items[0].status  %}
+               <li class="nhsuk-u-font-size-16">{% set itemStatus = prescriptionDN1Items[0].status %} <strong class="nhsuk-tag            
+                  {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
+                  {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
+                  {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
+                  {% elif itemStatus == 'Future issue date' %} nhsuk-tag--blue      
+                  {% elif itemStatus == 'Item dispensed - partial' %} nhsuk-tag--blue
+                  {% elif itemStatus == 'Item not dispensed - owing' %} nhsuk-tag--blue
+                  {% elif itemStatus == 'Future repeat dispense' %} nhsuk-tag--blue 
+                  {% elif itemStatus == 'Future eRD issue' %} nhsuk-tag--aqua-green    
+                  {% elif itemStatus == 'Item not dispensed' %} nhsuk-tag--orange   
+                  {% elif itemStatus == 'Not dispensed' %} nhsuk-tag--red  
+                  {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
+                  {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
+                  {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
+                  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
+                  {% endif %}">   {{ itemStatus }}
+                </strong>
                 
-               
-                
-                {% endif %}
+                 {% endif %}
                 {% if prescriptionDN1Items[1].item %} <li class="nhsuk-u-font-size-16">{% set itemStatus = prescriptionDN1Items[1].status %} <strong class="nhsuk-tag            
                   {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
                   {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
@@ -93,8 +109,28 @@
                   {% endif %}">
                  {{ itemStatus }}
                 </strong> </br>{{ prescriptionDN1Items[1].item }}</br>Quantity: {{ prescriptionDN1Items[1].quantity }}</br>Instruction: {{ prescriptionDN1Items[1].instruction }}</li> 
+                {% elif prescriptionDN1Items[1].status  %}
+               <li class="nhsuk-u-font-size-16">{% set itemStatus = prescriptionDN1Items[1].status %} <strong class="nhsuk-tag            
+                  {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
+                  {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
+                  {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
+                  {% elif itemStatus == 'Future issue date' %} nhsuk-tag--blue      
+                  {% elif itemStatus == 'Item dispensed - partial' %} nhsuk-tag--blue
+                  {% elif itemStatus == 'Item not dispensed - owing' %} nhsuk-tag--blue
+                  {% elif itemStatus == 'Future repeat dispense' %} nhsuk-tag--blue 
+                  {% elif itemStatus == 'Future eRD issue' %} nhsuk-tag--aqua-green    
+                  {% elif itemStatus == 'Item not dispensed' %} nhsuk-tag--orange   
+                  {% elif itemStatus == 'Not dispensed' %} nhsuk-tag--red  
+                  {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
+                  {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
+                  {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
+                  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
+                  {% endif %}">   {{ itemStatus }}
+                </strong>
+                
                
                 {% endif %}
+                
                 {% if prescriptionDN1Items[2].item %} <li class="nhsuk-u-font-size-16">{% set itemStatus = prescriptionDN1Items[2].status %} <strong class="nhsuk-tag            
                   {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
                   {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
@@ -111,7 +147,46 @@
                   {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
                   {% endif %}">
                  {{ itemStatus }}
-                </strong></br>{{ prescriptionDN1Items[2].item }}</br>Quantity: {{ prescriptionDN1Items[2].quantity }}</br>Instruction: {{ prescriptionDN1Items[2].instruction }}</li> {% endif %}
+                </strong></br>{{ prescriptionDN1Items[2].item }}</br>Quantity: {{ prescriptionDN1Items[2].quantity }}</br>Instruction: {{ prescriptionDN1Items[2].instruction }}</li>
+                 {% elif prescriptionDN1Items[2].status  %}
+               <li class="nhsuk-u-font-size-16">{% set itemStatus = prescriptionDN1Items[2].status %} <strong class="nhsuk-tag            
+                  {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
+                  {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
+                  {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
+                  {% elif itemStatus == 'Future issue date' %} nhsuk-tag--blue      
+                  {% elif itemStatus == 'Item dispensed - partial' %} nhsuk-tag--blue
+                  {% elif itemStatus == 'Item not dispensed - owing' %} nhsuk-tag--blue
+                  {% elif itemStatus == 'Future repeat dispense' %} nhsuk-tag--blue 
+                  {% elif itemStatus == 'Future eRD issue' %} nhsuk-tag--aqua-green    
+                  {% elif itemStatus == 'Item not dispensed' %} nhsuk-tag--orange   
+                  {% elif itemStatus == 'Not dispensed' %} nhsuk-tag--red  
+                  {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
+                  {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
+                  {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
+                  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
+                  {% endif %}">   {{ itemStatus }}
+                </strong>
+                 {% elif prescriptionDN1Items[2].status  %}
+               <li class="nhsuk-u-font-size-16">{% set itemStatus = prescriptionDN1Items[2].status %} <strong class="nhsuk-tag            
+                  {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
+                  {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
+                  {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
+                  {% elif itemStatus == 'Future issue date' %} nhsuk-tag--blue      
+                  {% elif itemStatus == 'Item dispensed - partial' %} nhsuk-tag--blue
+                  {% elif itemStatus == 'Item not dispensed - owing' %} nhsuk-tag--blue
+                  {% elif itemStatus == 'Future repeat dispense' %} nhsuk-tag--blue 
+                  {% elif itemStatus == 'Future eRD issue' %} nhsuk-tag--aqua-green    
+                  {% elif itemStatus == 'Item not dispensed' %} nhsuk-tag--orange   
+                  {% elif itemStatus == 'Not dispensed' %} nhsuk-tag--red  
+                  {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
+                  {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
+                  {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
+                  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
+                  {% endif %}">   {{ itemStatus }}
+                </strong>
+                
+                {% endif %}
+                
                 {% if prescriptionDN1Items[3].item %}<li class="nhsuk-u-font-size-16">{% set itemStatus = prescriptionDN1Items[3].status %} <strong class="nhsuk-tag            
                   {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
                   {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
@@ -128,7 +203,26 @@
                   {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange             
                   {% endif %}">
                  {{ itemStatus }}
-                </strong> </br>{{ prescriptionDN1Items[3].item }}</br>Quantity: {{ prescriptionDN1Items[3].quantity }}</br>Instruction: {{ prescriptionDN1Items[3].instruction }}</li>{% endif %}
+                </strong> </br>{{ prescriptionDN1Items[3].item }}</br>Quantity: {{ prescriptionDN1Items[3].quantity }}</br>Instruction: {{ prescriptionDN1Items[3].instruction }}</li>
+                 {% elif prescriptionDN1Items[3].status  %}
+               <li class="nhsuk-u-font-size-16">{% set itemStatus = prescriptionDN1Items[3].status %} <strong class="nhsuk-tag            
+                  {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
+                  {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
+                  {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
+                  {% elif itemStatus == 'Future issue date' %} nhsuk-tag--blue      
+                  {% elif itemStatus == 'Item dispensed - partial' %} nhsuk-tag--blue
+                  {% elif itemStatus == 'Item not dispensed - owing' %} nhsuk-tag--blue
+                  {% elif itemStatus == 'Future repeat dispense' %} nhsuk-tag--blue 
+                  {% elif itemStatus == 'Future eRD issue' %} nhsuk-tag--aqua-green    
+                  {% elif itemStatus == 'Item not dispensed' %} nhsuk-tag--orange   
+                  {% elif itemStatus == 'Not dispensed' %} nhsuk-tag--red  
+                  {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
+                  {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
+                  {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
+                  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
+                  {% endif %}">   {{ itemStatus }}
+                </strong>
+                {% endif %}
               </ol>
               </div>
           
@@ -201,7 +295,27 @@
         {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange             
         {% endif %}">
        {{ itemStatus }}
-      </strong> </br>{{ prescriptionDN2Items[0].item }}</br>Quantity: {{ prescriptionDN2Items[0].quantity }}</br>Instruction: {{ prescriptionDN2Items[0].instruction }}</li> {% endif %}
+      </strong> </br>{{ prescriptionDN2Items[0].item }}</br>Quantity: {{ prescriptionDN2Items[0].quantity }}</br>Instruction: {{ prescriptionDN2Items[0].instruction }}</li> 
+       {% elif prescriptionDN2Items[0].status  %}
+               <li class="nhsuk-u-font-size-16">{% set itemStatus = prescriptionDN2Items[0].status %} <strong class="nhsuk-tag            
+                  {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
+                  {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
+                  {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
+                  {% elif itemStatus == 'Future issue date' %} nhsuk-tag--blue      
+                  {% elif itemStatus == 'Item dispensed - partial' %} nhsuk-tag--blue
+                  {% elif itemStatus == 'Item not dispensed - owing' %} nhsuk-tag--blue
+                  {% elif itemStatus == 'Future repeat dispense' %} nhsuk-tag--blue 
+                  {% elif itemStatus == 'Future eRD issue' %} nhsuk-tag--aqua-green    
+                  {% elif itemStatus == 'Item not dispensed' %} nhsuk-tag--orange   
+                  {% elif itemStatus == 'Not dispensed' %} nhsuk-tag--red  
+                  {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
+                  {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
+                  {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
+                  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
+                  {% endif %}">   {{ itemStatus }}
+                </strong>
+                
+      {% endif %}
       {% if prescriptionDN2Items[1].item %} <li class="nhsuk-u-font-size-16"> {% set itemStatus = prescriptionDN2Items[1].status %} <strong class="nhsuk-tag            
         {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
         {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
@@ -218,7 +332,27 @@
         {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
         {% endif %}">
        {{ itemStatus }}
-      </strong> </br>{{ prescriptionDN2Items[1].item }}</br>Quantity: {{ prescriptionDN2Items[1].quantity }}</br>Instruction: {{ prescriptionDN2Items[1].instruction }}</li> {% endif %}
+      </strong> </br>{{ prescriptionDN2Items[1].item }}</br>Quantity: {{ prescriptionDN2Items[1].quantity }}</br>Instruction: {{ prescriptionDN2Items[1].instruction }}</li> 
+       {% elif prescriptionDN2Items[1].status  %}
+               <li class="nhsuk-u-font-size-16">{% set itemStatus = prescriptionDN2Items[1].status %} <strong class="nhsuk-tag            
+                  {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
+                  {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
+                  {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
+                  {% elif itemStatus == 'Future issue date' %} nhsuk-tag--blue      
+                  {% elif itemStatus == 'Item dispensed - partial' %} nhsuk-tag--blue
+                  {% elif itemStatus == 'Item not dispensed - owing' %} nhsuk-tag--blue
+                  {% elif itemStatus == 'Future repeat dispense' %} nhsuk-tag--blue 
+                  {% elif itemStatus == 'Future eRD issue' %} nhsuk-tag--aqua-green    
+                  {% elif itemStatus == 'Item not dispensed' %} nhsuk-tag--orange   
+                  {% elif itemStatus == 'Not dispensed' %} nhsuk-tag--red  
+                  {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
+                  {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
+                  {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
+                  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
+                  {% endif %}">   {{ itemStatus }}
+                </strong>
+                
+      {% endif %}
       {% if prescriptionDN2Items[2].item %}<li class="nhsuk-u-font-size-16">{% set itemStatus = prescriptionDN2Items[2].status %} <strong class="nhsuk-tag            
         {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
         {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
@@ -235,7 +369,27 @@
         {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
         {% endif %}">
        {{ itemStatus }}
-      </strong></br>{{ prescriptionDN2Items[2].item }}</br>Quantity: {{ prescriptionDN2Items[2].quantity }}</br>Instruction: {{ prescriptionDN2Items[2].instruction }}  </li>{% endif %}
+      </strong></br>{{ prescriptionDN2Items[2].item }}</br>Quantity: {{ prescriptionDN2Items[2].quantity }}</br>Instruction: {{ prescriptionDN2Items[2].instruction }}  </li>
+       {% elif prescriptionDN2Items[2].status  %}
+               <li class="nhsuk-u-font-size-16">{% set itemStatus = prescriptionDN2Items[2].status %} <strong class="nhsuk-tag            
+                  {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
+                  {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
+                  {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
+                  {% elif itemStatus == 'Future issue date' %} nhsuk-tag--blue      
+                  {% elif itemStatus == 'Item dispensed - partial' %} nhsuk-tag--blue
+                  {% elif itemStatus == 'Item not dispensed - owing' %} nhsuk-tag--blue
+                  {% elif itemStatus == 'Future repeat dispense' %} nhsuk-tag--blue 
+                  {% elif itemStatus == 'Future eRD issue' %} nhsuk-tag--aqua-green    
+                  {% elif itemStatus == 'Item not dispensed' %} nhsuk-tag--orange   
+                  {% elif itemStatus == 'Not dispensed' %} nhsuk-tag--red  
+                  {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
+                  {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
+                  {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
+                  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
+                  {% endif %}">   {{ itemStatus }}
+                </strong>
+                
+      {% endif %}
       {% if prescriptionDN2Items[3].item %}<li class="nhsuk-u-font-size-16">{% set itemStatus = prescriptionDN2Items[3].status %} <strong class="nhsuk-tag            
         {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
         {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
@@ -252,7 +406,27 @@
         {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
         {% endif %}">
        {{ itemStatus }}
-      </strong></br>{{ prescriptionDN2Items[3].item }}</br>Quantity: {{ prescriptionDN2Items[3].quantity }}</br>Instruction: {{ prescriptionDN2Items[3].instruction }}  </li> {% endif %}
+      </strong></br>{{ prescriptionDN2Items[3].item }}</br>Quantity: {{ prescriptionDN2Items[3].quantity }}</br>Instruction: {{ prescriptionDN2Items[3].instruction }}  </li> 
+       {% elif prescriptionDN2Items[3].status  %}
+               <li class="nhsuk-u-font-size-16">{% set itemStatus = prescriptionDN2Items[3].status %} <strong class="nhsuk-tag            
+                  {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
+                  {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
+                  {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
+                  {% elif itemStatus == 'Future issue date' %} nhsuk-tag--blue      
+                  {% elif itemStatus == 'Item dispensed - partial' %} nhsuk-tag--blue
+                  {% elif itemStatus == 'Item not dispensed - owing' %} nhsuk-tag--blue
+                  {% elif itemStatus == 'Future repeat dispense' %} nhsuk-tag--blue 
+                  {% elif itemStatus == 'Future eRD issue' %} nhsuk-tag--aqua-green    
+                  {% elif itemStatus == 'Item not dispensed' %} nhsuk-tag--orange   
+                  {% elif itemStatus == 'Not dispensed' %} nhsuk-tag--red  
+                  {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
+                  {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
+                  {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
+                  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
+                  {% endif %}">   {{ itemStatus }}
+                </strong>
+                
+      {% endif %}
   </ol>
     </div>
 
@@ -326,7 +500,27 @@
         {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
         {% endif %}">
        {{ itemStatus }}
-      </strong> </br>{{ prescriptionDN3Items[0].item }}</br>Quantity: {{ prescriptionDN3Items[0].quantity }}</br>Instruction: {{ prescriptionDN3Items[0].instruction }} </li> {% endif %}
+      </strong> </br>{{ prescriptionDN3Items[0].item }}</br>Quantity: {{ prescriptionDN3Items[0].quantity }}</br>Instruction: {{ prescriptionDN3Items[0].instruction }} </li> 
+       {% elif prescriptionDN3Items[0].status  %}
+               <li class="nhsuk-u-font-size-16">{% set itemStatus = prescriptionDN3Items[0].status %} <strong class="nhsuk-tag            
+                  {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
+                  {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
+                  {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
+                  {% elif itemStatus == 'Future issue date' %} nhsuk-tag--blue      
+                  {% elif itemStatus == 'Item dispensed - partial' %} nhsuk-tag--blue
+                  {% elif itemStatus == 'Item not dispensed - owing' %} nhsuk-tag--blue
+                  {% elif itemStatus == 'Future repeat dispense' %} nhsuk-tag--blue 
+                  {% elif itemStatus == 'Future eRD issue' %} nhsuk-tag--aqua-green    
+                  {% elif itemStatus == 'Item not dispensed' %} nhsuk-tag--orange   
+                  {% elif itemStatus == 'Not dispensed' %} nhsuk-tag--red  
+                  {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
+                  {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
+                  {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
+                  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
+                  {% endif %}">   {{ itemStatus }}
+                </strong>
+                
+      {% endif %}
       {% if prescriptionDN3Items[1].item %} <li class="nhsuk-u-font-size-16">{% set itemStatus = prescriptionDN3Items[1].status %} <strong class="nhsuk-tag            
         {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
         {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
@@ -343,7 +537,27 @@
         {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
         {% endif %}">
        {{ itemStatus }}
-      </strong> </br>{{ prescriptionDN3Items[1].item }}</br>Quantity: {{ prescriptionDN3Items[1].quantity }}</br>Instruction: {{ prescriptionDN3Items[1].instruction }}</li> {% endif %}
+      </strong> </br>{{ prescriptionDN3Items[1].item }}</br>Quantity: {{ prescriptionDN3Items[1].quantity }}</br>Instruction: {{ prescriptionDN3Items[1].instruction }}</li> 
+       {% elif prescriptionDN3Items[1].status  %}
+               <li class="nhsuk-u-font-size-16">{% set itemStatus = prescriptionDN3Items[1].status %} <strong class="nhsuk-tag            
+                  {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
+                  {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
+                  {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
+                  {% elif itemStatus == 'Future issue date' %} nhsuk-tag--blue      
+                  {% elif itemStatus == 'Item dispensed - partial' %} nhsuk-tag--blue
+                  {% elif itemStatus == 'Item not dispensed - owing' %} nhsuk-tag--blue
+                  {% elif itemStatus == 'Future repeat dispense' %} nhsuk-tag--blue 
+                  {% elif itemStatus == 'Future eRD issue' %} nhsuk-tag--aqua-green    
+                  {% elif itemStatus == 'Item not dispensed' %} nhsuk-tag--orange   
+                  {% elif itemStatus == 'Not dispensed' %} nhsuk-tag--red  
+                  {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
+                  {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
+                  {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
+                  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
+                  {% endif %}">   {{ itemStatus }}
+                </strong>
+                
+      {% endif %}
       {% if prescriptionDN3Items[2].item %}<li class="nhsuk-u-font-size-16">{% set itemStatus = prescriptionDN3Items[2].status %} <strong class="nhsuk-tag            
         {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
         {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
@@ -360,7 +574,27 @@
         {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
         {% endif %}">
        {{ itemStatus }}
-      </strong></br>{{ prescriptionDN3Items[2].item }}</br>Quantity: {{ prescriptionDN3Items[2].quantity }}</br>Instruction: {{ prescriptionDN3Items[2].instruction }}  </li> {% endif %}
+      </strong></br>{{ prescriptionDN3Items[2].item }}</br>Quantity: {{ prescriptionDN3Items[2].quantity }}</br>Instruction: {{ prescriptionDN3Items[2].instruction }}  </li> 
+       {% elif prescriptionDN3Items[2].status  %}
+               <li class="nhsuk-u-font-size-16">{% set itemStatus = prescriptionDN3Items[2].status %} <strong class="nhsuk-tag            
+                  {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
+                  {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
+                  {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
+                  {% elif itemStatus == 'Future issue date' %} nhsuk-tag--blue      
+                  {% elif itemStatus == 'Item dispensed - partial' %} nhsuk-tag--blue
+                  {% elif itemStatus == 'Item not dispensed - owing' %} nhsuk-tag--blue
+                  {% elif itemStatus == 'Future repeat dispense' %} nhsuk-tag--blue 
+                  {% elif itemStatus == 'Future eRD issue' %} nhsuk-tag--aqua-green    
+                  {% elif itemStatus == 'Item not dispensed' %} nhsuk-tag--orange   
+                  {% elif itemStatus == 'Not dispensed' %} nhsuk-tag--red  
+                  {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
+                  {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
+                  {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
+                  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
+                  {% endif %}">   {{ itemStatus }}
+                </strong>
+                
+      {% endif %}
       {% if prescriptionDN3Items[3].item %}<li class="nhsuk-u-font-size-16">{% set itemStatus = prescriptionDN3Items[3].status %} <strong class="nhsuk-tag            
         {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
         {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
@@ -377,7 +611,27 @@
         {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
         {% endif %}">
        {{ itemStatus }}
-      </strong> </br>{{ prescriptionDN3Items[3].item }}</br>Quantity: {{ prescriptionDN3Items[3].quantity }}</br>Instruction: {{ prescriptionDN3Items[3].instruction }} </li> {% endif %}
+      </strong> </br>{{ prescriptionDN3Items[3].item }}</br>Quantity: {{ prescriptionDN3Items[3].quantity }}</br>Instruction: {{ prescriptionDN3Items[3].instruction }} </li>
+       {% elif prescriptionDN3Items[3].status  %}
+               <li class="nhsuk-u-font-size-16">{% set itemStatus = prescriptionDN3Items[3].status %} <strong class="nhsuk-tag            
+                  {% if itemStatus == 'Item to be dispensed' %} nhsuk-tag--yellow             
+                  {% elif itemStatus == 'Item fully dispensed' %} nhsuk-tag--green             
+                  {% elif itemStatus == 'Item cancelled' %} nhsuk-tag--red            
+                  {% elif itemStatus == 'Future issue date' %} nhsuk-tag--blue      
+                  {% elif itemStatus == 'Item dispensed - partial' %} nhsuk-tag--blue
+                  {% elif itemStatus == 'Item not dispensed - owing' %} nhsuk-tag--blue
+                  {% elif itemStatus == 'Future repeat dispense' %} nhsuk-tag--blue 
+                  {% elif itemStatus == 'Future eRD issue' %} nhsuk-tag--aqua-green    
+                  {% elif itemStatus == 'Item not dispensed' %} nhsuk-tag--orange   
+                  {% elif itemStatus == 'Not dispensed' %} nhsuk-tag--red  
+                  {% elif itemStatus == 'Item expired' %} nhsuk-tag--white      
+                  {% elif itemStatus == 'Claimed' %} nhsuk-tag--grey 
+                  {% elif itemStatus == 'Item with dispenser' %} nhsuk-tag--purple
+                  {% elif itemStatus == 'Next repeat ready to download' %} nhsuk-tag--orange              
+                  {% endif %}">   {{ itemStatus }}
+                </strong>
+                
+      {% endif %}
     </ol>
     </div>
 
