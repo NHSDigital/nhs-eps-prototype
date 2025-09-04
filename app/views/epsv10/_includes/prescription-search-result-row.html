@@ -15,6 +15,7 @@
     <strong class="nhsuk-tag
       {% if prescriptions.Status == 'Available to download' %} nhsuk-tag--yellow
       {% elif prescriptions.Status == 'Items dispensed' %} nhsuk-tag--green
+      {% elif prescriptions.Status == 'All items dispensed' %} nhsuk-tag--green
       {% elif prescriptions.Status == 'Cancelled' %} nhsuk-tag--red
       {% elif prescriptions.Status == 'Future issue date' %} nhsuk-tag--blue
       {% elif prescriptions.Status == 'Some items dispensed' %} nhsuk-tag--blue

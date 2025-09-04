@@ -13,7 +13,8 @@
     <div class="patient-summary__block" id="summary-nhs-number">
       <span class="patient-summary__info">Status:{% set prescstatus = prescriptionStatus or 'Claimed' %}    <strong class="nhsuk-tag            
         {% if prescstatus == 'Available to download' %} nhsuk-tag--yellow             
-       {% elif prescstatus == 'Items dispensed' %} nhsuk-tag--green             
+       {% elif prescstatus == 'Items dispensed' %} nhsuk-tag--green  
+       {% elif prescstatus == 'All items dispensed' %} nhsuk-tag--green              
        {% elif prescstatus == 'Cancelled' %} nhsuk-tag--red            
         {% elif prescstatus == 'Future issue date' %} nhsuk-tag--blue      
        {% elif prescstatus == 'Some items owed' %} nhsuk-tag--blue
