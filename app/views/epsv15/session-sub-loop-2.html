@@ -1,0 +1,47 @@
+{% extends './_includes/layout-application-roles.html' %}
+{% set primarynav = 'patient' %}
+{% set hideNav = 'true' %}
+{% set hideJump = 'true' %}
+
+{% block pageTitle %}
+You are already logged in - {{ serviceName }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="row">
+  <div class="col-sm-0 col-md-1 col-lg-1 col-xl-3"></div>
+  <div class="col-sm-12 col-md-10 col-lg-10 col-xl-6">
+    
+      <h1 class="select-role-header nhsuk-heading-l nhsuk-u-margin-bottom-3" id="select-role-header">
+      You are already logged in to the Prescription Tracker
+      </h1>
+        <p>There is a session using these login details in another browser, window or device. You can continue to start a new session in this window, but this will end the other session.</p>
+      <details class="nhsuk-details">
+  <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      Contact us if you keep being shown this page
+    </span>
+  </summary>
+  <div class="nhsuk-details__text">
+    <p> If you keep being shown this page after you have started a new session and logged in again, email <a href="#">ssd.nationalservicedesk@nhs.net</a>.</p>
+   
+   
+
+  </div>
+</details>
+    </br>
+       
+      <div class="nhsuk-button-group">
+      <a class="nhsuk-button" href="./spinner-roles" id="confirm_logout">Start a new session</a>
+      <a class="nhsuk-button nhsuk-button--secondary" href="./spinner-logout" id="cancel_logout">Close this window</a>
+    </div>
+
+    
+   
+  </div>
+</div>
+
+{% endblock %}
+
