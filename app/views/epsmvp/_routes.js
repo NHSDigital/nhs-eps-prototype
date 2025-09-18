@@ -324,7 +324,7 @@ let patientEntry = req.session.data.patients.find(p => {
       const key = Object.keys(item)[0];
       const prescription = item[key];
       // how we filter the list down
-      return prescription.prescriptionStatus !== 'Future issue date' && prescription.prescriptionStatus !== 'Future repeat dispense' && prescription.prescriptionStatus !== 'Expired' && prescription.prescriptionStatus !== 'Claimed';;
+      return prescription.prescriptionStatus !== 'Future issue date' && prescription.prescriptionStatus !== 'To dispense in the future' && prescription.prescriptionStatus !== 'Expired' && prescription.prescriptionStatus !== 'Claimed';;
     }).map(item => {
       const key = Object.keys(item)[0];
       const prescription = item[key];
@@ -346,7 +346,7 @@ let patientEntry = req.session.data.patients.find(p => {
       const key = Object.keys(item)[0];
       const prescription = item[key];
       // how we filter the list down
-      return prescription.prescriptionStatus === 'Future issue date' || prescription.prescriptionStatus === 'Future repeat dispense';
+      return prescription.prescriptionStatus === 'Future issue date' || prescription.prescriptionStatus === 'To dispense in the future';
     }).map(item => {
       const key = Object.keys(item)[0];
       const prescription = item[key];
