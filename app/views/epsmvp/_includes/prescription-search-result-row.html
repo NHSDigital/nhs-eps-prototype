@@ -14,7 +14,7 @@
       {% elif prescriptions.Status == 'Expired' %} nhsuk-tag--orange
       {% elif prescriptions.Status == 'Claimed' %} nhsuk-tag--grey
       {% elif prescriptions.Status == 'Downloaded by a dispenser' %} nhsuk-tag--purple
-      {% elif prescriptions.Status == 'Next repeat ready to download' %} nhsuk-tag--pink
+      {% elif prescriptions.Status == 'Available to download when due' %} nhsuk-tag--pink
       {% endif %}">
       {{ prescriptions.Status }}
     </strong>
