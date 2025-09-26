@@ -52,7 +52,7 @@
           <dt class="nhsuk-summary-list__key">Quantity</dt>
           <dd class="nhsuk-summary-list__value">
             <span class="data-field__content data-field__content--address">
-              {{ prescriptionItems[0].quantityItem or '21 tablets' }}
+              {{ prescriptionItems[0].initialQuantity or '21 tablets' }}
             </span>
             <br>
           </dd>
@@ -85,46 +85,6 @@
 {% endif %}
       </dl>
 
-      <!-- not needed -->
-       <!-- {% if prescriptionItems[0].initialitem %}
-      <details class="nhsuk-details">
-        <summary class="nhsuk-details__summary">
-          <span class="nhsuk-details__summary-text">
-            What was initially prescribed
-          </span>
-        </summary>
-        <div class="nhsuk-details__text">
-          <dl class="nhsuk-summary-list">
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Item
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                {{ prescriptionItems[0].initialitem }}
-              </dd>
-            </div>
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Quantity 
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                {{ prescriptionItems[0].initialQuantity }}
-              </dd>
-            </div>        
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Instructions
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                {{ prescriptionItems[0].instructionInitial }}
-              </dd>
-            </div>
-          </dl>
-      
-        </div>
-      </details>
-
-            {% endif %}-->
       
 
     </div>

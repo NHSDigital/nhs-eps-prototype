@@ -102,51 +102,7 @@
       </dl>
     
       
-      {% if prescriptionItems[2].initialitem %}
-      <details class="nhsuk-details">
-        <summary class="nhsuk-details__summary">
-          <span class="nhsuk-details__summary-text">
-            What was initially prescribed
-          </span>
-        </summary>
-        <div class="nhsuk-details__text">
-          <dl class="nhsuk-summary-list">
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Item
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                {{ prescriptionItems[2].initialitem }}
-              </dd>
-          
-            </div>
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Quantity 
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                {{ prescriptionItems[2].initialQuantity }}
-              </dd>
-          
-            </div>
-          
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Instructions
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                {{ prescriptionItems[2].instructionInitial }}
-              </dd>
-          
-            </div>
-          
-          
-          
-          
-          </dl>
-      
-        </div>
-      </details>
+    
            
             {% endif %}
 
