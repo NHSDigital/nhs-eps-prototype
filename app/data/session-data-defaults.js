@@ -3687,7 +3687,7 @@ module.exports = {
         "nominatedDispensercontact": "01943 863158",
         "prescriberBox": "yes",
         "prescriberOrg": "Fiji surgery (ODS: FI05964)",
-        "prescriberAddress": "	90 YARROW LANE, FINNSBURY, E45 T46",
+        "prescriberAddress": "90 YARROW LANE, FINNSBURY, E45 T46",
         "prescriberCountry": "England",
         "prescribercontact": "01232 231321",
       }
