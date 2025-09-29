@@ -3548,7 +3548,7 @@ module.exports = {
         "prescriptionItem1Prescribed": "",
         "prescriptionItem1Dispensed": "yes",
         "prescriptionItem1pendingCancelation": "no",
-        "prescriptionItem1quantity": "28 tablets",
+        "prescriptionItem1quantity": "28 out of 56 tablets",
         "prescriptionItem1quantityInitial":"56 tablets",
         "prescriptionItem1instructions": "Take one twice daily",
         "prescriptionItem1instructionsInitial": "Take one twice daily",
