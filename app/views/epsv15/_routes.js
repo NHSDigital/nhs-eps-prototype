@@ -501,6 +501,36 @@ router.get("/epsv15/search-results", function (req, res, next) {
   });
   });
 
+//.......................................................................................................................................................................................................
+//..............................................SSSSSSSSS................................................................................................................................................
+//.PPPPPPPPPPPPPP......PDDDDDDDDDDDDD..........SSSSSSSSSSSS.............. BBBBBBBBBBBBBB............AAAAAAA.........ANNNNN.......NNNNNN...NNNNNN.......NNNNN...NEEEEEEEEEEEEEEEEE..ERRRRRRRRRRRRRRR......
+//.PPPPPPPPPPPPPPPP....PDDDDDDDDDDDDDDD......SSSSSSSSSSSSSSS............. BBBBBBBBBBBBBBBB..........AAAAAAAA........ANNNNNN......NNNNNN...NNNNNNN......NNNNN...NEEEEEEEEEEEEEEEEE..ERRRRRRRRRRRRRRRRR....
+//.PPPPPPPPPPPPPPPP....PDDDDDDDDDDDDDDDD.....SSSSSSSSSSSSSSSS............ BBBBBBBBBBBBBBBB..........AAAAAAAA........ANNNNNN......NNNNNN...NNNNNNN......NNNNN...NEEEEEEEEEEEEEEEEE..ERRRRRRRRRRRRRRRRR....
+//.PPPPPPPPPPPPPPPPP...PDDDDDDDDDDDDDDDDD...DSSSSSSSSSSSSSSSS............ BBBBBBBBBBBBBBBBB........AAAAAAAAA........ANNNNNNN.....NNNNNN...NNNNNNNN.....NNNNN...NEEEEEEEEEEEEEEEEE..ERRRRRRRRRRRRRRRRRR...
+//.PPPPPPPPPPPPPPPPP...PDDDDDDDDDDDDDDDDD...DSSSSSS...SSSSSSS............ BBBBBBBBBBBBBBBBB........AAAAAAAAAA.......ANNNNNNNN....NNNNNN...NNNNNNNN.....NNNNN...NEEEEEEEEEEEEEEEEE..ERRRRRRRRRRRRRRRRRR...
+//.PPPPPP.....PPPPPP...PDDDD......DDDDDDD...DSSSS......SSSSSSS........... BBBB.......BBBBBB.......AAAAAAAAAAA.......ANNNNNNNN....NNNNNN...NNNNNNNNN....NNNNN...NEEEEE..............ERRRRR.......RRRRRR...
+//.PPPPPP......PPPPPP..PDDDD.......DDDDDDD..DSSSSS......SSSSSS........... BBBB.......BBBBBB.......AAAAAAAAAAA.......ANNNNNNNNN...NNNNNN...NNNNNNNNNN...NNNNN...NEEEEE..............ERRRRR.......RRRRRR...
+//.PPPPPP......PPPPPP..PDDDD........DDDDDD..DSSSSSS...................... BBBB.......BBBBBB.......AAAAAAAAAAAA......ANNNNNNNNN...NNNNNN...NNNNNNNNNN...NNNNN...NEEEEE..............ERRRRR.......RRRRRR...
+//.PPPPPP.....PPPPPP...PDDDD........DDDDDD..DSSSSSSSSSS.................. BBBBBBBBBBBBBBBBB......AAAAAA.AAAAAA......ANNNNNNNNNN..NNNNNN...NNNNNNNNNNN..NNNNN...NEEEEEEEEEEEEEEEE...ERRRRR.......RRRRRR...
+//.PPPPPP...PPPPPPPP...PDDDD........DDDDDD..DSSSSSSSSSSSSSS.............. BBBBBBBBBBBBBBBB.......AAAAAA.AAAAAA......ANNNNNNNNNN..NNNNNN...NNNNNNNNNNN..NNNNN...NEEEEEEEEEEEEEEEE...ERRRRRRRRRRRRRRRRRR...
+//.PPPPPPPPPPPPPPPPP...PDDDD........DDDDDD...SSSSSSSSSSSSSSS............. BBBBBBBBBBBBBBBB.......AAAAAA..AAAAAA.....ANNNN.NNNNNN.NNNNNN...NNNNN.NNNNNN.NNNNN...NEEEEEEEEEEEEEEEE...ERRRRRRRRRRRRRRRRR....
+//.PPPPPPPPPPPPPPPPP...PDDDD........DDDDDD....SSSSSSSSSSSSSSS............ BBBBBBBBBBBBBBBBB.....AAAAAA...AAAAAA.....ANNNN..NNNNNNNNNNNN...NNNNN.NNNNNN.NNNNN...NEEEEEEEEEEEEEEEE...ERRRRRRRRRRRRRRRR.....
+//.PPPPPPPPPPPPPPPP....PDDDD........DDDDDD......SSSSSSSSSSSSSS........... BBBBBBBBBBBBBBBBB.....AAAAAA...AAAAAAA....ANNNN..NNNNNNNNNNNN...NNNNN..NNNNNNNNNNN...NEEEEEEEEEEEEEEEE...ERRRRRRRRRRRRRRRRR....
+//.PPPPPPPPPPPPPPP.....PDDDD........DDDDDD.........SSSSSSSSSSS........... BBBB.......BBBBBBB....AAAAAAAAAAAAAAAA....ANNNN...NNNNNNNNNNN...NNNNN..NNNNNNNNNNN...NEEEEE..............ERRRRRRRRRRRRRRRRRR...
+//.PPPPPPPPPPPP........PDDDD.......DDDDDDD..DSSSS......SSSSSSS........... BBBB........BBBBBB...AAAAAAAAAAAAAAAAA....ANNNN...NNNNNNNNNNN...NNNNN...NNNNNNNNNN...NEEEEE..............ERRRRR......RRRRRRR...
+//.PPPPPP..............PDDDD.......DDDDDDD.DDSSSS.......SSSSSS........... BBBB........BBBBBB...AAAAAAAAAAAAAAAAAA...ANNNN....NNNNNNNNNN...NNNNN....NNNNNNNNN...NEEEEE..............ERRRRR.......RRRRRR...
+//.PPPPPP..............PDDDD......DDDDDDD..DDSSSSS......SSSSSS........... BBBB.......BBBBBBB...AAAAAAAAAAAAAAAAAA...ANNNN....NNNNNNNNNN...NNNNN....NNNNNNNNN...NEEEEE..............ERRRRR.......RRRRRR...
+//.PPPPPP..............PDDDDDDDDDDDDDDDDD...DSSSSSS....SSSSSSS........... BBBBBBBBBBBBBBBBBB..BAAAAAAAAAAAAAAAAAA...ANNNN.....NNNNNNNNN...NNNNN.....NNNNNNNN...NEEEEEEEEEEEEEEEEE..ERRRRR.......RRRRRR...
+//.PPPPPP..............PDDDDDDDDDDDDDDDD....DSSSSSSSSSSSSSSSSS........... BBBBBBBBBBBBBBBBB...BAAAAA.......AAAAAAA..ANNNN......NNNNNNNN...NNNNN.....NNNNNNNN...NEEEEEEEEEEEEEEEEE..ERRRRR.......RRRRRR...
+//.PPPPPP..............PDDDDDDDDDDDDDDDD.....SSSSSSSSSSSSSSSS............ BBBBBBBBBBBBBBBBB..BBAAAAA........AAAAAA..ANNNN......NNNNNNNN...NNNNN......NNNNNNN...NEEEEEEEEEEEEEEEEE..ERRRRR.......RRRRRR...
+//.PPPPPP..............PDDDDDDDDDDDDDDD......SSSSSSSSSSSSSSSS............ BBBBBBBBBBBBBBBB...BBAAAAA........AAAAAA..ANNNN.......NNNNNNN...NNNNN......NNNNNNN...NEEEEEEEEEEEEEEEEE..ERRRRR.......RRRRRRR..
+//.PPPPPP..............PDDDDDDDDDDDDD..........SSSSSSSSSSSS.............. BBBBBBBBBBBBBB.....BBAAAA.........AAAAAAA.ANNNN.......NNNNNNN...NNNNN.......NNNNNN...NEEEEEEEEEEEEEEEEE..ERRRRR.......RRRRRRR..
+//...............................................SSSSSSSS................................................................................................................................................
+//.......................................................................................................................................................................................................
+
+
+
+
 //prescription search results page
 router.get("/epsv15/prescription-results-pds", function (req, res, next) {
   // Get the details from the url query parameters
@@ -633,6 +663,167 @@ router.get("/epsv15/prescription-results-pds", function (req, res, next) {
     searchTerm: req.query.searchTerm // Pass searchTerm here
 });
 });
+//.....................................................................................................................................................................................................
+//......................................SSSSSSSS............SSSSSSSS.............................................GGGGGGG...............................................................SSSSSSSSS.......
+//.MMMMMMMM......MMMMMMMM..MIIIII.....SSSSSSSSSSSS........SSSSSSSSSSSS......SIIII...INNNNNN.......NNNNN.......GGGGGGGGGGGG................ PPPPPPPPPPPPP......PDDDDDDDDDDDDD..........SSSSSSSSSSSS.....
+//.MMMMMMMM......MMMMMMMM..MIIIII....SSSSSSSSSSSSSS......SSSSSSSSSSSSSS.....SIIII...INNNNNN.......NNNNN......GGGGGGGGGGGGGGG.............. PPPPPPPPPPPPPPP....PDDDDDDDDDDDDDDD......SSSSSSSSSSSSSSS....
+//.MMMMMMMM.....MMMMMMMMM..MIIIII...ISSSSSSSSSSSSSSS....SSSSSSSSSSSSSSSS....SIIII...INNNNNNN......NNNNN.....GGGGGGGGGGGGGGGG.............. PPPPPPPPPPPPPPP....PDDDDDDDDDDDDDDDD.....SSSSSSSSSSSSSSSS...
+//.MMMMMMMM.....MMMMMMMMM..MIIIII...ISSSSSSSSSSSSSSSS...SSSSSSSSSSSSSSSSS...SIIII...INNNNNNNN.....NNNNN....GGGGGGGGGGGGGGGGGG............. PPPPPPPPPPPPPPPP...PDDDDDDDDDDDDDDDDD...DSSSSSSSSSSSSSSSS...
+//.MMMMMMMMM....MMMMMMMMM..MIIIII..IISSSSS....SSSSSSS..SSSSSSS....SSSSSSS...SIIII...INNNNNNNN.....NNNNN...NGGGGGGG....GGGGGGGG............ PPPPPPPPPPPPPPPP...PDDDDDDDDDDDDDDDDD...DSSSSSS...SSSSSSS...
+//.MMMMMMMMM....MMMMMMMMM..MIIIII..IISSSS......SSSSSS..SSSSSS......SSSSSS...SIIII...INNNNNNNNN....NNNNN...NGGGGGG......GGGGGGG............ PPPPP.....PPPPPP...PDDDD......DDDDDDD...DSSSS......SSSSSSS..
+//.MMMMMMMMM...MMMMMMMMMM..MIIIII..IISSSS......SSSSSS..SSSSSS......SSSSSS...SIIII...INNNNNNNNN....NNNNN..NNGGGGG........GGGGGG............ PPPPP......PPPPPP..PDDDD.......DDDDDDD..DSSSSS......SSSSSS..
+//.MMMMMMMMM...MMMMMMMMMM..MIIIII..IISSSSSS............SSSSSSSS.............SIIII...INNNNNNNNNN...NNNNN..NNGGGGG........GGGGGG............ PPPPP......PPPPPP..PDDDD........DDDDDD..DSSSSSS.............
+//.MMMMMMMMM...MMMMMMMMMM..MIIIII...ISSSSSSSSSS.........SSSSSSSSSSS.........SIIII...INNNNNNNNNN...NNNNN..NNGGGG........................... PPPPP.....PPPPPP...PDDDD........DDDDDD..DSSSSSSSSSS.........
+//.MMMMMMMMMM..MMMMMMMMMM..MIIIII...ISSSSSSSSSSSSS......SSSSSSSSSSSSSS......SIIII...INNNNNNNNNNN..NNNNN..NNGGGG........................... PPPPP...PPPPPPPP...PDDDD........DDDDDD..DSSSSSSSSSSSSSS.....
+//.MMMMMMMMMM.MMMMMMMMMMM..MIIIII...ISSSSSSSSSSSSSSS....SSSSSSSSSSSSSSSS....SIIII...INNNNNNNNNNNN.NNNNN..NNGGGG.....GGGGGGGGGG............ PPPPPPPPPPPPPPPP...PDDDD........DDDDDD...SSSSSSSSSSSSSSS....
+//.MMMMMMMMMM.MMMMMMMMMMM..MIIIII....SSSSSSSSSSSSSSSS....SSSSSSSSSSSSSSSS...SIIII...INNNNN.NNNNNN.NNNNN..NNGGGG.....GGGGGGGGGG............ PPPPPPPPPPPPPPPP...PDDDD........DDDDDD....SSSSSSSSSSSSSSS...
+//.MMMMM.MMMM.MMMMMMMMMMM..MIIIII......SSSSSSSSSSSSSS......SSSSSSSSSSSSSS...SIIII...INNNNN..NNNNNNNNNNN..NNGGGG.....GGGGGGGGGG............ PPPPPPPPPPPPPPP....PDDDD........DDDDDD......SSSSSSSSSSSSSS..
+//.MMMMM.MMMMMMMMM.MMMMMM..MIIIII..........SSSSSSSSSSS.........SSSSSSSSSSS..SIIII...INNNNN..NNNNNNNNNNN..NNGGGG.....GGGGGGGGGG............ PPPPPPPPPPPPPP.....PDDDD........DDDDDD.........SSSSSSSSSSS..
+//.MMMMM.MMMMMMMMM.MMMMMM..MIIIII..IISSS.......SSSSSSS.SSSSS.......SSSSSSS..SIIII...INNNNN...NNNNNNNNNN..NNGGGG.....GGGGGGGGGG............ PPPPPPPPPPP........PDDDD.......DDDDDDD..DSSSS......SSSSSSS..
+//.MMMMM.MMMMMMMMM.MMMMMM..MIIIII..IISSSS.......SSSSSS.SSSSSS.......SSSSSS..SIIII...INNNNN...NNNNNNNNNN..NNGGGGG........GGGGGG............ PPPPP..............PDDDD.......DDDDDDD.DDSSSS.......SSSSSS..
+//.MMMMM.MMMMMMMMM.MMMMMM..MIIIII..IISSSS.......SSSSSS.SSSSSS.......SSSSSS..SIIII...INNNNN....NNNNNNNNN...NGGGGGG......GGGGGGG............ PPPPP..............PDDDD......DDDDDDD..DDSSSSS......SSSSSS..
+//.MMMMM..MMMMMMMM.MMMMMM..MIIIII..IISSSSS.....SSSSSSS.SSSSSSS.....SSSSSSS..SIIII...INNNNN....NNNNNNNNN...NGGGGGGG....GGGGGGGG............ PPPPP..............PDDDDDDDDDDDDDDDDD...DSSSSSS....SSSSSSS..
+//.MMMMM..MMMMMMM..MMMMMM..MIIIII..IISSSSSSSSSSSSSSSS..SSSSSSSSSSSSSSSSSS...SIIII...INNNNN.....NNNNNNNN....GGGGGGGGGGGGGGGGGGG............ PPPPP..............PDDDDDDDDDDDDDDDD....DSSSSSSSSSSSSSSSSS..
+//.MMMMM..MMMMMMM..MMMMMM..MIIIII...ISSSSSSSSSSSSSSSS...SSSSSSSSSSSSSSSSS...SIIII...INNNNN......NNNNNNN....GGGGGGGGGGGGGGGGGGG............ PPPPP..............PDDDDDDDDDDDDDDDD.....SSSSSSSSSSSSSSSS...
+//.MMMMM..MMMMMMM..MMMMMM..MIIIII....SSSSSSSSSSSSSSS.....SSSSSSSSSSSSSSS....SIIII...INNNNN......NNNNNNN.....GGGGGGGGGGGGGGGGGG............ PPPPP..............PDDDDDDDDDDDDDDD......SSSSSSSSSSSSSSSS...
+//.MMMMM...MMMMMM..MMMMMM..MIIIII.....SSSSSSSSSSSSS.......SSSSSSSSSSSSS.....SIIII...INNNNN.......NNNNNN.......GGGGGGGGGGG.GGGG............ PPPPP..............PDDDDDDDDDDDDD..........SSSSSSSSSSSS.....
+//......................................SSSSSSSSS...........SSSSSSSSS...........................................GGGGGGG.................................................................SSSSSSSS.......
+//.....................................................................................................................................................................................................
+
+//prescription search results page
+router.get("/epsv15/prescription-results-pds-missing", function (req, res, next) {
+  // Get the details from the url query parameters
+  const nhsNumber = req.query["nhsNumber"] ? req.query["nhsNumber"].trim() : '';
+  const prescID = req.query["prescID"] ? req.query["prescID"].trim() : '';
+
+  // pull all prescriptions from session data into a new array that we can loop through
+  const prescriptionsArray = req.session.data.prescriptions || [];
+  const patientsArray = req.session.data.patients || [];
+  const returnedPatientsList = {};
+
+  // Ensure nhsNumber is not empty
+  if (nhsNumber) {
+    // Iterate through each patient record in the array
+    for (const patientObject of patientsArray) {
+      for (const [patientNhsNumber, patient] of Object.entries(patientObject)) {
+        // console.log('Checking patient NHS Number:', patientNhsNumber, 'Patient Data:', patient);
+        // Compare NHS numbers (trimmed)
+        if (patientNhsNumber.trim() === nhsNumber) {
+          //console.log('Match found:', patientNhsNumber);
+          returnedPatientsList[patientNhsNumber] = patient;
+          var returnedPatientFirstName = patient.firstName;
+          var returnedPatientLastName = patient.lastName;
+        }
+      }
+    }
+  }
+
+  // create empty arrays to store the matched item objects, we'' pass these back to the page
+  let returnedPrescriptionsListAll = [];
+  let returnedPrescriptionsListCurrent = [];
+  let returnedPrescriptionsListFuture = [];
+  let returnedPrescriptionsListExpired = [];
+
+  // If we have a prescription ID, use it to find the matching prescriptions
+  if (prescID) {
+    // look through the prescription array in the data file and add matches to the empty array
+    returnedPrescriptionsListAll = prescriptionsArray.filter(item => item[Object.keys(item)[0]].prescriptionID === prescID);
+  // else use the nhs number to find all prescriptions for that patient
+  } else {
+    // find the array of prescription ids
+    patientPrescriptionsList = returnedPatientsList[nhsNumber].prescriptionNo;
+    // loop through each and add to push matches to the returned list array
+    patientPrescriptionsList.forEach(prescription => {
+      // Filter the prescriptionsArray to find objects with a matching prescriptionID
+      const matchedPrescriptions = prescriptionsArray.filter(item => item[Object.keys(item)[0]].prescriptionID === prescription);
+      // Add all matched prescriptions to the returnedPrescriptionsListAll array
+      returnedPrescriptionsListAll.push(...matchedPrescriptions);
+    });
+  }
+
+  // Filter to show just the current prescriptions
+  returnedPrescriptionsListCurrent = returnedPrescriptionsListAll.filter(item => {
+    const key = Object.keys(item)[0];
+    const prescription = item[key];
+    
+    // how we filter the list down
+    return prescription.prescriptionStatus !== 'Future issue date' && prescription.prescriptionStatus !== 'Future prescription cancelled'&& prescription.prescriptionStatus !== 'Future issue date dispense' && prescription.prescriptionStatus !== 'To dispense in the future'&& prescription.prescriptionStatus !== 'Future eRD issue' && prescription.prescriptionStatus !== 'Expired' && prescription.prescriptionStatus !== 'Claimed'&& prescription.prescriptionStatus !== 'Available to download when due' && prescription.prescriptionStatus !== 'Future prescription cancelled';;
+  }).map(item => {
+    const key = Object.keys(item)[0];
+    const prescription = item[key];
+    return {
+      ID: prescription.prescriptionID,
+      Cancellation: prescription.pendingCancellation,
+      Variant: prescription.prescriptionVariant,
+      Type: prescription.prescriptionType,
+      IssueDate: prescription.prescriptionIssueDate,
+      Item1: prescription.prescriptionItem1,
+      Item1Quantity: prescription.prescriptionItem1quantity,
+      Item2: prescription.prescriptionItem2,
+      Item2Quantity: prescription.prescriptionItem2quantity,
+      Status: prescription.prescriptionStatus
+    };
+  });
+
+  // Filter to show just the Future dated prescriptions
+  returnedPrescriptionsListFuture = returnedPrescriptionsListAll.filter(item => {
+    const key = Object.keys(item)[0];
+    const prescription = item[key];
+    // how we filter the list down
+    return prescription.prescriptionStatus === 'Future issue date' ||prescription.prescriptionStatus === 'Future prescription cancelled'|| prescription.prescriptionStatus === 'Future issue date dispense'|| prescription.prescriptionStatus === 'To dispense in the future'|| prescription.prescriptionStatus === 'Future eRD issue'|| prescription.prescriptionStatus == 'Available to download when due' || prescription.prescriptionStatus == 'Future prescription cancelled';
+  }).map(item => {
+    const key = Object.keys(item)[0];
+    const prescription = item[key];
+    return {
+      ID: prescription.prescriptionID,
+      Cancellation: prescription.pendingCancellation,
+      Variant: prescription.prescriptionVariant,
+      Type: prescription.prescriptionType,
+      IssueDate: prescription.prescriptionIssueDate,
+      Item1: prescription.prescriptionItem1,
+      Item1Quantity: prescription.prescriptionItem1quantity,
+      Item2: prescription.prescriptionItem2,
+      Item2Quantity: prescription.prescriptionItem2quantity,
+      Status: prescription.prescriptionStatus
+    };
+  });
+
+  // Filter to show just the Future dated prescriptions
+  returnedPrescriptionsListExpired = returnedPrescriptionsListAll.filter(item => {
+    const key = Object.keys(item)[0];
+    const prescription = item[key];
+    // how we filter the list down
+    return prescription.prescriptionStatus === 'Expired' || prescription.prescriptionStatus === 'Claimed';
+  }).map(item => {
+    const key = Object.keys(item)[0];
+    const prescription = item[key];
+    return {
+      ID: prescription.prescriptionID,
+      Cancellation: prescription.pendingCancellation,
+      Variant: prescription.prescriptionVariant,
+      Type: prescription.prescriptionType,
+      IssueDate: prescription.prescriptionIssueDate,
+      Item1: prescription.prescriptionItem1,
+      Item1Quantity: prescription.prescriptionItem1quantity,
+      Item2: prescription.prescriptionItem2,
+      Item2Quantity: prescription.prescriptionItem2quantity,
+      Status: prescription.prescriptionStatus
+    };
+  });
+
+  // Render the search results page with the filtered prescription lists
+  res.render('./epsv15/prescription-results-pds-missing', {
+    returnedPrescriptionsListAll: returnedPrescriptionsListAll,
+    returnedPrescriptionsListCurrent: returnedPrescriptionsListCurrent,
+    returnedPrescriptionsListFuture: returnedPrescriptionsListFuture,
+    returnedPrescriptionsListExpired: returnedPrescriptionsListExpired,
+    returnedPatientFirstName: returnedPatientFirstName,
+    returnedPatientLastName: returnedPatientLastName,
+    searchTerm: req.query.searchTerm // Pass searchTerm here
+});
+});
+
+
 
 //................................................................
 //..RRRRR..........OOOOOO......LL.........EEEEEEEEE....SSSSSS.....
