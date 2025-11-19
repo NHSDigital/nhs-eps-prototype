@@ -1979,7 +1979,7 @@ module.exports = {
         "prescriptionMessage1NewStatus": "All items dispensed",
         "prescriptionMessage1DN": "yes",
         "prescriptionMessage1DNID": "b240434e-cb85-40bb-899c-1c61410c93a7",
-        "prescriptionItemAdditionalItem1":"Pantropazole 10mg tablets",
+        "prescriptionItemAdditionalItem1":"Pantropazole 20mg tablets",
         "prescriptionItemAdditionalItem1q":"14 tablets",
         "prescriptionItemAdditionalItem1ins":"Take once a day",
         "prescriptionMessage1DNItem1": "Rabeprazole 10mg tablets",
