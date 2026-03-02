@@ -128,3 +128,57 @@
 .chargeable-status-table,.historic-status-table {
   font-size: .9rem
 }
+
+
+         
+.chargeable-status-banner--green {
+  background-color: #007f3b;
+  color: #ffffff;
+  padding: 16px;
+  position: relative; /* 👈 Move positioning here instead */
+}
+
+.chargeable-status-banner-content {
+  max-width: 960px;
+  margin: 0 auto;
+  padding-right: 40px; /* space for the X */
+}
+
+.chargeable-status-banner-link {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.chargeable-status-banner-close {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  background: transparent;
+  border: 0;
+  color: #ffffff;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.chargeable-status-banner-close:focus {
+  outline: 3px solid #ffeb3b; /* NHS focus style */
+  outline-offset: 2px;
+}
+
+.chargeable-status-banner-close {
+  padding: 8px;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.chargeable-status-banner-close:hover {
+  background-color: #ffffff;
+  color: #007f3b;
+}
+
+.chargeable-status-banner-close:focus {
+  outline: 3px solid #ffeb3b;
+  outline-offset: 2px;
+}

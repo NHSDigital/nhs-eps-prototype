@@ -120,6 +120,7 @@
           .nhsuk-success-banner {
               margin: 0 !important;
           }
+
           
         </style>
 
@@ -144,10 +145,29 @@
   </div>
  </div>
 
- <div class="chargeable-status-banner--green" id="chargeable-status-banner-id">
-  
+<div class="chargeable-status-banner--green" 
+     id="chargeable-status-banner-id"
+     role="region"
+     aria-labelledby="cookie-confirmation-title">
+
   <div class="chargeable-status-banner-content">
-  You can change your cookie settings at any time using our <a href= "cookies" class="chargeable-status-banner-link">cookies page</a>.
+
+    <p id="cookie-confirmation-title" class="nhsuk-u-visually-hidden">
+      Cookie preferences updated
+    </p>
+
+    <div class="chargeable-status-banner-text">
+      You can change your cookie settings at any time using our 
+      <a href="cookies" class="chargeable-status-banner-link">cookies page</a>.
+    </div>
+
+    <button type="button"
+            class="chargeable-status-banner-close"
+            aria-label="Close cookie confirmation message"
+            onclick="closeConfirmationBanner()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+
   </div>
 </div>
  <script>
@@ -175,6 +195,11 @@
       document.getElementById('chargeable-status-banner-id').style.display = 'block'; // Show second banner
       sessionStorage.setItem('closeCookies', "true");
   }
+
+  function closeConfirmationBanner() {
+  const banner = document.getElementById('chargeable-status-banner-id');
+  banner.style.display = 'none';
+}
 </script>
 
     
