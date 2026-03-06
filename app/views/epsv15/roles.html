@@ -92,12 +92,15 @@ Role selection - {{ serviceName }}
       
          
     
-          <div class="nhsuk-form-group">
-            <label class="nhsuk-label" for="three-quarters">
-              Search for your role using the dispensing site name, ODS code or postcode.
-            </label>
-            <input class="nhsuk-input nhsuk-u-width-three-quarters" id="three-quarters" name="three-quarters" type="text">
-          </div>
+<div class="nhsuk-form-group">
+  <label class="nhsuk-label" for="three-quarters">
+    Search for your role using the dispensing site name, ODS code or postcode.
+  </label>
+  <div style="display: flex; align-items: center; gap: 15px;">
+    <input class="nhsuk-input nhsuk-u-width-three-quarters" id="three-quarters" name="three-quarters" type="text">
+    <a href="#" id="clear-search" class="nhsuk-link nhsuk-link--no-visited-state">Clear search</a>
+  </div>
+</div>
       
           <table class="nhsuk-table-responsive">
             <caption class="nhsuk-table__caption nhsuk-u-visually-hidden">Your roles</caption>
@@ -265,5 +268,66 @@ Role selection - {{ serviceName }}
   saveQueryParams();
   restoreQueryParams();
   
+// --- 2. Table Search Logic ---
+  document.addEventListener('DOMContentLoaded', function () {
+    const searchInput = document.getElementById('three-quarters');
+    const clearLink = document.getElementById('clear-search');
+    const tableBody = document.querySelector('.nhsuk-table-responsive .nhsuk-table__body');
+
+    if (searchInput && tableBody) {
+      const rows = tableBody.getElementsByTagName('tr');
+
+      // Function to reset everything
+      function resetSearch(e) {
+        if (e) e.preventDefault(); // Stop page jump
+        searchInput.value = '';
+        
+        // Show all rows again
+        for (let i = 0; i < rows.length; i++) {
+          rows[i].style.display = "";
+        }
+        
+        // Remove "No results" message if it exists
+        const noResultsMsg = document.getElementById('no-results-message');
+        if (noResultsMsg) noResultsMsg.remove();
+        
+        searchInput.focus();
+      }
+
+      // Filter logic
+      searchInput.addEventListener('keyup', function () {
+        const filter = searchInput.value.toLowerCase();
+        let visibleCount = 0;
+
+        for (let i = 0; i < rows.length; i++) {
+          const rowText = rows[i].textContent.toLowerCase();
+          if (rowText.includes(filter)) {
+            rows[i].style.display = "";
+            visibleCount++;
+          } else {
+            rows[i].style.display = "none";
+          }
+        }
+
+        // Handle "No results" message
+        let noResultsMsg = document.getElementById('no-results-message');
+        if (visibleCount === 0 && filter.length > 0) {
+          if (!noResultsMsg) {
+            noResultsMsg = document.createElement('p');
+            noResultsMsg.id = 'no-results-message';
+            noResultsMsg.textContent = 'No roles found matching your search.';
+            noResultsMsg.classList.add('nhsuk-u-margin-top-4');
+            tableBody.closest('table').after(noResultsMsg);
+          }
+        } else if (noResultsMsg) {
+          noResultsMsg.remove();
+        }
+      });
+
+      // Clear link click event
+      clearLink.addEventListener('click', resetSearch);
+    }
+  });
+
   </script>
 {% endblock %}
