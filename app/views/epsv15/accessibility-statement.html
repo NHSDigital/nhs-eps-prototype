@@ -48,15 +48,14 @@ Privacy notice - {{ serviceName }}
       <h2>How accessible this website is</h2>
       <p>We know some parts of this website are not fully accessible:</p>
       <ul>
-        <li>screen readers do not continue to read content when you select a new tab on the ‘Search for a prescription’ page</li>
-        <li>using the tab key does not focus the ‘Skip to main content’ link after a page is loaded</li>
-        <li>if you click into a page after it is loaded, using the tab key does not focus the next element of the page</li>
-        <li>the hint text is not associated with the search field on the prescription ID tab on the ‘Search for a prescription’ page</li>
-        <li>the cards on the ‘Select your role’ page should stay white when focused or hovered over</li>
-        <li>on smaller screens, there is no aria-expanded attribute on the menu icon</li>
-        <li>when you enter information into a field on the ‘Search for a prescription’ page and search, the page refreshes and focus is moved to the footer if you are navigating using arrow keys</li>
-        <li>the tabs on the ‘Prescription List’ page are separate URLs with the same headings and page titles, instead of the same URL with different fragment identifiers</li>
-        <li>selecting the tabs on the ‘Search for a prescription’ page should show you unique headings and page titles because each tab is a separate URL</li>
+        <li>on the ‘Prescriptions list’ page, the table header text is not clear to screen reader users </li>
+        <li>screen readers do not announce when the content has loaded after a user is shown the ‘Loading’ spinner, so there is no non-visual indication that something has changed </li>
+        <li>on the ‘View prescription’ link for eRD prescriptions, the same text is used for multiple links that go to different places. </li>
+        <li>screen readers continuously announce how long is it until the user will be logged out if they are shown the ‘You are about to be logged out’ modal </li>
+        <li>the hint text is not associated with the search field on the prescription ID tab on the ‘Search for a prescription’ page.</li>
+        <li>the focus order is illogical on the ‘Prescriptions list’ page </li>
+        <li>the focus moves to the middle of the patient banner after a user navigating with their arrow keys searches for a prescription  </li>
+        
       </ul>
       <h2>Feedback and contact information</h2>
       <p>If you find any problems not listed on this page or think we're not meeting accessibility requirements, email <a href="#">epssupport@nhs.net</a>.</p>
@@ -82,15 +81,13 @@ Privacy notice - {{ serviceName }}
 
       <h3>Non-compliance with the accessibility regulations</h3>
       <ul>
-        <li>Screen readers do not continue to read content when you select a new tab on the ‘Search for a prescription’ page. This fails WCAG 2.2 success criterion 2.4.3 (focus order).</li>
-        <li>Using the tab key does not focus the ‘Skip to main content’ link after a page is loaded. This fails WCAG 2.2 success criterion 2.4.3 (focus order).</li>
-        <li>If you click into a page after it is loaded, using the tab key does not focus the next element of the page. This fails WCAG 2.2 success criterion 2.4.3 (focus order).</li>
-        <li>The hint text is not associated with the search field on the prescription ID tab on the ‘Search for a prescription’ page. This fails WCAG 2.2 success criterion 3.3.1 (error identification).</li>
-        <li>The cards on the ‘Select your role’ page should stay white when focused or hovered over. This fails WCAG 2.2 success criteria 1.4.11 (minimum contrast and non-text contrast). </li>
-        <li>On smaller screens, there is no aria-expanded attribute on the menu icon. This fails WCAG 2.2 success criterion 4.1.2 (name, role, value).</li>
-        <li>When you enter information into a field on the ‘Search for a prescription’ page and search, the page refreshes and focus is moved to the footer if you are navigating using arrow keys. This fails WCAG 2.2 success criterion 3.2.2 (on input).</li>
-        <li>The tabs on the ‘Prescription List’ page are separate URLs with the same headings and page titles, instead of the same URL with different fragment identifiers. This fails WCAG 2.2 success criterion 2.4.2 (page titled).</li>
-        <li>Selecting the tabs on the ‘Search for a prescription’ page should show you unique headings and page titles because each tab is a separate URL. This fails WCAG 2.2 success criterion 2.4.2 (page titled).</li>
+        <li>On the ‘Prescriptions list’ page, the table header text is not clear to screen reader users. This fails WCAG 2.2 success criteria 1.3.1 (info and relationships) and 3.3.2 (labels or instructions).</li>
+        <li>When navigating between pages, sometimes a user will be shown a ‘Loading’ spinner. Screen readers do not announce when the content has loaded, so there is no non-visual indication that something has changed. This fails WCAG 2.2 success criteria 1.3.3 (sensory characteristics) and 4.1.3 (status messages).</li>
+        <li>On the ‘View prescription’ link for eRD prescriptions, the same text is used for multiple links that go to different places. This fails WCAG 2.2 success criterion 2.4.4 (link purpose).</li>
+        <li>On the modal that tells users they are about to be logged out, screen readers continuously announce how long is it until the user will be logged out which could be distracting for users. This fails WCAG success criterion 4.1.3 (status messages).</li>
+        <li>The hint text is not associated with the search field on the prescription ID tab on the ‘Search for a prescription’ page. This fails WCAG 2.2 success criterion 3.3.2 (labels or instructions).</li>
+        <li>On the ‘Prescriptions list’ page, the focus order is illogical. When a user moves through tabs using arrow keys, the tab activates but its content does not appear for a screen reader user. If a user presses tab to move from the tab to the content within the tab, the focus moves back to the skip link. This fails WCAG 2.2 success criterion 2.4.3 (focus order).</li>
+        <li>When you enter information into a field on the ‘Search for a prescription’ page and search, the page refreshes and focus is moved to the middle of the patient details banner if the user is navigating using arrow keys. This fails WCAG 2.2 success criterion 3.2.2 (on input).</li>
       </ul>
 
       <p>We plan on fixing these issues before the Prescription Tracker is available to use nationally.</p>
@@ -100,10 +97,10 @@ Privacy notice - {{ serviceName }}
     <p>An external company will audit the Prescription Tracker’s accessibility again in the next few months. We plan on fixing all accessibility issues before the Prescription Tracker is available to use nationally.</p>
         
     <h3>Preparation of this accessibility statement</h3>
-    <p>This statement was prepared on 9 March 2026. It was last reviewed on 9 March 2026.</p>
-    <p>This website was last tested on 11 February 2026 against the WCAG 2.2 AA standard.</p>   
-    <p>The test was carried out by Dig Inclusion and the Prescription Tracker team also do their own accessibility testing of new features. This is done with a mixture of automated and manual testing.</p>
-    <p>We are planning another external audit of the Prescription Tracker against the WCAG 2.2 AA standard.</p>
+    <p>This statement was prepared on 9 March 2026. It was last reviewed on 30 July 2026.</p>
+    <p>This website was first tested on 11 February 2026 against the WCAG 2.2 AA standard by Dig Inclusion. Dig Inclusion tested the website again on 9 July 2026.</p>   
+    <p>The Prescription Tracker team also do their own accessibility testing of new features. This is done with a mixture of automated and manual testing.</p>
+    <p>Dig Inclusion will be testing the remaining non-compliances in August 2026. We will update this statement after the website has been tested again.</p>
 
 
  
