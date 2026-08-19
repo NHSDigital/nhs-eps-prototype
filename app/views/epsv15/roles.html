@@ -40,7 +40,7 @@ Select your role - {{ serviceName }}
     </h1>
     {% else %}
     <h1 class="select-role-header nhsuk-heading-xl nhsuk-u-margin-bottom-4" id="select-role-header">
-      Select your role
+      {% if selection == "yes" %} You already have a role selected {% else %} Select your role {% endif %}
     </h1>
       
     {% endif %}
@@ -52,7 +52,7 @@ Select your role - {{ serviceName }}
         <p id="current-role-details">You are currently logged in at {{ selectedRole.site or "NHS CONNECTING FOR HEALTH (X09)"}} with {{ selectedRole.roleName or "PERSONAL PATIENT DATA" }}</p></div>
 
       
-      <a href="search-nhs" aria-disabled="false" class="nhsuk-button" id="confirm-current-role" role="button" type="submit">Continue to find a prescription</a>
+      <a href="search-nhs" aria-disabled="false" class="nhsuk-button" id="confirm-current-role" role="button" type="submit">Continue with this role</a>
    
     </div>
     {% elif data['action'] === 'change' %}
@@ -62,7 +62,7 @@ Select your role - {{ serviceName }}
         <p id="current-role-details">You are currently logged in at {{ selectedRole.site or "NHS CONNECTING FOR HEALTH (X09)"}} with {{ selectedRole.roleName or "PERSONAL PATIENT DATA" }}</p></div>
 
       
-      <a href="search-nhs" aria-disabled="false" class="nhsuk-button" id="confirm-current-role" role="button" type="submit">Continue to find a prescription</a>
+      <a href="search-nhs" aria-disabled="false" class="nhsuk-button" id="confirm-current-role" role="button" type="submit">Continue with this role</a>
      
     </div>
 
@@ -81,7 +81,7 @@ Select your role - {{ serviceName }}
       
       {% if selection == "yes" %} 
       {% if cards == "yes" %}
-      <p>Alternatively, you can choose a new role below</p>
+      <h2>Choose a new role below</h2>
       {% endif %}
       {% endif %}
 
