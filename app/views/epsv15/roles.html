@@ -36,13 +36,13 @@ Select your role - {{ serviceName }}
     {% if data['action'] === 'change' %}
     <h1 class="select-role-header nhsuk-heading-xl" id="select-role-header">
       Change your role
-      <span class="nhsuk-caption-xl nhsuk-caption--bottom">Select the role you wish to use to access the service</span>
+      
     </h1>
     {% else %}
-    <h1 class="select-role-header nhsuk-heading-xl" id="select-role-header">
+    <h1 class="select-role-header nhsuk-heading-xl nhsuk-u-margin-bottom-4" id="select-role-header">
       Select your role
     </h1>
-      <p>Select the role you wish to use to access the service</p>
+      
     {% endif %}
 
     {% if selection == "yes" %}
