@@ -18,10 +18,11 @@ Select your role - {{ serviceName }}
 
     {% if selection == "no" and cards == "no" and noAccess == "no" %}
 
-    <h1 class="select-role-header nhsuk-heading-xl" id="select-role-header">
-      No access to the Prescription Tracker
+    <h1 class="select-role-header nhsuk-u-margin-bottom-4 nhsuk-heading-xl" id="select-role-header">
+      You do not have access to the Prescription Tracker
     </h1>
-    <p>None of the roles on your smartcard allow you to access the Prescription Tracker. Contact your local Registration Authority to obtain the correct role.</p>
+    <p>None of the roles on your smartcard have access to the Prescription Tracker.</p>
+    <p>If you need to access the Prescription Tracker, contact your local Registration Authority to have the correct role added to your smartcard.</p>
 
     {% elif selection == "no" and cards == "no" and noAccess == "yes" %}
    
